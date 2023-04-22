@@ -7,27 +7,21 @@ export class User {
     id: number
 
     @Column()
-    firstName: string
+    UserFullName: string
 
     @Column()
-    lastName: string
+    UserMobileNumber: string
 
     @Column()
-    capitals: string
+    UserEmail: string
 
     @Column()
-    nomeProprio: string
+    UserCreationDate: Date
 
     @Column()
-    campo: string
+    passwordHash: string
 
     @Column()
-    ages: number
+    passwordSalt: string
 
-    @Column()
-    region: string
-
-      
-    @Column()
-    langui: string
 }

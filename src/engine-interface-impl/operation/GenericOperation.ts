@@ -2,6 +2,10 @@ import logger from "../../common/config/logger";
 import { IOperation } from "./IOperation";
 import { Params } from "./Params";
 import { Result } from "../../common/response/Result";
+import { InvalidParametersException } from "../../common/exceptions/InvalidParametersException";
+import { UnauthorizedOperationException } from "../../common/exceptions/UnauthorizedOperationException";
+import { NotImplementedException } from "../../common/exceptions/NotImplementedException";
+
 
 
 export abstract class GenericOperation <P extends Params,R extends Result> implements IOperation<R,P>{
@@ -31,13 +35,22 @@ export abstract class GenericOperation <P extends Params,R extends Result> imple
 
            return result;
             
-
-
         } catch (error) {
-            logger.error("Error while executing operation:" + " " +  this.operationName);
-            throw new Error(error);
+            logger.error("CAIU AQUI NA CLASSE GENERICOPERATION:" + " " +  error);
+
+        if(error instanceof NotImplementedException){
+            throw new NotImplementedException(error.message);
+        }
+        else if( error instanceof InvalidParametersException){
+                throw new InvalidParametersException(error.message);
+           
+            } else if( error instanceof UnauthorizedOperationException){
+                throw new UnauthorizedOperationException(error.message);
+           
         }
     }
-
-
 }
+}
+
+
+

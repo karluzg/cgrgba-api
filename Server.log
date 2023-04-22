@@ -1,7 +1,394 @@
-[2023-04-22T01:02:18.472] [INFO] default - CHEGOU NA API
-[2023-04-22T01:02:18.473] [INFO] default - {}
-[2023-04-22T01:02:18.473] [ERROR] default - Error while executin operationError: Method not implemented.
-[2023-04-22T01:02:34.286] [INFO] default - Estado userEngine:{}
-[2023-04-22T01:02:34.750] [INFO] default - CHEGOU NA API
-[2023-04-22T01:02:34.750] [INFO] default - {}
-[2023-04-22T01:02:34.750] [ERROR] default - Error while executin operationError: Method not implemented.
+[2023-04-22T11:29:53.180] [INFO] default - Estado userEngine:{}
+[2023-04-22T11:29:53.682] [INFO] default - Data Source has been initialized!
+[2023-04-22T11:29:57.209] [INFO] default - Begin Operation
+[2023-04-22T11:29:57.209] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T11:29:57.209] [INFO] default - End Operation
+[2023-04-22T11:31:08.927] [INFO] default - Estado userEngine:{}
+[2023-04-22T11:31:09.483] [INFO] default - Data Source has been initialized!
+[2023-04-22T11:32:15.145] [INFO] default - Estado userEngine:{}
+[2023-04-22T11:32:15.707] [INFO] default - Data Source has been initialized!
+[2023-04-22T11:32:50.296] [INFO] default - Estado userEngine:{}
+[2023-04-22T11:32:50.852] [INFO] default - Data Source has been initialized!
+[2023-04-22T11:32:52.323] [INFO] default - Begin Operation
+[2023-04-22T11:32:52.323] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T11:32:52.323] [INFO] default - End Operation
+[2023-04-22T11:37:38.746] [INFO] default - Estado userEngine:{}
+[2023-04-22T11:37:39.272] [INFO] default - Data Source has been initialized!
+[2023-04-22T11:42:47.361] [INFO] default - Estado userEngine:{}
+[2023-04-22T11:42:48.016] [INFO] default - Data Source has been initialized!
+[2023-04-22T11:44:38.176] [INFO] default - Estado userEngine:{}
+[2023-04-22T11:44:38.674] [INFO] default - Data Source has been initialized!
+[2023-04-22T11:47:38.441] [INFO] default - Estado userEngine:{}
+[2023-04-22T11:47:38.948] [INFO] default - Data Source has been initialized!
+[2023-04-22T11:57:44.137] [INFO] default - Estado userEngine:{}
+[2023-04-22T11:57:44.715] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:09:40.367] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:09:40.972] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:11:06.832] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:11:07.374] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:11:21.915] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:11:22.500] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:17:15.950] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:17:16.478] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:20:22.476] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:20:23.015] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:20:55.929] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:20:56.435] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:34:39.067] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:34:39.618] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:46:46.155] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:46:46.662] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:54:16.972] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:54:17.540] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:54:56.371] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:54:56.886] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:55:34.104] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:55:34.643] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:56:01.830] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:56:02.370] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:56:46.733] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:56:47.280] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:56:58.675] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:56:59.191] [INFO] default - Data Source has been initialized!
+[2023-04-22T12:58:31.357] [INFO] default - Estado userEngine:{}
+[2023-04-22T12:58:31.919] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:06:37.983] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:06:38.551] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:06:39.794] [INFO] default - Begin Operation
+[2023-04-22T17:06:39.794] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:06:39.794] [INFO] default - End Operation
+[2023-04-22T17:07:54.601] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:07:55.253] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:07:55.890] [INFO] default - Begin Operation
+[2023-04-22T17:07:55.890] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:07:55.890] [INFO] default - End Operation
+[2023-04-22T17:17:45.328] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:17:45.842] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:17:48.767] [INFO] default - Begin Operation
+[2023-04-22T17:17:48.767] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:17:48.767] [INFO] default - End Operation
+[2023-04-22T17:17:48.768] [ERROR] default - Error
+[2023-04-22T17:18:01.037] [INFO] default - Begin Operation
+[2023-04-22T17:18:01.037] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:18:01.037] [INFO] default - End Operation
+[2023-04-22T17:18:01.038] [ERROR] default - Error
+[2023-04-22T17:21:01.971] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:21:02.553] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:21:04.779] [INFO] default - Begin Operation
+[2023-04-22T17:21:04.779] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:21:04.779] [INFO] default - End Operation
+[2023-04-22T17:21:10.363] [INFO] default - Begin Operation
+[2023-04-22T17:21:10.363] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:21:10.363] [INFO] default - End Operation
+[2023-04-22T17:23:22.880] [INFO] default - Begin Operation
+[2023-04-22T17:23:22.881] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:23:22.881] [INFO] default - End Operation
+[2023-04-22T17:24:16.762] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:24:17.391] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:24:19.328] [INFO] default - Begin Operation
+[2023-04-22T17:24:19.328] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:24:19.328] [INFO] default - End Operation
+[2023-04-22T17:24:26.525] [INFO] default - Begin Operation
+[2023-04-22T17:24:26.525] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:24:26.525] [INFO] default - End Operation
+[2023-04-22T17:32:47.248] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:32:48.091] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:32:51.225] [INFO] default - Begin Operation
+[2023-04-22T17:32:51.225] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:32:51.225] [INFO] default - End Operation
+[2023-04-22T17:32:54.543] [INFO] default - Begin Operation
+[2023-04-22T17:32:54.543] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:32:54.543] [INFO] default - End Operation
+[2023-04-22T17:33:41.375] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:33:41.913] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:33:43.568] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:33:44.115] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:33:44.277] [INFO] default - Begin Operation
+[2023-04-22T17:33:44.277] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:33:44.277] [INFO] default - End Operation
+[2023-04-22T17:35:55.023] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:35:55.524] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:36:05.580] [INFO] default - Begin Operation
+[2023-04-22T17:36:05.580] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:36:05.581] [INFO] default - End Operation
+[2023-04-22T17:36:41.588] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:36:42.155] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:36:44.583] [INFO] default - Begin Operation
+[2023-04-22T17:36:44.583] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:36:44.583] [INFO] default - End Operation
+[2023-04-22T17:37:33.338] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:37:33.861] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:37:34.403] [INFO] default - Begin Operation
+[2023-04-22T17:37:34.403] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T17:37:34.404] [INFO] default - End Operation
+[2023-04-22T17:45:38.878] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:45:39.394] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:45:54.814] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:45:55.429] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:52:29.172] [INFO] default - Estado userEngine:{}
+[2023-04-22T17:52:29.679] [INFO] default - Data Source has been initialized!
+[2023-04-22T17:52:32.756] [ERROR] default - BATEU AQUI NO CATCH ERROR
+[2023-04-22T18:07:37.397] [INFO] default - Estado userEngine:{}
+[2023-04-22T18:07:37.977] [INFO] default - Data Source has been initialized!
+[2023-04-22T18:07:38.603] [ERROR] default - BATEU AQUI NO CATCH ERROR
+[2023-04-22T18:07:56.735] [INFO] default - Estado userEngine:{}
+[2023-04-22T18:07:57.276] [INFO] default - Data Source has been initialized!
+[2023-04-22T18:07:58.568] [INFO] default - Begin Operation
+[2023-04-22T18:07:58.568] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T18:07:58.568] [INFO] default - End Operation
+[2023-04-22T18:08:14.889] [INFO] default - Estado userEngine:{}
+[2023-04-22T18:08:15.501] [INFO] default - Data Source has been initialized!
+[2023-04-22T18:14:02.972] [INFO] default - Estado userEngine:{}
+[2023-04-22T18:14:03.505] [INFO] default - Data Source has been initialized!
+[2023-04-22T18:14:06.871] [INFO] default - Begin Operation
+[2023-04-22T18:14:06.871] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T18:14:06.872] [INFO] default - End Operation
+[2023-04-22T18:14:06.872] [ERROR] default - BATEU AQUI NO CATCH ERROR
+[2023-04-22T18:14:59.315] [INFO] default - Estado userEngine:{}
+[2023-04-22T18:14:59.867] [INFO] default - Data Source has been initialized!
+[2023-04-22T18:15:00.269] [INFO] default - Begin Operation
+[2023-04-22T18:15:00.269] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T18:15:00.269] [INFO] default - End Operation
+[2023-04-22T18:15:02.221] [INFO] default - Begin Operation
+[2023-04-22T18:15:02.221] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T18:15:02.221] [INFO] default - End Operation
+[2023-04-22T19:01:29.954] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:01:30.484] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:01:30.908] [INFO] default - Begin Operation
+[2023-04-22T19:01:30.908] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:01:30.908] [INFO] default - End Operation
+[2023-04-22T19:02:18.380] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:02:18.952] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:03:13.292] [INFO] default - Begin Operation
+[2023-04-22T19:03:13.293] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:03:13.293] [INFO] default - End Operation
+[2023-04-22T19:03:50.373] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:03:50.921] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:03:53.820] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:03:54.421] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:04:11.006] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:04:11.586] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:04:17.200] [INFO] default - Begin Operation
+[2023-04-22T19:04:17.200] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:04:17.200] [INFO] default - End Operation
+[2023-04-22T19:04:37.663] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:04:38.157] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:04:40.962] [INFO] default - Begin Operation
+[2023-04-22T19:04:40.963] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:04:40.963] [INFO] default - End Operation
+[2023-04-22T19:05:54.188] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:05:54.693] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:06:49.801] [INFO] default - Begin Operation
+[2023-04-22T19:06:49.801] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:06:49.801] [INFO] default - End Operation
+[2023-04-22T19:07:12.345] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:07:12.865] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:07:13.119] [INFO] default - Begin Operation
+[2023-04-22T19:07:13.119] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:07:13.119] [INFO] default - End Operation
+[2023-04-22T19:11:47.504] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:11:48.110] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:11:48.908] [INFO] default - Begin Operation
+[2023-04-22T19:11:48.908] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:11:48.909] [INFO] default - End Operation
+[2023-04-22T19:12:19.865] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:12:20.381] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:12:20.658] [INFO] default - Begin Operation
+[2023-04-22T19:12:20.658] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:12:20.658] [INFO] default - End Operation
+[2023-04-22T19:12:27.216] [INFO] default - Begin Operation
+[2023-04-22T19:12:27.216] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:12:27.217] [INFO] default - End Operation
+[2023-04-22T19:12:48.199] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:12:48.796] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:15:57.947] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:15:58.470] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:17:10.834] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:17:11.339] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:17:16.774] [INFO] default - Begin Operation
+[2023-04-22T19:17:16.774] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:17:16.774] [INFO] default - End Operation
+[2023-04-22T19:17:33.342] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:17:33.925] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:18:43.261] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:18:43.862] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:18:58.012] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:18:58.541] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:19:00.752] [INFO] default - Begin Operation
+[2023-04-22T19:19:00.752] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:19:00.752] [INFO] default - End Operation
+[2023-04-22T19:26:34.245] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:26:34.838] [INFO] default - Data Source has been initialized!
+[2023-04-22T19:26:35.884] [INFO] default - Begin Operation
+[2023-04-22T19:26:35.884] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T19:26:35.884] [INFO] default - End Operation
+[2023-04-22T19:52:53.468] [INFO] default - Estado userEngine:{}
+[2023-04-22T19:52:54.006] [INFO] default - Data Source has been initialized!
+[2023-04-22T20:16:18.804] [INFO] default - Data Source has been initialized!
+[2023-04-22T20:19:04.506] [INFO] default - Data Source has been initialized!
+[2023-04-22T20:21:25.081] [INFO] default - Data Source has been initialized!
+[2023-04-22T20:21:33.765] [INFO] default - Data Source has been initialized!
+[2023-04-22T20:27:43.272] [INFO] default - Data Source has been initialized!
+[2023-04-22T20:30:49.501] [INFO] default - Data Source has been initialized!
+[2023-04-22T20:31:36.355] [INFO] default - Data Source has been initialized!
+[2023-04-22T20:40:15.303] [INFO] default - Data Source has been initialized!
+[2023-04-22T20:44:40.164] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:02:29.099] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:02:42.656] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:03:35.364] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:06:31.316] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:07:47.798] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:07:47.799] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T21:07:47.799] [INFO] default - End Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:12:13.969] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:17:07.664] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:17:18.902] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:17:18.902] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T21:17:18.902] [INFO] default - End Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:20:55.205] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:21:36.039] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:21:36.039] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T21:21:36.040] [INFO] default - End Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:21:38.128] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:21:38.128] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T21:21:38.128] [INFO] default - End Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:22:11.899] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:22:13.047] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:22:13.047] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T21:22:13.047] [INFO] default - End Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:22:48.769] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:24:35.177] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:25:20.199] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:25:25.926] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:25:25.926] [ERROR] default - Error while executin operation{"operationName":"CreateUserOperation"}:Error: Method not implemented.
+[2023-04-22T21:25:25.926] [INFO] default - End Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:26:50.270] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:26:53.586] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:26:53.586] [ERROR] default - CAIU AQUI NA CLASSE GENERICOPERATION: Error: Method not implemented.
+[2023-04-22T21:27:06.725] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:28:17.379] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:28:21.766] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:28:21.766] [ERROR] default - CAIU AQUI NA CLASSE GenericOperationTemplate: Error: Method not implemented.
+[2023-04-22T21:28:45.179] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:43:38.537] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:49:08.819] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:49:13.757] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:49:13.757] [ERROR] default - CAIU AQUI NA CLASSE GenericOperationTemplate: Error: Method not implemented.
+[2023-04-22T21:59:27.473] [INFO] default - Data Source has been initialized!
+[2023-04-22T21:59:38.396] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T21:59:38.396] [ERROR] default - CAIU AQUI NA CLASSE GenericOperationTemplate: Error: Method not implemented.
+[2023-04-22T22:04:36.497] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:04:47.505] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:04:47.505] [ERROR] default - CAIU AQUI NA CLASSE GenericOperationTemplate: Error: Method not implemented.
+[2023-04-22T22:06:18.628] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:06:20.322] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:06:20.322] [ERROR] default - CAIU AQUI NA CLASSE GenericOperationTemplate: Error: Method not implemented.
+[2023-04-22T22:07:02.044] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:07:03.929] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:07:03.929] [ERROR] default - CAIU AQUI NA CLASSE GenericOperationTemplate: Error: Method not implemented.
+[2023-04-22T22:09:02.804] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:12:20.413] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:13:02.611] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:13:04.159] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:14:33.858] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:16:08.815] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:16:15.203] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:18:47.397] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:18:49.434] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:23:24.788] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:23:25.623] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:24:05.917] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:24:08.076] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:24:08.077] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:24:35.802] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:24:36.901] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:24:36.902] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:25:08.571] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:25:10.617] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:25:10.618] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:27:54.008] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:28:25.036] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:28:28.416] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:32:17.670] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:32:18.757] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:32:18.758] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:32:39.857] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:32:42.157] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:32:42.157] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:32:43.670] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:32:43.671] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:32:53.857] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:33:07.638] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:33:09.439] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:33:09.440] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:34:07.496] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:34:07.496] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:34:18.593] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:37:24.397] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:38:01.985] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:38:02.986] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:38:02.986] [INFO] default - Error: Não está implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\common\exceptions\OperatonException.ts:7:9)
+    at new NotImplementedException (C:\Git\cgrgba-api\src\common\exceptions\NotImplementedException.ts:6:9)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\engine-interface-impl\operation\GenericOperationTemplate.ts:22:19)
+    at UserEngineImpl.register_user (C:\Git\cgrgba-api\src\engine-interface-impl\impl\UserEngineImpl.ts:13:26)
+    at UserController.registerUser (C:\Git\cgrgba-api\src\web-api\controller\user-manager\UserController.ts:26:30)
+    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
+    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
+  statusCode: 501
+}
+[2023-04-22T22:38:15.360] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:38:15.906] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:38:15.906] [INFO] default - Error: Não está implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\common\exceptions\OperatonException.ts:7:9)
+    at new NotImplementedException (C:\Git\cgrgba-api\src\common\exceptions\NotImplementedException.ts:6:9)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\engine-interface-impl\operation\GenericOperationTemplate.ts:22:19)
+    at UserEngineImpl.register_user (C:\Git\cgrgba-api\src\engine-interface-impl\impl\UserEngineImpl.ts:13:26)
+    at UserController.registerUser (C:\Git\cgrgba-api\src\web-api\controller\user-manager\UserController.ts:26:30)
+    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
+    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
+  statusCode: 501
+}
+[2023-04-22T22:38:15.912] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:45:44.314] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:46:38.415] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:47:14.680] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:47:16.899] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:47:18.827] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:48:06.144] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:48:07.588] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:48:47.723] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:49:33.880] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:49:34.852] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:49:36.058] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:49:58.882] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:50:05.227] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:50:05.228] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:50:28.050] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:50:30.249] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:50:30.250] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T22:50:53.926] [INFO] default - Data Source has been initialized!
+[2023-04-22T22:50:55.011] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T22:50:55.012] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T23:27:31.061] [INFO] default - Data Source has been initialized!
+[2023-04-22T23:27:33.536] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-22T23:27:33.537] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-22T23:29:30.766] [INFO] default - Data Source has been initialized!
+[2023-04-22T23:35:06.077] [INFO] default - Data Source has been initialized!
+[2023-04-22T23:48:08.508] [INFO] default - Data Source has been initialized!
+[2023-04-22T23:50:55.403] [INFO] default - Data Source has been initialized!
+[2023-04-22T23:54:48.338] [INFO] default - Data Source has been initialized!
+[2023-04-23T00:02:22.719] [INFO] default - Data Source has been initialized!
+[2023-04-23T00:16:28.044] [INFO] default - Data Source has been initialized!
+[2023-04-23T00:16:35.626] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-23T00:16:35.627] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-23T00:16:38.772] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-23T00:16:38.774] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-23T00:18:58.627] [INFO] default - Data Source has been initialized!
+[2023-04-23T00:21:02.335] [INFO] default - Data Source has been initialized!

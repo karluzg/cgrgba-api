@@ -11,9 +11,9 @@ import { DataSource } from "typeorm"
     database: "PORTAL_CONSULAR_DEV",
     synchronize: true,
     logging: false,
-    entities: ["src/domain-model/*.{ts,js}"],
+    entities: ["src/domain-model/**/*.{ts,js}"],
     migrationsTableName: "migrations",
-    migrations: ["src/migration/*.{ts,js}"],
+    migrations: ["src/migration/**/*.{ts,js}"],
     subscribers: [],
 })
 

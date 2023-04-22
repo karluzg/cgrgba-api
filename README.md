@@ -17,10 +17,10 @@ npm install ts-node --save-dev
 
 typeorm init
 
-#Especificar Base de dados pg - Postgres
+# Especificar Base de dados pg - Postgres
 typeorm init --database pg
 
-#Mapa lista, ect
+# Mapa lista, ect
 npm install lodash @types/lodash --save-dev
 
 # Adicionar refelct metadata pg - postgres
@@ -38,13 +38,16 @@ yarn add typeorm reflect-metadata pg
   }
 
 # Create Migration
-typeorm migration:create .src/migration/default
+typeorm migration:create .src/migration/table-updated
 
 # Generate Migration - Só funciona quando há alterações nas colunas existentes. Para novas colunas, não há generate
-typeorm migration:generate -d ./src/data-source.ts  ./src/migration/default 
+typeorm migration:generate -d ./src/data-source.ts  ./src/migration/table_updated 
 
 # Add inversify for DI - Dependene injection
 yarn add inversify
 
 # Add cors
 yarn add cors
+
+# add async error
+yarn add  express-async-errors

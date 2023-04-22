@@ -1,5 +1,5 @@
-import { User } from "../../domain-model/User";
-import { Result } from "../../common/response/Result";
+import { User } from "../../../domain-model/user-manager/User";
+import { Result } from "../../../common/response/Result";
 
 export class RegisterUserResult extends Result{
 
