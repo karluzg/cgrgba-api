@@ -45,3 +45,6 @@ typeorm migration:generate -d ./src/data-source.ts  ./src/migration/default
 
 # Add inversify for DI - Dependene injection
 yarn add inversify
+
+# Add cors
+yarn add cors

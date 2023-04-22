@@ -3,9 +3,9 @@ import { RegisterUserParams } from "../../engine-interface/params/user/RegisterU
 import { RegisterUserResult } from "../../engine-interface/result/RegisterUserResult";
 import { GenericOperationTemplate } from "../operation/GenericOperationTemplate";
 import { RegisterUserOperation } from "../operation/backoffice/post/user/RegisterUserOperation";
-import { injectable, inject } from 'inversify';
+import { injectable } from "tsyringe";
 
-
+@injectable()
 export class UserEngineImpl extends GenericOperationTemplate implements IUserEngine{
 
     create_user(params: RegisterUserParams): RegisterUserResult {

@@ -1,8 +1,8 @@
-import { Container } from 'inversify';
+import { container } from 'tsyringe';
 import { IUserEngine } from '../engine-interface/IUserEngine';
 import { UserEngineImpl } from '../engine-interface-impl/impl/UserEngineImpl';
 
-const container = new Container();
-container.bind<IUserEngine>('IUserEngine').to(UserEngineImpl);
+
+container.register<IUserEngine>('IUserEngine', { useClass: UserEngineImpl });
 
 export default container;

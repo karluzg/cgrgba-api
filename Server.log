@@ -1,22 +1,7 @@
-[2023-04-20T23:56:40.713] [INFO] default - listening on port 3000
-[2023-04-20T23:57:03.578] [INFO] default - listening on port 3000
-[2023-04-20T23:57:13.501] [INFO] default - Bateu na API
-[2023-04-20T23:59:26.388] [INFO] default - listening on port 3000
-[2023-04-20T23:59:37.486] [INFO] default - Bateu na API
-[2023-04-20T23:59:37.487] [ERROR] default - Error while executin operationError: Method not implemented.
-[2023-04-21T00:03:48.757] [INFO] default - listening on port 3000
-[2023-04-21T00:03:58.573] [INFO] default - Bateu na API
-[2023-04-21T00:05:31.830] [INFO] default - listening on port 3000
-[2023-04-21T00:05:51.173] [INFO] default - listening on port 3000
-[2023-04-21T00:05:59.495] [INFO] default - listening on port 3000
-[2023-04-21T00:06:50.853] [INFO] default - Bateu na API
-[2023-04-21T00:15:34.667] [INFO] default - listening on port 3000
-[2023-04-21T00:15:41.874] [INFO] default - listening on port 3000
-[2023-04-21T00:15:56.501] [INFO] default - Bateu na API
-[2023-04-21T00:28:31.479] [INFO] default - listening on port 3000
-[2023-04-21T00:28:36.632] [INFO] default - Bateu na API
-[2023-04-21T00:29:01.348] [INFO] default - listening on port 3000
-[2023-04-21T00:29:03.413] [INFO] default - Bateu na API
-[2023-04-21T00:34:44.108] [ERROR] default - Error while executin operationError: Method not implemented.
-[2023-04-21T00:35:25.072] [ERROR] default - Error while executin operationError: Method not implemented.
-[2023-04-21T00:37:30.249] [ERROR] default - Error while executin operationError: Method not implemented.
+[2023-04-22T01:02:18.472] [INFO] default - CHEGOU NA API
+[2023-04-22T01:02:18.473] [INFO] default - {}
+[2023-04-22T01:02:18.473] [ERROR] default - Error while executin operationError: Method not implemented.
+[2023-04-22T01:02:34.286] [INFO] default - Estado userEngine:{}
+[2023-04-22T01:02:34.750] [INFO] default - CHEGOU NA API
+[2023-04-22T01:02:34.750] [INFO] default - {}
+[2023-04-22T01:02:34.750] [ERROR] default - Error while executin operationError: Method not implemented.

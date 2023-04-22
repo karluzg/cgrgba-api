@@ -1,24 +1,30 @@
-import * as express from "express";
 
-import { UserEngineImpl } from "../../engine-interface-impl/impl/UserEngineImpl";
+import {IUserEngine} from "../../engine-interface/IUserEngine";
 import { RegisterUserParams } from "../../engine-interface/params/user/RegisterUserParams";
+import { Request, Response } from "express";
+import { injectable } from "tsyringe";
+import logger from "../../common/config/logger";
+import { container } from "tsyringe";
 
-
-const userserviceimpl = new UserEngineImpl()
-
-const router=express.Router()
-
-router.post("",async function (req, res) {
+ export  class UserController {
+     
+  public async registerUser(request: Request, response: Response): Promise<Response> {
     
-    const params=new RegisterUserParams(req.body.userFullName, req.body.userMobileNumber,
-      req.body.userEmail)
-    const  result=  userserviceimpl.create_user(params)
+    const { userFullName, userMobileNumber, userEmail} = request.body;
+
+    const params=new RegisterUserParams(userFullName,userMobileNumber,userEmail)
+   
+   const engine =container.resolve<IUserEngine>("IUserEngine")
+   logger.info("CHEGOU NA API")
       
+   logger.info(JSON.stringify(engine))
+    
+    const  result= await engine.create_user(params)
 
-    return res.json(result);
+    return response.json(result);
+  }
+}
 
-})
-
-module.exports=router;
+export default {UserController}
 
     
