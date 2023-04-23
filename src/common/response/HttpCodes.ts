@@ -1,4 +1,4 @@
-export enum HttpCodes{
+export enum HttpCode{
     OK=200,
     BAD_REQUEST=400,
     UNAUTHORIZED=401,

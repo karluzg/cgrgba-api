@@ -51,3 +51,6 @@ yarn add cors
 
 # add async error
 yarn add  express-async-errors
+
+# Ferramenta de teste TDD
+yarn add --dev jest @types/jest

@@ -4,7 +4,7 @@ import { NotImplementedException } from "../../../common/exceptions/NotImplement
 import { InvalidParametersException } from "../../../common/exceptions/InvalidParametersException";
 import { UnauthorizedOperationException } from "../../../common/exceptions/UnauthorizedOperationException";
 
-import { HttpCodes } from "../../../common/response/HttpCodes";
+import { HttpCode } from "../../../common/response/HttpCodes";
 import {IUserEngine} from "../../../engine-interface/IUserEngine";
 import { RegisterUserParams } from "../../../engine-interface/params/user/RegisterUserParams";
 import { Request, Response } from "express";
@@ -25,7 +25,7 @@ import { ErrorExceptionClass } from "../../../common/exceptions/ErrorExceptionCl
    const userEngine =container.resolve<IUserEngine>("IUserEngine")
   try {
     const result= userEngine.register_user(params)
-    return response.status(HttpCodes.OK).json(result)
+    return response.status(HttpCode.OK).json(result)
   } catch (error) {
    
       if(error.errorClasse===ErrorExceptionClass.NOT_IMPLEMENTED){

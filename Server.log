@@ -392,3 +392,13 @@
 [2023-04-23T00:16:38.774] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
 [2023-04-23T00:18:58.627] [INFO] default - Data Source has been initialized!
 [2023-04-23T00:21:02.335] [INFO] default - Data Source has been initialized!
+[2023-04-23T16:35:56.920] [INFO] default - Data Source has been initialized!
+[2023-04-23T16:37:24.284] [INFO] default - Data Source has been initialized!
+[2023-04-23T16:37:32.170] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-23T16:37:32.171] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-23T16:37:36.521] [INFO] default - Begin Operation {"operationName":"CreateUserOperation"}
+[2023-04-23T16:37:36.522] [INFO] default - CARAMBA, O ERRO CHEGOU NO MIDDLEWARE ERROR
+[2023-04-23T17:05:40.925] [INFO] default - Data Source has been initialized!
+[2023-04-23T23:51:10.690] [INFO] default - Data Source has been initialized!
+[2023-04-23T23:56:52.441] [INFO] default - Data Source has been initialized!
+[2023-04-23T23:57:21.307] [INFO] default - Data Source has been initialized!

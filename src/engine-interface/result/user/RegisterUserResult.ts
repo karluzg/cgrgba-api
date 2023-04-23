@@ -1,4 +1,4 @@
-import { User } from "../../../domain-model/user-manager/User";
+import { User } from "../../../domain-model/user-manager/user/User";
 import { Result } from "../../../common/response/Result";
 
 export class RegisterUserResult extends Result{
