@@ -4,7 +4,8 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 @Entity()
 export class Citizen {
 
-    @PrimaryGeneratedColumn()
+
+    @PrimaryGeneratedColumn({type:"bigint"})
     id: number
 
     @Column({unique: true,

@@ -402,3 +402,13 @@
 [2023-04-23T23:51:10.690] [INFO] default - Data Source has been initialized!
 [2023-04-23T23:56:52.441] [INFO] default - Data Source has been initialized!
 [2023-04-23T23:57:21.307] [INFO] default - Data Source has been initialized!
+[2023-04-27T01:37:26.543] [ERROR] default - Error during Data Source initialization: [96msrc/domain-model/scheduling/Scheduling.ts[0m:[93m20[0m:[93m83[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'SchedulingTimeHour'.
+
+[7m20[0m     @ManyToOne(()=> SchedulingTimeHour,(schedulingTimeHour) => schedulingTimeHour.id)
+[7m  [0m [91m                                                                                  ~~[0m
+
+[2023-04-27T01:37:29.974] [ERROR] default - Error during Data Source initialization: [96msrc/domain-model/scheduling/Scheduling.ts[0m:[93m20[0m:[93m83[0m - [91merror[0m[90m TS2339: [0mProperty 'id' does not exist on type 'SchedulingTimeHour'.
+
+[7m20[0m     @ManyToOne(()=> SchedulingTimeHour,(schedulingTimeHour) => schedulingTimeHour.id)
+[7m  [0m [91m                                                                                  ~~[0m
+

@@ -54,3 +54,9 @@ yarn add  express-async-errors
 
 # Ferramenta de teste TDD
 yarn add --dev jest @types/jest
+
+# Install stream
+npm install stream --save 
+
+# Install stream array
+npm install stream-array --save

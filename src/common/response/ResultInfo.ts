@@ -2,18 +2,19 @@
 import { ResponseCode } from "./ResponseCode";
 
 export class ResultInfo {
-    private  type:ResponseCode /*  ERROR | INFO */
-    private userMessage:string;
 
-    constructor(type:ResponseCode, userMessage:string){
-        this.type=type;
-        this.userMessage=userMessage;
+    private userErrorMessage: Map<string, ResultInfo> 
+    constructor(){
+     this.userErrorMessage== new Map();
     }
 
-    get getType():ResponseCode{
-        return this.type;
+    
+    get getErrorMessages(): Map<string, ResultInfo> {
+        return this.userErrorMessage;
     }
-    set setType(type:ResponseCode){
-        this.type=type;
+    set setuserErrorMessage(userErrorMessage:Map<string, ResultInfo>){
+
+    this.userErrorMessage=userErrorMessage;
+
     }
 }

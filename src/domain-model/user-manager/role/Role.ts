@@ -5,7 +5,7 @@ import { Permission } from "../permission/Persmission"
 @Entity()
 export class Role {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({type:"bigint"})
     id: number
 
     @Column()

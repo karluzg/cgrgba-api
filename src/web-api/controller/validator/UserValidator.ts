@@ -1,6 +1,6 @@
 import { ResponseCode } from "../../../common/response/ResponseCode";
 import { ResultInfo } from "../../../common/response/ResultInfo";
-import { AuthParams } from "../../../engine-interface/params/auth/AuthParams";
+import { AuthParams } from "../../../engine-interface/AuthParams";
 
 export  class UserValidator{
 

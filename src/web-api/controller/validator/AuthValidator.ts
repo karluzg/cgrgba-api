@@ -1,4 +1,4 @@
-import { AuthParams } from "../../../engine-interface/params/auth/AuthParams";
+import { AuthParams } from "../../../engine-interface/AuthParams";
 
 export class AuthValidator{
 

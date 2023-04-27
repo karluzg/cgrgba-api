@@ -1,25 +1,35 @@
-import { GenericOperation } from "../../GenericOperation";
+import { OperationTemplate } from "../../OperationTemplate";
 import { RegisterUserParams } from "../../../../engine-interface/params/user/RegisterUserParams";
 import { RegisterUserResult } from "../../../../engine-interface/result/user/RegisterUserResult";
 import { OperationNames } from "../../OperationNames";
 import logger from "../../../../common/config/logger";
-import { NotImplementedException } from "../../../../common/exceptions/NotImplementedException";
+import { UserAuthOperationTemplate } from "../../UserAuthOperationTemplate";
+import { TokenSession } from "../../../../domain-model/session/TokenSession";
+import { OperationValidatorManager } from "../../../managers/OperationValidatorManager";
 
 
-export class RegisterUserOperation extends GenericOperation<RegisterUserParams, RegisterUserResult>{
-   
+export class RegisterUserOperation extends UserAuthOperationTemplate<RegisterUserResult, RegisterUserParams>{
+  
+      
     constructor(){
-        super(new OperationNames().create_user)
-
+        super(OperationNames.CREATE_USER, new OperationValidatorManager())
     }
-   
-    protected doExecute(params: RegisterUserParams, result: RegisterUserResult) {
-        logger.info("WAIT FORR THE IMPLEMENTATION")
-        throw new NotImplementedException("Method not implemented.");
+  
+
+    protected doUserAuthExecuted(tokenSession: TokenSession, params: RegisterUserParams, result: RegisterUserResult): void {
+        throw new Error("Method not implemented.");
     }
     protected newResult(): RegisterUserResult {
-        throw new NotImplementedException("Method not implemented.");
+        throw new Error("Method not implemented.");
     }
+  
+  
+  
+  
+
+  
+  
+
 
 }
    

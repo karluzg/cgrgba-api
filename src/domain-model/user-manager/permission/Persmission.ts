@@ -4,19 +4,17 @@ import { PermissionGroup } from "./PermissionGroup"
 @Entity()
 export class Permission {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({type:"bigint"})
     id: number
 
-   @Column({unique:true})
+   @Column({unique:true, nullable:false})
     permissionCode: string
 
     @Column({nullable:false})
     permissionDescription: string
 
-    @Column({nullable:true})
-    roleDescription: string
 
-    @ManyToOne(()=> PermissionGroup,(permissionGroup)=> permissionGroup.permissionGroupCode,{eager:true})
+    @ManyToOne(()=> PermissionGroup,(permissionGroup)=> permissionGroup.permissionGroupCode,{eager:true,nullable:false})
     permissionGroup:PermissionGroup
 
 

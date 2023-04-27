@@ -8,7 +8,7 @@ import { SchedulingStatus } from "./SchedulingStatus"
 @Entity()
 export class Scheduling {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({ type:"bigint"})
     id: number
 
     @ManyToOne(()=> User,(user)=> user.userRoles)

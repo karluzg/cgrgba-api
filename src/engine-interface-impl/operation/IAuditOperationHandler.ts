@@ -1,4 +1,4 @@
-import { Result } from "../../common/response/Result";
+import { Result } from "../../engine-interface/Result";
 import { IOperation } from "./IOperation";
 import { Params } from "./Params";
 

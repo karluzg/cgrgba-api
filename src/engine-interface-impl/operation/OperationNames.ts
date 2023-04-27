@@ -1,3 +1,3 @@
-export class OperationNames{
-    public create_user:string="CreateUserOperation";
+export enum OperationNames{
+    CREATE_USER=1
     }

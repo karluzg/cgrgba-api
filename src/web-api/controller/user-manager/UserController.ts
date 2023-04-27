@@ -4,12 +4,11 @@ import { NotImplementedException } from "../../../common/exceptions/NotImplement
 import { InvalidParametersException } from "../../../common/exceptions/InvalidParametersException";
 import { UnauthorizedOperationException } from "../../../common/exceptions/UnauthorizedOperationException";
 
-import { HttpCode } from "../../../common/response/HttpCodes";
+import { HttpCode } from "../../../common/response/HttpCode";
 import {IUserEngine} from "../../../engine-interface/IUserEngine";
 import { RegisterUserParams } from "../../../engine-interface/params/user/RegisterUserParams";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { log } from "console";
 import { ErrorExceptionClass } from "../../../common/exceptions/ErrorExceptionClass";
 
 
@@ -18,9 +17,9 @@ import { ErrorExceptionClass } from "../../../common/exceptions/ErrorExceptionCl
   public registerUser(request: Request, response: Response): Response {
    
 
-    const { userFullName, userMobileNumber, userEmail} = request.body;
+    const { authenticationToken, userFullName, userMobileNumber, userEmail} = request.body;
 
-    const params=new RegisterUserParams(userFullName,userMobileNumber,userEmail)
+    const params=new RegisterUserParams(authenticationToken,userFullName,userMobileNumber,userEmail)
    
    const userEngine =container.resolve<IUserEngine>("IUserEngine")
   try {

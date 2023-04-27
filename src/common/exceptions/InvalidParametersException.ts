@@ -1,4 +1,4 @@
-import { HttpCode } from "../response/HttpCodes";
+import { HttpCode } from "../response/HttpCode";
 import { ErrorExceptionClass } from "./ErrorExceptionClass";
 import { OperationExecption } from "./OperatonException";
 

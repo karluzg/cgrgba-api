@@ -5,6 +5,8 @@ import { Entity, PrimaryColumn } from "typeorm"
 export class SchedulingTime {
 
     @PrimaryColumn()
-    date: Date
+    schedulingDate: Date
+
+    
 
 }

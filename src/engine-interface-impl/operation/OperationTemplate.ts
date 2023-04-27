@@ -1,24 +1,25 @@
 import logger from "../../common/config/logger";
 import { IOperation } from "./IOperation";
 import { Params } from "./Params";
-import { Result } from "../../common/response/Result";
+import { Result } from "../../engine-interface/Result";
 import { InvalidParametersException } from "../../common/exceptions/InvalidParametersException";
 import { UnauthorizedOperationException } from "../../common/exceptions/UnauthorizedOperationException";
 import { NotImplementedException } from "../../common/exceptions/NotImplementedException";
 
 
 
-export abstract class GenericOperation <P extends Params,R extends Result> implements IOperation<R,P>{
-   
+export abstract class OperationTemplate <R extends Result, P extends Params> implements IOperation<R,P>{
+ 
   
-    private operationName:string
     protected abstract doExecute(params:P, result:R );
     protected abstract newResult(): R;
-    protected  doValidateParameters(params:P ):void { }
+    protected doValidateParameters(params:P ):void { }
 
-    constructor(operationName:string ){
-        this.operationName=operationName;
-    }
+    protected operationId:number
+
+  constructor(operationId:number){
+    this.operationId=operationId
+  }
 
     validateParams(params: P): void {
         this.doValidateParameters(params)
@@ -30,13 +31,12 @@ export abstract class GenericOperation <P extends Params,R extends Result> imple
        try {
         this.validateParams(params);
 
-            logger.info("[OPERATION] begin executing operation:" + this.operationName);
+           
            this.doExecute(params, result);
 
            return result;
             
         } catch (error) {
-            logger.error("CAIU AQUI NA CLASSE GENERICOPERATION:" + " " +  error);
 
         if(error instanceof NotImplementedException){
             throw new NotImplementedException(error.message);
@@ -50,6 +50,11 @@ export abstract class GenericOperation <P extends Params,R extends Result> imple
         }
     }
 }
+
+getOperationId(): number {
+  return this.operationId
+}
+
 }
 
 

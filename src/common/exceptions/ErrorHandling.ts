@@ -1,6 +1,6 @@
 import {ErrorRequestHandler, NextFunction,Request,Response} from 'express'
 import { OperationExecption } from './OperatonException'
-import { HttpCode } from '../response/HttpCodes'
+import { HttpCode } from '../response/HttpCode'
 import logger from '../config/logger'
 
 

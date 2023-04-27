@@ -1,7 +1,7 @@
 import { IOperation } from "../operation/IOperation";
 import { IAuditOperationHandler } from "../operation/IAuditOperationHandler";
 import { Params } from "../operation/Params";
-import { Result } from "../../common/response/Result";
+import { Result } from "../../engine-interface/Result";
 
 
 export class AuditOperationDecorator implements IAuditOperationHandler{

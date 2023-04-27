@@ -3,7 +3,7 @@ import { User } from "../user-manager/user/User"
 
 
 @Entity()
-export class Token {
+export class TokenSession {
 
     @PrimaryGeneratedColumn("uuid")
     token: string
@@ -12,9 +12,11 @@ export class Token {
     sessionCreationDate: Date
 
     @Column()
-    sessionExpireDate: string
+    sessionExpireDate: Date
 
    
     @ManyToOne(()=> User,(user)=> user.id,{eager:true, nullable:false})
     user:User
+
+
 }

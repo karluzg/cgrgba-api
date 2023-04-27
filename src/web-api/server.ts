@@ -4,12 +4,12 @@ import * as cors from 'cors'
 import 'reflect-metadata'
 import '../engine-container'
 import sharedRoutes from "./routes-management/shared-routes";
-import { AppDataSource } from "./meta-inf/data-source";
+import { myDataSource } from "./meta-inf/data-source";
 import logger from "../common/config/logger";
 import { MiddllewareError } from '../common/exceptions/ErrorHandling';
 
 
-AppDataSource.initialize().then(() =>{
+myDataSource.initialize().then(() =>{
 
 // create and setup express app
 const app = express()

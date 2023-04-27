@@ -1,16 +1,17 @@
-import { Params } from "../../../engine-interface-impl/operation/Params"
+
+import { AuthParamsTemplate } from "../../AuthParamsTemplate"
 
 
 
-export class RegisterUserParams extends Params{
+export class RegisterUserParams extends AuthParamsTemplate{
    
     private userFullName:string
     private userMobileNumber: string
     private userEmail:string
  
   
-    constructor(userFullName:string, userMobileNumber: string, userEmail:string){
-      super()
+    constructor(authenticationToken:string, userFullName:string, userMobileNumber: string, userEmail:string){
+      super(authenticationToken)
       this.userFullName=userFullName
       this.userMobileNumber=userMobileNumber
       this.userEmail=userEmail

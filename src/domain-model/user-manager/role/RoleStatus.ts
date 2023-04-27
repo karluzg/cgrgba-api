@@ -8,7 +8,4 @@ export class RoleStatus {
 
     @Column()
     roleStatusDescription: string
-
-
-
 }
