@@ -1,5 +1,5 @@
 import { Permission } from "../../domain-model/user-manager/permission/Persmission";
-import { User } from "../../domain-model/user-manager/user/User";
+import { User } from "../../domain-model/user/User";
 
 
 export interface IPermissionEngineRepository{

@@ -5,7 +5,7 @@ import { InvalidParametersException } from "../../../common/exceptions/InvalidPa
 import { UnauthorizedOperationException } from "../../../common/exceptions/UnauthorizedOperationException";
 
 import { HttpCode } from "../../../common/response/HttpCode";
-import {IUserEngine} from "../../../engine-interface/IUserEngine";
+import {IUserEngine} from "../../../engine-interface/services/IUserEngine";
 import { RegisterUserParams } from "../../../engine-interface/params/user/RegisterUserParams";
 import { Request, Response } from "express";
 import { container } from "tsyringe";

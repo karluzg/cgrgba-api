@@ -2,7 +2,7 @@ import { Result } from "../../engine-interface/Result";
 import { AuthParams } from "../../engine-interface/AuthParams";
 import { UnauthorizedOperationException } from "../../common/exceptions/UnauthorizedOperationException";
 import { OperationValidatorManager } from "../managers/OperationValidatorManager";
-import { TokenSession } from "../../domain-model/session/TokenSession";
+import { TokenSession } from "../../domain-model/TokenSession";
 import { AuthenticationOperationTemplate } from "./AuthenticationOperationTemplate";
 import logger from "../../common/config/logger";
 

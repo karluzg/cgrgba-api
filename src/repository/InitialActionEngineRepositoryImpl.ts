@@ -1,6 +1,6 @@
 
 import { extend } from "lodash";
-import { InitialAction } from "../domain-model/user-manager/user/InitialAction";
+import { InitialAction } from "../domain-model/InitialAction";
 import { myDataSource } from "../web-api/meta-inf/data-source";
 import { IInitialActionEngineRespository } from "./engine/IInitialActionEngineRepository";
 

@@ -4,8 +4,9 @@ import { RegisterUserResult } from "../../../../engine-interface/result/user/Reg
 import { OperationNames } from "../../OperationNames";
 import logger from "../../../../common/config/logger";
 import { UserAuthOperationTemplate } from "../../UserAuthOperationTemplate";
-import { TokenSession } from "../../../../domain-model/session/TokenSession";
+import { TokenSession } from "../../../../domain-model/TokenSession";
 import { OperationValidatorManager } from "../../../managers/OperationValidatorManager";
+import { NotImplementedException } from "../../../../common/exceptions/NotImplementedException";
 
 
 export class RegisterUserOperation extends UserAuthOperationTemplate<RegisterUserResult, RegisterUserParams>{
@@ -17,10 +18,10 @@ export class RegisterUserOperation extends UserAuthOperationTemplate<RegisterUse
   
 
     protected doUserAuthExecuted(tokenSession: TokenSession, params: RegisterUserParams, result: RegisterUserResult): void {
-        throw new Error("Method not implemented.");
+        throw new NotImplementedException("Method not implemented.");
     }
     protected newResult(): RegisterUserResult {
-        throw new Error("Method not implemented.");
+        throw new NotImplementedException("Method not implemented.");
     }
   
   

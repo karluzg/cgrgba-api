@@ -6,7 +6,7 @@ import { container } from "tsyringe";
 import { IPermissionEngineRepository } from "../../repository/engine/IPermissionEngineRepository";
 import { UnauthorizedOperationException } from "../../common/exceptions/UnauthorizedOperationException";
 import logger from "../../common/config/logger";
-import { TokenSession } from "../../domain-model/session/TokenSession";
+import { TokenSession } from "../../domain-model/TokenSession";
 
 
 export class OperationValidatorManager{

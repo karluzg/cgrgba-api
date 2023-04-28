@@ -1,10 +1,10 @@
 
-import { TokenSession } from "../domain-model/session/TokenSession";
-import { Permission } from "../domain-model/user-manager/permission/Persmission";
-import { Role } from "../domain-model/user-manager/role/Role";
-import { UserRole } from "../domain-model/user-manager/role/UserRole";
-import { User } from "../domain-model/user-manager/user/User";
-import { myDataSource } from "../web-api/meta-inf/data-source";
+import { Permission } from "../domain-model/Persmission";
+import { Role } from "../domain-model/Role";
+import { UserRole } from "../domain-model/UserRole";
+import { User } from "../domain-model/User";
+//import { myDataSource } from "../web-api/meta-inf/data-source";
+const myDataSource=require( "../web-api/meta-inf/data-source");
 import { IPermissionEngineRepository } from "./engine/IPermissionEngineRepository";
 import {injectable} from 'tsyringe'
 

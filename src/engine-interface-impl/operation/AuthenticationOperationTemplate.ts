@@ -6,10 +6,9 @@ import { ITokenEngineRepository } from "../../repository/engine/ITokenEngineRepo
 import logger from "../../common/config/logger";
 import { UnauthorizedOperationException } from "../../common/exceptions/UnauthorizedOperationException";
 import {container} from 'tsyringe'
-import { InitialActionType } from "../../domain-model/user-manager/user/InitialActionType";
-import { TokenSession } from "../../domain-model/session/TokenSession";
+import { InitialActionTypeEnum } from "../../domain-model/enum/InitialActionType";
+import { TokenSession } from "../../domain-model/TokenSession";
 import { ForbiddenOperationException } from "../../common/exceptions/ForbiddenOperationException";
-import { error } from "console";
 import { UnsuccessfulOperationException } from "../../common/exceptions/UnsuccessfulOperationException";
 
 export abstract class AuthenticationOperationTemplate<R extends Result, P extends AuthParams> extends OperationTemplate<R, P>{
@@ -26,8 +25,8 @@ constructor(operationId:number){
 
 }
 
-protected  getPermittedTypes(): InitialActionType[]{
-    return new Array<InitialActionType>();
+protected  getPermittedTypes(): InitialActionTypeEnum[]{
+    return new Array<InitialActionTypeEnum>();
 }
 
 protected doExecute(params: P, result: R) {

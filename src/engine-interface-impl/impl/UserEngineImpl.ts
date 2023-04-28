@@ -1,4 +1,4 @@
-import { IUserEngine } from "../../engine-interface/IUserEngine";
+import { IUserEngine } from "../../engine-interface/services/IUserEngine";
 import { RegisterUserParams } from "../../engine-interface/params/user/RegisterUserParams";
 import { RegisterUserResult } from "../../engine-interface/result/user/RegisterUserResult";
 import { GenericOperationTemplate } from "../operation/GenericOperationTemplate";

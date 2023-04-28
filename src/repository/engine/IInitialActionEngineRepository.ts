@@ -1,4 +1,4 @@
-import { InitialAction } from "../../domain-model/user-manager/user/InitialAction";
+import { InitialAction } from "../../domain-model/InitialAction";
 
 export interface IInitialActionEngineRespository{
     findByUserAndExecutedDateIsNull(userId:number):Promise<InitialAction[] | null>

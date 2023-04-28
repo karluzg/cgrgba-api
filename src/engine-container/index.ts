@@ -1,5 +1,5 @@
 import { container } from 'tsyringe';
-import { IUserEngine } from '../engine-interface/IUserEngine';
+import { IUserEngine } from '../engine-interface/services/IUserEngine';
 import { UserEngineImpl } from '../engine-interface-impl/impl/UserEngineImpl';
 import { ITokenEngineRepository } from '../repository/engine/ITokenEngineRepository';
 import { TokenEngineRepositoryImpl } from '../repository/TokenRepositoryEngineImpl';

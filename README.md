@@ -53,10 +53,21 @@ yarn add cors
 yarn add  express-async-errors
 
 # Ferramenta de teste TDD
-yarn add --dev jest @types/jest
+npm i -D jest ts-jest @types/jest
 
 # Install stream
 npm install stream --save 
 
 # Install stream array
 npm install stream-array --save
+# Install chai for jest test
+npm install chai --save
+
+# intsall mocha for jest test 
+npm install mocha --save
+
+# Run test
+npm test -- -w
+
+# Intsal axios to be use in jest test
+npm install axios @types/axios axios-mock-adapter @types/axios-mock-adapter -D
