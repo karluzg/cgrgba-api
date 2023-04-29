@@ -17,7 +17,7 @@ export class RegisterUserParams extends AuthParamsTemplate{
       this.userEmail=userEmail
     }
   
-    get getuserFullName(): string{
+    get getUserFullName(): string{
       return this.userFullName
     }
     get getUserMobileNumber(): string{

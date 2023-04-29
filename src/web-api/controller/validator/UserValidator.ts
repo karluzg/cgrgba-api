@@ -8,7 +8,7 @@ public static isInvalidAuthenticationToken(authParams:AuthParams, errorInfos: Ma
 
     if(authParams.getAuthenticationToken.length==0){
 
-        errorInfos.set("TOKEN:", new ResultInfo(ResponseCode.INVALID_TOKEN,"Token de autenticação obrigatório"));
+      //  errorInfos.set("TOKEN:", new ResultInfo(ResponseCode.INVALID_TOKEN,"Token de autenticação obrigatório"));
     }
     return true; // incompleted function. Must thwro properly error
 }

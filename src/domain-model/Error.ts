@@ -9,7 +9,7 @@ export class Error {
     errorCode : string
     
     @Column()
-    errorMessag:string
+    errorMessage:string
     
 
 

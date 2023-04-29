@@ -7,11 +7,12 @@ import { injectable } from "tsyringe";
 
 
 @injectable()
-export class UserEngineImpl extends GenericOperationTemplate implements IUserEngine{
+export class UserEngineImpl extends GenericOperationTemplate implements IUserEngine {
 
     register_user(params: RegisterUserParams): RegisterUserResult {
-    
-            return  this.executeOperation(new RegisterUserOperation(), params)
+
+        return this.executeOperation(new RegisterUserOperation(), params)
 
     }
+
 }

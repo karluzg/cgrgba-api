@@ -5,38 +5,40 @@ import { OperationValidatorManager } from "../managers/OperationValidatorManager
 import { TokenSession } from "../../domain-model/TokenSession";
 import { AuthenticationOperationTemplate } from "./AuthenticationOperationTemplate";
 import logger from "../../common/config/logger";
+import { MiddlewareCustomErrorMessage } from "../../common/response/CustomErrorMessage";
 
 
 
-export abstract class UserAuthOperationTemplate<R extends Result, P extends AuthParams> extends AuthenticationOperationTemplate<R,P>{
+export abstract class UserAuthOperationTemplate<R extends Result, P extends AuthParams> extends AuthenticationOperationTemplate<R, P>{
 
 
-    protected operationValidatorManager:OperationValidatorManager
+    private operationValidatorManager: OperationValidatorManager
 
 
-       constructor(operationId:number, operationValidatorManager:OperationValidatorManager ){
-       super(operationId)
-       this.operationValidatorManager=operationValidatorManager
-       }
+    constructor(operationId: number, operationValidatorManager: OperationValidatorManager) {
+        super(operationId)
+        this.operationValidatorManager = operationValidatorManager
+    }
 
 
-       protected doAuthExecute(tokenSession: TokenSession, params: P, result: R): void {
-           
-        this.operationValidatorManager.isOperationAllowed(tokenSession, this).then((operationAllowed)=>{
-            logger.info("Validar se o utilizador tem permissão para executar a operação")
-            if(!operationAllowed){ 
-             throw new UnauthorizedOperationException("Operação não permetida")
+    protected doAuthExecute(tokenSession: TokenSession, params: P, result: R) {
+
+        logger.info("Validate if user has permission to execute the operation")
+        this.operationValidatorManager.isOperationAllowed(tokenSession, this).then((operationAllowed) => {
+
+            if (!operationAllowed) {
+                throw new UnauthorizedOperationException(MiddlewareCustomErrorMessage.OPERTATION_NOT_ALLOWED)
             }
-            this.doUserAuthExecuted(tokenSession,params,result)
+            logger.info("User has permission to execute the operation")
+            this.doUserAuthExecuted(tokenSession, params, result)
         })
+    }
 
-       }
-
-       protected abstract  doUserAuthExecuted(tokenSession:TokenSession, params:P, result:R): void;
+    protected abstract doUserAuthExecuted(tokenSession: TokenSession, params: P, result: R): void;
 
 
 }
 
- 
+
 
 

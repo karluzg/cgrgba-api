@@ -1,9 +1,18 @@
 import { Router } from "express";
-import userRoutes from "../user-manager/UserRoutes";
+import UserRoutes from "../user-manager/UserRoutes";
+import schedulingtimeRoutes from "../scheduling-time/schedulingTimeRoutes";
+
+const sharedRoutes = Router();
 
 
-const sharedRoutes=Router();
+/* MODULES */
 
-sharedRoutes.use("/users/create", userRoutes);
+// USER
+sharedRoutes.use("/users/create", UserRoutes);
+
+
+
+//SCHEDULING TIME HOUR
+sharedRoutes.use("/schedulingTimeHour/add", schedulingtimeRoutes);
 
 export default sharedRoutes

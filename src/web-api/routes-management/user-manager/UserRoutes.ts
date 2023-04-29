@@ -1,10 +1,12 @@
 import * as express from "express";
-import  {UserController}  from "../../controller/user-manager/UserController";
-const userRoutes=express.Router()
+import { UserController } from "../../controller/user-manager/UserController";
 
-const userController=new UserController()
-userRoutes.post("", userController.registerUser)
+const UserRoutes = express.Router()
 
-export default userRoutes
+const userController = new UserController()
+UserRoutes.post("", userController.registerUser)
+
+
+export default UserRoutes
 
 

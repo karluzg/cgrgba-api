@@ -1,10 +1,11 @@
 import 'reflect-metadata'
 import {expect} from 'chai'
-import { RegisterUserParams } from "../../params/user/RegisterUserParams";
+import { RegisterUserParams } from '../../engine-interface/params/user/RegisterUserParams'
 import axios from 'axios'
 
 describe("Create new user", ()=>{
-    it('"Should fail with method not implemented and Http status code 501',async ()=>{
+    it('Should fail with method not implemented and Http status code 501',async ()=>{
+   
    
         const data=new Date();
         const hora=data.getHours();

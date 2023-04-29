@@ -10,27 +10,26 @@ import { NotImplementedException } from "../../../../common/exceptions/NotImplem
 
 
 export class RegisterUserOperation extends UserAuthOperationTemplate<RegisterUserResult, RegisterUserParams>{
-  
-      
-    constructor(){
+
+
+    constructor() {
         super(OperationNames.CREATE_USER, new OperationValidatorManager())
     }
-  
+
 
     protected doUserAuthExecuted(tokenSession: TokenSession, params: RegisterUserParams, result: RegisterUserResult): void {
-        throw new NotImplementedException("Method not implemented.");
+        throw new NotImplementedException("RegisterUserOperation not implemented");
     }
     protected newResult(): RegisterUserResult {
-        throw new NotImplementedException("Method not implemented.");
+        throw new NotImplementedException("RegisterUserResult not implemented.");
     }
-  
-  
-  
-  
 
-  
-  
+
+
+
+
+
+
 
 
 }
-   
