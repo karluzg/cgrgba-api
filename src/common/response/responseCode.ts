@@ -1,9 +1,10 @@
-export enum ResponseCode{
+export enum ResponseCode {
     ERROR,
     INFO,
     SUCESS,
     FAILURE,
     MANDATORY_FIELD,
-    INVALID_TOKEN
-    
-    }
+    INVALID_TOKEN,
+    SYSTEM
+
+}

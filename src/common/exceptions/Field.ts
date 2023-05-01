@@ -1,3 +1,5 @@
 export enum Field {
-    ID
+
+    SYSTEM = "SYSTEM",
+    ID = "ID"
 }

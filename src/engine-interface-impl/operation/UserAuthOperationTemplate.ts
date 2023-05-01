@@ -5,8 +5,9 @@ import { OperationValidatorManager } from "../managers/OperationValidatorManager
 import { TokenSession } from "../../domain-model/TokenSession";
 import { AuthenticationOperationTemplate } from "./AuthenticationOperationTemplate";
 import logger from "../../common/config/logger";
-import { MiddlewareCustomErrorMessage } from "../../common/response/CustomErrorMessage";
-
+import { Field } from "../../common/exceptions/Field";
+import { ErrorExceptionClass } from "../../common/exceptions/ErrorExceptionClass";
+import { MiddlewareCustomErrorMessage } from "../../common/response/MiddlewareCustomErrorMessage";
 
 
 export abstract class UserAuthOperationTemplate<R extends Result, P extends AuthParams> extends AuthenticationOperationTemplate<R, P>{
@@ -23,15 +24,17 @@ export abstract class UserAuthOperationTemplate<R extends Result, P extends Auth
 
     protected doAuthExecute(tokenSession: TokenSession, params: P, result: R) {
 
-        logger.info("Validate if user has permission to execute the operation")
-        this.operationValidatorManager.isOperationAllowed(tokenSession, this).then((operationAllowed) => {
 
-            if (!operationAllowed) {
-                throw new UnauthorizedOperationException(MiddlewareCustomErrorMessage.OPERTATION_NOT_ALLOWED)
-            }
-            logger.info("User has permission to execute the operation")
+        logger.info("Validate if user has permission to execute the operation")
+        const isOperationAllowed = this.operationValidatorManager.isOperationAllowed(tokenSession, this);
+
+        if (!isOperationAllowed) {
+            logger.error("[UserAuthOperationTemplate] user does not have permission to execute this operation")
+            throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareCustomErrorMessage.OPERTATION_NOT_ALLOWED)
+        }
+
             this.doUserAuthExecuted(tokenSession, params, result)
-        })
+
     }
 
     protected abstract doUserAuthExecuted(tokenSession: TokenSession, params: P, result: R): void;

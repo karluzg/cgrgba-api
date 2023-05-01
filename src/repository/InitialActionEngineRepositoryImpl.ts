@@ -5,15 +5,26 @@ import { IInitialActionEngineRespository } from "./engine/IInitialActionEngineRe
 
 export class InitialActionEngineRepositoryImpl implements IInitialActionEngineRespository {
 
-    async findByUserAndExecutedDateIsNull(userId: number): Promise<InitialAction[]> {
+    findByUserAndExecutedDateIsNull(userId: number): InitialAction[] {
 
+        const initialActionList: InitialAction[] = []
         const initialActionRepository = myDataSource.getRepository(InitialAction)
 
-        return await initialActionRepository
-            .createQueryBuilder('initialAction')
+        const initialActions = initialActionRepository.createQueryBuilder('initialAction')
             .where('initialAction.user.id = :userId', { user: userId })
             .andWhere('initialAction.executedDate is null')
-            .getMany()
+            .getMany();
+
+        //insert entity results from a query into an array
+        initialActions.then((result) => {
+            if (result != null) {
+                result.forEach((initialAction) => {
+                    initialActionList.push(initialAction);
+                })
+            }
+        })
+
+        return initialActionList;
     }
 
 }

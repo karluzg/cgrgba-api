@@ -13,6 +13,6 @@ sharedRoutes.use("/users/create", UserRoutes);
 
 
 //SCHEDULING TIME HOUR
-sharedRoutes.use("/schedulingTimeHour/add", schedulingtimeRoutes);
+sharedRoutes.use("/slot", schedulingtimeRoutes);
 
 export default sharedRoutes

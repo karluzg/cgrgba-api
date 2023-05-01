@@ -11,34 +11,40 @@ import { IOperation } from "./IOperation";
 import { Params } from "./Params";
 
 
+
 export abstract class GenericOperationTemplate {
 
     public executeOperation<R extends Result, P extends Params>(operation: IOperation<R, P>, params: P): R {
 
         try {
 
-            logger.info("Begin executing Operation " + JSON.stringify(operation));
+            logger.info("[GenericOperationTemplate] Begin executing Operation", JSON.stringify(operation));
 
             return operation.execute(params)
 
         } catch (error) {
-            if (error.errorClasse === ErrorExceptionClass.NOT_IMPLEMENTED) {
-                throw new NotImplementedException(error.message)
+            logger.error("[GenericOperationTemplate] Error while executing operation", error)
 
-            } else if (error.errorClasse === ErrorExceptionClass.INVALID_PARAMETERS) {
-                throw new InvalidParametersException(error.message)
+            if (error.errorClasseName == ErrorExceptionClass.UNAUTHORIZED) {
+                throw new UnauthorizedOperationException(error.field, error.message)
 
-            } else if (error.errorClasse === ErrorExceptionClass.UNAUTHORIZED) {
-                throw new UnauthorizedOperationException(error.message)
             }
-            else if (error.errorClasse === ErrorExceptionClass.FORBIDDEN) {
-                throw new ForbiddenOperationException(error.message)
+            if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
+                throw new NotImplementedException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
+                throw new InvalidParametersException(error.field, error.message)
+
             }
-            else if (error.errorClasse === ErrorExceptionClass.UNSUCCESSFULLY) {
-                throw new UnsuccessfullOperationException(error.message)
+            else if (error.errorClasseName === ErrorExceptionClass.FORBIDDEN) {
+                throw new ForbiddenOperationException(error.field, error.message)
+            }
+            else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
+                throw new UnsuccessfullOperationException(error.field, error.message)
+            } else {
             }
         } finally {
-            logger.info("End executing Operation " + JSON.stringify(operation));
+            logger.info("[GenericOperationTemplate] End executing Operation " + JSON.stringify(operation));
         }
     }
 }

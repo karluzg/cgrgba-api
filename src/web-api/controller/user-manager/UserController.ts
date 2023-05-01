@@ -31,14 +31,14 @@ export class UserController {
       return response.status(HttpCode.OK).json(result)
     } catch (error) {
 
-      if (error.errorClasse === ErrorExceptionClass.NOT_IMPLEMENTED) {
-        throw new NotImplementedException(error.message)
+      if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
+        throw new NotImplementedException(error.field, error.message)
 
-      } else if (error.errorClasse === ErrorExceptionClass.INVALID_PARAMETERS) {
-        throw new InvalidParametersException(error.message)
+      } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
+        throw new InvalidParametersException(error.field, error.message)
 
-      } else if (error.errorClasse === ErrorExceptionClass.UNAUTHORIZED) {
-        throw new UnauthorizedOperationException(error.message)
+      } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
+        throw new UnauthorizedOperationException(error.field, error.message)
       }
     }
   }

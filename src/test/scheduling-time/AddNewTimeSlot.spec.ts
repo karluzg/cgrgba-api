@@ -2,9 +2,10 @@ import 'reflect-metadata'
 import { expect } from 'chai'
 import { AddNewTimeSlotParams } from '../../engine-interface/params/scheduling-time/AddNewTimeSlotParams'
 import axios from 'axios'
+import { ISchedulingTimeHourEngine } from '../../engine-interface/services/ISchedulingTimeHourEngine'
 
-/*describe("Add new time slot", ()=>{
-    it('"Should fail Http status code 501:with method not implemented ',async ()=>{
+describe("Add new time slot", () => {
+    it("Should fail Http status code 401: User does not have a valid token", async () => {
    
         const data=new Date();
         const hora=data.getHours();
@@ -12,17 +13,16 @@ import axios from 'axios'
         console.log(epochTime);
         console.log(data.getTime()*1000)
 
-        const response = await axios.post("http://localhost:3000/users/create",
+        const response = await axios.post("http://localhost:3000/slot",
          new AddNewTimeSlotParams("token1234", new Date(), 12));
 
-        expect(response.status).equal(501)
-        expect(response.data).equal(JSON.stringify({message:"Method not implemented."}))
+        expect(response.status).equal(401)
 
     })
-})*/
+})
 
 
-describe("Add new time slot", () => {
+/*describe("Add new time slot", () => {
     it("Should be successfully with Http status code 200", async () => {
 
         const data = new Date();
@@ -32,10 +32,9 @@ describe("Add new time slot", () => {
         console.log(epochTime);
         console.log(data.getTime() * 1000)
 
-        const response = await axios.post("http://localhost:3000/schedulingTimeHour/add",
-            new AddNewTimeSlotParams("token1234", new Date(), 12));
+        const response = await axios.post("http://localhost:3000/slot",
+            new AddNewTimeSlotParams("8a6e0804-2bd0-4672-b79d-d97027f9071a", new Date(), 12));
 
         expect(response.status).equal(200)
 
-    })
-})
+    })*/

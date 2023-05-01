@@ -1,18 +1,16 @@
-import { ResultInfo } from "../common/response/ResultInfo";
+import { HttpCode } from "../common/response/HttpCode";
 
 export class Result {
-    
-    private resultIInfo:ResultInfo
-    constructor(){
-        this.resultIInfo=new ResultInfo()
+
+    private errorMessages: Object;
+    get getErrorMessages(): Object {
+        return this.errorMessages;
+    }
+    set setErrorMessages(errorMessages: Object) {
+
+        this.errorMessages = errorMessages;
+
     }
 
-    get getResultInfo(): ResultInfo{
-        return this.resultIInfo
-    }
 
-     setResultInfo(resultInfo:ResultInfo): Result{
-        this.resultIInfo=resultInfo
-        return this;
-    }
 }

@@ -14,21 +14,34 @@ import { injectable } from 'tsyringe'
 @injectable()
 export class PermissionEngineRepositoryImpl implements IPermissionEngineRepository {
 
-   async findByPermissionId(permissionId: number): Promise<Permission | null> {
+   findByPermissionId(permissionId: number): Permission {
 
+      let permissionEntity: Permission
       const permissionRepository = myDataSource.getRepository(Permission)
-      return await permissionRepository
+
+      const permissionQueryBuilder = permissionRepository
          .createQueryBuilder('permission')
          .where('permission.id = :permissionId', { id: permissionId })
-         .getOne()
+         .getOne();
+
+
+      permissionQueryBuilder.then((permissionEntity) => {
+         if (permissionEntity && Object.keys(permissionEntity).length > 0)
+            permissionEntity = permissionEntity;
+      });
+
+
+      return permissionEntity;
 
    }
 
 
-   async isUserOperationAllowed(operationId: number, userId: number): Promise<boolean | false> {
+   isUserOperationAllowed(operationId: number, userId: number): boolean {
 
-      return myDataSource.getRepository(User)
-         .createQueryBuilder('user')
+      let isOperationAllowed: boolean = true;
+      const userRepository = myDataSource.getRepository(User)
+
+      const userQueyBuilder = userRepository.createQueryBuilder('user')
          .select(['user.id'])
          .leftJoin(UserRole, 'userRole', 'userRole.user.id = user.id')
          .leftJoin(Role, 'role', 'role.id = userRole.role.id')
@@ -38,7 +51,18 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
          .setParameter('userId', userId)
          .getExists();
 
+
+      userQueyBuilder.then((result) => {
+
+         if (!result) {
+            isOperationAllowed = false;
+         }
+      });
+
+      return isOperationAllowed;
+
    }
+
 
 
 }

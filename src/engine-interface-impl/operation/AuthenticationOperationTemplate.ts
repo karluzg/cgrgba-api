@@ -9,8 +9,8 @@ import { container } from 'tsyringe'
 import { InitialActionTypeEnum } from "../../domain-model/enum/InitialActionType";
 import { TokenSession } from "../../domain-model/TokenSession";
 import { ForbiddenOperationException } from "../../common/exceptions/ForbiddenOperationException";
-import { UnsuccessfullOperationException } from "../../common/exceptions/UnsuccessfullOperationException";
-import { MiddlewareCustomErrorMessage } from "../../common/response/CustomErrorMessage";
+import { MiddlewareCustomErrorMessage } from "../../common/response/MiddlewareCustomErrorMessage";
+import { Field } from "../../common/exceptions/Field";
 
 export abstract class AuthenticationOperationTemplate<R extends Result, P extends AuthParams> extends OperationTemplate<R, P>{
 
@@ -32,57 +32,50 @@ export abstract class AuthenticationOperationTemplate<R extends Result, P extend
 
     protected doExecute(params: P, result: R) {
 
-        try {
-            logger.info("[AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository")
-            const tokenRepository = container.resolve<ITokenEngineRepository>("ITokenEngineRepository")
-            logger.info("[AuthenticationOperationTemplate] Perform dependency injection successfully for ITokenRepository ")
 
-            logger.info("[AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository")
+        logger.info("[AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository")
+        const tokenRepository = container.resolve<ITokenEngineRepository>("ITokenEngineRepository")
 
-            const initiaActionEngineRepository = container.resolve<IInitialActionEngineRespository>("IInitialActionEngineRespository")
+        logger.info("[AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository")
 
-            logger.info("[AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository was successfully")
+        const initiaActionEngineRepository = container.resolve<IInitialActionEngineRespository>("IInitialActionEngineRespository")
 
-            logger.info("[AFTER ASYNC CALL] - Begin searching for valid token")
+        logger.info("[AuthenticationOperationTemplate] - Begin searching for valid token");
 
-            tokenRepository.findByTokenAndValidSessionExpireDate(params.getAuthenticationToken(), new Date)
-                .then((tokenSessionFounded) => {
 
-                    /*  if (tokenSessionFounded == null) {
-                          logger.error("Does not exist a valid token")
-                          throw new UnauthorizedOperationException(MiddlewareCustomErrorMessage.OPERTATION_NOT_ALLOWED)
-                      }*/
+        const tokenSessionFound = tokenRepository.findByTokenAndValidSessionExpireDate(params.getAuthenticationToken(), new Date)
 
-                    logger.info("token was founded for user %s", tokenSessionFounded.user.UserEmail)
+        logger.error("result of token searched:" + JSON.stringify(tokenSessionFound))
 
-                    const userId = tokenSessionFounded.user.id;
+        if (tokenSessionFound && Object.keys(tokenSessionFound).length == 0) {
+            logger.error("valid token was not found")
+            throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareCustomErrorMessage.INVALID_TOKEN);
 
-                    initiaActionEngineRepository.findByUserAndExecutedDateIsNull(userId).then((initialActions) => {
-                        initialActions.filter((initialAction) => {
-
-                            if (!this.getPermittedTypes().includes(initialAction.initialActionType)) {
-                                logger.error("Unspected unexecuted initial action")
-                                throw new ForbiddenOperationException(MiddlewareCustomErrorMessage.UNEXPECTED_UNEXECUTED_INITIAL_ACTION);
-                            }
-
-                        });
-
-                        this.doAuthExecute(tokenSessionFounded, params, result)
-
-                    }).catch((error) => {
-                        logger.error("Error while searching for user's initial action for operationID %s", this.operationId);
-                        throw new UnsuccessfullOperationException(MiddlewareCustomErrorMessage.ERROR_WHILE_SEARCHING_USER_INITIAL_ACTION + error);
-
-                    })
-
-                }).catch((error) => {
-                    logger.error("Error while searching for user's initial action for operationID %s", this.operationId);
-                    throw new UnsuccessfullOperationException(MiddlewareCustomErrorMessage.ERROR_WHILE_SEARCHING_USER_INITIAL_ACTION + error);
-                })
-        } catch (error) {
-            throw new UnsuccessfullOperationException(MiddlewareCustomErrorMessage.INTERNAL_SERVER_ERROR + error)
         }
+
+        logger.info("[AuthenticationOperationTemplate] - Valid token was founded for user %s", tokenSessionFound.user.UserFullName);
+
+        logger.info("[AuthenticationOperationTemplate] - Begin searching initial actions");
+
+        const userId = tokenSessionFound.user.id;
+
+        const initialActions = initiaActionEngineRepository.findByUserAndExecutedDateIsNull(userId)
+
+        initialActions.filter((initialAction) => {
+
+
+            if (!this.getPermittedTypes().includes(initialAction.initialActionType)) {
+                logger.error("Unspected unexecuted initial action")
+                throw new ForbiddenOperationException(Field.SYSTEM,
+                    MiddlewareCustomErrorMessage.UNEXPECTED_UNEXECUTED_INITIAL_ACTION);
+            }
+
+        });
+
+        this.doAuthExecute(tokenSessionFound, params, result)
+
     }
+
 
     protected abstract doAuthExecute(tokenSession: TokenSession, params: P, result: R)
 

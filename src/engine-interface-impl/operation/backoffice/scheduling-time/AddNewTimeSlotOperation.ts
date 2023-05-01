@@ -9,6 +9,7 @@ import { SchedulingTimeHour } from "../../../../domain-model/SchedulingTimeHour"
 import { Hour } from "../../../../domain-model/Hour";
 import { SchedulingTime } from "../../../../domain-model/SchedulingTime";
 import logger from "../../../../common/config/logger";
+import { Result } from "../../../../engine-interface/Result";
 
 export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<AddNewTimeSlotResult, AddNewTimeSlotParams>{
 
@@ -21,6 +22,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<AddNewTim
 
     protected doUserAuthExecuted(tokenSession: TokenSession, params: AddNewTimeSlotParams, result: AddNewTimeSlotResult) {
 
+        // TO BE IMPLEMENT
         logger.info("Chegou aqui na adição do slot horário")
         const schedulingTimeHour: SchedulingTimeHour = new SchedulingTimeHour()
         const hours: Hour[] = [];
@@ -39,7 +41,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<AddNewTim
 
         schedulingTimeHour.schedulingTime = schedulingTime;
 
-        result.setschedulingTimeHour = schedulingTimeHour
+        result.setschedulingTimeHour = schedulingTimeHour;
     }
     protected newResult(): AddNewTimeSlotResult {
         return new AddNewTimeSlotResult();
