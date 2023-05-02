@@ -1,6 +1,5 @@
 import * as express from "express";
 import { UserController } from "../../controller/user-manager/UserController";
-import { AuthorizationOperationTemplate } from "../../../infrestructure/template/AuthorizationOperationTemplate";
 
 
 const UserRoutes = express.Router()
