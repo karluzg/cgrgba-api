@@ -4,7 +4,7 @@ import { InvalidParametersException } from "../../../infrestructure/exceptions/I
 import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
 import { ForbiddenOperationException } from "../../../infrestructure/exceptions/ForbiddenOperationException";
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
-import { MiddlewareCustomErrorMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
@@ -49,7 +49,7 @@ export class SchedulingTimeHourController {
             } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
-                throw new UnsuccessfullOperationException(error.field, MiddlewareCustomErrorMessage.INTERNAL_SERVER_ERROR + error)
+                throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.INTERNAL_SERVER_ERROR + error)
             }
         }
     }

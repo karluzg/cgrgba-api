@@ -9,7 +9,7 @@ import { container } from 'tsyringe'
 import { InitialActionTypeEnum } from "../../domain/model/enum/InitialActionType";
 import { TokenSession } from "../../domain/model/TokenSession";
 import { ForbiddenOperationException } from "../exceptions/ForbiddenOperationException";
-import { MiddlewareCustomErrorMessage } from "../response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
 import { Field } from "../exceptions/enum/Field";
 
 export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, P extends IAuthParams> extends OperationTemplate<R, P>{
@@ -49,7 +49,7 @@ export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, 
 
         if (tokenSessionFound && Object.keys(tokenSessionFound).length == 0) {
             logger.error("valid token was not found")
-            throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareCustomErrorMessage.INVALID_TOKEN);
+            throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.INVALID_TOKEN);
 
         }
 
@@ -67,7 +67,7 @@ export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, 
             if (!this.getPermittedTypes().includes(initialAction.initialActionType)) {
                 logger.error("Unspected unexecuted initial action")
                 throw new ForbiddenOperationException(Field.SYSTEM,
-                    MiddlewareCustomErrorMessage.UNEXPECTED_UNEXECUTED_INITIAL_ACTION);
+                    MiddlewareBusinessMessage.UNEXPECTED_UNEXECUTED_INITIAL_ACTION);
             }
 
         });

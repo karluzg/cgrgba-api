@@ -2124,3 +2124,203 @@
   field: 'SYSTEM'
 }
 [2023-05-02T04:36:09.897] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-02T21:15:31.315] [ERROR] default - Error during Data Source initialization: error: password authentication failed for user "postgres"
+    at Parser.parseErrorMessage (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:369:69)
+    at Parser.handlePacket (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:188:21)
+    at Parser.parse (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:103:30)
+    at Socket.<anonymous> (C:\Git\cgrgba-api\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:297:9)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '329',
+  routine: 'auth_failed'
+}
+[2023-05-02T21:46:01.415] [ERROR] default - Error during Data Source initialization: error: password authentication failed for user "postgres"
+    at Parser.parseErrorMessage (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:369:69)
+    at Parser.handlePacket (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:188:21)
+    at Parser.parse (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:103:30)
+    at Socket.<anonymous> (C:\Git\cgrgba-api\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:297:9)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '329',
+  routine: 'auth_failed'
+}
+[2023-05-02T21:46:11.063] [ERROR] default - Error during Data Source initialization: error: password authentication failed for user "postgres"
+    at Parser.parseErrorMessage (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:369:69)
+    at Parser.handlePacket (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:188:21)
+    at Parser.parse (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:103:30)
+    at Socket.<anonymous> (C:\Git\cgrgba-api\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:297:9)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 104,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '329',
+  routine: 'auth_failed'
+}
+[2023-05-02T21:48:32.472] [INFO] default - Data Source has been initialized!
+[2023-05-02T21:50:03.452] [INFO] default - Data Source has been initialized!
+[2023-05-02T21:50:57.527] [INFO] default - Data Source has been initialized!
+[2023-05-02T21:52:52.581] [INFO] default - Data Source has been initialized!
+[2023-05-02T21:55:04.427] [INFO] default - Data Source has been initialized!
+[2023-05-02T21:55:10.947] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-02T21:58:45.826] [INFO] default - Data Source has been initialized!
+[2023-05-02T21:59:01.389] [INFO] default - Data Source has been initialized!
+[2023-05-02T21:59:32.793] [INFO] default - Data Source has been initialized!
+[2023-05-02T21:59:58.847] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:00:06.305] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:00:36.075] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:00:57.997] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:06:01.262] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:06:05.418] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:06:12.347] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:18:49.749] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:18:51.255] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-02T22:18:53.223] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-02T22:19:29.598] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-02T22:19:29.598] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-02T22:19:29.598] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-02T22:19:29.598] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-02T22:19:29.599] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
+    at new NotImplementedException (C:\Git\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\Git\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\Git\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\Git\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.addUser (C:\Git\cgrgba-api\src\application\controller\user-manager\UserController.ts:35:33)
+    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM'
+}
+[2023-05-02T22:19:29.605] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-02T22:22:03.148] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:22:24.740] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:22:28.867] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:23:03.063] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:23:13.682] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:33:00.386] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:33:05.987] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:33:09.646] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:33:13.737] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:42:33.593] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-02T22:42:33.593] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-02T22:42:33.594] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-02T22:42:33.594] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-02T22:42:33.594] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
+    at new NotImplementedException (C:\Git\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\Git\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\Git\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\Git\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.addUser (C:\Git\cgrgba-api\src\application\controller\user-manager\UserController.ts:38:33)
+    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM'
+}
+[2023-05-02T22:42:33.602] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-02T22:52:47.425] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:52:54.791] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:52:58.030] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:53:02.030] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:53:06.977] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:53:09.911] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:53:14.358] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:53:18.370] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:53:22.292] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:55:59.230] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:56:20.124] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:57:25.562] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:57:41.104] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:57:58.682] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:58:07.075] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:58:09.515] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:58:21.255] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:58:25.836] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:58:28.787] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:58:36.343] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:58:46.724] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:58:49.445] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:58:58.256] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:59:31.597] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:59:33.938] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:59:37.278] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:59:43.778] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:59:50.576] [INFO] default - Data Source has been initialized!
+[2023-05-02T22:59:54.629] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:00:01.947] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:00:04.266] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:00:06.689] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:00:14.517] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:00:18.046] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:00:20.933] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:00:26.760] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:00:30.133] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:00:35.702] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:00:42.119] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:00:59.066] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:01:03.712] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:01:10.123] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:01:14.370] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:01:44.576] [INFO] default - Data Source has been initialized!
+[2023-05-02T23:06:08.891] [INFO] default - Data Source has been initialized!

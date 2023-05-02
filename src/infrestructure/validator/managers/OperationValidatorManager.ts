@@ -7,7 +7,7 @@ import { IPermissionEngineRepository } from "../../../domain/repository/IPermiss
 import { UnauthorizedOperationException } from "../../exceptions/UnauthorizedOperationException";
 import logger from "../../config/logger";
 import { TokenSession } from "../../../domain/model/TokenSession";
-import { MiddlewareCustomErrorMessage } from "../../response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../response/enum/MiddlewareCustomErrorMessage";
 import { Field } from "../../exceptions/enum/Field";
 
 
@@ -26,7 +26,7 @@ export class OperationValidatorManager {
 
     if (permissionEntity == null) {
       logger.error("Permission operation %s was not found", operation.getOperationId())
-      throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareCustomErrorMessage.OPERATION_WAS_NOT_FOUND)
+      throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.OPERATION_WAS_NOT_FOUND)
     }
 
     logger.info("permission was founded. validate if operation is valid for user")

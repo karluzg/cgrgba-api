@@ -10,10 +10,12 @@ import { UserParams } from "../../../application/model/user-manager/UserParams";
 import e, { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
-import { AuthorizationOperationTemplate } from "../../../infrestructure/template/AuthorizationOperationTemplate";
+import { AuthValidator } from "../validator/AuthValidator";
+import { ParamsValidator } from "../validator/ParamsValidator";
+import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
 
 
-export class UserController extends AuthorizationOperationTemplate{
+export class UserController {
 
 
   public addUser(request: Request, response: Response): Response {
@@ -21,8 +23,10 @@ export class UserController extends AuthorizationOperationTemplate{
     try {
       const { userFullName, userMobileNumber, userEmail } = request.body;
 
+      
+      //const authenticationToken =  new AuthorizationOperationTemplate().checkAuthorizationToken(request)
       //não deixa acesso a classe extendida então usou-se static
-      const authenticationToken= UserController.checkAuthorizationToken(request);
+      const authenticationToken = AuthValidator.checkAuthorizationToken(request);
       const params = new UserParams(authenticationToken, userFullName, userMobileNumber, userEmail)
 
       logger.info("[UserController] Perform dependency injection for UserController")
@@ -43,6 +47,9 @@ export class UserController extends AuthorizationOperationTemplate{
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message)
+        
+      } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
+        throw new UnsuccessfullOperationException(error.field, error.message)
       }
       else
       throw error;

@@ -3,5 +3,5 @@
 export enum OperationNames{
     CREATE_USER=1,
     ADD_NEW_TIME_SLOT=2,
-    USER_CRETE=3
+    USER_CREATE = 3
     }

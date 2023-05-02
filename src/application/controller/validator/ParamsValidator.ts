@@ -1,8 +1,7 @@
-import { ResponseCode } from "../../../infrestructure/response/enum/ResponseCode";
 import { ResultInfo } from "../../../infrestructure/response/ResultInfo";
 import { IAuthParams } from "../../../infrestructure/interface/IAuthParams";
 
-export  class UserValidator{
+export  class ParamsValidator{
 
 public static isInvalidAuthenticationToken(authParams:IAuthParams, errorInfos: Map<string, ResultInfo>):boolean {
 

@@ -7,7 +7,7 @@ import { AuthenticationOperationTemplate } from "./AuthenticationOperationTempla
 import logger from "../../infrestructure/config/logger";
 import { Field } from "../exceptions/enum/Field";
 import { ErrorExceptionClass } from "../exceptions/ErrorExceptionClass";
-import { MiddlewareCustomErrorMessage } from "../response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
 
 
 export abstract class UserAuthOperationTemplate<R extends ResultTemplate, P extends IAuthParams> extends AuthenticationOperationTemplate<R, P>{
@@ -30,7 +30,7 @@ export abstract class UserAuthOperationTemplate<R extends ResultTemplate, P exte
 
         if (!isOperationAllowed) {
             logger.error("[UserAuthOperationTemplate] user does not have permission to execute this operation")
-            throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareCustomErrorMessage.OPERTATION_NOT_ALLOWED)
+            throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.OPERTATION_NOT_ALLOWED)
         }
 
             this.doUserAuthExecuted(tokenSession, params, result)

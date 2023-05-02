@@ -1,7 +1,7 @@
 import 'express-async-errors'
 import express from "express";
 import 'reflect-metadata'
-import '.'
+import './infrestructure/config/injection'
 import { Request, Response, NextFunction } from "express";
 import sharedRoutes from "./application/routes-management/shared-routes";
 //import { myDataSource } from "./meta-inf/data-source";

@@ -8,7 +8,7 @@ import { TokenSession } from "../../model/TokenSession";
 import { OperationValidatorManager } from "../../../infrestructure/validator/managers/OperationValidatorManager";
 import { NotImplementedException } from "../../../infrestructure/exceptions/NotImplementedException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareCustomErrorMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 
 
 export class RegisterUserOperation extends UserAuthOperationTemplate<UserResult, UserParams>{
@@ -20,10 +20,10 @@ export class RegisterUserOperation extends UserAuthOperationTemplate<UserResult,
 
 
     protected doUserAuthExecuted(tokenSession: TokenSession, params: UserParams, result: UserResult): void {
-        throw new NotImplementedException(Field.SYSTEM, MiddlewareCustomErrorMessage.METHOD_NOT_IMPLEMENTED);
+        throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.METHOD_NOT_IMPLEMENTED);
     }
     protected newResult(): UserResult {
-        throw new NotImplementedException(Field.SYSTEM, MiddlewareCustomErrorMessage.METHOD_NOT_IMPLEMENTED);
+        throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.METHOD_NOT_IMPLEMENTED);
     }
 
 
