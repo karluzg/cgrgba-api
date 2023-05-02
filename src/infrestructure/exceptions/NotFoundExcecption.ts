@@ -1,0 +1,11 @@
+import { HttpCode } from "../response/enum/HttpCode";
+import { ErrorExceptionClass } from "./ErrorExceptionClass";
+import { Field } from "./enum/Field";
+import { OperationExecption } from "./OperatonException";
+
+
+export class NotFoundExcecption extends OperationExecption {
+    constructor(field: Field, message: string) {
+        super(field, HttpCode.NOT_FOUND, ErrorExceptionClass.NOT_FOUND, message)
+    }
+}
