@@ -5,7 +5,7 @@ import { OperationExecption } from "./OperatonException";
 
 
 export class ForbiddenOperationException extends OperationExecption{
-    constructor(field: Field, message: string) {
-        super(field, HttpCode.FORBIDDEN, ErrorExceptionClass.FORBIDDEN, message)
+    constructor(field: Field, message: string,details ?:any) {
+        super(field, HttpCode.FORBIDDEN, ErrorExceptionClass.FORBIDDEN, message,details)
     }
 }

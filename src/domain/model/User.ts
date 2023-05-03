@@ -15,8 +15,7 @@ export class User implements IUserActivable {
     UserFullName: string
 
     @Column({unique:true,
-    length:21,
-    nullable:false})
+    length:21})
     UserMobileNumber: string
 
     @Column({unique:true,

@@ -9,9 +9,13 @@ import { OperationValidatorManager } from "../../../infrestructure/validator/man
 import { NotImplementedException } from "../../../infrestructure/exceptions/NotImplementedException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { User } from "../../model/User";
+import { IUserEngineRepository } from "../../repository/IUserEngineRepository";
+import { container } from 'tsyringe'
 
 
-export class RegisterUserOperation extends UserAuthOperationTemplate<UserResult, UserParams>{
+export class AddUserOperation extends UserAuthOperationTemplate<UserResult, UserParams>{
+
 
 
     constructor() {
@@ -20,10 +24,22 @@ export class RegisterUserOperation extends UserAuthOperationTemplate<UserResult,
 
 
     protected doUserAuthExecuted(tokenSession: TokenSession, params: UserParams, result: UserResult): void {
-        throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.METHOD_NOT_IMPLEMENTED);
+
+        logger.info("[AuthenticationOperationTemplate] Perform dependency injection for IUserEngineRepository")
+        const userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
+    //add new user
+    const user = new User();
+    user.UserEmail= params.getUserEmail;
+    user.UserFullName= params.getUserEmail;
+    user.UserMobileNumber= params.getUserMobileNumber;
+
+    const newUser= userRepository.saveUser(user)
+
+   // result.setUser(newUser);
+
     }
-    protected newResult(): UserResult {
-        throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.METHOD_NOT_IMPLEMENTED);
+    protected initResult(): UserResult {
+        return new UserResult()
     }
 
 

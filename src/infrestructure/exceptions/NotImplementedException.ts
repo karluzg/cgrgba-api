@@ -5,8 +5,8 @@ import { Field } from "./enum/Field";
 
 export class NotImplementedException extends OperationExecption{
 
-    constructor(field: Field, message: string) {
-        super(field, HttpCode.NOT_IMPLEMENTED, ErrorExceptionClass.NOT_IMPLEMENTED, message)
+    constructor(field: Field, message: string, details ?:any) {
+        super(field, HttpCode.NOT_IMPLEMENTED, ErrorExceptionClass.NOT_IMPLEMENTED, message,details)
         
     }
 }

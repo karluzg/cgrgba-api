@@ -5,7 +5,7 @@ import { OperationExecption } from "./OperatonException";
 
 
 export class NotFoundExcecption extends OperationExecption {
-    constructor(field: Field, message: string) {
-        super(field, HttpCode.NOT_FOUND, ErrorExceptionClass.NOT_FOUND, message)
+    constructor(field: Field, message: string, details ?:any) {
+        super(field, HttpCode.NOT_FOUND, ErrorExceptionClass.NOT_FOUND, message,details)
     }
 }

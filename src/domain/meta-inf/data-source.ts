@@ -6,7 +6,7 @@ export const myDataSource = new DataSource({
     host: "localhost",
     port: 5432,
     username: "postgres",
-    password: "Teste123#",
+    password: "Thales01*",
     database: "PORTAL_CONSULAR_DEV",
     synchronize: false, // set synchronize=false when is going to production environment to avoid auto-generated table
     logging: false, //The logging option in TypeORM allows you to enable or disable logging of database

@@ -11,7 +11,6 @@ import e, { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import { AuthValidator } from "../validator/AuthValidator";
-import { ParamsValidator } from "../validator/ParamsValidator";
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
 
 
@@ -35,7 +34,7 @@ export class UserController {
       logger.info("[UserController] Perform dependency injection for UserController was successfully")
 
 
-      const result = userEngine.register_user(params)
+      const result = userEngine.addUser(params)
       return response.status(HttpCode.OK).json(result)
     } catch (error) {
 
@@ -69,7 +68,7 @@ export class UserController {
       logger.info("[UserController] Perform dependency injection for UserController was successfully")
 
 
-      const result = userEngine.register_user(params)
+      const result = userEngine.addUser(params)
       return response.status(HttpCode.OK).json(result)
     } catch (error) {
 
@@ -97,7 +96,7 @@ export class UserController {
       logger.info("[UserController] Perform dependency injection for UserController was successfully")
 
 
-      const result = userEngine.register_user(params)
+      const result = userEngine.addUser(params)
       return response.status(HttpCode.OK).json(result)
     } catch (error) {
 

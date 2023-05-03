@@ -43,7 +43,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         result.setschedulingTimeHour = schedulingTimeHour;
     }
-    protected newResult(): TimeSlotResult {
+    protected initResult(): TimeSlotResult {
         return new TimeSlotResult();
     }
 

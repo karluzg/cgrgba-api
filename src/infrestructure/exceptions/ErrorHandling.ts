@@ -14,9 +14,11 @@ export const MiddllewareError = (error: Error & Partial<OperationExecption>,
 
     const message = error.statusCode ? error.message : MiddlewareBusinessMessage.INTERNAL_SERVER_ERROR;
 
+    const details= error.details;
+
     const userErrorMessage: Map<string, ResultInfo> = new Map();
 
-    userErrorMessage.set(error.field.toString(), new ResultInfo(message));
+    userErrorMessage.set(error.field.toString(), new ResultInfo(message,details));
 
     let errorMessages = Object.fromEntries(userErrorMessage)
 

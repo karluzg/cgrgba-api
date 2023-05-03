@@ -15,7 +15,7 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
 
 
   protected abstract doExecute(params: P, result: R);
-  protected abstract newResult(): R;
+  protected abstract initResult(): R;
   protected doValidateParameters(params: P): void { }
 
   protected operationId: number
@@ -31,7 +31,7 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
 
   execute(params: P): R {
 
-    let result: R = this.newResult();
+    let result: R = this.initResult();
 
     this.validateParams(params);
 

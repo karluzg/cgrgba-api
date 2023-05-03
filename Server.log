@@ -2324,3 +2324,475 @@
 [2023-05-02T23:01:14.370] [INFO] default - Data Source has been initialized!
 [2023-05-02T23:01:44.576] [INFO] default - Data Source has been initialized!
 [2023-05-02T23:06:08.891] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:10:07.543] [ERROR] default - Error during Data Source initialization: error: password authentication failed for user "postgres"
+    at Parser.parseErrorMessage (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:369:69)
+    at Parser.handlePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:188:21)
+    at Parser.parse (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:103:30)
+    at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:297:9)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 166,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\libpq\\auth.c',
+  line: '334',
+  routine: 'auth_failed'
+}
+[2023-05-03T21:10:52.505] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:11:20.198] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-03T21:11:20.199] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T21:11:20.199] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T21:11:20.199] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T21:11:20.200] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.addUser (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:38:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM'
+}
+[2023-05-03T21:11:20.207] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T21:17:16.162] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:17:40.732] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:19:50.454] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:22:32.326] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:28:27.507] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:30:00.153] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:31:32.894] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:33:05.714] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:33:52.235] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:34:53.047] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:35:51.675] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:37:14.277] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:37:57.415] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:39:25.487] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:40:15.522] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:41:50.328] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:43:02.856] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:44:18.064] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:44:28.942] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-03T21:44:30.751] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T21:44:30.752] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T21:44:30.752] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T21:44:30.753] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.addUser (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:37:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM'
+}
+[2023-05-03T21:44:30.755] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T21:44:53.750] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:45:44.590] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:46:23.658] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:47:07.869] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:48:06.520] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:49:39.457] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:50:25.312] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:50:57.452] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:51:57.188] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:52:18.410] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:53:06.892] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:53:11.561] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:55:35.153] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:55:48.440] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-03T21:55:50.247] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T21:55:50.247] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T21:55:50.248] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T21:55:50.248] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.addUser (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:37:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM'
+}
+[2023-05-03T21:55:50.251] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T21:56:22.329] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-03T21:56:22.329] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T21:56:22.329] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T21:56:22.330] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T21:56:22.330] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.addUser (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:37:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM'
+}
+[2023-05-03T21:56:22.331] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T21:57:31.854] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:58:55.297] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:59:23.363] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:59:37.103] [INFO] default - Data Source has been initialized!
+[2023-05-03T21:59:57.770] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:00:21.424] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:01:00.304] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:01:25.369] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:06:11.314] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:06:37.287] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:06:53.605] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:09:27.890] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:09:53.353] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:16:38.859] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:16:45.352] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:17:07.288] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:17:12.408] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:17:17.094] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:18:01.389] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:18:07.499] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:24:24.338] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:24:28.803] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:24:36.612] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:25:04.605] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:25:14.972] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:25:26.633] [INFO] default - Data Source has been initialized!
+[2023-05-03T22:25:40.415] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:01:38.551] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-03T23:01:38.552] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:01:38.555] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:01:38.555] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:01:38.556] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.addUser (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:37:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:01:38.565] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:02:10.262] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-03T23:02:10.264] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:02:10.264] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:02:10.264] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:02:10.264] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.addUser (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:37:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:02:10.265] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:04:04.371] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:04:15.639] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:08:32.605] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:08:47.632] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:09:43.513] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:10:38.309] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:10:38.310] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:10:38.310] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:10:38.310] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.getUserById (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:99:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:10:38.321] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:11:22.326] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:11:22.326] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:11:22.326] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:11:22.327] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.getUserById (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:99:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:11:22.327] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:12:24.519] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:12:24.519] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:12:24.519] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:12:24.519] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.getUserById (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:99:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:12:24.520] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:12:53.092] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:12:53.092] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:12:53.092] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:12:53.092] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.getUserById (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:99:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:12:53.093] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:13:20.944] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:13:20.945] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:13:20.945] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:13:20.945] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.getUserById (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:99:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:13:20.946] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:13:36.584] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:13:36.585] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:13:36.585] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:13:36.585] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.getUsers (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:71:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:13:36.585] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:13:48.996] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:13:48.996] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:13:48.996] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:13:48.996] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.getUsers (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:71:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:13:48.997] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:14:34.307] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:14:52.999] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:15:20.589] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:15:39.187] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:15:45.371] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:15:54.748] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:16:08.262] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:16:32.130] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:16:58.078] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:17:03.987] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:17:47.049] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:18:15.551] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:18:56.989] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:19:04.793] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:19:17.233] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:19:18.328] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:19:18.329] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:19:18.329] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:19:18.329] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.getUsers (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:71:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:19:18.339] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:22:21.540] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:22:21.541] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:22:21.541] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:22:21.541] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.getUsers (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:71:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:22:21.542] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:22:44.199] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:22:44.199] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:22:44.199] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:22:44.199] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.getUsers (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:71:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:22:44.199] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:23:35.768] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:23:41.338] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:23:49.871] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-03T23:23:49.872] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-03T23:23:49.872] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:23:49.873] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Método não implementado
+    at NotImplementedException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new NotImplementedException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\NotImplementedException.ts:9:9)
+    at RegisterUserOperation.newResult (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\RegisterUserOperation.ts:26:15)
+    at RegisterUserOperation.OperationTemplate.execute (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:34:26)
+    at UserEngineImpl.GenericOperationTemplate.executeOperation (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
+    at UserEngineImpl.register_user (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\service\impl\UserEngineImpl.ts:14:21)
+    at UserController.getUsers (C:\GIT\Personal\Nantoi\cgrgba-api\src\application\controller\user-manager\UserController.ts:71:33)
+    at newFn (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\express\lib\router\route.js:144:13) {
+  statusCode: 501,
+  errorClasseName: 'NotImplementedException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-03T23:23:49.885] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":1,"operationValidatorManager":{}}
+[2023-05-03T23:26:11.690] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:29:31.697] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:29:50.639] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:30:09.957] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:30:50.089] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:33:12.681] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:33:18.354] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:33:36.601] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:34:36.723] [INFO] default - Data Source has been initialized!
+[2023-05-03T23:34:48.553] [INFO] default - Data Source has been initialized!
+[2023-05-04T00:02:35.269] [INFO] default - Data Source has been initialized!
+[2023-05-04T00:03:02.891] [INFO] default - Data Source has been initialized!
+[2023-05-04T00:03:18.956] [INFO] default - Data Source has been initialized!
+[2023-05-04T00:03:45.705] [INFO] default - Data Source has been initialized!
+[2023-05-04T00:03:52.502] [INFO] default - Data Source has been initialized!
+[2023-05-04T00:04:59.252] [INFO] default - Data Source has been initialized!
+[2023-05-04T00:05:30.080] [INFO] default - Data Source has been initialized!
+[2023-05-04T00:06:02.011] [INFO] default - Data Source has been initialized!
+[2023-05-04T00:06:16.590] [INFO] default - Data Source has been initialized!
+[2023-05-04T00:06:24.013] [INFO] default - Data Source has been initialized!
