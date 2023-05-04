@@ -11,6 +11,15 @@ const myDataSource = require('../../../domain/meta-inf/data-source');
 
 @injectable()
 export class PermissionEngineRepositoryImpl implements IPermissionEngineRepository {
+   async savePermission(permission: Permission): Promise<Permission> {
+      const permissionRepository = myDataSource.getRepository(Permission)
+      return await permissionRepository.save(permission)
+   }
+   async finPermissionByCode(permissionCode: string): Promise<Permission> {
+      const userRepository = myDataSource.getRepository(Permission)
+            return await  userRepository.createQueryBuilder('permission')
+            .where('permission.permissionCode = :permissionCode', { permissionCode: permissionCode }).getOne()
+   }
 
    async findByPermissionId(permissionId: number): Promise<Permission> {
 
