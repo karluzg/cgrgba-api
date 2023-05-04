@@ -10729,3 +10729,171 @@
 [2023-05-04T18:16:29.415] [INFO] default - Data Source has been initialized!
 [2023-05-04T18:16:29.418] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
 [2023-05-04T18:16:29.421] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T18:17:03.031] [INFO] default - Data Source has been initialized!
+[2023-05-04T18:17:03.034] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T18:17:03.034] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T18:17:04.250] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-04T18:17:04.251] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-04T18:17:04.251] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-04T18:17:04.252] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":3,"operationValidatorManager":{}}
+[2023-05-04T18:17:04.252] [INFO] default - [OperationTemplate] Begin executing operation:3
+[2023-05-04T18:17:04.253] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-04T18:17:04.253] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
+[2023-05-04T18:17:04.253] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-04T18:17:04.261] [ERROR] default - result of token searched:{"token":"53161090-a14b-4e46-8830-a80692ec446c","sessionCreationDate":"2023-05-04T13:37:08.904Z","sessionExpireDate":"2023-05-05T13:37:08.904Z","user":{"id":"2","userFullName":"Admin Nantoi","userMobileNumber":"123456789","userEmail":"nantoi@nantoi.com","userCreationDate":"2023-05-04T12:41:46.945Z","passwordHash":"$2b$10$1sMKdM/4jsTXJI.on508EebF2RHaCBcJKlufAUZcN42.ojRC4XCoO","passwordSalt":"$2b$10$1sMKdM/4jsTXJI.on508Ee","userStatus":"Novo"}}
+[2023-05-04T18:17:04.261] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user Admin Nantoi
+[2023-05-04T18:17:04.261] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-04T18:17:04.265] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-04T18:17:04.265] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-04T18:17:04.265] [INFO] default - Searching permission in data base
+[2023-05-04T18:17:04.271] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-04T18:17:04.281] [INFO] default - [AddUserOperation] Perform dependency injection for IUserEngineRepository
+[2023-05-04T18:17:04.281] [INFO] default - [AddUserOperation] emial verfication
+[2023-05-04T18:17:04.283] [INFO] default - [OperationTemplate] Error while executing operation  Error: Email inválido ou existe um utilizador na base de dados com o mesmo email
+    at InvalidParametersException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new InvalidParametersException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\InvalidParametersException.ts:8:9)
+    at AddUserOperation.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:37:15)
+    at step (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:48:23)
+    at Object.next (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:29:53)
+    at fulfilled (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  statusCode: 400,
+  errorClasseName: 'InvalidParametersException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-04T18:17:04.292] [INFO] default - [OperationTemplate] End executing operation:3
+[2023-05-04T18:17:04.292] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Email inválido ou existe um utilizador na base de dados com o mesmo email
+    at InvalidParametersException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new InvalidParametersException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\InvalidParametersException.ts:8:9)
+    at AddUserOperation.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:37:15)
+    at step (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:48:23)
+    at Object.next (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:29:53)
+    at fulfilled (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  statusCode: 400,
+  errorClasseName: 'InvalidParametersException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-04T18:17:04.292] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":3,"operationValidatorManager":{}}
+[2023-05-04T18:17:12.938] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-04T18:17:12.938] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-04T18:17:12.938] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-04T18:17:12.939] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":3,"operationValidatorManager":{}}
+[2023-05-04T18:17:12.939] [INFO] default - [OperationTemplate] Begin executing operation:3
+[2023-05-04T18:17:12.939] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-04T18:17:12.939] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
+[2023-05-04T18:17:12.939] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-04T18:17:12.942] [ERROR] default - result of token searched:{"token":"53161090-a14b-4e46-8830-a80692ec446c","sessionCreationDate":"2023-05-04T13:37:08.904Z","sessionExpireDate":"2023-05-05T13:37:08.904Z","user":{"id":"2","userFullName":"Admin Nantoi","userMobileNumber":"123456789","userEmail":"nantoi@nantoi.com","userCreationDate":"2023-05-04T12:41:46.945Z","passwordHash":"$2b$10$1sMKdM/4jsTXJI.on508EebF2RHaCBcJKlufAUZcN42.ojRC4XCoO","passwordSalt":"$2b$10$1sMKdM/4jsTXJI.on508Ee","userStatus":"Novo"}}
+[2023-05-04T18:17:12.942] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user Admin Nantoi
+[2023-05-04T18:17:12.942] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-04T18:17:12.944] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-04T18:17:12.944] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-04T18:17:12.944] [INFO] default - Searching permission in data base
+[2023-05-04T18:17:12.946] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-04T18:17:12.950] [INFO] default - [AddUserOperation] Perform dependency injection for IUserEngineRepository
+[2023-05-04T18:17:12.950] [INFO] default - [AddUserOperation] emial verfication
+[2023-05-04T18:17:12.952] [INFO] default - [AddUserOperation] Creatting randomPAssword
+[2023-05-04T18:17:12.952] [INFO] default - [AddUserOperation] Creatting salt and hash from password
+[2023-05-04T18:17:12.952] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-04T18:17:12.953] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-04T18:17:13.008] [INFO] default - [AddUserOperation] creating user in db
+[2023-05-04T18:17:13.019] [INFO] default - [OperationTemplate] End executing operation:3
+[2023-05-04T18:17:13.019] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":3,"operationValidatorManager":{}}
+[2023-05-04T20:04:32.190] [INFO] default - Data Source has been initialized!
+[2023-05-04T20:04:32.192] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T20:04:32.193] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T20:05:04.854] [INFO] default - Data Source has been initialized!
+[2023-05-04T20:05:04.857] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T20:05:04.858] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T20:05:18.866] [INFO] default - Data Source has been initialized!
+[2023-05-04T20:05:18.868] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T20:05:18.869] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T20:05:40.810] [INFO] default - Data Source has been initialized!
+[2023-05-04T20:05:40.812] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T20:05:40.813] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T20:08:40.896] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-04T20:08:40.897] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-04T20:08:40.897] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-04T20:08:40.898] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":3,"operationValidatorManager":{}}
+[2023-05-04T20:08:40.899] [INFO] default - [OperationTemplate] Begin executing operation:3
+[2023-05-04T20:08:40.899] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-04T20:08:40.900] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
+[2023-05-04T20:08:40.900] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-04T20:08:40.971] [ERROR] default - result of token searched:{"token":"53161090-a14b-4e46-8830-a80692ec446c","sessionCreationDate":"2023-05-04T13:37:08.904Z","sessionExpireDate":"2023-05-05T13:37:08.904Z","user":{"id":"2","userFullName":"Admin Nantoi","userMobileNumber":"123456789","userEmail":"nantoi@nantoi.com","userCreationDate":"2023-05-04T12:41:46.945Z","passwordHash":"$2b$10$1sMKdM/4jsTXJI.on508EebF2RHaCBcJKlufAUZcN42.ojRC4XCoO","passwordSalt":"$2b$10$1sMKdM/4jsTXJI.on508Ee","userStatus":"Novo"}}
+[2023-05-04T20:08:40.971] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user Admin Nantoi
+[2023-05-04T20:08:40.971] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-04T20:08:40.975] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-04T20:08:40.976] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-04T20:08:40.976] [INFO] default - Searching permission in data base
+[2023-05-04T20:08:40.981] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-04T20:08:40.993] [INFO] default - [AddUserOperation] Perform dependency injection for IUserEngineRepository
+[2023-05-04T20:08:40.994] [INFO] default - [AddUserOperation] emial verfication
+[2023-05-04T20:08:40.996] [INFO] default - [OperationTemplate] Error while executing operation  Error: Email inválido ou existe um utilizador na base de dados com o mesmo email
+    at InvalidParametersException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new InvalidParametersException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\InvalidParametersException.ts:8:9)
+    at AddUserOperation.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:37:15)
+    at step (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:48:23)
+    at Object.next (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:29:53)
+    at fulfilled (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  statusCode: 400,
+  errorClasseName: 'InvalidParametersException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-04T20:08:41.006] [INFO] default - [OperationTemplate] End executing operation:3
+[2023-05-04T20:08:41.007] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Email inválido ou existe um utilizador na base de dados com o mesmo email
+    at InvalidParametersException.OperationExecption [as constructor] (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:11:9)
+    at new InvalidParametersException (C:\GIT\Personal\Nantoi\cgrgba-api\src\infrestructure\exceptions\InvalidParametersException.ts:8:9)
+    at AddUserOperation.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:37:15)
+    at step (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:48:23)
+    at Object.next (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:29:53)
+    at fulfilled (C:\GIT\Personal\Nantoi\cgrgba-api\src\domain\operation\user-manager\AddUserOperation.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  statusCode: 400,
+  errorClasseName: 'InvalidParametersException',
+  field: 'SYSTEM',
+  details: undefined
+}
+[2023-05-04T20:08:41.007] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":3,"operationValidatorManager":{}}
+[2023-05-04T20:08:50.305] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-04T20:08:50.305] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-04T20:08:50.305] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-04T20:08:50.305] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":3,"operationValidatorManager":{}}
+[2023-05-04T20:08:50.306] [INFO] default - [OperationTemplate] Begin executing operation:3
+[2023-05-04T20:08:50.306] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-04T20:08:50.306] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
+[2023-05-04T20:08:50.306] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-04T20:08:50.309] [ERROR] default - result of token searched:{"token":"53161090-a14b-4e46-8830-a80692ec446c","sessionCreationDate":"2023-05-04T13:37:08.904Z","sessionExpireDate":"2023-05-05T13:37:08.904Z","user":{"id":"2","userFullName":"Admin Nantoi","userMobileNumber":"123456789","userEmail":"nantoi@nantoi.com","userCreationDate":"2023-05-04T12:41:46.945Z","passwordHash":"$2b$10$1sMKdM/4jsTXJI.on508EebF2RHaCBcJKlufAUZcN42.ojRC4XCoO","passwordSalt":"$2b$10$1sMKdM/4jsTXJI.on508Ee","userStatus":"Novo"}}
+[2023-05-04T20:08:50.309] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user Admin Nantoi
+[2023-05-04T20:08:50.309] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-04T20:08:50.311] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-04T20:08:50.311] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-04T20:08:50.311] [INFO] default - Searching permission in data base
+[2023-05-04T20:08:50.314] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-04T20:08:50.317] [INFO] default - [AddUserOperation] Perform dependency injection for IUserEngineRepository
+[2023-05-04T20:08:50.317] [INFO] default - [AddUserOperation] emial verfication
+[2023-05-04T20:08:50.318] [INFO] default - [AddUserOperation] Creatting randomPAssword
+[2023-05-04T20:08:50.319] [INFO] default - [AddUserOperation] Creatting salt and hash from password
+[2023-05-04T20:08:50.319] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-04T20:08:50.321] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-04T20:08:50.377] [INFO] default - [AddUserOperation] creating user in db
+[2023-05-04T20:08:50.400] [INFO] default - [OperationTemplate] End executing operation:3
+[2023-05-04T20:08:50.400] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":3,"operationValidatorManager":{}}
+[2023-05-04T20:11:24.389] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-04T20:11:24.390] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-04T20:11:24.390] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":3}
+[2023-05-04T20:11:24.391] [INFO] default - [OperationTemplate] Begin executing operation:3
+[2023-05-04T20:11:24.391] [INFO] default - [LoginOperation] Perform dependency injection for IUserEngineRepository
+[2023-05-04T20:11:24.391] [INFO] default - [LoginOperation] Perform dependency injection for ITokenEngineRepository
+[2023-05-04T20:11:24.391] [INFO] default - [LoginOperation] Find User by email
+[2023-05-04T20:11:24.446] [INFO] default - [LoginOperation] Find User asybn User 
+[2023-05-04T20:11:24.446] [INFO] default - [LoginOperation] check if find user
+[2023-05-04T20:11:24.446] [INFO] default - [LoginOperation] check user password
+[2023-05-04T20:11:24.447] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-04T20:11:24.503] [INFO] default - [LoginOperation] creating new token
+[2023-05-04T20:11:24.504] [INFO] default - [LoginOperation]  token expire in 24 hours
+[2023-05-04T20:11:29.016] [INFO] default - [OperationTemplate] End executing operation:3
+[2023-05-04T20:11:29.017] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":3}
