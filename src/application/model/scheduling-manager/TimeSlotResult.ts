@@ -1,14 +1,14 @@
 import { ResultTemplate } from "../../../infrestructure/template/ResultTemplate";
-import { SchedulingTimeHour } from "../../../domain/model/SchedulingTimeHour";
+import { SchedulingTime } from "../../../domain/model/SchedulingTime";
 
 export class TimeSlotResult extends ResultTemplate {
 
-   private schedulingTimeHour: SchedulingTimeHour
+   private schedulingTimeHour: SchedulingTime
 
-   public get getschedulingTimeHour(): SchedulingTimeHour {
+   public get getschedulingTimeHour(): SchedulingTime {
       return this.schedulingTimeHour;
    }
-   set setschedulingTimeHour(schedulingTimeHour: SchedulingTimeHour) {
+   set setschedulingTimeHour(schedulingTimeHour: SchedulingTime) {
       this.schedulingTimeHour = schedulingTimeHour;
    }
 

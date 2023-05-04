@@ -1,432 +1,82 @@
-[2023-05-04T00:31:32.135] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:31:34.977] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T00:31:34.978] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T00:31:34.978] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T00:31:51.313] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:31:53.469] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T00:31:53.469] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T00:31:53.470] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T00:31:53.470] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T00:31:53.470] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T00:31:53.470] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T00:31:53.470] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T00:31:53.473] [ERROR] default - result of token searched:[object Promise]
-[2023-05-04T00:31:53.473] [ERROR] default - valid token was not found
-[2023-05-04T00:31:53.474] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T00:31:53.474] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at AddNewTimeSlotOperation.OperationTemplate.execute (C:\Git\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:54:15)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T00:31:53.482] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T00:31:53.482] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T00:35:51.188] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:37:15.583] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:37:19.630] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T00:37:19.631] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T00:37:19.631] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T00:37:19.631] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T00:37:19.631] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T00:37:19.631] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T00:37:19.631] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T00:37:19.636] [ERROR] default - result of token searched:[object Promise]
-[2023-05-04T00:37:19.636] [ERROR] default - valid token was not found
-[2023-05-04T00:37:19.636] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T00:37:19.636] [ERROR] default - [GenericOperationTemplate] Error while executing operation Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at AddNewTimeSlotOperation.OperationTemplate.execute (C:\Git\cgrgba-api\src\infrestructure\template\OperationTemplate.ts:54:15)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:23:30)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T00:37:19.643] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T00:37:19.643] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T00:38:14.977] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:38:24.128] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:38:27.274] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T00:38:27.275] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T00:38:27.275] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T00:38:27.275] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T00:38:27.275] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T00:38:27.275] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T00:38:27.275] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T00:38:27.279] [ERROR] default - result of token searched:[object Promise]
-[2023-05-04T00:38:27.279] [ERROR] default - valid token was not found
-[2023-05-04T00:38:27.279] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T00:38:27.279] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T00:38:27.279] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T00:40:26.884] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:40:36.494] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:40:38.868] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T00:40:38.868] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T00:57:28.699] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:57:31.931] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T00:57:31.931] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T00:57:46.972] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:57:49.557] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T00:57:49.557] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T00:58:25.864] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:58:56.601] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:58:59.483] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T00:58:59.483] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T00:59:05.959] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:59:07.144] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T00:59:07.145] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T00:59:31.913] [INFO] default - Data Source has been initialized!
-[2023-05-04T00:59:34.044] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T00:59:34.044] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:00:24.601] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:10:13.849] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:10:18.287] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:10:18.287] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:10:18.287] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:10:41.571] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:10:48.433] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:10:50.564] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:10:50.564] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:10:50.565] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:20:37.735] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:20:48.833] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:20:48.833] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:20:48.833] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:20:48.833] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:20:48.834] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:20:48.834] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:20:48.834] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T01:20:48.834] [ERROR] default - result of token searched:[object Promise]
-[2023-05-04T01:20:48.835] [ERROR] default - valid token was not found
-[2023-05-04T01:20:48.835] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T01:20:48.835] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:20:48.835] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T01:22:14.072] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:22:17.632] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:22:17.633] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:22:17.633] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:22:17.634] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:22:17.634] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:22:17.634] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:22:17.634] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T01:22:17.634] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T01:22:17.635] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:22:17.639] [ERROR] default - result of token searched:
-[2023-05-04T01:24:24.024] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:24:27.655] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:24:27.655] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:24:27.655] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:24:27.656] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:24:27.656] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:24:27.656] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:25:51.360] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:25:53.270] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:26:06.060] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:26:06.144] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:26:06.144] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:26:06.144] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:26:06.145] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:26:06.145] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:27:10.577] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:27:12.782] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:27:12.782] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:29:50.085] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:29:50.214] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:29:50.215] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:29:50.216] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:29:50.216] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:29:50.216] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:29:50.216] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:29:50.216] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T01:29:50.219] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T01:30:06.512] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:30:09.259] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:30:09.259] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:30:09.260] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:33:53.167] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:33:58.271] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:33:58.271] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:33:58.272] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:33:58.272] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:33:58.272] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:33:58.272] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:33:58.272] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T01:33:58.276] [ERROR] default - result of token searched:undefined
-[2023-05-04T01:33:58.277] [ERROR] default - valid token was not found
-[2023-05-04T01:33:58.277] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T01:33:58.277] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:33:58.277] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T01:34:16.358] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:34:25.679] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:34:25.679] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:34:25.680] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:34:25.680] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:34:25.680] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:34:25.680] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:34:25.681] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T01:34:25.683] [ERROR] default - result of token searched:undefined
-[2023-05-04T01:34:25.684] [ERROR] default - valid token was not found
-[2023-05-04T01:34:25.684] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T01:34:25.684] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:34:25.684] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T01:36:41.398] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:37:03.346] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:37:03.347] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:37:03.347] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:37:03.347] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:37:03.347] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:37:03.347] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:37:03.347] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T01:37:03.353] [ERROR] default - result of token searched:undefined
-[2023-05-04T01:37:03.353] [ERROR] default - valid token was not found
-[2023-05-04T01:37:03.353] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T01:37:03.353] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:37:03.353] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T01:51:28.207] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:51:28.207] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:51:28.207] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:51:28.207] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:51:28.207] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:51:28.207] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:51:28.207] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T01:51:28.209] [ERROR] default - result of token searched:undefined
-[2023-05-04T01:51:28.209] [ERROR] default - valid token was not found
-[2023-05-04T01:51:28.209] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T01:51:28.209] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:51:28.209] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T01:52:20.481] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:52:45.927] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:52:50.083] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:52:50.083] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:52:50.084] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:52:50.084] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:52:50.084] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:52:50.084] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:52:50.084] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T01:52:50.089] [ERROR] default - result of token searched:undefined
-[2023-05-04T01:52:50.089] [ERROR] default - valid token was not found
-[2023-05-04T01:52:50.089] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T01:52:50.089] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:52:50.089] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T01:53:03.616] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:53:06.060] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:53:06.060] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:53:06.061] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:53:06.061] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:53:06.061] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:53:06.062] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:53:06.062] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T01:53:06.066] [ERROR] default - result of token searched:undefined
-[2023-05-04T01:53:06.066] [ERROR] default - valid token was not found
-[2023-05-04T01:53:06.066] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T01:53:06.066] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:53:06.066] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T01:54:18.379] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:54:25.221] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:54:25.221] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:54:25.221] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:54:25.222] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:54:25.222] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:54:25.222] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:54:25.222] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T01:54:25.225] [ERROR] default - result of token searched:undefined
-[2023-05-04T01:54:25.226] [ERROR] default - valid token was not found
-[2023-05-04T01:54:25.226] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T01:54:25.226] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:54:25.226] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
-[2023-05-04T01:55:27.028] [INFO] default - Data Source has been initialized!
-[2023-05-04T01:55:27.272] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
-[2023-05-04T01:55:27.273] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
-[2023-05-04T01:55:27.273] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:55:27.273] [INFO] default - [OperationTemplate] Begin executing operation:2
-[2023-05-04T01:55:27.273] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
-[2023-05-04T01:55:27.273] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for IInitialActionEngineRespository
-[2023-05-04T01:55:27.273] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
-[2023-05-04T01:55:27.276] [ERROR] default - result of token searched:undefined
-[2023-05-04T01:55:27.276] [ERROR] default - valid token was not found
-[2023-05-04T01:55:27.277] [INFO] default - [OperationTemplate] End executing operation 2
-[2023-05-04T01:55:27.277] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
-[2023-05-04T01:55:27.277] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot Error: Não existe sessão válida para executar a operação
-    at UnauthorizedOperationException.OperationExecption [as constructor] (C:\Git\cgrgba-api\src\infrestructure\exceptions\OperatonException.ts:10:9)
-    at new UnauthorizedOperationException (C:\Git\cgrgba-api\src\infrestructure\exceptions\UnauthorizedOperationException.ts:9:9)
-    at SchedulingTimeHourEngineImpl.GenericOperationTemplate.executeOperation (C:\Git\cgrgba-api\src\infrestructure\template\GenericOperationTemplate.ts:29:23)
-    at SchedulingTimeHourEngineImpl.add_new_time_slot (C:\Git\cgrgba-api\src\domain\service\impl\SchedulingTimeHourEngineImpl.ts:15:21)
-    at SchedulingTimeHourController.addNewTimeSlot (C:\Git\cgrgba-api\src\application\controller\scheduling-manager\SchedulingTimeHourController.ts:34:53)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20)
-    at Layer.handle [as handle_request] (C:\Git\cgrgba-api\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:144:13)
-    at Route.dispatch (C:\Git\cgrgba-api\node_modules\express\lib\router\route.js:114:3)
-    at newFn (C:\Git\cgrgba-api\node_modules\express-async-errors\index.js:16:20) {
-  statusCode: 401,
-  errorClasseName: 'UnauthorizedOperationException',
-  field: 'SYSTEM'
-}
+[2023-05-04T22:55:33.857] [ERROR] default - Error during Data Source initialization: DataTypeNotSupportedError: Data type "Array" in "SchedulingTimeHour.hour" is not supported by "postgres" database.
+    at C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:136:31
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validate (C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:128:18)
+    at C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:43:18
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validateMany (C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:42:25)
+    at DataSource.buildMetadatas (C:\Git\cgrgba-api\src\data-source\DataSource.ts:724:33)
+    at async DataSource.initialize (C:\Git\cgrgba-api\src\data-source\DataSource.ts:259:13)
+[2023-05-04T22:56:57.092] [ERROR] default - Error during Data Source initialization: DataTypeNotSupportedError: Data type "Array" in "SchedulingTimeHour.hour" is not supported by "postgres" database.
+    at C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:136:31
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validate (C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:128:18)
+    at C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:43:18
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validateMany (C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:42:25)
+    at DataSource.buildMetadatas (C:\Git\cgrgba-api\src\data-source\DataSource.ts:724:33)
+    at async DataSource.initialize (C:\Git\cgrgba-api\src\data-source\DataSource.ts:259:13)
+[2023-05-04T23:00:01.175] [ERROR] default - Error during Data Source initialization: DataTypeNotSupportedError: Data type "Array" in "SchedulingTimeHour.hour" is not supported by "postgres" database.
+    at C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:136:31
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validate (C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:128:18)
+    at C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:43:18
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validateMany (C:\Git\cgrgba-api\src\metadata-builder\EntityMetadataValidator.ts:42:25)
+    at DataSource.buildMetadatas (C:\Git\cgrgba-api\src\data-source\DataSource.ts:724:33)
+    at async DataSource.initialize (C:\Git\cgrgba-api\src\data-source\DataSource.ts:259:13)
+[2023-05-04T23:00:48.459] [INFO] default - Data Source has been initialized!
+[2023-05-04T23:00:48.461] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T23:00:48.461] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T23:00:48.468] [INFO] default - [initNantoiUSer] Creatting salt and hash from password
+[2023-05-04T23:00:48.469] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-04T23:00:48.470] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-04T23:00:48.526] [INFO] default - [initNantoiUSer] Creating Nantoi User
+[2023-05-04T23:04:52.711] [INFO] default - Data Source has been initialized!
+[2023-05-04T23:04:52.714] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T23:04:52.714] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T23:04:52.725] [INFO] default - [initNantoiUSer] Creatting salt and hash from password
+[2023-05-04T23:04:52.726] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-04T23:04:52.726] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-04T23:04:52.781] [INFO] default - [initNantoiUSer] Creating Nantoi User
+[2023-05-04T23:10:23.921] [INFO] default - Data Source has been initialized!
+[2023-05-04T23:10:23.922] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T23:10:23.923] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T23:10:23.930] [INFO] default - [initNantoiUSer] Creatting salt and hash from password
+[2023-05-04T23:10:23.930] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-04T23:10:23.930] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-04T23:10:23.986] [INFO] default - [initNantoiUSer] Creating Nantoi User
+[2023-05-04T23:15:00.819] [INFO] default - Data Source has been initialized!
+[2023-05-04T23:15:00.821] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T23:15:00.821] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T23:15:00.829] [INFO] default - [initNantoiUSer] Creatting salt and hash from password
+[2023-05-04T23:15:00.829] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-04T23:15:00.830] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-04T23:15:00.886] [INFO] default - [initNantoiUSer] Creating Nantoi User
+[2023-05-04T23:23:35.531] [INFO] default - Data Source has been initialized!
+[2023-05-04T23:23:35.532] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T23:23:35.532] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T23:35:20.362] [INFO] default - Data Source has been initialized!
+[2023-05-04T23:35:20.364] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T23:35:20.364] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T23:36:47.145] [INFO] default - Data Source has been initialized!
+[2023-05-04T23:36:47.147] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T23:36:47.148] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T23:36:47.155] [INFO] default - [initNantoiUSer] Creatting salt and hash from password
+[2023-05-04T23:36:47.155] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-04T23:36:47.156] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-04T23:36:47.211] [INFO] default - [initNantoiUSer] Creating Nantoi User
+[2023-05-04T23:40:06.158] [INFO] default - Data Source has been initialized!
+[2023-05-04T23:40:06.160] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T23:40:06.161] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T23:40:06.169] [INFO] default - [initNantoiUSer] Creatting salt and hash from password
+[2023-05-04T23:40:06.169] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-04T23:40:06.170] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-04T23:40:06.225] [INFO] default - [initNantoiUSer] Creating Nantoi User
+[2023-05-04T23:41:08.272] [INFO] default - Data Source has been initialized!
+[2023-05-04T23:41:08.274] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-04T23:41:08.274] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-04T23:41:08.281] [INFO] default - [initNantoiUSer] Creatting salt and hash from password
+[2023-05-04T23:41:08.281] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-04T23:41:08.282] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-04T23:41:08.337] [INFO] default - [initNantoiUSer] Creating Nantoi User

@@ -8,8 +8,6 @@ import { ITokenEngineRepository } from '../../domain/repository/ITokenEngineRepo
 import { TokenEngineRepositoryImpl } from '../../domain/repository/impl/TokenEngineEngineImpl';
 import { IPermissionEngineRepository } from '../../domain/repository/IPermissionEngineRepository';
 import { PermissionEngineRepositoryImpl } from '../../domain/repository/impl/PermissionEngineRepositoryImpl';
-import { IInitialActionEngineRespository } from '../../domain/repository/IInitialActionEngineRepository';
-import { InitialActionEngineRepositoryImpl } from '../../domain/repository/impl/InitialActionEngineRepositoryImpl';
 import { ISessionEngine } from '../../domain/service/ISessionEngine';
 import { SessionEngineImpl } from '../../domain/service/impl/SessionEngineImpl';
 import { IUserEngineRepository } from '../../domain/repository/IUserEngineRepository';
@@ -25,7 +23,6 @@ container.register<ISchedulingTimeHourEngine>('ISchedulingTimeHourEngine', { use
 //Register container for repository
 container.register<ITokenEngineRepository>('ITokenEngineRepository', { useClass: TokenEngineRepositoryImpl })
 container.register<IPermissionEngineRepository>('IPermissionEngineRepository', { useClass: PermissionEngineRepositoryImpl })
-container.register<IInitialActionEngineRespository>('IInitialActionEngineRespository', { useClass: InitialActionEngineRepositoryImpl })
 container.register<IUserEngineRepository>('IUserEngineRepository', { useClass: UserEngineRepositoryImpl })
 
 export default container;

@@ -1,13 +1,11 @@
-import { Entity, Column, PrimaryColumn } from "typeorm"
 
+import { Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { SchedulingTime } from "./SchedulingTime";
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: "portalConsular" })
 export class Hour {
+    @PrimaryColumn({ nullable: false })
+    code: string
 
-    @PrimaryColumn({nullable:false})
-    hourCode: string
-
-    @Column({nullable:false})
-    hourDesignation:string
 
 }

@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany} from "typeorm"
 import { User } from "./User"
-import { Permission } from "./Persmission"
+import { Permission } from "./Permission"
 
 @Entity({schema:"portalConsular"})
 export class Role {
@@ -14,8 +14,8 @@ export class Role {
     @Column()
     roleDescription: string
 
-    @ManyToMany(() => Permission)
-    @JoinTable()
+    @ManyToMany(() => Permission, { lazy: true })
+    @JoinTable({ name: "role_permission" })
     permissions: Permission[]
 
 
