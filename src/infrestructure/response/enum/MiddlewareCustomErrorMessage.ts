@@ -2,8 +2,10 @@ export enum MiddlewareBusinessMessage {
 
 
     // BUSINESS MESSAGE - USER MANAGER 1 -100
-    USER_MANAGER_INVALID_USER_NAME="O nome do utilizaor é inválido",
-
+    USER_MANAGER_INVALID_USER_NAME="O nome do utilizador está inválido",
+    USER_EMIAL_NOT_FOUND="O utilizador com esse email não foi encontrado!",
+    USER_INVALID_PASSWORD = "A palavra-passe  está inválida",
+    USER_INVALID_EMAIL = "Email inválido ou existe um utilizador na base de dados com o mesmo email",
   
     // BUSINESS MESSAGE - SCHEDULING AND SCHEDULING TIME 101 201
     

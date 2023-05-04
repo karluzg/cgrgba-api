@@ -14,13 +14,13 @@ import { ParamsTemplate } from "./../template/ParamsTemplate";
 
 export abstract class GenericOperationTemplate {
 
-    public executeOperation<R extends ResultTemplate, P extends ParamsTemplate>(operation: IOperation<R, P>, params: P): R {
+    public  async executeOperation<R extends ResultTemplate, P extends ParamsTemplate>(operation: IOperation<R, P>, params: P): Promise<R> {
 
         try {
 
             logger.info("[GenericOperationTemplate] Begin executing Operation", JSON.stringify(operation));
 
-            return operation.execute(params)
+            return await operation.execute(params)
 
         } catch (error) {
             logger.error("[GenericOperationTemplate] Error while executing operation", error)
@@ -42,6 +42,7 @@ export abstract class GenericOperationTemplate {
             else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
                 throw new UnsuccessfullOperationException(error.field, error.message)
             } else {
+                throw error
             }
         } finally {
             logger.info("[GenericOperationTemplate] End executing Operation " + JSON.stringify(operation));

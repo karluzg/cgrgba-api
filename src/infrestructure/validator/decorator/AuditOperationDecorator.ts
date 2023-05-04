@@ -5,7 +5,7 @@ import { ResultTemplate } from "../../template/ResultTemplate";
 
 
 export class AuditOperationDecorator implements IAuditOperationHandler {
-    execute<R extends ResultTemplate, P extends ParamsTemplate>(operation: IOperation<R, P>, params: P): R {
+    execute<R extends ResultTemplate, P extends ParamsTemplate>(operation: IOperation<R, P>, params: P): Promise<R> {
         throw new Error("AutidOperationDecorator not implemented.");
     }
 

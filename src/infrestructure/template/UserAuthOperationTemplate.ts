@@ -14,6 +14,7 @@ export abstract class UserAuthOperationTemplate<R extends ResultTemplate, P exte
 
 
     private operationValidatorManager: OperationValidatorManager
+    protected abstract  doUserAuthExecuted(tokenSession: TokenSession, params: P, result: R): Promise<void>;
 
 
     constructor(operationId: number, operationValidatorManager: OperationValidatorManager) {
@@ -22,22 +23,22 @@ export abstract class UserAuthOperationTemplate<R extends ResultTemplate, P exte
     }
 
 
-    protected doAuthExecute(tokenSession: TokenSession, params: P, result: R) {
+    protected async doAuthExecute(tokenSession: TokenSession, params: P, result: R) {
 
 
         logger.info("Validate if user has permission to execute the operation")
-        const isOperationAllowed = this.operationValidatorManager.isOperationAllowed(tokenSession, this);
+        const isOperationAllowed =await this.operationValidatorManager.isOperationAllowed(tokenSession, this);
 
         if (!isOperationAllowed) {
             logger.error("[UserAuthOperationTemplate] user does not have permission to execute this operation")
             throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.OPERTATION_NOT_ALLOWED)
         }
 
-            this.doUserAuthExecuted(tokenSession, params, result)
+        await this.doUserAuthExecuted(tokenSession, params, result)
 
     }
 
-    protected abstract doUserAuthExecuted(tokenSession: TokenSession, params: P, result: R): void;
+ 
 
 
 }

@@ -3,5 +3,5 @@ import { IOperation } from "./IOperation";
 import { ParamsTemplate } from "../template/ParamsTemplate";
 
 export interface IAuditOperationHandler{
-    execute<R extends ResultTemplate, P extends ParamsTemplate>(operation: IOperation<R, P>, params: P): R
+    execute<R extends ResultTemplate, P extends ParamsTemplate>(operation: IOperation<R, P>, params: P): Promise <R>
 }

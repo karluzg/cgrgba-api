@@ -1,33 +1,23 @@
 
 import { InitialAction } from "../../model/InitialAction";
-import { myDataSource } from "../../meta-inf/data-source";
+const myDataSource = require('../../../domain/meta-inf/data-source');
+import { plainToClass } from 'class-transformer';
 import { IInitialActionEngineRespository } from "../IInitialActionEngineRepository";
 
 export class InitialActionEngineRepositoryImpl implements IInitialActionEngineRespository {
 
-    findByUserAndExecutedDateIsNull(userId: number): InitialAction[] {
+    async findByUserAndExecutedDateIsNull(userId: number): Promise<InitialAction[]> {
 
-        const initialActionList: InitialAction[] = []
-        const initialActionRepository = myDataSource.getRepository(InitialAction)
+    const initialActionRepository = myDataSource.getRepository(InitialAction)
+    const initialActionList = await initialActionRepository.createQueryBuilder('initialAction')
+        .leftJoinAndSelect("initialAction.user","user")
+        .where('user.id = :userId', { userId: userId })
+        .getMany();
 
-        const initialActions = initialActionRepository.createQueryBuilder('initialAction')
-            .where('initialAction.user.id = :userId', { user: userId })
-            .andWhere('initialAction.executedDate is null')
-            .getMany();
+    return initialActionList
 
-        //insert entity results from a query into an array
-        initialActions.then((result) => {
-            if (result != null) {
-                result.forEach((initialAction) => {
-                    initialActionList.push(initialAction);
-                })
-            }
-        })
-
-        return initialActionList;
+       
     }
-
 }
-
 
 

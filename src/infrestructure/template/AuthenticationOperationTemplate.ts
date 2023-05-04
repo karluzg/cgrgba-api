@@ -11,10 +11,13 @@ import { TokenSession } from "../../domain/model/TokenSession";
 import { ForbiddenOperationException } from "../exceptions/ForbiddenOperationException";
 import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
 import { Field } from "../exceptions/enum/Field";
+import { promises } from "dns";
 
 export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, P extends IAuthParams> extends OperationTemplate<R, P>{
 
     protected initialActionRepository: IInitialActionEngineRespository
+    protected abstract doAuthExecute(tokenSession: TokenSession, params: P, result: R): Promise<void>
+
 
     public setInitialActionRepository(initialActionRepository: IInitialActionEngineRespository) {
         this.initialActionRepository = initialActionRepository;
@@ -30,7 +33,7 @@ export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, 
         return new Array<InitialActionTypeEnum>();
     }
 
-    protected doExecute(params: P, result: R) {
+    protected async doExecute(params: P, result: R) {
 
 
         logger.info("[AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository")
@@ -43,23 +46,23 @@ export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, 
         logger.info("[AuthenticationOperationTemplate] - Begin searching for valid token");
 
 
-        const tokenSessionFound = tokenRepository.findByTokenAndValidSessionExpireDate(params.getAuthenticationToken(), new Date)
+        const tokenSessionFound = await tokenRepository.findByTokenAndValidSessionExpireDate(params.getAuthenticationToken(), new Date)
 
         logger.error("result of token searched:" + JSON.stringify(tokenSessionFound))
 
-        if (tokenSessionFound && Object.keys(tokenSessionFound).length == 0) {
+        if (!tokenSessionFound) {
             logger.error("valid token was not found")
             throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.INVALID_TOKEN);
 
         }
 
-        logger.info("[AuthenticationOperationTemplate] - Valid token was founded for user %s", tokenSessionFound.user.UserFullName);
+        logger.info("[AuthenticationOperationTemplate] - Valid token was founded for user %s", tokenSessionFound.user.userFullName);
 
         logger.info("[AuthenticationOperationTemplate] - Begin searching initial actions");
 
         const userId = tokenSessionFound.user.id;
 
-        const initialActions = initiaActionEngineRepository.findByUserAndExecutedDateIsNull(userId)
+        const initialActions = await initiaActionEngineRepository.findByUserAndExecutedDateIsNull(userId)
 
         initialActions.filter((initialAction) => {
 
@@ -72,11 +75,11 @@ export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, 
 
         });
 
-        this.doAuthExecute(tokenSessionFound, params, result)
+      await  this.doAuthExecute(tokenSessionFound, params, result)
 
     }
 
 
-    protected abstract doAuthExecute(tokenSession: TokenSession, params: P, result: R)
+ 
 
 }

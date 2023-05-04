@@ -17,7 +17,7 @@ import { UnsuccessfullOperationException } from "../../../infrestructure/excepti
 export class UserController {
 
 
-  public addUser(request: Request, response: Response): Response {
+  public async addUser(request: Request, response: Response):Promise< Response> {
 
     try {
       const { userFullName, userMobileNumber, userEmail } = request.body;
@@ -34,7 +34,7 @@ export class UserController {
       logger.info("[UserController] Perform dependency injection for UserController was successfully")
 
 
-      const result = userEngine.addUser(params)
+      const result =await userEngine.addUser(params)
       return response.status(HttpCode.OK).json(result)
     } catch (error) {
 
@@ -55,7 +55,7 @@ export class UserController {
     }
   }
   
-  public getUsers(request: Request, response: Response): Response {
+  public async getUsers(request: Request, response: Response): Promise< Response> {
 
     try {
       const { authenticationToken, userFullName, userMobileNumber, userEmail } = request.body;
@@ -68,7 +68,7 @@ export class UserController {
       logger.info("[UserController] Perform dependency injection for UserController was successfully")
 
 
-      const result = userEngine.addUser(params)
+      const result = await userEngine.addUser(params)
       return response.status(HttpCode.OK).json(result)
     } catch (error) {
 
@@ -83,7 +83,7 @@ export class UserController {
       }
     }
   }
-  public getUserById(request: Request, response: Response): Response {
+  public async getUserById(request: Request, response: Response): Promise< Response> {
 
     try {
       const { authenticationToken, userFullName, userMobileNumber, userEmail } = request.body;
@@ -96,7 +96,7 @@ export class UserController {
       logger.info("[UserController] Perform dependency injection for UserController was successfully")
 
 
-      const result = userEngine.addUser(params)
+      const result = await userEngine.addUser(params)
       return response.status(HttpCode.OK).json(result)
     } catch (error) {
 

@@ -4,6 +4,6 @@ import { TimeSlotResult } from "../../application/model/scheduling-manager/TimeS
 
 export interface ISchedulingTimeHourEngine {
 
-    add_new_time_slot(params: TimeSlotParams): TimeSlotResult;
+    add_new_time_slot(params: TimeSlotParams):   Promise<TimeSlotResult>;
 
 }

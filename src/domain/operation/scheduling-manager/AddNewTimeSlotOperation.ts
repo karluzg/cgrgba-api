@@ -20,7 +20,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
     }
 
 
-    protected doUserAuthExecuted(tokenSession: TokenSession, params:TimeSlotParams , result: TimeSlotResult) {
+    protected async doUserAuthExecuted(tokenSession: TokenSession, params:TimeSlotParams , result: TimeSlotResult) {
 
         // TO BE IMPLEMENT
         logger.info("Chegou aqui na adição do slot horário")

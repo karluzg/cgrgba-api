@@ -11,8 +11,8 @@ import { AddNewTimeSlotOperation } from "../../operation/scheduling-manager/AddN
 @injectable()
 export class SchedulingTimeHourEngineImpl extends GenericOperationTemplate implements ISchedulingTimeHourEngine {
 
-    add_new_time_slot(params: TimeSlotParams): TimeSlotResult {
-        return this.executeOperation(new AddNewTimeSlotOperation(), params)
+    async add_new_time_slot(params: TimeSlotParams):  Promise<TimeSlotResult> {
+        return await this.executeOperation(new AddNewTimeSlotOperation(), params)
     }
 
 

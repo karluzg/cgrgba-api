@@ -14,7 +14,7 @@ import { ForbiddenOperationException } from "../exceptions/ForbiddenOperationExc
 export abstract class OperationTemplate<R extends ResultTemplate, P extends ParamsTemplate> implements IOperation<R, P>{
 
 
-  protected abstract doExecute(params: P, result: R);
+  protected abstract doExecute(params: P, result: R):Promise<void>;
   protected abstract initResult(): R;
   protected doValidateParameters(params: P): void { }
 
@@ -29,7 +29,7 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
   }
 
 
-  execute(params: P): R {
+  async execute(params: P): Promise<R> {
 
     let result: R = this.initResult();
 
@@ -39,7 +39,7 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
 
       logger.info("[OperationTemplate] Begin executing operation:" + this.operationId)
 
-      this.doExecute(params, result);
+      await this.doExecute(params, result);
 
       return result
 
@@ -55,6 +55,8 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
       if (error.errorClasseName == ErrorExceptionClass.FORBIDDEN) {
         throw new ForbiddenOperationException(error.field, error.message);
       }
+
+      throw error
     } finally {
       logger.info("[OperationTemplate] End executing operation:" + this.operationId)
 

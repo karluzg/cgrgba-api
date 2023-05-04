@@ -9,9 +9,9 @@ import { injectable } from "tsyringe";
 @injectable()
 export class UserEngineImpl extends GenericOperationTemplate implements IUserEngine {
 
-    addUser(params: UserParams): UserResult {
+    async addUser(params: UserParams): Promise<UserResult> {
 
-        return this.executeOperation(new AddUserOperation(), params)
+        return await this.executeOperation(new AddUserOperation(), params)
 
     }
 

@@ -13,16 +13,16 @@ import { Field } from "../../exceptions/enum/Field";
 
 export class OperationValidatorManager {
 
-  public isOperationAllowed<R extends ResultTemplate, P extends IAuthParams>(tokenSession: TokenSession, operation: UserAuthOperationTemplate<R, P>): boolean {
+  public async isOperationAllowed<R extends ResultTemplate, P extends IAuthParams>(tokenSession: TokenSession, operation: UserAuthOperationTemplate<R, P>): Promise<boolean> {
 
     logger.info("[OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository")
 
-    const permissionRepositoy = container.resolve<IPermissionEngineRepository>("PermissionEngineRepositoryImpl")
+    const permissionRepositoy = container.resolve<IPermissionEngineRepository>("IPermissionEngineRepository")
 
 
     logger.info("Searching permission in data base")
 
-    const permissionEntity = permissionRepositoy.findByPermissionId(operation.getOperationId())
+    const permissionEntity = await permissionRepositoy.findByPermissionId(operation.getOperationId())
 
     if (permissionEntity == null) {
       logger.error("Permission operation %s was not found", operation.getOperationId())
@@ -30,7 +30,7 @@ export class OperationValidatorManager {
     }
 
     logger.info("permission was founded. validate if operation is valid for user")
-    return permissionRepositoy.isUserOperationAllowed(operation.getOperationId(), tokenSession.user.id)
+    return await permissionRepositoy.isUserOperationAllowed(operation.getOperationId(), tokenSession.user.id)
 
 
 

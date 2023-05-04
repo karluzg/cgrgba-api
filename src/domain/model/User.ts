@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
-import { UserRole } from "./UserRole"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinTable, ManyToMany } from "typeorm"
 import { UserStatusEnum } from "./enum/UserStatus"
 import { IUserActivable } from "./interface/IUserActivable"
+import { Role } from "./Role"
 
 @Entity({schema:"portalConsular"})
 export class User implements IUserActivable {
@@ -9,22 +9,22 @@ export class User implements IUserActivable {
     @PrimaryGeneratedColumn({type:"bigint"})
     id: number
 
-    @Column({unique: true,
+    @Column({
     length:50,
     nullable:false})
-    UserFullName: string
+    userFullName: string
 
-    @Column({unique:true,
+    @Column({
     length:21})
-    UserMobileNumber: string
+    userMobileNumber: string
 
     @Column({unique:true,
     length:34,
     nullable:false})
-    UserEmail: string
+    userEmail: string
 
     @Column({nullable:false})
-    UserCreationDate: Date
+    userCreationDate: Date
 
     @Column()
     passwordHash: string
@@ -38,10 +38,10 @@ export class User implements IUserActivable {
 
     //nullfy -> when a Parent entity is deleted or its relationship with a Child entity is broken,
     // the foreign key value in the Child table will be set to null.
-
-    @OneToMany(() => UserRole, (userRoles) => userRoles.user, {cascade:true, orphanedRowAction:"nullify"})
-    // lazy relationship - > The entities in lazy relations are loaded once you access them. Must have Promise as type
-    userRoles: Promise<UserRole[]> 
+   
+    @ManyToMany(() => Role)
+    @JoinTable()
+    roles: Role[]
 
     active(): void {
        this.userStatus=UserStatusEnum.ACTIVE
