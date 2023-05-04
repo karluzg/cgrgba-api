@@ -23,13 +23,12 @@ export abstract class GenericOperationTemplate {
             return await operation.execute(params)
 
         } catch (error) {
-            logger.error("[GenericOperationTemplate] Error while executing operation", error)
+
 
             if (error.errorClasseName == ErrorExceptionClass.UNAUTHORIZED) {
                 throw new UnauthorizedOperationException(error.field, error.message)
 
-            }
-            if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
+            } else if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
                 throw new NotImplementedException(error.field, error.message)
 
             } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
@@ -38,9 +37,7 @@ export abstract class GenericOperationTemplate {
             }
             else if (error.errorClasseName === ErrorExceptionClass.FORBIDDEN) {
                 throw new ForbiddenOperationException(error.field, error.message)
-            }
-            else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
-                throw new UnsuccessfullOperationException(error.field, error.message)
+
             } else {
                 throw error
             }

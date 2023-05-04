@@ -2,9 +2,7 @@ import 'express-async-errors'
 import express from "express";
 import 'reflect-metadata'
 import './infrestructure/config/injection'
-import { Request, Response, NextFunction } from "express";
 import sharedRoutes from "./application/routes-management/shared-routes";
-//import { myDataSource } from "./meta-inf/data-source";
 import logger from "./infrestructure/config/logger";
 import { MiddllewareError } from './infrestructure/exceptions/ErrorHandling';
 import { initNantoiUser } from './domain/meta-inf/InitNantoiUser';
@@ -23,7 +21,7 @@ myDataSource.initialize().then(() => {
     app.use(MiddllewareError)
 
 
-    app.listen(3001)
+    app.listen(3000)
 
     console.info("Data Source has been initialized!")
     logger.info("Data Source has been initialized!")

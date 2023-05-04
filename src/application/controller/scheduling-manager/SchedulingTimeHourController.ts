@@ -11,6 +11,7 @@ import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExc
 import { ISchedulingTimeHourEngine } from "../../../domain/service/ISchedulingTimeHourEngine";
 import { TimeSlotParams } from "../../../application/model/scheduling-manager/TimeSlotParams";
 import logger from "../../../infrestructure/config/logger";
+import { AuthValidator } from "../validator/AuthValidator";
 
 
 export class SchedulingTimeHourController {
@@ -19,12 +20,16 @@ export class SchedulingTimeHourController {
 
         try {
 
-            const { authenticationToken, date, serviceInterval } = request.body;
+            const { date, serviceInterval } = request.body;
+
+            const authenticationToken = AuthValidator.checkAuthorizationToken(request);
 
             const params = new TimeSlotParams(authenticationToken, date, serviceInterval);
 
             logger.info("[SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine")
             const schedulingTimeHourEngine = container.resolve<ISchedulingTimeHourEngine>("ISchedulingTimeHourEngine")
+
+            AuthValidator.checkAuthorizationToken
 
             const result = schedulingTimeHourEngine.add_new_time_slot(params)
 

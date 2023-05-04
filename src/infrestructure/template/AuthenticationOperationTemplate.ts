@@ -48,7 +48,7 @@ export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, 
 
         const tokenSessionFound = await tokenRepository.findByTokenAndValidSessionExpireDate(params.getAuthenticationToken(), new Date)
 
-        logger.error("result of token searched:" + JSON.stringify(tokenSessionFound))
+        logger.error("result of token searched:" + tokenSessionFound.token);
 
         if (!tokenSessionFound) {
             logger.error("valid token was not found")

@@ -8,6 +8,9 @@ import { NotImplementedException } from "../exceptions/NotImplementedException";
 import { ErrorExceptionClass } from "../exceptions/ErrorExceptionClass";
 import { UnsuccessfullOperationException } from "../exceptions/UnsuccessfullOperationException";
 import { ForbiddenOperationException } from "../exceptions/ForbiddenOperationException";
+import { throws } from "assert";
+import { Field } from "../exceptions/enum/Field";
+import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
 
 
 
@@ -44,21 +47,19 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
       return result
 
     } catch (error) {
-      logger.info("[OperationTemplate] Error while executing operation ", error)
+
 
 
       if (error.errorClasseName == ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message);
 
-      }
-
-      if (error.errorClasseName == ErrorExceptionClass.FORBIDDEN) {
+      } else if (error.errorClasseName == ErrorExceptionClass.FORBIDDEN) {
         throw new ForbiddenOperationException(error.field, error.message);
       }
 
       throw error
     } finally {
-      logger.info("[OperationTemplate] End executing operation:" + this.operationId)
+      logger.info("[OperationTemplate] End executing operation " + this.operationId)
 
     }
   }

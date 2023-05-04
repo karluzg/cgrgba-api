@@ -1,8 +1,8 @@
 import 'reflect-metadata'
 import { expect } from 'chai'
-import { AddNewTimeSlotParams } from '../../engine-interface/params/scheduling-time/AddNewTimeSlotParams'
+import { TimeSlotParams } from '../../application/model/scheduling-manager/TimeSlotParams'
 import axios from 'axios'
-import { ISchedulingTimeHourEngine } from '../../engine-interface/services/ISchedulingTimeHourEngine'
+
 
 describe("Add new time slot", () => {
     it("Should fail Http status code 401: User does not have a valid token", async () => {
@@ -14,7 +14,7 @@ describe("Add new time slot", () => {
         console.log(data.getTime()*1000)
 
         const response = await axios.post("http://localhost:3000/slot",
-         new AddNewTimeSlotParams("token1234", new Date(), 12));
+            new TimeSlotParams("token1234", new Date(), 12));
 
         expect(response.status).equal(401)
 
