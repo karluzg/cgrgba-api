@@ -15,6 +15,7 @@ import { container } from 'tsyringe'
 import { PasswordValidator } from "../../../infrestructure/validator/managers/PasswordValidator";
 import { UserStatusEnum } from "../../model/enum/UserStatus";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
+import { News } from "../../model/News";
 
 
 export class AddUserOperation extends UserAuthOperationTemplate<UserResult, UserParams>{
@@ -56,6 +57,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
         logger.info("[AddUserOperation] creating user in db")
         const newUser: User = await userRepository.saveUser(user)
+
 
         result.setUser = newUser;
 

@@ -1,4 +1,4 @@
-import { Permission } from "../model/Persmission";
+import { Permission } from "../model/Permission";
 
 
 export interface IPermissionEngineRepository {

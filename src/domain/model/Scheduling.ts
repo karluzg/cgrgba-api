@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm"
 import { User } from "./User"
 import { Citizen } from "./Citizen"
 import { SchedulingService } from "./SchedulingService"
-import { SchedulingTimeHour } from "./SchedulingTimeHour"
+import { SchedulingTime } from "./SchedulingTime"
 import { SchedulingStatus } from "./SchedulingStatus"
 
 @Entity({schema:"portalConsular"})
@@ -20,8 +20,8 @@ export class Scheduling {
     @ManyToOne(()=> SchedulingService,(schedulingService) => schedulingService.schedulingServiceCode,{eager:true})
     schedulingService:SchedulingService
 
-    @ManyToOne(()=> SchedulingTimeHour,(schedulingTimeHour) => schedulingTimeHour.id,{eager:true})
-    schedulingTimeHour:SchedulingTimeHour
+    @ManyToOne(() => SchedulingTime, (schedulingTimeHour) => schedulingTimeHour.id, { eager: true })
+    schedulingTimeHour: SchedulingTime
 
    
     @ManyToOne(()=> SchedulingStatus,(schedulingStatus) => schedulingStatus.schedulingStatusCode,{eager:true})

@@ -1,5 +1,5 @@
 
-import { Permission } from "../../model/Persmission";
+import { Permission } from "../../model/Permission";
 import { Role } from "../../model/Role";
 import { User } from "../../model/User";
 //import { myDataSource } from "../web-api/meta-inf/data-source";
