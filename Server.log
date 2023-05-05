@@ -11250,3 +11250,17 @@
 [2023-05-04T21:50:10.452] [INFO] default - [creteRoleAdmin] Find role by name
 [2023-05-04T21:50:11.793] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
 [2023-05-04T21:50:11.793] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-04T21:51:25.479] [INFO] default - Data Source has been initialized!
+[2023-05-04T21:51:25.482] [INFO] default - [cretePermissionGroupAdmin] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-04T21:51:25.483] [INFO] default - [cretePermissionGroupAdmin] Find role by name
+[2023-05-04T21:51:25.497] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-04T21:51:25.497] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-04T21:51:25.503] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-04T21:51:25.507] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-04T21:51:25.510] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-04T21:51:25.512] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-04T21:51:25.514] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-04T21:51:31.041] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-04T21:51:31.041] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-04T21:51:31.072] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-04T21:51:31.072] [INFO] default - [createUserNantoi] Find User by email
