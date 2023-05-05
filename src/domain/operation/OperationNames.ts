@@ -5,4 +5,5 @@ export enum OperationNames{
     ADD_NEW_TIME_SLOT=2,
     USER_CREATE = 1,
     SESSION_LOGIN=4,
+    USER_UPDATE=5
     }
