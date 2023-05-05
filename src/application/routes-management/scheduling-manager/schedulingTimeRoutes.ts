@@ -5,7 +5,7 @@ const schedulingtimeRoutes = express.Router()
 
 
 const schedulingTimeHour = new SchedulingTimeHourController()
-schedulingtimeRoutes.post("", schedulingTimeHour.addNewTimeSlot)
+schedulingtimeRoutes.post("", schedulingTimeHour.add_new_time_slot)
 
 export default schedulingtimeRoutes
 

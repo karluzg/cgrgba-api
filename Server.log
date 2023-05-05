@@ -80,3 +80,804 @@
 [2023-05-04T23:41:08.281] [INFO] default - [PasswordValidator] craeting round salt
 [2023-05-04T23:41:08.282] [INFO] default - [PasswordValidator] genereate hash with password and salt
 [2023-05-04T23:41:08.337] [INFO] default - [initNantoiUSer] Creating Nantoi User
+[2023-05-04T23:45:27.846] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-04T23:45:33.342] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-04T23:45:37.754] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-04T23:45:38.803] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-04T23:45:45.084] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T08:36:10.577] [INFO] default - Data Source has been initialized!
+[2023-05-05T08:36:10.578] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T08:36:10.579] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T08:36:33.412] [INFO] default - Data Source has been initialized!
+[2023-05-05T08:36:33.415] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T08:36:33.415] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T08:36:44.860] [INFO] default - Data Source has been initialized!
+[2023-05-05T08:36:44.861] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T08:36:44.862] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T08:36:49.532] [INFO] default - Data Source has been initialized!
+[2023-05-05T08:36:49.533] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T08:36:49.533] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T08:37:26.595] [INFO] default - Data Source has been initialized!
+[2023-05-05T08:37:26.597] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T08:37:26.597] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T08:38:54.162] [INFO] default - Data Source has been initialized!
+[2023-05-05T08:38:54.163] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T08:38:54.163] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T08:39:03.063] [INFO] default - Data Source has been initialized!
+[2023-05-05T08:39:03.064] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T08:39:03.065] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T08:56:26.141] [INFO] default - Data Source has been initialized!
+[2023-05-05T08:56:26.143] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T08:56:26.143] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T08:57:04.160] [INFO] default - Data Source has been initialized!
+[2023-05-05T08:57:04.162] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T08:57:04.162] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:09:17.869] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-05T09:09:17.869] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-05T09:09:17.870] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":3}
+[2023-05-05T09:09:17.870] [INFO] default - [OperationTemplate] Begin executing operation:3
+[2023-05-05T09:09:17.870] [INFO] default - [LoginOperation] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:09:17.870] [INFO] default - [LoginOperation] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:09:17.871] [INFO] default - [LoginOperation] Find User by email
+[2023-05-05T09:09:17.907] [INFO] default - [LoginOperation] Find User asybn User 
+[2023-05-05T09:09:17.907] [INFO] default - [LoginOperation] check if find user
+[2023-05-05T09:09:17.907] [INFO] default - [LoginOperation] check user password
+[2023-05-05T09:09:17.907] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-05T09:09:17.962] [INFO] default - [OperationTemplate] End executing operation 3
+[2023-05-05T09:09:17.962] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":3}
+[2023-05-05T09:09:22.675] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-05T09:09:22.675] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-05T09:09:22.675] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":3}
+[2023-05-05T09:09:22.675] [INFO] default - [OperationTemplate] Begin executing operation:3
+[2023-05-05T09:09:22.675] [INFO] default - [LoginOperation] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:09:22.675] [INFO] default - [LoginOperation] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:09:22.675] [INFO] default - [LoginOperation] Find User by email
+[2023-05-05T09:09:22.679] [INFO] default - [LoginOperation] Find User asybn User 
+[2023-05-05T09:09:22.679] [INFO] default - [LoginOperation] check if find user
+[2023-05-05T09:09:22.679] [INFO] default - [LoginOperation] check user password
+[2023-05-05T09:09:22.679] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-05T09:09:22.734] [INFO] default - [LoginOperation] creating new token
+[2023-05-05T09:09:22.735] [INFO] default - [LoginOperation]  token expire in 24 hours
+[2023-05-05T09:09:22.756] [INFO] default - [OperationTemplate] End executing operation 3
+[2023-05-05T09:09:22.756] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":3}
+[2023-05-05T09:09:38.128] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:09:38.129] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:09:38.130] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:09:38.130] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:09:38.130] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:09:38.131] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:09:38.175] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:09:38.175] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:09:38.175] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of null (reading 'token')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:36:70)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:09:57.352] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:09:57.352] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:09:57.352] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:09:57.352] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:09:57.353] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:09:57.353] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:09:57.390] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:09:57.391] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:09:57.391] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of null (reading 'token')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:36:70)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:13:07.162] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:13:07.164] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:13:07.164] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:13:14.456] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:13:14.457] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:13:14.458] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:13:17.633] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:13:17.633] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:13:17.633] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:13:17.634] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:13:17.634] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:13:17.634] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:13:17.637] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:13:17.637] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:13:17.637] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of null (reading 'token')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:36:70)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:17:00.050] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:17:00.050] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:17:00.050] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:17:00.050] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:17:00.050] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:17:00.050] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:17:00.081] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:17:00.081] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:17:00.081] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of null (reading 'token')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:36:70)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:19:18.157] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:19:18.159] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:19:18.159] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:19:23.585] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:19:23.585] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:19:23.585] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:19:23.586] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:19:23.586] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:19:23.586] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:19:23.590] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:19:23.590] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:19:23.590] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of null (reading 'token')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:36:70)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:19:47.310] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:21:09.912] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:21:09.913] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:21:09.913] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:21:09.990] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:21:28.282] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:21:28.284] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:21:28.284] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:21:31.063] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:21:31.064] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:21:31.064] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:21:31.064] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:21:31.065] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:21:31.065] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:21:31.068] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:21:31.068] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:21:31.068] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of null (reading 'token')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:36:70)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:26:06.086] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:26:06.087] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:26:06.088] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:26:09.729] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:26:09.730] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:26:09.730] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:26:09.730] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:26:09.731] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:26:09.731] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:26:09.734] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:26:09.734] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:26:09.734] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of null (reading 'token')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:36:70)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:29:32.387] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:29:32.388] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:29:32.389] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:29:34.276] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:29:34.277] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:29:34.277] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:29:34.277] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:29:34.278] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:29:34.278] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:29:34.280] [ERROR] default - [OperationTemplate] Error while executing operation 2
+[2023-05-05T09:29:34.280] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:29:34.280] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:29:34.280] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of null (reading 'token')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:36:70)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:32:00.610] [ERROR] default - Error during Data Source initialization: C:\Git\cgrgba-api\src\domain\model\Archive.ts:1
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"
+^^^^^^
+
+SyntaxError: Cannot use import statement outside a module
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1176:20)
+    at Module._compile (node:internal/modules/cjs/loader:1218:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
+    at Module.load (node:internal/modules/cjs/loader:1117:32)
+    at Module._load (node:internal/modules/cjs/loader:958:12)
+    at Module.require (node:internal/modules/cjs/loader:1141:19)
+    at require (node:internal/modules/cjs/helpers:110:18)
+    at tryToRequire (C:\Git\cgrgba-api\node_modules\typeorm\util\ImportUtils.js:20:17)
+    at importOrRequireFile (C:\Git\cgrgba-api\node_modules\typeorm\util\ImportUtils.js:34:24)
+[2023-05-05T09:32:21.364] [ERROR] default - Error during Data Source initialization: C:\Git\cgrgba-api\src\domain\model\Archive.ts:1
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"
+^^^^^^
+
+SyntaxError: Cannot use import statement outside a module
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1176:20)
+    at Module._compile (node:internal/modules/cjs/loader:1218:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
+    at Module.load (node:internal/modules/cjs/loader:1117:32)
+    at Module._load (node:internal/modules/cjs/loader:958:12)
+    at Module.require (node:internal/modules/cjs/loader:1141:19)
+    at require (node:internal/modules/cjs/helpers:110:18)
+    at tryToRequire (C:\Git\cgrgba-api\node_modules\typeorm\util\ImportUtils.js:20:17)
+    at importOrRequireFile (C:\Git\cgrgba-api\node_modules\typeorm\util\ImportUtils.js:34:24)
+[2023-05-05T09:32:41.047] [ERROR] default - Error during Data Source initialization: C:\Git\cgrgba-api\src\domain\model\Archive.ts:1
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"
+^^^^^^
+
+SyntaxError: Cannot use import statement outside a module
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1176:20)
+    at Module._compile (node:internal/modules/cjs/loader:1218:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
+    at Module.load (node:internal/modules/cjs/loader:1117:32)
+    at Module._load (node:internal/modules/cjs/loader:958:12)
+    at Module.require (node:internal/modules/cjs/loader:1141:19)
+    at require (node:internal/modules/cjs/helpers:110:18)
+    at tryToRequire (C:\Git\cgrgba-api\node_modules\typeorm\util\ImportUtils.js:20:17)
+    at importOrRequireFile (C:\Git\cgrgba-api\node_modules\typeorm\util\ImportUtils.js:34:24)
+[2023-05-05T09:33:02.126] [ERROR] default - Error during Data Source initialization: C:\Git\cgrgba-api\src\domain\model\Archive.ts:1
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"
+^^^^^^
+
+SyntaxError: Cannot use import statement outside a module
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1176:20)
+    at Module._compile (node:internal/modules/cjs/loader:1218:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
+    at Module.load (node:internal/modules/cjs/loader:1117:32)
+    at Module._load (node:internal/modules/cjs/loader:958:12)
+    at Module.require (node:internal/modules/cjs/loader:1141:19)
+    at require (node:internal/modules/cjs/helpers:110:18)
+    at tryToRequire (C:\Git\cgrgba-api\node_modules\typeorm\util\ImportUtils.js:20:17)
+    at importOrRequireFile (C:\Git\cgrgba-api\node_modules\typeorm\util\ImportUtils.js:34:24)
+[2023-05-05T09:33:15.424] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:33:15.425] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:33:15.425] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:33:20.819] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:33:20.819] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:33:20.820] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:33:20.820] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:33:20.821] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:33:20.821] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:33:20.823] [ERROR] default - [OperationTemplate] Error while executing operation 2
+[2023-05-05T09:33:20.823] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:33:20.823] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:33:20.823] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of null (reading 'token')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:36:70)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:37:11.808] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:37:11.810] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:37:11.810] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:37:14.404] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:37:14.404] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:37:14.404] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:37:14.405] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:37:14.405] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:37:14.405] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:37:14.408] [ERROR] default - result of token searched:null
+[2023-05-05T09:37:14.408] [ERROR] default - valid token was not found
+[2023-05-05T09:37:14.408] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:37:14.408] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:37:20.018] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:37:20.018] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:37:20.018] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:37:20.018] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:37:20.018] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:37:20.018] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:37:20.019] [ERROR] default - result of token searched:null
+[2023-05-05T09:37:20.020] [ERROR] default - valid token was not found
+[2023-05-05T09:37:20.020] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:37:20.020] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:37:28.602] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:37:28.602] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:37:28.602] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:37:28.602] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:37:28.602] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:37:28.602] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:37:28.604] [ERROR] default - result of token searched:null
+[2023-05-05T09:37:28.604] [ERROR] default - valid token was not found
+[2023-05-05T09:37:28.605] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:37:28.605] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:37:54.386] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:37:54.387] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:37:54.387] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:37:54.387] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:37:54.387] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:37:54.387] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:37:54.420] [ERROR] default - result of token searched:[object Object]
+[2023-05-05T09:37:54.420] [ERROR] default - [OperationTemplate] Error while executing operation 2
+[2023-05-05T09:37:54.420] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:37:54.421] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:37:54.421] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of undefined (reading 'userFullName')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:44:119)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:42:37.602] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:42:37.604] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:42:37.605] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:42:40.289] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:42:40.289] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:42:40.290] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:42:40.290] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:42:40.291] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:42:40.291] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:42:40.294] [ERROR] default - result of token searched:[object Object]
+[2023-05-05T09:42:40.294] [ERROR] default - [OperationTemplate] Error while executing operation 2
+[2023-05-05T09:42:40.294] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:42:40.294] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:42:40.294] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of undefined (reading 'userFullName')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:44:119)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:42:41.024] [ERROR] default - Error during Data Source initialization: C:\Git\cgrgba-api\src\domain\model\Archive.ts:1
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"
+^^^^^^
+
+SyntaxError: Cannot use import statement outside a module
+    at internalCompileFunction (node:internal/vm:73:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1176:20)
+    at Module._compile (node:internal/modules/cjs/loader:1218:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
+    at Module.load (node:internal/modules/cjs/loader:1117:32)
+    at Module._load (node:internal/modules/cjs/loader:958:12)
+    at Module.require (node:internal/modules/cjs/loader:1141:19)
+    at require (node:internal/modules/cjs/helpers:110:18)
+    at tryToRequire (C:\Git\cgrgba-api\node_modules\typeorm\util\ImportUtils.js:20:17)
+    at importOrRequireFile (C:\Git\cgrgba-api\node_modules\typeorm\util\ImportUtils.js:34:24)
+[2023-05-05T09:42:43.286] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:42:43.286] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:42:43.286] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:42:43.286] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:42:43.286] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:42:43.286] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:42:43.287] [ERROR] default - result of token searched:[object Object]
+[2023-05-05T09:42:43.287] [ERROR] default - [OperationTemplate] Error while executing operation 2
+[2023-05-05T09:42:43.287] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:42:43.287] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:42:43.287] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of undefined (reading 'userFullName')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:44:119)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:42:48.248] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:42:48.248] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:42:48.248] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:42:48.248] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:42:48.248] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:42:48.249] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:42:48.250] [ERROR] default - result of token searched:[object Object]
+[2023-05-05T09:42:48.250] [ERROR] default - [OperationTemplate] Error while executing operation 2
+[2023-05-05T09:42:48.250] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:42:48.250] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:42:48.250] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of undefined (reading 'userFullName')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:44:119)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:42:51.725] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:42:51.725] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:42:51.725] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:42:51.725] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:42:51.725] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:42:51.725] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:42:51.726] [ERROR] default - result of token searched:[object Object]
+[2023-05-05T09:42:51.726] [ERROR] default - [OperationTemplate] Error while executing operation 2
+[2023-05-05T09:42:51.726] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:42:51.726] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:42:51.726] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of undefined (reading 'userFullName')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:44:119)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:43:57.686] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:43:57.687] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:43:57.687] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:44:01.970] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:44:01.970] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:44:01.971] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:44:01.971] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:44:01.971] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:44:01.971] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:44:01.974] [ERROR] default - result of token searched:[object Object]
+[2023-05-05T09:44:01.974] [ERROR] default - [OperationTemplate] Error while executing operation 2
+[2023-05-05T09:44:01.974] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:44:01.974] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:44:01.974] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of undefined (reading 'userFullName')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:44:119)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:44:14.889] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:44:14.891] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:44:14.891] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:44:20.929] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:44:20.930] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:44:20.930] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:44:20.931] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:44:20.931] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:44:20.931] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:44:20.933] [ERROR] default - result of token searched:[object Object]
+[2023-05-05T09:44:20.933] [ERROR] default - [OperationTemplate] Error while executing operation 2
+[2023-05-05T09:44:20.933] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:44:20.934] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:44:20.934] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of undefined (reading 'userFullName')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:44:119)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:46:31.357] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:46:31.359] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:46:31.359] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:46:33.634] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:46:33.634] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:46:33.634] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:46:33.635] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:46:33.635] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:46:33.635] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:46:33.639] [ERROR] default - result of token searched:[object Object]
+[2023-05-05T09:46:33.639] [ERROR] default - valid token was not found
+[2023-05-05T09:46:33.639] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:46:33.639] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:47:16.718] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:47:16.719] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:47:16.720] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:47:18.423] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:47:18.423] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:47:18.424] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:47:18.424] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:47:18.425] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:47:18.425] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:47:18.428] [ERROR] default - result of token searched:[object Object]
+[2023-05-05T09:47:18.428] [ERROR] default - valid token was not found
+[2023-05-05T09:47:18.428] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:47:18.428] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:47:20.217] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:47:20.217] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:47:20.217] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:47:20.217] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:47:20.217] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:47:20.217] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:47:20.218] [ERROR] default - result of token searched:[object Object]
+[2023-05-05T09:47:20.218] [ERROR] default - valid token was not found
+[2023-05-05T09:47:20.218] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:47:20.218] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:47:43.071] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:47:43.073] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:47:43.074] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:47:44.625] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:47:44.626] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:47:44.626] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:47:44.627] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:47:44.627] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:47:44.627] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:47:44.630] [ERROR] default - result of token searched:{"token":"eab742a7-6f4c-48a4-ad25-24d754ee8f44","sessionCreationDate":"2023-05-05T08:09:22.735Z","sessionExpireDate":"2023-05-06T08:09:22.735Z"}
+[2023-05-05T09:47:44.630] [ERROR] default - valid token was not found
+[2023-05-05T09:47:44.631] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:47:44.631] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:47:45.830] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:47:45.830] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:47:45.830] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:47:45.831] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:47:45.831] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:47:45.831] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:47:45.831] [ERROR] default - result of token searched:{"token":"eab742a7-6f4c-48a4-ad25-24d754ee8f44","sessionCreationDate":"2023-05-05T08:09:22.735Z","sessionExpireDate":"2023-05-06T08:09:22.735Z"}
+[2023-05-05T09:47:45.831] [ERROR] default - valid token was not found
+[2023-05-05T09:47:45.831] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:47:45.831] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:49:11.637] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:49:11.638] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:49:11.639] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:49:12.876] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:49:12.877] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:49:12.877] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:49:12.878] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:49:12.878] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:49:12.878] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:49:12.882] [ERROR] default - result of token searched:{"token":"eab742a7-6f4c-48a4-ad25-24d754ee8f44","sessionCreationDate":"2023-05-05T08:09:22.735Z","sessionExpireDate":"2023-05-06T08:09:22.735Z"}
+[2023-05-05T09:49:12.882] [ERROR] default - valid token was not found
+[2023-05-05T09:49:12.882] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:49:12.882] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:49:42.149] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:49:42.150] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:49:42.151] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:49:43.132] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:49:43.132] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:49:43.133] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:49:43.133] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:49:43.133] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:49:43.133] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:49:43.137] [INFO] default - result of token searched:{"token":"eab742a7-6f4c-48a4-ad25-24d754ee8f44","sessionCreationDate":"2023-05-05T08:09:22.735Z","sessionExpireDate":"2023-05-06T08:09:22.735Z"}
+[2023-05-05T09:49:43.137] [ERROR] default - valid token was not found
+[2023-05-05T09:49:43.137] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:49:43.137] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:50:40.811] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:50:40.813] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:50:40.813] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:50:41.745] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:50:41.745] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:50:41.745] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:50:41.746] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:50:41.746] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:50:41.746] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:50:41.749] [INFO] default - result of token searched:"eab742a7-6f4c-48a4-ad25-24d754ee8f44"
+[2023-05-05T09:50:41.749] [ERROR] default - valid token was not found
+[2023-05-05T09:50:41.750] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:50:41.750] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:51:06.858] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:51:06.859] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:51:06.859] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:51:08.037] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:51:08.037] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:51:08.038] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:51:08.038] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:51:08.039] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:51:08.039] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:51:08.042] [INFO] default - result of token searched:eab742a7-6f4c-48a4-ad25-24d754ee8f44
+[2023-05-05T09:51:08.042] [ERROR] default - valid token was not found
+[2023-05-05T09:51:08.042] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:51:08.042] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:51:43.354] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:51:43.356] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:51:43.356] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:51:43.933] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:51:43.933] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:51:43.934] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:51:43.934] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:51:43.934] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:51:43.934] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:51:43.938] [INFO] default - result of token searched:eab742a7-6f4c-48a4-ad25-24d754ee8f44
+[2023-05-05T09:51:43.938] [ERROR] default - [OperationTemplate] Error while executing operation 2
+[2023-05-05T09:51:43.938] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:51:43.938] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:51:43.938] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot TypeError: Cannot read properties of undefined (reading 'userFullName')
+    at AddNewTimeSlotOperation.<anonymous> (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:44:119)
+    at step (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:48:23)
+    at Object.next (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:29:53)
+    at fulfilled (C:\Git\cgrgba-api\src\infrestructure\template\AuthenticationOperationTemplate.ts:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-05-05T09:52:50.712] [INFO] default - Data Source has been initialized!
+[2023-05-05T09:52:50.713] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T09:52:50.714] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T09:52:52.733] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:52:52.733] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:52:52.733] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:52:52.734] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:52:52.734] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:52:52.734] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:52:52.738] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user undefined
+[2023-05-05T09:52:52.738] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-05T09:52:52.738] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-05T09:52:52.738] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-05T09:52:52.738] [INFO] default - Searching permission in data base
+[2023-05-05T09:52:52.741] [ERROR] default - Permission operation 2 was not found
+[2023-05-05T09:52:52.741] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:52:52.741] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:53:05.008] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:53:05.008] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:53:05.008] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:53:05.008] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:53:05.008] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:53:05.008] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:53:05.040] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user undefined
+[2023-05-05T09:53:05.040] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-05T09:53:05.040] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-05T09:53:05.040] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-05T09:53:05.040] [INFO] default - Searching permission in data base
+[2023-05-05T09:53:05.041] [ERROR] default - Permission operation 2 was not found
+[2023-05-05T09:53:05.041] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:53:05.041] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:54:10.942] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:54:10.942] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:54:10.942] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:54:10.942] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:54:10.942] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:54:10.942] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:54:10.973] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user undefined
+[2023-05-05T09:54:10.973] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-05T09:54:10.973] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-05T09:54:10.973] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-05T09:54:10.973] [INFO] default - Searching permission in data base
+[2023-05-05T09:54:10.975] [ERROR] default - Permission operation 2 was not found
+[2023-05-05T09:54:10.975] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:54:10.975] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:59:07.833] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T09:59:07.833] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T09:59:07.833] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T09:59:07.833] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T09:59:07.833] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T09:59:07.833] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T09:59:07.864] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user undefined
+[2023-05-05T09:59:07.865] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-05T09:59:07.865] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-05T09:59:07.865] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-05T09:59:07.865] [INFO] default - Searching permission in data base
+[2023-05-05T09:59:07.867] [ERROR] default - Permission operation 2 was not found
+[2023-05-05T09:59:07.867] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T09:59:07.867] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:01:44.891] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T10:01:44.891] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T10:01:44.891] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:01:44.891] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T10:01:44.891] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T10:01:44.891] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T10:01:44.921] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user undefined
+[2023-05-05T10:01:44.921] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-05T10:01:44.921] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-05T10:01:44.921] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-05T10:01:44.922] [INFO] default - Searching permission in data base
+[2023-05-05T10:01:44.923] [ERROR] default - Permission operation 2 was not found
+[2023-05-05T10:01:44.923] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T10:01:44.923] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:03:52.690] [INFO] default - Data Source has been initialized!
+[2023-05-05T10:03:52.692] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T10:03:52.692] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T10:03:54.539] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T10:03:54.539] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T10:03:54.540] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:03:54.540] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T10:03:54.541] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T10:03:54.541] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T10:03:54.543] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user undefined
+[2023-05-05T10:03:54.544] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-05T10:03:54.544] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-05T10:03:54.544] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-05T10:03:54.544] [INFO] default - Searching permission in data base
+[2023-05-05T10:03:54.547] [ERROR] default - Permission operation 2 was not found
+[2023-05-05T10:03:54.547] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T10:03:54.547] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:13:18.931] [INFO] default - Data Source has been initialized!
+[2023-05-05T10:13:18.932] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T10:13:18.933] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T10:13:28.524] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T10:13:28.525] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T10:13:28.526] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:13:28.526] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T10:13:28.527] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T10:13:28.527] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T10:13:28.532] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user User {
+  id: '1',
+  userFullName: 'Admin Nantoi',
+  userMobileNumber: '123456789',
+  userEmail: 'nantoi@nantoi.com',
+  userCreationDate: 2023-05-04T22:41:08.282Z,
+  passwordHash: '$2b$10$tB0kErKpDjP2fdX9l2Op.uBOMX3joZenc.VVQwY2GYCQj1ebdZGt2',
+  passwordSalt: '$2b$10$tB0kErKpDjP2fdX9l2Op.u',
+  userStatus: 'Novo'
+}
+[2023-05-05T10:13:28.533] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-05T10:13:28.533] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-05T10:13:28.534] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-05T10:13:28.534] [INFO] default - Searching permission in data base
+[2023-05-05T10:13:28.537] [ERROR] default - Permission operation 2 was not found
+[2023-05-05T10:13:28.537] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T10:13:28.537] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:13:55.056] [INFO] default - Data Source has been initialized!
+[2023-05-05T10:13:55.058] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T10:13:55.058] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T10:13:55.871] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T10:13:55.871] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T10:13:55.872] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:13:55.872] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T10:13:55.872] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T10:13:55.872] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T10:13:55.876] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-05T10:13:55.876] [INFO] default - [AuthenticationOperationTemplate] - Begin searching initial actions
+[2023-05-05T10:13:55.876] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-05T10:13:55.877] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-05T10:13:55.877] [INFO] default - Searching permission in data base
+[2023-05-05T10:13:55.879] [ERROR] default - Permission operation 2 was not found
+[2023-05-05T10:13:55.879] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T10:13:55.879] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:18:27.956] [INFO] default - Data Source has been initialized!
+[2023-05-05T10:18:27.957] [INFO] default - [initNantoiUSer] Perform dependency injection for IUserEngineRepository
+[2023-05-05T10:18:27.958] [INFO] default - [initNantoiUSer] Find User by email
+[2023-05-05T10:18:30.835] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T10:18:30.836] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T10:18:30.836] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:18:30.837] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T10:18:30.837] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T10:18:30.837] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T10:18:30.843] [ERROR] default - [OperationTemplate] Error while executing operation 2
+[2023-05-05T10:18:30.843] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T10:18:30.843] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:18:30.843] [ERROR] default - [SchedulingTimeHourController] Error while adding new time slot QueryFailedError: invalid input syntax for type uuid: "eab742a7-6f4c-48a4-ad25-24d754ee8f44s"
+    at PostgresQueryRunner.query (C:\Git\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:299:19)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async SelectQueryBuilder.loadRawResults (C:\Git\cgrgba-api\src\query-builder\SelectQueryBuilder.ts:3782:25)
+    at async SelectQueryBuilder.executeEntitiesAndRawResults (C:\Git\cgrgba-api\src\query-builder\SelectQueryBuilder.ts:3537:26)
+    at async SelectQueryBuilder.getRawAndEntities (C:\Git\cgrgba-api\src\query-builder\SelectQueryBuilder.ts:1669:29)
+    at async SelectQueryBuilder.getOne (C:\Git\cgrgba-api\src\query-builder\SelectQueryBuilder.ts:1696:25) {
+  query: 'SELECT "tokenSession"."token" AS "tokenSession_token", "tokenSession"."sessionCreationDate" AS "tokenSession_sessionCreationDate", "tokenSession"."sessionExpireDate" AS "tokenSession_sessionExpireDate", "tokenSession"."userId" AS "tokenSession_userId", "user"."id" AS "user_id", "user"."userFullName" AS "user_userFullName", "user"."userMobileNumber" AS "user_userMobileNumber", "user"."userEmail" AS "user_userEmail", "user"."userCreationDate" AS "user_userCreationDate", "user"."passwordHash" AS "user_passwordHash", "user"."passwordSalt" AS "user_passwordSalt", "user"."userStatus" AS "user_userStatus" FROM "portalConsular"."token_session" "tokenSession" LEFT JOIN "portalConsular"."user" "user" ON "user"."id"="tokenSession"."userId" WHERE "tokenSession"."token" = $1',
+  parameters: [ 'eab742a7-6f4c-48a4-ad25-24d754ee8f44s' ],
+  driverError: error: invalid input syntax for type uuid: "eab742a7-6f4c-48a4-ad25-24d754ee8f44s"
+      at Parser.parseErrorMessage (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:369:69)
+      at Parser.handlePacket (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:188:21)
+      at Parser.parse (C:\Git\cgrgba-api\node_modules\pg-protocol\src\parser.ts:103:30)
+      at Socket.<anonymous> (C:\Git\cgrgba-api\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 169,
+    severity: 'ERROR',
+    code: '22P02',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $1 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'uuid.c',
+    line: '136',
+    routine: 'string_to_uuid'
+  },
+  length: 169,
+  severity: 'ERROR',
+  code: '22P02',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: "unnamed portal parameter $1 = '...'",
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'uuid.c',
+  line: '136',
+  routine: 'string_to_uuid'
+}
+[2023-05-05T10:18:48.774] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T10:18:48.774] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T10:18:48.774] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:18:48.774] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T10:18:48.774] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T10:18:48.774] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T10:18:48.804] [ERROR] default - valid token was not found
+[2023-05-05T10:18:48.804] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T10:18:48.804] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:19:02.729] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T10:19:02.729] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T10:19:02.729] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:19:02.729] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T10:19:02.729] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T10:19:02.729] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T10:19:02.765] [ERROR] default - valid token was not found
+[2023-05-05T10:19:02.765] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T10:19:02.766] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:19:05.778] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-05T10:19:05.778] [INFO] default - [SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine
+[2023-05-05T10:19:05.778] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":2,"operationValidatorManager":{}}
+[2023-05-05T10:19:05.778] [INFO] default - [OperationTemplate] Begin executing operation:2
+[2023-05-05T10:19:05.778] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-05T10:19:05.778] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-05T10:19:05.780] [ERROR] default - valid token was not found
+[2023-05-05T10:19:05.780] [INFO] default - [OperationTemplate] End executing operation 2
+[2023-05-05T10:19:05.781] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":2,"operationValidatorManager":{}}

@@ -3,21 +3,21 @@ import { AuthParamsTemplate } from "../../../infrestructure/template/AuthParamsT
 
 export class TimeSlotParams extends AuthParamsTemplate{
 
-  private date:Date
-  private serviceInterval: number
+  private schedulingDate: Date
+  private intervalSlot: number
 
 
-    constructor(authenticationToken:string, date:Date,serviceInterval: number){
+  constructor(authenticationToken: string, schedulingDate: Date, serviceInterval: number) {
         super(authenticationToken);
-        this.date=date;
-        this.serviceInterval=serviceInterval;
+    this.schedulingDate = schedulingDate;
+    this.intervalSlot = serviceInterval;
 
       }
 
-      get getdate(): Date{
-        return this.date
+  get getschedulingDate(): Date {
+    return this.schedulingDate
       }
       get getServiceInterval(): number{
-        return this.serviceInterval
+        return this.intervalSlot
       }   
 }

@@ -12,32 +12,31 @@ import { ISchedulingTimeHourEngine } from "../../../domain/service/ISchedulingTi
 import { TimeSlotParams } from "../../../application/model/scheduling-manager/TimeSlotParams";
 import logger from "../../../infrestructure/config/logger";
 import { AuthValidator } from "../validator/AuthValidator";
+import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
 
 
 export class SchedulingTimeHourController {
 
-    public addNewTimeSlot(request: Request, response: Response): Response {
+    public async add_new_time_slot(request: Request, response: Response): Promise<Response> {
 
         try {
 
-            const { date, serviceInterval } = request.body;
+            const { schedulingDate, serviceInterval } = request.body;
 
             const authenticationToken = AuthValidator.checkAuthorizationToken(request);
 
-            const params = new TimeSlotParams(authenticationToken, date, serviceInterval);
+            const params = new TimeSlotParams(authenticationToken, schedulingDate, serviceInterval);
 
             logger.info("[SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine")
             const schedulingTimeHourEngine = container.resolve<ISchedulingTimeHourEngine>("ISchedulingTimeHourEngine")
 
-            AuthValidator.checkAuthorizationToken
+            const result = await schedulingTimeHourEngine.add_new_time_slot(params)
 
-            const result = schedulingTimeHourEngine.add_new_time_slot(params)
-
-            return response.status(200).json(result)
+            return response.status(HttpCode.OK).json(result)
 
         } catch (error) {
 
-            logger.error("[SchedulingTimeHourController] Error while adding new time slot", error)
+
             if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
                 throw new NotImplementedException(error.field, error.message)
 
@@ -47,13 +46,13 @@ export class SchedulingTimeHourController {
             } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
                 throw new UnsuccessfullOperationException(error.field, error.message)
 
-
             } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
                 throw new InvalidParametersException(error.field, error.message)
 
             } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
+                logger.error("[SchedulingTimeHourController] Error while adding new time slot", error)
                 throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.INTERNAL_SERVER_ERROR + error)
             }
         }

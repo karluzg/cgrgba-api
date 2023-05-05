@@ -5,7 +5,6 @@ import { ForbiddenOperationException } from "../exceptions/ForbiddenOperationExc
 import { InvalidParametersException } from "../exceptions/InvalidParametersException";
 import { NotImplementedException } from "../exceptions/NotImplementedException";
 import { UnauthorizedOperationException } from "../exceptions/UnauthorizedOperationException";
-import { UnsuccessfullOperationException } from "../exceptions/UnsuccessfullOperationException";
 import { ResultTemplate } from "../template/ResultTemplate";
 import { IOperation } from "../interface/IOperation";
 import { ParamsTemplate } from "./../template/ParamsTemplate";

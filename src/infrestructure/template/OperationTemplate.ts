@@ -57,6 +57,8 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
         throw new ForbiddenOperationException(error.field, error.message);
       }
 
+      logger.error("[OperationTemplate] Error while executing operation %s", this.operationId)
+
       throw error
     } finally {
       logger.info("[OperationTemplate] End executing operation " + this.operationId)

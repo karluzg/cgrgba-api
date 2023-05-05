@@ -1,6 +1,6 @@
 import { TokenSession } from "../model/TokenSession";
 
 export interface ITokenEngineRepository{
-    findByTokenAndValidSessionExpireDate(token: string, newDate: Date): Promise<TokenSession> ;
+    findByToken(token: string): Promise<TokenSession>;
     saveTokenSession(token:TokenSession): Promise <TokenSession>;
 }

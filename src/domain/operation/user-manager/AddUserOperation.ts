@@ -6,7 +6,6 @@ import logger from "../../../infrestructure/config/logger";
 import { UserAuthOperationTemplate } from "../../../infrestructure/template/UserAuthOperationTemplate";
 import { TokenSession } from "../../model/TokenSession";
 import { OperationValidatorManager } from "../../../infrestructure/validator/managers/OperationValidatorManager";
-import { NotImplementedException } from "../../../infrestructure/exceptions/NotImplementedException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { User } from "../../model/User";
@@ -15,7 +14,7 @@ import { container } from 'tsyringe'
 import { PasswordValidator } from "../../../infrestructure/validator/managers/PasswordValidator";
 import { UserStatusEnum } from "../../model/enum/UserStatus";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
-import { News } from "../../model/News";
+
 
 
 export class AddUserOperation extends UserAuthOperationTemplate<UserResult, UserParams>{
@@ -32,7 +31,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         logger.info("[AddUserOperation] Perform dependency injection for IUserEngineRepository")
         const userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
         
-        logger.info("[AddUserOperation] emial verfication")
+        logger.info("[AddUserOperation] email verfication")
         const existUser= await userRepository.findUserByEmail(params.getUserEmail)
         if(existUser)
         throw new InvalidParametersException(Field.SYSTEM,MiddlewareBusinessMessage.USER_INVALID_EMAIL);

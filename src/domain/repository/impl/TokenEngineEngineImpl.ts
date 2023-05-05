@@ -19,12 +19,13 @@ export class TokenEngineRepositoryImpl implements ITokenEngineRepository {
       }
 
 
-      async findByTokenAndValidSessionExpireDate(tokenInput: string, newDate: Date): Promise<TokenSession> {
+      async findByToken(tokenInput: string): Promise<TokenSession> {
                   const tokenRepository = myDataSource.getRepository(TokenSession)
 
-                  return await tokenRepository.createQueryBuilder('tokenSession').leftJoinAndSelect("tokenSession.user","user")
-                        .where('tokenSession.token = :token', { token: tokenInput })
-                        .andWhere('tokenSession.sessionExpireDate > :newDate', { newDate:newDate }).getOne()
+            return await tokenRepository.createQueryBuilder('tokenSession')
+                  .leftJoinAndSelect("tokenSession.user", "user")
+                  .where('tokenSession.token = :token', { token: tokenInput })
+                  .getOne()
            
       }
 }

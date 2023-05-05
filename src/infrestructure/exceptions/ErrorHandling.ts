@@ -18,7 +18,7 @@ export const MiddllewareError = (error: Error & Partial<OperationExecption>,
 
     const userErrorMessage: Map<string, ResultInfo> = new Map();
 
-    userErrorMessage.set(error.field.toString(), new ResultInfo(message,details));
+    userErrorMessage.set(error.field, new ResultInfo(message, details));
 
     let errorMessages = Object.fromEntries(userErrorMessage)
 

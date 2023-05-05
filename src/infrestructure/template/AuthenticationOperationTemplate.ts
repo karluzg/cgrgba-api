@@ -31,17 +31,15 @@ export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, 
         logger.info("[AuthenticationOperationTemplate] - Begin searching for valid token");
 
 
-        const tokenSessionFound = await tokenRepository.findByTokenAndValidSessionExpireDate(params.getAuthenticationToken(), new Date)
-
-        logger.error("result of token searched:" + tokenSessionFound.token);
+        const tokenSessionFound = await tokenRepository.findByToken(params.getAuthenticationToken())
 
         if (!tokenSessionFound) {
             logger.error("valid token was not found")
-            throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.INVALID_TOKEN);
+            throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.INVALID_TOKEN, "Dudu");
 
         }
 
-        logger.info("[AuthenticationOperationTemplate] - Valid token was founded for user %s", tokenSessionFound.user.userFullName);
+        logger.info("[AuthenticationOperationTemplate] - Valid token was founded for user %s", tokenSessionFound.user.userEmail);
 
         logger.info("[AuthenticationOperationTemplate] - Begin searching initial actions");
 
