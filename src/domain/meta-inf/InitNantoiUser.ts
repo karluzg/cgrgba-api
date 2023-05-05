@@ -9,7 +9,7 @@ import { Role } from "../model/Role"
 import { IPermissionEngineRepository } from "../repository/IPermissionEngineRepository"
 import { forEach } from "lodash"
 import { OperationNames } from "../operation/OperationNames"
-import { Permission } from "../model/Persmission"
+import { Permission } from "../model/Permission"
 import { PermissionGroup } from "../model/PermissionGroup"
 import { IPermissionGroupEngineRepository } from "../repository/IPermissionGroupEngineRepository"
 
