@@ -1,12 +1,7 @@
 import { OperationTemplate } from "../../../infrestructure/template/OperationTemplate";
-import { UserParams } from "../../../application/model/user-manager/UserParams";
-import { UserResult } from "../../../application/model/user-manager/UserResult";
-import { OperationNames } from "../OperationNames";
+import { OperationNamesEnum } from "../../model/enum/OperationNamesEnum";
 import logger from "../../../infrestructure/config/logger";
-import { UserAuthOperationTemplate } from "../../../infrestructure/template/UserAuthOperationTemplate";
 import { TokenSession } from "../../model/TokenSession";
-import { OperationValidatorManager } from "../../../infrestructure/validator/managers/OperationValidatorManager";
-import { NotImplementedException } from "../../../infrestructure/exceptions/NotImplementedException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { User } from "../../model/User";
@@ -15,65 +10,61 @@ import { ITokenEngineRepository } from "../../repository/ITokenEngineRepository"
 import { container } from 'tsyringe'
 import { UserLoginParams } from "../../../application/model/user-manager/UserLoginParams";
 import { UserLoginResult } from "../../../application/model/user-manager/UserLoginResult";
-import { NotFoundExcecption } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { PasswordValidator } from "../../../infrestructure/validator/managers/PasswordValidator";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
-import { error } from "console";
 import { v4 as uuidv4 } from 'uuid';
 
 
 export class LoginOperation extends OperationTemplate<UserLoginResult, UserLoginParams>{
 
+    private userRepository: IUserEngineRepository;
+    private tokenRepository: ITokenEngineRepository;
+    private user: User;
+
     constructor() {
-        super(OperationNames.CREATE_USER)
+        super(OperationNamesEnum.SESSION_LOGIN)
+        this.userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
+        this.tokenRepository = container.resolve<ITokenEngineRepository>("ITokenEngineRepository")
     }
 
+    protected async doValidateParameters(params: UserLoginParams): Promise<void> {
+
+        this.user = await this.userRepository.findUserByEmail(params.getUserEmail)
+        if (!this.user) {
+            throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR);
+        }
+
+
+        logger.info("[LoginOperation] check password for user %s", this.user)
+        const passwordValidator = new PasswordValidator();
+        if (!await passwordValidator.checkPassword(params.getuserPassword, this.user.passwordHash)) {
+            throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.USER_INVALID_CREDENTIALS)
+        }
+
+    }
 
     protected async doExecute(params: UserLoginParams, result: UserLoginResult) {
-        logger.info("[LoginOperation] Perform dependency injection for IUserEngineRepository")
-        const userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
-        logger.info("[LoginOperation] Perform dependency injection for ITokenEngineRepository")
-        const tokenRepository = container.resolve<ITokenEngineRepository>("ITokenEngineRepository")
-
-        logger.info("[LoginOperation] Find User by email")
-        const user = await userRepository.findUserByEmail(params.getUserEmail)
 
 
-        logger.info("[LoginOperation] Find User asybn User ")
-        
-            logger.info("[LoginOperation] check if find user")
-            if (!user.id)
-                throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.USER_EMIAL_NOT_FOUND)
+        const token = new TokenSession()
+        token.token = uuidv4().toString()
+        token.user = this.user;
 
-            logger.info("[LoginOperation] check user password")
-            const passwordValidator = new PasswordValidator();
-            if (!await passwordValidator.checkPassword(params.getuserPassword, user.passwordHash))
-                throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.USER_INVALID_PASSWORD)
+        const creationDate = new Date();
+        const expireDate = new Date();
 
-
-
-            logger.info("[LoginOperation] creating new token")
-            const token = new TokenSession()
-            token.token= uuidv4().toString()
-            token.user = user;
-
-            const creationDate = new Date();
-            const expireDate = new Date();
-
-            logger.info("[LoginOperation]  token expire in 24 hours")
-            expireDate.setHours(creationDate.getHours() + 24);
-            token.sessionCreationDate = creationDate;
-            token.sessionExpireDate = expireDate;
+        expireDate.setHours(creationDate.getHours() + 24);
+        token.sessionCreationDate = creationDate;
+        token.sessionExpireDate = expireDate;
 
 
-            const newTokenSession = await tokenRepository.saveTokenSession(token)
+        logger.info("[LoginOperation]  token expire in 24 hours %s", JSON.stringify(token.user.userEmail))
+        const newTokenSession = await this.tokenRepository.saveTokenSession(token)
 
-            result.setToken = newTokenSession;
-       
+        result.setToken = newTokenSession;
+
 
     }
-
-
 
     protected initResult(): UserLoginResult {
         return new UserLoginResult()

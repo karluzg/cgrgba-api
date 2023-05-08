@@ -5,26 +5,21 @@ import { TokenSession } from "../../model/TokenSession"
 const myDataSource = require('../../../domain/meta-inf/data-source');
 import { ITokenEngineRepository } from "../ITokenEngineRepository";
 import { injectable } from 'tsyringe'
-import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
-import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 
+const tokenRepository = myDataSource.getRepository(TokenSession)
 
 @injectable()
 export class TokenEngineRepositoryImpl implements ITokenEngineRepository {
-      async saveTokenSession(token: TokenSession): Promise<TokenSession> {
-            const tokenRepository = myDataSource.getRepository(TokenSession)
 
+      async saveTokenSession(token: TokenSession): Promise<TokenSession> {
             return await tokenRepository.save(token);
       }
 
-
-      async findByToken(tokenInput: string): Promise<TokenSession> {
-                  const tokenRepository = myDataSource.getRepository(TokenSession)
+      async findByToken(token: string): Promise<TokenSession> {
 
             return await tokenRepository.createQueryBuilder('tokenSession')
                   .leftJoinAndSelect("tokenSession.user", "user")
-                  .where('tokenSession.token = :token', { token: tokenInput })
+                  .where('tokenSession.token = :token', { token: token })
                   .getOne()
            
       }

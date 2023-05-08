@@ -1,5 +1,4 @@
 import { PermissionGroup } from "../model/PermissionGroup";
-import { Permission } from "../model/Persmission";
 
 
 export interface IPermissionGroupEngineRepository {

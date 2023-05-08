@@ -3,13 +3,13 @@ import { SchedulingTime } from "../../../domain/model/SchedulingTime";
 
 export class TimeSlotResult extends ResultTemplate {
 
-   private schedulingTimeHour: SchedulingTime
+   private timeList: { [key: string]: string[] } = {};
 
-   public get getschedulingTimeHour(): SchedulingTime {
-      return this.schedulingTimeHour;
+   public get getTimeList(): { [key: string]: string[] } {
+      return this.timeList;
    }
-   set setschedulingTimeHour(schedulingTimeHour: SchedulingTime) {
-      this.schedulingTimeHour = schedulingTimeHour;
+   set setTimeList(timeList: { [key: string]: string[] }) {
+      this.timeList = timeList;
    }
 
 }

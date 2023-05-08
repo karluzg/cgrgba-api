@@ -8,6 +8,9 @@ import { UnauthorizedOperationException } from "../exceptions/UnauthorizedOperat
 import { ResultTemplate } from "../template/ResultTemplate";
 import { IOperation } from "../interface/IOperation";
 import { ParamsTemplate } from "./../template/ParamsTemplate";
+import { UnsuccessfullOperationException } from "../exceptions/UnsuccessfullOperationException";
+import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
+import { Field } from "../exceptions/enum/Field";
 
 
 
@@ -23,7 +26,6 @@ export abstract class GenericOperationTemplate {
 
         } catch (error) {
 
-
             if (error.errorClasseName == ErrorExceptionClass.UNAUTHORIZED) {
                 throw new UnauthorizedOperationException(error.field, error.message)
 
@@ -38,7 +40,9 @@ export abstract class GenericOperationTemplate {
                 throw new ForbiddenOperationException(error.field, error.message)
 
             } else {
-                throw error
+                logger.error("[GenericOperationTemplate] - Error while executing operation %s", operation + " ", error)
+                throw new UnsuccessfullOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR)
+
             }
         } finally {
             logger.info("[GenericOperationTemplate] End executing Operation " + JSON.stringify(operation));

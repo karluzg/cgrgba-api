@@ -8,29 +8,32 @@ import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
-import { ISchedulingTimeHourEngine } from "../../../domain/service/ISchedulingTimeHourEngine";
+import { ISchedulingTimeEngine } from "../../../domain/service/ISchedulingTimeEngine";
 import { TimeSlotParams } from "../../../application/model/scheduling-manager/TimeSlotParams";
 import logger from "../../../infrestructure/config/logger";
 import { AuthValidator } from "../validator/AuthValidator";
 import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
 
 
-export class SchedulingTimeHourController {
+export class SchedulingTimeController {
 
     public async add_new_time_slot(request: Request, response: Response): Promise<Response> {
 
         try {
 
-            const { schedulingDate, serviceInterval } = request.body;
+
+            const { beginSchedulingDate, endSchedulingDate, beginWorkTime, endWorkTime, beginLunchTime,
+                endLunchTime, serviceInterval, availableCollaboratorNumber } = request.body;
 
             const authenticationToken = AuthValidator.checkAuthorizationToken(request);
 
-            const params = new TimeSlotParams(authenticationToken, schedulingDate, serviceInterval);
+            const params = new TimeSlotParams(authenticationToken, beginSchedulingDate,
+                endSchedulingDate, beginWorkTime, endWorkTime, beginLunchTime, endLunchTime, serviceInterval, availableCollaboratorNumber);
 
-            logger.info("[SchedulingTimeHourController] Perform dependency injection for ISchedulingTimeHourEngine")
-            const schedulingTimeHourEngine = container.resolve<ISchedulingTimeHourEngine>("ISchedulingTimeHourEngine")
+            logger.info("[SchedulingTimeController] Perform dependency injection for ISchedulingTimeEngine")
+            const schedulingTimeEngine = container.resolve<ISchedulingTimeEngine>("ISchedulingTimeEngine")
 
-            const result = await schedulingTimeHourEngine.add_new_time_slot(params)
+            const result = await schedulingTimeEngine.add_new_time_slot(params)
 
             return response.status(HttpCode.OK).json(result)
 
@@ -53,12 +56,12 @@ export class SchedulingTimeHourController {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
                 logger.error("[SchedulingTimeHourController] Error while adding new time slot", error)
-                throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.INTERNAL_SERVER_ERROR + error)
+                throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
             }
         }
     }
 }
-export default { SchedulingTimeHourController }
+export default { SchedulingTimeController: SchedulingTimeController }
 
 
 

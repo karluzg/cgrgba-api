@@ -1,8 +1,9 @@
-export interface  IUserActivable{
+export interface IActivable {
   
     active (): void;
 
     suspend (): void;
   
     remove (): void;
+
 }

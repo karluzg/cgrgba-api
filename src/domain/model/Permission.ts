@@ -1,20 +1,20 @@
-import { Entity, Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Entity, Column, ManyToOne, PrimaryGeneratedColumn, PrimaryColumn } from "typeorm"
 import { PermissionGroup } from "./PermissionGroup"
 
 @Entity({schema:"portalConsular"})
 export class Permission {
 
-    @PrimaryGeneratedColumn({type:"bigint"})
+    @PrimaryColumn({ type: "bigint" })
     id: number
 
    @Column({unique:true, nullable:false})
-    permissionCode: string
+   code: string
 
     @Column({nullable:false})
-    permissionDescription: string
+    description: string
 
 
-    @ManyToOne(()=> PermissionGroup,(permissionGroup)=> permissionGroup.permissionGroupCode,{eager:true,nullable:false})
+    @ManyToOne(() => PermissionGroup, (permissionGroup) => permissionGroup.code, { eager: true, nullable: false })
     permissionGroup:PermissionGroup
 
 

@@ -1,7 +1,7 @@
 import { OperationTemplate } from "../../../infrestructure/template/OperationTemplate";
 import { UserParams } from "../../../application/model/user-manager/UserParams";
 import { UserResult } from "../../../application/model/user-manager/UserResult";
-import { OperationNames } from "../OperationNames";
+import { OperationNamesEnum } from "../../model/enum/OperationNamesEnum";
 import logger from "../../../infrestructure/config/logger";
 import { UserAuthOperationTemplate } from "../../../infrestructure/template/UserAuthOperationTemplate";
 import { TokenSession } from "../../model/TokenSession";
@@ -12,39 +12,43 @@ import { User } from "../../model/User";
 import { IUserEngineRepository } from "../../repository/IUserEngineRepository";
 import { container } from 'tsyringe'
 import { PasswordValidator } from "../../../infrestructure/validator/managers/PasswordValidator";
-import { UserStatusEnum } from "../../model/enum/UserStatus";
+import { UserStatusEnum } from "../../model/enum/UserStatusEnum";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
+import { GeneratePassowordUtil } from "../util/GeneratePassowordUtil";
+import { ResultInfo } from "../../../infrestructure/response/ResultInfo";
 
 
 
 export class AddUserOperation extends UserAuthOperationTemplate<UserResult, UserParams>{
 
-
+    private userRepository: IUserEngineRepository;
 
     constructor() {
-        super(OperationNames.CREATE_USER, new OperationValidatorManager())
+        super(OperationNamesEnum.USER_CREATE, new OperationValidatorManager())
+        this.userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
+
     }
 
+    protected async doValidateParameters(params: UserParams): Promise<void> {
+
+        const user = await this.userRepository.findUserByEmail(params.getUserEmail)
+        if (user) {
+            logger.error("[AddUserOperation] user already exist")
+            throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.USER_INVALID_EMAIL);
+        }
+    }
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: UserParams, result: UserResult): Promise<void> {
 
-        logger.info("[AddUserOperation] Perform dependency injection for IUserEngineRepository")
-        const userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
-        
-        logger.info("[AddUserOperation] email verfication")
-        const existUser= await userRepository.findUserByEmail(params.getUserEmail)
-        if(existUser)
-        throw new InvalidParametersException(Field.SYSTEM,MiddlewareBusinessMessage.USER_INVALID_EMAIL);
-        
-        
-        logger.info("[AddUserOperation] Creatting randomPAssword")
-        const password = this.generateRandomString(8);
 
-        logger.info("[AddUserOperation] Creatting salt and hash from password")
+        const password = GeneratePassowordUtil.generateRandomString(8);
+
+        logger.info("[AddUserOperation] Creatting salt and hash from password", password)
         const passwordValidator = new PasswordValidator();
         const salt = passwordValidator.createSalt()
         const hash = passwordValidator.generateHash(password, await salt)
-        //add new user
+
+
         const user = new User();
         user.userEmail = params.getUserEmail;
         user.userFullName = params.getUserFullName;
@@ -54,37 +58,18 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         user.passwordSalt = await salt;
         user.userStatus = UserStatusEnum.NEW;
 
-        logger.info("[AddUserOperation] creating user in db")
-        const newUser: User = await userRepository.saveUser(user)
-
-
+        logger.info("[AddUserOperation] creating user in db %", JSON.stringify(user))
+        const newUser: User = await this.userRepository.saveUser(user)
         result.setUser = newUser;
 
-
+        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_TIME_ADDED));
+        result.setErrorMessages = Object.fromEntries(this.message)
 
     }
+
     protected initResult(): UserResult {
         return new UserResult()
     }
 
-
-    generateRandomString(length: number): string {
-        let result = "";
-        const characters =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        const charactersLength = characters.length;
-        for (let i = 0; i < length; i++) {
-            result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
-        return result;
-    }
-
-
-
-
-
-
-
-
-
 }
+

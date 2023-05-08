@@ -5,18 +5,13 @@ import axios from 'axios'
 
 
 describe("Add new time slot", () => {
-    it("Should fail Http status code 401: User does not have a valid token", async () => {
-   
-        const data=new Date();
-        const hora=data.getHours();
-        const epochTime=data.getTime()/1000;
-        console.log(epochTime);
-        console.log(data.getTime()*1000)
+    it("Should create scheduling time with status 200", async () => {
+
 
         const response = await axios.post("http://localhost:3000/slot",
-            new TimeSlotParams("token1234", new Date(), 12));
+            new TimeSlotParams("720409d4-331d-4190-938a-f93f90753096", new Date("2023-05-05"), null, "9:00", "18:00", "13:00", "14:30", 10, 3));
 
-        expect(response.status).equal(401)
+        expect(response.status).equal(200)
 
     })
 })

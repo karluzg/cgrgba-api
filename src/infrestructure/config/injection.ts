@@ -1,8 +1,8 @@
 import { container } from 'tsyringe';
 import { IUserEngine } from '../../domain/service/IUserEngine';
 import { UserEngineImpl } from '../../domain/service/impl/UserEngineImpl';
-import { ISchedulingTimeHourEngine } from '../../domain/service/ISchedulingTimeHourEngine';
-import { SchedulingTimeHourEngineImpl } from '../../domain/service/impl/SchedulingTimeHourEngineImpl';
+import { ISchedulingTimeEngine } from '../../domain/service/ISchedulingTimeEngine';
+import { SchedulingTimeEngineImpl } from '../../domain/service/impl/SchedulingTimeHourEngineImpl';
 
 import { ITokenEngineRepository } from '../../domain/repository/ITokenEngineRepository';
 import { TokenEngineRepositoryImpl } from '../../domain/repository/impl/TokenEngineEngineImpl';
@@ -16,11 +16,13 @@ import { IRoleEngineRepository } from '../../domain/repository/IRoleEngineReposi
 import { RoleEngineRepositoryImpl } from '../../domain/repository/impl/RoleEngineReposirotyImpl';
 import { IPermissionGroupEngineRepository } from '../../domain/repository/IPermissionGroupEngineRepository';
 import { PermissionGroupEngineRepositoryImpl } from '../../domain/repository/impl/PermissionGroupEngineRepositoryImpl';
+import { ISchedulingTimeEngineRepository } from '../../domain/repository/ISchedulingTimeEngineRepository';
+import { ISchedulingTimeEngineRepositoryImpl } from '../../domain/repository/impl/ISchedulingTimeEngineRepositoryImpl';
 
 //Register container for services
 container.register<IUserEngine>('IUserEngine', { useClass: UserEngineImpl });
 container.register<ISessionEngine>('ISessionEngine', { useClass: SessionEngineImpl });
-container.register<ISchedulingTimeHourEngine>('ISchedulingTimeHourEngine', { useClass: SchedulingTimeHourEngineImpl });
+container.register<ISchedulingTimeEngine>('ISchedulingTimeEngine', { useClass: SchedulingTimeEngineImpl });
 
 
 
@@ -30,4 +32,5 @@ container.register<IPermissionEngineRepository>('IPermissionEngineRepository', {
 container.register<IUserEngineRepository>('IUserEngineRepository', { useClass: UserEngineRepositoryImpl })
 container.register<IRoleEngineRepository>('IRoleEngineRepository', { useClass: RoleEngineRepositoryImpl })
 container.register<IPermissionGroupEngineRepository>('IPermissionGroupEngineRepository', { useClass: PermissionGroupEngineRepositoryImpl })
+container.register<ISchedulingTimeEngineRepository>('ISchedulingTimeEngineRepository', { useClass: ISchedulingTimeEngineRepositoryImpl })
 export default container;

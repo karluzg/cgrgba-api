@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany, OneToMany, PrimaryColumn } from "typeorm"
-import { Hour } from "./Hour"
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+
 
 
 @Entity({ schema: "portalConsular" })
@@ -9,16 +9,25 @@ export class SchedulingTime {
     @PrimaryGeneratedColumn({ type: 'bigint' })
     id: number
 
-    @Column({ unique: true, nullable: false })
-    schedulingDate: Date // to do the instance of this date, just do this -> entity.date = new Date('2023-05-04');
-
-    @ManyToMany(() => Hour, { lazy: true, nullable: false, cascade: true })
-    @JoinTable({ name: "SchedulingTime_hour" })
-    hours: Hour[]  //-> entity.hours = ['10:00:00', '12:00:00', '14:00:00'];
-
+    @Column({ type: 'date', unique: true, nullable: false })
+    schedulingBeginDate: Date // to do the instance of this date, just do this -> entity.date = new Date('2023-05-04');
 
     @Column()
-    numCollaboratorAvailable: number 
+    beginLunchTime: string
+
+    @Column()
+    endLunchTime: string
+
+    @Column({ type: 'integer', nullable: false })
+    serviceInterval: number
+
+    @Column({ type: 'integer', nullable: false })
+    availableCollaboratorNumber: number 
+
+
+    @Column('text', { array: true })
+    hours: string[]  //-> entity.hours = ['10:00:00', '12:00:00', '14:00:00'];
+
 
 
 }

@@ -8,6 +8,8 @@ import { container } from 'tsyringe'
 import { TokenSession } from "../../domain/model/TokenSession";
 import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
 import { Field } from "../exceptions/enum/Field";
+import { UserStatusEnum } from "../../domain/model/enum/UserStatusEnum";
+import { ForbiddenOperationException } from "../exceptions/ForbiddenOperationException";
 
 export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, P extends IAuthParams> extends OperationTemplate<R, P>{
 
@@ -35,13 +37,23 @@ export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, 
 
         if (!tokenSessionFound) {
             logger.error("valid token was not found")
-            throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.INVALID_TOKEN, "Dudu");
+            throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INVALID_TOKEN);
 
         }
 
         logger.info("[AuthenticationOperationTemplate] - Valid token was founded for user %s", tokenSessionFound.user.userEmail);
 
-        logger.info("[AuthenticationOperationTemplate] - Begin searching initial actions");
+        logger.info("[AuthenticationOperationTemplate] - Check if user has initial actions");
+        const user = tokenSessionFound.user;
+
+        if (user.userStatus == UserStatusEnum.NEW) {
+            logger.error("User has unexptected initial action")
+            throw new ForbiddenOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_UNEXPECTED_UNEXECUTED_INITIAL_ACTION)
+        }
+        if (user.userStatus != UserStatusEnum.ACTIVE) {
+            logger.error("Useris not active")
+            throw new ForbiddenOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_OPERTATION_NOT_ALLOWED)
+        }
 
 
       await  this.doAuthExecute(tokenSessionFound, params, result)

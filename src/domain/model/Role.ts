@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany} from "typeorm"
 import { User } from "./User"
 import { Permission } from "./Permission"
+import { RoleStatus } from "./RoleStatus"
 
 @Entity({schema:"portalConsular"})
 export class Role {
@@ -15,15 +16,18 @@ export class Role {
     roleDescription: string
 
     @ManyToMany(() => Permission, { lazy: true })
-    @JoinTable({ name: "role_permission" })
+    @JoinTable()
     permissions: Permission[]
 
+    @ManyToOne(() => User, (lastUpdateBy) => lastUpdateBy.id, { eager: true })
+    lastUpdateBy: User
 
     @ManyToOne(()=> User,(createdBy)=> createdBy.id,{eager:true})
     createdBy:User
 
-    @ManyToOne(()=> User,(lastUpdateBy)=> lastUpdateBy.id,{eager:true})
-    lastUpdateBy:User
+
+    @ManyToOne(() => RoleStatus, (roleStatus) => roleStatus.code)
+    roleStatus: RoleStatus
 
     @Column()
     isAdmin:boolean

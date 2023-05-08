@@ -5,8 +5,8 @@ export class PermissionGroup{
 
 
     @PrimaryColumn()
-    permissionGroupCode: string
+    code: string
 
     @Column()
-    permissionGroupDescription: string
+    description: string
 }

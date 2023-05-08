@@ -2,23 +2,22 @@ import { container } from "tsyringe"
 import logger from "../../infrestructure/config/logger"
 import { PasswordValidator } from "../../infrestructure/validator/managers/PasswordValidator"
 import { User } from "../model/User"
-import { UserStatusEnum } from "../model/enum/UserStatus"
+import { UserStatusEnum } from "../model/enum/UserStatusEnum"
 import { IUserEngineRepository } from "../repository/IUserEngineRepository"
 import { IRoleEngineRepository } from "../repository/IRoleEngineRepository"
 import { Role } from "../model/Role"
 import { IPermissionEngineRepository } from "../repository/IPermissionEngineRepository"
-import { forEach } from "lodash"
-import { OperationNames } from "../operation/OperationNames"
-import { Permission } from "../model/Persmission"
+import { OperationNamesEnum } from "../model/enum/OperationNamesEnum"
 import { PermissionGroup } from "../model/PermissionGroup"
 import { IPermissionGroupEngineRepository } from "../repository/IPermissionGroupEngineRepository"
+import { Permission } from "../model/Permission"
 
 export async function initNantoiUser() {
 
-    const permissionGourp = await cretePermissionGroupAdmin()
-    const permissions = await cretePermissions(permissionGourp)
-    const role = await creteRoleAdmin(permissions)
-    await createUserNantoi(role);
+   // const permissionGourp = await cretePermissionGroupAdmin()
+    //const permissions = await cretePermissions(permissionGourp)
+   // const role = await creteRoleAdmin(permissions)
+    //await createUserNantoi(role);
 
 }
 
@@ -80,18 +79,18 @@ async function cretePermissions(permissionGroup: PermissionGroup) {
     const roleRepository = container.resolve<IPermissionEngineRepository>("IPermissionEngineRepository")
     //add new user
     const permissions = []
-    for (const operation in OperationNames) {
+    for (const operation in OperationNamesEnum) {
 
         if (isNaN(Number(operation))) {
-            logger.info("[cretePermissions] Find permission by code " + OperationNames[operation])
+            logger.info("[cretePermissions] Find permission by code " + OperationNamesEnum[operation])
             const dbPermission = await roleRepository.finPermissionByCode(operation)
 
             if (!dbPermission) {
 
                 const permission = new Permission();
-                permission.permissionCode = operation
-                permission.id = parseInt(OperationNames[operation]);
-                permission.permissionDescription = operation
+                permission.code = operation
+                permission.id = parseInt(OperationNamesEnum[operation]);
+                permission.description = operation
                 permission.permissionGroup = permissionGroup
 
                 logger.info("[cretePermissions] Creating Admin")
@@ -110,13 +109,13 @@ async function cretePermissionGroupAdmin() {
     const roleRepository = container.resolve<IPermissionGroupEngineRepository>("IPermissionGroupEngineRepository")
     //add new user
     logger.info("[cretePermissionGroupAdmin] Find role by name")
-    const adminPermission = await roleRepository.finPermissionGroupByCode("ADMIN")
+    const adminPermission = await roleRepository.finPermissionGroupByCode("USERS")
 
     if (!adminPermission) {
 
         const permission = new PermissionGroup();
-        permission.permissionGroupCode = "ADMIN"
-        permission.permissionGroupDescription = "Administrator"
+        permission.code = "ADMIN"
+        permission.description = "Administrator"
         logger.info("[cretePermissionGroupAdmin] Creating Admin")
         return await roleRepository.savePermissionGroup(permission)
 

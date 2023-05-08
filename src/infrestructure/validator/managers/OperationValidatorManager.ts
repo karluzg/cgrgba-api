@@ -26,7 +26,7 @@ export class OperationValidatorManager {
 
     if (permissionEntity == null) {
       logger.error("Permission operation %s was not found", operation.getOperationId())
-      throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.OPERATION_WAS_NOT_FOUND)
+      throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_OPERATION_WAS_NOT_FOUND)
     }
 
     logger.info("permission was founded. validate if operation is valid for user")

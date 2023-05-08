@@ -27,8 +27,8 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
     this.operationId = operationId
   }
 
-  validateParams(params: P): void {
-    this.doValidateParameters(params)
+  async validateParams(params: P): Promise<void> {
+    await this.doValidateParameters(params)
   }
 
 
@@ -36,10 +36,11 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
 
     let result: R = this.initResult();
 
-    this.validateParams(params);
+
 
     try {
 
+      await this.validateParams(params);
       logger.info("[OperationTemplate] Begin executing operation:" + this.operationId)
 
       await this.doExecute(params, result);
@@ -48,18 +49,19 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
 
     } catch (error) {
 
-
-
       if (error.errorClasseName == ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message);
 
       } else if (error.errorClasseName == ErrorExceptionClass.FORBIDDEN) {
         throw new ForbiddenOperationException(error.field, error.message);
+
+      } else if (error.errorClasseName == ErrorExceptionClass.INVALID_PARAMETERS) {
+        throw new InvalidParametersException(error.field, error.message);
+      } else {
+
+        logger.error("[OperationTemplate] Error while executing operation %s", this.operationId + " " + error)
+        throw new UnsuccessfullOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR)
       }
-
-      logger.error("[OperationTemplate] Error while executing operation %s", this.operationId)
-
-      throw error
     } finally {
       logger.info("[OperationTemplate] End executing operation " + this.operationId)
 
