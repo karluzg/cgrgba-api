@@ -139,10 +139,11 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         for (const inputDate of this.dateList) {
 
 
-            console.log("[AddNewTimeSlotOperation] Check if input date is weekend %s", inputDate.toDateString)
+            console.log("[AddNewTimeSlotOperation] Check if input date is weekend %s", inputDate)
+
             const isWeekendResult = await this.isweekend(inputDate);
 
-            console.log("[AddNewTimeSlotOperation] Input date chaecked. Is weekend:", isWeekendResult)
+            console.log("[AddNewTimeSlotOperation] Input date chaecked.is weekend?", isWeekendResult)
 
             if (!isWeekendResult) {
 
@@ -153,30 +154,32 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
                 const day = inputDate.getDate();
 
 
-                const currentDateTime = new Date(`${year}-${month}-${day}  ${params.getBeginWorkTime} `);
+                const beginWorkDateTime = new Date(`${year}-${month}-${day}  ${params.getBeginWorkTime} `);
 
-                let endDateTime = new Date(`${year}-${month}-${day}  ${params.getBeginWorkTime} `);
+                let endBegingWorkDateTime = new Date(`${year}-${month}-${day}  ${params.getBeginWorkTime} `);
 
                 if (params.getEndSchedulingDate.length == 0) {
+
                     logger.info("[AddNewTimeSlotOperation] Scheduling configuration without interval of date. Use just beginSchedulingDate to generate hour list")
-                    endDateTime = new Date(`${year}-${month}-${day}  ${params.getBeginWorkTime} `);
+
+                    endBegingWorkDateTime = new Date(`${year}-${month}-${day}  ${params.getBeginWorkTime} `);
                 } else {
                     logger.info("[AddNewTimeSlotOperation] Scheduling configuration with interval of date. Use beginSchedulingDate and endSchedulingDate to generate hour list")
 
-                    endDateTime = new Date(`${year}-${month}-${day}  ${params.getEndWorkTime} `);
+                    endBegingWorkDateTime = new Date(`${year}-${month}-${day}  ${params.getEndWorkTime} `);
                 }
 
-                const hourlist = await this.createSchedulingTimeByDate(inputDate, currentDateTime, endDateTime, params);
+                const hourlist = await this.createSchedulingTimeByDate(inputDate, beginWorkDateTime, endBegingWorkDateTime, params);
 
-                console.info("Hour list returned", hourlist)
+                logger.info("Hour list returned", hourlist)
                 const dateKey = `${year}-${month}-${day}`;
 
-                console.info("Date key String builded to add to time list", dateKey)
+                logger.info("Date key String builded to add to time list", dateKey)
                 timeList[dateKey] = hourlist;
 
 
             }
-            console.log("[AddNewTimeSlotOperation] input date is weekend %s", inputDate.toDateString)
+            logger.info("[AddNewTimeSlotOperation] input date is weekend", inputDate)
         }
 
         return timeList
@@ -200,19 +203,19 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         return dayWeek === 0 || dayWeek === 6; // 0 = Sunday and 6 = saturday
     }
 
-    async createSchedulingTimeByDate(inputDate: Date, currentDateTime: Date, endDateTime: Date, params: TimeSlotParams): Promise<string[]> {
+    async createSchedulingTimeByDate(inputDate: Date, beginWorkDateTime: Date, endWorkDateTime: Date, params: TimeSlotParams): Promise<string[]> {
 
         const hourList: string[] = [];
 
         let schedulingTimeTobeSave = await this.initCreateScheduling(inputDate, params)
 
-        logger.info("[AddNewTimeSlotOperation] Currente Date:", currentDateTime)
-        logger.info("[AddNewTimeSlotOperation] endDate Date:", endDateTime)
+        logger.info("[AddNewTimeSlotOperation] beginWorkDateTime received:", beginWorkDateTime)
+        logger.info("[AddNewTimeSlotOperation] endWorkDateTime received:", endWorkDateTime)
 
-        while (currentDateTime <= endDateTime && currentDateTime.toDateString() === inputDate.toDateString()) {
-            const hour = currentDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        while (beginWorkDateTime <= endWorkDateTime && beginWorkDateTime.toDateString() === inputDate.toDateString()) {
+            const hour = beginWorkDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             hourList.push(hour)
-            currentDateTime.setMinutes(currentDateTime.getMinutes() + params.getServiceInterval);
+            beginWorkDateTime.setMinutes(beginWorkDateTime.getMinutes() + params.getServiceInterval); // update beginWorkDateTime adding service interval
         }
 
         schedulingTimeTobeSave.hours = hourList;

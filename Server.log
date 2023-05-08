@@ -3229,3 +3229,57 @@
 [2023-05-08T01:08:54.282] [INFO] default - [OperationTemplate] End executing operation 101
 [2023-05-08T01:08:54.282] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":101,"message":{},"operationValidatorManager":{},"dateList":["2023-05-22T00:00:00.000Z","2023-05-23T00:00:00.000Z","2023-05-24T00:00:00.000Z","2023-05-25T00:00:00.000Z"],"schedulingTimeRepository":{},"schedulingTime":null}
 [2023-05-08T01:09:54.628] [INFO] default - Data Source has been initialized!
+[2023-05-08T01:12:04.641] [INFO] default - Data Source has been initialized!
+[2023-05-08T01:12:19.510] [INFO] default - Data Source has been initialized!
+[2023-05-08T01:12:29.948] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-08T01:12:29.949] [INFO] default - [SchedulingTimeController] Perform dependency injection for ISchedulingTimeEngine
+[2023-05-08T01:12:29.950] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":101,"message":{},"operationValidatorManager":{},"dateList":[],"schedulingTimeRepository":{}}
+[2023-05-08T01:12:29.993] [INFO] default - [OperationTemplate] Begin executing operation:101
+[2023-05-08T01:12:29.994] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-08T01:12:29.994] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-08T01:12:30.003] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-08T01:12:30.003] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-08T01:12:30.003] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-08T01:12:30.003] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-08T01:12:30.004] [INFO] default - Searching permission in data base
+[2023-05-08T01:12:30.006] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-08T01:12:30.010] [INFO] default - [AddNewTimeSlotOperation] Begin generate hour list for each date...
+[2023-05-08T01:12:30.013] [INFO] default - [AddNewTimeSlotOperation] Scheduling configuration with interval of date. Use beginSchedulingDate and endSchedulingDate to generate hour list
+[2023-05-08T01:12:30.013] [INFO] default - [AddNewTimeSlotOperation] Currente Date: 2023-05-22T09:00:00.000Z
+[2023-05-08T01:12:30.013] [INFO] default - [AddNewTimeSlotOperation] endDate Date: 2023-05-22T17:00:00.000Z
+[2023-05-08T01:12:30.037] [INFO] default - [AddNewTimeSlotOperation] Scheduling configuration with interval of date. Use beginSchedulingDate and endSchedulingDate to generate hour list
+[2023-05-08T01:12:30.037] [INFO] default - [AddNewTimeSlotOperation] Currente Date: 2023-05-23T09:00:00.000Z
+[2023-05-08T01:12:30.037] [INFO] default - [AddNewTimeSlotOperation] endDate Date: 2023-05-23T17:00:00.000Z
+[2023-05-08T01:12:30.045] [INFO] default - [AddNewTimeSlotOperation] Scheduling configuration with interval of date. Use beginSchedulingDate and endSchedulingDate to generate hour list
+[2023-05-08T01:12:30.045] [INFO] default - [AddNewTimeSlotOperation] Currente Date: 2023-05-24T09:00:00.000Z
+[2023-05-08T01:12:30.045] [INFO] default - [AddNewTimeSlotOperation] endDate Date: 2023-05-24T17:00:00.000Z
+[2023-05-08T01:12:30.054] [INFO] default - [AddNewTimeSlotOperation] Scheduling configuration with interval of date. Use beginSchedulingDate and endSchedulingDate to generate hour list
+[2023-05-08T01:12:30.054] [INFO] default - [AddNewTimeSlotOperation] Currente Date: 2023-05-25T09:00:00.000Z
+[2023-05-08T01:12:30.054] [INFO] default - [AddNewTimeSlotOperation] endDate Date: 2023-05-25T17:00:00.000Z
+[2023-05-08T01:12:30.060] [INFO] default - [OperationTemplate] End executing operation 101
+[2023-05-08T01:12:30.060] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":101,"message":{},"operationValidatorManager":{},"dateList":["2023-05-22T00:00:00.000Z","2023-05-23T00:00:00.000Z","2023-05-24T00:00:00.000Z","2023-05-25T00:00:00.000Z"],"schedulingTimeRepository":{},"schedulingTime":null}
+[2023-05-08T08:35:14.503] [INFO] default - Data Source has been initialized!
+[2023-05-08T08:35:18.340] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-08T08:35:18.341] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-08T08:35:18.341] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-08T08:35:18.356] [INFO] default - [LoginOperation] check password for user User {
+  id: '1',
+  userFullName: 'Admin Nantoi',
+  userMobileNumber: '123456789',
+  userEmail: 'nantoi@nantoi.com',
+  userCreationDate: 2023-05-04T21:41:08.282Z,
+  passwordHash: '$2b$10$tB0kErKpDjP2fdX9l2Op.uBOMX3joZenc.VVQwY2GYCQj1ebdZGt2',
+  passwordSalt: '$2b$10$tB0kErKpDjP2fdX9l2Op.u',
+  userStatus: 'Ativo'
+}
+[2023-05-08T08:35:18.357] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-08T08:35:18.418] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-08T08:35:18.419] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-08T08:35:18.438] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-08T08:35:18.438] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"id":"1","userFullName":"Admin Nantoi","userMobileNumber":"123456789","userEmail":"nantoi@nantoi.com","userCreationDate":"2023-05-04T21:41:08.282Z","passwordHash":"$2b$10$tB0kErKpDjP2fdX9l2Op.uBOMX3joZenc.VVQwY2GYCQj1ebdZGt2","passwordSalt":"$2b$10$tB0kErKpDjP2fdX9l2Op.u","userStatus":"Ativo"}}
+[2023-05-08T08:35:33.116] [INFO] default - [AuthorizationOperationTemplate] checking authorization token
+[2023-05-08T08:35:33.116] [INFO] default - [SchedulingTimeController] Perform dependency injection for ISchedulingTimeEngine
+[2023-05-08T08:35:33.117] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"operationId":101,"message":{},"operationValidatorManager":{},"dateList":[],"schedulingTimeRepository":{}}
+[2023-05-08T08:35:33.167] [ERROR] default - [AddNewTimeSlotOperation] Scheduling time configuration already exist
+[2023-05-08T08:35:33.167] [INFO] default - [OperationTemplate] End executing operation 101
+[2023-05-08T08:35:33.167] [INFO] default - [GenericOperationTemplate] End executing Operation {"operationId":101,"message":{},"operationValidatorManager":{},"dateList":[],"schedulingTimeRepository":{},"schedulingTime":{"id":"63","schedulingBeginDate":"2023-05-22","beginLunchTime":"18:00","endLunchTime":"18:00","serviceInterval":15,"availableCollaboratorNumber":1,"hours":["10:00","10:15","10:30","10:45","11:00","11:15","11:30","11:45","12:00","12:15","12:30","12:45","13:00","13:15","13:30","13:45","14:00","14:15","14:30","14:45","15:00","15:15","15:30","15:45","16:00","16:15","16:30","16:45","17:00","17:15","17:30","17:45","18:00"]}}
