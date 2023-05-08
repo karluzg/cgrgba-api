@@ -9,7 +9,6 @@ import { UserLoginParams } from "../../../application/model/user-manager/UserLog
 import e, { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
-import { AuthValidator } from "../validator/AuthValidator";
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
 
 

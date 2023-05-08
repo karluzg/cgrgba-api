@@ -1,7 +1,7 @@
 
-import { AuthParamsTemplate } from "../../../infrestructure/template/AuthParamsTemplate";
+import { AuthParamsTemplate } from "../../../../infrestructure/template/AuthParamsTemplate";
 
-export class TimeSlotParams extends AuthParamsTemplate{
+export class AddTimeSlotParams extends AuthParamsTemplate {
 
   private beginschedulingDate: string;
   private endschedulingDate: string;
@@ -15,7 +15,7 @@ export class TimeSlotParams extends AuthParamsTemplate{
 
   constructor(authenticationToken, beginSchedulingDate: string, endschedulingDate: string, beginWorkTime: string, endWorkTime: string,
     beginLunchTime: string, endLunchTime: string, serviceInterval: number, availableCollaboratorNumber: number) {
-        super(authenticationToken);
+    super(authenticationToken);
     this.beginschedulingDate = beginSchedulingDate;
     this.endschedulingDate = endschedulingDate;
     this.beginWorkTime = beginWorkTime;

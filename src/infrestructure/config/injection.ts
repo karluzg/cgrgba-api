@@ -18,6 +18,8 @@ import { IPermissionGroupEngineRepository } from '../../domain/repository/IPermi
 import { PermissionGroupEngineRepositoryImpl } from '../../domain/repository/impl/PermissionGroupEngineRepositoryImpl';
 import { ISchedulingTimeEngineRepository } from '../../domain/repository/ISchedulingTimeEngineRepository';
 import { ISchedulingTimeEngineRepositoryImpl } from '../../domain/repository/impl/ISchedulingTimeEngineRepositoryImpl';
+import { IHollydayRespository } from '../../domain/repository/IHollydayRespository';
+import { HollydayRespositoryImpl } from '../../domain/repository/impl/HollydayRespositoryImpl';
 
 //Register container for services
 container.register<IUserEngine>('IUserEngine', { useClass: UserEngineImpl });
@@ -33,4 +35,6 @@ container.register<IUserEngineRepository>('IUserEngineRepository', { useClass: U
 container.register<IRoleEngineRepository>('IRoleEngineRepository', { useClass: RoleEngineRepositoryImpl })
 container.register<IPermissionGroupEngineRepository>('IPermissionGroupEngineRepository', { useClass: PermissionGroupEngineRepositoryImpl })
 container.register<ISchedulingTimeEngineRepository>('ISchedulingTimeEngineRepository', { useClass: ISchedulingTimeEngineRepositoryImpl })
+container.register<IHollydayRespository>('IHollydayRespository', { useClass: HollydayRespositoryImpl })
+
 export default container;

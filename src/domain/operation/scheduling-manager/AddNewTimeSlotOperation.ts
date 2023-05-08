@@ -1,5 +1,5 @@
 import { TokenSession } from "../../../domain/model/TokenSession";
-import { TimeSlotParams } from "../../../application/model/scheduling-manager/TimeSlotParams";
+import { AddTimeSlotParams } from "../../../application/model/scheduling-manager/params/AddTimeSlotParams";
 import { TimeSlotResult } from "../../../application/model/scheduling-manager/TimeSlotResult";
 import { UserAuthOperationTemplate } from "../../../infrestructure/template/UserAuthOperationTemplate";
 import { OperationNamesEnum } from "../../model/enum/OperationNamesEnum";
@@ -13,24 +13,29 @@ import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { SchedulingTimeUtil } from "../util/SchedulingTimeUtil";
 import { ResultInfo } from "../../../infrestructure/response/ResultInfo";
+import { IHollydayRespository } from "../../repository/IHollydayRespository";
 
 
-export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotResult, TimeSlotParams>{
+export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotResult, AddTimeSlotParams>{
 
     private schedulingTimeRepository: ISchedulingTimeEngineRepository;
+    private hollydayRepository: IHollydayRespository;
+
     private schedulingTime: SchedulingTime;
     private dateList: Date[] = []
 
     constructor() {
         super(OperationNamesEnum.TIME_SLOT_ADD_CREATE, new OperationValidatorManager)
         this.schedulingTimeRepository = container.resolve<ISchedulingTimeEngineRepository>("ISchedulingTimeEngineRepository")
+        this.hollydayRepository = container.resolve<IHollydayRespository>("IHollydayRespository")
     }
 
-    protected async doValidateParameters(params: TimeSlotParams): Promise<void> {
+    protected async doValidateParameters(params: AddTimeSlotParams): Promise<void> {
 
 
-        console.info("[AddNewTimeSlotOperation] init of strict validation scheduling time parameteres...")
-        const schedulingDateInput = new Date(params.getBeginSchedulingDate)
+        logger.info("[AddNewTimeSlotOperation] init of strict validation scheduling time parameteres...")
+
+        const schedulingDateInput = await SchedulingTimeUtil.getDateConverted(params.getBeginSchedulingDate)
 
         this.schedulingTime = await this.schedulingTimeRepository.findBySchedulingDate(schedulingDateInput)
 
@@ -105,7 +110,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
     }
 
 
-    protected async doUserAuthExecuted(tokenSession: TokenSession, params:TimeSlotParams , result: TimeSlotResult) {
+    protected async doUserAuthExecuted(tokenSession: TokenSession, params: AddTimeSlotParams, result: TimeSlotResult) {
 
         let timeList: { [key: string]: string[] } = {};
 
@@ -130,7 +135,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
     }
 
-    async generateHourListByDate(params: TimeSlotParams): Promise<{ [key: string]: string[] }> {
+    async generateHourListByDate(params: AddTimeSlotParams): Promise<{ [key: string]: string[] }> {
 
         let timeList: { [key: string]: string[] } = {};
 
@@ -139,13 +144,14 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         for (const inputDate of this.dateList) {
 
 
-            console.log("[AddNewTimeSlotOperation] Check if input date is weekend %s", inputDate)
+            console.log("[AddNewTimeSlotOperation] Check if input date is weekend and hollyday %s", inputDate)
+            const isWeekend = await this.isweekend(inputDate);
+            const isHollyday = await this.isHollyDay(inputDate)
 
-            const isWeekendResult = await this.isweekend(inputDate);
+            console.log("[AddNewTimeSlotOperation] Input date chaecked.is weekend?", isWeekend)
+            console.log("[AddNewTimeSlotOperation] Input date chaecked.is hollyday?", isHollyday)
 
-            console.log("[AddNewTimeSlotOperation] Input date chaecked.is weekend?", isWeekendResult)
-
-            if (!isWeekendResult) {
+            if (!isWeekend && !isHollyday) {
 
                 console.log("[AddNewTimeSlotOperation] input date is not weekend %s", inputDate)
 
@@ -179,7 +185,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
 
             }
-            logger.info("[AddNewTimeSlotOperation] input date is weekend", inputDate)
+            logger.info("[AddNewTimeSlotOperation] input date is weekend or hollyday", inputDate)
         }
 
         return timeList
@@ -197,13 +203,25 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
     }
 
-
     async isweekend(inputDate: Date): Promise<boolean> {
         const dayWeek = inputDate.getDay();
         return dayWeek === 0 || dayWeek === 6; // 0 = Sunday and 6 = saturday
     }
 
-    async createSchedulingTimeByDate(inputDate: Date, beginWorkDateTime: Date, endWorkDateTime: Date, params: TimeSlotParams): Promise<string[]> {
+    async isHollyDay(inputDate: Date): Promise<boolean> {
+
+        const hollyDateEntity = await this.hollydayRepository.findByHollydayDate(inputDate)
+
+        if (hollyDateEntity) {
+            logger.info("[AddNewTimeSlotOperation] input date is hollyday % ", hollyDateEntity)
+            return false;
+        }
+
+        return true;
+    }
+
+
+    async createSchedulingTimeByDate(inputDate: Date, beginWorkDateTime: Date, endWorkDateTime: Date, params: AddTimeSlotParams): Promise<string[]> {
 
         const hourList: string[] = [];
 
@@ -224,7 +242,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
     }
 
-    async initCreateScheduling(inputDate: Date, params: TimeSlotParams): Promise<SchedulingTime> {
+    async initCreateScheduling(inputDate: Date, params: AddTimeSlotParams): Promise<SchedulingTime> {
 
         const newSchedulingTime = new SchedulingTime();
 

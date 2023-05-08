@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany, OneToMany, PrimaryColumn } from "typeorm"
-import { Hour } from "./Hour"
 import { Scheduling } from "./Scheduling"
 
 /**
