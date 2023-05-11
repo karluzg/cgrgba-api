@@ -5,10 +5,10 @@ import { Entity, PrimaryColumn, Column } from "typeorm"
 export class SchedulingStatus {
 
     @PrimaryColumn()
-    schedulingStatusCode: string
+    code: string
 
     @Column({nullable:false})
-    schedulingStatusDescription:string
+    description: string
 
 
 }

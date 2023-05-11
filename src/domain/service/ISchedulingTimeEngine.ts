@@ -1,6 +1,6 @@
-import { AddTimeSlotParams } from "../../application/model/scheduling-manager/params/AddTimeSlotParams";
-import { GetTimeSlotListParams } from "../../application/model/scheduling-manager/params/GetTimeSlotListParams";
-import { TimeSlotResult } from "../../application/model/scheduling-manager/TimeSlotResult";
+import { AddTimeSlotParams } from "../../application/model/scheduling-manager/schedulingTime/params/AddTimeSlotParams";
+import { GetTimeSlotListParams } from "../../application/model/scheduling-manager/schedulingTime/params/GetTimeSlotListParams";
+import { TimeSlotResult } from "../../application/model/scheduling-manager/schedulingTime/TimeSlotResult";
 
 
 export interface ISchedulingTimeEngine {

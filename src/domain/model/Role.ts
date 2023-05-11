@@ -30,7 +30,10 @@ export class Role {
     roleStatus: RoleStatus
 
     @Column()
-    isAdmin:boolean
+    isAdmin: boolean
+
+    @Column({ nullable: false, type: 'timestamp' })
+    creationDate: Date
 
 
 

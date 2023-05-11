@@ -1,15 +1,15 @@
 import * as express from "express";
 import { SchedulingTimeController } from "../../controller/scheduling-manager/SchedulingTimeHourController";
-import { UserRoutesValidator } from "../user-manager/validator/UserRoutesValidator";
-import { SchedulingRoutesValidator } from "./validator/SchedulingRoutesValidator";
+import { SchedulingTimeRoutesValidator } from "./validator/schedulingTime/SchedulingTimeRoutesValidator";
 
-const schedulingtimeRoutes = express.Router()
+const schedulingTimeRoutes = express.Router()
 
 
-const schedulingTimeHour = new SchedulingTimeController()
-const schedulingTimeValidator = new SchedulingRoutesValidator()
-schedulingtimeRoutes.post("", schedulingTimeValidator.addNewTimeSlot(), schedulingTimeValidator.validate, schedulingTimeHour.add_new_time_slot)
+const schedulingTimeController = new SchedulingTimeController()
+const schedulingTimeValidator = new SchedulingTimeRoutesValidator()
+schedulingTimeRoutes.post("/slots", schedulingTimeValidator.addNewTimeSlot(), schedulingTimeValidator.validate, schedulingTimeController.add_new_time_slot)
+schedulingTimeRoutes.get("/slots", schedulingTimeValidator.getTimeSlotList(), schedulingTimeValidator.validate, schedulingTimeController.get_time_slot_list)
 
-export default schedulingtimeRoutes
+export default schedulingTimeRoutes
 
 

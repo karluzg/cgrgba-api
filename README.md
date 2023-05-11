@@ -71,3 +71,6 @@ npm test -- -w
 
 # Intsal axios to be use in jest test
 npm install axios @types/axios axios-mock-adapter @types/axios-mock-adapter -D
+
+# Semaphore for access control
+npm install semaphore-async-await

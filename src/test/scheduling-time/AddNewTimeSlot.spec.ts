@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import { expect } from 'chai'
-import { AddTimeSlotParams } from '../../application/model/scheduling-manager/params/AddTimeSlotParams'
+import { AddTimeSlotParams } from '../../application/model/scheduling-manager/schedulingTime/params/AddTimeSlotParams'
 import axios from 'axios'
 
 

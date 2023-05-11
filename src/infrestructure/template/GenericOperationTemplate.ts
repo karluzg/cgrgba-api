@@ -40,7 +40,8 @@ export abstract class GenericOperationTemplate {
                 throw new ForbiddenOperationException(error.field, error.message)
 
             } else {
-                logger.error("[GenericOperationTemplate] - Error while executing operation %s", operation + " ", error)
+
+                logger.error("[GenericOperationTemplate] - Error while executing operation" + error)
                 throw new UnsuccessfullOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR)
 
             }

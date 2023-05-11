@@ -12,12 +12,12 @@ const tokenRepository = myDataSource.getRepository(TokenSession)
 export class TokenEngineRepositoryImpl implements ITokenEngineRepository {
 
       async saveTokenSession(token: TokenSession): Promise<TokenSession> {
-            return await tokenRepository.save(token);
+            return tokenRepository.save(token);
       }
 
       async findByToken(token: string): Promise<TokenSession> {
 
-            return await tokenRepository.createQueryBuilder('tokenSession')
+            return tokenRepository.createQueryBuilder('tokenSession')
                   .leftJoinAndSelect("tokenSession.user", "user")
                   .where('tokenSession.token = :token', { token: token })
                   .getOne()

@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany, OneToMany, PrimaryColumn } from "typeorm"
 import { Scheduling } from "./Scheduling"
+import { SchedulingTimeConfiguration } from "./SchedulingTimeConfiguration"
 
 /**
  * Save the scheduling history: closed date, available flag. 
@@ -12,13 +13,19 @@ export class SchedulingHistory {
     @PrimaryGeneratedColumn({ type: 'bigint' })
     id: number
 
-    @Column()
-    closedDate: Date // new Date
 
-    @ManyToOne(() => Scheduling, (scheduling) => scheduling.id, { nullable: false, eager: true })
-    scheduling: Scheduling
+    @Column({ nullable: false, type: 'timestamp' })
+    creationDate: Date
+    @Column({ nullable: false })
+    schedulingDate: string
+
+    @Column({ nullable: false })
+    chosenHour: string
 
     @Column()
     available: boolean
+
+    @ManyToOne(() => Scheduling, (scheduling) => scheduling.id, { eager: true, nullable: false })
+    scheduling: Scheduling
 
 }

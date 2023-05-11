@@ -9,7 +9,7 @@ export class UserRoutesValidator extends ParamsValidatorTemplate {
         return [
             body('userFullName').notEmpty().isLength({ max:50}).isString(),
             body('userMobileNumber').isLength({ min: 9, max:21}).isString().optional(),
-            body('userEmail').notEmpty().isLength({  max:34}).isEmail(),
+            body('userEmail').notEmpty().isLength({ max: 34 }).isEmail()
         ]
 
     }

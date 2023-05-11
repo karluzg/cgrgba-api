@@ -1,6 +1,6 @@
 import { Hollyday } from "../model/Hollyday";
 
-export interface IHollydayRespository {
+export interface IHollydayEngineRepository {
 
     findByHollydayDate(hollydayDate: Date): Promise<Hollyday>
 

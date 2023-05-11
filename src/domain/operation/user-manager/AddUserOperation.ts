@@ -31,10 +31,19 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
     protected async doValidateParameters(params: UserParams): Promise<void> {
 
-        const user = await this.userRepository.findUserByEmail(params.getUserEmail)
+        let user = await this.userRepository.findUserByEmail(params.getUserEmail)
+
         if (user) {
             logger.error("[AddUserOperation] user already exist")
             throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.USER_INVALID_EMAIL);
+        }
+
+
+        user = await this.userRepository.findUserByMobileNumber(params.getUserMobileNumber);
+
+        if (user) {
+            logger.error("[AddUserOperation] user already exist")
+            throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.USER_MBILE_NUMBER_ALREADY_EXIST);
         }
     }
 

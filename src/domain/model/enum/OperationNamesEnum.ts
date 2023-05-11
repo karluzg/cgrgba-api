@@ -10,7 +10,7 @@ export enum OperationNamesEnum {
 
 
     //SCEHDULING TIME -  101 to 201
-    TIME_SLOT_ADD_CREATE = 101,
+    TIME_SLOT_CREATE = 101,
     TIME_SLOT_GET_LIST = 102,
 
     //SCHEDULING -  202 - 302

@@ -24,28 +24,22 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
 
    async findByPermissionId(permissionId: number): Promise<Permission> {
 
-         const permissionEntity = await permissionRepository
+      return permissionRepository
             .createQueryBuilder('permission')
             .where('permission.id = :permissionId', { permissionId: permissionId })
             .getOne();
 
-         return permissionEntity;
+
    }
 
 
    async isUserOperationAllowed(operationId: number, userId: number): Promise<boolean> {
 
-      const user = await userRepository.createQueryBuilder('user')
+      return userRepository.createQueryBuilder('user')
          .leftJoinAndSelect('user.roles', 'role')
          .leftJoinAndSelect('role.permissions', 'permission')
          .where('user.id = :userId', { userId })
          .andWhere('permission.id = :operationId', { operationId }).getExists();
-
-
-      return user
-
- 
-
    }
 
 

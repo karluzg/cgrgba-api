@@ -1,12 +1,12 @@
 
 import { injectable } from "tsyringe";
 import { GenericOperationTemplate } from "../../../infrestructure/template/GenericOperationTemplate";
-import { AddTimeSlotParams } from "../../../application/model/scheduling-manager/params/AddTimeSlotParams";
-import { TimeSlotResult } from "../../../application/model/scheduling-manager/TimeSlotResult";
+import { AddTimeSlotParams } from "../../../application/model/scheduling-manager/schedulingTime/params/AddTimeSlotParams";
+import { TimeSlotResult } from "../../../application/model/scheduling-manager/schedulingTime/TimeSlotResult";
 import { ISchedulingTimeEngine } from "../ISchedulingTimeEngine";
-import { AddNewTimeSlotOperation } from "../../operation/scheduling-manager/AddNewTimeSlotOperation";
-import { GetTimeSlotListParams } from "../../../application/model/scheduling-manager/params/GetTimeSlotListParams";
-import { GetTimeSlitListOperation } from "../../operation/scheduling-manager/GetTimeSlitListOperation";
+import { AddNewTimeSlotOperation } from "../../operation/scheduling-manager/schedulingtime/AddNewTimeSlotOperation";
+import { GetTimeSlotListParams } from "../../../application/model/scheduling-manager/schedulingTime/params/GetTimeSlotListParams";
+import { GetTimeSlotListOperation } from "../../operation/scheduling-manager/schedulingtime/GetTimeSlotListOperation";
 
 
 
@@ -18,7 +18,7 @@ export class SchedulingTimeEngineImpl extends GenericOperationTemplate implement
     }
 
     get_time_slot_list(params: GetTimeSlotListParams): Promise<TimeSlotResult> {
-        return this.executeOperation(new GetTimeSlitListOperation(), params);
+        return this.executeOperation(new GetTimeSlotListOperation(), params);
     }
 
 }

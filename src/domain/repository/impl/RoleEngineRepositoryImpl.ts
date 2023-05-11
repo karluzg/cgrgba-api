@@ -11,11 +11,11 @@ const userRepository = myDataSource.getRepository(Role)
 export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       public async saveRole(role: Role): Promise<Role> {
 
-            return await userRepository.save(role)
+            return userRepository.save(role)
       }
 
       public async finRoleByName(roleName: string): Promise<Role> {
-            return await  userRepository.createQueryBuilder('role')
-            .where('role.roleName = :roleName', { roleName: roleName }).getOne()
+            return userRepository.createQueryBuilder('role')
+                  .where('role.roleName = :roleName', { roleName: roleName }).getOne()
       }
 }

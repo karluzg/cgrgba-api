@@ -9,14 +9,19 @@ const userRepository = myDataSource.getRepository(User)
 
 @injectable()
 export class UserEngineRepositoryImpl implements IUserEngineRepository {
-     
+
+      async findUserByMobileNumber(userMobileNumber: string): Promise<User> {
+            return userRepository.createQueryBuilder('user')
+                  .where('user.userMobileNumber = :userMobileNumber', { userMobileNumber: userMobileNumber }).getOne()
+      }
+
       async findUserByEmail(userEmail: string): Promise<User> {
 
-            return await  userRepository.createQueryBuilder('user')
+            return userRepository.createQueryBuilder('user')
                   .where('user.userEmail = :userEmail', { userEmail: userEmail }).getOne()
       }
       public async saveUser(user: User): Promise<User> {
-            return await userRepository.save(user)
+            return userRepository.save(user)
       }
 
 

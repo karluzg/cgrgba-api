@@ -7,10 +7,10 @@ const UserRoutes = express.Router()
 
 const userController = new UserController()
 const userRoutesValidator = new UserRoutesValidator()
-UserRoutes.post("/", userRoutesValidator.addUser(),userRoutesValidator.validate, userController.addUser)
-UserRoutes.get("/", userRoutesValidator.getUsers(),userRoutesValidator.validate, userController.getUsers)
-UserRoutes.get("/:id",userRoutesValidator.getUserById(),userRoutesValidator.validate,  userController.getUserById)
-UserRoutes.get("/username/:username", userController.getUserById)
+UserRoutes.post("/users", userRoutesValidator.addUser(), userRoutesValidator.validate, userController.addUser)
+UserRoutes.get("/users", userRoutesValidator.getUsers(), userRoutesValidator.validate, userController.getUsers)
+UserRoutes.get("/users/:id", userRoutesValidator.getUserById(), userRoutesValidator.validate, userController.getUserById)
+UserRoutes.get("/users/username/:username", userController.getUserById)
 
 export default UserRoutes
 

@@ -11,6 +11,7 @@ import { ForbiddenOperationException } from "../exceptions/ForbiddenOperationExc
 import { throws } from "assert";
 import { Field } from "../exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
+import { ResultInfo } from "../response/ResultInfo";
 
 
 
@@ -22,6 +23,7 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
   protected doValidateParameters(params: P): void { }
 
   protected operationId: number
+  protected message: Map<string, ResultInfo> = new Map();
 
   constructor(operationId: number) {
     this.operationId = operationId
@@ -57,9 +59,12 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
 
       } else if (error.errorClasseName == ErrorExceptionClass.INVALID_PARAMETERS) {
         throw new InvalidParametersException(error.field, error.message);
+
+      } else if (error.errorClasseName == ErrorExceptionClass.NOT_IMPLEMENTED) {
+        throw new NotImplementedException(error.field, error.message);
       } else {
 
-        logger.error("[OperationTemplate] Error while executing operation %s", this.operationId + " " + error)
+        logger.error("[OperationTemplate] Error while executing operation" + error)
         throw new UnsuccessfullOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR)
       }
     } finally {

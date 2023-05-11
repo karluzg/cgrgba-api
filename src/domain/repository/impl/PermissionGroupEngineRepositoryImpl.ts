@@ -1,6 +1,5 @@
 
-import { Role } from "../../model/Role";
-import { User } from "../../model/User";
+
 import { injectable } from 'tsyringe'
 import { IPermissionGroupEngineRepository } from "../IPermissionGroupEngineRepository";
 import { PermissionGroup } from "../../model/PermissionGroup";
@@ -13,12 +12,12 @@ const permissionRepository = myDataSource.getRepository(PermissionGroup)
 export class PermissionGroupEngineRepositoryImpl implements IPermissionGroupEngineRepository {
    async  finPermissionGroupByCode(permissionGroupCode: string): Promise<PermissionGroup> {
 
-            return await  userRepository.createQueryBuilder('permissionGroup')
+      return userRepository.createQueryBuilder('permissionGroup')
             .where('permissionGroup.permissionGroupCode = :permissionGroupCode', { permissionGroupCode: permissionGroupCode }).getOne()
    }
    async savePermissionGroup(permissionGroup: PermissionGroup): Promise<PermissionGroup> {
 
-      return await permissionRepository.save(permissionGroup)
+      return permissionRepository.save(permissionGroup)
    }
 
 }

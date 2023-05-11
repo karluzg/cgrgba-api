@@ -13,8 +13,7 @@ export const myDataSource = new DataSource({
     logging: false, //The logging option in TypeORM allows you to enable or disable logging of database
     entities: ["src/domain/model/*.{ts,js}"],
     migrationsTableName: "TABLE_MIGRATION",
-    migrations: ["src/domain/meta-inf/migration/*.{ts,js}"],
-    subscribers: []
+    migrations: ["src/domain/meta-inf/migration/*.{ts,js}"]
 
 })
 

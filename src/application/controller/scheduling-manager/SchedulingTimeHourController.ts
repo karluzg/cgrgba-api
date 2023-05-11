@@ -9,11 +9,11 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import { ISchedulingTimeEngine } from "../../../domain/service/ISchedulingTimeEngine";
-import { AddTimeSlotParams } from "../../model/scheduling-manager/params/AddTimeSlotParams";
+import { AddTimeSlotParams } from "../../model/scheduling-manager/schedulingTime/params/AddTimeSlotParams";
 import logger from "../../../infrestructure/config/logger";
 import { AuthValidator } from "../validator/AuthValidator";
 import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
-import { GetTimeSlotListParams } from "../../model/scheduling-manager/params/GetTimeSlotListParams";
+import { GetTimeSlotListParams } from "../../model/scheduling-manager/schedulingTime/params/GetTimeSlotListParams";
 
 
 export class SchedulingTimeController {
@@ -81,7 +81,6 @@ export class SchedulingTimeController {
             return response.status(HttpCode.OK).json(result)
 
         } catch (error) {
-
 
             if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
                 throw new NotImplementedException(error.field, error.message)

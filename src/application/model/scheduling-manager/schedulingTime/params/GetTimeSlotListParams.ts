@@ -1,4 +1,5 @@
-import { AuthParamsTemplate } from "../../../../infrestructure/template/AuthParamsTemplate";
+import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthParamsTemplate";
+
 
 export class GetTimeSlotListParams extends AuthParamsTemplate {
 

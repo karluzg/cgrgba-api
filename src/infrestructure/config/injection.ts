@@ -13,19 +13,28 @@ import { SessionEngineImpl } from '../../domain/service/impl/SessionEngineImpl';
 import { IUserEngineRepository } from '../../domain/repository/IUserEngineRepository';
 import { UserEngineRepositoryImpl } from '../../domain/repository/impl/UserEngineReposirotyImpl';
 import { IRoleEngineRepository } from '../../domain/repository/IRoleEngineRepository';
-import { RoleEngineRepositoryImpl } from '../../domain/repository/impl/RoleEngineReposirotyImpl';
+import { RoleEngineRepositoryImpl } from '../../domain/repository/impl/RoleEngineRepositoryImpl';
 import { IPermissionGroupEngineRepository } from '../../domain/repository/IPermissionGroupEngineRepository';
 import { PermissionGroupEngineRepositoryImpl } from '../../domain/repository/impl/PermissionGroupEngineRepositoryImpl';
 import { ISchedulingTimeEngineRepository } from '../../domain/repository/ISchedulingTimeEngineRepository';
-import { ISchedulingTimeEngineRepositoryImpl } from '../../domain/repository/impl/ISchedulingTimeEngineRepositoryImpl';
-import { IHollydayRespository } from '../../domain/repository/IHollydayRespository';
-import { HollydayRespositoryImpl } from '../../domain/repository/impl/HollydayRespositoryImpl';
+import { ISchedulingTimeEngineRepositoryImpl } from '../../domain/repository/impl/SchedulingTimeEngineRepositoryImpl';
+import { IHollydayEngineRepository as IHollydayEngineRepository } from '../../domain/repository/IHollydayEngineRepository';
+import { HollydayEngineRepositoryImpl as HollydayEngineRepositoryImpl } from '../../domain/repository/impl/HollydayEngineRepositoryImpl';
+import { SchedulingHistoryEngineRepositoryImpl } from '../../domain/repository/impl/SchedulingHistoryEngineRespositoryImpl';
+import { ISchedulingHistoryEngineRepository as ISchedulingHistoryEngineRepository } from '../../domain/repository/ISchedulingHistoryEngineRespository';
+import { ISchedulingEngine } from '../../domain/service/ISchedulingEngine';
+import { SchedulingEngineImpl } from '../../domain/service/impl/SchedulingEngineImpl';
+import { ISchedulingEngineRepository } from '../../domain/repository/ISchedulingEngineRepository';
+import { ICitizenEngineRepository } from '../../domain/repository/ICitizenEngineRepository';
+import { CitizenEngineRepositoryImpl } from '../../domain/repository/impl/CitizenEngineRepositoryImpl';
+import { SchedulingEngineRepositoryImpl } from '../../domain/repository/impl/SchedulingEngineRepositoryImpl';
+
 
 //Register container for services
 container.register<IUserEngine>('IUserEngine', { useClass: UserEngineImpl });
 container.register<ISessionEngine>('ISessionEngine', { useClass: SessionEngineImpl });
 container.register<ISchedulingTimeEngine>('ISchedulingTimeEngine', { useClass: SchedulingTimeEngineImpl });
-
+container.register<ISchedulingEngine>('ISchedulingEngine', { useClass: SchedulingEngineImpl })
 
 
 //Register container for repository
@@ -35,6 +44,10 @@ container.register<IUserEngineRepository>('IUserEngineRepository', { useClass: U
 container.register<IRoleEngineRepository>('IRoleEngineRepository', { useClass: RoleEngineRepositoryImpl })
 container.register<IPermissionGroupEngineRepository>('IPermissionGroupEngineRepository', { useClass: PermissionGroupEngineRepositoryImpl })
 container.register<ISchedulingTimeEngineRepository>('ISchedulingTimeEngineRepository', { useClass: ISchedulingTimeEngineRepositoryImpl })
-container.register<IHollydayRespository>('IHollydayRespository', { useClass: HollydayRespositoryImpl })
+container.register<IHollydayEngineRepository>('IHollydayEngineRepository', { useClass: HollydayEngineRepositoryImpl })
+container.register<ISchedulingHistoryEngineRepository>('ISchedulingHistoryEngineRepository', { useClass: SchedulingHistoryEngineRepositoryImpl })
+container.register<ISchedulingEngineRepository>('ISchedulingEngineRepository', { useClass: SchedulingEngineRepositoryImpl })
+container.register<ICitizenEngineRepository>('ICitizenEngineRepository', { useClass: CitizenEngineRepositoryImpl })
+
 
 export default container;

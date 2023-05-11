@@ -1,7 +1,9 @@
-import { SchedulingTime } from "../model/SchedulingTime";
+
+import { SchedulingTimeConfiguration } from "../model/SchedulingTimeConfiguration";
 
 export interface ISchedulingTimeEngineRepository {
-    findBySchedulingDate(schedulingBeginDate: Date): Promise<SchedulingTime>
-    saveSchedulingTime(schedulingTime: SchedulingTime): Promise<SchedulingTime>
+    findBySchedulingDate(schedulingBeginDate: Date): Promise<SchedulingTimeConfiguration>
+    saveSchedulingTime(schedulingTime: SchedulingTimeConfiguration): Promise<SchedulingTimeConfiguration>
+
 
 }

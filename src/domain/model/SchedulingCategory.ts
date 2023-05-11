@@ -5,10 +5,13 @@ import { Entity, PrimaryColumn, Column } from "typeorm"
 export class SchedulingCategory {
 
     @PrimaryColumn()
-    categoryCode: string
+    code: string
 
     @Column({nullable:false})
-    categoryDescription:string
+    description: string
+
+    @Column('text', { array: true })
+    services: string[]
 
 
 }

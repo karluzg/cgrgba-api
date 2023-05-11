@@ -8,11 +8,11 @@ export class Citizen {
     @PrimaryGeneratedColumn({type:"bigint"})
     id: number
 
-    @Column({unique: true,
-    length:50,
+
+    @Column({
+        length: 50,
     nullable:false})
     citizenFullName: string
-
 
     @Column({unique:true,
         length:34,
@@ -20,8 +20,8 @@ export class Citizen {
         citizenEmail: string
 
 
-    @Column({unique:true,
-    length:21,
+    @Column({
+        length: 21,
     nullable:false})
     citizenMobileNumber: string
 
