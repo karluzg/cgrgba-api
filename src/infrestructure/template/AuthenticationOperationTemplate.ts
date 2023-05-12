@@ -1,8 +1,8 @@
-import { ResultTemplate } from "../template/ResultTemplate";
+import { ResultTemplate } from "./ResultTemplate";
 import { IAuthParams } from "../interface/IAuthParams";
-import { OperationTemplate } from "../template/OperationTemplate";
+import { OperationTemplate } from "./OperationTemplate";
 import { ITokenEngineRepository } from "../../domain/repository/ITokenEngineRepository";
-import logger from "../../infrestructure/config/logger";
+import logger from "../config/logger";
 import { UnauthorizedOperationException } from "../exceptions/UnauthorizedOperationException";
 import { container } from 'tsyringe'
 import { TokenSession } from "../../domain/model/TokenSession";

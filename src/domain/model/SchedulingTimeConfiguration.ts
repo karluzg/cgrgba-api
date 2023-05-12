@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { Hour } from "./Hour"
 
 
 
@@ -28,10 +29,8 @@ export class SchedulingTimeConfiguration {
     availableCollaboratorNumber: number
 
 
-    @Column('text', { array: true })
-    hours: string[]  //-> entity.hours = ['10:00:00', '12:00:00', '14:00:00'];
-
-
+    @OneToMany(() => Hour, hour => hour.schedulingTimeConfiguration, { cascade: true })
+     hours: Hour[];
 
 
 }

@@ -1,4 +1,5 @@
-import { Entity, PrimaryColumn, Column } from "typeorm"
+import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm"
+import { Service } from "./Service";
 
 
 @Entity({schema:"portalConsular"})
@@ -10,8 +11,7 @@ export class SchedulingCategory {
     @Column({nullable:false})
     description: string
 
-    @Column('text', { array: true })
-    services: string[]
-
+    @OneToMany(() => Service, service => service.schedulingCategory)
+  services: Service[];
 
 }

@@ -4,3 +4,441 @@
 [2023-05-11T00:24:02.505] [INFO] default - [AddNewSchedulingOperation] Scheduling entity founded: []
 [2023-05-11T00:24:02.505] [INFO] default - [OperationTemplate] End executing operation 202
 [2023-05-11T00:24:02.505] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":202,"schedulings":[],"schedulingEngineRepository":{},"schedulingTimeEngineRepository":{},"hollydayEngineRepository":{},"schedulingHistoryEnginerepository":{},"citizenEngineRepository":{},"schedulingTimeEntity":[]}
+[2023-05-12T20:35:51.546] [ERROR] default - Error during Data Source initialization: error: password authentication failed for user "postgres"
+    at Parser.parseErrorMessage (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:369:69)
+    at Parser.handlePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:188:21)
+    at Parser.parse (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:103:30)
+    at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:297:9)
+    at Socket.Readable.push (node:internal/streams/readable:234:10)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 166,
+  severity: 'FATAL',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\libpq\\auth.c',
+  line: '334',
+  routine: 'auth_failed'
+}
+[2023-05-12T20:38:55.632] [ERROR] default - Error during Data Source initialization: QueryFailedError: column "code" of relation "permission_group" contains null values
+    at PostgresQueryRunner.query (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:299:19)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryRunner.executeQueries (C:\GIT\Personal\Nantoi\cgrgba-api\src\query-runner\BaseQueryRunner.ts:659:13)
+    at async PostgresQueryRunner.addColumn (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:1115:9)
+    at async PostgresQueryRunner.addColumns (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:1129:13)
+    at async RdbmsSchemaBuilder.addNewColumns (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:823:13)
+    at async RdbmsSchemaBuilder.executeSchemaSyncOperationsInProperOrder (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:226:9)
+    at async RdbmsSchemaBuilder.build (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:95:13)
+    at async DataSource.synchronize (C:\GIT\Personal\Nantoi\cgrgba-api\src\data-source\DataSource.ts:335:9)
+    at async DataSource.initialize (C:\GIT\Personal\Nantoi\cgrgba-api\src\data-source\DataSource.ts:273:43) {
+  query: 'ALTER TABLE "portalConsular"."permission_group" ADD "code" character varying NOT NULL',
+  parameters: undefined,
+  driverError: error: column "code" of relation "permission_group" contains null values
+      at Parser.parseErrorMessage (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:369:69)
+      at Parser.handlePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:188:21)
+      at Parser.parse (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:103:30)
+      at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 233,
+    severity: 'ERROR',
+    code: '23502',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'portalConsular',
+    table: 'permission_group',
+    column: 'code',
+    dataType: undefined,
+    constraint: undefined,
+    file: 'd:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\commands\\tablecmds.c',
+    line: '5455',
+    routine: 'ATRewriteTable'
+  },
+  length: 233,
+  severity: 'ERROR',
+  code: '23502',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'portalConsular',
+  table: 'permission_group',
+  column: 'code',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\commands\\tablecmds.c',
+  line: '5455',
+  routine: 'ATRewriteTable'
+}
+[2023-05-12T20:40:04.965] [ERROR] default - Error during Data Source initialization: QueryFailedError: column "code" of relation "permission_group" contains null values
+    at PostgresQueryRunner.query (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:299:19)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryRunner.executeQueries (C:\GIT\Personal\Nantoi\cgrgba-api\src\query-runner\BaseQueryRunner.ts:659:13)
+    at async PostgresQueryRunner.addColumn (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:1115:9)
+    at async PostgresQueryRunner.addColumns (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:1129:13)
+    at async RdbmsSchemaBuilder.addNewColumns (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:823:13)
+    at async RdbmsSchemaBuilder.executeSchemaSyncOperationsInProperOrder (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:226:9)
+    at async RdbmsSchemaBuilder.build (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:95:13)
+    at async DataSource.synchronize (C:\GIT\Personal\Nantoi\cgrgba-api\src\data-source\DataSource.ts:335:9)
+    at async DataSource.initialize (C:\GIT\Personal\Nantoi\cgrgba-api\src\data-source\DataSource.ts:273:43) {
+  query: 'ALTER TABLE "portalConsular"."permission_group" ADD "code" character varying NOT NULL',
+  parameters: undefined,
+  driverError: error: column "code" of relation "permission_group" contains null values
+      at Parser.parseErrorMessage (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:369:69)
+      at Parser.handlePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:188:21)
+      at Parser.parse (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:103:30)
+      at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 233,
+    severity: 'ERROR',
+    code: '23502',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'portalConsular',
+    table: 'permission_group',
+    column: 'code',
+    dataType: undefined,
+    constraint: undefined,
+    file: 'd:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\commands\\tablecmds.c',
+    line: '5455',
+    routine: 'ATRewriteTable'
+  },
+  length: 233,
+  severity: 'ERROR',
+  code: '23502',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'portalConsular',
+  table: 'permission_group',
+  column: 'code',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\commands\\tablecmds.c',
+  line: '5455',
+  routine: 'ATRewriteTable'
+}
+[2023-05-12T20:40:50.196] [ERROR] default - Error during Data Source initialization: QueryFailedError: column "code" of relation "permission_group" contains null values
+    at PostgresQueryRunner.query (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:299:19)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryRunner.executeQueries (C:\GIT\Personal\Nantoi\cgrgba-api\src\query-runner\BaseQueryRunner.ts:659:13)
+    at async PostgresQueryRunner.addColumn (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:1115:9)
+    at async PostgresQueryRunner.addColumns (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:1129:13)
+    at async RdbmsSchemaBuilder.addNewColumns (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:823:13)
+    at async RdbmsSchemaBuilder.executeSchemaSyncOperationsInProperOrder (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:226:9)
+    at async RdbmsSchemaBuilder.build (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:95:13)
+    at async DataSource.synchronize (C:\GIT\Personal\Nantoi\cgrgba-api\src\data-source\DataSource.ts:335:9)
+    at async DataSource.initialize (C:\GIT\Personal\Nantoi\cgrgba-api\src\data-source\DataSource.ts:273:43) {
+  query: 'ALTER TABLE "portalConsular"."permission_group" ADD "code" character varying NOT NULL',
+  parameters: undefined,
+  driverError: error: column "code" of relation "permission_group" contains null values
+      at Parser.parseErrorMessage (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:369:69)
+      at Parser.handlePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:188:21)
+      at Parser.parse (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:103:30)
+      at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 233,
+    severity: 'ERROR',
+    code: '23502',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'portalConsular',
+    table: 'permission_group',
+    column: 'code',
+    dataType: undefined,
+    constraint: undefined,
+    file: 'd:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\commands\\tablecmds.c',
+    line: '5455',
+    routine: 'ATRewriteTable'
+  },
+  length: 233,
+  severity: 'ERROR',
+  code: '23502',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'portalConsular',
+  table: 'permission_group',
+  column: 'code',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\commands\\tablecmds.c',
+  line: '5455',
+  routine: 'ATRewriteTable'
+}
+[2023-05-12T20:46:10.508] [ERROR] default - Error during Data Source initialization: QueryFailedError: column "code" of relation "permission_group" contains null values
+    at PostgresQueryRunner.query (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:299:19)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryRunner.executeQueries (C:\GIT\Personal\Nantoi\cgrgba-api\src\query-runner\BaseQueryRunner.ts:659:13)
+    at async PostgresQueryRunner.addColumn (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:1115:9)
+    at async PostgresQueryRunner.addColumns (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\postgres\PostgresQueryRunner.ts:1129:13)
+    at async RdbmsSchemaBuilder.addNewColumns (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:823:13)
+    at async RdbmsSchemaBuilder.executeSchemaSyncOperationsInProperOrder (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:226:9)
+    at async RdbmsSchemaBuilder.build (C:\GIT\Personal\Nantoi\cgrgba-api\src\schema-builder\RdbmsSchemaBuilder.ts:95:13)
+    at async DataSource.synchronize (C:\GIT\Personal\Nantoi\cgrgba-api\src\data-source\DataSource.ts:335:9)
+    at async DataSource.initialize (C:\GIT\Personal\Nantoi\cgrgba-api\src\data-source\DataSource.ts:273:43) {
+  query: 'ALTER TABLE "portalConsular"."permission_group" ADD "code" character varying NOT NULL',
+  parameters: undefined,
+  driverError: error: column "code" of relation "permission_group" contains null values
+      at Parser.parseErrorMessage (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:369:69)
+      at Parser.handlePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:188:21)
+      at Parser.parse (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\parser.ts:103:30)
+      at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 233,
+    severity: 'ERROR',
+    code: '23502',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'portalConsular',
+    table: 'permission_group',
+    column: 'code',
+    dataType: undefined,
+    constraint: undefined,
+    file: 'd:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\commands\\tablecmds.c',
+    line: '5455',
+    routine: 'ATRewriteTable'
+  },
+  length: 233,
+  severity: 'ERROR',
+  code: '23502',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: 'portalConsular',
+  table: 'permission_group',
+  column: 'code',
+  dataType: undefined,
+  constraint: undefined,
+  file: 'd:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\commands\\tablecmds.c',
+  line: '5455',
+  routine: 'ATRewriteTable'
+}
+[2023-05-12T22:56:56.795] [INFO] default - Data Source has been initialized!
+[2023-05-12T23:02:13.547] [INFO] default - Data Source has been initialized!
+[2023-05-12T23:04:23.920] [INFO] default - Data Source has been initialized!
+[2023-05-12T23:04:46.823] [ERROR] default - Error during Data Source initialization: QueryFailedError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'array NOT NULL' at line 1
+    at Query.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\mysql\MysqlQueryRunner.ts:222:33)
+    at Query.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:526:10)
+    at Query._callback (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:488:16)
+    at Query.Sequence.end (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+    at Query.ErrorPacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Query.js:92:8)
+    at Protocol._parsePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:88:28) {
+  query: 'ALTER TABLE `scheduling_category` ADD `services` text array NOT NULL',
+  parameters: undefined,
+  driverError: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'array NOT NULL' at line 1
+      at Query.Sequence._packetToError (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:526:10)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      --------------------
+      at Protocol._enqueue (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:198:25)
+      at C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\mysql\MysqlQueryRunner.ts:194:36
+      at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+    code: 'ER_PARSE_ERROR',
+    errno: 1064,
+    sqlMessage: "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'array NOT NULL' at line 1",
+    sqlState: '42000',
+    index: 0,
+    sql: 'ALTER TABLE `scheduling_category` ADD `services` text array NOT NULL'
+  },
+  code: 'ER_PARSE_ERROR',
+  errno: 1064,
+  sqlMessage: "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'array NOT NULL' at line 1",
+  sqlState: '42000',
+  index: 0,
+  sql: 'ALTER TABLE `scheduling_category` ADD `services` text array NOT NULL'
+}
+[2023-05-12T23:05:21.068] [ERROR] default - Error during Data Source initialization: QueryFailedError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'array NOT NULL' at line 1
+    at Query.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\mysql\MysqlQueryRunner.ts:222:33)
+    at Query.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:526:10)
+    at Query._callback (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:488:16)
+    at Query.Sequence.end (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+    at Query.ErrorPacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Query.js:92:8)
+    at Protocol._parsePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:88:28) {
+  query: 'ALTER TABLE `scheduling_category` ADD `services` text array NOT NULL',
+  parameters: undefined,
+  driverError: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'array NOT NULL' at line 1
+      at Query.Sequence._packetToError (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:526:10)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      --------------------
+      at Protocol._enqueue (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:198:25)
+      at C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\mysql\MysqlQueryRunner.ts:194:36
+      at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+    code: 'ER_PARSE_ERROR',
+    errno: 1064,
+    sqlMessage: "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'array NOT NULL' at line 1",
+    sqlState: '42000',
+    index: 0,
+    sql: 'ALTER TABLE `scheduling_category` ADD `services` text array NOT NULL'
+  },
+  code: 'ER_PARSE_ERROR',
+  errno: 1064,
+  sqlMessage: "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'array NOT NULL' at line 1",
+  sqlState: '42000',
+  index: 0,
+  sql: 'ALTER TABLE `scheduling_category` ADD `services` text array NOT NULL'
+}
+[2023-05-12T23:05:30.634] [ERROR] default - Error during Data Source initialization: [96msrc/domain/model/Service.ts[0m:[93m1[0m:[93m2[0m - [91merror[0m[90m TS2304: [0mCannot find name 'Entity'.
+
+[7m1[0m @Entity({ schema: "portalConsular" })
+[7m [0m [91m ~~~~~~[0m
+[96msrc/domain/model/Service.ts[0m:[93m4[0m:[93m4[0m - [91merror[0m[90m TS2304: [0mCannot find name 'PrimaryGeneratedColumn'.
+
+[7m4[0m   @PrimaryGeneratedColumn()
+[7m [0m [91m   ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/domain/model/Service.ts[0m:[93m7[0m:[93m4[0m - [91merror[0m[90m TS2304: [0mCannot find name 'Column'.
+
+[7m7[0m   @Column()
+[7m [0m [91m   ~~~~~~[0m
+[96msrc/domain/model/Service.ts[0m:[93m10[0m:[93m4[0m - [91merror[0m[90m TS2304: [0mCannot find name 'ManyToOne'.
+
+[7m10[0m   @ManyToOne(() => SchedulingCategory, schedulingCategory => schedulingCategory.services)
+[7m  [0m [91m   ~~~~~~~~~[0m
+[96msrc/domain/model/Service.ts[0m:[93m10[0m:[93m20[0m - [91merror[0m[90m TS2304: [0mCannot find name 'SchedulingCategory'.
+
+[7m10[0m   @ManyToOne(() => SchedulingCategory, schedulingCategory => schedulingCategory.services)
+[7m  [0m [91m                   ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/domain/model/Service.ts[0m:[93m11[0m:[93m23[0m - [91merror[0m[90m TS2304: [0mCannot find name 'SchedulingCategory'.
+
+[7m11[0m   schedulingCategory: SchedulingCategory;
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~[0m
+
+[2023-05-12T23:05:46.346] [ERROR] default - Error during Data Source initialization: [96msrc/domain/model/Service.ts[0m:[93m1[0m:[93m2[0m - [91merror[0m[90m TS2304: [0mCannot find name 'Entity'.
+
+[7m1[0m @Entity({ schema: "portalConsular" })
+[7m [0m [91m ~~~~~~[0m
+[96msrc/domain/model/Service.ts[0m:[93m4[0m:[93m4[0m - [91merror[0m[90m TS2304: [0mCannot find name 'PrimaryGeneratedColumn'.
+
+[7m4[0m   @PrimaryGeneratedColumn()
+[7m [0m [91m   ~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/domain/model/Service.ts[0m:[93m7[0m:[93m4[0m - [91merror[0m[90m TS2304: [0mCannot find name 'Column'.
+
+[7m7[0m   @Column()
+[7m [0m [91m   ~~~~~~[0m
+[96msrc/domain/model/Service.ts[0m:[93m10[0m:[93m4[0m - [91merror[0m[90m TS2304: [0mCannot find name 'ManyToOne'.
+
+[7m10[0m   @ManyToOne(() => SchedulingCategory, schedulingCategory => schedulingCategory.services)
+[7m  [0m [91m   ~~~~~~~~~[0m
+[96msrc/domain/model/Service.ts[0m:[93m10[0m:[93m20[0m - [91merror[0m[90m TS2304: [0mCannot find name 'SchedulingCategory'.
+
+[7m10[0m   @ManyToOne(() => SchedulingCategory, schedulingCategory => schedulingCategory.services)
+[7m  [0m [91m                   ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/domain/model/Service.ts[0m:[93m11[0m:[93m23[0m - [91merror[0m[90m TS2304: [0mCannot find name 'SchedulingCategory'.
+
+[7m11[0m   schedulingCategory: SchedulingCategory;
+[7m  [0m [91m                      ~~~~~~~~~~~~~~~~~~[0m
+
+[2023-05-12T23:06:03.785] [INFO] default - Data Source has been initialized!
+[2023-05-12T23:10:20.415] [ERROR] default - Error during Data Source initialization: Error: ER_BAD_DB_ERROR: Unknown database 'create schema `new_schema` ;'
+    at Handshake.Sequence._packetToError (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Handshake.ErrorPacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Handshake.js:123:18)
+    at Protocol._parsePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Protocol._enqueue (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\GIT\Personal\Nantoi\cgrgba-api\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1248:18
+    at new Promise (<anonymous>)
+    at MysqlDriver.createPool (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1245:16)
+    at MysqlDriver.connect (C:\GIT\Personal\Nantoi\cgrgba-api\src\driver\mysql\MysqlDriver.ts:393:36)
+    at DataSource.initialize (C:\GIT\Personal\Nantoi\cgrgba-api\src\data-source\DataSource.ts:249:27)
+    at Object.<anonymous> (C:\GIT\Personal\Nantoi\cgrgba-api\src\server.ts:16:14) {
+  code: 'ER_BAD_DB_ERROR',
+  errno: 1049,
+  sqlMessage: "Unknown database 'create schema `new_schema` ;'",
+  sqlState: '42000',
+  fatal: true
+}
+[2023-05-12T23:10:35.692] [INFO] default - Data Source has been initialized!

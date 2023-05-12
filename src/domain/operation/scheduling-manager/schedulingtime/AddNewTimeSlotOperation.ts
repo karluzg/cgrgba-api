@@ -14,6 +14,7 @@ import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/e
 import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
 import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { IHollydayEngineRepository as IHollydayEngineRepository } from "../../../repository/IHollydayEngineRepository";
+import { Hour } from "../../../model/Hour";
 
 
 
@@ -234,7 +235,14 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         newSchedulingTime.serviceInterval = params.getServiceInterval;
 
         newSchedulingTime.availableCollaboratorNumber = params.getAvailableCollaboratorNumber;
-        newSchedulingTime.hours = hourlistInput;
+
+        const hours: Hour[] = hourlistInput.map(value => {
+            const hour = new Hour();
+            hour.value = value;
+            return hour;
+          });
+
+        newSchedulingTime.hours = hours;
 
 
         if (hourlistInput.length != 0) {

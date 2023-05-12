@@ -16,6 +16,8 @@ import { UserStatusEnum } from "../../model/enum/UserStatusEnum";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { GeneratePassowordUtil } from "../util/GeneratePassowordUtil";
 import { ResultInfo } from "../../../infrestructure/response/ResultInfo";
+import { EmailTemplate } from "../../../infrestructure/template/EmailTemplate";
+import { GenerateHtmlBody } from "../util/GenerateHtmlBody";
 
 
 
@@ -73,6 +75,13 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
         this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_TIME_ADDED));
         result.setErrorMessages = Object.fromEntries(this.message)
+
+
+        const emailBody= GenerateHtmlBody.generateNewUserBody(user.userFullName,user.userEmail,password);
+        const emailTemplate= new EmailTemplate();
+        const mailOption= await emailTemplate.createMailOption(user.userEmail,"Bem-vindo à plataforma",emailBody);
+
+        await emailTemplate.sendEmail(mailOption);
 
     }
 
