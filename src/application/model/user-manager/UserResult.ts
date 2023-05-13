@@ -1,8 +1,11 @@
+
+import { ApiProperty } from "@nestjs/swagger";
 import { User } from "../../../domain/model/User";
 import { ResultTemplate } from "../../../infrestructure/template/ResultTemplate";
 
-export class UserResult extends ResultTemplate{
 
+export class UserResult extends ResultTemplate{
+   @ApiProperty()
   private user:User
 
   public get getUser():User{

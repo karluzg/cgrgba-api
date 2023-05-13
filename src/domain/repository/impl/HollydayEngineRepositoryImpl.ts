@@ -11,7 +11,7 @@ export class HollydayEngineRepositoryImpl implements IHollydayEngineRepository {
     async findByHollydayDate(hollydayDate: Date): Promise<Hollyday> {
 
         return schedulingHollydayRepository.createQueryBuilder('hollyday')
-            .where('hollyday.hollydayDate = :hollydayDate', { hollydayDate }).getOne()
+            .where('hollyday.date = :hollydayDate', { hollydayDate }).getOne()
     }
 }
 

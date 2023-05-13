@@ -29,7 +29,7 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
 
     protected async doValidateParameters(params: UserLoginParams): Promise<void> {
 
-        this.user = await this.userRepository.findUserByEmail(params.getUserEmail)
+        this.user = await this.userRepository.findUserByEmail(params.getEmail)
         if (!this.user) {
             throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR);
         }
@@ -37,7 +37,7 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
 
         logger.info("[LoginOperation] check password for user %s", this.user)
         const passwordValidator = new PasswordValidator();
-        if (!await passwordValidator.checkPassword(params.getuserPassword, this.user.passwordHash)) {
+        if (!await passwordValidator.checkPassword(params.getPassword, this.user.passwordHash)) {
             throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.USER_INVALID_CREDENTIALS)
         }
 
@@ -54,11 +54,10 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
         const expireDate = new Date();
 
         expireDate.setHours(creationDate.getHours() + 24);
-        token.sessionCreationDate = creationDate;
-        token.sessionExpireDate = expireDate;
+        token.expireDate = expireDate;
 
 
-        logger.info("[LoginOperation]  token expire in 24 hours %s", JSON.stringify(token.user.userEmail))
+        logger.info("[LoginOperation]  token expire in 24 hours %s", JSON.stringify(token.user.email))
         const newTokenSession = await this.tokenRepository.saveTokenSession(token)
 
         result.setToken = newTokenSession;

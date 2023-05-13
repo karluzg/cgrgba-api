@@ -13,7 +13,7 @@ export class PermissionGroupEngineRepositoryImpl implements IPermissionGroupEngi
    async  finPermissionGroupByCode(permissionGroupCode: string): Promise<PermissionGroup> {
 
       return userRepository.createQueryBuilder('permissionGroup')
-            .where('permissionGroup.permissionGroupCode = :permissionGroupCode', { permissionGroupCode: permissionGroupCode }).getOne()
+            .where('permissionGroup.code = :permissionGroupCode', { permissionGroupCode: permissionGroupCode }).getOne()
    }
    async savePermissionGroup(permissionGroup: PermissionGroup): Promise<PermissionGroup> {
 

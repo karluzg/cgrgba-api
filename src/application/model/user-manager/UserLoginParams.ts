@@ -4,20 +4,20 @@ import { ParamsTemplate } from "../../../infrestructure/template/ParamsTemplate"
 
 export class UserLoginParams extends ParamsTemplate {
 
-    private userPassword: string
-    private userEmail: string
+    private password: string
+    private email: string
 
 
-    constructor(userEmail: string, userPassword: string) {
+    constructor(email: string, password: string) {
         super()
-        this.userPassword = userPassword
-        this.userEmail = userEmail
+        this.password = password
+        this.email = email
     }
 
-    get getuserPassword(): string {
-        return this.userPassword
+    get getPassword(): string {
+        return this.password
     }
-    get getUserEmail() {
-        return this.userEmail;
+    get getEmail() {
+        return this.email;
     }
 }

@@ -28,7 +28,7 @@ export class GetTimeSlotListOperation extends UserAuthOperationTemplate<TimeSlot
 
 
     constructor() {
-        super(OperationNamesEnum.TIME_SLOT_GET_LIST, new OperationValidatorManager)
+        super(OperationNamesEnum.TIMESLOT_GET_LIST, new OperationValidatorManager)
         this.schedulingTimeRepository = container.resolve<ISchedulingTimeEngineRepository>("ISchedulingTimeEngineRepository")
         this.hollydayRepository = container.resolve<IHollydayEngineRepository>("IHollydayEngineRepository")
         this.schedulingHistoryEngineRepository = container.resolve<ISchedulingHistoryEngineRepository>("ISchedulingHistoryEngineRepository")

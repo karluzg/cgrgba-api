@@ -16,6 +16,6 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
 
       public async finRoleByName(roleName: string): Promise<Role> {
             return userRepository.createQueryBuilder('role')
-                  .where('role.roleName = :roleName', { roleName: roleName }).getOne()
+                  .where('role.name = :roleName', { roleName: roleName }).getOne()
       }
 }

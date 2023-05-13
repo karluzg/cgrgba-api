@@ -18,11 +18,11 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
         return schedulingEngineRepository.createQueryBuilder('scheduling')
             .leftJoinAndSelect('scheduling.citizen', 'citizen')
-            .where('citizen.citizenEmail = :citizenEmail', { citizenEmail })
+            .where('citizen.email = :citizenEmail', { citizenEmail })
             .andWhere('scheduling.category = :schedulingCategory', { schedulingCategory })
             .andWhere('scheduling.service = :schedulingService', { schedulingService })
             .andWhere('scheduling.status = :schedulingStatus', { schedulingStatus: 'Por atender' })
-            .orWhere('scheduling.schedulingDate = :schedulingDate', { schedulingDate })
+            .orWhere('scheduling.date = :schedulingDate', { schedulingDate })
             .andWhere('scheduling.chosenHour = :chosenHour', { chosenHour }).getExists();
 
 

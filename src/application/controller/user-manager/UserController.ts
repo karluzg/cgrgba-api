@@ -20,13 +20,13 @@ export class UserController {
   public async addUser(request: Request, response: Response):Promise< Response> {
 
     try {
-      const { userFullName, userMobileNumber, userEmail } = request.body;
+      const { fullName, mobileNumber, email } = request.body;
 
       
       //const authenticationToken =  new AuthorizationOperationTemplate().checkAuthorizationToken(request)
       //não deixa acesso a classe extendida então usou-se static
       const authenticationToken = AuthValidator.checkAuthorizationToken(request);
-      const params = new UserParams(authenticationToken, userFullName, userMobileNumber, userEmail)
+      const params = new UserParams(authenticationToken, fullName, mobileNumber, email)
 
       logger.info("[UserController] Perform dependency injection for UserController")
 

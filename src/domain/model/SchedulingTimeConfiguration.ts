@@ -10,11 +10,11 @@ export class SchedulingTimeConfiguration {
     @PrimaryGeneratedColumn({ type: 'bigint' })
     id: number
 
-    @Column({ nullable: false, type: 'timestamp' })
+    @Column({ nullable: false, type: 'timestamp',default: () => "CURRENT_TIMESTAMP"  })
     creationDate: Date
 
     @Column({ type: 'date', unique: true, nullable: false })
-    schedulingBeginDate: Date
+    beginDate: Date
 
     @Column()
     beginLunchTime: string

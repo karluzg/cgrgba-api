@@ -8,7 +8,7 @@ export class CitizenEngineRepositoryImpl implements ICitizenEngineRepository {
 
     async findCitizenByEmail(citizenEmail: string): Promise<Citizen> {
         return citizenEngineRepository.createQueryBuilder('citizen')
-            .where('citizen.citizenEmail = :citizenEmail', { citizenEmail: citizenEmail }).getOne()
+            .where('citizen.email = :citizenEmail', { citizenEmail: citizenEmail }).getOne()
     }
 
     async saveCitizen(newCitizen: Citizen): Promise<Citizen> {

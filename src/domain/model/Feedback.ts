@@ -20,8 +20,8 @@ export class Feedback {
 
    
    @Column()
-   feedbackStatus:boolean
+   status:boolean
 
-   @ManyToOne(()=> MessageType,(messageType)=> messageType.messageType,{eager:true, nullable:false})
+   @ManyToOne(()=> MessageType,{eager:true, nullable:false})
    messageType:MessageType
 }

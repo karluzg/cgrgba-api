@@ -6,8 +6,8 @@ import { Entity, Column, PrimaryColumn} from "typeorm"
 export class ArchiveType {
 
     @PrimaryColumn()
-    archiveType : String
+    name : String
     
     @Column()
-    archiveTypeDescription : String
+    description : String
 }

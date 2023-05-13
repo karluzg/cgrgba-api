@@ -5,12 +5,12 @@ import { Entity, Column, PrimaryColumn} from "typeorm"
 export class ArchiveExtension {
 
     @PrimaryColumn()
-    archiveExtension : String
+    name : String
     
     @Column()
-    mimeType : String
+    nimeType : String
 
     @Column()
-    extensionDescriptionArchive : String
+    description : String
 }
 

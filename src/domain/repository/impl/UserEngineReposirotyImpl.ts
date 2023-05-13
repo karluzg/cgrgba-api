@@ -12,13 +12,13 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
 
       async findUserByMobileNumber(userMobileNumber: string): Promise<User> {
             return userRepository.createQueryBuilder('user')
-                  .where('user.userMobileNumber = :userMobileNumber', { userMobileNumber: userMobileNumber }).getOne()
+                  .where('user.mobileNumber = :userMobileNumber', { userMobileNumber: userMobileNumber }).getOne()
       }
 
       async findUserByEmail(userEmail: string): Promise<User> {
 
             return userRepository.createQueryBuilder('user')
-                  .where('user.userEmail = :userEmail', { userEmail: userEmail }).getOne()
+                  .where('user.email = :userEmail', { userEmail: userEmail }).getOne()
       }
       public async saveUser(user: User): Promise<User> {
             return userRepository.save(user)

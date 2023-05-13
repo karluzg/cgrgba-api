@@ -33,7 +33,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
     protected async doValidateParameters(params: UserParams): Promise<void> {
 
-        let user = await this.userRepository.findUserByEmail(params.getUserEmail)
+        let user = await this.userRepository.findUserByEmail(params.getEmail)
 
         if (user) {
             logger.error("[AddUserOperation] user already exist")
@@ -41,7 +41,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         }
 
 
-        user = await this.userRepository.findUserByMobileNumber(params.getUserMobileNumber);
+        user = await this.userRepository.findUserByMobileNumber(params.getMobileNumber);
 
         if (user) {
             logger.error("[AddUserOperation] user already exist")
@@ -61,10 +61,9 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
 
         const user = new User();
-        user.userEmail = params.getUserEmail;
-        user.userFullName = params.getUserFullName;
-        user.userMobileNumber = params.getUserMobileNumber;
-        user.userCreationDate = new Date
+        user.email = params.getEmail;
+        user.fullName = params.getFullName;
+        user.mobileNumber = params.getMobileNumber;
         user.passwordHash = await hash;
         user.passwordSalt = await salt;
         user.userStatus = UserStatusEnum.NEW;
@@ -77,9 +76,9 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         result.setErrorMessages = Object.fromEntries(this.message)
 
 
-        const emailBody= GenerateHtmlBody.generateNewUserBody(user.userFullName,user.userEmail,password);
+        const emailBody= GenerateHtmlBody.generateNewUserBody(user.fullName,user.email,password);
         const emailTemplate= new EmailTemplate();
-        const mailOption= await emailTemplate.createMailOption(user.userEmail,"Bem-vindo à plataforma",emailBody);
+        const mailOption= await emailTemplate.createMailOption(user.email,"Bem-vindo à plataforma",emailBody);
 
         await emailTemplate.sendEmail(mailOption);
 

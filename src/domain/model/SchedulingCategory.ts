@@ -12,6 +12,6 @@ export class SchedulingCategory {
     description: string
 
     @OneToMany(() => Service, service => service.schedulingCategory)
-  services: Service[];
+    services: Service[];
 
 }

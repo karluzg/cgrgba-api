@@ -5,26 +5,26 @@ import { AuthParamsTemplate } from "../../../infrestructure/template/AuthParamsT
 
 export class UserParams extends AuthParamsTemplate{
    
-    private userFullName:string
-    private userMobileNumber: string
-    private userEmail:string
+    private fullName:string
+    private mobileNumber: string
+    private email:string
  
   
     constructor(authenticationToken:string, userFullName:string, userMobileNumber: string, userEmail:string){
       super(authenticationToken)
-      this.userFullName=userFullName
-      this.userMobileNumber=userMobileNumber
-      this.userEmail=userEmail
+      this.fullName=userFullName
+      this.mobileNumber=userMobileNumber
+      this.email=userEmail
     }
   
-    get getUserFullName(): string{
-      return this.userFullName
+    get getFullName(): string{
+      return this.fullName
     }
-    get getUserMobileNumber(): string{
-      return this.userMobileNumber
+    get getMobileNumber(): string{
+      return this.mobileNumber
     }
-    get getUserEmail(){
-      return this.userEmail;
+    get getEmail(){
+      return this.email;
     }
   }
   

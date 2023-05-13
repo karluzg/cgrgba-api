@@ -15,7 +15,7 @@ export class ISchedulingTimeEngineRepositoryImpl implements ISchedulingTimeEngin
     async findBySchedulingDate(schedulingBeginDate: Date): Promise<SchedulingTimeConfiguration> {
 
         return schedulingTimeRepository.createQueryBuilder('schedulingTimeConfiguration')
-            .where('schedulingTimeConfiguration.schedulingBeginDate = :schedulingBeginDate', { schedulingBeginDate: schedulingBeginDate }).getMany()
+            .where('schedulingTimeConfiguration.beginDate = :schedulingBeginDate', { schedulingBeginDate: schedulingBeginDate }).getMany()
     }
 
     async saveSchedulingTime(schedulingTime: SchedulingTimeConfiguration): Promise<SchedulingTimeConfiguration> {

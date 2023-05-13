@@ -7,8 +7,8 @@ export class SessionRoutesValidator extends ParamsValidatorTemplate {
 
     public login():ValidationChain[] {
         return [
-            body('userPassword').notEmpty().isLength({ min: 6, max:12}).isString(),
-            body('userEmail').notEmpty().isLength({ max: 34 }).isEmail()
+            body('password').notEmpty().isLength({ min: 6, max:12}).isString(),
+            body('email').notEmpty().isLength({ max: 34 }).isEmail()
         ]
     }
 }

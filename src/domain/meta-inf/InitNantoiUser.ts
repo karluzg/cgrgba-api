@@ -14,10 +14,10 @@ import { Permission } from "../model/Permission"
 
 export async function initNantoiUser() {
 
-   // const permissionGourp = await cretePermissionGroupAdmin()
-    //const permissions = await cretePermissions(permissionGourp)
-   // const role = await creteRoleAdmin(permissions)
-    //await createUserNantoi(role);
+   //const permissionGourp = await cretePermissionGroupAdmin()
+   const permissions = await cretePermissions()
+   const role = await creteRoleAdmin(permissions)
+   await createUserNantoi(role);
 
 }
 
@@ -36,10 +36,9 @@ async function createUserNantoi(role: Role) {
         const hash = passwordValidator.generateHash("Nantoi2023!", await salt)
 
         const user = new User();
-        user.userEmail = "nantoi@nantoi.com"
-        user.userFullName = "Admin Nantoi"
-        user.userMobileNumber = "123456789"
-        user.userCreationDate = new Date
+        user.email = "nantoi@nantoi.com"
+        user.fullName = "Admin Nantoi"
+        user.mobileNumber = "123456789"
         user.passwordHash = await hash;
         user.passwordSalt = await salt;
         user.userStatus = UserStatusEnum.ACTIVE;
@@ -61,8 +60,8 @@ async function creteRoleAdmin(permissions: Permission[]) {
 
         const role = new Role();
         role.isAdmin = true
-        role.roleDescription = "Administrator"
-        role.roleName = "ADMIN"
+        role.description = "Administrator"
+        role.name = "ADMIN"
         role.permissions = permissions
         logger.info("[creteRoleAdmin] Creating Admin")
         return roleRepository.saveRole(role)
@@ -74,27 +73,47 @@ async function creteRoleAdmin(permissions: Permission[]) {
 
 }
 
-async function cretePermissions(permissionGroup: PermissionGroup) {
+async function cretePermissions() {
     logger.info("[cretePermissions] Perform dependency injection for IPermissionEngineRepository")
-    const roleRepository = container.resolve<IPermissionEngineRepository>("IPermissionEngineRepository")
+    const permissionRepository = container.resolve<IPermissionEngineRepository>("IPermissionEngineRepository")
+
+    logger.info("[cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository")
+    const permissionGroupRepository = container.resolve<IPermissionGroupEngineRepository>("IPermissionGroupEngineRepository")
+ 
     //add new user
     const permissions = []
     for (const operation in OperationNamesEnum) {
 
         if (isNaN(Number(operation))) {
             logger.info("[cretePermissions] Find permission by code " + OperationNamesEnum[operation])
-            const dbPermission = await roleRepository.finPermissionByCode(operation)
+            const dbPermission = await permissionRepository.finPermissionByCode(operation)
 
             if (!dbPermission) {
+
+
+                const group= operation.split("_")[0];
+
+                logger.info("[cretePermissions] Find role by name")
+                let adminPermission = await permissionGroupRepository.finPermissionGroupByCode(group)
+            
+                if (!adminPermission) {
+            
+                    const permission = new PermissionGroup();
+                    permission.code = group
+                    permission.description = group
+                    logger.info("[cretePermissions] Creating "+group)
+                    adminPermission= await permissionGroupRepository.savePermissionGroup(permission)
+            
+                }
 
                 const permission = new Permission();
                 permission.code = operation
                 permission.id = parseInt(OperationNamesEnum[operation]);
                 permission.description = operation
-                permission.permissionGroup = permissionGroup
+                permission.permissionGroup = adminPermission
 
                 logger.info("[cretePermissions] Creating Admin")
-                const newPermisson = await roleRepository.savePermission(permission)
+                const newPermisson = await permissionRepository.savePermission(permission)
                 permissions.push(newPermisson)
             } else
                 permissions.push(dbPermission)
@@ -104,7 +123,7 @@ async function cretePermissions(permissionGroup: PermissionGroup) {
 
 }
 
-async function cretePermissionGroupAdmin() {
+/*async function cretePermissionGroupAdmin() {
     logger.info("[cretePermissionGroupAdmin] Perform dependency injection for IPermissionGroupEngineRepository")
     const roleRepository = container.resolve<IPermissionGroupEngineRepository>("IPermissionGroupEngineRepository")
     //add new user
@@ -123,4 +142,4 @@ async function cretePermissionGroupAdmin() {
 
     return adminPermission
 
-}
+}*/

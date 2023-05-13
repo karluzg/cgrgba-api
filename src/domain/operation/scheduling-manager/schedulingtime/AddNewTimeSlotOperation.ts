@@ -28,7 +28,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
     private hourListAdded: boolean = false;
 
     constructor() {
-        super(OperationNamesEnum.TIME_SLOT_CREATE, new OperationValidatorManager)
+        super(OperationNamesEnum.TIMESLOT_CREATE, new OperationValidatorManager)
         this.schedulingTimeRepository = container.resolve<ISchedulingTimeEngineRepository>("ISchedulingTimeEngineRepository")
         this.hollydayEngineRepository = container.resolve<IHollydayEngineRepository>("IHollydayEngineRepository")
     }
@@ -226,7 +226,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         const newSchedulingTime = new SchedulingTimeConfiguration();
 
         newSchedulingTime.creationDate = new Date();
-        newSchedulingTime.schedulingBeginDate = inputDate;
+        newSchedulingTime.beginDate = inputDate;
 
         newSchedulingTime.beginLunchTime = params.getBeginLunchTime;
 
@@ -254,7 +254,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
     async saveSchedulingTime(newScehdulingTime: SchedulingTimeConfiguration): Promise<SchedulingTimeConfiguration> {
 
-        this.schedulingTimeEntity = await this.schedulingTimeRepository.findBySchedulingDate(newScehdulingTime.schedulingBeginDate)
+        this.schedulingTimeEntity = await this.schedulingTimeRepository.findBySchedulingDate(newScehdulingTime.beginDate)
 
         logger.info("scheduling configuration to be create if not exist" + JSON.stringify(newScehdulingTime))
         if (!this.schedulingTimeEntity[0]) {

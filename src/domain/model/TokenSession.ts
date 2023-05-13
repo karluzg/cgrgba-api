@@ -8,11 +8,11 @@ export class TokenSession {
     @PrimaryColumn("uuid")
     token: string
 
-    @Column()
-    sessionCreationDate: Date
+    @Column({ nullable: false, type: 'timestamp',default: () => "CURRENT_TIMESTAMP"  })
+    creationDate: Date
 
     @Column()
-    sessionExpireDate: Date
+    expireDate: Date
 
    
     @ManyToOne(()=> User,(user)=> user.id,{eager:true, nullable:false})

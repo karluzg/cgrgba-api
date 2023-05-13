@@ -14,15 +14,15 @@ export class News {
 
     
     @Column({type:"text"})
-    newsContent: string // save tge big varchar in postgress
+    content: string // save tge big varchar in postgress
 
     @Column()
-    messageContent: string
+    message: string
 
    
    @Column()
    imagePath:boolean
 
-   @ManyToOne(()=> NewsCategory,(newsCategory)=> newsCategory.newsCategoryCode,{eager:true, nullable:false})
+   @ManyToOne(()=> NewsCategory,{eager:true, nullable:false})
    newsCategory:NewsCategory
 }

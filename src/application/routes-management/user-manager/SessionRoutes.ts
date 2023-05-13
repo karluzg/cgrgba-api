@@ -7,7 +7,7 @@ const SessionRoutes = express.Router()
 
 const sessionController = new SessionController()
 const sessionRoutesValidator = new SessionRoutesValidator()
-SessionRoutes.post("/login", sessionRoutesValidator.login(),sessionRoutesValidator.validate, sessionController.login)
+SessionRoutes.post("/session/login", sessionRoutesValidator.login(),sessionRoutesValidator.validate, sessionController.login)
 
 
 export default SessionRoutes

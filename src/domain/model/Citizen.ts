@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { Scheduling } from "./Scheduling"
 
 
 @Entity({schema:"portalConsular"})
@@ -12,21 +13,23 @@ export class Citizen {
     @Column({
         length: 50,
     nullable:false})
-    citizenFullName: string
+    fullName: string
 
     @Column({unique:true,
         length:34,
         nullable:false})
-        citizenEmail: string
+        email: string
 
 
     @Column({
         length: 21,
     nullable:false})
-    citizenMobileNumber: string
+    mobileNumber: string
 
-    @Column({nullable:false})
-    citizenCreationDate: Date
+    @Column({ nullable: false, type: 'timestamp',default: () => "CURRENT_TIMESTAMP"  })
+    creationDate: Date
 
+    @OneToMany(() => Scheduling, scheduling => scheduling.citizen, { cascade: true })
+    schedulings: Scheduling[];
    
 }

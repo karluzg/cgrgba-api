@@ -14,10 +14,11 @@ export class SchedulingHistory {
     id: number
 
 
-    @Column({ nullable: false, type: 'timestamp' })
+    @Column({ nullable: false, type: 'timestamp',default: () => "CURRENT_TIMESTAMP"  })
     creationDate: Date
+    
     @Column({ nullable: false })
-    schedulingDate: string
+    dateate: string
 
     @Column({ nullable: false })
     chosenHour: string

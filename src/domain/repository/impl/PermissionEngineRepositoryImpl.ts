@@ -19,7 +19,7 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
    async finPermissionByCode(permissionCode: string): Promise<Permission> {
 
       return await permissionRepository.createQueryBuilder('permission')
-            .where('permission.permissionCode = :permissionCode', { permissionCode: permissionCode }).getOne()
+            .where('permission.code = :permissionCode', { permissionCode: permissionCode }).getOne()
    }
 
    async findByPermissionId(permissionId: number): Promise<Permission> {

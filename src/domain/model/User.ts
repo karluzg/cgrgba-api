@@ -12,21 +12,21 @@ export class User implements IActivable {
     @Column({
     length:50,
     nullable:false})
-    userFullName: string
+    fullName: string
 
     @Column({
         length: 21, unique: true
     })
-    userMobileNumber: string
+    mobileNumber: string
 
     @Column({
         unique: true, 
     length:34,
     nullable:false})
-    userEmail: string
+    email: string
 
-    @Column({nullable:false})
-    userCreationDate: Date
+    @Column({ nullable: false, type: 'timestamp',default: () => "CURRENT_TIMESTAMP"  })
+    creationDate: Date
 
     @Column()
     passwordHash: string

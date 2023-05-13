@@ -9,12 +9,12 @@ export class Scheduling {
 
 
     @Column({ nullable: false })
-    schedulingDate: string
+    date: string
 
     @Column({ nullable: false })
     chosenHour: string
 
-    @ManyToOne(() => Citizen, (citizen) => citizen.id, { eager: true, nullable: false })
+    @ManyToOne(() => Citizen, (citizen) => citizen.schedulings, { eager: true, nullable: false })
     citizen: Citizen
 
     @Column({ nullable: false })
@@ -26,7 +26,6 @@ export class Scheduling {
     @Column({ nullable: false })
     status: string
 
-    @Column({ nullable: false, type: 'timestamp' })
+    @Column({ nullable: false, type: 'timestamp',default: () => "CURRENT_TIMESTAMP"  })
     creationDate: Date
-
 }

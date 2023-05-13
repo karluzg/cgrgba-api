@@ -175,7 +175,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         newScheduling.citizen = citizen;
         newScheduling.category = params.getSchedulingCategory;
         newScheduling.service = params.getSchedulingService;
-        newScheduling.schedulingDate = params.getSchedulingDate;
+        newScheduling.date = params.getSchedulingDate;
         newScheduling.chosenHour = params.getSchedulingHour;
         newScheduling.status = SchedulingStatusEnum.FOR_ANSWERING;
 
@@ -198,7 +198,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         this.citizen = await this.citizenEngineRepository.findCitizenByEmail(citizenEmail)
 
         if (this.citizen) {
-            logger.info("[AddNewSchedulingOperation] Return founded citizen:" + this.citizen.citizenEmail)
+            logger.info("[AddNewSchedulingOperation] Return founded citizen:" + this.citizen.email)
             return this.citizen;
         }
 
@@ -206,10 +206,9 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
 
         const newCitizen = new Citizen();
 
-        newCitizen.citizenFullName = citizenFullName;
-        newCitizen.citizenEmail = citizenEmail;
-        newCitizen.citizenMobileNumber = userMobileNumber;
-        newCitizen.citizenCreationDate = new Date;
+        newCitizen.fullName = citizenFullName;
+        newCitizen.email = citizenEmail;
+        newCitizen.mobileNumber = userMobileNumber;
 
         return await this.citizenEngineRepository.saveCitizen(newCitizen);
 
@@ -239,7 +238,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         const newSchedulingHistory = new SchedulingHistory();
 
         newSchedulingHistory.creationDate = new Date();
-        newSchedulingHistory.schedulingDate = scheduling.schedulingDate;
+        newSchedulingHistory.dateate = scheduling.date;
         newSchedulingHistory.chosenHour = scheduling.chosenHour;
         newSchedulingHistory.scheduling = scheduling
         newSchedulingHistory.available = isAvailable;

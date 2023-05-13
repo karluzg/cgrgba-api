@@ -41,7 +41,7 @@ export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, 
 
         }
 
-        logger.info("[AuthenticationOperationTemplate] - Valid token was founded for user %s", tokenSessionFound.user.userEmail);
+        logger.info("[AuthenticationOperationTemplate] - Valid token was founded for user %s", tokenSessionFound.user.email);
 
         logger.info("[AuthenticationOperationTemplate] - Check if user has initial actions");
         const user = tokenSessionFound.user;

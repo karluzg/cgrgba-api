@@ -7,6 +7,6 @@ export class Hollyday {
     id: number
 
     @Column({ nullable: false })
-    hollydayDate: Date
+    date: Date
 
 }

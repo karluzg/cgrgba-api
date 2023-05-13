@@ -10,29 +10,29 @@ export class Role {
     id: number
 
     @Column()
-    roleName: string
+    name: string
 
     @Column()
-    roleDescription: string
+    description: string
 
     @ManyToMany(() => Permission, { lazy: true })
     @JoinTable()
     permissions: Permission[]
 
-    @ManyToOne(() => User, (lastUpdateBy) => lastUpdateBy.id, { eager: true })
+    @ManyToOne(() => User, { eager: true })
     lastUpdateBy: User
 
-    @ManyToOne(()=> User,(createdBy)=> createdBy.id,{eager:true})
+    @ManyToOne(()=> User,{eager:true})
     createdBy:User
 
 
-    @ManyToOne(() => RoleStatus, (roleStatus) => roleStatus.code)
+    @ManyToOne(() => RoleStatus)
     roleStatus: RoleStatus
 
     @Column()
     isAdmin: boolean
 
-    @Column({ nullable: false, type: 'timestamp' })
+    @Column({ nullable: false, type: 'timestamp',default: () => "CURRENT_TIMESTAMP"  })
     creationDate: Date
 
 

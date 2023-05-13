@@ -18,9 +18,9 @@ export class SessionController {
   public async login(request: Request, response: Response): Promise<Response> {
 
     try {
-      const {  userEmail, userPassword} = request.body;
+      const {  email, password} = request.body;
 
-      const params = new UserLoginParams( userEmail,userPassword)
+      const params = new UserLoginParams( email,password)
 
       logger.info("[UserController] Perform dependency injection for UserController")
 

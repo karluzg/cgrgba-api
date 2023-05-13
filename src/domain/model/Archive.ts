@@ -10,19 +10,19 @@ export class Archive {
     id:number
     
     @Column()
-    archiveName : String
+    name : String
 
     @Column()
-    filePath : String
+    path : String
 
-    @Column()
-    archiveCreationDate : Date
+    @Column({ nullable: false, type: 'timestamp',default: () => "CURRENT_TIMESTAMP"  })
+    creationDate: Date
 
 
-   @ManyToOne(()=> ArchiveExtension,(archiveExtension)=> archiveExtension.archiveExtension,{eager:true, nullable:false})
-   archiveExtension:ArchiveExtension
+   @ManyToOne(()=> ArchiveExtension,{eager:true, nullable:false})
+   extension:ArchiveExtension
 
    
-   @ManyToOne(()=> ArchiveType,(archiveType)=> archiveType.archiveType,{eager:true, nullable:false})
-   archiveType:ArchiveType
+   @ManyToOne(()=> ArchiveType,{eager:true, nullable:false})
+   type:ArchiveType
 }

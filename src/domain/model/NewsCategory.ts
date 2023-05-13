@@ -4,18 +4,18 @@ import { Entity, Column,  PrimaryColumn} from "typeorm"
 export class NewsCategory {
 
     @PrimaryColumn()
-    newsCategoryCode:string
+    code:string
     
     @Column()
-    newsCategoryDescription: string
+    description: string
 
     @Column()
     email: Date
 
     @Column()
-    messageContent: string
+     content: string
 
    @Column()
-   feedbackStatus:boolean
+   status:boolean
 
 }
