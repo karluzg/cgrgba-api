@@ -66,7 +66,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         user.mobileNumber = params.getMobileNumber;
         user.passwordHash = await hash;
         user.passwordSalt = await salt;
-        user.userStatus = UserStatusEnum.NEW;
+        user.status = UserStatusEnum.NEW;
 
         logger.info("[AddUserOperation] creating user in db %", JSON.stringify(user))
         const newUser: User = await this.userRepository.saveUser(user)

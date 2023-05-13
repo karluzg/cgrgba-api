@@ -9,11 +9,11 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import { ISchedulingTimeEngine } from "../../../domain/service/ISchedulingTimeEngine";
-import { AddTimeSlotParams } from "../../model/scheduling-manager/schedulingTime/params/AddTimeSlotParams";
+import { TimeSlotParams } from "../../model/scheduling-manager/schedulingTime/params/TimeSlotParams";
 import logger from "../../../infrestructure/config/logger";
 import { AuthValidator } from "../validator/AuthValidator";
 import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
-import { GetTimeSlotListParams } from "../../model/scheduling-manager/schedulingTime/params/GetTimeSlotListParams";
+import { TimeSlotListParams } from "../../model/scheduling-manager/schedulingTime/params/TimeSlotListParams";
 
 
 export class SchedulingTimeController {
@@ -30,7 +30,7 @@ export class SchedulingTimeController {
 
             const authenticationToken = AuthValidator.checkAuthorizationToken(request);
 
-            const params = new AddTimeSlotParams(authenticationToken, beginSchedulingDate,
+            const params = new TimeSlotParams(authenticationToken, beginSchedulingDate,
                 endSchedulingDate, beginWorkTime, endWorkTime, beginLunchTime, endLunchTime, serviceInterval, availableCollaboratorNumber);
 
             logger.info("[SchedulingTimeController] Perform dependency injection for ISchedulingTimeEngine")
@@ -72,7 +72,7 @@ export class SchedulingTimeController {
 
             const authenticationToken = AuthValidator.checkAuthorizationToken(request);
 
-            const params = new GetTimeSlotListParams(authenticationToken, beginSchedulingDate);
+            const params = new TimeSlotListParams(authenticationToken, beginSchedulingDate);
 
             logger.info("[SchedulingTimeController] Perform dependency injection for ISchedulingTimeEngine")
             const schedulingTimeEngine = container.resolve<ISchedulingTimeEngine>("ISchedulingTimeEngine")

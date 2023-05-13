@@ -36,5 +36,3 @@ myDataSource.initialize().then(() => {
 }).finally(() => {
     initNantoiUser();
 })
-
-

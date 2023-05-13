@@ -1,7 +1,7 @@
 
 import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthParamsTemplate";
 
-export class AddTimeSlotParams extends AuthParamsTemplate {
+export class TimeSlotParams extends AuthParamsTemplate {
 
   private beginschedulingDate: string;
   private endschedulingDate: string;

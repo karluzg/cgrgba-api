@@ -46,11 +46,11 @@ export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, 
         logger.info("[AuthenticationOperationTemplate] - Check if user has initial actions");
         const user = tokenSessionFound.user;
 
-        if (user.userStatus == UserStatusEnum.NEW) {
+        if (user.status == UserStatusEnum.NEW) {
             logger.error("User has unexptected initial action")
             throw new ForbiddenOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_UNEXPECTED_UNEXECUTED_INITIAL_ACTION)
         }
-        if (user.userStatus != UserStatusEnum.ACTIVE) {
+        if (user.status != UserStatusEnum.ACTIVE) {
             logger.error("Useris not active")
             throw new ForbiddenOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_OPERTATION_NOT_ALLOWED)
         }

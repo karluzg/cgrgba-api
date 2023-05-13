@@ -1,5 +1,5 @@
 import { TokenSession } from "../../../model/TokenSession";
-import { AddTimeSlotParams } from "../../../../application/model/scheduling-manager/schedulingTime/params/AddTimeSlotParams";
+import { TimeSlotParams } from "../../../../application/model/scheduling-manager/schedulingTime/params/TimeSlotParams";
 import { TimeSlotResult } from "../../../../application/model/scheduling-manager/schedulingTime/TimeSlotResult";
 import { UserAuthOperationTemplate } from "../../../../infrestructure/template/UserAuthOperationTemplate";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
@@ -18,7 +18,7 @@ import { Hour } from "../../../model/Hour";
 
 
 
-export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotResult, AddTimeSlotParams>{
+export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotResult, TimeSlotParams>{
 
     private schedulingTimeRepository: ISchedulingTimeEngineRepository;
     private hollydayEngineRepository: IHollydayEngineRepository;
@@ -33,7 +33,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         this.hollydayEngineRepository = container.resolve<IHollydayEngineRepository>("IHollydayEngineRepository")
     }
 
-    protected async doValidateParameters(params: AddTimeSlotParams): Promise<void> {
+    protected async doValidateParameters(params: TimeSlotParams): Promise<void> {
 
 
         logger.info("[AddNewTimeSlotOperation] Begin of strict validation scheduling time parameteres...")
@@ -120,7 +120,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
     }
 
 
-    protected async doUserAuthExecuted(tokenSession: TokenSession, params: AddTimeSlotParams, result: TimeSlotResult) {
+    protected async doUserAuthExecuted(tokenSession: TokenSession, params: TimeSlotParams, result: TimeSlotResult) {
 
 
         logger.info("[AddNewTimeSlotOperation] Begin generate hour list for each date...")
@@ -141,7 +141,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         }
     }
 
-    async generateHourListBySchedulingDate(params: AddTimeSlotParams, hollydayRepository: IHollydayEngineRepository): Promise<void> {
+    async generateHourListBySchedulingDate(params: TimeSlotParams, hollydayRepository: IHollydayEngineRepository): Promise<void> {
 
 
         logger.info("[AddNewTimeSlotOperation] [Generate List by scheduling date] Rreceived params:" + params)
@@ -197,7 +197,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
     }
 
-    async createSchedulingTimeBySchedulingDate(inputDate: Date, beginWorkDateTime: Date, endWorkDateTime: Date, params: AddTimeSlotParams): Promise<void> {
+    async createSchedulingTimeBySchedulingDate(inputDate: Date, beginWorkDateTime: Date, endWorkDateTime: Date, params: TimeSlotParams): Promise<void> {
 
         const hourList: string[] = [];
 
@@ -221,7 +221,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
     }
 
-    async createNewScheduling(inputDate: Date, params: AddTimeSlotParams, hourlistInput: string[]): Promise<void> {
+    async createNewScheduling(inputDate: Date, params: TimeSlotParams, hourlistInput: string[]): Promise<void> {
 
         const newSchedulingTime = new SchedulingTimeConfiguration();
 

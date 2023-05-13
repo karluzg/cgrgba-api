@@ -1,6 +1,6 @@
 import { container } from "tsyringe";
 import { TimeSlotResult } from "../../../../application/model/scheduling-manager/schedulingTime/TimeSlotResult";
-import { GetTimeSlotListParams } from "../../../../application/model/scheduling-manager/schedulingTime/params/GetTimeSlotListParams";
+import { TimeSlotListParams } from "../../../../application/model/scheduling-manager/schedulingTime/params/TimeSlotListParams";
 
 import { UserAuthOperationTemplate } from "../../../../infrestructure/template/UserAuthOperationTemplate";
 import { OperationValidatorManager } from "../../../../infrestructure/validator/managers/OperationValidatorManager";
@@ -17,7 +17,7 @@ import { ISchedulingHistoryEngineRepository } from "../../../repository/ISchedul
 import logger from "../../../../infrestructure/config/logger";
 
 
-export class GetTimeSlotListOperation extends UserAuthOperationTemplate<TimeSlotResult, GetTimeSlotListParams>{
+export class GetTimeSlotListOperation extends UserAuthOperationTemplate<TimeSlotResult, TimeSlotListParams>{
 
     private schedulingTimeRepository: ISchedulingTimeEngineRepository;
     private hollydayRepository: IHollydayEngineRepository;
@@ -34,7 +34,7 @@ export class GetTimeSlotListOperation extends UserAuthOperationTemplate<TimeSlot
         this.schedulingHistoryEngineRepository = container.resolve<ISchedulingHistoryEngineRepository>("ISchedulingHistoryEngineRepository")
     }
 
-    protected async doValidateParameters(params: GetTimeSlotListParams): Promise<void> {
+    protected async doValidateParameters(params: TimeSlotListParams): Promise<void> {
 
         logger.info("[GetTimeSlotListOperation] Begin strict validation scheduling time parameteres...")
 
@@ -72,7 +72,7 @@ export class GetTimeSlotListOperation extends UserAuthOperationTemplate<TimeSlot
         logger.info("[GetTimeSlotListOperation] End of strict validation scheduling time parameteres...")
     }
 
-    protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetTimeSlotListParams, result: TimeSlotResult): Promise<void> {
+    protected async doUserAuthExecuted(tokenSession: TokenSession, params: TimeSlotListParams, result: TimeSlotResult): Promise<void> {
 
 
         logger.info("[AddNewTimeSlotOperation][doUserAuthExecuted] Begin building available hour list");

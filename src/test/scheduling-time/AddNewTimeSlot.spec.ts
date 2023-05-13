@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import { expect } from 'chai'
-import { AddTimeSlotParams } from '../../application/model/scheduling-manager/schedulingTime/params/AddTimeSlotParams'
+import { TimeSlotParams } from '../../application/model/scheduling-manager/schedulingTime/params/TimeSlotParams'
 import axios from 'axios'
 
 
@@ -9,7 +9,7 @@ describe("Add new time slot", () => {
 
 
         const response = await axios.post("http://localhost:3000/slot",
-            new AddTimeSlotParams("720409d4-331d-4190-938a-f93f90753096", new Date("2023-05-05"), null, "9:00", "18:00", "13:00", "14:30", 10, 3));
+            new TimeSlotParams("720409d4-331d-4190-938a-f93f90753096", new Date("2023-05-05"), null, "9:00", "18:00", "13:00", "14:30", 10, 3));
 
         expect(response.status).equal(200)
 

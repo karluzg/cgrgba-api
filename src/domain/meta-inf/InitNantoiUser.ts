@@ -41,7 +41,7 @@ async function createUserNantoi(role: Role) {
         user.mobileNumber = "123456789"
         user.passwordHash = await hash;
         user.passwordSalt = await salt;
-        user.userStatus = UserStatusEnum.ACTIVE;
+        user.status = UserStatusEnum.ACTIVE;
         user.roles = [role]
 
         logger.info("[createUserNantoi] Creating Nantoi User")

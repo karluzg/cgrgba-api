@@ -10,7 +10,7 @@ import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import logger from "../../../infrestructure/config/logger";
 import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
-import { AddNewSchedulingParams } from "../../model/scheduling-manager/scheduling/AddNewSchedulingParams";
+import { SchedulingParams } from "../../model/scheduling-manager/scheduling/SchedulingParams";
 import { ISchedulingEngine } from "../../../domain/service/ISchedulingEngine";
 
 
@@ -24,7 +24,7 @@ export class SchedulingController {
             const { citizenFullName, citizenEmail, citizenMobileNumber, schedulingDate, schedulingHour, schedulingCategory, schedulingService } = request.body;
 
 
-            const params = new AddNewSchedulingParams(citizenFullName, citizenEmail, citizenMobileNumber, schedulingDate, schedulingHour, schedulingCategory, schedulingService);
+            const params = new SchedulingParams(citizenFullName, citizenEmail, citizenMobileNumber, schedulingDate, schedulingHour, schedulingCategory, schedulingService);
 
             logger.info("[SchedulingController] Perform dependency injection for ISchedulingEngine")
             const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")

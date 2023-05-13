@@ -18,8 +18,15 @@ const userRoutesValidator = new UserRoutesValidator()
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '/src/application/model/user-manager/UserParamsSchema'
- * */
+ *             $ref: '#/components/schemas/UserParams'
+ *     responses:
+ *       200:
+ *         description: Utilizador criado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserResult'
+ */
 UserRoutes.post("/users", userRoutesValidator.addUser(), userRoutesValidator.validate, userController.addUser)
 /**
  * @swagger

@@ -1,6 +1,6 @@
 import { ParamsTemplate } from "../../../../infrestructure/template/ParamsTemplate";
 
-export class AddNewSchedulingParams extends ParamsTemplate {
+export class SchedulingParams extends ParamsTemplate {
     private citizenFullName: string;
     private citizenEmail: string;
     private citizenMobileNumber: string;

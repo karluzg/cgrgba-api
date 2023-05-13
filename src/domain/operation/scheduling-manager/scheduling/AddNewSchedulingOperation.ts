@@ -1,6 +1,6 @@
 import { container } from "tsyringe";
-import { AddNewSchedulingParams } from "../../../../application/model/scheduling-manager/scheduling/AddNewSchedulingParams";
-import { SchedulingResult } from "../../../../application/model/scheduling-manager/scheduling/AddNewSchedulingResult";
+import { SchedulingParams } from "../../../../application/model/scheduling-manager/scheduling/SchedulingParams";
+import { SchedulingResult } from "../../../../application/model/scheduling-manager/scheduling/SchedulingResult";
 import logger from "../../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { NotImplementedException } from "../../../../infrestructure/exceptions/NotImplementedException";
@@ -24,7 +24,7 @@ import { UnsuccessfullOperationException } from "../../../../infrestructure/exce
 import { SchedulingHistory } from "../../../model/SchedulingHistory";
 
 
-export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResult, AddNewSchedulingParams>{
+export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResult, SchedulingParams>{
 
 
     private schedulingEngineRepository: ISchedulingEngineRepository;
@@ -50,7 +50,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
     }
 
 
-    protected async doValidateParameters(params: AddNewSchedulingParams): Promise<void> {
+    protected async doValidateParameters(params: SchedulingParams): Promise<void> {
 
 
         logger.info("[AddNewSchedulingOperation] Begin of strict validation scheduling parameteres...")
@@ -125,7 +125,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         logger.info("[AddNewSchedulingOperation] End of strict validation scheduling time parameteres...")
     }
 
-    protected async doExecute(params: AddNewSchedulingParams, result: SchedulingResult): Promise<void> {
+    protected async doExecute(params: SchedulingParams, result: SchedulingResult): Promise<void> {
 
 
         logger.info("Acquire semaphore with desired concurrency level of acess: Depend of available collaborator number ")
@@ -159,7 +159,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         }
     }
 
-    private async saveSchedulingInfo(params: AddNewSchedulingParams): Promise<Scheduling> {
+    private async saveSchedulingInfo(params: SchedulingParams): Promise<Scheduling> {
 
 
         logger.info("[AddNewSchedulingOperation] Begin constructing Scheduling object to be save in Data Base...")
