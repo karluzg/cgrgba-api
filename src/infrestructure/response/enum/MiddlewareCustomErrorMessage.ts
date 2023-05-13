@@ -8,6 +8,7 @@ export enum MiddlewareBusinessMessage {
     USER_MBILE_NUMBER_ALREADY_EXIST = "já existe um utilizador registado com o mesmo número de telemóvel",
 
 
+
     // BUSINESS MESSAGE - CITIZEN
     CITIZEN_INVALID_EMAIL = "Email inválido ou já existe um utilizador registado com o mesmo email",
     CITIZEN_MBILE_NUMBER_ALREADY_EXIST = "Email inválido ou já existe um utilizador registado com o mesmo email",

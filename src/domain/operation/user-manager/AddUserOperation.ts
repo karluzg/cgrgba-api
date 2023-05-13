@@ -18,6 +18,7 @@ import { GeneratePassowordUtil } from "../util/GeneratePassowordUtil";
 import { ResultInfo } from "../../../infrestructure/response/ResultInfo";
 import { EmailTemplate } from "../../../infrestructure/template/EmailTemplate";
 import { GenerateHtmlBody } from "../util/GenerateHtmlBody";
+import { plataformConfig } from "../../../infrestructure/config/plataform";
 
 
 
@@ -76,9 +77,9 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         result.setErrorMessages = Object.fromEntries(this.message)
 
 
-        const emailBody= GenerateHtmlBody.generateNewUserBody(user.fullName,user.email,password);
+        const emailMessage= GenerateHtmlBody.generateNewUserBody(user.fullName,user.email,password,plataformConfig.ulr,plataformConfig.emailContact);
         const emailTemplate= new EmailTemplate();
-        const mailOption= await emailTemplate.createMailOption(user.email,"Bem-vindo à plataforma",emailBody);
+        const mailOption= await emailTemplate.createMailOption(user.email,emailMessage);
 
         await emailTemplate.sendEmail(mailOption);
 
