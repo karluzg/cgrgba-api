@@ -15,13 +15,13 @@ export class Scheduling {
     chosenHour: string
 
     @ManyToOne(() => Citizen, (citizen) => citizen.schedulings, { eager: true, nullable: false })
+    citizen: Citizen
+
     @Column({ nullable: false })
     hour: number
 
     @Column({ nullable: false })
     minute: number
-
-    citizen: Citizen
 
     @Column({ nullable: false })
     service: string
