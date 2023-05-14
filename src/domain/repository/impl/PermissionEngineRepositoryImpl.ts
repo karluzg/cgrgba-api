@@ -1,5 +1,5 @@
 
-import { NotImplementedException } from "../../../infrestructure/exceptions/NotImplementedException";
+import { NotFoundExcecption } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { Permission } from "../../model/Permission";
@@ -27,7 +27,7 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
         .getOne();
     
       if (!permission) {
-         throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
+         throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
       }
     
       return permission;
@@ -41,7 +41,7 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
         .getOne();
     
       if (!permission) {
-         throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
+         throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
       }
     
       return permission;
@@ -71,7 +71,7 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
       const permission = await permissionRepository.findOne(id);
 
       if (!permission) {
-         throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
+         throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
       }
 
       await permissionRepository.remove(permission);
@@ -82,7 +82,7 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
 
       if (!permission) {
          // Tratar erro caso a permissão não seja encontrada
-         throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
+         throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
       }
 
       // Atualizar os dados da permissão com base no updatePermissionDto

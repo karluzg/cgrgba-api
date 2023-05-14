@@ -1,11 +1,9 @@
-
-
 import { IUserEngineRepository } from "../IUserEngineRepository";
 import { injectable } from 'tsyringe'
 import { User } from "../../model/User";
-import { NotImplementedException } from "../../../infrestructure/exceptions/NotImplementedException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { NotFoundExcecption } from "../../../infrestructure/exceptions/NotFoundExcecption";
 
 const myDataSource = require("../../meta-inf/data-source");
 const userRepository = myDataSource.getRepository(User)
@@ -20,7 +18,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
               .getOne();
           
             if (!user) {
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
             }
           
             return user;
@@ -33,7 +31,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
               .getOne();
           
             if (!user) {
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
             }
           
             return user;
@@ -66,7 +64,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
             const user = await userRepository.findOne(id);
 
             if (!user) {
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
             }
 
 
@@ -81,7 +79,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
             const user = await userRepository.findOne({ email: userEmail });
 
             if (!user) {
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
             }
 
             return user;
@@ -95,7 +93,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
                   user.password = newPassword;
                   return userRepository.save(user);
             }
-            throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
+            throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
       }
 
 }

@@ -5,7 +5,7 @@ import { injectable } from 'tsyringe'
 import { IRoleEngineRepository } from "../IRoleEngineRepository";
 import { Role } from "../../model/Role";
 import { Permission } from '../../model/Permission';
-import { NotImplementedException } from '../../../infrestructure/exceptions/NotImplementedException';
+import { NotFoundExcecption } from '../../../infrestructure/exceptions/NotFoundExcecption';
 import { Field } from '../../../infrestructure/exceptions/enum/Field';
 import { MiddlewareBusinessMessage } from '../../../infrestructure/response/enum/MiddlewareCustomErrorMessage';
 
@@ -28,7 +28,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
             const role = await roleRepository.findOne({ where: { name: roleName } });
 
             if (!role) {
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND)
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND)
             }
 
             return role;
@@ -51,7 +51,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
 
             if (!role) {
                   // Tratar erro caso a role não seja encontrada
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND)
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND)
             }
 
             // Atualizar os dados da role com base no updateRoleDto
@@ -63,7 +63,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
             const role = await roleRepository.findOne(id);
 
             if (!role) {
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND);
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND);
             }
 
             await roleRepository.remove(role);
@@ -74,14 +74,14 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
 
             if (!role) {
                   // Tratar erro caso a role não seja encontrada
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND)
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND)
             }
 
             const permission = await permissionRepository.findOne({ where: { code: permissionCode } });
 
             if (!permission) {
                   // Tratar erro caso a permissão não seja encontrada
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
             }
 
             role.permissions.push(permission);
@@ -95,14 +95,14 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
 
             if (!role) {
                   // Tratar erro caso a role não seja encontrada
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND)
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND)
             }
 
             const permission = await permissionRepository.findOne({ where: { code: permissionCode } });
 
             if (!permission) {
                   // Tratar erro caso a permissão não seja encontrada
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND)
             }
 
             role.permissions = role.permissions.filter(p => p.id !== permission.id);
@@ -115,7 +115,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
 
             if (!role) {
                   // Tratar erro caso a role não seja encontrada
-                  throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND)
+                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND)
             }
 
             const permissions = role.permissions;

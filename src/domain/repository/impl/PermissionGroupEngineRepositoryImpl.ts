@@ -3,7 +3,7 @@
 import { injectable } from 'tsyringe'
 import { IPermissionGroupEngineRepository } from "../IPermissionGroupEngineRepository";
 import { PermissionGroup } from "../../model/PermissionGroup";
-import { NotImplementedException } from '../../../infrestructure/exceptions/NotImplementedException';
+import { NotFoundExcecption } from '../../../infrestructure/exceptions/NotFoundExcecption';
 import { Field } from '../../../infrestructure/exceptions/enum/Field';
 import { MiddlewareBusinessMessage } from '../../../infrestructure/response/enum/MiddlewareCustomErrorMessage';
 
@@ -20,7 +20,7 @@ export class PermissionGroupEngineRepositoryImpl implements IPermissionGroupEngi
         .getOne();
     
       if (!permissionGroup) {
-         throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND)
+         throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND)
       }
     
       return permissionGroup;
@@ -34,7 +34,7 @@ export class PermissionGroupEngineRepositoryImpl implements IPermissionGroupEngi
    public async updatePermissionGroup(id: number, updatedData: PermissionGroup): Promise<PermissionGroup> {
       const existingPermissionGroup = await permissionGroupRepository.findOne(id);
       if (!existingPermissionGroup) {
-         throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND)
+         throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND)
       }
 
       const updatedPermissionGroup = Object.assign(existingPermissionGroup, updatedData);
@@ -45,7 +45,7 @@ export class PermissionGroupEngineRepositoryImpl implements IPermissionGroupEngi
    public async deletePermissionGroup(id: number): Promise<void> {
       const permissionGroup = await permissionGroupRepository.findOne(id);
       if (!permissionGroup) {
-         throw new NotImplementedException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND)
+         throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND)
       }
 
       await permissionGroupRepository.remove(permissionGroup);
