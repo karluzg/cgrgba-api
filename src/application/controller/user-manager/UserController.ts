@@ -12,9 +12,12 @@ import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import { AuthValidator } from "../validator/AuthValidator";
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
+import { RequestHandler, ParamsDictionary } from "express-serve-static-core";
+import { ParsedQs } from "qs";
 
 
 export class UserController {
+
 
 
   public async addUser(request: Request, response: Response):Promise< Response> {
@@ -111,6 +114,25 @@ export class UserController {
       }
     }
   }
+
+  public async getUserByUserName(request: Request, response: Response):Promise< Response> {
+    throw new Error("Method not implemented.");
+}
+
+public async updateUser(request: Request, response: Response):Promise< Response> {
+  throw new Error("Method not implemented.");
+}
+
+public async  updatePassword(request: Request, response: Response):Promise< Response> {
+
+  throw new Error("Method not implemented.");
+}
+public async  resetPassword(request: Request, response: Response):Promise< Response> {
+
+  throw new Error("Method not implemented.");
+}
+
+
 }
 export default { UserController }
 

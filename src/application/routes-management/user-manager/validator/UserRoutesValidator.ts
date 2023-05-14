@@ -4,6 +4,18 @@ import { ParamsValidatorTemplate } from '../../../../infrestructure/template/Par
 
 
 export class UserRoutesValidator extends ParamsValidatorTemplate {
+    updatePassword():ValidationChain[]{
+        return []
+    }
+    resetPassword():ValidationChain[]{
+        return []
+    }
+    updateUser() :ValidationChain[]{
+        return []
+    }
+    getUserByUserName():ValidationChain[] {
+        return []
+    }
 
     public addUser():ValidationChain[] {
         return [
