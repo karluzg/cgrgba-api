@@ -8659,3 +8659,23 @@
 [2023-05-14T18:58:18.115] [INFO] default - [creteRoleAdmin] Find role by name
 [2023-05-14T18:58:18.136] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
 [2023-05-14T18:58:18.136] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-14T19:45:09.877] [ERROR] default - Error during Data Source initialization: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Git\cgrgba-api\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Git\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1248:18
+    at new Promise (<anonymous>)
+    at MysqlDriver.createPool (C:\Git\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1245:16)
+    at MysqlDriver.connect (C:\Git\cgrgba-api\src\driver\mysql\MysqlDriver.ts:393:36)
+    at DataSource.initialize (C:\Git\cgrgba-api\src\data-source\DataSource.ts:249:27)
+    at Object.<anonymous> (C:\Git\cgrgba-api\src\server.ts:16:14) {
+  errno: -4078,
+  code: 'ECONNREFUSED',
+  syscall: 'connect',
+  address: '::1',
+  port: 3306,
+  fatal: true
+}

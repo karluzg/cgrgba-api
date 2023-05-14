@@ -185,7 +185,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         }
     }
 
-    private async saveSchedulingInfo(params: SchedulingParams): Promise<Scheduling> {
+    private async createNewScheduling(params: SchedulingParams): Promise<Scheduling> {
 
 
         logger.info("[AddNewSchedulingOperation] Begin constructing Scheduling object to be save in Data Base...")

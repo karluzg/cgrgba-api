@@ -1,14 +1,14 @@
 
-import { AddNewSchedulingParams } from "../../../application/model/scheduling-manager/scheduling/params/AddNewSchedulingParams";
 import { Scheduling } from "../../model/Scheduling";
 import { ISchedulingEngineRepository } from "../../repository/ISchedulingEngineRepository";
 import { SchedulingStatusEnum } from "../../model/enum/SchedulingStatusEnum";
 import logger from "../../../infrestructure/config/logger";
+import { SchedulingParams } from "../../../application/model/scheduling-manager/scheduling/SchedulingParams";
 
 export class SchedulingUtil {
 
 
-    public static async validateCitizenSchedulingFeature(params: AddNewSchedulingParams, schedulingEngineRepository: ISchedulingEngineRepository): Promise<boolean> {
+    public static async validateCitizenSchedulingFeature(params: SchedulingParams, schedulingEngineRepository: ISchedulingEngineRepository): Promise<boolean> {
 
         logger.info("[AddNewSchedulingOperation] Searching citizen scheduling in the database...");
 
@@ -39,7 +39,7 @@ export class SchedulingUtil {
             const verifyIfAnotherServiceAndSameDateAndHour = await this.verifyIfAnotherServiceAndSameDateAndHour(
                 scheduling,
                 scheduling.service,
-                scheduling.schedulingDate,
+                scheduling.date,
                 scheduling.chosenHour
             );
 
@@ -66,7 +66,7 @@ export class SchedulingUtil {
         schedulingDateParams: string,
         chosenHourParams: string): Promise<boolean> {
 
-        return schedulingDB.schedulingDate == schedulingDateParams
+        return schedulingDB.date == schedulingDateParams
             && schedulingDB.chosenHour == chosenHourParams;
 
 
@@ -78,7 +78,7 @@ export class SchedulingUtil {
 
 
         return schedulingDB.service == serviceParams
-            && schedulingDB.schedulingDate == schedulingDateParams
+            && schedulingDB.date == schedulingDateParams
             && schedulingDB.chosenHour == chosenHourParams;
     }
 
@@ -88,7 +88,7 @@ export class SchedulingUtil {
 
 
         return schedulingDB.service != serviceParams
-            && schedulingDB.schedulingDate == schedulingDateParams
+            && schedulingDB.date == schedulingDateParams
             && schedulingDB.chosenHour == chosenHourParams;
 
 
