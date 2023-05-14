@@ -24,19 +24,6 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
             return user;
           }
           
-          async findUserByEmail(userEmail: string): Promise<User> {
-            const user = await userRepository
-              .createQueryBuilder('user')
-              .where('user.email = :userEmail', { userEmail })
-              .getOne();
-          
-            if (!user) {
-                  throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
-            }
-          
-            return user;
-          }
-          
 
       public async saveUser(user: User): Promise<User> {
             return userRepository.save(user)
@@ -75,7 +62,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
       }
 
 
-      public async getUserByEmail(userEmail: string): Promise<User> {
+      public async findUserByEmail(userEmail: string): Promise<User> {
             const user = await userRepository.findOne({ email: userEmail });
 
             if (!user) {
@@ -95,5 +82,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
             }
             throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND)
       }
+
+ 
 
 }

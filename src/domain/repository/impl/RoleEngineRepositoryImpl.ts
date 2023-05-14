@@ -20,7 +20,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
             return roleRepository.save(role)
       }
 
-      public async findRoleById(roleId: number): Promise<Role | undefined> {
+      public async findRoleById(roleId: number): Promise<Role > {
             return roleRepository.findOne(roleId);
       }
 
