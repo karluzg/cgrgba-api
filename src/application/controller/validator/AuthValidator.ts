@@ -9,7 +9,7 @@ import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum
 export class AuthValidator{
 
     public static checkAuthorizationToken(request: Request): string {
-        logger.info("[AuthorizationOperationTemplate] checking authorization token")
+        logger.info("[AuthValidator] checking authorization token")
         if (!request.headers.authorization) {
             throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_TOKEN_NOT_FOUND);
         } else {

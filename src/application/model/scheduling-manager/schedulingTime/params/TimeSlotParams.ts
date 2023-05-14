@@ -3,21 +3,21 @@ import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthP
 
 export class TimeSlotParams extends AuthParamsTemplate {
 
-  private beginschedulingDate: string;
-  private endschedulingDate: string;
-  private beginWorkTime: string;
-  private endWorkTime: string;
-  private beginLunchTime: string;
-  private endLunchTime: string;
-  private serviceInterval: number;
-  private availableCollaboratorNumber: number;
+  private readonly beginSchedulingDate: string;
+  private readonly endSchedulingDate: string;
+  private readonly beginWorkTime: string;
+  private readonly endWorkTime: string;
+  private readonly beginLunchTime: string;
+  private readonly endLunchTime: string;
+  private readonly serviceInterval: number;
+  private readonly availableCollaboratorNumber: number;
 
 
   constructor(authenticationToken, beginSchedulingDate: string, endschedulingDate: string, beginWorkTime: string, endWorkTime: string,
     beginLunchTime: string, endLunchTime: string, serviceInterval: number, availableCollaboratorNumber: number) {
     super(authenticationToken);
-    this.beginschedulingDate = beginSchedulingDate;
-    this.endschedulingDate = endschedulingDate;
+    this.beginSchedulingDate = beginSchedulingDate;
+    this.endSchedulingDate = endschedulingDate;
     this.beginWorkTime = beginWorkTime;
     this.endWorkTime = endWorkTime;
     this.beginLunchTime = beginLunchTime;
@@ -28,11 +28,11 @@ export class TimeSlotParams extends AuthParamsTemplate {
   }
 
   get getBeginSchedulingDate(): string {
-    return this.beginschedulingDate
+    return this.beginSchedulingDate
   }
 
   get getEndSchedulingDate(): string {
-    return this.endschedulingDate
+    return this.endSchedulingDate
   }
 
   get getBeginWorkTime(): string {

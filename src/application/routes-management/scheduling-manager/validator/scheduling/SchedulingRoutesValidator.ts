@@ -1,5 +1,6 @@
-import { ValidationChain, body } from "express-validator"
+import { ValidationChain, query, body } from "express-validator"
 import { ParamsValidatorTemplate } from "../../../../../infrestructure/template/ParamsValidatorTemplate"
+
 
 
 export class SchedulingRoutesValidator extends ParamsValidatorTemplate {
@@ -15,4 +16,16 @@ export class SchedulingRoutesValidator extends ParamsValidatorTemplate {
             body('schedulingService').notEmpty().isString()
         ]
     }
+
+    public getUsers(): ValidationChain[] {
+        return [
+            query('pageNumber').isInt({ min: 1 }).optional(),
+            query('pageSize').isInt({ min: 1 }).optional()
+        ]
+
+    }
+
+
+
 }
+

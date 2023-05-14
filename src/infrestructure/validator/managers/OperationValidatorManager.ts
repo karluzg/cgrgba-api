@@ -13,6 +13,21 @@ import { Field } from "../../exceptions/enum/Field";
 
 export class OperationValidatorManager {
 
+  private static instance: OperationValidatorManager;
+
+
+  public static getSingletonInstance(): OperationValidatorManager {
+
+    if (!this.instance) {
+      this.instance = new OperationValidatorManager();
+
+      return this.instance
+
+    } else {
+      return this.instance;
+    }
+  }
+
   public async isOperationAllowed<R extends ResultTemplate, P extends IAuthParams>(tokenSession: TokenSession, operation: UserAuthOperationTemplate<R, P>): Promise<boolean> {
 
     logger.info("[OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository")
@@ -31,12 +46,6 @@ export class OperationValidatorManager {
 
     logger.info("permission was founded. validate if operation is valid for user")
     return await permissionRepositoy.isUserOperationAllowed(operation.getOperationId(), tokenSession.user.id)
-
-
-
-
-
-
 
 
   }

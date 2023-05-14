@@ -74,3 +74,9 @@ npm install axios @types/axios axios-mock-adapter @types/axios-mock-adapter -D
 
 # Semaphore for access control
 npm install semaphore-async-await
+
+# install Typescript Paginator
+npm install paginator
+
+# install dn-fn - is a popular lightweight JavaScript library for working with dates and times
+npm install date-fns

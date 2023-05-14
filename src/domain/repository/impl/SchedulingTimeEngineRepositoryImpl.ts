@@ -11,7 +11,6 @@ const schedulingTimeRepository = myDataSource.getRepository(SchedulingTimeConfig
 export class ISchedulingTimeEngineRepositoryImpl implements ISchedulingTimeEngineRepository {
 
 
-
     async findBySchedulingDate(schedulingBeginDate: Date): Promise<SchedulingTimeConfiguration> {
 
         return schedulingTimeRepository.createQueryBuilder('schedulingTimeConfiguration')

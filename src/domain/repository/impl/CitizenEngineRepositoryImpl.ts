@@ -1,3 +1,4 @@
+
 import { Citizen } from "../../model/Citizen";
 import { ICitizenEngineRepository } from "../ICitizenEngineRepository";
 
@@ -6,9 +7,21 @@ const citizenEngineRepository = myDataSource.getRepository(Citizen)
 
 export class CitizenEngineRepositoryImpl implements ICitizenEngineRepository {
 
-    async findCitizenByEmail(citizenEmail: string): Promise<Citizen> {
-        return citizenEngineRepository.createQueryBuilder('citizen')
-            .where('citizen.email = :citizenEmail', { citizenEmail: citizenEmail }).getOne()
+    async findCitizenByEmailOrMobileNumber(citizenEmail: string, citizenMobileNumber: string): Promise<Citizen> {
+
+
+
+        const query = citizenEngineRepository.createQueryBuilder('citizen')
+
+        if (citizenEmail.length != 0) {
+            query.where('citizen.citizenEmail = :citizenEmail', { citizenEmail })
+        }
+        if (citizenMobileNumber.length != 0) {
+            query.where('citizen.citizenMobileNumber = :citizenMobileNumber', { citizenMobileNumber })
+        }
+
+        return await query.getOne();
+
     }
 
     async saveCitizen(newCitizen: Citizen): Promise<Citizen> {

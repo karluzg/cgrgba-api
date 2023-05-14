@@ -20,15 +20,15 @@ import { Hour } from "../../../model/Hour";
 
 export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotResult, TimeSlotParams>{
 
-    private schedulingTimeRepository: ISchedulingTimeEngineRepository;
-    private hollydayEngineRepository: IHollydayEngineRepository;
+    private readonly schedulingTimeRepository: ISchedulingTimeEngineRepository;
+    private readonly hollydayEngineRepository: IHollydayEngineRepository;
 
     private schedulingTimeEntity: SchedulingTimeConfiguration;
     private dateList: Date[] = [];
     private hourListAdded: boolean = false;
 
     constructor() {
-        super(OperationNamesEnum.TIMESLOT_CREATE, new OperationValidatorManager)
+        super(OperationNamesEnum.TIME_SLOT_CREATE, OperationValidatorManager.getSingletonInstance())
         this.schedulingTimeRepository = container.resolve<ISchedulingTimeEngineRepository>("ISchedulingTimeEngineRepository")
         this.hollydayEngineRepository = container.resolve<IHollydayEngineRepository>("IHollydayEngineRepository")
     }
@@ -49,20 +49,52 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
             throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_ALREADY_EXIST);
         }
 
+
+        logger.info("[AddNewTimeSlotOperation] Validate available collaborator number")
         if (params.getAvailableCollaboratorNumber == 0) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_AVAILABLE_COLLABORATOR_NUMBER,
                 MiddlewareBusinessMessage.SCHEDULING_TIME_AVAILABLE_COLLABORATOR_NUMBER_MANDATORY)
         }
 
 
+        const isWeekendBeginDate = await SchedulingTimeUtil.isweekend(new Date(params.getBeginSchedulingDate));
+        const isWeekendEndate = await SchedulingTimeUtil.isweekend(new Date(params.getEndSchedulingDate));
+
+        if (isWeekendBeginDate) {
+
+            throw new InvalidParametersException(Field.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE,
+                MiddlewareBusinessMessage.SCHEDULING_TIME_WEEKEND_BEGIN_DATE)
+        }
+
+        if (isWeekendEndate) {
+
+            throw new InvalidParametersException(Field.SCHEDULING_TIME_END_SCHEDULING_DATE,
+                MiddlewareBusinessMessage.SCHEDULING_TIME_WEEKEND_END_DATE)
+        }
+
+        const isHollydaybeginDate = await SchedulingTimeUtil.isHollyDay(new Date(params.getBeginSchedulingDate), this.hollydayEngineRepository, "[AddNewTimeSlotOperation]")
+        const isHollydayEndDate = await SchedulingTimeUtil.isHollyDay(new Date(params.getEndSchedulingDate), this.hollydayEngineRepository, "[AddNewTimeSlotOperation]")
+
+        if (isHollydaybeginDate) {
+            throw new InvalidParametersException(Field.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE,
+                MiddlewareBusinessMessage.SCHEDULING_TIME_HOLLYDAY_BEGIN_DATE)
+        }
+
+        if (isHollydayEndDate) {
+            throw new InvalidParametersException(Field.SCHEDULING_TIME_END_SCHEDULING_DATE,
+                MiddlewareBusinessMessage.SCHEDULING_TIME_HOLLYDAY_END_DATE)
+        }
+
+
+            // Begin, end and current date
+
         const beginDate = new Date(params.getBeginSchedulingDate)
+        const currentDate = new Date()
         const endDate = new Date(params.getEndSchedulingDate)
 
-        const dateWithoutHour = await SchedulingTimeUtil.getDateWithoutHour(new Date())
-        const currentDate = new Date(dateWithoutHour)
-
-        logger.info("[AddNewTimeSlotOperation] BeginDate Scheduling Date%s", beginDate)
-        logger.info("[AddNewTimeSlotOperation] Current Date%s", currentDate)
+        logger.info("[AddNewTimeSlotOperation] Scheduling Begin Date %s", beginDate)
+        logger.info("[AddNewTimeSlotOperation] Scheduling End Date %s", endDate)
+        logger.info("[AddNewTimeSlotOperation] Current Date %s", currentDate)
 
         if (endDate < beginDate) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_END_SCHEDULING_DATE,
@@ -71,26 +103,35 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         if (beginDate <= currentDate) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE,
-                MiddlewareBusinessMessage.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE_GREATHER_THAN_CURRENT_DATE)
+                MiddlewareBusinessMessage.SCHEDULING_TIME_AFTER_CURRENT_DATE)
         }
 
 
         // Begin and End Work Time
-        const beginWorkTime = await SchedulingTimeUtil.getBeginHourPart(params.getBeginWorkTime)
-        const endWorkTime = await SchedulingTimeUtil.getBeginHourPart(params.getEndWorkTime)
+        const beginWorkTime = await SchedulingTimeUtil.getTimePart(params.getBeginWorkTime)
+        const endWorkTime = await SchedulingTimeUtil.getTimePart(params.getEndWorkTime)
 
-        if (endWorkTime < beginWorkTime) {
+
+        const beginWorkMinute = await SchedulingTimeUtil.getMinutePart(params.getBeginWorkTime);
+        const endWorkMinute = await SchedulingTimeUtil.getMinutePart(params.getEndWorkTime);
+
+
+
+        if ((endWorkTime < beginWorkTime) || (beginWorkTime == endWorkTime && endWorkMinute < beginWorkMinute)) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_END_WORK_TIME,
                 MiddlewareBusinessMessage.SCHEDULING_TIME_END_WORK_TIME_GREATER_THAN_BEGIN_WORK_TIME)
         }
 
 
         // Begin and End lunch Time
-        const beginLunchTime = await SchedulingTimeUtil.getBeginHourPart(params.getBeginLunchTime)
-        const endLunchTime = await SchedulingTimeUtil.getBeginHourPart(params.getEndLunchTime)
+        const beginLunchTime = await SchedulingTimeUtil.getTimePart(params.getBeginLunchTime)
+        const endLunchTime = await SchedulingTimeUtil.getTimePart(params.getEndLunchTime)
+
+        const beginLunchkMinute = await SchedulingTimeUtil.getMinutePart(params.getBeginLunchTime);
+        const endLunchMinute = await SchedulingTimeUtil.getMinutePart(params.getEndLunchTime);
 
 
-        if (endLunchTime <= beginLunchTime) {
+        if ((endLunchTime <= beginLunchTime) || (beginLunchTime == endLunchTime && endLunchMinute < beginLunchkMinute)) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_END_LUNCH_TIME,
                 MiddlewareBusinessMessage.SCHEDULING_TIME_END_LUNCH_TIME_GREATER_THAN_END_LUNCH_TIME)
 
@@ -112,6 +153,10 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         if (endLunchTime < beginWorkTime) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_END_LUNCH_TIME,
                 MiddlewareBusinessMessage.SCHEDULING_TIME_END_LUNCH_TIME_GREATER_THAN_BEGIN_WORK_TIME)
+        }
+        if (endLunchTime >= endWorkTime) {
+            throw new InvalidParametersException(Field.SCHEDULING_TIME_END_LUNCH_TIME,
+                MiddlewareBusinessMessage.SCHEDULING_TIME_END_LUNCH_TIME_GREATER_THAN_BEGIN_WORK_TIME)
 
         }
 
@@ -130,13 +175,13 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         if (!this.hourListAdded) {
             this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_TIME_NOT_ADDED));
-            result.setErrorMessages = Object.fromEntries(this.message)
+            result.setStatus = Object.fromEntries(this.message)
         }
         else {
 
             this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_TIME_ADDED));
 
-            result.setErrorMessages = Object.fromEntries(this.message)
+            result.setStatus = Object.fromEntries(this.message)
 
         }
     }
@@ -161,7 +206,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
             if (!isWeekend && !isHollyday) {
 
-                const dateWithoutHour = await SchedulingTimeUtil.getDateWithoutHour(inputDate)
+                const dateWithoutHour = await SchedulingTimeUtil.getDateWithoutTime(inputDate)
 
                 const beginWorkDateTime = new Date(`${dateWithoutHour} ${params.getBeginWorkTime} `);
 
@@ -212,7 +257,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         logger.info("[AddNewTimeSlotOperation] InputDate to be Added %s and hour list %s", inputDate, hourList)
 
-        await this.createNewScheduling(inputDate, params, hourList)
+        await this.createNewSchedulingConfiguration(inputDate, params, hourList)
 
 
         if (hourList.length != 0) {
@@ -221,18 +266,19 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
     }
 
-    async createNewScheduling(inputDate: Date, params: TimeSlotParams, hourlistInput: string[]): Promise<void> {
+    async createNewScheduling(inputDate: Date, params: AddTimeSlotParams, hourlistInput: string[]): Promise<void> {
 
         const newSchedulingTime = new SchedulingTimeConfiguration();
 
         newSchedulingTime.creationDate = new Date();
-        newSchedulingTime.beginDate = inputDate;
+        newSchedulingTime.schedulingBeginDate = inputDate;
 
         newSchedulingTime.beginLunchTime = params.getBeginLunchTime;
 
         newSchedulingTime.endLunchTime = params.getBeginLunchTime;
 
         newSchedulingTime.serviceInterval = params.getServiceInterval;
+
 
         newSchedulingTime.availableCollaboratorNumber = params.getAvailableCollaboratorNumber;
 

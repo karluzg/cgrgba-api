@@ -19,16 +19,16 @@ import logger from "../../../../infrestructure/config/logger";
 
 export class GetTimeSlotListOperation extends UserAuthOperationTemplate<TimeSlotResult, TimeSlotListParams>{
 
-    private schedulingTimeRepository: ISchedulingTimeEngineRepository;
-    private hollydayRepository: IHollydayEngineRepository;
-    private schedulingHistoryEngineRepository: ISchedulingHistoryEngineRepository;
+    private readonly schedulingTimeRepository: ISchedulingTimeEngineRepository;
+    private readonly hollydayRepository: IHollydayEngineRepository;
+    private readonly schedulingHistoryEngineRepository: ISchedulingHistoryEngineRepository;
     private schedulingTimeEntity: SchedulingTimeConfiguration;
 
     private schedulingDateInput: Date
 
 
     constructor() {
-        super(OperationNamesEnum.TIMESLOT_GET_LIST, new OperationValidatorManager)
+        super(OperationNamesEnum.TIME_SLOT_GET_LIST, OperationValidatorManager.getSingletonInstance())
         this.schedulingTimeRepository = container.resolve<ISchedulingTimeEngineRepository>("ISchedulingTimeEngineRepository")
         this.hollydayRepository = container.resolve<IHollydayEngineRepository>("IHollydayEngineRepository")
         this.schedulingHistoryEngineRepository = container.resolve<ISchedulingHistoryEngineRepository>("ISchedulingHistoryEngineRepository")
@@ -39,12 +39,11 @@ export class GetTimeSlotListOperation extends UserAuthOperationTemplate<TimeSlot
         logger.info("[GetTimeSlotListOperation] Begin strict validation scheduling time parameteres...")
 
         const beginDate = new Date(params.getBeginSchedulingDate)
-        const dateWithoutHour = await SchedulingTimeUtil.getDateWithoutHour(new Date())
-        const currentDate = new Date(dateWithoutHour);
+        const currentDate = new Date();
 
         if (beginDate < currentDate) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE,
-                MiddlewareBusinessMessage.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE_GREATHER_THAN_CURRENT_DATE)
+                MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST)
         }
 
 
@@ -58,7 +57,7 @@ export class GetTimeSlotListOperation extends UserAuthOperationTemplate<TimeSlot
 
 
         if (isWeekend || isHollyday) {
-            throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_CONFIG_NOT_EXIST);
+            throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);
         }
 
         this.schedulingTimeEntity = await this.schedulingTimeRepository.findBySchedulingDate(this.schedulingDateInput)
@@ -66,7 +65,7 @@ export class GetTimeSlotListOperation extends UserAuthOperationTemplate<TimeSlot
         logger.info("[AddNewTimeSlotOperation] schedulingTime entity founded %", this.schedulingTimeEntity)
 
         if (!this.schedulingTimeEntity[0]) {
-            throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_CONFIG_NOT_EXIST);
+            throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);
         }
 
         logger.info("[GetTimeSlotListOperation] End of strict validation scheduling time parameteres...")
@@ -87,34 +86,28 @@ export class GetTimeSlotListOperation extends UserAuthOperationTemplate<TimeSlot
 
     private async buildAvailableHourList(hourListinput: string[], availableCollaboratorNumber: number, schedulingDate: string): Promise<string[]> {
 
+        logger.info("[AddNewTimeSlotOperation][buildAvailableHourList] Watching scheduling hours retrieved:", hourListinput);
 
-        logger.info("[AddNewTimeSlotOperation][buildAvailableHourList] watch scheduling hours retrieved:" + hourListinput);
-        logger.info("[AddNewTimeSlotOperation][buildAvailableHourList] watch available collaborator number received:" + availableCollaboratorNumber);
+        logger.info("[AddNewTimeSlotOperation][buildAvailableHourList] Watching available collaborator number received:", availableCollaboratorNumber);
 
-        let hourListoutPut: string[] = [];
+        const hourListoutPut: string[] = [];
 
-        for (let start = 0; start < hourListinput.length; start++) {
-
-            let hour = hourListinput[start]
-
-            const isDateAndHourAvailable = await this.schedulingHistoryEngineRepository.checkIfSchedulingHistoryExist(schedulingDate, hour)
+        for (const hour of hourListinput) {
+            const isDateAndHourAvailable = await this.schedulingHistoryEngineRepository.checkIfSchedulingHistoryExist(schedulingDate, hour);
 
             if (!isDateAndHourAvailable) {
-
-                hourListoutPut.push(hour)
+                hourListoutPut.push(hour);
             }
-
         }
 
-        logger.info("[GetTimeSlotListOperation] Available hour list returned:" + hourListoutPut)
+        logger.info("[GetTimeSlotListOperation] Available hour list returned:", hourListoutPut);
 
         return hourListoutPut;
+
     }
 
     protected initResult(): TimeSlotResult {
         return new TimeSlotResult();
     }
-
-
 
 }

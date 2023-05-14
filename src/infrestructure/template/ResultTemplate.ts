@@ -5,10 +5,10 @@ export class ResultTemplate {
 
     @IsObject()
     private status: Object;
-    get getErrorMessages(): Object {
+    get getStatus(): Object {
         return this.status;
     }
-    set setErrorMessages(errorMessages: Object) {
+    set setStatus(errorMessages: Object) {
 
         this.status = errorMessages;
 

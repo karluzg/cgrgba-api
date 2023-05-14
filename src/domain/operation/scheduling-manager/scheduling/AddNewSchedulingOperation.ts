@@ -3,7 +3,6 @@ import { SchedulingParams } from "../../../../application/model/scheduling-manag
 import { SchedulingResult } from "../../../../application/model/scheduling-manager/scheduling/SchedulingResult";
 import logger from "../../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
-import { NotImplementedException } from "../../../../infrestructure/exceptions/NotImplementedException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { OperationTemplate } from "../../../../infrestructure/template/OperationTemplate";
@@ -18,22 +17,25 @@ import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngi
 import Semaphore from "semaphore-async-await";
 import { Citizen } from "../../../model/Citizen";
 import { ICitizenEngineRepository } from "../../../repository/ICitizenEngineRepository";
-import { SchedulingStatusEnum } from "../../../model/enum/SchedulingStatus.Enum";
+import { SchedulingStatusEnum } from "../../../model/enum/SchedulingStatusEnum";
 import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { UnsuccessfullOperationException } from "../../../../infrestructure/exceptions/UnsuccessfullOperationException";
 import { SchedulingHistory } from "../../../model/SchedulingHistory";
+import { SchedulingUtil } from "../../util/SchedulingUtil";
 
 
 export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResult, SchedulingParams>{
 
 
-    private schedulingEngineRepository: ISchedulingEngineRepository;
-    private schedulingTimeEngineRepository: ISchedulingTimeEngineRepository;
-    private hollydayEngineRepository: IHollydayEngineRepository;
-    private schedulingHistoryEnginerepository: ISchedulingHistoryEngineRepository;
-    private citizenEngineRepository: ICitizenEngineRepository
-    private schedulingTimeEntity: SchedulingTimeConfiguration;
+    private readonly schedulingEngineRepository: ISchedulingEngineRepository;
+    private readonly schedulingTimeEngineRepository: ISchedulingTimeEngineRepository;
+    private readonly hollydayEngineRepository: IHollydayEngineRepository;
+    private readonly schedulingHistoryEnginerepository: ISchedulingHistoryEngineRepository;
+    private readonly citizenEngineRepository: ICitizenEngineRepository
 
+
+
+    private schedulingTimeEntity: SchedulingTimeConfiguration;
     private semaphore: Semaphore;
     private citizen: Citizen
     private schedulingDateInput: Date;
@@ -55,38 +57,41 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
 
         logger.info("[AddNewSchedulingOperation] Begin of strict validation scheduling parameteres...")
 
+        this.schedulingDateInput = new Date(params.getSchedulingDate);
 
         this.schedulingTimeEntity = await this.schedulingTimeEngineRepository.findBySchedulingDate(this.schedulingDateInput)
 
-        logger.info("[AddNewSchedulingOperation] Scheduling entity founded: %s", JSON.stringify(this.schedulingTimeEntity))
+        logger.info("[AddNewSchedulingOperation] Scheduling entity founded: %s", JSON.stringify(this.schedulingTimeEntity[0]))
 
-        const availableScheduling = this.schedulingTimeEntity[0] === 0;
-        console.log("Scheduling entity returned:" + JSON.stringify(this.schedulingTimeEntity[0]))
 
         if (!this.schedulingTimeEntity[0]) {
-            throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_CONFIG_NOT_EXIST);
-        }
-
-        logger.info("[AddNewSchedulingOperation] Check available date and hour to schedule...")
-
-        this.schedulings = await this.schedulingHistoryEnginerepository
-            .countNumberOfSchedulingByDateandHour(params.getSchedulingDate, params.getSchedulingHour)
-
-        const numberOfScehdulingByDateAndHour = this.schedulings.length;
-        const availableCollaboratorNumber = this.schedulingTimeEntity[0].availableCollaboratorNumber;
-
-        if (numberOfScehdulingByDateAndHour > availableCollaboratorNumber) {
-            throw new InvalidParametersException(Field.SCHEDULING_HOUR, MiddlewareBusinessMessage.SCHEDULING_HOUR_ALREADY_CHOSED_BY_ANTOTHER_PERSON)
+            throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);
         }
 
 
+        logger.info("[AddNewTimeSlotOperation] Validate Pair -> SchedulinDate and hour")
 
-        this.schedulingDateInput = new Date(params.getSchedulingDate);
+        const hourList = this.schedulingTimeEntity[0].hours;
+        let foundMatchHour: boolean = false;
+
+        for (const inputHour of hourList) {
+
+            if (inputHour == params.getSchedulingHour) {
+                foundMatchHour = true;
+            }
+        }
+
+        if (!foundMatchHour) {
+            throw new InvalidParametersException(Field.SCHEDULING_HOUR, MiddlewareBusinessMessage.SCHEDULING_TIME_HOUR_CONFIG_NOT_EXIST);
+        }
+
+
+        logger.info("[AddNewSchedulingOperation] Verify if begin date is less than the current date...")
+
 
         const beginDate = new Date(params.getSchedulingDate);
 
-        const dateWithoutHour = await SchedulingTimeUtil.getDateWithoutHour(new Date());
-        const currentDate = new Date(dateWithoutHour);
+        const currentDate = new Date();
 
 
         if (beginDate <= currentDate) {
@@ -95,31 +100,52 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         }
 
 
-        logger.info("[AddNewSchedulingOperation] schedulingDateinput converted %s", this.schedulingDateInput)
+        logger.info("[AddNewSchedulingOperation] Verify available date and hour to schedule...")
 
-        const isWeekend = await SchedulingTimeUtil.isweekend(this.schedulingDateInput);
+        this.schedulings = await this.schedulingHistoryEnginerepository
+            .countNumberOfSchedulingByDateandHour(params.getSchedulingDate, params.getSchedulingHour)
 
-        const isHollyday = await SchedulingTimeUtil.isHollyDay(this.schedulingDateInput, this.hollydayEngineRepository, "[AddNewSchedulingOperation]")
+        logger.info("[AddNewSchedulingOperation] Schedulings entity founded %s", JSON.stringify(this.schedulings))
 
+        const numberOfScehdulingByDateAndHour = this.schedulings.length;
+        const availableCollaboratorNumber = this.schedulingTimeEntity[0].availableCollaboratorNumber;
 
-        if (isWeekend || isHollyday) {
-            throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_CONFIG_NOT_EXIST);
+        if (numberOfScehdulingByDateAndHour >= availableCollaboratorNumber) {
+            throw new InvalidParametersException(Field.SCHEDULING_HOUR, MiddlewareBusinessMessage.SCHEDULING_HOUR_ALREADY_CHOSED_BY_ANTOTHER_PERSON)
         }
 
 
+        logger.info("[AddNewSchedulingOperation] Verify scheduling date is weekend or hollyday")
 
-        logger.info("[AddNewSchedulingOperation] Begin validate scheduling features...", this.schedulingDateInput)
+        const isWeekend = await SchedulingTimeUtil.isweekend(this.schedulingDateInput);
 
-        const isSameSchedulingFeature = await this.schedulingEngineRepository
-            .valideSchedulingFeature(params.getSchedulingDate,
-                params.getSchedulingHour,
-                params.getCitizenEmail,
-                params.getSchedulingCategory,
-                params.getSchedulingService,
-            )
+        const isHollyday = await SchedulingTimeUtil.isHollyDay(this.schedulingDateInput, this.hollydayEngineRepository,
+            "[AddNewSchedulingOperation]")
 
-        if (isSameSchedulingFeature) {
-            throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.SCHEDULING_ALREADY_EXIST);
+
+        if (isWeekend || isHollyday) {
+            throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);
+        }
+
+
+        logger.info("[AddNewSchedulingOperation] Begin searching Citizen by email in Data Base to satrt validation of scheduling features...")
+
+        this.citizen = await this.citizenEngineRepository.findCitizenByEmailOrMobileNumber(params.getCitizenEmail, params.getCitizenMobileNumber);
+
+        logger.info("[AddNewSchedulingOperation] Citizen was founded %", this.citizen);
+
+        if (this.citizen) {
+
+            logger.info("[AddNewSchedulingOperation] Begin validate scheduling features for citizen...")
+
+            const isNotValidchedulingFeature = await SchedulingUtil.validateCitizenSchedulingFeature(params,
+                this.schedulingEngineRepository);
+
+            logger.info("[AddNewSchedulingOperation]  Watch the validatio scheduling feature output:", isNotValidchedulingFeature)
+
+            if (isNotValidchedulingFeature) {
+                throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.SCHEDULING_ALREADY_EXIST);
+            }
         }
 
         logger.info("[AddNewSchedulingOperation] End of strict validation scheduling time parameteres...")
@@ -134,25 +160,25 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
 
         this.semaphore = new Semaphore(availableCollaboratorNumber);
 
-        logger.info("[AddNewSchedulingOperation] Begin make scheduling with concurrency.. ")
+        logger.info("[AddNewSchedulingOperation] Begin make scheduling with concurrency..")
 
         try {
 
             logger.info("Acquire the semaphore to gain access to the critical section")
             await this.semaphore.acquire();
 
-            const newScheduling = await this.saveSchedulingInfo(params);
+            const newScheduling = await this.createNewScheduling(params);
             await this.isTobeBlockDateAndHour(newScheduling, availableCollaboratorNumber, params.getSchedulingDate)
 
             result.setScheduling = newScheduling;
 
             this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_ADDED));
 
-            result.setErrorMessages = Object.fromEntries(this.message)
+            result.setStatus = Object.fromEntries(this.message)
 
 
         } catch (error) {
-            logger.info("[AddNewSchedulingOperation] Errorr while acquire semaphore:" + error)
+            logger.error("[AddNewSchedulingOperation] Errorr while acquire semaphore:" + error)
             throw new UnsuccessfullOperationException(Field.SYSTEM, "Erro ao realziar o agendamento")
         } finally {
             this.semaphore.release();
@@ -177,6 +203,8 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         newScheduling.service = params.getSchedulingService;
         newScheduling.date = params.getSchedulingDate;
         newScheduling.chosenHour = params.getSchedulingHour;
+        newScheduling.hour = await SchedulingTimeUtil.getTimePart(params.getSchedulingHour)
+        newScheduling.minute = await SchedulingTimeUtil.getMinutePart(params.getSchedulingHour)
         newScheduling.status = SchedulingStatusEnum.FOR_ANSWERING;
 
 
@@ -193,9 +221,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
     private async createAdhocCitizen(citizenFullName: string, citizenEmail: string, userMobileNumber: string): Promise<Citizen> {
 
 
-        logger.info("[AddNewSchedulingOperation] Searching citizen in Data Base...")
-
-        this.citizen = await this.citizenEngineRepository.findCitizenByEmail(citizenEmail)
+        logger.info("[AddNewSchedulingOperation] Check is it a new citizen in Data Base...")
 
         if (this.citizen) {
             logger.info("[AddNewSchedulingOperation] Return founded citizen:" + this.citizen.email)
