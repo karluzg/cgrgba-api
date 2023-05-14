@@ -115,7 +115,7 @@ export class UserController {
     }
   }
 
-  public async getUserByUserName(request: Request, response: Response):Promise< Response> {
+  public async getUserByEmail(request: Request, response: Response):Promise< Response> {
     throw new Error("Method not implemented.");
 }
 

@@ -6,6 +6,10 @@ export enum MiddlewareBusinessMessage {
     USER_INVALID_CREDENTIALS = "Credenciais inválidas",
     USER_INVALID_EMAIL = "Email inválido ou já existe um utilizador registado com o mesmo email",
     USER_MBILE_NUMBER_ALREADY_EXIST = "já existe um utilizador registado com o mesmo número de telemóvel",
+    USER_NOT_FOUND="Utilizador não foi encontrado",
+    ROLE_NOT_FOUND="Role não foi encontrado",
+    PERMISSION_NOT_FOUND="Permissão não foi encontrado",
+    PERMISSION_GOURP_NOT_FOUND="Grupo de permissões não foi encontrado",
 
 
 

@@ -54,7 +54,7 @@ async function creteRoleAdmin(permissions: Permission[]) {
     const roleRepository = container.resolve<IRoleEngineRepository>("IRoleEngineRepository")
     //add new user
     logger.info("[creteRoleAdmin] Find role by name")
-    const adminRole = await roleRepository.finRoleByName("ADMIN")
+    const adminRole = await roleRepository.findRoleByName("ADMIN")
 
     if (!adminRole) {
 
@@ -86,7 +86,7 @@ async function cretePermissions() {
 
         if (isNaN(Number(operation))) {
             logger.info("[cretePermissions] Find permission by code " + OperationNamesEnum[operation])
-            const dbPermission = await permissionRepository.finPermissionByCode(operation)
+            const dbPermission = await permissionRepository.findPermissionByCode(operation)
 
             if (!dbPermission) {
 
@@ -94,7 +94,7 @@ async function cretePermissions() {
                 const group= operation.split("_")[0];
 
                 logger.info("[cretePermissions] Find role by name")
-                let adminPermission = await permissionGroupRepository.finPermissionGroupByCode(group)
+                let adminPermission = await permissionGroupRepository.findPermissionGroupByCode(group)
             
                 if (!adminPermission) {
             

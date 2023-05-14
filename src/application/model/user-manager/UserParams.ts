@@ -1,35 +1,36 @@
-
-import { IsString } from "class-validator"
-import { AuthParamsTemplate } from "../../../infrestructure/template/AuthParamsTemplate"
-
+import { ApiProperty } from '@nestjs/swagger';
+import { IsString } from 'class-validator';
+import { AuthParamsTemplate } from '../../../infrestructure/template/AuthParamsTemplate';
 
 export class UserParams extends AuthParamsTemplate {
+  @ApiProperty({ description: 'O nome completo do utilizador' })
   @IsString()
-  private fullName: string
+  private fullName: string;
+
+  @ApiProperty({ description: 'O número de celular do utilizador' })
   @IsString()
-  private mobileNumber: string
+  private mobileNumber: string;
+
+  @ApiProperty({ description: 'O email do utilizador' })
   @IsString()
-  private email: string
+  private email: string;
 
   constructor(authenticationToken: string, userFullName: string, userMobileNumber: string, userEmail: string) {
-    super(authenticationToken)
-    this.fullName = userFullName
-    this.mobileNumber = userMobileNumber
-    this.email = userEmail
+    super(authenticationToken);
+    this.fullName = userFullName;
+    this.mobileNumber = userMobileNumber;
+    this.email = userEmail;
   }
 
-  get getFullName(): string {
-    return this.fullName
+  public get getFullName(): string {
+    return this.fullName;
   }
-  get getMobileNumber(): string {
-    return this.mobileNumber
+
+  public get getMobileNumber(): string {
+    return this.mobileNumber;
   }
-  get getEmail() {
+
+  public get getEmail(): string {
     return this.email;
   }
 }
-
-
-
-
-

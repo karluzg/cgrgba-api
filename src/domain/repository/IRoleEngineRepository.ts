@@ -4,5 +4,5 @@ import { User } from "../model/User";
 
 export interface IRoleEngineRepository{
     saveRole(role: Role): Promise<Role>
-    finRoleByName(roleName: string): Promise<Role>
+    findRoleByName(roleName: string): Promise<Role>
 }

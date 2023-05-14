@@ -4,6 +4,12 @@ import { ParamsValidatorTemplate } from '../../../../infrestructure/template/Par
 
 
 export class SessionRoutesValidator extends ParamsValidatorTemplate {
+    getTokenInformation():ValidationChain[] {
+        return [];
+    }
+    hasPermission():ValidationChain[] {
+        return [];
+    }
 
     public login():ValidationChain[] {
         return [

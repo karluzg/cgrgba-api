@@ -10,9 +10,18 @@ const userRoutesValidator = new UserRoutesValidator()
 
 /**
  * @swagger
+ * tags:
+ *   name: Users
+ *   description: Endpoints relacionados aos utilizadores
+ */
+
+
+/**
+ * @swagger
  * /users:
  *   post:
  *     summary: Cria um novo utilizador
+ *     tags: [Users]
  *     requestBody:
  *       required: true
  *       content:
@@ -35,17 +44,22 @@ UserRoutes.post("/users", userRoutesValidator.addUser(), userRoutesValidator.val
  * /users:
  *   get:
  *     summary: Retorna todos os utilizadores
+ *     tags: [Users]
  *     parameters:
  *       - in: query
  *         name: size
- *         description: Tamanho da página (opcional)
+ *         description: Tamanho da página (opcional, mínimo 1, padrão 20)
  *         schema:
  *           type: integer
+ *           minimum: 1
+ *           default: 20
  *       - in: query
  *         name: page
- *         description: Número da página (opcional)
+ *         description: Número da página (opcional, mínimo 1, padrão 1)
  *         schema:
  *           type: integer
+ *           minimum: 1
+ *           default: 1
  *       - in: query
  *         name: status
  *         description: Estado do utilizador (opcional)
@@ -63,11 +77,13 @@ UserRoutes.post("/users", userRoutesValidator.addUser(), userRoutesValidator.val
  */
 UserRoutes.get("/users", userRoutesValidator.getUsers(), userRoutesValidator.validate, userController.getUsers);
 
+
 /**
  * @swagger
  * /users/{id}:
  *   get:
  *     summary: Retorna um utilizador pelo ID
+ *     tags: [Users]
  *     parameters:
  *       - in: path
  *         name: id
@@ -90,14 +106,15 @@ UserRoutes.get("/users/:id", userRoutesValidator.getUserById(), userRoutesValida
 
 /**
  * @swagger
- * /users/username/{username}:
+ * /users/email/{email}:
  *   get:
- *     summary: Obtém um utilizador pelo nome de utilizador
+ *     summary: Obtém um utilizador pelo  email do utilizador
+ *     tags: [Users]
  *     parameters:
  *       - in: path
- *         name: username
+ *         name: email
  *         required: true
- *         description: Nome de utilizador
+ *         description: Email de utilizador
  *         schema:
  *           type: string
  *     responses:
@@ -110,13 +127,14 @@ UserRoutes.get("/users/:id", userRoutesValidator.getUserById(), userRoutesValida
  *       '404':
  *         description: Utilizador não encontrado
  */
-UserRoutes.get("/users/username/:username", userRoutesValidator.getUserByUserName(), userRoutesValidator.validate, userController.getUserByUserName);
+UserRoutes.get("/users/email/:email", userRoutesValidator.getUserByEmail(), userRoutesValidator.validate, userController.getUserByEmail);
 
 /**
  * @swagger
  * /users:
  *   put:
  *     summary: Atualiza um utilizador
+ *     tags: [Users]
  *     requestBody:
  *       required: true
  *       description: Dados do utilizador a serem atualizados
@@ -141,6 +159,7 @@ UserRoutes.put("/users", userRoutesValidator.updateUser(), userRoutesValidator.v
  * /users/password/reset:
  *   put:
  *     summary: Reset a Password do utilizador autenticado
+ *     tags: [Users]
  *     responses:
  *       '200':
  *         description: Password do utilizador Reset com sucesso
@@ -154,6 +173,7 @@ UserRoutes.put("/users/password/reset", userRoutesValidator.resetPassword(), use
  * /users/password:
  *   put:
  *     summary: Atualiza a Password do utilizador
+ *     tags: [Users]
  *     requestBody:
  *       required: true
  *       description: Dados da Password a serem atualizados

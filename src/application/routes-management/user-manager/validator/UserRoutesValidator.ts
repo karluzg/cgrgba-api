@@ -13,7 +13,7 @@ export class UserRoutesValidator extends ParamsValidatorTemplate {
     updateUser() :ValidationChain[]{
         return []
     }
-    getUserByUserName():ValidationChain[] {
+    getUserByEmail():ValidationChain[] {
         return []
     }
 

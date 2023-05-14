@@ -1,41 +1,40 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany} from "typeorm"
-import { User } from "./User"
-import { Permission } from "./Permission"
-import { RoleStatus } from "./RoleStatus"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany } from 'typeorm';
+import { User } from './User';
+import { Permission } from './Permission';
+import { RoleStatus } from './RoleStatus';
+import { IsString, IsNotEmpty, IsBoolean } from 'class-validator';
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portalConsular' })
 export class Role {
+  @PrimaryGeneratedColumn({ type: 'bigint' })
+  id: number;
 
-    @PrimaryGeneratedColumn({type:"bigint"})
-    id: number
+  @Column()
+  @IsString()
+  @IsNotEmpty()
+  name: string;
 
-    @Column()
-    name: string
+  @Column()
+  @IsString()
+  description: string;
 
-    @Column()
-    description: string
+  @ManyToMany(() => Permission, { lazy: true })
+  @JoinTable()
+  permissions: Permission[];
 
-    @ManyToMany(() => Permission, { lazy: true })
-    @JoinTable()
-    permissions: Permission[]
+  @ManyToOne(() => User, { eager: true })
+  lastUpdateBy: User;
 
-    @ManyToOne(() => User, { eager: true })
-    lastUpdateBy: User
+  @ManyToOne(() => User, { eager: true })
+  createdBy: User;
 
-    @ManyToOne(()=> User,{eager:true})
-    createdBy:User
+  @ManyToOne(() => RoleStatus)
+  roleStatus: RoleStatus;
 
+  @Column()
+  @IsBoolean()
+  isAdmin: boolean;
 
-    @ManyToOne(() => RoleStatus)
-    roleStatus: RoleStatus
-
-    @Column()
-    isAdmin: boolean
-
-    @Column({ nullable: false, type: 'timestamp',default: () => "CURRENT_TIMESTAMP"  })
-    creationDate: Date
-
-
-
-
+  @Column({ nullable: false, type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  creationDate: Date;
 }
