@@ -1,24 +1,24 @@
-import { OperationTemplate } from "../../../infrestructure/template/OperationTemplate";
-import { UserParams } from "../../../application/model/user-manager/UserParams";
-import { UserResult } from "../../../application/model/user-manager/UserResult";
-import { OperationNamesEnum } from "../../model/enum/OperationNamesEnum";
-import logger from "../../../infrestructure/config/logger";
-import { UserAuthOperationTemplate } from "../../../infrestructure/template/UserAuthOperationTemplate";
-import { TokenSession } from "../../model/TokenSession";
-import { OperationValidatorManager } from "../../../infrestructure/validator/managers/OperationValidatorManager";
-import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
-import { User } from "../../model/User";
-import { IUserEngineRepository } from "../../repository/IUserEngineRepository";
+import { OperationTemplate } from "../../../../infrestructure/template/OperationTemplate";
+import { UserParams } from "../../../../application/model/user-manager/UserParams";
+import { UserResult } from "../../../../application/model/user-manager/UserResult";
+import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
+import logger from "../../../../infrestructure/config/logger";
+import { UserAuthOperationTemplate } from "../../../../infrestructure/template/UserAuthOperationTemplate";
+import { TokenSession } from "../../../model/TokenSession";
+import { OperationValidatorManager } from "../../../../infrestructure/validator/managers/OperationValidatorManager";
+import { Field } from "../../../../infrestructure/exceptions/enum/Field";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { User } from "../../../model/User";
+import { IUserEngineRepository } from "../../../repository/IUserEngineRepository";
 import { container } from 'tsyringe'
-import { PasswordValidator } from "../../../infrestructure/validator/managers/PasswordValidator";
-import { UserStatusEnum } from "../../model/enum/UserStatusEnum";
-import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
-import { GeneratePassowordUtil } from "../util/GeneratePassowordUtil";
-import { ResultInfo } from "../../../infrestructure/response/ResultInfo";
-import { EmailTemplate } from "../../../infrestructure/template/EmailTemplate";
-import { GenerateHtmlBody } from "../util/GenerateHtmlBody";
-import { plataformConfig } from "../../../infrestructure/config/plataform";
+import { PasswordValidator } from "../../../../infrestructure/validator/managers/PasswordValidator";
+import { UserStatusEnum } from "../../../model/enum/UserStatusEnum";
+import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
+import { GeneratePassowordUtil } from "../../util/GeneratePassowordUtil";
+import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
+import { EmailTemplate } from "../../../../infrestructure/template/EmailTemplate";
+import { GenerateHtmlBody } from "../../util/GenerateHtmlBody";
+import { plataformConfig } from "../../../../infrestructure/config/plataform";
 
 
 

@@ -2,7 +2,7 @@ import { IUserEngine } from "../IUserEngine";
 import { UserParams } from "../../../application/model/user-manager/UserParams";
 import { UserResult } from "../../../application/model/user-manager/UserResult";
 import { GenericOperationTemplate } from "../../../infrestructure/template/GenericOperationTemplate";
-import { AddUserOperation } from "../../operation/user-manager/AddUserOperation";
+import { AddUserOperation } from "../../operation/user-manager/user/AddUserOperation";
 import { injectable } from "tsyringe";
 
 
