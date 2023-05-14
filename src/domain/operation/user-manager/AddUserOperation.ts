@@ -27,7 +27,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
     private userRepository: IUserEngineRepository;
 
     constructor() {
-        super(OperationNamesEnum.USER_CREATE, new OperationValidatorManager())
+        super(OperationNamesEnum.USER_CREATE, OperationValidatorManager.getSingletonInstance())
         this.userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
 
     }
@@ -74,7 +74,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         result.setUser = newUser;
 
         this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_TIME_ADDED));
-        result.setErrorMessages = Object.fromEntries(this.message)
+        result.setStatus = Object.fromEntries(this.message)
 
 
         const emailMessage= GenerateHtmlBody.generateNewUserBody(user.fullName,user.email,password,plataformConfig.ulr,plataformConfig.emailContact);

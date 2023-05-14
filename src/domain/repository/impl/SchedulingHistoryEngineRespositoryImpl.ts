@@ -23,9 +23,9 @@ export class SchedulingHistoryEngineRepositoryImpl implements ISchedulingHistory
         return schedulingHistoryEngineRepository.createQueryBuilder('schedulingHistory')
             .leftJoinAndSelect("schedulingHistory.scheduling", "scheduling")
             .where('schedulingHistory.chosenHour = :chosenHour', { chosenHour: chosenHour })
-            .andWhere('schedulingHistory.date = :schedulingDate', { schedulingDate: schedulingDate })
-            .andWhere('scheduling.date = :schedulingDate', { schedulingDate: schedulingDate })
-            .where('scheduling.chosenHour = :chosenHour', { chosenHour: chosenHour })
+            .andWhere('schedulingHistory.schedulingDate = :schedulingDate', { schedulingDate: schedulingDate })
+            .andWhere('scheduling.schedulingDate = :schedulingDate', { schedulingDate: schedulingDate })
+            .andWhere('scheduling.chosenHour = :chosenHour', { chosenHour: chosenHour })
             .getMany();
 
 
@@ -37,7 +37,7 @@ export class SchedulingHistoryEngineRepositoryImpl implements ISchedulingHistory
             .createQueryBuilder('schedulingHistory')
             .where('schedulingHistory.date = :schedulingDate', { schedulingDate })
             .andWhere('schedulingHistory.chosenHour = :chosenHour', { chosenHour })
-            .andWhere('schedulingHistory.available = :available', { chosenHour })
+            .andWhere('schedulingHistory.available = :available', { available: true })
             .getExists();
 
     }

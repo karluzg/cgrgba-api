@@ -16,6 +16,12 @@ export class SchedulingTimeConfiguration {
     @Column({ type: 'date', unique: true, nullable: false })
     beginDate: Date
 
+    @Column({ nullable: false })
+    beginWorkTime: string
+
+    @Column({ nullable: false })
+    endWorkTime: string
+
     @Column()
     beginLunchTime: string
 

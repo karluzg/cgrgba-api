@@ -3,7 +3,7 @@ import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthP
 
 export class TimeSlotListParams extends AuthParamsTemplate {
 
-    private beginschedulingDate: string;
+    private readonly beginschedulingDate: string;
 
     constructor(authentication: string, beginschedulingDate: string) {
         super(authentication);

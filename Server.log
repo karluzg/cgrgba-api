@@ -8659,26 +8659,26 @@
 [2023-05-14T18:58:18.115] [INFO] default - [creteRoleAdmin] Find role by name
 [2023-05-14T18:58:18.136] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
 [2023-05-14T18:58:18.136] [INFO] default - [createUserNantoi] Find User by email
-[2023-05-14T19:05:04.588] [INFO] default - Data Source has been initialized!
-[2023-05-14T19:05:04.590] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
-[2023-05-14T19:05:04.591] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
-[2023-05-14T19:05:04.591] [INFO] default - [cretePermissions] Find permission by code 1
-[2023-05-14T19:05:04.599] [INFO] default - [cretePermissions] Find permission by code 2
-[2023-05-14T19:05:04.601] [INFO] default - [cretePermissions] Find permission by code 3
-[2023-05-14T19:05:04.604] [INFO] default - [cretePermissions] Find permission by code 4
-[2023-05-14T19:05:04.606] [INFO] default - [cretePermissions] Find permission by code 101
-[2023-05-14T19:05:04.608] [INFO] default - [cretePermissions] Find permission by code 102
-[2023-05-14T19:05:04.610] [INFO] default - [cretePermissions] Find permission by code 202
-[2023-05-14T19:05:04.612] [INFO] default - [cretePermissions] Find permission by code 203
-[2023-05-14T19:05:04.614] [INFO] default - [cretePermissions] Find permission by code 303
-[2023-05-14T19:05:04.616] [INFO] default - [cretePermissions] Find permission by code 404
-[2023-05-14T19:05:04.617] [INFO] default - [cretePermissions] Find permission by code 505
-[2023-05-14T19:05:04.621] [INFO] default - [cretePermissions] Find permission by code 506
-[2023-05-14T19:05:04.623] [INFO] default - [cretePermissions] Find permission by code 607
-[2023-05-14T19:05:04.625] [INFO] default - [cretePermissions] Find permission by code 608
-[2023-05-14T19:05:04.627] [INFO] default - [cretePermissions] Find permission by code 707
-[2023-05-14T19:05:04.628] [INFO] default - [cretePermissions] Find permission by code 708
-[2023-05-14T19:05:04.630] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-14T19:45:09.877] [ERROR] default - Error during Data Source initialization: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Git\cgrgba-api\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Git\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1248:18
+    at new Promise (<anonymous>)
+    at MysqlDriver.createPool (C:\Git\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1245:16)
+    at MysqlDriver.connect (C:\Git\cgrgba-api\src\driver\mysql\MysqlDriver.ts:393:36)
+    at DataSource.initialize (C:\Git\cgrgba-api\src\data-source\DataSource.ts:249:27)
+    at Object.<anonymous> (C:\Git\cgrgba-api\src\server.ts:16:14) {
+  errno: -4078,
+  code: 'ECONNREFUSED',
+  syscall: 'connect',
+  address: '::1',
+  port: 3306,
+  fatal: true
+}
 [2023-05-14T19:05:04.630] [INFO] default - [creteRoleAdmin] Find role by name
 [2023-05-14T19:05:04.644] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
 [2023-05-14T19:05:04.644] [INFO] default - [createUserNantoi] Find User by email
