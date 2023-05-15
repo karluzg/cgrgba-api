@@ -11,7 +11,7 @@ import { OperationNamesEnum } from "../model/enum/OperationNamesEnum"
 import { PermissionGroup } from "../model/PermissionGroup"
 import { IPermissionGroupEngineRepository } from "../repository/IPermissionGroupEngineRepository"
 import { Permission } from "../model/Permission"
-import { NotFoundExcecption } from "../../infrestructure/exceptions/NotFoundExcecption"
+import { NotFoundException } from "../../infrestructure/exceptions/NotFoundExcecption"
 import { ErrorExceptionClass } from "../../infrestructure/exceptions/ErrorExceptionClass";
 
 export async function initNantoiUser() {
@@ -34,8 +34,10 @@ async function createUserNantoi(role: Role) {
     try {
         nantoiUser = await userRepository.findUserByEmail("nantoi@nantoi.com")
     } catch (error) {
-        nantoiUser = null
+        nantoiUser = null;
     }
+
+
 
     if (!nantoiUser) {
         logger.info("[createUserNantoi] Creatting salt and hash from password")
@@ -102,8 +104,8 @@ async function cretePermissions() {
             try {
                 dbPermission = await permissionRepository.findPermissionByCode(operation)
             } catch (error) {
-       
-                    dbPermission = null
+
+                dbPermission = null
             }
 
 
@@ -113,7 +115,7 @@ async function cretePermissions() {
                 const group = operation.split("_")[0];
 
                 logger.info("[cretePermissions] Find role by name")
-                let adminPermission:PermissionGroup
+                let adminPermission: PermissionGroup
 
                 try {
                     adminPermission = await permissionGroupRepository.findPermissionGroupByCode(group)
