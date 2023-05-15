@@ -11,13 +11,15 @@ import { OperationNamesEnum } from "../model/enum/OperationNamesEnum"
 import { PermissionGroup } from "../model/PermissionGroup"
 import { IPermissionGroupEngineRepository } from "../repository/IPermissionGroupEngineRepository"
 import { Permission } from "../model/Permission"
+import { NotFoundException } from "../../infrestructure/exceptions/NotFoundExcecption"
+import { ErrorExceptionClass } from "../../infrestructure/exceptions/ErrorExceptionClass";
 
 export async function initNantoiUser() {
 
-   //const permissionGourp = await cretePermissionGroupAdmin()
-   const permissions = await cretePermissions()
-   const role = await creteRoleAdmin(permissions)
-   await createUserNantoi(role);
+    //const permissionGourp = await cretePermissionGroupAdmin()
+    const permissions = await cretePermissions()
+    const role = await creteRoleAdmin(permissions)
+    await createUserNantoi(role);
 
 }
 
@@ -27,7 +29,15 @@ async function createUserNantoi(role: Role) {
     const userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
     //add new user
     logger.info("[createUserNantoi] Find User by email")
-    const nantoiUser = await userRepository.findUserByEmail("nantoi@nantoi.com")
+
+    let nantoiUser: User;
+    try {
+        nantoiUser = await userRepository.findUserByEmail("nantoi@nantoi.com")
+    } catch (error) {
+        nantoiUser = null;
+    }
+
+
 
     if (!nantoiUser) {
         logger.info("[createUserNantoi] Creatting salt and hash from password")
@@ -54,8 +64,12 @@ async function creteRoleAdmin(permissions: Permission[]) {
     const roleRepository = container.resolve<IRoleEngineRepository>("IRoleEngineRepository")
     //add new user
     logger.info("[creteRoleAdmin] Find role by name")
-    const adminRole = await roleRepository.findRoleByName("ADMIN")
-
+    let adminRole: Role;
+    try {
+        adminRole = await roleRepository.findRoleByName("ADMIN")
+    } catch (error) {
+        adminRole = null
+    }
     if (!adminRole) {
 
         const role = new Role();
@@ -79,31 +93,44 @@ async function cretePermissions() {
 
     logger.info("[cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository")
     const permissionGroupRepository = container.resolve<IPermissionGroupEngineRepository>("IPermissionGroupEngineRepository")
- 
+
     //add new user
     const permissions = []
     for (const operation in OperationNamesEnum) {
 
         if (isNaN(Number(operation))) {
             logger.info("[cretePermissions] Find permission by code " + OperationNamesEnum[operation])
-            const dbPermission = await permissionRepository.findPermissionByCode(operation)
+            let dbPermission: Permission;
+            try {
+                dbPermission = await permissionRepository.findPermissionByCode(operation)
+            } catch (error) {
+
+                dbPermission = null
+            }
+
 
             if (!dbPermission) {
 
 
-                const group= operation.split("_")[0];
+                const group = operation.split("_")[0];
 
                 logger.info("[cretePermissions] Find role by name")
-                let adminPermission = await permissionGroupRepository.findPermissionGroupByCode(group)
-            
+                let adminPermission: PermissionGroup
+
+                try {
+                    adminPermission = await permissionGroupRepository.findPermissionGroupByCode(group)
+                } catch (error) {
+                    adminPermission = null
+                }
+
                 if (!adminPermission) {
-            
+
                     const permission = new PermissionGroup();
                     permission.code = group
                     permission.description = group
-                    logger.info("[cretePermissions] Creating "+group)
-                    adminPermission= await permissionGroupRepository.savePermissionGroup(permission)
-            
+                    logger.info("[cretePermissions] Creating " + group)
+                    adminPermission = await permissionGroupRepository.savePermissionGroup(permission)
+
                 }
 
                 const permission = new Permission();

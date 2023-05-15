@@ -3,7 +3,7 @@
 import { injectable } from 'tsyringe'
 import { IPermissionGroupEngineRepository } from "../IPermissionGroupEngineRepository";
 import { PermissionGroup } from "../../model/PermissionGroup";
-import { NotFoundExcecption } from '../../../infrestructure/exceptions/NotFoundExcecption';
+import { NotFoundException as NotFoundException } from '../../../infrestructure/exceptions/NotFoundExcecption';
 import { Field } from '../../../infrestructure/exceptions/enum/Field';
 import { MiddlewareBusinessMessage } from '../../../infrestructure/response/enum/MiddlewareCustomErrorMessage';
 
@@ -20,47 +20,56 @@ export class PermissionGroupEngineRepositoryImpl implements IPermissionGroupEngi
         .getOne();
     
       if (!permissionGroup) {
-         throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND)
+        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND);
       }
     
       return permissionGroup;
     }
     
-   public async savePermissionGroup(permissionGroup: PermissionGroup): Promise<PermissionGroup> {
-
-      return permissionGroupRepository.save(permissionGroup)
-   }
-
-   public async updatePermissionGroup(id: number, updatedData: PermissionGroup): Promise<PermissionGroup> {
-      const existingPermissionGroup = await permissionGroupRepository.findOne(id);
+    public async savePermissionGroup(permissionGroup: PermissionGroup): Promise<PermissionGroup> {
+      return permissionGroupRepository.createQueryBuilder()
+        .insert()
+        .values(permissionGroup)
+        .execute()
+        .then(() => permissionGroup);
+    }
+    
+    public async updatePermissionGroup(id: number, updatedData: PermissionGroup): Promise<PermissionGroup> {
+      const existingPermissionGroup = await permissionGroupRepository.createQueryBuilder('permissionGroup')
+        .where('permissionGroup.id = :id', { id })
+        .getOne();
+    
       if (!existingPermissionGroup) {
-         throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND)
+        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND);
       }
-
+    
       const updatedPermissionGroup = Object.assign(existingPermissionGroup, updatedData);
       const savedPermissionGroup = await permissionGroupRepository.save(updatedPermissionGroup);
       return savedPermissionGroup;
-   }
-
-   public async deletePermissionGroup(id: number): Promise<void> {
-      const permissionGroup = await permissionGroupRepository.findOne(id);
+    }
+    
+    public async deletePermissionGroup(id: number): Promise<void> {
+      const permissionGroup = await permissionGroupRepository.createQueryBuilder('permissionGroup')
+        .where('permissionGroup.id = :id', { id })
+        .getOne();
+    
       if (!permissionGroup) {
-         throw new NotFoundExcecption(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND)
+        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND);
       }
-
+    
       await permissionGroupRepository.remove(permissionGroup);
-   }
-
-   public async findAllPermissionGroups(page: number, size: number): Promise<PermissionGroup[]> {
+    }
+    
+    public async findAllPermissionGroups(page: number, size: number): Promise<PermissionGroup[]> {
       const skipCount = (page - 1) * size;
-      const permissionGroups = await permissionGroupRepository.find({
-         skip: skipCount,
-         take: size,
-      });
-
+      const permissionGroups = await permissionGroupRepository.createQueryBuilder('permissionGroup')
+        .skip(skipCount)
+        .take(size)
+        .getMany();
+    
       return permissionGroups;
-   }
-
+    }
+    
 
 }
 
