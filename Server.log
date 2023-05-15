@@ -13760,3 +13760,120 @@
 [2023-05-15T00:14:53.852] [INFO] default - [creteRoleAdmin] Find role by name
 [2023-05-15T00:14:53.877] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
 [2023-05-15T00:14:53.877] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-15T00:53:50.772] [INFO] default - Data Source has been initialized!
+[2023-05-15T00:53:50.774] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T00:53:50.774] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-15T00:53:50.774] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-15T00:53:50.782] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-15T00:53:50.784] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-15T00:53:50.786] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-15T00:53:50.787] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-15T00:53:50.788] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-15T00:53:50.790] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-15T00:53:50.791] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-15T00:53:50.793] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-15T00:53:50.796] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-15T00:53:50.799] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-15T00:53:50.802] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-15T00:53:50.804] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-15T00:53:50.805] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-15T00:53:50.807] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-15T00:53:50.808] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-15T00:53:50.810] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-15T00:53:50.810] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-15T00:53:50.833] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-15T00:54:54.765] [INFO] default - Data Source has been initialized!
+[2023-05-15T00:54:54.767] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T00:54:54.767] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-15T00:54:54.768] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-15T00:57:01.502] [INFO] default - Data Source has been initialized!
+[2023-05-15T00:57:01.504] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T01:01:16.703] [INFO] default - Data Source has been initialized!
+[2023-05-15T01:01:16.704] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T01:03:40.673] [INFO] default - Data Source has been initialized!
+[2023-05-15T01:03:40.675] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T01:03:40.675] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-15T01:03:40.675] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-15T01:03:40.682] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:07:03.520] [INFO] default - Data Source has been initialized!
+[2023-05-15T01:07:03.522] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T01:07:19.054] [INFO] default - Data Source has been initialized!
+[2023-05-15T01:07:19.056] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T01:07:36.896] [INFO] default - Data Source has been initialized!
+[2023-05-15T01:07:36.898] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T01:07:49.257] [INFO] default - Data Source has been initialized!
+[2023-05-15T01:07:49.259] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T01:08:23.156] [INFO] default - Data Source has been initialized!
+[2023-05-15T01:08:23.158] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T01:09:03.576] [INFO] default - Data Source has been initialized!
+[2023-05-15T01:09:03.577] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T01:09:58.659] [INFO] default - Data Source has been initialized!
+[2023-05-15T01:09:58.660] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T01:11:15.057] [INFO] default - Data Source has been initialized!
+[2023-05-15T01:11:15.058] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-15T01:11:15.059] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-15T01:11:15.059] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-15T01:11:18.736] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:18.740] [INFO] default - [cretePermissions] Creating USER
+[2023-05-15T01:11:18.768] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:18.778] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-15T01:11:28.011] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.015] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.032] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-15T01:11:28.034] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.037] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.045] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-15T01:11:28.047] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.049] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.055] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-15T01:11:28.057] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.058] [INFO] default - [cretePermissions] Creating TIMESLOT
+[2023-05-15T01:11:28.065] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.071] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-15T01:11:28.073] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.075] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.082] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-15T01:11:28.084] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.085] [INFO] default - [cretePermissions] Creating SCHEDULING
+[2023-05-15T01:11:28.092] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.100] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-15T01:11:28.102] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.103] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.109] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-15T01:11:28.112] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.115] [INFO] default - [cretePermissions] Creating PORTAL
+[2023-05-15T01:11:28.121] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.128] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-15T01:11:28.129] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.131] [INFO] default - [cretePermissions] Creating FEEDBACK
+[2023-05-15T01:11:28.136] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.142] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-15T01:11:28.144] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.146] [INFO] default - [cretePermissions] Creating ROLES
+[2023-05-15T01:11:28.153] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.159] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-15T01:11:28.161] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.163] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.168] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-15T01:11:28.170] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.171] [INFO] default - [cretePermissions] Creating DOCUMENT
+[2023-05-15T01:11:28.176] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.183] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-15T01:11:28.185] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.186] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.191] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-15T01:11:28.193] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.195] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-15T01:11:28.202] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.213] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-15T01:11:28.215] [INFO] default - [cretePermissions] Find role by name
+[2023-05-15T01:11:28.216] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-15T01:11:28.225] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-15T01:11:28.225] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-15T01:11:28.234] [INFO] default - [creteRoleAdmin] Creating Admin
+[2023-05-15T01:11:28.243] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-15T01:11:28.244] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-15T01:11:28.245] [INFO] default - [createUserNantoi] Creatting salt and hash from password
+[2023-05-15T01:11:28.245] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-15T01:11:28.246] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-15T01:11:28.300] [INFO] default - [createUserNantoi] Creating Nantoi User
