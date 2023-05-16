@@ -17,7 +17,6 @@ const userRepository = myDataSource.getRepository(User)
 export class PermissionEngineRepositoryImpl implements IPermissionEngineRepository {
 
    public async savePermission(permission: Permission): Promise<Permission> {
-      const permissionRepository = myDataSource.getRepository(Permission);
       return await permissionRepository.save(permission);
     }
     

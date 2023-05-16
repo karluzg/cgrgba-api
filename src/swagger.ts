@@ -18,6 +18,8 @@ import { PermissionParams } from './application/model/user-manager/PermissionPar
 import { PermissionResult } from './application/model/user-manager/PermissionResult';
 import { RoleResult } from './application/model/user-manager/RoleResult ';
 import { ResetPasswordParams } from './application/model/user-manager/ResetPasswordParams';
+import { NewsParams } from './application/model/news-manager/NewsParams';
+import { NewsResult } from './application/model/news-manager/NewsResult';
 
 
 const options = {
@@ -50,7 +52,9 @@ const options = {
         RoleResult: classToJsonSchema(RoleResult),
         PermissionParams: classToJsonSchema(PermissionParams),
         PermissionResult: classToJsonSchema(PermissionResult),
-        ResetPasswordParams: classToJsonSchema(ResetPasswordParams)
+        ResetPasswordParams: classToJsonSchema(ResetPasswordParams),
+        NewsParams:  classToJsonSchema(NewsParams),
+        NewsResult:  classToJsonSchema(NewsResult),
       },
     },
   },
@@ -58,6 +62,7 @@ const options = {
     'src/application/routes-management/shared-routes/*.ts',
     'src/application/routes-management/scheduling-manager/*.ts',
     'src/application/routes-management/user-manager/*.ts',
+    'src/application/routes-management/news-manager/*.ts',
   ],
 };
 
