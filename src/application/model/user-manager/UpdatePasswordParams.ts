@@ -1,7 +1,8 @@
 import { IsString } from 'class-validator';
 import { ParamsTemplate } from '../../../infrestructure/template/ParamsTemplate';
+import { AuthParamsTemplate } from '../../../infrestructure/template/AuthParamsTemplate';
 
-export class UpdatePasswordParams extends ParamsTemplate {
+export class UpdatePasswordParams extends AuthParamsTemplate {
   @IsString({ message: 'A senha antiga deve ser uma string' })
   private oldPassword: string;
 
@@ -11,8 +12,8 @@ export class UpdatePasswordParams extends ParamsTemplate {
   @IsString({ message: 'A confirmação de senha deve ser uma string' })
   private confirmPassword: string;
 
-  constructor(oldPassword: string, newPassword: string, confirmPassword: string) {
-    super();
+  constructor(authenticationToken: string,oldPassword: string, newPassword: string, confirmPassword: string) {
+    super(authenticationToken);
     this.oldPassword = oldPassword;
     this.newPassword = newPassword;
     this.confirmPassword = confirmPassword;

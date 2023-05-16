@@ -17,6 +17,7 @@ import { RoleParams } from './application/model/user-manager/RoleParams';
 import { PermissionParams } from './application/model/user-manager/PermissionParams ';
 import { PermissionResult } from './application/model/user-manager/PermissionResult';
 import { RoleResult } from './application/model/user-manager/RoleResult ';
+import { ResetPasswordParams } from './application/model/user-manager/ResetPasswordParams';
 
 
 const options = {
@@ -48,7 +49,8 @@ const options = {
         RoleParams: classToJsonSchema(RoleParams),
         RoleResult: classToJsonSchema(RoleResult),
         PermissionParams: classToJsonSchema(PermissionParams),
-        PermissionResult: classToJsonSchema(PermissionResult)
+        PermissionResult: classToJsonSchema(PermissionResult),
+        ResetPasswordParams: classToJsonSchema(ResetPasswordParams)
       },
     },
   },

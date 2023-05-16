@@ -13,6 +13,9 @@ import { UserLoginResult } from "../../../../application/model/user-manager/User
 import { PasswordValidator } from "../../../../infrestructure/validator/managers/PasswordValidator";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { v4 as uuidv4 } from 'uuid';
+import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
+import { ForbiddenOperationException } from "../../../../infrestructure/exceptions/ForbiddenOperationException";
+import { plataformConfig } from "../../../../infrestructure/config/plataform";
 
 
 export class LoginOperation extends OperationTemplate<UserLoginResult, UserLoginParams>{
@@ -30,6 +33,10 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
     protected async doValidateParameters(params: UserLoginParams): Promise<void> {
 
         this.user = await this.userRepository.findUserByEmail(params.getEmail)
+        if (this.user.passwordTry <= 0) {
+            throw new ForbiddenOperationException(Field.SYSTEM, MiddlewareBusinessMessage.USER_PASSWORD_LOCKED);
+        }
+
         if (!this.user) {
             throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR);
         }
@@ -38,6 +45,9 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
         logger.info("[LoginOperation] check password for user %s", this.user)
         const passwordValidator = new PasswordValidator();
         if (!await passwordValidator.checkPassword(params.getPassword, this.user.passwordHash)) {
+            this.user.passwordTry = this.user.passwordTry - 1
+            await this.userRepository.saveUser(this.user)
+
             throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.USER_INVALID_CREDENTIALS)
         }
 
@@ -62,7 +72,12 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
 
         result.setToken = newTokenSession;
 
+        this.user.passwordTry = plataformConfig.passwordTry
+        await this.userRepository.saveUser(this.user)
 
+
+        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SESSION_LOGIN_SUCCESSFULLY));
+        result.setStatus = Object.fromEntries(this.message)
     }
 
     protected initResult(): UserLoginResult {

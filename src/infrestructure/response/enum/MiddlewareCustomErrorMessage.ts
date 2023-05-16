@@ -7,9 +7,16 @@ export enum MiddlewareBusinessMessage {
     USER_INVALID_EMAIL = "Email inválido ou já existe um utilizador registado com o mesmo email",
     USER_MBILE_NUMBER_ALREADY_EXIST = "já existe um utilizador registado com o mesmo número de telemóvel",
     USER_NOT_FOUND="Utilizador não foi encontrado",
+    USER_PASSWORD_NOT_MATCH= "Erro no password de confirmação",
+    USER_PASSWORD_MATCH= "Password nova igual a antiga",
+    USER_PASSWORD_UPDATED_SUCCESSFULLY= "Password do utilizador atualizada com sucesso",
+    USER_PASSWORD_RESET_SUCCESSFULLY= "Password redefinida com sucesso",
+    USER_PASSWORD_LOCKED= "Passowrd bloqueda, tem de efectuar reset a password",
+    USER_ADDED_SUCCESSFULLY= "Utilizador criado com sucesso",
     ROLE_NOT_FOUND="Role não foi encontrado",
     PERMISSION_NOT_FOUND="Permissão não foi encontrado",
     PERMISSION_GOURP_NOT_FOUND="Grupo de permissões não foi encontrado",
+    SESSION_LOGIN_SUCCESSFULLY="Login realizado com sucesso",
 
 
 

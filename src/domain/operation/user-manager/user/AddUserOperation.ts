@@ -73,7 +73,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         const newUser: User = await this.userRepository.saveUser(user)
         result.setUser = newUser;
 
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_TIME_ADDED));
+        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.USER_ADDED_SUCCESSFULLY));
         result.setStatus = Object.fromEntries(this.message)
 
 
