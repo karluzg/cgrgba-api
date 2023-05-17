@@ -5451,3 +5451,8 @@ z-schema@^5.0.1:
     validator "^13.7.0"
   optionalDependencies:
     commander "^9.4.1"
+
+zlib@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/zlib/-/zlib-1.0.5.tgz"
+  integrity sha512-40fpE2II+Cd3k8HWTWONfeKE2jL+P42iWJ1zzps5W51qcTsOUKM5Q5m2PFb0CLxlmFAaUuUdJGc3OfZy947v0w==

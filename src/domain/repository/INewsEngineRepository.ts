@@ -10,6 +10,6 @@ export interface INewsEngineRepository {
     saveNews(news: News): Promise<News>;
     updateNews(id: string, news: News): Promise<News>;
     deleteNews(id: string): Promise<void>;
-    uploadImageNews(id: string, image: any): Promise<News>;
+    uploadImageNews(id: string, image: string): Promise<News>;
     deleteImageNews(id: string): Promise<News>;
 }

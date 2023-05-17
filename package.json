@@ -57,7 +57,8 @@
         "touch": "^3.1.0",
         "tsyringe": "^4.7.0",
         "typeorm": "0.3.15",
-        "uuid": "^9.0.0"
+        "uuid": "^9.0.0",
+        "zlib": "^1.0.5"
     },
     "scripts": {
         "start": "nodemon --watch src/**/* --exec ts-node src/server.ts",

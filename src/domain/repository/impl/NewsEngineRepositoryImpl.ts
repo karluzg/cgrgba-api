@@ -7,6 +7,7 @@ import { NewsCategory } from "../../model/NewsCategory";
 import { Permission } from "../../model/Permission";
 import { Role } from "../../model/Role";
 import { User } from "../../model/User";
+import { ImageConverter } from "../../operation/util/ImageConverter";
 import { INewsEngineRepository } from "../INewsEngineRepository";
 //import { myDataSource } from "../web-api/meta-inf/data-source";
 import { IPermissionEngineRepository } from "../IPermissionEngineRepository";
@@ -14,6 +15,8 @@ import { injectable } from 'tsyringe'
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const newsRepository = myDataSource.getRepository(News)
+
+
 
 @injectable()
 export class NewsEngineRepositoryImpl implements INewsEngineRepository {
@@ -23,6 +26,9 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
       .getOne();
 
 
+    if (news.imagePath)
+      news.imageFileContent = ImageConverter.convertToBase64(news.imagePath);
+
     return news;
   }
   async findNewsById(id: string): Promise<News> {
@@ -30,6 +36,8 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
       .where('news.id = :id', { id })
       .getOne();
 
+    if (news.imagePath)
+      news.imageFileContent = ImageConverter.convertToBase64(news.imagePath);
 
     return news;
   }
@@ -40,18 +48,21 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
     let queryBuilder = newsRepository.createQueryBuilder('news')
       .skip(skipCount)
       .take(size);
-    try {
-
-
-      if (category) {
-        const code = category.code
-        queryBuilder = queryBuilder.leftJoinAndSelect("news.newsCategory", "category")
-          .where('category.code = :code', { code });
-      }
-    } catch (error) {
-      console.log(error)
+    if (category) {
+      const code = category.code
+      queryBuilder = queryBuilder.leftJoinAndSelect("news.newsCategory", "category")
+        .where('category.code = :code', { code });
     }
-    return await queryBuilder.getMany();
+
+
+    const newsList = await queryBuilder.getMany();
+    const updatedNewsList: News[] = newsList.map((news: News) => {
+      if (news.imagePath)
+        news.imageFileContent = ImageConverter.convertToBase64(news.imagePath);
+      return { ...news };
+    });
+
+    return updatedNewsList
   }
 
   async saveNews(news: News): Promise<News> {
@@ -69,6 +80,10 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
 
     const updateNews = Object.assign(permission, updateNewsData);
     const savedNews = await newsRepository.save(updateNews);
+
+    if (savedNews.imagePath)
+      savedNews.imageFileContent = ImageConverter.convertToBase64(savedNews.imagePath);
+
     return savedNews;
   }
 
@@ -89,10 +104,14 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
       .where('news.id = :id', { id })
       .getOne();
 
+
     if (news) {
       news.imagePath = image;
-      return newsRepository.save(news);;
+      const newNews = await newsRepository.save(news);
+      newNews.imageFileContent = ImageConverter.convertToBase64(news.imagePath);
+      return newNews;
     }
+
 
     throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
   }

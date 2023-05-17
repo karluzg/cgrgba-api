@@ -10,11 +10,9 @@ export class NewsFileParams extends AuthParamsTemplate {
     @IsNotEmpty()
     filepath: string;
 
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
     id: string;
-
-  
 
     // Outros campos necessários para a criação de uma notícia
 

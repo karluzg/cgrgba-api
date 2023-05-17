@@ -22,6 +22,8 @@ export class News {
   @Column({nullable: true  })
   @IsString()
   imagePath: string;
+ 
+  imageFileContent: string;
 
   @IsDate()
   @Column({ nullable: false, type: 'timestamp', default: () => "CURRENT_TIMESTAMP" })

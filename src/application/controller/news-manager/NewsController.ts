@@ -3,17 +3,12 @@ import logger from "../../../infrestructure/config/logger";
 import { NotImplementedException } from "../../../infrestructure/exceptions/NotImplementedException";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
-
 import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
-import { IUserEngine } from "../../../domain/service/IUserEngine";
-import { UserParams } from "../../model/user-manager/UserParams";
-import e, { Request, Response } from "express";
+import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import { AuthValidator } from "../validator/AuthValidator";
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
-import { RequestHandler, ParamsDictionary } from "express-serve-static-core";
-import { ParsedQs } from "qs";
 import { NewsParams } from "../../model/news-manager/NewsParams";
 import { INewsEngine } from "../../../domain/service/INewsEngine";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
@@ -29,16 +24,16 @@ export class NewsController {
 
   public async getAllNews(request: Request, response: Response): Promise<Response> {
     try {
-      const { page = 1, size = 10 , cetegory:categoryCode} = request.query;
+      const { page = 1, size = 10, cetegory: categoryCode } = request.query;
 
       const pageNumber = Number(page);
       const pageSize = Number(size);
-      const cetegoryString=categoryCode? String(categoryCode):null
+      const cetegoryString = categoryCode ? String(categoryCode) : null
 
       //const authenticationToken =  new AuthorizationOperationTemplate().checkAuthorizationToken(request)
       //não deixa acesso a classe extendida então usou-se static
       const authenticationToken = AuthValidator.checkAuthorizationToken(request);
-      const params = new PageAndSizeParams(authenticationToken,pageNumber,pageSize,cetegoryString)
+      const params = new PageAndSizeParams(authenticationToken, pageNumber, pageSize, cetegoryString)
 
       logger.info("[NewsController] Perform dependency injection for UserController")
 
@@ -71,18 +66,17 @@ export class NewsController {
     try {
       const { id } = request.params;
 
-      if(!request.file)
-      {
+      if (!request.file) {
         logger.info("[NewsController] ivalid file upload")
         throw new InvalidParametersException(Field.NEWS, MiddlewareBusinessMessage.NEWS_INVALID_FILE_UPLOAD);
       }
 
       const { path: imagePath } = request.file; // Access the file path
 
-      //const authenticationToken =  new AuthorizationOperationTemplate().checkAuthorizationToken(request)
+      //const authenticationToken =  new AuthorizationOFperationTemplate().checkAuthorizationToken(request)
       //não deixa acesso a classe extendida então usou-se static
       const authenticationToken = AuthValidator.checkAuthorizationToken(request);
-      const params = new NewsFileParams(authenticationToken,id,imagePath)
+      const params = new NewsFileParams(authenticationToken, id, imagePath)
 
       logger.info("[NewsController] Perform dependency injection for UserController")
 
