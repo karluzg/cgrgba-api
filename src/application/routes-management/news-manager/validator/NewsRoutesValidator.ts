@@ -4,6 +4,13 @@ import { ParamsValidatorTemplate } from '../../../../infrestructure/template/Par
 
 
 export class NewsRoutesValidator extends ParamsValidatorTemplate {
+    getAllNews():ValidationChain[] {
+      return [
+         query('page').isInt({ min: 1 }).optional(),
+         query('size').isInt({ min: 1 }).optional(),
+         query('category').isLength({ max: 50 }).isString().optional(),
+     ]
+   }
   
     deleteImageNews():ValidationChain[] {
        return []

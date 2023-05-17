@@ -19,6 +19,7 @@ import { INewsEngine } from "../../../domain/service/INewsEngine";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { NewsFileParams } from "../../model/news-manager/NewsFileParams";
+import { PageAndSizeParams } from "../../model/PageAndSizeParams";
 
 export class NewsController {
 
@@ -27,7 +28,44 @@ export class NewsController {
 
 
   public async getAllNews(request: Request, response: Response): Promise<Response> {
-    throw new Error("Method not implemented.");
+    try {
+      const { page = 1, size = 10 , cetegory:categoryCode} = request.query;
+
+      const pageNumber = Number(page);
+      const pageSize = Number(size);
+      const cetegoryString=categoryCode? String(categoryCode):null
+
+      //const authenticationToken =  new AuthorizationOperationTemplate().checkAuthorizationToken(request)
+      //não deixa acesso a classe extendida então usou-se static
+      const authenticationToken = AuthValidator.checkAuthorizationToken(request);
+      const params = new PageAndSizeParams(authenticationToken,pageNumber,pageSize,cetegoryString)
+
+      logger.info("[NewsController] Perform dependency injection for UserController")
+
+      const newsEngine = container.resolve<INewsEngine>("INewsEngine")
+      logger.info("[NewsController] Perform dependency injection for UserController was successfully")
+
+
+      const result = await newsEngine.getAllNews(params)
+      return response.status(HttpCode.OK).json(result)
+    } catch (error) {
+
+      if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
+        throw new NotImplementedException(error.field, error.message)
+
+      } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
+        throw new InvalidParametersException(error.field, error.message)
+
+      } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
+        throw new UnauthorizedOperationException(error.field, error.message)
+
+      } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
+        throw new UnsuccessfullOperationException(error.field, error.message)
+      }
+      else {
+        throw error;
+      }
+    }
   }
   public async uploadImageNews(request: Request, response: Response): Promise<Response> {
     try {

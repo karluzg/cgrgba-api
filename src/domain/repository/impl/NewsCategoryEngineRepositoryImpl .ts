@@ -12,38 +12,26 @@ const newsCategoryRepository = myDataSource.getRepository(NewsCategory);
 export class NewsCategoryEngineRepositoryImpl implements INewsCategoryEngineRepository {
  
     async findNewsCategoryById(id: string): Promise<NewsCategory> {
-    const newsCategory = await newsCategoryRepository.createQueryBuilder('newscategory')
-      .where('newscategory.id = :id', { id })
-      .getOne();
-
-    if (!newsCategory) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
-    }
-
-    return newsCategory;
+   
+    return await newsCategoryRepository.createQueryBuilder('newscategory')
+    .where('newscategory.id = :id', { id })
+    .getOne();
   }
 
   async findNewsCategoryByCode(code: string): Promise<NewsCategory> {
-    const newsCategory = await newsCategoryRepository.createQueryBuilder('newscategory')
-      .where('newscategory.code = :code', { code })
-      .getOne();
-
-    if (!newsCategory) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
-    }
-
-    return newsCategory;
+ 
+    return await newsCategoryRepository.createQueryBuilder('newscategory')
+    .where('newscategory.code = :code', { code })
+    .getOne();
   }
 
   async findAllNewsCategory(page: number, size: number): Promise<NewsCategory[]> {
     const skipCount = (page - 1) * size;
 
-    const newsCategories = await newsCategoryRepository.createQueryBuilder('newscategory')
-      .skip(skipCount)
-      .take(size)
-      .getMany();
-
-    return newsCategories;
+    return await newsCategoryRepository.createQueryBuilder('newscategory')
+    .skip(skipCount)
+    .take(size)
+    .getMany();
   }
 
   async saveNewsCategory(newsCategory: NewsCategory): Promise<NewsCategory> {

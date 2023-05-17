@@ -29,10 +29,6 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
                   .skip(skipCount)
                   .take(size);
 
-            if (status) {
-                  query.where('user.status = :status', { status });
-            }
-
             return query.getMany();
       }
 
@@ -63,7 +59,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
             return user;
       }
 
-      public async updateUserPassword(userId: number, passwordHash: string, passwordSalt: string, status:UserStatusEnum,passwordtry:number): Promise<User> {
+      public async updateUserPassword(userId: number, passwordHash: string, passwordSalt: string, status: UserStatusEnum, passwordtry: number): Promise<User> {
             const user = await userRepository.createQueryBuilder('user')
                   .where('user.id = :userId', { userId })
                   .getOne();
@@ -71,8 +67,8 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
             if (user) {
                   user.passwordHash = passwordHash;
                   user.passwordSalt = passwordSalt;
-                  user.status=status
-                  user.passwordTry=passwordtry;
+                  user.status = status
+                  user.passwordTry = passwordtry;
                   return userRepository.save(user);
             }
 

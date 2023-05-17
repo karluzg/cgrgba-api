@@ -72,6 +72,7 @@ export enum MiddlewareBusinessMessage {
   //  BUSINESS MESSAGE - NEWS
   NEWS_INVALID_CATEGORY = "Erro de validação dos dados da notícia",
   NEWS_ADD_SUCCESSFULLY = " Notícia criada com sucesso",
+  NEWS_GET_ALL_SUCCESSFULLY = "Lista de notícias recuperada com sucesso",
   NEWS_INVALID_TITLE = "Existe uma noticia com mesmo titlo, mude o titlo e tente novamente",
   NEWS_INVALID_FILE_UPLOAD = "Ficheiro ou o formato do ficheiro carregado é invalido",
 

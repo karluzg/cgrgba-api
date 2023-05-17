@@ -28,6 +28,26 @@ const uploadImage= new UploadImage();
  *   get:
  *     summary: Obtém todas as notícias
  *     tags: [News]
+ *     parameters:
+ *       - in: query
+ *         name: size
+ *         description: Tamanho da página (opcional, mínimo 1, padrão 20)
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 20
+ *       - in: query
+ *         name: page
+ *         description: Número da página (opcional, mínimo 1, padrão 1)
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *       - in: query
+ *         name: category
+ *         description: Code da Categoria que quer obter a lista
+ *         schema:
+ *           type: string
  *     responses:
  *       '200':
  *         description: Lista de notícias recuperada com sucesso
@@ -36,7 +56,8 @@ const uploadImage= new UploadImage();
  *             schema:
  *               $ref: '#/components/schemas/NewsResult'
  */
-NewsRoutes.get("/news",  newsController.getAllNews);
+NewsRoutes.get("/news", newsRoutesValidator.getAllNews(), newsRoutesValidator.validate, newsController.getAllNews);
+
 
 
 

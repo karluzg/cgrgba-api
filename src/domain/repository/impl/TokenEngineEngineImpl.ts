@@ -21,6 +21,6 @@ export class TokenEngineRepositoryImpl implements ITokenEngineRepository {
                   .leftJoinAndSelect("tokenSession.user", "user")
                   .where('tokenSession.token = :token', { token: token })
                   .getOne()
-           
+
       }
 }

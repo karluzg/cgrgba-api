@@ -3,6 +3,7 @@ import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundEx
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { News } from "../../model/News";
+import { NewsCategory } from "../../model/NewsCategory";
 import { Permission } from "../../model/Permission";
 import { Role } from "../../model/Role";
 import { User } from "../../model/User";
@@ -33,15 +34,24 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
     return news;
   }
 
-  async findAllNews(page: number, size: number): Promise<News[]> {
+  async findAllNews(page: number, size: number, category?: NewsCategory): Promise<News[]> {
     const skipCount = (page - 1) * size;
 
-    const news = await newsRepository.createQueryBuilder('news')
+    let queryBuilder = newsRepository.createQueryBuilder('news')
       .skip(skipCount)
-      .take(size)
-      .getMany();
+      .take(size);
+    try {
 
-    return news;
+
+      if (category) {
+        const code = category.code
+        queryBuilder = queryBuilder.leftJoinAndSelect("news.newsCategory", "category")
+          .where('category.code = :code', { code });
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    return await queryBuilder.getMany();
   }
 
   async saveNews(news: News): Promise<News> {
