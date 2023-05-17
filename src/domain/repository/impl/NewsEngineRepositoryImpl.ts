@@ -1,6 +1,8 @@
 
 import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
+import { IPage } from "../../../infrestructure/pageable-manager/IPage";
+import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { News } from "../../model/News";
 import { NewsCategory } from "../../model/NewsCategory";
@@ -42,7 +44,7 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
     return news;
   }
 
-  async findAllNews(page: number, size: number, category?: NewsCategory): Promise<News[]> {
+  async findAllNews(page: number, size: number, category?: NewsCategory): Promise<IPage<News>> {
     const skipCount = (page - 1) * size;
 
     let queryBuilder = newsRepository.createQueryBuilder('news')
@@ -55,14 +57,18 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
     }
 
 
-    const newsList = await queryBuilder.getMany();
+    const [newsList, totalRows] = await queryBuilder.getManyAndCount();
+    const totalPages = Math.ceil(totalRows / size);
+
     const updatedNewsList: News[] = newsList.map((news: News) => {
       if (news.imagePath)
         news.imageFileContent = ImageConverter.convertToBase64(news.imagePath);
       return { ...news };
     });
 
-    return updatedNewsList
+
+
+    return new PageImpl<News>(updatedNewsList, page, size, totalRows, totalPages)
   }
 
   async saveNews(news: News): Promise<News> {

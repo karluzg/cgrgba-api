@@ -18,6 +18,9 @@ import { News } from "../../model/News";
 import { ResultInfo } from "../../../infrestructure/response/ResultInfo";
 import { NewsResultList } from "../../../application/model/news-manager/NewsResultList";
 import { PageAndSizeParams } from "../../../application/model/PageAndSizeParams";
+import { IPage } from "../../../infrestructure/pageable-manager/IPage";
+import { PageUtil } from "../util/PageUtil";
+import { PageableUtils } from "../../../infrestructure/pageable-manager/PageableUtils";
 
 
 
@@ -52,8 +55,10 @@ export class GetAllNewsOperation extends UserAuthOperationTemplate<NewsResultLis
 
 
         logger.info("[GetAllNewsOperation] creating allnews")
-        const newNews = await this.newsRepository.findAllNews(params.getPage, params.size,this.category);
-        result.setNews = newNews;
+        const newNews:IPage<News> = await this.newsRepository.findAllNews(params.getPage, params.size,this.category);
+        //PageableUtils.ofWithoutContent(result, newNews)
+
+        Object.assign(result,newNews);
 
         this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.NEWS_GET_ALL_SUCCESSFULLY));
         result.setStatus = Object.fromEntries(this.message)

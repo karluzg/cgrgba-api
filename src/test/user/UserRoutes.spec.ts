@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const baseURL = 'http://localhost:3000'; // Defina a URL base do seu aplicativo
 // Definir o token de autenticação
-const authToken = 'My Fucking token';
+const authToken = 'e6748b23-c78f-43ef-91c2-3e6857c1f17b';
 
 const api  = axios.create({
     baseURL: baseURL, // Substitua pela URL da sua API
@@ -15,6 +15,7 @@ const api  = axios.create({
 
 describe('Testes de integração para o módulo de utilizadors', () => {
   it('Deve criar um novo utilizador', async () => {
+    
     const newUser = {
       fullName: 'Carlos Gomes',
       mobileNumber: '123456789',
