@@ -6,6 +6,8 @@ import sharedRoutes from "./application/routes-management/shared-routes";
 import logger from "./infrestructure/config/logger";
 import { MiddllewareError } from './infrestructure/exceptions/ErrorHandling';
 import { initNantoiUser } from './domain/meta-inf/InitNantoiUser';
+
+
 const swagger = require('./swagger');
 
 const myDataSource = require('./domain/meta-inf/data-source');
@@ -24,6 +26,8 @@ myDataSource.initialize().then(() => {
 
     app.use(MiddllewareError)
 
+    app.use('/uploads', express.static('uploads'));
+
     swagger(app);
 
     app.listen(3000)
@@ -37,3 +41,5 @@ myDataSource.initialize().then(() => {
 }).finally(() => {
     initNantoiUser();
 })
+
+

@@ -28,6 +28,12 @@ import { ISchedulingEngineRepository } from '../../domain/repository/IScheduling
 import { ICitizenEngineRepository } from '../../domain/repository/ICitizenEngineRepository';
 import { CitizenEngineRepositoryImpl } from '../../domain/repository/impl/CitizenEngineRepositoryImpl';
 import { SchedulingEngineRepositoryImpl } from '../../domain/repository/impl/SchedulingEngineRepositoryImpl';
+import { INewsEngine } from '../../domain/service/INewsEngine';
+import { NewsEngineImpl } from '../../domain/service/impl/NewsEngineImpl';
+import { INewsCategoryEngineRepository } from '../../domain/repository/INewsCategoryEngineRepository';
+import { NewsCategoryEngineRepositoryImpl } from '../../domain/repository/impl/NewsCategoryEngineRepositoryImpl ';
+import { NewsEngineRepositoryImpl } from '../../domain/repository/impl/NewsEngineRepositoryImpl';
+import { INewsEngineRepository } from '../../domain/repository/INewsEngineRepository';
 
 
 //Register container for services
@@ -35,6 +41,7 @@ container.register<IUserEngine>('IUserEngine', { useClass: UserEngineImpl });
 container.register<ISessionEngine>('ISessionEngine', { useClass: SessionEngineImpl });
 container.register<ISchedulingTimeEngine>('ISchedulingTimeEngine', { useClass: SchedulingTimeEngineImpl });
 container.register<ISchedulingEngine>('ISchedulingEngine', { useClass: SchedulingEngineImpl })
+container.register<INewsEngine>('INewsEngine', { useClass: NewsEngineImpl });
 
 
 //Register container for repository
@@ -48,6 +55,8 @@ container.register<IHollydayEngineRepository>('IHollydayEngineRepository', { use
 container.register<ISchedulingHistoryEngineRepository>('ISchedulingHistoryEngineRepository', { useClass: SchedulingHistoryEngineRepositoryImpl })
 container.register<ISchedulingEngineRepository>('ISchedulingEngineRepository', { useClass: SchedulingEngineRepositoryImpl })
 container.register<ICitizenEngineRepository>('ICitizenEngineRepository', { useClass: CitizenEngineRepositoryImpl })
+container.register<INewsEngineRepository>('INewsEngineRepository', { useClass: NewsEngineRepositoryImpl })
+container.register<INewsCategoryEngineRepository>('INewsCategoryEngineRepository', { useClass: NewsCategoryEngineRepositoryImpl })
 
 
 export default container;

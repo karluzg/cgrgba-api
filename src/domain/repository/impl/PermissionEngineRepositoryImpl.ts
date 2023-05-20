@@ -17,32 +17,24 @@ const userRepository = myDataSource.getRepository(User)
 export class PermissionEngineRepositoryImpl implements IPermissionEngineRepository {
 
    public async savePermission(permission: Permission): Promise<Permission> {
-      const permissionRepository = myDataSource.getRepository(Permission);
       return await permissionRepository.save(permission);
     }
     
     public async findPermissionByCode(permissionCode: string): Promise<Permission> {
-      const permission = await permissionRepository.createQueryBuilder('permission')
-        .where('permission.code = :permissionCode', { permissionCode })
-        .getOne();
-    
-      if (!permission) {
-        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
-      }
-    
-      return permission;
+ 
+      return await permissionRepository.createQueryBuilder('permission')
+      .where('permission.code = :permissionCode', { permissionCode })
+      .getOne();;
     }
     
     public async findByPermissionId(permissionId: number): Promise<Permission> {
-      const permission = await permissionRepository.createQueryBuilder('permission')
-        .where('permission.id = :permissionId', { permissionId })
-        .getOne();
+      
     
-      if (!permission) {
-        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
-      }
+
     
-      return permission;
+      return await permissionRepository.createQueryBuilder('permission')
+      .where('permission.id = :permissionId', { permissionId })
+      .getOne();;
     }
     
     public async isUserOperationAllowed(operationId: number, userId: number): Promise<boolean> {

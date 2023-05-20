@@ -10,6 +10,7 @@ import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErro
 import { Field } from "../exceptions/enum/Field";
 import { UserStatusEnum } from "../../domain/model/enum/UserStatusEnum";
 import { ForbiddenOperationException } from "../exceptions/ForbiddenOperationException";
+import { OperationNamesEnum } from "../../domain/model/enum/OperationNamesEnum";
 
 export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, P extends IAuthParams> extends OperationTemplate<R, P>{
 
@@ -46,21 +47,21 @@ export abstract class AuthenticationOperationTemplate<R extends ResultTemplate, 
         logger.info("[AuthenticationOperationTemplate] - Check if user has initial actions");
         const user = tokenSessionFound.user;
 
-        if (user.status == UserStatusEnum.NEW) {
+      
+        if (user.status == UserStatusEnum.NEW && this.operationId != OperationNamesEnum.USER_UPDATE_PASSWORD) {
             logger.error("User has unexptected initial action")
             throw new ForbiddenOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_UNEXPECTED_UNEXECUTED_INITIAL_ACTION)
         }
-        if (user.status != UserStatusEnum.ACTIVE) {
-            logger.error("Useris not active")
+        if (user.status != UserStatusEnum.ACTIVE && user.status != UserStatusEnum.NEW && this.operationId != OperationNamesEnum.USER_UPDATE_PASSWORD) {
+            logger.error("User is not active")
             throw new ForbiddenOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_OPERTATION_NOT_ALLOWED)
         }
-
-
-      await  this.doAuthExecute(tokenSessionFound, params, result)
+  
+        await this.doAuthExecute(tokenSessionFound, params, result)
 
     }
 
 
- 
+
 
 }

@@ -160,6 +160,12 @@ UserRoutes.put("/users", userRoutesValidator.updateUser(), userRoutesValidator.v
  *   put:
  *     summary: Reset a Password do utilizador autenticado
  *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ResetPasswordParams'
  *     responses:
  *       '200':
  *         description: Password do utilizador Reset com sucesso

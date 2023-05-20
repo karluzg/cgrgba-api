@@ -44,6 +44,10 @@ export class User implements IActivable {
     @Column()
     passwordSalt: string
 
+    @Column({ nullable: false, default: 3 })
+    passwordTry: number;
+    
+
 
     @Column({ type: 'enum', enum: UserStatusEnum, nullable: false })
     status: UserStatusEnum

@@ -19,10 +19,6 @@ export class PermissionGroupEngineRepositoryImpl implements IPermissionGroupEngi
         .where('permissionGroup.code = :permissionGroupCode', { permissionGroupCode })
         .getOne();
     
-      if (!permissionGroup) {
-        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND);
-      }
-    
       return permissionGroup;
     }
     
