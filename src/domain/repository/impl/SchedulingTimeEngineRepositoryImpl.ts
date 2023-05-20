@@ -17,10 +17,6 @@ export class ISchedulingTimeEngineRepositoryImpl implements ISchedulingTimeEngin
         const beginCreationDate = startOfDay(beginDate);
         const endCreationDate = addDays(beginDate, 1);
 
-        console.info("BEGINPUT IN DATE %", beginDate)
-        console.info("BEGIN DATE %", beginCreationDate)
-        console.info("END DATE %", endCreationDate)
-
         const schedulingTimeConfigurations = await schedulingTimeRepository.createQueryBuilder('schedulingTimeConfiguration')
             .leftJoinAndSelect('schedulingTimeConfiguration.hours', 'hours')
             .where('schedulingTimeConfiguration.beginDate >= :beginDate', { beginDate: beginCreationDate })

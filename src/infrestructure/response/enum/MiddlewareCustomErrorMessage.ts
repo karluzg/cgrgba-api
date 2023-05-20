@@ -65,6 +65,8 @@ export enum MiddlewareBusinessMessage {
   SCHEDULING_TIME_END_SCHEDULING_TIME_GREATER_THAN_BEGIN_SCHEDULING_TIME = "A hora de fim de agendamento deve ser IGUAl OU superior a hora de início de agendamento",
   SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID = "A hora de início de agendamento é inválida",
   SCHEDULING_END_SCHEDULING_TIME_INAVLID = "A hora de fim de agendamento é inválida",
+  SCHEDULING_BEGIN_CREATION_DATE_INVALID = "A data de início de criação de agendamento é inváldo",
+  SCHEDULING_END_CREATION_DATE_INVALID = "A data de fim de criação de agendamento é inváldo",
 
 
 

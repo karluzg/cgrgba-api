@@ -30,6 +30,11 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
 
 
+
+
+        console.info("BEGIN DATE:" + beginSchedulingDate)
+        console.info("BEGIN DATE:" + endSchedulingDate)
+
         const orderColumn = `scheduling.${defaultorderColumn}`; // to avoid SQL Injection
 
         const query = schedulingEngineRepository.createQueryBuilder('scheduling');

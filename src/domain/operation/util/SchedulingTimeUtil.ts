@@ -1,6 +1,7 @@
 import { log } from "console";
 import logger from "../../../infrestructure/config/logger";
 import { IHollydayEngineRepository } from "../../repository/IHollydayEngineRepository";
+import { isValid, parseISO } from "date-fns";
 
 export class SchedulingTimeUtil {
 
@@ -80,5 +81,21 @@ export class SchedulingTimeUtil {
         return greeting;
 
     }
+
+    public static async isValidDate(date: string): Promise<boolean> {
+
+        console.info("IS VALID BEGIN CREATION DATE:" + date)
+        console.info("IS VALID END CREATION DATE:" + date)
+
+
+        const parsedDate = parseISO(date);
+        console.info("IS VALID END CREATION DATE:" + parsedDate)
+
+
+
+        return isValid(parsedDate)
+    }
+
+
 
 }

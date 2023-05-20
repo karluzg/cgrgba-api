@@ -30,7 +30,12 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
     protected async doValidateParameters(params: GetSchedulingListParams): Promise<void> {
 
-        logger.info("[GetSchedlingListOperation] validate if end scheduling time input is filled. Otherwise, set default time gor begin and end scheduling time")
+
+        logger.info("[GetSchedulingListOperation] Begin of strict validation scheduling parameteres...")
+
+
+
+        logger.info("[GetSchedulingListOperation] validate if end scheduling time input is filled")
         if (typeof params.getEndSchedulingTime !== 'undefined' && params.getEndSchedulingTime !== '') {
 
             // length of hour should be 5-> 00:00
@@ -83,9 +88,29 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
         }
 
+        if (typeof params.getBeginCreationDate !== 'undefined' && params.getBeginCreationDate !== '') {
+
+            console.info("[GetSchedulingListOperation] BegindCreationDate is filled. Validate if it a valid date")
+            const isInValieBeginCreatinDate = await SchedulingTimeUtil.isValidDate(params.getBeginCreationDate)
+            if (!isInValieBeginCreatinDate) {
+                throw new InvalidParametersException(Field.SCHEDULING_END_CREATION_DATE,
+                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_CREATION_DATE_INVALID)
+            }
+        }
+
+        if (typeof params.getEndCreationDate !== 'undefined' && params.getEndCreationDate !== '') {
+
+            console.info("[GetSchedulingListOperation] EndCreationDate is filled. Validate if it a valid date")
+            const isInValidEndCreatinDate = await SchedulingTimeUtil.isValidDate(params.getEndCreationDate)
+            if (!isInValidEndCreatinDate) {
+                throw new InvalidParametersException(Field.SCHEDULING_END_CREATION_DATE,
+                    MiddlewareBusinessMessage.SCHEDULING_END_CREATION_DATE_INVALID)
+            }
+        }
 
 
-        logger.info("[GetSchedlingListOperation] validate if end scheduling date is filled. Otherwise, set default Date for begin and end scheduling date")
+
+        logger.info("[GetSchedlingListOperation] validate if end scheduling date is filled")
 
         if (!isNaN(new Date(params.getEndCreationDate).getTime())) {
             if (isNaN(new Date(params.getBeginCreationDate).getTime())) {
@@ -94,11 +119,12 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
                     MiddlewareBusinessMessage.SCHEDULING_BGIN_CREATION_DATE_MANDATORY)
             } else {
 
-                this.beginCreationDate = new Date(params.getBeginCreationDate)
-                this.endCreationDate = new Date(params.getEndCreationDate)
+
+                this.beginCreationDate = startOfDay(new Date(params.getBeginCreationDate))
+                this.endCreationDate = startOfDay(addDays(new Date(params.getEndCreationDate), 1))
 
 
-                if (this.endCreationDate < this.beginCreationDate) {
+                if (new Date(params.getEndCreationDate).getTime() < new Date(params.getBeginCreationDate).getTime()) {
                     throw new InvalidParametersException(Field.SCHEDULING_END_CREATION_DATE,
                         MiddlewareBusinessMessage.SCHEDULING_END_CREATION_DATE_LESS_THAN_BEGIN_CREATION_DATE)
                 }
@@ -106,13 +132,16 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
             }
         } else {
 
+
+
             logger.info("[GetSchedlingListOperation] Set default beginSchedulingDate and endSchedulingDate");
 
             const beginCreationDateDefault = await SchedulingTimeUtil.getDefaultCreationDateWithouTime();
             logger.info("beginCreationDateDefault %", beginCreationDateDefault);
 
-            this.beginCreationDate = new Date(beginCreationDateDefault);
-            this.endCreationDate = this.beginCreationDate;
+            this.beginCreationDate = startOfDay(new Date(beginCreationDateDefault));
+            this.endCreationDate = startOfDay(addDays(this.beginCreationDate, 1));
+
 
         }
     }
@@ -120,8 +149,9 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetSchedulingListParams, result: GetSchedulingListResult): Promise<void> {
 
-        this.beginCreationDate = startOfDay(this.beginCreationDate);
-        this.endCreationDate = addDays(this.endCreationDate, 1);
+
+        //this.beginCreationDate = startOfDay(this.beginCreationDate);
+        //this.endCreationDate = addDays(this.endCreationDate, 1);
 
         const defaultOrderColumn = await PageUtil.getDefaultOrderColumn(params.getOrderColumn);
         const skiptPage = await PageUtil.skipPage(params.getPageNumber, params.getPageSize);

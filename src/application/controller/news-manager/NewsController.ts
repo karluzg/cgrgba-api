@@ -63,7 +63,7 @@ export class NewsController {
     }
   }
   public async uploadImageNews(request: Request, response: Response): Promise<Response> {
-   /* try {
+    try {
       const { id } = request.params;
 
       if (!request.file) {
@@ -89,10 +89,9 @@ export class NewsController {
     } catch (error) {
       console.error(error);
 
-
       throw error;
-    }*/
-    return null;
+    }
+
   }
   public async deleteNews(arg0: string, deleteNews: any) {
     throw new Error("Method not implemented.");

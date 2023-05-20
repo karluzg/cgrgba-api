@@ -239,10 +239,10 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
 
         newScheduling.creationDate = new Date();
         newScheduling.citizen = citizen;
-        newScheduling.category = params.getSchedulingCategory;
-        newScheduling.service = params.getSchedulingService;
-        newScheduling.date = params.getSchedulingDate;
-        newScheduling.chosenHour = params.getSchedulingHour;
+        newScheduling.category = params.getSchedulingCategory.trim();
+        newScheduling.service = params.getSchedulingService.trim();
+        newScheduling.date = params.getSchedulingDate.trim();
+        newScheduling.chosenHour = params.getSchedulingHour.trim();
         newScheduling.hour = await SchedulingTimeUtil.getTimePart(params.getSchedulingHour)
         newScheduling.minute = await SchedulingTimeUtil.getMinutePart(params.getSchedulingHour)
         newScheduling.status = SchedulingStatusEnum.FOR_ANSWERING;
