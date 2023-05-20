@@ -16,7 +16,7 @@ import { InvalidParametersException } from "../../../../infrestructure/exception
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { PageUtil } from "../../util/PageUtil";
-export class GetSchedlingListOperation extends UserAuthOperationTemplate<GetSchedulingListResult, GetSchedulingListParams>{
+export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSchedulingListResult, GetSchedulingListParams>{
 
     private readonly schedulingEngineRepository: ISchedulingEngineRepository;
     private beginCreationDate: Date

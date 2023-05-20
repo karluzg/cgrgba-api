@@ -25,7 +25,13 @@ export class SchedulingController {
 
         try {
 
-            const { citizenFullName, citizenEmail, citizenMobileNumber, schedulingDate, schedulingHour, schedulingCategory, schedulingService } = request.body;
+            const { citizenFullName,
+                citizenEmail,
+                citizenMobileNumber,
+                schedulingDate,
+                schedulingHour,
+                schedulingCategory,
+                schedulingService } = request.body;
 
 
             const params = new SchedulingParams(citizenFullName, citizenEmail, citizenMobileNumber, schedulingDate, schedulingHour, schedulingCategory, schedulingService);

@@ -6,7 +6,7 @@ import { SchedulingTimeConfiguration } from "./SchedulingTimeConfiguration"
  * Save the scheduling history: closed date, available flag. 
  * if numCollaborator is equal number of the booking doned, then: Save closed date as new Date and available=false
  */
-@Entity({ schema: "portalConsular" })
+@Entity({ schema: 'portal_consular_dev' })
 
 export class SchedulingHistory {
 
@@ -18,7 +18,7 @@ export class SchedulingHistory {
     creationDate: Date
     
     @Column({ nullable: false })
-    dateate: string
+    date: string
 
     @Column({ nullable: false })
     chosenHour: string

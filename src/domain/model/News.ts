@@ -3,7 +3,7 @@ import { NewsCategory } from "./NewsCategory"
 
 
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class News {
 
     @PrimaryGeneratedColumn({type:"bigint"})

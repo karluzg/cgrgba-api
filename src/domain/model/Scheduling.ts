@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from "typeorm"
 import { Citizen } from "./Citizen"
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class Scheduling {
 
     @PrimaryGeneratedColumn({ type:"bigint"})

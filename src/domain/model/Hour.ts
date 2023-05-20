@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
 import { SchedulingTimeConfiguration } from "./SchedulingTimeConfiguration";
 
-@Entity()
+@Entity({schema:"portal_consular_dev"})
 export class Hour {
   @PrimaryGeneratedColumn()
   id: number;

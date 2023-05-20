@@ -80,3 +80,6 @@ npm install paginator
 
 # install dn-fn - is a popular lightweight JavaScript library for working with dates and times
 npm install date-fns
+
+# query to refresh privileges: - Allow user authentication in mysql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Nantoi01*';

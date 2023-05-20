@@ -2,7 +2,7 @@ import { Entity, Column,  PrimaryColumn} from "typeorm"
 
 
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class OperationStatus {
 
     @PrimaryColumn()

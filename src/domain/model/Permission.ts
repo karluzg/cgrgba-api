@@ -2,7 +2,7 @@ import { Entity, Column, ManyToOne, PrimaryGeneratedColumn, PrimaryColumn } from
 import { PermissionGroup } from './PermissionGroup';
 import { IsString, IsNotEmpty } from 'class-validator';
 
-@Entity({ schema: 'portalConsular' })
+@Entity({ schema: 'portal_consular_dev' })
 export class Permission {
   @PrimaryGeneratedColumn({ type: 'bigint' })
   id: number;

@@ -4,7 +4,7 @@ import { Permission } from './Permission';
 import { RoleStatus } from './RoleStatus';
 import { IsString, IsNotEmpty, IsBoolean } from 'class-validator';
 
-@Entity({ schema: 'portalConsular' })
+@Entity({ schema: 'portal_consular_dev' })
 export class Role {
   @PrimaryGeneratedColumn({ type: 'bigint' })
   id: number;

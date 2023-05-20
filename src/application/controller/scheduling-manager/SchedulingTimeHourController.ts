@@ -70,9 +70,9 @@ export class SchedulingTimeController {
 
             const { beginSchedulingDate } = request.body;
 
-            const authenticationToken = AuthValidator.checkAuthorizationToken(request);
 
-            const params = new TimeSlotListParams(authenticationToken, beginSchedulingDate);
+            console.info("[get_time_slot_list] INPUT DATE PARAMS RECEIVED %s" + beginSchedulingDate)
+            const params = new TimeSlotListParams(beginSchedulingDate);
 
             logger.info("[SchedulingTimeController] Perform dependency injection for ISchedulingTimeEngine")
             const schedulingTimeEngine = container.resolve<ISchedulingTimeEngine>("ISchedulingTimeEngine")

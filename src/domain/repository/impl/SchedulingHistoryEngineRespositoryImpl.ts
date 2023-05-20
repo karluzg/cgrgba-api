@@ -10,26 +10,26 @@ const schedulingHistoryEngineRepository = myDataSource.getRepository(SchedulingH
 @injectable()
 export class SchedulingHistoryEngineRepositoryImpl implements ISchedulingHistoryEngineRepository {
 
-    updateSchedulingHistory(schedulingHistory: SchedulingHistory): Promise<void> {
-        //TODO - Update this
-        return schedulingHistoryEngineRepository.save(schedulingHistory)
-
-
+    async blockDateAndHour(schedulingDate: string, chosenHour: string): Promise<void> {
+        await schedulingHistoryEngineRepository
+            .createQueryBuilder('schedulingHistory')
+            .update(SchedulingHistory)
+            .set({ available: false })
+            .where('schedulingHistory.date = :schedulingDate', { schedulingDate })
+            .andWhere('schedulingHistory.chosenHour = :chosenHour', { chosenHour })
+            .execute();
     }
 
 
     async countNumberOfSchedulingByDateandHour(schedulingDate: string, chosenHour: string): Promise<SchedulingHistory[]> {
-
         return schedulingHistoryEngineRepository.createQueryBuilder('schedulingHistory')
-            .leftJoinAndSelect("schedulingHistory.scheduling", "scheduling")
-            .where('schedulingHistory.chosenHour = :chosenHour', { chosenHour: chosenHour })
-            .andWhere('schedulingHistory.schedulingDate = :schedulingDate', { schedulingDate: schedulingDate })
-            .andWhere('scheduling.schedulingDate = :schedulingDate', { schedulingDate: schedulingDate })
-            .andWhere('scheduling.chosenHour = :chosenHour', { chosenHour: chosenHour })
+            .leftJoinAndSelect('schedulingHistory.scheduling', 'scheduling')
+            .where('schedulingHistory.chosenHour = :chosenHour', { chosenHour })
+            .andWhere('schedulingHistory.date = :schedulingDate', { schedulingDate })
+            .andWhere('scheduling.date = :schedulingDate AND scheduling.chosenHour = :chosenHour')
             .getMany();
-
-
     }
+
 
     async checkIfSchedulingHistoryExist(schedulingDate: string, chosenHour: string): Promise<boolean> {
 

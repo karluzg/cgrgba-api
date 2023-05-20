@@ -5,7 +5,7 @@ import { Type } from "class-transformer"
 import { IsDate, IsObject, IsString, ValidateNested } from "class-validator"
 
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class TokenSession {
     @IsString()
     @PrimaryColumn("uuid")

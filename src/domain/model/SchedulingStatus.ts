@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn, Column } from "typeorm"
 
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class SchedulingStatus {
 
     @PrimaryColumn()

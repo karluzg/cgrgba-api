@@ -81,13 +81,11 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
     }
 
     async findCitizenSchedulingInfo(citizenEmail: string): Promise<Scheduling[]> {
-
-        const query = schedulingEngineRepository.createQueryBuilder('scheduling').leftJoinAndSelect('scheduling.citizen', 'citizen')
-
-        query.where('citizen.citizenEmail = :citizenEmail', { citizenEmail })
-
-        query.andWhere('scheduling.status = :schedulingStatus', { schedulingStatus: SchedulingStatusEnum.FOR_ANSWERING })
-
-        return query.getMany();
+        return schedulingEngineRepository.createQueryBuilder('scheduling')
+            .leftJoinAndSelect('scheduling.citizen', 'citizen')
+            .where('citizen.email = :citizenEmail', { citizenEmail })
+            .andWhere('scheduling.status = :schedulingStatus', { schedulingStatus: SchedulingStatusEnum.FOR_ANSWERING })
+            .getMany();
     }
+
 }

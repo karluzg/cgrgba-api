@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn, Column, OneToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 import { SchedulingCategory } from "./SchedulingCategory";
 
-@Entity({ schema: "portalConsular" })
+@Entity({ schema: 'portal_consular_dev' })
 export class Service {
 
   @PrimaryGeneratedColumn()

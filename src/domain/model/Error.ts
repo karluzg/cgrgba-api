@@ -2,7 +2,7 @@
 import { Entity, Column, ManyToOne, PrimaryColumn} from "typeorm"
 import { UserOperation } from "./UserOperation"
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class Error {
 
     @PrimaryColumn()

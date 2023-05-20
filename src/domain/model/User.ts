@@ -4,7 +4,7 @@ import { IActivable } from "./interface/IUserActivable"
 import { Role } from "./Role"
 import { IsDate, IsNumber, IsString } from "class-validator"
 
-@Entity({ schema: "portalConsular" })
+@Entity({ schema: 'portal_consular_dev' })
 export class User implements IActivable {
 
     @IsNumber()

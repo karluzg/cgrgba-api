@@ -14,17 +14,17 @@ export class CitizenEngineRepositoryImpl implements ICitizenEngineRepository {
         const query = citizenEngineRepository.createQueryBuilder('citizen')
 
         if (citizenEmail.length != 0) {
-            query.where('citizen.citizenEmail = :citizenEmail', { citizenEmail })
+            query.where('citizen.email = :citizenEmail', { citizenEmail })
         }
         if (citizenMobileNumber.length != 0) {
-            query.where('citizen.citizenMobileNumber = :citizenMobileNumber', { citizenMobileNumber })
+            query.where('citizen.mobileNumber = :citizenMobileNumber', { citizenMobileNumber })
         }
 
         return await query.getOne();
 
     }
 
-    async saveCitizen(newCitizen: Citizen): Promise<Citizen> {
+    async saveCitizenInfo(newCitizen: Citizen): Promise<Citizen> {
         return citizenEngineRepository.save(newCitizen)
     }
 
