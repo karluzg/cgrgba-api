@@ -3,7 +3,6 @@ import { UserAuthOperationTemplate } from "../../../infrestructure/template/User
 import { OperationValidatorManager } from "../../../infrestructure/validator/managers/OperationValidatorManager";
 import { TokenSession } from "../../model/TokenSession";
 import { OperationNamesEnum } from "../../model/enum/OperationNamesEnum";
-import { IUserEngineRepository } from "../../repository/IUserEngineRepository";
 import { NewsResult } from "../../../application/model/news-manager/NewsResult";
 import { NewsParams } from "../../../application/model/news-manager/NewsParams";
 import { INewsEngineRepository } from "../../repository/INewsEngineRepository";
@@ -55,7 +54,6 @@ export class AddNewsOperation extends UserAuthOperationTemplate<NewsResult, News
 
         const news = new News();
         news.title = params.title;
-        news.content = params.content;
         news.message = params.message;
         news.newsCategory = this.category;
         news.status = false;
