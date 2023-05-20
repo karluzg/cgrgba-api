@@ -18,6 +18,7 @@ export enum OperationNamesEnum {
     //SCHEDULING -  202 - 302
     SCHEDULING_CREATE = 202,
     SCHEDULING_LIST = 203,
+    SCHEDULING_DETAIL = 204,
 
     //PORTAL -  303 - 403
     PORTAL_ADD_NEWS = 303,

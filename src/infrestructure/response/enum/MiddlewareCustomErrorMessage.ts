@@ -67,6 +67,7 @@ export enum MiddlewareBusinessMessage {
   SCHEDULING_END_SCHEDULING_TIME_INAVLID = "A hora de fim de agendamento é inválida",
   SCHEDULING_BEGIN_CREATION_DATE_INVALID = "A data de início de criação de agendamento é inváldo",
   SCHEDULING_END_CREATION_DATE_INVALID = "A data de fim de criação de agendamento é inváldo",
+  SCHEDULING_ID_INVALID = "Agendamento inválido",
 
 
 

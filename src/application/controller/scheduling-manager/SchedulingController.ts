@@ -15,6 +15,8 @@ import { ISchedulingEngine } from "../../../domain/service/ISchedulingEngine";
 import { AuthValidator } from "../validator/AuthValidator";
 import { GetSchedulingListParams } from "../../model/scheduling-manager/scheduling/params/GetSchedulingListParams";
 import { DirectionEnum } from "../../../infrestructure/pageable-manager/enum/DirectionEnum";
+import { GetSchedulingDetailParams } from "../../model/scheduling-manager/scheduling/params/GetSchedulingDetailParams";
+import { Field } from "../../../infrestructure/exceptions/enum/Field";
 
 
 
@@ -109,7 +111,50 @@ export class SchedulingController {
             } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
-                logger.error("[SchedulingController] Error while adding new time slot", error)
+                logger.error("[SchedulingController] Error while getting scheduling list", error)
+                throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
+            }
+        }
+    }
+
+    // service for BO collaborator Only
+    public async get_scheduling_detail(request: Request, response: Response): Promise<Response> {
+
+        try {
+
+            const id = parseInt(request.params.id);
+
+            if (isNaN(id)) {
+                throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID)
+            }
+
+            const authenticationToken = AuthValidator.checkAuthorizationToken(request);
+            const params = new GetSchedulingDetailParams(authenticationToken, id);
+
+            logger.info("[SchedulingController] Perform dependency injection for ISchedulingEngine")
+            const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")
+            const result = await schedulingEngine.get_scheduling_detail(params)
+
+            return response.status(HttpCode.OK).json(result)
+
+        } catch (error) {
+
+            if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
+                throw new NotImplementedException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.FORBIDDEN) {
+                throw new ForbiddenOperationException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
+                throw new UnsuccessfullOperationException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
+                throw new InvalidParametersException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
+                throw new UnauthorizedOperationException(error.field, error.message)
+            } else {
+                logger.error("[SchedulingController] Error while getting schedilng detail", error)
                 throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
             }
         }

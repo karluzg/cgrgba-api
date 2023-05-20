@@ -43,16 +43,17 @@ UC-12 - EFETUAR AGENDAMENTO
    - Agendar outros serviços na mesma data e hora
    - Agendar o mesmo serviço que ainda estão com estado "por atender" (E se o cidadão for atendido, mas o funcionário esqueceu de alterar o estado?)
   
-2. O cidadão só pode agenda até 1h antes do fim do trabalho  -QUESTIONR
+2. O cidadão só pode agendar até 1h antes do fim do trabalho  -QUESTIONAR A DOUTORA
 
 2. Quando o mesmo utilizador tenta fazer outro agendamento, o sistema deve recuperar informação desse utilizador e associar ao agendamento.
-3. O número de telemóvel deixa de ser único, ficando apenas o email como unique
+3. O número de telemóvel deixa de ser único, ficando apenas o email como unique??
 
 4. Quando o utilizador submeter o pedido para efetuar agendamento, deve ser sempre verificada a disponibilidade da data e hora escolhida a ser agendada (usar Semhphore do node Js para bloquear a data e hora).
  - Isto porque mesmo as datas e horas terem sido apresentadas como disponíveis na listagem de horários de agendamentos, alguém pode já ter escolhido a última data e hora disponível. Logo, outro utilizador não pode escolher essa data e hora. 
 
-5. Cada vez  que o número de agendamentos feitos para a mesma data e hora(por um utilizador diferente) for igual(=) número colaborador disponível diário, para essa data e hora,
- o agendamento é feito e é atualizada a tabela de schedulingHistory, ficando a data e hora como indisponíveis. A tabela SchedulingHistory deve ser atualizada, pondo o campo available=0 (false)
+5. Cada vez  que o número de agendamentos feitos para a mesma data e hora(por um utilizador diferente) for igual(=) número colaborador disponível diário, 
+para essa data e hora, o agendamento é feito e é atualizada a tabela de schedulingHistory, ficando a data e hora como indisponíveis.
+ A tabela SchedulingHistory deve ser atualizada, pondo o campo available=0 (false) para aquela data e a mesma hora(s)
 
 6. Quando o agendamento é efetuado, o sistema deve enviar email ao utilizador
 

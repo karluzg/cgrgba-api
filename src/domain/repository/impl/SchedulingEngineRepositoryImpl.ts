@@ -13,6 +13,17 @@ const schedulingEngineRepository = myDataSource.getRepository(Scheduling)
 export class SchedulingEngineRepositoryImpl implements ISchedulingEngineRepository {
 
 
+
+    async findSchedulingById(schedulingId: number): Promise<Scheduling> {
+
+        return schedulingEngineRepository.createQueryBuilder('scheduling')
+            .leftJoinAndSelect('scheduling.citizen', 'citizen')
+            .where('scheduling.id = :schedulingId', { schedulingId })
+            .getOne();
+    }
+
+
+
     async findBy(
         beginSchedulingDate: Date,
         endSchedulingDate: Date,
@@ -30,10 +41,6 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
 
 
-
-
-        console.info("BEGIN DATE:" + beginSchedulingDate)
-        console.info("BEGIN DATE:" + endSchedulingDate)
 
         const orderColumn = `scheduling.${defaultorderColumn}`; // to avoid SQL Injection
 

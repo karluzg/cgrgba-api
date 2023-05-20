@@ -7,10 +7,17 @@ import { AddNewSchedulingOperation } from "../../operation/scheduling-manager/sc
 import { GetSchedulingListResult } from "../../../application/model/scheduling-manager/scheduling/GetSchedulingListResult";
 import { GetSchedulingListParams } from "../../../application/model/scheduling-manager/scheduling/params/GetSchedulingListParams";
 import { GetSchedulingListOperation } from "../../operation/scheduling-manager/scheduling/GetSchedulingListOperation";
+import { GetSchedulingDetailParams } from "../../../application/model/scheduling-manager/scheduling/params/GetSchedulingDetailParams";
+import { GetSchedulingDetailOperation } from "../../operation/scheduling-manager/scheduling/GetSchedulingDetailOperation";
 
 
 @injectable()
 export class SchedulingEngineImpl extends GenericOperationTemplate implements ISchedulingEngine {
+
+    get_scheduling_detail(params: GetSchedulingDetailParams): Promise<SchedulingResult> {
+        return this.executeOperation(new GetSchedulingDetailOperation(), params)
+    }
+
     add_new_scheduling(params: SchedulingParams): Promise<SchedulingResult> {
         return this.executeOperation(new AddNewSchedulingOperation(), params)
     }

@@ -19,5 +19,7 @@ export interface ISchedulingEngineRepository {
         pageNumber: number,
         pageSize: number): Promise<IPage<Scheduling>>
 
+    findSchedulingById(schedulingId: number): Promise<Scheduling>
+
 
 }

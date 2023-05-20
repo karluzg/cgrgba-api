@@ -97,7 +97,7 @@ export class SchedulingTimeController {
             } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
-                logger.error("[SchedulingTimeHourController] Error while adding new time slot", error)
+                logger.error("[SchedulingTimeHourController] Error while getting time slot list", error)
                 throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
             }
         }
