@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { NewsCategory } from "./NewsCategory";
 import { IsBoolean, IsDate, IsNumber, IsString } from "class-validator";
 
-@Entity({ schema: "portalConsular" })
+@Entity({ schema: 'portal_consular_dev' })
 export class News {
   @PrimaryGeneratedColumn({ type: "bigint" })
   id: number;
@@ -11,8 +11,7 @@ export class News {
   @IsString()
   title: string;
 
-@Entity({ schema: 'portal_consular_dev' })
-export class News {
+
 
   @Column({nullable: false  })
   @IsString()
