@@ -9,18 +9,22 @@ import { OperationValidatorManager } from "../../../../infrestructure/validator/
 import { Scheduling } from "../../../model/Scheduling";
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
+import { IPossibleStatusEngineRepository } from "../../../repository/IPossibleStatusEngineRepository";
 import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngineRepository";
-import { SchedulingEngineRepositoryImpl } from "../../../repository/impl/SchedulingEngineRepositoryImpl";
 
 export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<SchedulingResult, GetSchedulingDetailParams> {
 
-    private readonly schedulingEngineRepository: SchedulingEngineRepositoryImpl;
+    private readonly schedulingEngineRepository: ISchedulingEngineRepository;
+    private readonly schedulingPossibleStatusEngineRepository: IPossibleStatusEngineRepository;
+
     private schedulingEntity: Scheduling;
 
 
     constructor() {
         super(OperationNamesEnum.SCHEDULING_DETAIL, OperationValidatorManager.getSingletonInstance())
         this.schedulingEngineRepository = container.resolve<ISchedulingEngineRepository>('ISchedulingEngineRepository')
+        this.schedulingPossibleStatusEngineRepository = container.resolve<IPossibleStatusEngineRepository>('IPossibleStatusEngineRepository')
+
     }
 
     protected async doValidateParameters(params: GetSchedulingDetailParams): Promise<void> {
@@ -36,6 +40,9 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetSchedulingDetailParams, result: SchedulingResult): Promise<void> {
 
         result.setScheduling = this.schedulingEntity
+        const schedulingPossibleStatus = await this.schedulingPossibleStatusEngineRepository.findNextStatus(this.schedulingEntity.status)
+        result.setPossibleStatus = schedulingPossibleStatus
+
     }
     protected initResult(): SchedulingResult {
         return new SchedulingResult();
