@@ -38,6 +38,12 @@ import { SchedulingServiceEngineRepositoryImpl } from '../../domain/repository/i
 import { ISchedulingServiceEngineRepository } from '../../domain/repository/ISchedulingServiceEngineRepository';
 import { ISchedulingCategoryEngineRepository } from '../../domain/repository/ISchedulingCategoryEngineRepository';
 import { SchedulingCategoryEngineRepositoryImpl } from '../../domain/repository/impl/SchedulingCategoryEngineRepositoryImpl';
+import { ILovsEngine } from '../../domain/service/ILovsEngine';
+import { LovsEngineImpl } from '../../domain/service/impl/LovsEngineImpl';
+import { IPossibleStatusEngineRepository } from '../../domain/repository/IPossibleStatusEngineRepository';
+import { SchedulingPossibleStatusEngineImpl } from '../../domain/repository/impl/SchedulingPossibleStatusEngineRepository';
+import { IUserStatusEngineRepository } from '../../domain/repository/IUserStatusEngineRepository';
+import { UserStatusEngineRepositoryImpl } from '../../domain/repository/impl/UserStatusEngineRepositoryImpl';
 
 
 //Register container for services
@@ -46,6 +52,7 @@ container.register<ISessionEngine>('ISessionEngine', { useClass: SessionEngineIm
 container.register<ISchedulingTimeEngine>('ISchedulingTimeEngine', { useClass: SchedulingTimeEngineImpl });
 container.register<ISchedulingEngine>('ISchedulingEngine', { useClass: SchedulingEngineImpl })
 container.register<INewsEngine>('INewsEngine', { useClass: NewsEngineImpl });
+container.register<ILovsEngine>('ILovsEngine', { useClass: LovsEngineImpl });
 
 
 //Register container for repository
@@ -63,6 +70,10 @@ container.register<INewsEngineRepository>('INewsEngineRepository', { useClass: N
 container.register<INewsCategoryEngineRepository>('INewsCategoryEngineRepository', { useClass: NewsCategoryEngineRepositoryImpl })
 container.register<ISchedulingServiceEngineRepository>('ISchedulingServiceEngineRepository', { useClass: SchedulingServiceEngineRepositoryImpl })
 container.register<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository', { useClass: SchedulingCategoryEngineRepositoryImpl })
+container.register<IPossibleStatusEngineRepository>('IPossibleStatusEngineRepository', { useClass: SchedulingPossibleStatusEngineImpl })
+container.register<IUserStatusEngineRepository>('IUserStatusEngineRepository', { useClass: UserStatusEngineRepositoryImpl })
+
+
 
 
 export default container;
