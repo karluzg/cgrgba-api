@@ -5,11 +5,11 @@ import { GenericOperationTemplate } from "../../../infrestructure/template/Gener
 import { AddUserOperation } from "../../operation/user-manager/user/AddUserOperation";
 import { injectable } from "tsyringe";
 import { UpdatePasswordParams } from "../../../application/model/user-manager/UpdatePasswordParams";
+
+import { ResultTemplate } from "../../../infrestructure/template/ResultTemplate";
 import { UpdatePasswordOperation } from "../../operation/user-manager/user/UpdatePasswordOperation";
-import { Result } from "express-validator";
 import { ResetPasswordParams } from "../../../application/model/user-manager/ResetPasswordParams";
 import { ResetPasswordOperation } from "../../operation/user-manager/user/ResetPasswordOperation";
-import { ResultTemplate } from "../../../infrestructure/template/ResultTemplate";
 
 
 @injectable()

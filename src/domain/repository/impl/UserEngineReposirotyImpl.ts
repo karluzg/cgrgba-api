@@ -14,6 +14,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
 
       public async findUserByMobileNumber(userMobileNumber: string): Promise<User> {
             return userRepository.createQueryBuilder('user')
+                  .leftJoinAndSelect('user.status', 'status')
                   .where('user.mobileNumber = :userMobileNumber', { userMobileNumber })
                   .getOne();
       }
@@ -34,6 +35,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
 
       public async findUserById(userId: number): Promise<User> {
             return userRepository.createQueryBuilder('user')
+                  .leftJoinAndSelect('user.status', 'status')
                   .where('user.id = :userId', { userId })
                   .getOne();
       }
@@ -53,6 +55,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
 
       public async findUserByEmail(userEmail: string): Promise<User> {
             const user = await userRepository.createQueryBuilder('user')
+                  .leftJoinAndSelect('user.status', 'status')
                   .where('user.email = :email', { email: userEmail })
                   .getOne();
 
@@ -61,6 +64,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
 
       public async updateUserPassword(userId: number, passwordHash: string, passwordSalt: string, status: UserStatusEnum, passwordtry: number): Promise<User> {
             const user = await userRepository.createQueryBuilder('user')
+                  .leftJoinAndSelect('user.status', 'status')
                   .where('user.id = :userId', { userId })
                   .getOne();
 

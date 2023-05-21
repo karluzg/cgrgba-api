@@ -1,6 +1,7 @@
-export interface IActivable {
-  
-    active (): void;
+import { IActivable } from "./IActivable";
+
+export interface IUserActivable extends IActivable {
+
 
     suspend (): void;
   
