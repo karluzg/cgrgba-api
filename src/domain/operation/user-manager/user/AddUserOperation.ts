@@ -61,13 +61,14 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         const hash = passwordValidator.generateHash(password, await salt)
 
 
-        const user = new User();
+        const user = new User(); // status is created automatically in user constructor
         user.email = params.getEmail;
         user.fullName = params.getFullName;
         user.mobileNumber = params.getMobileNumber;
         user.passwordHash = await hash;
         user.passwordSalt = await salt;
-        user.status = UserStatusEnum.NEW;
+
+        console.info("WATCH USER TO ADD:" + JSON.stringify(user))
 
         logger.info("[AddUserOperation] creating user in db %", JSON.stringify(user))
         const newUser: User = await this.userRepository.saveUser(user)

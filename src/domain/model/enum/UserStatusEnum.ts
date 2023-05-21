@@ -8,6 +8,12 @@ export enum UserStatusEnum {
 }
 
 export class UserStatusMapper {
+   public static status(userStatusEnum: UserStatusEnum): UserStatus {
+      const status = this.mapper(userStatusEnum)
+      return new UserStatus(status);
+
+   }
+
    public static from(status: UserStatus): UserStatusEnum | null {
       if (status == null || status.getCode() == null) {
          return null;
@@ -22,9 +28,6 @@ export class UserStatusMapper {
       }
    }
 
-   public static status(userStatusEnum: UserStatusEnum): UserStatus {
-      return new UserStatus(userStatusEnum);
-   }
 
    public static async getUserStatusDescription(status: string): Promise<string> {
       switch (status) {
@@ -38,6 +41,22 @@ export class UserStatusMapper {
             return "Supendido";
          default:
             return "Desconhecido";
+      }
+   }
+
+
+   public static mapper(userStatusEnum: UserStatusEnum): string {
+      switch (userStatusEnum) {
+         case UserStatusEnum.NEW:
+            return "NEW"
+         case UserStatusEnum.ACTIVE:
+            return "ACTIVE"
+         case UserStatusEnum.REMOVED:
+            "REMOVED"
+         case UserStatusEnum.SUSPENDED:
+            return "SUSPENDED"
+         default:
+            return "NEW"
       }
    }
 }
