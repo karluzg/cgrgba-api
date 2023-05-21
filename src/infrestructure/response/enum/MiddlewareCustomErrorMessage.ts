@@ -22,7 +22,7 @@ export enum MiddlewareBusinessMessage {
 
   // BUSINESS MESSAGE - CITIZEN
   CITIZEN_INVALID_EMAIL = "Email inválido ou já existe um utilizador registado com o mesmo email",
-  CITIZEN_MBILE_NUMBER_ALREADY_EXIST = "Email inválido ou já existe um utilizador registado com o mesmo email",
+  CITIZEN_MOBILE_NUMBER_ALREADY_EXIST = "Email inválido ou já existe um utilizador registado com o mesmo email",
 
 
   //  BUSINESS MESSAGE - SCHEDULING TIME
@@ -68,6 +68,8 @@ export enum MiddlewareBusinessMessage {
   SCHEDULING_BEGIN_CREATION_DATE_INVALID = "A data de início de criação de agendamento é inváldo",
   SCHEDULING_END_CREATION_DATE_INVALID = "A data de fim de criação de agendamento é inváldo",
   SCHEDULING_ID_INVALID = "Agendamento inválido",
+  SCHEDULING_CATEGORY_INVALD = "A categoria de agendamento é inválida",
+  SCHEDULING_SERVICE_INVALID = "O servico do agendamento é inválido",
 
 
 

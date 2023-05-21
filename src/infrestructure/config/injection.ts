@@ -17,7 +17,7 @@ import { RoleEngineRepositoryImpl } from '../../domain/repository/impl/RoleEngin
 import { IPermissionGroupEngineRepository } from '../../domain/repository/IPermissionGroupEngineRepository';
 import { PermissionGroupEngineRepositoryImpl } from '../../domain/repository/impl/PermissionGroupEngineRepositoryImpl';
 import { ISchedulingTimeEngineRepository } from '../../domain/repository/ISchedulingTimeEngineRepository';
-import { ISchedulingTimeEngineRepositoryImpl } from '../../domain/repository/impl/SchedulingTimeEngineRepositoryImpl';
+import { SchedulingTimeEngineRepositoryImpl } from '../../domain/repository/impl/SchedulingTimeEngineRepositoryImpl';
 import { IHollydayEngineRepository as IHollydayEngineRepository } from '../../domain/repository/IHollydayEngineRepository';
 import { HollydayEngineRepositoryImpl as HollydayEngineRepositoryImpl } from '../../domain/repository/impl/HollydayEngineRepositoryImpl';
 import { SchedulingHistoryEngineRepositoryImpl } from '../../domain/repository/impl/SchedulingHistoryEngineRespositoryImpl';
@@ -34,6 +34,10 @@ import { INewsCategoryEngineRepository } from '../../domain/repository/INewsCate
 import { NewsCategoryEngineRepositoryImpl } from '../../domain/repository/impl/NewsCategoryEngineRepositoryImpl ';
 import { NewsEngineRepositoryImpl } from '../../domain/repository/impl/NewsEngineRepositoryImpl';
 import { INewsEngineRepository } from '../../domain/repository/INewsEngineRepository';
+import { SchedulingServiceEngineRepositoryImpl } from '../../domain/repository/impl/SchedulingServiceEngineRepositoryImpl';
+import { ISchedulingServiceEngineRepository } from '../../domain/repository/ISchedulingServiceEngineRepository';
+import { ISchedulingCategoryEngineRepository } from '../../domain/repository/ISchedulingCategoryEngineRepository';
+import { SchedulingCategoryEngineRepositoryImpl } from '../../domain/repository/impl/SchedulingCategoryEngineRepositoryImpl';
 
 
 //Register container for services
@@ -50,13 +54,15 @@ container.register<IPermissionEngineRepository>('IPermissionEngineRepository', {
 container.register<IUserEngineRepository>('IUserEngineRepository', { useClass: UserEngineRepositoryImpl })
 container.register<IRoleEngineRepository>('IRoleEngineRepository', { useClass: RoleEngineRepositoryImpl })
 container.register<IPermissionGroupEngineRepository>('IPermissionGroupEngineRepository', { useClass: PermissionGroupEngineRepositoryImpl })
-container.register<ISchedulingTimeEngineRepository>('ISchedulingTimeEngineRepository', { useClass: ISchedulingTimeEngineRepositoryImpl })
+container.register<ISchedulingTimeEngineRepository>('ISchedulingTimeEngineRepository', { useClass: SchedulingTimeEngineRepositoryImpl })
 container.register<IHollydayEngineRepository>('IHollydayEngineRepository', { useClass: HollydayEngineRepositoryImpl })
 container.register<ISchedulingHistoryEngineRepository>('ISchedulingHistoryEngineRepository', { useClass: SchedulingHistoryEngineRepositoryImpl })
 container.register<ISchedulingEngineRepository>('ISchedulingEngineRepository', { useClass: SchedulingEngineRepositoryImpl })
 container.register<ICitizenEngineRepository>('ICitizenEngineRepository', { useClass: CitizenEngineRepositoryImpl })
 container.register<INewsEngineRepository>('INewsEngineRepository', { useClass: NewsEngineRepositoryImpl })
 container.register<INewsCategoryEngineRepository>('INewsCategoryEngineRepository', { useClass: NewsCategoryEngineRepositoryImpl })
+container.register<ISchedulingServiceEngineRepository>('ISchedulingServiceEngineRepository', { useClass: SchedulingServiceEngineRepositoryImpl })
+container.register<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository', { useClass: SchedulingCategoryEngineRepositoryImpl })
 
 
 export default container;

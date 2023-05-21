@@ -1,6 +1,8 @@
-import { ParamsTemplate } from "../../../../infrestructure/template/ParamsTemplate";
+import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthParamsTemplate";
 
-export class SchedulingParams extends ParamsTemplate {
+export class UpdateSchedulingParams extends AuthParamsTemplate {
+
+    private readonly schedulingId: number;
     private citizenFullName: string;
     private citizenEmail: string;
     private citizenMobileNumber: string;
@@ -9,13 +11,17 @@ export class SchedulingParams extends ParamsTemplate {
     private categoryCode: string;
     private serviceCode: string;
 
-    constructor(citizenFullName: string, citizenEmail: string, citizenMobileNumber: string,
+    constructor(authentication: string, schedulingId: number,
+        citizenFullName: string,
+        citizenEmail: string,
+        citizenMobileNumber: string,
         schedulingDate: string,
         schedulingHour: string,
         categoryCode: string,
         serviceCode: string) {
 
-        super();
+        super(authentication);
+        this.schedulingId = schedulingId;
         this.citizenFullName = citizenFullName;
         this.citizenEmail = citizenEmail
         this.citizenMobileNumber = citizenMobileNumber;
@@ -25,7 +31,9 @@ export class SchedulingParams extends ParamsTemplate {
         this.serviceCode = serviceCode
 
     }
-
+    get getSchedulingId(): number {
+        return this.schedulingId;
+    }
     get getCitizenFullName(): string {
         return this.citizenFullName;
     }
@@ -50,8 +58,7 @@ export class SchedulingParams extends ParamsTemplate {
         return this.categoryCode;
     }
 
-    get getserviceCode(): string {
+    get getServiceCode(): string {
         return this.serviceCode;
     }
-
 }

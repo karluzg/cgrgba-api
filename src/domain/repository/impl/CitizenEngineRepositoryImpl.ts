@@ -7,6 +7,25 @@ const citizenEngineRepository = myDataSource.getRepository(Citizen)
 
 export class CitizenEngineRepositoryImpl implements ICitizenEngineRepository {
 
+
+
+    async countEmailDuplicates(email: string): Promise<number> {
+        return citizenEngineRepository.createQueryBuilder('citizen')
+            .where("citizen.email = :email", { email: email })
+            .getCount();
+
+
+    }
+
+    async countMobileNumberDuplicates(mobileNumber: string): Promise<number> {
+        return await citizenEngineRepository
+            .createQueryBuilder('citizen')
+            .where("citizen.mobileNumber = :mobileNumber", { mobileNumber: mobileNumber })
+            .getCount();
+
+
+    }
+
     async findCitizenByEmailOrMobileNumber(citizenEmail: string, citizenMobileNumber: string): Promise<Citizen> {
 
 

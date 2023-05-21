@@ -71,11 +71,11 @@ export class SchedulingTimeUtil {
         let greeting;
 
         if (hour >= 5 && hour < 12) {
-            greeting = 'Good morning';
+            greeting = 'Bom dia';
         } else if (hour >= 12 && hour < 18) {
-            greeting = 'Good afternoon';
+            greeting = 'Boa tarde';
         } else {
-            greeting = 'Good evening';
+            greeting = 'Boa noite';
         }
 
         return greeting;
@@ -84,15 +84,7 @@ export class SchedulingTimeUtil {
 
     public static async isValidDate(date: string): Promise<boolean> {
 
-        console.info("IS VALID BEGIN CREATION DATE:" + date)
-        console.info("IS VALID END CREATION DATE:" + date)
-
-
         const parsedDate = parseISO(date);
-        console.info("IS VALID END CREATION DATE:" + parsedDate)
-
-
-
         return isValid(parsedDate)
     }
 

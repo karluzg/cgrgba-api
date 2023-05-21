@@ -17,6 +17,7 @@ import { GetSchedulingListParams } from "../../model/scheduling-manager/scheduli
 import { DirectionEnum } from "../../../infrestructure/pageable-manager/enum/DirectionEnum";
 import { GetSchedulingDetailParams } from "../../model/scheduling-manager/scheduling/params/GetSchedulingDetailParams";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
+import { UpdateSchedulingParams } from "../../model/scheduling-manager/scheduling/params/UpdateSchedulingParams";
 
 
 
@@ -32,11 +33,11 @@ export class SchedulingController {
                 citizenMobileNumber,
                 schedulingDate,
                 schedulingHour,
-                schedulingCategory,
-                schedulingService } = request.body;
+                categoryCode,
+                serviceCode } = request.body;
 
 
-            const params = new SchedulingParams(citizenFullName, citizenEmail, citizenMobileNumber, schedulingDate, schedulingHour, schedulingCategory, schedulingService);
+            const params = new SchedulingParams(citizenFullName, citizenEmail, citizenMobileNumber, schedulingDate, schedulingHour, categoryCode, serviceCode);
 
             logger.info("[SchedulingController] Perform dependency injection for ISchedulingEngine")
             const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")
@@ -61,7 +62,7 @@ export class SchedulingController {
             } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
-                logger.error("[SchedulingController] Error while adding new time slot", error)
+                logger.error("[SchedulingController] Error while adding new scheduling", error)
                 throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
             }
         }
@@ -155,6 +156,67 @@ export class SchedulingController {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
                 logger.error("[SchedulingController] Error while getting schedilng detail", error)
+                throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
+            }
+        }
+    }
+
+    public async update_scheduling(request: Request, response: Response): Promise<Response> {
+
+        try {
+
+
+            const shcedulingId = parseInt(request.params.id);
+
+            if (isNaN(shcedulingId)) {
+                throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID)
+            }
+
+
+            const { citizenFullName,
+                citizenEmail,
+                citizenMobileNumber,
+                schedulingDate,
+                schedulingHour,
+                schedulingCategory,
+                schedulingService } = request.body;
+
+            const authenticationToken = AuthValidator.checkAuthorizationToken(request);
+
+
+            const params = new UpdateSchedulingParams(authenticationToken, shcedulingId,
+                citizenFullName,
+                citizenEmail,
+                citizenMobileNumber,
+                schedulingDate,
+                schedulingHour,
+                schedulingCategory,
+                schedulingService);
+
+            logger.info("[SchedulingController] Perform dependency injection for ISchedulingEngine")
+            const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")
+            const result = await schedulingEngine.update_scheduling(params)
+
+            return response.status(HttpCode.OK).json(result)
+
+        } catch (error) {
+
+            if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
+                throw new NotImplementedException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.FORBIDDEN) {
+                throw new ForbiddenOperationException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
+                throw new UnsuccessfullOperationException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
+                throw new InvalidParametersException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
+                throw new UnauthorizedOperationException(error.field, error.message)
+            } else {
+                logger.error("[SchedulingController] Error while updating scheduling", error)
                 throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
             }
         }

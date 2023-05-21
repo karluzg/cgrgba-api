@@ -5,7 +5,7 @@ import { Scheduling } from "../model/Scheduling"
 export interface ISchedulingEngineRepository {
 
     findCitizenSchedulingInfo(citizenEmail: string): Promise<Scheduling[]>
-    saveScheduling(schedulingTime: Scheduling): Promise<Scheduling>
+    save(schedulingTime: Scheduling): Promise<Scheduling>
     findBy(beginSchedulingDate: Date,
         endSchedulingDate: Date,
         beginSchedulingTime: number,
@@ -20,6 +20,5 @@ export interface ISchedulingEngineRepository {
         pageSize: number): Promise<IPage<Scheduling>>
 
     findSchedulingById(schedulingId: number): Promise<Scheduling>
-
 
 }

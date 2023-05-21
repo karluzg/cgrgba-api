@@ -9,7 +9,7 @@ const myDataSource = require('../../../domain/meta-inf/data-source');
 const schedulingTimeRepository = myDataSource.getRepository(SchedulingTimeConfiguration)
 
 @injectable()
-export class ISchedulingTimeEngineRepositoryImpl implements ISchedulingTimeEngineRepository {
+export class SchedulingTimeEngineRepositoryImpl implements ISchedulingTimeEngineRepository {
 
 
     async findBySchedulingDate(beginDate: Date): Promise<SchedulingTimeConfiguration[]> {

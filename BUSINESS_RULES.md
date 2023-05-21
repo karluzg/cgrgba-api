@@ -79,3 +79,9 @@ UC-13 - LISTAR AGENDAMENTOS
    deve ser iagual OU superior a data de inicio de criação e agendamento
    3. se a data de início de criação de agendamento for preenchido e a data de fim de criação de agendamento não for preenchido, a data defim de criação de agendamento
    deve ser IGUAL a data de início de criação de agendamento
+   
+   
+
+UC-15 – Alterar dados do agendamento
+
+ As validações as validações de efetuar agendamento, UC-12 - EFETUAR AGENDAMENTO

@@ -41,12 +41,12 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
             // length of hour should be 5-> 00:00
             if (params.getEndSchedulingTime.length != 5) {
 
-                throw new InvalidParametersException(Field.SCHEDULING_END_SCHEDULING_TIME_INAVLID,
+                throw new InvalidParametersException(Field.SCHEDULING_END_SCHEDULING_TIME,
                     MiddlewareBusinessMessage.SCHEDULING_END_SCHEDULING_TIME_INAVLID);
             }
 
             if (typeof params.getBeginSchedulingTime == 'undefined') {
-                throw new InvalidParametersException(Field.SCHEDULING_END_SCHEDULING_TIME_INAVLID,
+                throw new InvalidParametersException(Field.SCHEDULING_END_SCHEDULING_TIME,
                     MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_MANDATORY);
 
             }
@@ -60,7 +60,7 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
             if (params.getBeginSchedulingTime.length != 5) {
 
-                throw new InvalidParametersException(Field.SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID,
+                throw new InvalidParametersException(Field.SCHEDULING_BEGIN_SCHEDULING_TIME,
                     MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID);
             }
 
@@ -82,7 +82,7 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
             if (params.getBeginSchedulingTime.length != 5) {
 
-                throw new InvalidParametersException(Field.SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID,
+                throw new InvalidParametersException(Field.SCHEDULING_BEGIN_SCHEDULING_TIME,
                     MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID);
             }
 

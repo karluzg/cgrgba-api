@@ -10,6 +10,16 @@ const schedulingHistoryEngineRepository = myDataSource.getRepository(SchedulingH
 @injectable()
 export class SchedulingHistoryEngineRepositoryImpl implements ISchedulingHistoryEngineRepository {
 
+    async findSchedulingById(schedulingId: number): Promise<SchedulingHistory> {
+        const schedulingHistory = await schedulingHistoryEngineRepository
+            .createQueryBuilder('schedulingHistory')
+            .leftJoinAndSelect('schedulingHistory.scheduling', 'scheduling')
+            .where('scheduling.id = :schedulingId', { schedulingId })
+            .getOne();
+
+        return schedulingHistory;
+    }
+
     async blockDateAndHour(schedulingDate: string, chosenHour: string): Promise<void> {
         await schedulingHistoryEngineRepository
             .createQueryBuilder('schedulingHistory')
@@ -42,7 +52,7 @@ export class SchedulingHistoryEngineRepositoryImpl implements ISchedulingHistory
 
     }
 
-    async saveSchedulingHistory(schedulingHistory: SchedulingHistory): Promise<void> {
+    async save(schedulingHistory: SchedulingHistory): Promise<void> {
         return schedulingHistoryEngineRepository.save(schedulingHistory)
     }
 

@@ -9,10 +9,15 @@ import { GetSchedulingListParams } from "../../../application/model/scheduling-m
 import { GetSchedulingListOperation } from "../../operation/scheduling-manager/scheduling/GetSchedulingListOperation";
 import { GetSchedulingDetailParams } from "../../../application/model/scheduling-manager/scheduling/params/GetSchedulingDetailParams";
 import { GetSchedulingDetailOperation } from "../../operation/scheduling-manager/scheduling/GetSchedulingDetailOperation";
+import { UpdateSchedulingParams } from "../../../application/model/scheduling-manager/scheduling/params/UpdateSchedulingParams";
+import { UpdateSchedulingOperation } from "../../operation/scheduling-manager/scheduling/UpdateSchedulingOperation";
 
 
 @injectable()
 export class SchedulingEngineImpl extends GenericOperationTemplate implements ISchedulingEngine {
+    update_scheduling(params: UpdateSchedulingParams): Promise<SchedulingResult> {
+        return this.executeOperation(new UpdateSchedulingOperation(), params)
+    }
 
     get_scheduling_detail(params: GetSchedulingDetailParams): Promise<SchedulingResult> {
         return this.executeOperation(new GetSchedulingDetailOperation(), params)

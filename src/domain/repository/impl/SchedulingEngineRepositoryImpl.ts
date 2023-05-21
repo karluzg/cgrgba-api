@@ -13,7 +13,6 @@ const schedulingEngineRepository = myDataSource.getRepository(Scheduling)
 export class SchedulingEngineRepositoryImpl implements ISchedulingEngineRepository {
 
 
-
     async findSchedulingById(schedulingId: number): Promise<Scheduling> {
 
         return schedulingEngineRepository.createQueryBuilder('scheduling')
@@ -87,7 +86,7 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
         return new PageImpl<Scheduling>(items, pageNumber, pageSize, totalItems, totalPages);
     }
 
-    async saveScheduling(schedulingTime: Scheduling): Promise<Scheduling> {
+    async save(schedulingTime: Scheduling): Promise<Scheduling> {
 
         return await schedulingEngineRepository.save(schedulingTime)
     }

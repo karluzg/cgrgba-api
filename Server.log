@@ -15134,3 +15134,198 @@
 [2023-05-20T18:40:21.775] [INFO] default - [creteRoleAdmin] Find role by name
 [2023-05-20T18:40:21.790] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
 [2023-05-20T18:40:21.790] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-20T19:01:32.027] [INFO] default - Data Source has been initialized!
+[2023-05-20T19:01:32.028] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-20T19:01:32.029] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-20T19:01:32.029] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-20T19:01:32.037] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-20T19:01:32.038] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-20T19:01:32.039] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-20T19:01:32.040] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-20T19:01:32.040] [INFO] default - [cretePermissions] Find permission by code 6
+[2023-05-20T19:01:32.042] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-20T19:01:32.044] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-20T19:01:32.046] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-20T19:01:32.047] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-20T19:01:32.047] [INFO] default - [cretePermissions] Find permission by code 204
+[2023-05-20T19:01:32.048] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-20T19:01:32.049] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-20T19:01:32.049] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-20T19:01:32.050] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-20T19:01:32.051] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-20T19:01:32.051] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-20T19:01:32.052] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-20T19:01:32.052] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-20T19:01:32.053] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-20T19:01:32.053] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-20T19:01:32.064] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-20T19:01:32.064] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-21T01:50:31.567] [INFO] default - Data Source has been initialized!
+[2023-05-21T01:50:31.568] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-21T01:50:31.569] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-21T01:50:31.569] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-21T01:50:31.576] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-21T01:50:31.578] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-21T01:50:31.579] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-21T01:50:31.580] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-21T01:50:31.581] [INFO] default - [cretePermissions] Find permission by code 6
+[2023-05-21T01:50:31.582] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-21T01:50:31.583] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-21T01:50:31.584] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-21T01:50:31.585] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-21T01:50:31.586] [INFO] default - [cretePermissions] Find permission by code 204
+[2023-05-21T01:50:31.587] [INFO] default - [cretePermissions] Find permission by code 205
+[2023-05-21T01:50:31.587] [INFO] default - [cretePermissions] Find role by name
+[2023-05-21T01:50:31.590] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-21T01:50:31.602] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-21T01:50:31.603] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-21T01:50:31.604] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-21T01:50:31.604] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-21T01:50:31.605] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-21T01:50:31.606] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-21T01:50:31.607] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-21T01:50:31.607] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-21T01:50:31.608] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-21T01:50:31.608] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-21T01:50:31.619] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-21T01:50:31.619] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-21T01:52:04.059] [INFO] default - Data Source has been initialized!
+[2023-05-21T01:52:04.060] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-21T01:52:04.060] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-21T01:52:04.060] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-21T01:52:04.066] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-21T01:52:04.068] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-21T01:52:04.069] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-21T01:52:04.070] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-21T01:52:04.071] [INFO] default - [cretePermissions] Find permission by code 6
+[2023-05-21T01:52:04.072] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-21T01:52:04.073] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-21T01:52:04.074] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-21T01:52:04.075] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-21T01:52:04.075] [INFO] default - [cretePermissions] Find permission by code 204
+[2023-05-21T01:52:04.076] [INFO] default - [cretePermissions] Find permission by code 205
+[2023-05-21T01:52:04.077] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-21T01:52:04.077] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-21T01:52:04.078] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-21T01:52:04.078] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-21T01:52:04.079] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-21T01:52:04.080] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-21T01:52:04.080] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-21T01:52:04.081] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-21T01:52:04.083] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-21T01:52:04.084] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-21T01:52:04.092] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-21T01:52:04.092] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-21T01:55:31.557] [ERROR] default - Error during Data Source initialization: QueryFailedError: ER_TRUNCATED_WRONG_VALUE: Incorrect date value: '0000-00-00' for column 'updatedDate' at row 1
+    at Query.<anonymous> (C:\Git\cgrgba-api\src\driver\mysql\MysqlQueryRunner.ts:222:33)
+    at Query.<anonymous> (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:526:10)
+    at Query._callback (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:488:16)
+    at Query.Sequence.end (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+    at Query.ErrorPacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Query.js:92:8)
+    at Protocol._parsePacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:88:28) {
+  query: 'ALTER TABLE `scheduling_history` ADD `updatedDate` date NOT NULL',
+  parameters: undefined,
+  driverError: Error: ER_TRUNCATED_WRONG_VALUE: Incorrect date value: '0000-00-00' for column 'updatedDate' at row 1
+      at Query.Sequence._packetToError (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:526:10)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      --------------------
+      at Protocol._enqueue (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:198:25)
+      at C:\Git\cgrgba-api\src\driver\mysql\MysqlQueryRunner.ts:194:36
+      at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+    code: 'ER_TRUNCATED_WRONG_VALUE',
+    errno: 1292,
+    sqlMessage: "Incorrect date value: '0000-00-00' for column 'updatedDate' at row 1",
+    sqlState: '22007',
+    index: 0,
+    sql: 'ALTER TABLE `scheduling_history` ADD `updatedDate` date NOT NULL'
+  },
+  code: 'ER_TRUNCATED_WRONG_VALUE',
+  errno: 1292,
+  sqlMessage: "Incorrect date value: '0000-00-00' for column 'updatedDate' at row 1",
+  sqlState: '22007',
+  index: 0,
+  sql: 'ALTER TABLE `scheduling_history` ADD `updatedDate` date NOT NULL'
+}
+[2023-05-21T01:55:51.675] [ERROR] default - Error during Data Source initialization: QueryFailedError: ER_TRUNCATED_WRONG_VALUE: Incorrect datetime value: '0000-00-00 00:00:00' for column 'updatedDate' at row 1
+    at Query.<anonymous> (C:\Git\cgrgba-api\src\driver\mysql\MysqlQueryRunner.ts:222:33)
+    at Query.<anonymous> (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:526:10)
+    at Query._callback (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:488:16)
+    at Query.Sequence.end (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+    at Query.ErrorPacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Query.js:92:8)
+    at Protocol._parsePacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:88:28) {
+  query: 'ALTER TABLE `scheduling_history` ADD `updatedDate` datetime NOT NULL',
+  parameters: undefined,
+  driverError: Error: ER_TRUNCATED_WRONG_VALUE: Incorrect datetime value: '0000-00-00 00:00:00' for column 'updatedDate' at row 1
+      at Query.Sequence._packetToError (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+      at Query.ErrorPacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+      at Protocol._parsePacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+      at Parser._parsePacket (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:433:10)
+      at Parser.write (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:43:10)
+      at Protocol.write (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+      at Socket.<anonymous> (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:88:28)
+      at Socket.<anonymous> (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:526:10)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      --------------------
+      at Protocol._enqueue (C:\Git\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+      at PoolConnection.query (C:\Git\cgrgba-api\node_modules\mysql\lib\Connection.js:198:25)
+      at C:\Git\cgrgba-api\src\driver\mysql\MysqlQueryRunner.ts:194:36
+      at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+    code: 'ER_TRUNCATED_WRONG_VALUE',
+    errno: 1292,
+    sqlMessage: "Incorrect datetime value: '0000-00-00 00:00:00' for column 'updatedDate' at row 1",
+    sqlState: '22007',
+    index: 0,
+    sql: 'ALTER TABLE `scheduling_history` ADD `updatedDate` datetime NOT NULL'
+  },
+  code: 'ER_TRUNCATED_WRONG_VALUE',
+  errno: 1292,
+  sqlMessage: "Incorrect datetime value: '0000-00-00 00:00:00' for column 'updatedDate' at row 1",
+  sqlState: '22007',
+  index: 0,
+  sql: 'ALTER TABLE `scheduling_history` ADD `updatedDate` datetime NOT NULL'
+}
+[2023-05-21T01:57:11.350] [INFO] default - Data Source has been initialized!
+[2023-05-21T01:57:11.352] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-21T01:57:11.352] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-21T01:57:11.352] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-21T01:57:11.359] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-21T01:57:11.361] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-21T01:57:11.362] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-21T01:57:11.363] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-21T01:57:11.364] [INFO] default - [cretePermissions] Find permission by code 6
+[2023-05-21T01:57:11.366] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-21T01:57:11.368] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-21T01:57:11.369] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-21T01:57:11.370] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-21T01:57:11.371] [INFO] default - [cretePermissions] Find permission by code 204
+[2023-05-21T01:57:11.372] [INFO] default - [cretePermissions] Find permission by code 205
+[2023-05-21T01:57:11.372] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-21T01:57:11.373] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-21T01:57:11.374] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-21T01:57:11.374] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-21T01:57:11.375] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-21T01:57:11.376] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-21T01:57:11.376] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-21T01:57:11.377] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-21T01:57:11.378] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-21T01:57:11.378] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-21T01:57:11.388] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-21T01:57:11.388] [INFO] default - [createUserNantoi] Find User by email
