@@ -1,6 +1,5 @@
 import { container } from "tsyringe";
 import { SchedulingResult } from "../../../../application/model/scheduling-manager/scheduling/SchedulingResult";
-import { GetSchedulingDetailParams } from "../../../../application/model/scheduling-manager/scheduling/params/GetSchedulingDetailParams";
 import { UpdateSchedulingParams } from "../../../../application/model/scheduling-manager/scheduling/params/UpdateSchedulingParams";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
@@ -17,14 +16,14 @@ import { ICitizenEngineRepository } from "../../../repository/ICitizenEngineRepo
 import { IHollydayEngineRepository } from "../../../repository/IHollydayEngineRepository";
 import { ISchedulingHistoryEngineRepository } from "../../../repository/ISchedulingHistoryEngineRespository";
 import { ISchedulingTimeEngineRepository } from "../../../repository/ISchedulingTimeEngineRepository";
-import { ISchedulingCategoryEngineRepository } from "../../../repository/ISchedulingCategoryEngineRepository";
 import Semaphore from "semaphore-async-await";
 import logger from "../../../../infrestructure/config/logger";
 import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { ErrorExceptionClass } from "../../../../infrestructure/exceptions/ErrorExceptionClass";
 import { Citizen } from "../../../model/Citizen";
 import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
-import { SchedulingStatusEnum } from "../../../model/enum/SchedulingStatusEnum";
+import { Service } from "../../../model/Service";
+import { ISchedulingServiceEngineRepository } from "../../../repository/ISchedulingServiceEngineRepository";
 
 
 export class UpdateSchedulingOperation extends UserAuthOperationTemplate<SchedulingResult, UpdateSchedulingParams>{
@@ -34,11 +33,12 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
     private readonly hollydayEngineRepository: IHollydayEngineRepository;
     private readonly schedulingHistoryEnginerepository: ISchedulingHistoryEngineRepository;
     private readonly citizenEngineRepository: ICitizenEngineRepository
-    private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository;
+    private readonly schedulingServiceEngineRepository: ISchedulingServiceEngineRepository;
 
 
     private schedulingEntitySource: Scheduling;
     private citizenEntitySource: Citizen
+    private serviceEntity: Service;
     private totalAvailableCollaborators: number = 0;
     private semaphore: Semaphore;
 
@@ -50,7 +50,8 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
         this.hollydayEngineRepository = container.resolve<IHollydayEngineRepository>("IHollydayEngineRepository");
         this.schedulingHistoryEnginerepository = container.resolve<ISchedulingHistoryEngineRepository>('ISchedulingHistoryEngineRepository')
         this.citizenEngineRepository = container.resolve<ICitizenEngineRepository>('ICitizenEngineRepository')
-        this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
+        this.schedulingServiceEngineRepository = container.resolve<ISchedulingServiceEngineRepository>('ISchedulingServiceEngineRepository')
+
     }
 
     protected async doValidateParameters(params: UpdateSchedulingParams): Promise<void> {
@@ -73,7 +74,6 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
         }
 
 
-
         const countEmail: number = await this.citizenEngineRepository.countEmailDuplicates(params.getCitizenEmail);
 
         if (!(this.citizenEntitySource.email === params.getCitizenEmail) && countEmail != 0) {
@@ -90,21 +90,19 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
         }
 
+        this.serviceEntity = await SchedulingUtil.findService(params.getServiceCode,
+            this.schedulingServiceEngineRepository);
 
-        logger.info("[UpdateSchedulingOperation] Begin of strict validation scheduling parameteres...")
         this.totalAvailableCollaborators = await SchedulingUtil.strictSchedulingValidate(
             params.getSchedulingDate,
             params.getSchedulingHour,
-            params.getServiceCode,
-            params.getCategoryCode,
+            this.serviceEntity.code,
             params.getCitizenEmail,
             params.getCitizenMobileNumber,
             this.citizenEngineRepository,
             this.hollydayEngineRepository,
             this.schedulingTimeEngineRepository,
-            this.schedulingEngineRepository,
-            this.schedulingCategoryEngineRepository)
-
+            this.schedulingEngineRepository)
 
 
     }
@@ -181,8 +179,8 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
         this.schedulingEntitySource.creationDate = new Date();
         this.schedulingEntitySource.citizen = this.citizenEntitySource;
-        this.schedulingEntitySource.category = paramsTarget.getCategoryCode.trim();
-        this.schedulingEntitySource.service = paramsTarget.getServiceCode.trim();
+        this.schedulingEntitySource.category = this.serviceEntity.schedulingCategory;
+        this.schedulingEntitySource.service = this.serviceEntity;
         this.schedulingEntitySource.date = paramsTarget.getSchedulingDate.trim();
         this.schedulingEntitySource.chosenHour = paramsTarget.getSchedulingHour.trim();
         this.schedulingEntitySource.hour = await SchedulingTimeUtil.getTimePart(paramsTarget.getSchedulingHour)

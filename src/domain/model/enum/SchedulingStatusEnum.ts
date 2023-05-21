@@ -1,3 +1,4 @@
+import { de } from "date-fns/locale";
 import { SchedulingStatus } from "../SchedulingStatus";
 
 export enum SchedulingStatusEnum {
@@ -26,6 +27,23 @@ export class SchedulingStatusMapper {
     }
 
     public static status(schedulingStatus: SchedulingStatusEnum): SchedulingStatus {
-        return new SchedulingStatus(schedulingStatus);
+        const status = this.mapper(schedulingStatus)
+        return new SchedulingStatus(status);
+    }
+
+    public static mapper(status: SchedulingStatusEnum): string {
+        switch (status) {
+            case SchedulingStatusEnum.FOR_ANSWERING:
+                return "FOR_ANSWERING";
+            case SchedulingStatusEnum.ANSWERED:
+                return "ANSWERED"
+            case SchedulingStatusEnum.CANCELED:
+                return "ANSWERED";
+            case SchedulingStatusEnum.REMOVED:
+                return "REMOVED"
+            default:
+                return "FOR_ANSWERING";
+
+        }
     }
 }

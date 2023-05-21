@@ -1,3 +1,6 @@
+import { CategoryEum } from "../../../../../domain/model/enum/CategoryEnum";
+import { SchedulingStatusEnum } from "../../../../../domain/model/enum/SchedulingStatusEnum";
+import { ServiceEnum } from "../../../../../domain/model/enum/ServiceEnum";
 import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthParamsTemplate";
 
 export class UpdateSchedulingParams extends AuthParamsTemplate {
@@ -8,8 +11,9 @@ export class UpdateSchedulingParams extends AuthParamsTemplate {
     private citizenMobileNumber: string;
     private schedulingDate: string;
     private schedulingHour: string;
-    private categoryCode: string;
-    private serviceCode: string;
+    private categoryCode: CategoryEum;
+    private serviceCode: ServiceEnum;
+
 
     constructor(authentication: string, schedulingId: number,
         citizenFullName: string,
@@ -17,8 +21,8 @@ export class UpdateSchedulingParams extends AuthParamsTemplate {
         citizenMobileNumber: string,
         schedulingDate: string,
         schedulingHour: string,
-        categoryCode: string,
-        serviceCode: string) {
+        categoryCode: CategoryEum,
+        serviceCode: ServiceEnum) {
 
         super(authentication);
         this.schedulingId = schedulingId;
@@ -28,7 +32,8 @@ export class UpdateSchedulingParams extends AuthParamsTemplate {
         this.schedulingDate = schedulingDate;
         this.schedulingHour = schedulingHour;
         this.categoryCode = categoryCode;
-        this.serviceCode = serviceCode
+        this.serviceCode = serviceCode;
+
 
     }
     get getSchedulingId(): number {
@@ -54,11 +59,13 @@ export class UpdateSchedulingParams extends AuthParamsTemplate {
         return this.schedulingHour;
     }
 
-    get getCategoryCode(): string {
+    get getCategory(): CategoryEum {
         return this.categoryCode;
     }
 
-    get getServiceCode(): string {
+    get getServiceCode(): ServiceEnum {
         return this.serviceCode;
     }
+
+
 }
