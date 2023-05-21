@@ -19,6 +19,7 @@ export class TokenEngineRepositoryImpl implements ITokenEngineRepository {
 
             return tokenRepository.createQueryBuilder('tokenSession')
                   .leftJoinAndSelect("tokenSession.user", "user")
+                  .leftJoinAndSelect("user.status", "status")
                   .where('tokenSession.token = :token', { token: token })
                   .getOne()
 
