@@ -94,6 +94,8 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
     async findCitizenSchedulingInfo(citizenEmail: string): Promise<Scheduling[]> {
         return schedulingEngineRepository.createQueryBuilder('scheduling')
             .leftJoinAndSelect('scheduling.citizen', 'citizen')
+            .leftJoinAndSelect('scheduling.service', 'service')
+            .leftJoinAndSelect('scheduling.category', 'category')
             .where('citizen.email = :citizenEmail', { citizenEmail })
             .andWhere('scheduling.status = :schedulingStatus', { schedulingStatus: SchedulingStatusEnum.FOR_ANSWERING })
             .getMany();

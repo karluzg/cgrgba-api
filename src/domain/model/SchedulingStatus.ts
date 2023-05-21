@@ -11,4 +11,13 @@ export class SchedulingStatus {
     description: string
 
 
+
+    constructor(code: string) {
+        this.code = code;
+    }
+
+    getCode(): string {
+        return this.code;
+    }
+
 }

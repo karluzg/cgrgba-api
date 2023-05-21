@@ -18,16 +18,16 @@ import { ISchedulingHistoryEngineRepository } from "../../repository/IScheduling
 import { SchedulingHistory } from "../../model/SchedulingHistory";
 import { EmailUtils } from "./EmailUtils";
 import { EmailTemplate } from "../../../infrestructure/template/EmailTemplate";
-import { ISchedulingCategoryEngineRepository } from "../../repository/ISchedulingCategoryEngineRepository";
-import { SchedulingCategory } from "../../model/SchedulingCategory";
+import { ISchedulingServiceEngineRepository } from "../../repository/ISchedulingServiceEngineRepository";
 import { Service } from "../../model/Service";
+import { Entity } from "typeorm";
 
 export class SchedulingUtil {
 
 
     public static async validateCitizenSchedulingFeature(schedulingDate: string,
         schedulingHour: string,
-        schedulingService: string,
+        serviceCodeInput: string,
         citizenEmail: string,
         schedulingEngineRepository: ISchedulingEngineRepository): Promise<boolean> {
 
@@ -52,21 +52,21 @@ export class SchedulingUtil {
 
             const verifyIfSameServiceAndSameDateAndHour = await this.verifyIfSameServiceAndSameDateAndHour(
                 scheduling,
-                schedulingService,
+                serviceCodeInput,
                 schedulingDate,
                 schedulingHour
             );
 
             const verifyIfAnotherServiceAndSameDateAndHour = await this.verifyIfAnotherServiceAndSameDateAndHour(
                 scheduling,
-                scheduling.service,
+                scheduling.service.code,
                 scheduling.date,
                 scheduling.chosenHour
             );
 
             const verifyIfSameServiceAndWaitingToAnswering = await this.verifyIfSameServiceAndWaitingToAnswering(
                 scheduling,
-                schedulingService);
+                serviceCodeInput);
 
             if (
                 verifyIfSameDateAndHour ||
@@ -97,7 +97,7 @@ export class SchedulingUtil {
             string, chosenHourParams: string): Promise<boolean> {
 
 
-        return schedulingDB.service == serviceParams
+        return schedulingDB.service.code == serviceParams
             && schedulingDB.date == schedulingDateParams
             && schedulingDB.chosenHour == chosenHourParams;
     }
@@ -107,7 +107,7 @@ export class SchedulingUtil {
         chosenHourParams: string): Promise<boolean> {
 
 
-        return schedulingDB.service != serviceParams
+        return schedulingDB.service.code != serviceParams
             && schedulingDB.date == schedulingDateParams
             && schedulingDB.chosenHour == chosenHourParams;
 
@@ -118,8 +118,8 @@ export class SchedulingUtil {
     private static async verifyIfSameServiceAndWaitingToAnswering(schedulingDB: Scheduling,
         serviceParams: string): Promise<boolean> {
 
-        return schedulingDB.service == serviceParams
-            && schedulingDB.status == SchedulingStatusEnum.FOR_ANSWERING
+        return schedulingDB.service.code == serviceParams
+            && schedulingDB.status.code == SchedulingStatusEnum.FOR_ANSWERING
     }
 
 
@@ -168,7 +168,7 @@ export class SchedulingUtil {
     public static async sendSchedulingByEmail(scheduling: Scheduling): Promise<void> {
 
         const emailMessage = await EmailUtils.generateSchedulingEmailBody(scheduling.citizen.fullName,
-            scheduling.date, scheduling.chosenHour, scheduling.hour, scheduling.service)
+            scheduling.date, scheduling.chosenHour, scheduling.hour, scheduling.service.name)
 
 
         const emailTemplate = new EmailTemplate();
@@ -177,20 +177,38 @@ export class SchedulingUtil {
         await emailTemplate.sendEmail(mailOption);
     }
 
+    public static async findService(serviceCodeInput: string,
+        schedulingServiceEngineRepository: ISchedulingServiceEngineRepository): Promise<Service> {
+        logger.info("[AddNewSchedulingOperation] Verify if if the service match the category...")
+
+        const serviceEntity = await schedulingServiceEngineRepository.findService(serviceCodeInput);
+
+        if (!serviceEntity) {
+            throw new InvalidParametersException(Field.SCHEDULING_SERVICE,
+                MiddlewareBusinessMessage.SCHEDULING_SERVICE_INVALID);
+        }
+
+        if (serviceEntity.schedulingCategory.code != serviceCodeInput) {
+
+            throw new InvalidParametersException(Field.SCHEDULING_SERVICE,
+                MiddlewareBusinessMessage.SCHEDULING_SERVICE_INVALID);
+        }
+
+        return serviceEntity;
+    }
+
 
 
     public static async strictSchedulingValidate(
         schedulingDate: string,
         schedulingHour: string,
         serviceCodeInput: string,
-        categoryCodeInput: string,
         citizenEmail: string,
         citizenNumber: string,
         citizenEngineRepository: ICitizenEngineRepository,
         hollydayEngineRepository: IHollydayEngineRepository,
         schedulingTimeEngineRepository: ISchedulingTimeEngineRepository,
         schedulingEngineRepository: ISchedulingEngineRepository,
-        schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository
     ): Promise<number> {
 
 
@@ -241,26 +259,6 @@ export class SchedulingUtil {
             throw new InvalidParametersException(Field.SCHEDULING_HOUR,
                 MiddlewareBusinessMessage.SCHEDULING_TIME_HOUR_CONFIG_NOT_EXIST);
         }
-
-        logger.info("[AddNewSchedulingOperation] Verify if if the service match the category...")
-
-        const categoryEntity: SchedulingCategory[] = await schedulingCategoryEngineRepository.findServiceByCategory(categoryCodeInput);
-
-        if (categoryEntity.length === 0) {
-            throw new InvalidParametersException(Field.SCHEDULING_CATEGORY,
-                MiddlewareBusinessMessage.SCHEDULING_CATEGORY_INVALD);
-        }
-
-        const matchService: string[] = categoryEntity.flatMap(category => category.services)
-            .map(service => service.code)
-            .filter(serviceCodeBd => serviceCodeBd === serviceCodeInput)
-
-
-        if (matchService.length === 0) {
-            throw new InvalidParametersException(Field.SCHEDULING_SERVICE,
-                MiddlewareBusinessMessage.SCHEDULING_SERVICE_INVALID);
-        }
-
 
 
         logger.info("[AddNewSchedulingOperation] Verify if begin date is less than the current date...")

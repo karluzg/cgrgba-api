@@ -16,13 +16,12 @@ import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngi
 import Semaphore from "semaphore-async-await";
 import { Citizen } from "../../../model/Citizen";
 import { ICitizenEngineRepository } from "../../../repository/ICitizenEngineRepository";
-import { SchedulingStatusEnum } from "../../../model/enum/SchedulingStatusEnum";
 import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { SchedulingHistory } from "../../../model/SchedulingHistory";
 import { SchedulingUtil } from "../../util/SchedulingUtil";
 import { ErrorExceptionClass } from "../../../../infrestructure/exceptions/ErrorExceptionClass";
-import { ISchedulingCategoryEngineRepository } from "../../../repository/ISchedulingCategoryEngineRepository";
-
+import { Service } from "../../../model/Service";
+import { ISchedulingServiceEngineRepository } from "../../../repository/ISchedulingServiceEngineRepository";
 
 export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResult, SchedulingParams>{
 
@@ -32,14 +31,14 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
     private readonly hollydayEngineRepository: IHollydayEngineRepository;
     private readonly schedulingHistoryEnginerepository: ISchedulingHistoryEngineRepository;
     private readonly citizenEngineRepository: ICitizenEngineRepository;
-    private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository;
+    private readonly schedulingServiceEngineRepository: ISchedulingServiceEngineRepository;
 
 
     private semaphore: Semaphore;
     private citizen: Citizen
+    private serviceEntity: Service;
 
     private totalAvailableCollaborators = 0;
-
 
 
     constructor() {
@@ -49,7 +48,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         this.hollydayEngineRepository = container.resolve<IHollydayEngineRepository>("IHollydayEngineRepository");
         this.schedulingHistoryEnginerepository = container.resolve<ISchedulingHistoryEngineRepository>('ISchedulingHistoryEngineRepository')
         this.citizenEngineRepository = container.resolve<ICitizenEngineRepository>('ICitizenEngineRepository')
-        this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
+        this.schedulingServiceEngineRepository = container.resolve<ISchedulingServiceEngineRepository>('ISchedulingServiceEngineRepository')
     }
 
 
@@ -58,19 +57,20 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
 
         logger.info("[AddNewSchedulingOperation] Begin of strict validation scheduling parameteres...")
 
+        this.serviceEntity = await SchedulingUtil.findService(params.getserviceCode,
+            this.schedulingServiceEngineRepository);
 
         this.totalAvailableCollaborators = await SchedulingUtil.strictSchedulingValidate(
             params.getSchedulingDate,
             params.getSchedulingHour,
-            params.getserviceCode,
-            params.getCategoryCode,
+            this.serviceEntity.code,
             params.getCitizenEmail,
             params.getCitizenMobileNumber,
             this.citizenEngineRepository,
             this.hollydayEngineRepository,
             this.schedulingTimeEngineRepository,
-            this.schedulingEngineRepository,
-            this.schedulingCategoryEngineRepository)
+            this.schedulingEngineRepository)
+
 
 
         logger.info("[AddNewSchedulingOperation] End of strict validation scheduling time parameteres...")
@@ -110,7 +110,6 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
             result.setStatus = Object.fromEntries(this.message)
             result.setScheduling = newScheduling;
 
-
         } catch (error) {
 
             if (error.errorClasseName == ErrorExceptionClass.INVALID_PARAMETERS) {
@@ -143,8 +142,6 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
 
     }
 
-
-
     private async createScheduling(params: SchedulingParams, citizen: Citizen): Promise<Scheduling> {
         const newScheduling = new Scheduling();
 
@@ -155,13 +152,13 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
 
         newScheduling.creationDate = new Date();
         newScheduling.citizen = citizen;
-        newScheduling.category = params.getCategoryCode.trim();
-        newScheduling.service = params.getserviceCode.trim();
+        newScheduling.category = this.serviceEntity.schedulingCategory;
+        newScheduling.service = this.serviceEntity;
         newScheduling.date = params.getSchedulingDate.trim();
         newScheduling.chosenHour = params.getSchedulingHour.trim();
         newScheduling.hour = await SchedulingTimeUtil.getTimePart(params.getSchedulingHour)
         newScheduling.minute = await SchedulingTimeUtil.getMinutePart(params.getSchedulingHour)
-        newScheduling.status = SchedulingStatusEnum.FOR_ANSWERING;
+
 
         logger.info("[AddNewSchedulingOperation] Saving user scheduling in Data Base: " + JSON.stringify(newScheduling))
 
@@ -208,7 +205,6 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         return await this.citizenEngineRepository.saveCitizenInfo(newCitizen);
 
     }
-
 
     protected initResult(): SchedulingResult {
         return new SchedulingResult()
