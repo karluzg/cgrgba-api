@@ -23,7 +23,7 @@ import { ErrorExceptionClass } from "../../../../infrestructure/exceptions/Error
 import { Citizen } from "../../../model/Citizen";
 import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
 import { Service } from "../../../model/Service";
-import { ISchedulingServiceEngineRepository } from "../../../repository/ISchedulingServiceEngineRepository";
+import { ISchedulingCategoryEngineRepository } from "../../../repository/ISchedulingCategoryEngineRepository";
 
 
 export class UpdateSchedulingOperation extends UserAuthOperationTemplate<SchedulingResult, UpdateSchedulingParams>{
@@ -33,7 +33,8 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
     private readonly hollydayEngineRepository: IHollydayEngineRepository;
     private readonly schedulingHistoryEnginerepository: ISchedulingHistoryEngineRepository;
     private readonly citizenEngineRepository: ICitizenEngineRepository
-    private readonly schedulingServiceEngineRepository: ISchedulingServiceEngineRepository;
+    private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository
+
 
 
     private schedulingEntitySource: Scheduling;
@@ -50,8 +51,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
         this.hollydayEngineRepository = container.resolve<IHollydayEngineRepository>("IHollydayEngineRepository");
         this.schedulingHistoryEnginerepository = container.resolve<ISchedulingHistoryEngineRepository>('ISchedulingHistoryEngineRepository')
         this.citizenEngineRepository = container.resolve<ICitizenEngineRepository>('ICitizenEngineRepository')
-        this.schedulingServiceEngineRepository = container.resolve<ISchedulingServiceEngineRepository>('ISchedulingServiceEngineRepository')
-
+        this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
     }
 
     protected async doValidateParameters(params: UpdateSchedulingParams): Promise<void> {
@@ -90,16 +90,16 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
         }
 
-        this.serviceEntity = await SchedulingUtil.findService(params.getServiceCode,
-            this.schedulingServiceEngineRepository);
+        this.serviceEntity = await SchedulingUtil.VailidateServiceMatchCategory(params.getCategory, params.getServiceCode,
+            this.schedulingCategoryEngineRepository);
+
+
 
         this.totalAvailableCollaborators = await SchedulingUtil.strictSchedulingValidate(
             params.getSchedulingDate,
             params.getSchedulingHour,
             this.serviceEntity.code,
-            params.getCitizenEmail,
-            params.getCitizenMobileNumber,
-            this.citizenEngineRepository,
+            this.citizenEntitySource,
             this.hollydayEngineRepository,
             this.schedulingTimeEngineRepository,
             this.schedulingEngineRepository)
@@ -122,7 +122,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
             await this.semaphore.acquire();
 
             const slotIsNotVailable: boolean = await SchedulingUtil.checkIfSlotAvailabe(params.getSchedulingDate, params.getSchedulingHour,
-                this.totalAvailableCollaborators, this.schedulingHistoryEnginerepository)
+                this.schedulingHistoryEnginerepository)
 
             if (slotIsNotVailable) {
                 throw new InvalidParametersException(Field.SCHEDULING_HOUR,
@@ -131,15 +131,16 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
             const newScheduling = await this.performScheduling(params, tokenSession);
 
-            await SchedulingUtil.isTobeBlockDateAndHour(newScheduling.chosenHour, newScheduling.date,
+            await SchedulingUtil.isTobeBlockDateAndHour(newScheduling,
                 this.totalAvailableCollaborators,
+                this.schedulingEngineRepository,
                 this.schedulingHistoryEnginerepository)
 
 
             this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_ADDED));
 
             result.setStatus = Object.fromEntries(this.message)
-            result.setScheduling = newScheduling;
+           // result.setScheduling = newScheduling;
 
 
         } catch (error) {
@@ -179,14 +180,13 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
         this.schedulingEntitySource.creationDate = new Date();
         this.schedulingEntitySource.citizen = this.citizenEntitySource;
-        this.schedulingEntitySource.category = this.serviceEntity.schedulingCategory;
         this.schedulingEntitySource.service = this.serviceEntity;
         this.schedulingEntitySource.date = paramsTarget.getSchedulingDate.trim();
         this.schedulingEntitySource.chosenHour = paramsTarget.getSchedulingHour.trim();
         this.schedulingEntitySource.hour = await SchedulingTimeUtil.getTimePart(paramsTarget.getSchedulingHour)
         this.schedulingEntitySource.minute = await SchedulingTimeUtil.getMinutePart(paramsTarget.getSchedulingHour)
 
-        return await this.schedulingEngineRepository.save(this.schedulingEntitySource);
+        return await this.schedulingEngineRepository.saveScheduling(this.schedulingEntitySource);
 
     }
 

@@ -34,8 +34,7 @@ export class EmailUtils {
 
     public static async generateSchedulingEmailBody(citizenName: string,
         schedulingDate: string,
-        schedulingHour: string,
-        hour: number,
+      schedulingHour: string,
         servico: string): Promise<EmailMessageTemplate> {
 
         const subject = "Consolado  Geral da Repúlica da Guiné-Bissau <geral@cgrgb.pt>"
@@ -107,7 +106,7 @@ export class EmailUtils {
         
             <h1>Schedule Confirmation</h1>
         
-            <p>${await SchedulingTimeUtil.getGreet(hour)}, ${citizenName}!</p>
+            <p>${await SchedulingTimeUtil.getGreet()} ${citizenName}!</p>
         
             <p>O seu agendamento foi confirmado. Aqui estão os detalhes:</p>
         

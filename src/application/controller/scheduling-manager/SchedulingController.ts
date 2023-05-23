@@ -71,7 +71,15 @@ export class SchedulingController {
 
         try {
 
-            const { beginCreationgDate, endCreationDate, beginSchedulingTime, endSchedulingTime, schedulingStatus, orderColumn, direction, pageNumber, pageSize } = request.query;
+            const { beginCreationgDate,
+                endCreationDate,
+                beginSchedulingTime,
+                endSchedulingTime,
+                schedulingStatus,
+                orderColumn,
+                direction,
+                pageNumber,
+                pageSize } = request.query;
 
             const authenticationToken = AuthValidator.checkAuthorizationToken(request);
 

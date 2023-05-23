@@ -61,8 +61,6 @@ export class User implements IUserActivable {
 
     @Column({ nullable: false, default: 3 })
     passwordTry: number;
-    
-
 
     @ManyToOne(() => UserStatus, (status) => status.code, { eager: true, nullable: false })
     status: UserStatus

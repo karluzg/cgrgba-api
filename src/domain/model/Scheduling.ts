@@ -34,9 +34,6 @@ export class Scheduling implements ISchedulingActivable {
     @ManyToOne(() => Service, (service) => service.code, { eager: true })
     service: Service
 
-    @ManyToOne(() => SchedulingCategory, (category) => category.code, { eager: true })
-    category: SchedulingCategory
-
 
     @ManyToOne(() => SchedulingStatus, (status) => status.code, { eager: true })
     status: SchedulingStatus
@@ -48,7 +45,7 @@ export class Scheduling implements ISchedulingActivable {
     @ManyToOne(() => User, (attendBy) => attendBy.id, { eager: true })
     attendBy: User
 
-    @Column({ type: 'timestamp' })
+    @Column({ nullable: true, type: 'timestamp' })
     attendDate: Date
 
     @IsDate()

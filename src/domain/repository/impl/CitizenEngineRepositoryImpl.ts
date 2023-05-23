@@ -29,14 +29,13 @@ export class CitizenEngineRepositoryImpl implements ICitizenEngineRepository {
     async findCitizenByEmailOrMobileNumber(citizenEmail: string, citizenMobileNumber: string): Promise<Citizen> {
 
 
+        const query = citizenEngineRepository.createQueryBuilder('citizen');
 
-        const query = citizenEngineRepository.createQueryBuilder('citizen')
-
-        if (citizenEmail.length != 0) {
-            query.where('citizen.email = :citizenEmail', { citizenEmail })
+        if (citizenEmail?.length !== 0) {
+            query.where('citizen.email = :citizenEmail', { citizenEmail });
         }
-        if (citizenMobileNumber.length != 0) {
-            query.where('citizen.mobileNumber = :citizenMobileNumber', { citizenMobileNumber })
+        if (citizenMobileNumber?.length !== 0) {
+            query.orWhere('citizen.mobileNumber = :citizenMobileNumber', { citizenMobileNumber });
         }
 
         return await query.getOne();

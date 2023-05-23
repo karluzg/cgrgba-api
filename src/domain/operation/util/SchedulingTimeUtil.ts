@@ -65,21 +65,21 @@ export class SchedulingTimeUtil {
 
     }
 
-    static async getGreet(hour: number): Promise<string> {
+    static async getGreet(): Promise<string> {
 
+        const currentHour = new Date().getHours();
 
         let greeting;
 
-        if (hour >= 5 && hour < 12) {
-            greeting = 'Bom dia';
-        } else if (hour >= 12 && hour < 18) {
-            greeting = 'Boa tarde';
+        if (currentHour >= 5 && currentHour < 12) {
+            greeting = 'Bom dia,';
+        } else if (currentHour >= 12 && currentHour < 18) {
+            greeting = 'Boa tarde,';
         } else {
-            greeting = 'Boa noite';
+            greeting = 'Boa noite,';
         }
 
         return greeting;
-
     }
 
     public static async isValidDate(date: string): Promise<boolean> {

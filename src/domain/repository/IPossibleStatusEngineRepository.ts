@@ -1,5 +1,5 @@
 import { SchedulingStatus } from "../model/SchedulingStatus";
 
-export interface IPossibleStatusEngineRepository {
+export interface ISchedulingPossibleStatusEngineRepository {
     findNextStatus(StatusschedulingStatus: SchedulingStatus): Promise<SchedulingStatus[]>
 }

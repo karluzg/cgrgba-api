@@ -1,5 +1,3 @@
-import { CategoryEum } from "../../../../domain/model/enum/CategoryEnum";
-import { ServiceEnum } from "../../../../domain/model/enum/ServiceEnum";
 import { ParamsTemplate } from "../../../../infrestructure/template/ParamsTemplate";
 
 export class SchedulingParams extends ParamsTemplate {
@@ -8,14 +6,14 @@ export class SchedulingParams extends ParamsTemplate {
     private citizenMobileNumber: string;
     private schedulingDate: string;
     private schedulingHour: string;
-    private categoryCode: CategoryEum;
-    private serviceCode: ServiceEnum;
+    private categoryCode: string;
+    private serviceCode: string;
 
     constructor(citizenFullName: string, citizenEmail: string, citizenMobileNumber: string,
         schedulingDate: string,
         schedulingHour: string,
-        categoryCode: CategoryEum,
-        serviceCode: ServiceEnum) {
+        categoryCode: string,
+        serviceCode: string) {
 
         super();
         this.citizenFullName = citizenFullName;
@@ -47,11 +45,11 @@ export class SchedulingParams extends ParamsTemplate {
         return this.schedulingHour;
     }
 
-    get getCategoryCode(): CategoryEum {
+    get getCategoryCode(): string {
         return this.categoryCode;
     }
 
-    get getserviceCode(): ServiceEnum {
+    get getserviceCode(): string {
         return this.serviceCode;
     }
 }

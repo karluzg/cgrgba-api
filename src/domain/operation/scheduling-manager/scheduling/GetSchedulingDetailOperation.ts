@@ -9,13 +9,14 @@ import { OperationValidatorManager } from "../../../../infrestructure/validator/
 import { Scheduling } from "../../../model/Scheduling";
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
-import { IPossibleStatusEngineRepository } from "../../../repository/IPossibleStatusEngineRepository";
+import { ISchedulingPossibleStatusEngineRepository } from "../../../repository/IPossibleStatusEngineRepository";
 import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngineRepository";
 
 export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<SchedulingResult, GetSchedulingDetailParams> {
 
     private readonly schedulingEngineRepository: ISchedulingEngineRepository;
-    private readonly schedulingPossibleStatusEngineRepository: IPossibleStatusEngineRepository;
+    private readonly schedulingPossibleStatusEngineRepository: ISchedulingPossibleStatusEngineRepository;
+
 
     private schedulingEntity: Scheduling;
 
@@ -23,13 +24,16 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
     constructor() {
         super(OperationNamesEnum.SCHEDULING_DETAIL, OperationValidatorManager.getSingletonInstance())
         this.schedulingEngineRepository = container.resolve<ISchedulingEngineRepository>('ISchedulingEngineRepository')
-        this.schedulingPossibleStatusEngineRepository = container.resolve<IPossibleStatusEngineRepository>('IPossibleStatusEngineRepository')
+        this.schedulingPossibleStatusEngineRepository = container.resolve<ISchedulingPossibleStatusEngineRepository>('ISchedulingPossibleStatusEngineRepository')
 
     }
 
     protected async doValidateParameters(params: GetSchedulingDetailParams): Promise<void> {
 
         this.schedulingEntity = await this.schedulingEngineRepository.findSchedulingById(params.getSchedulingId)
+
+
+        console.info("WATCH SCHEDULINGG CATEGORY ENTITY:" + this.schedulingEntity)
 
         if (!this.schedulingEntity) {
             throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID)
@@ -40,6 +44,7 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetSchedulingDetailParams, result: SchedulingResult): Promise<void> {
 
         result.setScheduling = this.schedulingEntity
+
         const schedulingPossibleStatus = await this.schedulingPossibleStatusEngineRepository.findNextStatus(this.schedulingEntity.status)
         result.setPossibleStatus = schedulingPossibleStatus
 

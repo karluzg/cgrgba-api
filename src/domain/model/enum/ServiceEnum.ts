@@ -1,3 +1,3 @@
 export enum ServiceEnum {
-    CONSULA_SERVIC = "Serviço Consular"
+    CONSULAR_SERVICE = "Serviço Consular"
 }

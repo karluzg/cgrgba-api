@@ -10,6 +10,7 @@ const schedulingHistoryEngineRepository = myDataSource.getRepository(SchedulingH
 @injectable()
 export class SchedulingHistoryEngineRepositoryImpl implements ISchedulingHistoryEngineRepository {
 
+
     async findSchedulingById(schedulingId: number): Promise<SchedulingHistory> {
         const schedulingHistory = await schedulingHistoryEngineRepository
             .createQueryBuilder('schedulingHistory')
@@ -20,25 +21,6 @@ export class SchedulingHistoryEngineRepositoryImpl implements ISchedulingHistory
         return schedulingHistory;
     }
 
-    async blockDateAndHour(schedulingDate: string, chosenHour: string): Promise<void> {
-        await schedulingHistoryEngineRepository
-            .createQueryBuilder('schedulingHistory')
-            .update(SchedulingHistory)
-            .set({ available: false })
-            .where('schedulingHistory.date = :schedulingDate', { schedulingDate })
-            .andWhere('schedulingHistory.chosenHour = :chosenHour', { chosenHour })
-            .execute();
-    }
-
-
-    async countNumberOfSchedulingByDateandHour(schedulingDate: string, chosenHour: string): Promise<SchedulingHistory[]> {
-        return schedulingHistoryEngineRepository.createQueryBuilder('schedulingHistory')
-            .leftJoinAndSelect('schedulingHistory.scheduling', 'scheduling')
-            .where('schedulingHistory.chosenHour = :chosenHour', { chosenHour })
-            .andWhere('schedulingHistory.date = :schedulingDate', { schedulingDate })
-            .andWhere('scheduling.date = :schedulingDate AND scheduling.chosenHour = :chosenHour')
-            .getMany();
-    }
 
 
     async checkIfSchedulingHistoryExist(schedulingDate: string, chosenHour: string): Promise<boolean> {
@@ -47,7 +29,7 @@ export class SchedulingHistoryEngineRepositoryImpl implements ISchedulingHistory
             .createQueryBuilder('schedulingHistory')
             .where('schedulingHistory.date = :schedulingDate', { schedulingDate })
             .andWhere('schedulingHistory.chosenHour = :chosenHour', { chosenHour })
-            .andWhere('schedulingHistory.available = :available', { available: true })
+            .andWhere('schedulingHistory.available = :available', { available: false })
             .getExists();
 
     }

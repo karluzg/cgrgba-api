@@ -1,21 +1,22 @@
 import { SchedulingPossibleStatus } from "../../model/SchedulingPossibleStatus";
 import { SchedulingStatus } from "../../model/SchedulingStatus";
-import { IPossibleStatusEngineRepository } from "../IPossibleStatusEngineRepository";
+import { ISchedulingPossibleStatusEngineRepository } from "../IPossibleStatusEngineRepository";
 
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
-const SchedulingPossibleStatusRepository = myDataSource.getRepository(SchedulingPossibleStatus);
+const schedulingPossibleStatusRepository = myDataSource.getRepository(SchedulingPossibleStatus);
 
-export class SchedulingPossibleStatusEngineImpl implements IPossibleStatusEngineRepository {
+export class SchedulingPossibleStatusEngineImpl implements ISchedulingPossibleStatusEngineRepository {
 
     async findNextStatus(schedulingStatus: SchedulingStatus): Promise<SchedulingStatus[]> {
-        const queryBuilder = SchedulingPossibleStatusRepository.createQueryBuilder("SchedulingPossibleStatus")
-            .select("s.nextStatus")
-            .where("s.currentStatus = :status", { schedulingStatus });
+        return await schedulingPossibleStatusRepository.createQueryBuilder('schedulingPossibleStatus')
+            .select('schedulingPossibleStatus.nextStatus')
+            .leftJoin('schedulingPossibleStatus.currentStatus', 'currentStatus')
+            .where('currentStatus.code = :schedulingStatus', { schedulingStatus: schedulingStatus.code }).getMany();
 
-        const result = await queryBuilder.getMany();
-        return result.map((row) => row.nextStatus);
+
     }
+
 
 
 

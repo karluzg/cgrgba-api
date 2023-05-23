@@ -7,9 +7,9 @@ const schedulingCategoryEngineRepository = myDataSource.getRepository(Scheduling
 
 
 export class SchedulingCategoryEngineRepositoryImpl implements ISchedulingCategoryEngineRepository {
-    findServiceByCategory(categoryCode: string): Promise<SchedulingCategory[]> {
+    async findServiceByCategory(categoryCode: string): Promise<SchedulingCategory[]> {
 
-        return schedulingCategoryEngineRepository.createQueryBuilder('schedulingCategory')
+        return await schedulingCategoryEngineRepository.createQueryBuilder('schedulingCategory')
             .leftJoinAndSelect("schedulingCategory.services", "service")
             .where('schedulingCategory.code = :categoryCode', { categoryCode })
             .getMany()

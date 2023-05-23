@@ -1,5 +1,5 @@
 
-import { IsNull } from "typeorm";
+
 import { IPage } from "../../../infrestructure/pageable-manager/IPage";
 import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
 import { DirectionEnum } from "../../../infrestructure/pageable-manager/enum/DirectionEnum";
@@ -7,16 +7,42 @@ import { Scheduling } from "../../model/Scheduling";
 import { SchedulingStatusEnum } from "../../model/enum/SchedulingStatusEnum";
 import { ISchedulingEngineRepository } from "../ISchedulingEngineRepository";
 
+
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const schedulingEngineRepository = myDataSource.getRepository(Scheduling)
 
 export class SchedulingEngineRepositoryImpl implements ISchedulingEngineRepository {
+
+    async findBeginDateAndHour(schedulingDate: string, chosenHour: string): Promise<Scheduling[]> {
+
+        return schedulingEngineRepository
+            .createQueryBuilder('scheduling')
+            .where('scheduling.chosenHour = :chosenHour', { chosenHour })
+            .andWhere('scheduling.date = :schedulingDate', { schedulingDate })
+            .getMany();
+    }
+
+
+
+    async updateScheduling(scheduling: Scheduling): Promise<void> {
+
+        /*  await schedulingEngineRepository
+          .createQueryBuilder() // No need to specify the alias
+          .update(Scheduling)
+          .set({ available: false })
+          .where('date = :schedulingDate', { schedulingDate }) // Use column name directly
+          .andWhere('chosenHour = :chosenHour', { chosenHour }) // Use column name directly
+          .execute();*/
+    }
 
 
     async findSchedulingById(schedulingId: number): Promise<Scheduling> {
 
         return schedulingEngineRepository.createQueryBuilder('scheduling')
             .leftJoinAndSelect('scheduling.citizen', 'citizen')
+            .leftJoinAndSelect('scheduling.service', 'service')
+            .leftJoinAndSelect('scheduling.category', 'category')
+            .leftJoinAndSelect('scheduling.status', 'status')
             .where('scheduling.id = :schedulingId', { schedulingId })
             .getOne();
     }
@@ -86,18 +112,24 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
         return new PageImpl<Scheduling>(items, pageNumber, pageSize, totalItems, totalPages);
     }
 
-    async save(schedulingTime: Scheduling): Promise<Scheduling> {
+    async saveScheduling(scheduling: Scheduling): Promise<Scheduling> {
 
-        return await schedulingEngineRepository.save(schedulingTime)
+
+        return await schedulingEngineRepository.save(scheduling)
+
+
+
     }
+
+
 
     async findCitizenSchedulingInfo(citizenEmail: string): Promise<Scheduling[]> {
         return schedulingEngineRepository.createQueryBuilder('scheduling')
             .leftJoinAndSelect('scheduling.citizen', 'citizen')
             .leftJoinAndSelect('scheduling.service', 'service')
-            .leftJoinAndSelect('scheduling.category', 'category')
+            .leftJoinAndSelect('scheduling.status', 'status')
             .where('citizen.email = :citizenEmail', { citizenEmail })
-            .andWhere('scheduling.status = :schedulingStatus', { schedulingStatus: SchedulingStatusEnum.FOR_ANSWERING })
+            .andWhere('status.description = :schedulingStatus', { schedulingStatus: SchedulingStatusEnum.FOR_ANSWERING })
             .getMany();
     }
 

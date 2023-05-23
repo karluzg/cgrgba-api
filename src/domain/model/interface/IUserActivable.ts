@@ -1,5 +1,6 @@
 import { IActivable } from "./IActivable";
 
+
 export interface IUserActivable extends IActivable {
 
 
