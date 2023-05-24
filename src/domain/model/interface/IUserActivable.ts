@@ -1,4 +1,4 @@
-import { IActivable } from "./IActivable";
+import { IActivable } from "IActivable";
 
 
 export interface IUserActivable extends IActivable {

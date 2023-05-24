@@ -79,6 +79,7 @@ async function creteRoleAdmin(permissions: Permission[]) {
     let adminRole: Role;
     try {
         adminRole = await roleRepository.findRoleByName("ADMIN")
+        logger.info("[creteRoleAdmin] Role was found:" + adminRole)
     } catch (error) {
         adminRole = null
     }
@@ -123,13 +124,15 @@ async function cretePermissions() {
 
     //add new user
     const permissions = []
+    logger.info("[cretePermissions] Start creating all permission automatically..")
     for (const operation in OperationNamesEnum) {
         if (isNaN(Number(operation))) {
-            logger.info("[cretePermissions] Find permission by code " + OperationNamesEnum[operation])
+
             let dbPermission: Permission;
             try {
 
                 dbPermission = await permissionRepository.findPermissionByCode(operation)
+
             } catch (error) {
 
                 dbPermission = null
@@ -185,6 +188,7 @@ async function cretePermissions() {
                 permissions.push(dbPermission)
         }
     }
+    logger.info("[cretePermissions] End creating all permission automatically..")
     return permissions
 
 }

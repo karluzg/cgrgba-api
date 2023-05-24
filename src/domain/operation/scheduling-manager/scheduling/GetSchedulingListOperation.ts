@@ -33,117 +33,129 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
         logger.info("[GetSchedulingListOperation] Begin of strict validation scheduling parameteres...")
 
+        const { getBeginSchedulingTime, getEndSchedulingTime, getBeginCreationDate, getEndCreationDate } = params;
 
-
-        logger.info("[GetSchedulingListOperation] validate if end scheduling time input is filled")
-        if (typeof params.getEndSchedulingTime !== 'undefined' && params.getEndSchedulingTime !== '') {
-
-            // length of hour should be 5-> 00:00
-            if (params.getEndSchedulingTime.length != 5) {
-
-                throw new InvalidParametersException(Field.SCHEDULING_END_SCHEDULING_TIME,
+        if (getEndSchedulingTime) {
+            if (getEndSchedulingTime.length !== 5) {
+                throw new InvalidParametersException(
+                    Field.SCHEDULING_END_SCHEDULING_TIME,
                     MiddlewareBusinessMessage.SCHEDULING_END_SCHEDULING_TIME_INAVLID);
             }
 
-            if (typeof params.getBeginSchedulingTime == 'undefined') {
-                throw new InvalidParametersException(Field.SCHEDULING_END_SCHEDULING_TIME,
-                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_MANDATORY);
-
+            if (!getBeginSchedulingTime) {
+                throw new InvalidParametersException(
+                    Field.SCHEDULING_END_SCHEDULING_TIME,
+                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_MANDATORY
+                );
             }
 
-            if (params.getBeginSchedulingTime == '') {
-
-                throw new InvalidParametersException(Field.SCHEDULING_BEGIN_SCHEDULING_TIME,
-                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_MANDATORY);
-
+            if (getBeginSchedulingTime === '') {
+                throw new InvalidParametersException(
+                    Field.SCHEDULING_BEGIN_SCHEDULING_TIME,
+                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_MANDATORY
+                );
             }
 
-            if (params.getBeginSchedulingTime.length != 5) {
-
-                throw new InvalidParametersException(Field.SCHEDULING_BEGIN_SCHEDULING_TIME,
-                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID);
+            if (getBeginSchedulingTime.length !== 5) {
+                throw new InvalidParametersException(
+                    Field.SCHEDULING_BEGIN_SCHEDULING_TIME,
+                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID
+                );
             }
 
-            const beginSchedulingTime = await SchedulingTimeUtil.getTimePart(params.getBeginSchedulingTime);
-            const endchedulingTime = await SchedulingTimeUtil.getTimePart(params.getEndSchedulingTime);
+            const beginSchedulingTime = await SchedulingTimeUtil.getTimePart(getBeginSchedulingTime);
+            const endSchedulingTime = await SchedulingTimeUtil.getTimePart(getEndSchedulingTime);
+            const beginSchedulingMinute = await SchedulingTimeUtil.getMinutePart(getBeginSchedulingTime);
+            const endSchedulingMinute = await SchedulingTimeUtil.getMinutePart(getEndSchedulingTime);
 
-            const beginSchedulingMinute = await SchedulingTimeUtil.getMinutePart(params.getBeginSchedulingTime);
-            const endSchedulingMinute = await SchedulingTimeUtil.getMinutePart(params.getEndSchedulingTime);
-
-
-            if ((endchedulingTime < beginSchedulingTime) ||
-                (beginSchedulingTime == endchedulingTime &&
-                    endSchedulingMinute < beginSchedulingMinute)) {
-
-                throw new InvalidParametersException(Field.SCHEDULING_TIME_END_SCHEDUULING_TIME,
-                    MiddlewareBusinessMessage.SCHEDULING_TIME_END_SCHEDULING_TIME_GREATER_THAN_BEGIN_SCHEDULING_TIME)
+            if (
+                endSchedulingTime < beginSchedulingTime ||
+                (beginSchedulingTime === endSchedulingTime && endSchedulingMinute < beginSchedulingMinute)
+            ) {
+                throw new InvalidParametersException(
+                    Field.SCHEDULING_TIME_END_SCHEDUULING_TIME,
+                    MiddlewareBusinessMessage.SCHEDULING_TIME_END_SCHEDULING_TIME_GREATER_THAN_BEGIN_SCHEDULING_TIME
+                );
             }
-        } else if (typeof params.getBeginSchedulingTime !== 'undefined' && params.getBeginSchedulingTime !== '') {
-
-            if (params.getBeginSchedulingTime.length != 5) {
-
-                throw new InvalidParametersException(Field.SCHEDULING_BEGIN_SCHEDULING_TIME,
-                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID);
-            }
-
-        }
-
-        if (typeof params.getBeginCreationDate !== 'undefined' && params.getBeginCreationDate !== '') {
-
-            console.info("[GetSchedulingListOperation] BegindCreationDate is filled. Validate if it a valid date")
-            const isInValieBeginCreatinDate = await SchedulingTimeUtil.isValidDate(params.getBeginCreationDate)
-            if (!isInValieBeginCreatinDate) {
-                throw new InvalidParametersException(Field.SCHEDULING_END_CREATION_DATE,
-                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_CREATION_DATE_INVALID)
+        } else if (getBeginSchedulingTime) {
+            if (getBeginSchedulingTime.length !== 5) {
+                throw new InvalidParametersException(
+                    Field.SCHEDULING_BEGIN_SCHEDULING_TIME,
+                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID
+                );
             }
         }
 
-        if (typeof params.getEndCreationDate !== 'undefined' && params.getEndCreationDate !== '') {
-
-            console.info("[GetSchedulingListOperation] EndCreationDate is filled. Validate if it a valid date")
-            const isInValidEndCreatinDate = await SchedulingTimeUtil.isValidDate(params.getEndCreationDate)
-            if (!isInValidEndCreatinDate) {
-                throw new InvalidParametersException(Field.SCHEDULING_END_CREATION_DATE,
-                    MiddlewareBusinessMessage.SCHEDULING_END_CREATION_DATE_INVALID)
+        if (getBeginCreationDate) {
+            console.info("[GetSchedulingListOperation] BeginCreationDate is filled. Validate if it is a valid date.");
+            const isValidBeginCreationDate = await SchedulingTimeUtil.isValidDate(getBeginCreationDate);
+            if (!isValidBeginCreationDate) {
+                throw new InvalidParametersException(
+                    Field.SCHEDULING_BEGIN_CREATION_DATE,
+                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_CREATION_DATE_INVALID
+                );
             }
         }
 
-
-
-        logger.info("[GetSchedlingListOperation] validate if end scheduling date is filled")
-
-        if (!isNaN(new Date(params.getEndCreationDate).getTime())) {
-            if (isNaN(new Date(params.getBeginCreationDate).getTime())) {
-
-                throw new InvalidParametersException(Field.SCHEDULING_BEGIN_CREATION_DATE,
-                    MiddlewareBusinessMessage.SCHEDULING_BGIN_CREATION_DATE_MANDATORY)
-            } else {
-
-
-                this.beginCreationDate = startOfDay(new Date(params.getBeginCreationDate))
-                this.endCreationDate = startOfDay(addDays(new Date(params.getEndCreationDate), 1))
-
-
-                if (new Date(params.getEndCreationDate).getTime() < new Date(params.getBeginCreationDate).getTime()) {
-                    throw new InvalidParametersException(Field.SCHEDULING_END_CREATION_DATE,
-                        MiddlewareBusinessMessage.SCHEDULING_END_CREATION_DATE_LESS_THAN_BEGIN_CREATION_DATE)
-                }
-
+        if (getEndCreationDate) {
+            console.info("EndCreationDate is filled. Validate if it is a valid date.");
+            const isValidEndCreationDate = await SchedulingTimeUtil.isValidDate(getEndCreationDate);
+            if (!isValidEndCreationDate) {
+                throw new InvalidParametersException(
+                    Field.SCHEDULING_END_CREATION_DATE,
+                    MiddlewareBusinessMessage.SCHEDULING_END_CREATION_DATE_INVALID
+                );
             }
+        }
+
+        logger.info("Validate if end scheduling date is filled");
+
+        const isValidBeginCreationDate = !isNaN(new Date(getBeginCreationDate).getTime());
+        const isValidEndCreationDate = !isNaN(new Date(getEndCreationDate).getTime());
+
+        if (isValidEndCreationDate) {
+            if (!isValidBeginCreationDate) {
+                throw new InvalidParametersException(
+                    Field.SCHEDULING_BEGIN_CREATION_DATE,
+                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_CREATION_DATE_INVALID);
+            }
+
+            const beginCreationDate = startOfDay(new Date(getBeginCreationDate));
+            const endCreationDate = startOfDay(addDays(new Date(getEndCreationDate), 1));
+
+            if (endCreationDate.getTime() < beginCreationDate.getTime()) {
+                throw new InvalidParametersException(
+                    Field.SCHEDULING_END_CREATION_DATE,
+                    MiddlewareBusinessMessage.SCHEDULING_END_CREATION_DATE_LESS_THAN_BEGIN_CREATION_DATE
+                );
+            }
+
+            this.beginCreationDate = beginCreationDate;
+            this.endCreationDate = endCreationDate;
+        } else if (isValidBeginCreationDate) {
+            const beginCreationDate = startOfDay(new Date(getBeginCreationDate));
+            const endCreationDate = startOfDay(addDays(beginCreationDate, 1));
+
+            this.beginCreationDate = beginCreationDate;
+            this.endCreationDate = endCreationDate;
+
+            logger.info("Begin default Date:", beginCreationDate);
+            logger.info("End default Date:", endCreationDate);
+
+
         } else {
-
-
-
-            logger.info("[GetSchedlingListOperation] Set default beginSchedulingDate and endSchedulingDate");
-
             const beginCreationDateDefault = await SchedulingTimeUtil.getDefaultCreationDateWithouTime();
-            logger.info("beginCreationDateDefault %", beginCreationDateDefault);
+            logger.info("begin default Date:", beginCreationDateDefault);
 
             this.beginCreationDate = startOfDay(new Date(beginCreationDateDefault));
             this.endCreationDate = startOfDay(addDays(this.beginCreationDate, 1));
-
-
         }
+
+
+
+        logger.info("[GetSchedulingListOperation] validate if end scheduling time input is filled")
+
+
     }
 
 
@@ -160,13 +172,14 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
 
 
-        logger.info("[GetSchedlingListOperation] Set default paramenters to execute query...")
+        logger.info("Set default parameters to execute query...")
 
         const beginSchedulingTime = await SchedulingTimeUtil.getTimePart(params.getBeginSchedulingTime);
         const endchedulingTime = await SchedulingTimeUtil.getTimePart(params.getEndSchedulingTime);
 
         const beginSchedulingMinute = await SchedulingTimeUtil.getMinutePart(params.getEndSchedulingTime);
         const endSchedulingMinute = await SchedulingTimeUtil.getMinutePart(params.getEndSchedulingTime);
+
 
 
 

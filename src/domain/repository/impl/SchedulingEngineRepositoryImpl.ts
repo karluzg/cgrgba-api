@@ -67,49 +67,50 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
 
 
-        const orderColumn = `scheduling.${defaultorderColumn}`; // to avoid SQL Injection
 
+        const orderColumn = `scheduling.${defaultorderColumn}`; // to avoid SQL Injection
         const query = schedulingEngineRepository.createQueryBuilder('scheduling');
 
         query.orderBy(orderColumn, direction);
 
-        query.where('scheduling.creationDate >= :beginSchedulingDate', { beginSchedulingDate });
-        query.andWhere('scheduling.creationDate <= :endSchedulingDate', { endSchedulingDate });
+        query.where('scheduling.creationDate BETWEEN :beginSchedulingDate AND :endSchedulingDate', {
+            beginSchedulingDate,
+            endSchedulingDate
+        });
 
-
-
-        if (typeof beginSchedulingTime !== 'undefined') {
+        if (beginSchedulingTime !== undefined) {
             query.andWhere('scheduling.hour >= :beginSchedulingTime', { beginSchedulingTime });
-
         }
 
-        if (typeof endSchedulingTime !== 'undefined') {
+        if (endSchedulingTime !== undefined) {
             query.andWhere('scheduling.hour <= :endSchedulingTime', { endSchedulingTime });
         }
 
-        if (typeof endSchedulingTime !== 'undefined') {
+        if (beginSchedulingMinute !== undefined) {
             query.andWhere('scheduling.minute >= :beginSchedulingMinute', { beginSchedulingMinute });
         }
 
-        if (typeof endSchedulingTime !== 'undefined') {
+        if (endSchedulingMinute !== undefined) {
             query.andWhere('scheduling.minute <= :endSchedulingMinute', { endSchedulingMinute });
         }
 
-        if (schedulingStatus != SchedulingStatusEnum.REMOVED) {
+        if (schedulingStatus !== SchedulingStatusEnum.REMOVED) {
             query.andWhere('scheduling.status LIKE :schedulingStatus', { schedulingStatus: `%${schedulingStatus}%` });
-
         }
-
 
         const [items, totalItems] = await query
             .skip(skip)
             .take(pageSize)
             .getManyAndCount();
 
-
         const totalPages = Math.ceil(totalItems / pageSize);
 
+        //console.log(query.getSql()) 
+
+
         return new PageImpl<Scheduling>(items, pageNumber, pageSize, totalItems, totalPages);
+
+
     }
 
     async saveScheduling(scheduling: Scheduling): Promise<Scheduling> {

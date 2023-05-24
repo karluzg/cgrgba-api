@@ -260,7 +260,7 @@ export class SchedulingUtil {
 
         const schedulingTimeEntity: SchedulingTimeConfiguration[] = await schedulingTimeEngineRepository.findBySchedulingDate(schedulingDateInput);
 
-        console.info("SCHEDULING ENTITY FOUND: " + JSON.stringify(schedulingTimeEntity));
+        logger.info("Scheduling entity founded " + JSON.stringify(schedulingTimeEntity));
 
         if (schedulingTimeEntity.length === 0) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);
@@ -275,7 +275,7 @@ export class SchedulingUtil {
             .filter(value => value === schedulingHour);
 
         if (matchHours.length === 0) {
-            throw new InvalidParametersException(Field.SCHEDULING_HOUR, MiddlewareBusinessMessage.SCHEDULING_TIME_HOUR_CONFIG_NOT_EXIST);
+            throw new InvalidParametersException(Field.SCHEDULING_HOUR, MiddlewareBusinessMessage.SCHEDULING_AVAILABLE);
         }
 
         logger.info("[AddNewSchedulingOperation] Verifying if begin date is earlier than the current date...");
@@ -283,8 +283,8 @@ export class SchedulingUtil {
         const beginDate = new Date(schedulingDate);
         const currentDate = new Date();
 
-        if (beginDate <= currentDate) {
-            throw new InvalidParametersException(Field.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE_GREATHER_THAN_CURRENT_DATE);
+        if (beginDate < currentDate) {
+            throw new InvalidParametersException(Field.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE, MiddlewareBusinessMessage.SCHEDULING_AVAILABLE);
         }
 
         logger.info("[AddNewSchedulingOperation] Begin searching Citizen by email to start validation of scheduling features...");

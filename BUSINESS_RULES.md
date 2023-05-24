@@ -27,10 +27,16 @@ UC-08 - INTRODUZIR FAIXAS HORÁRIAS
 8. Se a data de fim for null, deve ser considerada apenas a configuração do agendamento da data de início
 
  UC-09 - LISTAR FAIXAS HORÁRIAS
-  1. A Data de agendamento deve ser superior ou igual a data atual
-  1. Excluir os fins de semanas
-  2. Exluir feriados (tabela Hollyday)
-  3. Excluir agendamentos que estão na tabela SchedulingHistory
+  
+   1. [A listagem das horas disponíveis para data atuala ser apresentado, depende da hora em que o utilizador estiver a efetuar o agendamento]
+       2.1 [HORÁRIO EM QUE O CIDADÃO ESTÁ A EFETUAR O AGENDAMENTO]
+        2.1.1 Deve ser listado apenas as horas superiores a hora da data atual em que o utilizador selecionou a data para verificar a disponibilidade horária 
+		
+      
+
+  3. Excluir os fins de semanas
+  4. Exluir feriados (tabela Hollyday)
+  5. Excluir agendamentos que estão na tabela SchedulingHistory
 
 # SCHEDULING
 
@@ -42,6 +48,8 @@ UC-12 - EFETUAR AGENDAMENTO
    - Agendar o mesmo serviço na mesma data e hora
    - Agendar outros serviços na mesma data e hora
    - Agendar o mesmo serviço que ainda estão com estado "por atender" (E se o cidadão for atendido, mas o funcionário esqueceu de alterar o estado?)
+   - Agendar na mesma hora que a hora da data atual
+  
   
 2. O cidadão só pode agendar até 1h antes do fim do trabalho  -QUESTIONAR A DOUTORA
 
