@@ -12,6 +12,7 @@ import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExc
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
 import { RequestHandler, ParamsDictionary } from "express-serve-static-core";
 import { ParsedQs } from "qs";
+import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 
 
 export class SessionController {
@@ -40,6 +41,10 @@ export class SessionController {
 
       } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
         throw new InvalidParametersException(error.field, error.message)
+        
+      } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
+        throw new NotFoundException(error.field, error.message)
+
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message)

@@ -26109,3 +26109,271 @@
 [2023-05-17T20:58:21.523] [INFO] default - [creteRoleAdmin] Find role by name
 [2023-05-17T20:58:21.537] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
 [2023-05-17T20:58:21.537] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-17T21:02:17.279] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-17T21:02:17.280] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-17T21:02:17.281] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-17T21:02:17.285] [INFO] default - [LoginOperation] check password for user User {
+  id: '1',
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  creationDate: 2023-05-16T02:13:33.000Z,
+  passwordHash: '$2b$10$RcS8/PMM/rvx56il5tq4UO8XfBwPzjOv/6X.gHRPbzKJxLlK2KXNq',
+  passwordSalt: '$2b$10$RcS8/PMM/rvx56il5tq4UO',
+  passwordTry: 3,
+  status: 'Ativo'
+}
+[2023-05-17T21:02:17.286] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-17T21:02:17.339] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-17T21:02:17.339] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-17T21:02:17.367] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-17T21:02:17.367] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"id":"1","fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","creationDate":"2023-05-16T02:13:33.000Z","passwordHash":"$2b$10$RcS8/PMM/rvx56il5tq4UO8XfBwPzjOv/6X.gHRPbzKJxLlK2KXNq","passwordSalt":"$2b$10$RcS8/PMM/rvx56il5tq4UO","passwordTry":3,"status":"Ativo"}}
+[2023-05-17T21:03:53.571] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-17T21:03:53.571] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-17T21:03:53.571] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-17T21:03:53.574] [INFO] default - [LoginOperation] check password for user User {
+  id: '1',
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  creationDate: 2023-05-16T02:13:33.000Z,
+  passwordHash: '$2b$10$RcS8/PMM/rvx56il5tq4UO8XfBwPzjOv/6X.gHRPbzKJxLlK2KXNq',
+  passwordSalt: '$2b$10$RcS8/PMM/rvx56il5tq4UO',
+  passwordTry: 3,
+  status: 'Ativo'
+}
+[2023-05-17T21:03:53.575] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-17T21:03:53.630] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-17T21:03:53.630] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-17T21:03:53.646] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-17T21:03:53.647] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"id":"1","fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","creationDate":"2023-05-16T02:13:33.000Z","passwordHash":"$2b$10$RcS8/PMM/rvx56il5tq4UO8XfBwPzjOv/6X.gHRPbzKJxLlK2KXNq","passwordSalt":"$2b$10$RcS8/PMM/rvx56il5tq4UO","passwordTry":3,"status":"Ativo"}}
+[2023-05-17T21:05:46.726] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-17T21:05:46.726] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-17T21:05:46.726] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-17T21:05:46.729] [INFO] default - [LoginOperation] check password for user User {
+  id: '1',
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  creationDate: 2023-05-16T02:13:33.000Z,
+  passwordHash: '$2b$10$RcS8/PMM/rvx56il5tq4UO8XfBwPzjOv/6X.gHRPbzKJxLlK2KXNq',
+  passwordSalt: '$2b$10$RcS8/PMM/rvx56il5tq4UO',
+  passwordTry: 3,
+  status: 'Ativo'
+}
+[2023-05-17T21:05:46.729] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-17T21:05:46.782] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-17T21:05:46.782] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-17T21:05:46.800] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-17T21:05:46.800] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"id":"1","fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","creationDate":"2023-05-16T02:13:33.000Z","passwordHash":"$2b$10$RcS8/PMM/rvx56il5tq4UO8XfBwPzjOv/6X.gHRPbzKJxLlK2KXNq","passwordSalt":"$2b$10$RcS8/PMM/rvx56il5tq4UO","passwordTry":3,"status":"Ativo"}}
+[2023-05-17T21:14:06.872] [INFO] default - Data Source has been initialized!
+[2023-05-17T21:14:06.873] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-17T21:14:06.874] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-17T21:14:06.874] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-17T21:14:06.881] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-17T21:14:06.883] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-17T21:14:06.884] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-17T21:14:06.886] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-17T21:14:06.888] [INFO] default - [cretePermissions] Find permission by code 6
+[2023-05-17T21:14:06.891] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-17T21:14:06.893] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-17T21:14:06.894] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-17T21:14:06.896] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-17T21:14:06.897] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-17T21:14:06.899] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-17T21:14:06.901] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-17T21:14:06.902] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-17T21:14:06.904] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-17T21:14:06.906] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-17T21:14:06.913] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-17T21:14:06.916] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-17T21:14:06.920] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-17T21:14:06.920] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-17T21:14:06.933] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-17T21:14:06.933] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-17T21:14:51.000] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-17T21:14:51.000] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-17T21:14:51.001] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-17T21:14:51.005] [INFO] default - [LoginOperation] check password for user User {
+  id: '1',
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  creationDate: 2023-05-16T02:13:33.000Z,
+  passwordHash: '$2b$10$RcS8/PMM/rvx56il5tq4UO8XfBwPzjOv/6X.gHRPbzKJxLlK2KXNq',
+  passwordSalt: '$2b$10$RcS8/PMM/rvx56il5tq4UO',
+  passwordTry: 3,
+  status: 'Ativo'
+}
+[2023-05-17T21:14:51.007] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-17T21:14:51.082] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-17T21:14:51.082] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"id":"1","fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","creationDate":"2023-05-16T02:13:33.000Z","passwordHash":"$2b$10$RcS8/PMM/rvx56il5tq4UO8XfBwPzjOv/6X.gHRPbzKJxLlK2KXNq","passwordSalt":"$2b$10$RcS8/PMM/rvx56il5tq4UO","passwordTry":2,"status":"Ativo"}}
+[2023-05-17T21:15:29.178] [INFO] default - Data Source has been initialized!
+[2023-05-17T21:15:29.180] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-17T21:15:29.180] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-17T21:15:29.180] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-17T21:15:29.188] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-17T21:15:29.196] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-17T21:15:29.199] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-17T21:15:29.201] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-17T21:15:29.203] [INFO] default - [cretePermissions] Find permission by code 6
+[2023-05-17T21:15:29.204] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-17T21:15:29.207] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-17T21:15:29.209] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-17T21:15:29.212] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-17T21:15:29.215] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-17T21:15:29.219] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-17T21:15:29.223] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-17T21:15:29.226] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-17T21:15:29.229] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-17T21:15:29.234] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-17T21:15:29.236] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-17T21:15:29.237] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-17T21:15:29.240] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-17T21:15:29.240] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-17T21:15:29.254] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-17T21:15:29.254] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-17T21:15:50.886] [INFO] default - Data Source has been initialized!
+[2023-05-17T21:15:50.888] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-17T21:15:50.889] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-17T21:15:50.890] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-17T21:15:50.901] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-17T21:15:50.903] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-17T21:15:50.904] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-17T21:15:50.905] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-17T21:15:50.907] [INFO] default - [cretePermissions] Find permission by code 6
+[2023-05-17T21:15:50.909] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-17T21:15:50.911] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-17T21:15:50.912] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-17T21:15:50.914] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-17T21:15:50.916] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-17T21:15:50.918] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-17T21:15:50.921] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-17T21:15:50.923] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-17T21:15:50.924] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-17T21:15:50.926] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-17T21:15:50.927] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-17T21:15:50.929] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-17T21:15:50.932] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-17T21:15:50.932] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-17T21:15:50.948] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-17T21:15:50.948] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-17T21:15:53.663] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-17T21:15:53.664] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-17T21:15:53.664] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-17T21:15:53.666] [ERROR] default - [OperationTemplate] Error while executing operationError: Utilizador não foi encontrado
+[2023-05-17T21:15:53.666] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-17T21:15:53.666] [ERROR] default - [GenericOperationTemplate] - Error while executing operationError: Ocorreu um erro interno no servidor. Por favor, contacte a equipa da Nantoi Digital
+[2023-05-17T21:15:53.666] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-17T21:17:44.846] [INFO] default - Data Source has been initialized!
+[2023-05-17T21:17:44.848] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-17T21:17:44.849] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-17T21:17:44.849] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-17T21:17:44.856] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-17T21:17:44.858] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-17T21:17:44.859] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-17T21:17:44.861] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-17T21:17:44.864] [INFO] default - [cretePermissions] Find permission by code 6
+[2023-05-17T21:17:44.867] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-17T21:17:44.870] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-17T21:17:44.872] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-17T21:17:44.875] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-17T21:17:44.877] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-17T21:17:44.879] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-17T21:17:44.882] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-17T21:17:44.884] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-17T21:17:44.888] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-17T21:17:44.890] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-17T21:17:44.892] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-17T21:17:44.893] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-17T21:17:44.895] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-17T21:17:44.895] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-17T21:17:44.912] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-17T21:17:44.913] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-17T21:18:15.795] [INFO] default - Data Source has been initialized!
+[2023-05-17T21:18:15.796] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-17T21:18:15.797] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-17T21:18:15.797] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-17T21:18:15.806] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-17T21:18:15.807] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-17T21:18:15.809] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-17T21:18:15.811] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-17T21:18:15.812] [INFO] default - [cretePermissions] Find permission by code 6
+[2023-05-17T21:18:15.814] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-17T21:18:15.817] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-17T21:18:15.819] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-17T21:18:15.822] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-17T21:18:15.827] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-17T21:18:15.829] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-17T21:18:15.832] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-17T21:18:15.835] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-17T21:18:15.839] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-17T21:18:15.841] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-17T21:18:15.843] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-17T21:18:15.844] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-17T21:18:15.846] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-17T21:18:15.846] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-17T21:18:15.868] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-17T21:18:15.868] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-17T21:19:06.817] [INFO] default - Data Source has been initialized!
+[2023-05-17T21:19:06.819] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-17T21:19:06.820] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-17T21:19:06.820] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-17T21:19:06.833] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-17T21:19:06.835] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-17T21:19:06.837] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-17T21:19:06.839] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-17T21:19:06.840] [INFO] default - [cretePermissions] Find permission by code 6
+[2023-05-17T21:19:06.842] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-17T21:19:06.844] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-17T21:19:06.847] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-17T21:19:06.849] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-17T21:19:06.851] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-17T21:19:06.852] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-17T21:19:06.855] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-17T21:19:06.861] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-17T21:19:06.863] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-17T21:19:06.864] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-17T21:19:06.866] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-17T21:19:06.867] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-17T21:19:06.869] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-17T21:19:06.869] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-17T21:19:06.884] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-17T21:19:06.885] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-17T21:19:34.772] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-17T21:19:34.773] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-17T21:19:34.774] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-17T21:19:34.775] [ERROR] default - [OperationTemplate] Error while executing operationError: Utilizador não foi encontrado
+[2023-05-17T21:19:34.776] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-17T21:19:34.776] [ERROR] default - [GenericOperationTemplate] - Error while executing operationError: Ocorreu um erro interno no servidor. Por favor, contacte a equipa da Nantoi Digital
+[2023-05-17T21:19:34.776] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-17T21:20:34.149] [INFO] default - Data Source has been initialized!
+[2023-05-17T21:20:34.150] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-17T21:20:34.151] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-17T21:20:34.151] [INFO] default - [cretePermissions] Find permission by code 1
+[2023-05-17T21:20:34.171] [INFO] default - [cretePermissions] Find permission by code 2
+[2023-05-17T21:20:34.176] [INFO] default - [cretePermissions] Find permission by code 3
+[2023-05-17T21:20:34.178] [INFO] default - [cretePermissions] Find permission by code 4
+[2023-05-17T21:20:34.179] [INFO] default - [cretePermissions] Find permission by code 5
+[2023-05-17T21:20:34.181] [INFO] default - [cretePermissions] Find permission by code 6
+[2023-05-17T21:20:34.183] [INFO] default - [cretePermissions] Find permission by code 101
+[2023-05-17T21:20:34.186] [INFO] default - [cretePermissions] Find permission by code 102
+[2023-05-17T21:20:34.188] [INFO] default - [cretePermissions] Find permission by code 202
+[2023-05-17T21:20:34.193] [INFO] default - [cretePermissions] Find permission by code 203
+[2023-05-17T21:20:34.196] [INFO] default - [cretePermissions] Find permission by code 303
+[2023-05-17T21:20:34.198] [INFO] default - [cretePermissions] Find permission by code 404
+[2023-05-17T21:20:34.200] [INFO] default - [cretePermissions] Find permission by code 505
+[2023-05-17T21:20:34.202] [INFO] default - [cretePermissions] Find permission by code 506
+[2023-05-17T21:20:34.203] [INFO] default - [cretePermissions] Find permission by code 607
+[2023-05-17T21:20:34.206] [INFO] default - [cretePermissions] Find permission by code 608
+[2023-05-17T21:20:34.208] [INFO] default - [cretePermissions] Find permission by code 707
+[2023-05-17T21:20:34.210] [INFO] default - [cretePermissions] Find permission by code 708
+[2023-05-17T21:20:34.213] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-17T21:20:34.213] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-17T21:20:34.229] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-17T21:20:34.229] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-17T21:21:27.335] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-17T21:21:27.335] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-17T21:21:27.335] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-17T21:21:27.337] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-17T21:21:27.337] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}

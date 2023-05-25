@@ -11,6 +11,7 @@ import { ParamsTemplate } from "./../template/ParamsTemplate";
 import { UnsuccessfullOperationException } from "../exceptions/UnsuccessfullOperationException";
 import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
 import { Field } from "../exceptions/enum/Field";
+import { NotFoundException } from "../exceptions/NotFoundExcecption";
 
 
 
@@ -39,7 +40,11 @@ export abstract class GenericOperationTemplate {
             else if (error.errorClasseName === ErrorExceptionClass.FORBIDDEN) {
                 throw new ForbiddenOperationException(error.field, error.message)
 
-            } else {
+            } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
+                throw new NotFoundException(error.field, error.message)
+
+            }
+             else {
 
                 logger.error("[GenericOperationTemplate] - Error while executing operation" + error)
                 throw new UnsuccessfullOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR)
