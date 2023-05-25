@@ -1,5 +1,7 @@
+import { log } from "console";
 import logger from "../../../infrestructure/config/logger";
 import { IHollydayEngineRepository } from "../../repository/IHollydayEngineRepository";
+import { isValid, parseISO } from "date-fns";
 
 export class SchedulingTimeUtil {
 
@@ -27,13 +29,13 @@ export class SchedulingTimeUtil {
         return dayWeek === 0 || dayWeek === 6; // 0 = Sunday and 6 = saturday
     }
 
-    static async isHollyDay(inputDate: Date, hollydayRepository: IHollydayEngineRepository, entityOperationName): Promise<boolean> {
+    static async isHollyDay(inputDate: Date, hollydayRepository: IHollydayEngineRepository, entityOperationName: string): Promise<boolean> {
 
-        console.log(entityOperationName + " " + "Check if input date is hollyday %s", inputDate)
+        logger.log(entityOperationName + " " + "Check if input date is hollyday %s", inputDate)
 
         const hollyDateEntity = await hollydayRepository.findByHollydayDate(inputDate)
 
-        console.log(entityOperationName + " " + "hollyDateEntity %s", hollyDateEntity)
+        logger.log(entityOperationName + " " + "hollyDateEntity %s", hollyDateEntity)
 
         if (hollyDateEntity) {
 
@@ -62,5 +64,30 @@ export class SchedulingTimeUtil {
         return dateKey;
 
     }
+
+    static async getGreet(): Promise<string> {
+
+        const currentHour = new Date().getHours();
+
+        let greeting;
+
+        if (currentHour >= 5 && currentHour < 12) {
+            greeting = 'Bom dia,';
+        } else if (currentHour >= 12 && currentHour < 18) {
+            greeting = 'Boa tarde,';
+        } else {
+            greeting = 'Boa noite,';
+        }
+
+        return greeting;
+    }
+
+    public static async isValidDate(date: string): Promise<boolean> {
+
+        const parsedDate = parseISO(date);
+        return isValid(parsedDate)
+    }
+
+
 
 }

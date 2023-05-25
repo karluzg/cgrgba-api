@@ -3,7 +3,7 @@ import { Hour } from "./Hour"
 
 
 
-@Entity({ schema: "portalConsular" })
+@Entity({ schema: 'portal_consular_dev' })
 
 export class SchedulingTimeConfiguration {
 
@@ -13,7 +13,7 @@ export class SchedulingTimeConfiguration {
     @Column({ nullable: false, type: 'timestamp',default: () => "CURRENT_TIMESTAMP"  })
     creationDate: Date
 
-    @Column({ type: 'date', unique: true, nullable: false })
+    @Column({ type: "date", unique: true, nullable: false })
     beginDate: Date
 
     @Column({ nullable: false })

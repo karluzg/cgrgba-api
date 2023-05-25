@@ -17,12 +17,13 @@ export enum MiddlewareBusinessMessage {
   PERMISSION_NOT_FOUND = "Permissão não foi encontrado",
   PERMISSION_GOURP_NOT_FOUND = "Grupo de permissões não foi encontrado",
   SESSION_LOGIN_SUCCESSFULLY = "Login realizado com sucesso",
+  USER_STATUS_CODE_MANDATORY = "O estado do utilizador é obrigatório",
 
 
 
   // BUSINESS MESSAGE - CITIZEN
   CITIZEN_INVALID_EMAIL = "Email inválido ou já existe um utilizador registado com o mesmo email",
-  CITIZEN_MBILE_NUMBER_ALREADY_EXIST = "Email inválido ou já existe um utilizador registado com o mesmo email",
+  CITIZEN_MOBILE_NUMBER_ALREADY_EXIST = "Email inválido ou já existe um utilizador registado com o mesmo email",
 
 
   //  BUSINESS MESSAGE - SCHEDULING TIME
@@ -65,6 +66,12 @@ export enum MiddlewareBusinessMessage {
   SCHEDULING_TIME_END_SCHEDULING_TIME_GREATER_THAN_BEGIN_SCHEDULING_TIME = "A hora de fim de agendamento deve ser IGUAl OU superior a hora de início de agendamento",
   SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID = "A hora de início de agendamento é inválida",
   SCHEDULING_END_SCHEDULING_TIME_INAVLID = "A hora de fim de agendamento é inválida",
+  SCHEDULING_BEGIN_CREATION_DATE_INVALID = "A data de início de criação de agendamento é inváldo",
+  SCHEDULING_END_CREATION_DATE_INVALID = "A data de fim de criação de agendamento é inváldo",
+  SCHEDULING_AVAILABLE = "Não existe disponibilidade",
+  SCHEDULING_ID_INVALID = "Agendamento inválido",
+  SCHEDULING_CATEGORY_INVALD = "A categoria de agendamento é inválida",
+  SCHEDULING_SERVICE_INVALID = "O servico do agendamento é inválido",
 
 
 
@@ -85,5 +92,5 @@ export enum MiddlewareBusinessMessage {
   CORE_UNEXPECTED_UNEXECUTED_INITIAL_ACTION = "Deve alterar a sua palavra-passe antes de executar esta operação",
   CORE_INTERNAL_SERVER_ERROR = "Ocorreu um erro interno no servidor. Por favor, contacte a equipa da Nantoi Digital",
   CORE_TOKEN_NOT_FOUND = "O Token de autorização não foi encontrado!",
- 
+  SCHEDULING_HOUR_ALREADY_CHOSEN_BY_ANOTHER_PERSON = "SCHEDULING_HOUR_ALREADY_CHOSEN_BY_ANOTHER_PERSON"
 }

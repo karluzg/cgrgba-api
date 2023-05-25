@@ -6,14 +6,14 @@ export class SchedulingParams extends ParamsTemplate {
     private citizenMobileNumber: string;
     private schedulingDate: string;
     private schedulingHour: string;
-    private schedulingCategory: string;
-    private schedulingService: string;
+    private categoryCode: string;
+    private serviceCode: string;
 
     constructor(citizenFullName: string, citizenEmail: string, citizenMobileNumber: string,
         schedulingDate: string,
         schedulingHour: string,
-        schedulingCategory: string,
-        schedulingService: string) {
+        categoryCode: string,
+        serviceCode: string) {
 
         super();
         this.citizenFullName = citizenFullName;
@@ -21,9 +21,8 @@ export class SchedulingParams extends ParamsTemplate {
         this.citizenMobileNumber = citizenMobileNumber;
         this.schedulingDate = schedulingDate;
         this.schedulingHour = schedulingHour;
-        this.schedulingCategory = schedulingCategory;
-        this.schedulingService = schedulingService
-
+        this.categoryCode = categoryCode;
+        this.serviceCode = serviceCode
     }
 
     get getCitizenFullName(): string {
@@ -46,12 +45,11 @@ export class SchedulingParams extends ParamsTemplate {
         return this.schedulingHour;
     }
 
-    get getSchedulingCategory(): string {
-        return this.schedulingCategory;
+    get getCategoryCode(): string {
+        return this.categoryCode;
     }
 
-    get getSchedulingService(): string {
-        return this.schedulingService;
+    get getserviceCode(): string {
+        return this.serviceCode;
     }
-
 }

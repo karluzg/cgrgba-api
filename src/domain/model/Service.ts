@@ -1,13 +1,13 @@
-import { Entity, PrimaryColumn, Column, OneToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Entity, PrimaryColumn, Column, ManyToOne } from "typeorm"
 import { SchedulingCategory } from "./SchedulingCategory";
 
-@Entity({ schema: "portalConsular" })
+@Entity({ schema: 'portal_consular_dev' })
 export class Service {
 
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryColumn()
+  code: string;
 
-  @Column()
+  @Column({ nullable: false })
   name: string;
 
   @ManyToOne(() => SchedulingCategory, schedulingCategory => schedulingCategory.services)

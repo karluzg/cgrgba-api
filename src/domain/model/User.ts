@@ -1,15 +1,34 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinTable, ManyToMany } from "typeorm"
-import { UserStatusEnum } from "./enum/UserStatusEnum"
-import { IActivable } from "./interface/IUserActivable"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany } from "typeorm"
+import { UserStatusEnum, UserStatusMapper } from "./enum/UserStatusEnum"
+import { IUserActivable } from "./interface/IUserActivable"
 import { Role } from "./Role"
 import { IsDate, IsNumber, IsString } from "class-validator"
+import { UserStatus } from "./UserStatus"
 
-@Entity({ schema: "portalConsular" })
-export class User implements IActivable {
+@Entity({ schema: 'portal_consular_dev' })
+export class User implements IUserActivable {
+
 
     @IsNumber()
     @PrimaryGeneratedColumn({ type: "bigint" })
     id: number
+
+    @IsDate()
+    @Column({ nullable: false, type: 'timestamp', default: () => "CURRENT_TIMESTAMP" })
+    creationDate: Date
+
+    @IsDate()
+    @Column({ nullable: true, type: 'timestamp' })
+    activationDate: Date
+
+    @IsDate()
+    @Column({ nullable: true, type: 'timestamp' })
+    revokingDate: Date
+
+    @IsDate()
+    @Column({ nullable: true, type: 'timestamp' })
+    lastPasswordUpdate: Date
+
 
     @IsString()
     @Column({
@@ -32,10 +51,6 @@ export class User implements IActivable {
     })
     email: string
 
-    @IsDate()
-    @Column({ nullable: false, type: 'timestamp', default: () => "CURRENT_TIMESTAMP" })
-    creationDate: Date
-
     @IsString()
     @Column()
     passwordHash: string
@@ -46,27 +61,56 @@ export class User implements IActivable {
 
     @Column({ nullable: false, default: 3 })
     passwordTry: number;
-    
 
+    @ManyToOne(() => UserStatus, (status) => status.code, { eager: true, nullable: false })
+    status: UserStatus
 
-    @Column({ type: 'enum', enum: UserStatusEnum, nullable: false })
-    status: UserStatusEnum
-
-    //nullfy -> when a Parent entity is deleted or its relationship with a Child entity is broken,
-    // the foreign key value in the Child table will be set to null.
 
     @ManyToMany(() => Role)
     @JoinTable()
     roles: Role[]
 
-    active(): void {
-        this.status = UserStatusEnum.ACTIVE
+
+    constructor() {
+        this.setStatusEnum(UserStatusEnum.NEW);
     }
+
+    getStatusEnum(): UserStatusEnum {
+        return UserStatusMapper.from(this.status)
+    }
+
+    public setStatusEnum(statusEnum: UserStatusEnum | null): void {
+
+        this.status = statusEnum === null ? null : UserStatusMapper.status(statusEnum)
+    }
+
     suspend(): void {
-        this.status = UserStatusEnum.SUSPENDED
+        this.setStatusEnum(UserStatusEnum.SUSPENDED)
+        this.revokingDate = new Date();
     }
+
     remove(): void {
-        this.status = UserStatusEnum.REMOVED
+        this.setStatusEnum(UserStatusEnum.REMOVED)
+        this.revokingDate = new Date();
+    }
+
+    getActivationDate(): Date {
+        return this.activationDate;
+    }
+
+    getRevokingDate(): Date {
+        return this.revokingDate;
+    }
+
+    activate(): void {
+        this.setStatusEnum(UserStatusEnum.ACTIVE)
+        this.activationDate = new Date();
+        this.lastPasswordUpdate = new Date();
+        this.revokingDate = null;
+    }
+
+    isActive(): boolean {
+        return UserStatusEnum.ACTIVE == (this.getStatusEnum());
     }
 
 

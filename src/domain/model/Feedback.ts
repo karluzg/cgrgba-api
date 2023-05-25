@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"
 import { MessageType } from "./MessageType"
 
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class Feedback {
 
  

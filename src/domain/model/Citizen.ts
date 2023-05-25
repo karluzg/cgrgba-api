@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
 import { Scheduling } from "./Scheduling"
 
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class Citizen {
 
 

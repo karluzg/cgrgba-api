@@ -23,7 +23,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
     private readonly schedulingTimeRepository: ISchedulingTimeEngineRepository;
     private readonly hollydayEngineRepository: IHollydayEngineRepository;
 
-    private schedulingTimeEntity: SchedulingTimeConfiguration;
+    private schedulingTimeEntity: SchedulingTimeConfiguration[] = [];
     private dateList: Date[] = [];
     private hourListAdded: boolean = false;
 
@@ -40,11 +40,13 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         const schedulingDateInput = new Date(params.getBeginSchedulingDate);
 
+
         this.schedulingTimeEntity = await this.schedulingTimeRepository.findBySchedulingDate(schedulingDateInput)
 
-        logger.info("[AddNewTimeSlotOperation] schedulingTime entity founded %", this.schedulingTimeEntity)
+        logger.info("[AddNewTimeSlotOperation] schedulingTime entity founded %", this.schedulingTimeEntity.length)
 
-        if (this.schedulingTimeEntity[0]) {
+
+        if (this.schedulingTimeEntity.length > 0) {
             logger.error("[AddNewTimeSlotOperation] Scheduling time configuration already exist")
             throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_ALREADY_EXIST);
         }
@@ -268,14 +270,17 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
     async createNewSchedulingConfiguration(inputDate: Date, params: TimeSlotParams, hourlistInput: string[]): Promise<void> {
 
+
         const newSchedulingTime = new SchedulingTimeConfiguration();
 
         newSchedulingTime.creationDate = new Date();
         newSchedulingTime.beginDate = inputDate;
+        newSchedulingTime.beginWorkTime = params.getBeginWorkTime;
+        newSchedulingTime.endWorkTime = params.getEndWorkTime;
 
         newSchedulingTime.beginLunchTime = params.getBeginLunchTime;
 
-        newSchedulingTime.endLunchTime = params.getBeginLunchTime;
+        newSchedulingTime.endLunchTime = params.getEndLunchTime;
 
         newSchedulingTime.serviceInterval = params.getServiceInterval;
 
@@ -290,10 +295,13 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         newSchedulingTime.hours = hours;
 
+        console.log("INPUT DATE TO SAVE:" + inputDate)
+        console.log("HOURS:" + JSON.stringify(hours))
+        console.log("DATA SAVED:" + JSON.stringify(newSchedulingTime))
 
-        if (hourlistInput.length != 0) {
+
             await this.saveSchedulingTime(newSchedulingTime)
-        }
+
 
     }
 
@@ -303,9 +311,9 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         this.schedulingTimeEntity = await this.schedulingTimeRepository.findBySchedulingDate(newScehdulingTime.beginDate)
 
         logger.info("scheduling configuration to be create if not exist" + JSON.stringify(newScehdulingTime))
-        if (!this.schedulingTimeEntity[0]) {
+
             return await this.schedulingTimeRepository.saveSchedulingTime(newScehdulingTime)
-        }
+
     }
 
     protected initResult(): TimeSlotResult {

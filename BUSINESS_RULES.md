@@ -27,10 +27,16 @@ UC-08 - INTRODUZIR FAIXAS HORÁRIAS
 8. Se a data de fim for null, deve ser considerada apenas a configuração do agendamento da data de início
 
  UC-09 - LISTAR FAIXAS HORÁRIAS
-  1. A Data de agendamento deve ser superior ou igual a data atual
-  1. Excluir os fins de semanas
-  2. Exluir feriados (tabela Hollyday)
-  3. Excluir agendamentos que estão na tabela SchedulingHistory
+  
+   1. [A listagem das horas disponíveis para data atuala ser apresentado, depende da hora em que o utilizador estiver a efetuar o agendamento]
+       2.1 [HORÁRIO EM QUE O CIDADÃO ESTÁ A EFETUAR O AGENDAMENTO]
+        2.1.1 Deve ser listado apenas as horas superiores a hora da data atual em que o utilizador selecionou a data para verificar a disponibilidade horária 
+		
+      
+
+  3. Excluir os fins de semanas
+  4. Exluir feriados (tabela Hollyday)
+  5. Excluir agendamentos que estão na tabela SchedulingHistory
 
 # SCHEDULING
 
@@ -42,17 +48,20 @@ UC-12 - EFETUAR AGENDAMENTO
    - Agendar o mesmo serviço na mesma data e hora
    - Agendar outros serviços na mesma data e hora
    - Agendar o mesmo serviço que ainda estão com estado "por atender" (E se o cidadão for atendido, mas o funcionário esqueceu de alterar o estado?)
+   - Agendar na mesma hora que a hora da data atual
   
-2. O cidadão só pode agenda até 1h antes do fim do trabalho  -QUESTIONR
+  
+2. O cidadão só pode agendar até 1h antes do fim do trabalho  -QUESTIONAR A DOUTORA
 
 2. Quando o mesmo utilizador tenta fazer outro agendamento, o sistema deve recuperar informação desse utilizador e associar ao agendamento.
-3. O número de telemóvel deixa de ser único, ficando apenas o email como unique
+3. O número de telemóvel deixa de ser único, ficando apenas o email como unique??
 
 4. Quando o utilizador submeter o pedido para efetuar agendamento, deve ser sempre verificada a disponibilidade da data e hora escolhida a ser agendada (usar Semhphore do node Js para bloquear a data e hora).
  - Isto porque mesmo as datas e horas terem sido apresentadas como disponíveis na listagem de horários de agendamentos, alguém pode já ter escolhido a última data e hora disponível. Logo, outro utilizador não pode escolher essa data e hora. 
 
-5. Cada vez  que o número de agendamentos feitos para a mesma data e hora(por um utilizador diferente) for igual(=) número colaborador disponível diário, para essa data e hora,
- o agendamento é feito e é atualizada a tabela de schedulingHistory, ficando a data e hora como indisponíveis. A tabela SchedulingHistory deve ser atualizada, pondo o campo available=0 (false)
+5. Cada vez  que o número de agendamentos feitos para a mesma data e hora(por um utilizador diferente) for igual(=) número colaborador disponível diário, 
+para essa data e hora, o agendamento é feito e é atualizada a tabela de schedulingHistory, ficando a data e hora como indisponíveis.
+ A tabela SchedulingHistory deve ser atualizada, pondo o campo available=0 (false) para aquela data e a mesma hora(s)
 
 6. Quando o agendamento é efetuado, o sistema deve enviar email ao utilizador
 
@@ -78,3 +87,9 @@ UC-13 - LISTAR AGENDAMENTOS
    deve ser iagual OU superior a data de inicio de criação e agendamento
    3. se a data de início de criação de agendamento for preenchido e a data de fim de criação de agendamento não for preenchido, a data defim de criação de agendamento
    deve ser IGUAL a data de início de criação de agendamento
+   
+   
+
+UC-15 – Alterar dados do agendamento
+
+ As validações as validações de efetuar agendamento, UC-12 - EFETUAR AGENDAMENTO

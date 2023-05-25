@@ -1,4 +1,4 @@
-import { OperationTemplate } from "../../../../infrestructure/template/OperationTemplate";
+
 import { UserParams } from "../../../../application/model/user-manager/UserParams";
 import { UserResult } from "../../../../application/model/user-manager/UserResult";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
@@ -17,8 +17,8 @@ import { InvalidParametersException } from "../../../../infrestructure/exception
 import { GeneratePassowordUtil } from "../../util/GeneratePassowordUtil";
 import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { EmailTemplate } from "../../../../infrestructure/template/EmailTemplate";
-import { GenerateHtmlBody } from "../../util/GenerateHtmlBody";
 import { plataformConfig } from "../../../../infrestructure/config/plataform";
+import { EmailUtils } from "../../util/EmailUtils";
 
 
 
@@ -61,13 +61,14 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         const hash = passwordValidator.generateHash(password, await salt)
 
 
-        const user = new User();
+        const user = new User(); // status is created automatically in user constructor
         user.email = params.getEmail;
         user.fullName = params.getFullName;
         user.mobileNumber = params.getMobileNumber;
         user.passwordHash = await hash;
         user.passwordSalt = await salt;
-        user.status = UserStatusEnum.NEW;
+
+        console.info("WATCH USER TO ADD:" + JSON.stringify(user))
 
         logger.info("[AddUserOperation] creating user in db %", JSON.stringify(user))
         const newUser: User = await this.userRepository.saveUser(user)
@@ -77,7 +78,12 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         result.setStatus = Object.fromEntries(this.message)
 
 
-        const emailMessage= GenerateHtmlBody.generateNewUserBody(user.fullName,user.email,password,plataformConfig.ulr,plataformConfig.emailContact);
+        const emailMessage = EmailUtils.generateNewUserBody(user.fullName,
+            user.email,
+            password,
+            plataformConfig.ulr,
+            plataformConfig.emailContact);
+
         const emailTemplate= new EmailTemplate();
         const mailOption= await emailTemplate.createMailOption(user.email,emailMessage);
 

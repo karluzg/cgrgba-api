@@ -89,9 +89,9 @@ export class NewsController {
     } catch (error) {
       console.error(error);
 
-
       throw error;
     }
+
   }
   public async deleteNews(arg0: string, deleteNews: any) {
     throw new Error("Method not implemented.");
@@ -105,13 +105,13 @@ export class NewsController {
   }
   public async createNews(request: Request, response: Response): Promise<Response> {
     try {
-      const { title, content, message, categoryCode } = request.body;
+      const { title, message, categoryCode } = request.body;
 
 
       //const authenticationToken =  new AuthorizationOperationTemplate().checkAuthorizationToken(request)
       //não deixa acesso a classe extendida então usou-se static
       const authenticationToken = AuthValidator.checkAuthorizationToken(request);
-      const params = new NewsParams(authenticationToken, title, content, message, categoryCode)
+      const params = new NewsParams(authenticationToken, title, message, categoryCode)
 
       logger.info("[NewsController] Perform dependency injection for UserController")
 

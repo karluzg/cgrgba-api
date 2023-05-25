@@ -70,9 +70,9 @@ export class SchedulingTimeController {
 
             const { beginSchedulingDate } = request.body;
 
-            const authenticationToken = AuthValidator.checkAuthorizationToken(request);
 
-            const params = new TimeSlotListParams(authenticationToken, beginSchedulingDate);
+            console.info("[get_time_slot_list] INPUT DATE PARAMS RECEIVED %s" + beginSchedulingDate)
+            const params = new TimeSlotListParams(beginSchedulingDate);
 
             logger.info("[SchedulingTimeController] Perform dependency injection for ISchedulingTimeEngine")
             const schedulingTimeEngine = container.resolve<ISchedulingTimeEngine>("ISchedulingTimeEngine")
@@ -97,7 +97,7 @@ export class SchedulingTimeController {
             } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
-                logger.error("[SchedulingTimeHourController] Error while adding new time slot", error)
+                logger.error("[SchedulingTimeHourController] Error while getting time slot list", error)
                 throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
             }
         }

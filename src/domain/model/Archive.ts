@@ -3,7 +3,7 @@ import { ArchiveExtension } from "./ArchiveExtension"
 import { ArchiveType } from "./ArchiveType"
 
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class Archive {
 
     @PrimaryGeneratedColumn({type:"bigint"})

@@ -1,5 +1,5 @@
 
-import { IsNull } from "typeorm";
+
 import { IPage } from "../../../infrestructure/pageable-manager/IPage";
 import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
 import { DirectionEnum } from "../../../infrestructure/pageable-manager/enum/DirectionEnum";
@@ -7,10 +7,46 @@ import { Scheduling } from "../../model/Scheduling";
 import { SchedulingStatusEnum } from "../../model/enum/SchedulingStatusEnum";
 import { ISchedulingEngineRepository } from "../ISchedulingEngineRepository";
 
+
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const schedulingEngineRepository = myDataSource.getRepository(Scheduling)
 
 export class SchedulingEngineRepositoryImpl implements ISchedulingEngineRepository {
+
+    async findBeginDateAndHour(schedulingDate: string, chosenHour: string): Promise<Scheduling[]> {
+
+        return schedulingEngineRepository
+            .createQueryBuilder('scheduling')
+            .where('scheduling.chosenHour = :chosenHour', { chosenHour })
+            .andWhere('scheduling.date = :schedulingDate', { schedulingDate })
+            .getMany();
+    }
+
+
+
+    async updateScheduling(scheduling: Scheduling): Promise<void> {
+
+        /*  await schedulingEngineRepository
+          .createQueryBuilder() // No need to specify the alias
+          .update(Scheduling)
+          .set({ available: false })
+          .where('date = :schedulingDate', { schedulingDate }) // Use column name directly
+          .andWhere('chosenHour = :chosenHour', { chosenHour }) // Use column name directly
+          .execute();*/
+    }
+
+
+    async findSchedulingById(schedulingId: number): Promise<Scheduling> {
+
+        return schedulingEngineRepository.createQueryBuilder('scheduling')
+            .leftJoinAndSelect('scheduling.citizen', 'citizen')
+            .leftJoinAndSelect('scheduling.service', 'service')
+            .leftJoinAndSelect('scheduling.category', 'category')
+            .leftJoinAndSelect('scheduling.status', 'status')
+            .where('scheduling.id = :schedulingId', { schedulingId })
+            .getOne();
+    }
+
 
 
     async findBy(
@@ -30,64 +66,72 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
 
 
-        const orderColumn = `scheduling.${defaultorderColumn}`; // to avoid SQL Injection
 
+
+        const orderColumn = `scheduling.${defaultorderColumn}`; // to avoid SQL Injection
         const query = schedulingEngineRepository.createQueryBuilder('scheduling');
 
         query.orderBy(orderColumn, direction);
 
-        query.where('scheduling.creationDate >= :beginSchedulingDate', { beginSchedulingDate });
-        query.andWhere('scheduling.creationDate <= :endSchedulingDate', { endSchedulingDate });
+        query.where('scheduling.creationDate BETWEEN :beginSchedulingDate AND :endSchedulingDate', {
+            beginSchedulingDate,
+            endSchedulingDate
+        });
 
-
-
-        if (typeof beginSchedulingTime !== 'undefined') {
+        if (beginSchedulingTime !== undefined) {
             query.andWhere('scheduling.hour >= :beginSchedulingTime', { beginSchedulingTime });
-
         }
 
-        if (typeof endSchedulingTime !== 'undefined') {
+        if (endSchedulingTime !== undefined) {
             query.andWhere('scheduling.hour <= :endSchedulingTime', { endSchedulingTime });
         }
 
-        if (typeof endSchedulingTime !== 'undefined') {
+        if (beginSchedulingMinute !== undefined) {
             query.andWhere('scheduling.minute >= :beginSchedulingMinute', { beginSchedulingMinute });
         }
 
-        if (typeof endSchedulingTime !== 'undefined') {
+        if (endSchedulingMinute !== undefined) {
             query.andWhere('scheduling.minute <= :endSchedulingMinute', { endSchedulingMinute });
         }
 
-        if (schedulingStatus != SchedulingStatusEnum.REMOVED) {
+        if (schedulingStatus !== SchedulingStatusEnum.REMOVED) {
             query.andWhere('scheduling.status LIKE :schedulingStatus', { schedulingStatus: `%${schedulingStatus}%` });
-
         }
-
 
         const [items, totalItems] = await query
             .skip(skip)
             .take(pageSize)
             .getManyAndCount();
 
-
         const totalPages = Math.ceil(totalItems / pageSize);
 
+        //console.log(query.getSql()) 
+
+
         return new PageImpl<Scheduling>(items, pageNumber, pageSize, totalItems, totalPages);
+
+
     }
 
-    async saveScheduling(schedulingTime: Scheduling): Promise<Scheduling> {
+    async saveScheduling(scheduling: Scheduling): Promise<Scheduling> {
 
-        return await schedulingEngineRepository.save(schedulingTime)
+
+        return await schedulingEngineRepository.save(scheduling)
+
+
+
     }
+
+
 
     async findCitizenSchedulingInfo(citizenEmail: string): Promise<Scheduling[]> {
-
-        const query = schedulingEngineRepository.createQueryBuilder('scheduling').leftJoinAndSelect('scheduling.citizen', 'citizen')
-
-        query.where('citizen.citizenEmail = :citizenEmail', { citizenEmail })
-
-        query.andWhere('scheduling.status = :schedulingStatus', { schedulingStatus: SchedulingStatusEnum.FOR_ANSWERING })
-
-        return query.getMany();
+        return schedulingEngineRepository.createQueryBuilder('scheduling')
+            .leftJoinAndSelect('scheduling.citizen', 'citizen')
+            .leftJoinAndSelect('scheduling.service', 'service')
+            .leftJoinAndSelect('scheduling.status', 'status')
+            .where('citizen.email = :citizenEmail', { citizenEmail })
+            .andWhere('status.description = :schedulingStatus', { schedulingStatus: SchedulingStatusEnum.FOR_ANSWERING })
+            .getMany();
     }
+
 }

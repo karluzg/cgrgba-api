@@ -1,12 +1,13 @@
-import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthParamsTemplate";
+
+import { ParamsTemplate } from "../../../../../infrestructure/template/ParamsTemplate";
 
 
-export class TimeSlotListParams extends AuthParamsTemplate {
+export class TimeSlotListParams extends ParamsTemplate {
 
     private readonly beginschedulingDate: string;
 
-    constructor(authentication: string, beginschedulingDate: string) {
-        super(authentication);
+    constructor(beginschedulingDate: string) {
+        super();
         this.beginschedulingDate = beginschedulingDate;
     }
 

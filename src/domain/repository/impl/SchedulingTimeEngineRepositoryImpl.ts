@@ -1,4 +1,5 @@
 
+import { addDays, startOfDay } from "date-fns";
 import { SchedulingTimeConfiguration } from "../../model/SchedulingTimeConfiguration";
 import { ISchedulingTimeEngineRepository } from "../ISchedulingTimeEngineRepository";
 import { injectable } from 'tsyringe'
@@ -8,20 +9,28 @@ const myDataSource = require('../../../domain/meta-inf/data-source');
 const schedulingTimeRepository = myDataSource.getRepository(SchedulingTimeConfiguration)
 
 @injectable()
-export class ISchedulingTimeEngineRepositoryImpl implements ISchedulingTimeEngineRepository {
+export class SchedulingTimeEngineRepositoryImpl implements ISchedulingTimeEngineRepository {
 
 
-    async findBySchedulingDate(schedulingBeginDate: Date): Promise<SchedulingTimeConfiguration> {
+    async findBySchedulingDate(beginDate: Date): Promise<SchedulingTimeConfiguration[]> {
 
-        return schedulingTimeRepository.createQueryBuilder('schedulingTimeConfiguration')
-            .where('schedulingTimeConfiguration.beginDate = :schedulingBeginDate', { schedulingBeginDate: schedulingBeginDate }).getMany()
+        const beginCreationDate = startOfDay(beginDate);
+        const endCreationDate = addDays(beginDate, 1);
+
+        const schedulingTimeConfigurations = await schedulingTimeRepository.createQueryBuilder('schedulingTimeConfiguration')
+            .leftJoinAndSelect('schedulingTimeConfiguration.hours', 'hours')
+            .where('schedulingTimeConfiguration.beginDate >= :beginDate', { beginDate: beginCreationDate })
+            .andWhere('schedulingTimeConfiguration.beginDate <= :endDate', { endDate: endCreationDate })
+            .getMany();
+
+        return schedulingTimeConfigurations;
     }
+
 
     async saveSchedulingTime(schedulingTime: SchedulingTimeConfiguration): Promise<SchedulingTimeConfiguration> {
 
         return schedulingTimeRepository.save(schedulingTime)
     }
-
 }
 
 
