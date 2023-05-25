@@ -24,6 +24,8 @@ import { Citizen } from "../../../model/Citizen";
 import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
 import { Service } from "../../../model/Service";
 import { ISchedulingCategoryEngineRepository } from "../../../repository/ISchedulingCategoryEngineRepository";
+import { SchedulingStatusEnum, SchedulingStatusMapper } from "../../../model/enum/SchedulingStatusEnum";
+import { IServiceEngineRepository } from "../../../repository/IServiceEngineRepository";
 
 
 export class UpdateSchedulingOperation extends UserAuthOperationTemplate<SchedulingResult, UpdateSchedulingParams>{
@@ -34,6 +36,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
     private readonly schedulingHistoryEnginerepository: ISchedulingHistoryEngineRepository;
     private readonly citizenEngineRepository: ICitizenEngineRepository
     private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository
+    private serviceEngineReository: IServiceEngineRepository
 
 
 
@@ -52,6 +55,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
         this.schedulingHistoryEnginerepository = container.resolve<ISchedulingHistoryEngineRepository>('ISchedulingHistoryEngineRepository')
         this.citizenEngineRepository = container.resolve<ICitizenEngineRepository>('ICitizenEngineRepository')
         this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
+        this.serviceEngineReository = container.resolve<IServiceEngineRepository>('IServiceEngineRepository')
     }
 
     protected async doValidateParameters(params: UpdateSchedulingParams): Promise<void> {
@@ -64,6 +68,12 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
         if (!this.schedulingEntitySource) {
             throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID)
         }
+
+
+        if (this.schedulingEntitySource.status.code !== SchedulingStatusEnum.FOR_ANSWERING) {
+            throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID)
+        }
+
 
         this.citizenEntitySource = await this.citizenEngineRepository.findCitizenByEmailOrMobileNumber(params.getCitizenEmail,
             params.getCitizenMobileNumber);
@@ -161,7 +171,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
         const updatedScheduling = await this.updateSheduling(paramsTarget)
 
-        await this.updateSchedulingHistory(updatedScheduling, tokenSession)
+       // await this.updateSchedulingHistory(updatedScheduling, tokenSession)
 
         logger.info("[AddNewSchedulingOperation] Start Sending Email...")
 
@@ -177,39 +187,23 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
     private async updateSheduling(paramsTarget: UpdateSchedulingParams): Promise<Scheduling> {
 
         logger.info("[AddNewSchedulingOperation] Begin constructing Scheduling object to be save in Data Base...")
-
+        const serviceDB: Service = await this.serviceEngineReository.findservice(this.schedulingEntitySource.service.code);
         this.schedulingEntitySource.creationDate = new Date();
         this.schedulingEntitySource.citizen = this.citizenEntitySource;
-        this.schedulingEntitySource.service = this.serviceEntity;
+        this.schedulingEntitySource.service = serviceDB;
         this.schedulingEntitySource.date = paramsTarget.getSchedulingDate.trim();
         this.schedulingEntitySource.chosenHour = paramsTarget.getSchedulingHour.trim();
         this.schedulingEntitySource.hour = await SchedulingTimeUtil.getTimePart(paramsTarget.getSchedulingHour)
         this.schedulingEntitySource.minute = await SchedulingTimeUtil.getMinutePart(paramsTarget.getSchedulingHour)
 
-        return await this.schedulingEngineRepository.saveScheduling(this.schedulingEntitySource);
 
-    }
-
-    public async updateSchedulingHistory(updatedScheduling: Scheduling, tokenSession: TokenSession): Promise<void> {
-
-        const schedulingHistoryDB = await this.schedulingHistoryEnginerepository.findSchedulingById(updatedScheduling.id)
-
-        logger.info("[AddNewSchedulingOperation] Begin adding scheduling history in Data Base...")
-
-
-        schedulingHistoryDB.updatedDate = new Date();
-        schedulingHistoryDB.date = updatedScheduling.date;
-        schedulingHistoryDB.chosenHour = updatedScheduling.chosenHour;
-        schedulingHistoryDB.scheduling = updatedScheduling;
-        schedulingHistoryDB.updatedBy = tokenSession.user;
-
-        await this.schedulingHistoryEnginerepository.save(schedulingHistoryDB)
+        return await this.schedulingEngineRepository.updateScheduling(this.schedulingEntitySource);
 
     }
 
 
     protected initResult(): SchedulingResult {
-        throw new Error("Method not implemented.");
+        return new SchedulingResult()
     }
 
 }
