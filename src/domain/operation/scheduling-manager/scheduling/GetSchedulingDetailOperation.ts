@@ -9,14 +9,11 @@ import { OperationValidatorManager } from "../../../../infrestructure/validator/
 import { Scheduling } from "../../../model/Scheduling";
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
-import { ISchedulingPossibleStatusEngineRepository } from "../../../repository/IPossibleStatusEngineRepository";
 import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngineRepository";
 
 export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<SchedulingResult, GetSchedulingDetailParams> {
 
     private readonly schedulingEngineRepository: ISchedulingEngineRepository;
-    private readonly schedulingPossibleStatusEngineRepository: ISchedulingPossibleStatusEngineRepository;
-
 
     private schedulingEntity: Scheduling;
 
@@ -24,7 +21,6 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
     constructor() {
         super(OperationNamesEnum.SCHEDULING_DETAIL, OperationValidatorManager.getSingletonInstance())
         this.schedulingEngineRepository = container.resolve<ISchedulingEngineRepository>('ISchedulingEngineRepository')
-        this.schedulingPossibleStatusEngineRepository = container.resolve<ISchedulingPossibleStatusEngineRepository>('ISchedulingPossibleStatusEngineRepository')
 
     }
 
@@ -45,7 +41,7 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
 
         result.setScheduling = this.schedulingEntity
 
-        const schedulingPossibleStatus = await this.schedulingPossibleStatusEngineRepository.findNextStatus(this.schedulingEntity.status)
+        const schedulingPossibleStatus =this.schedulingEntity.status.nextStatus
         result.setPossibleStatus = schedulingPossibleStatus
 
     }

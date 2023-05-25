@@ -22,7 +22,6 @@ import { SchedulingUtil } from "../../util/SchedulingUtil";
 import { ErrorExceptionClass } from "../../../../infrestructure/exceptions/ErrorExceptionClass";
 import { Service } from "../../../model/Service";
 import { ISchedulingCategoryEngineRepository } from "../../../repository/ISchedulingCategoryEngineRepository";
-import { ISchedulingPossibleStatusEngineRepository } from "../../../repository/IPossibleStatusEngineRepository";
 import { SchedulingStatus } from "../../../model/SchedulingStatus";
 import { tr } from "date-fns/locale";
 import { UnsuccessfullOperationException } from "../../../../infrestructure/exceptions/UnsuccessfullOperationException";
@@ -37,7 +36,6 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
     private readonly schedulingHistoryEnginerepository: ISchedulingHistoryEngineRepository;
     private readonly citizenEngineRepository: ICitizenEngineRepository;
     private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository
-    private readonly schedulingPossiblibleStatusEngineRepository: ISchedulingPossibleStatusEngineRepository
 
 
     private semaphore: Semaphore;
@@ -55,7 +53,6 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         this.schedulingHistoryEnginerepository = container.resolve<ISchedulingHistoryEngineRepository>('ISchedulingHistoryEngineRepository')
         this.citizenEngineRepository = container.resolve<ICitizenEngineRepository>('ICitizenEngineRepository')
         this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
-        this.schedulingPossiblibleStatusEngineRepository = container.resolve<ISchedulingPossibleStatusEngineRepository>('ISchedulingPossibleStatusEngineRepository')
 
     }
 
@@ -117,7 +114,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
                 this.schedulingEngineRepository,
                 this.schedulingHistoryEnginerepository)
 
-            const possibleStatus: SchedulingStatus[] = await this.schedulingPossiblibleStatusEngineRepository.findNextStatus(newScheduling.status)
+            const possibleStatus: SchedulingStatus[] = newScheduling.status.nextStatus;
 
             this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_ADDED));
 

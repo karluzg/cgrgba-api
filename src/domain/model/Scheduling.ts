@@ -6,10 +6,11 @@ import { SchedulingCategory } from "./SchedulingCategory"
 import { Service } from "./Service"
 import { ISchedulingActivable } from "./interface/ISchedulingActivable"
 import { IsDate } from "class-validator"
-import { SchedulingStatusEnum, SchedulingStatusMapper } from "./enum/SchedulingStatusEnum"
+import { SchedulingStatusEnum } from "./enum/SchedulingStatusEnum"
+import { EnumOperationTemplate } from "../../infrestructure/template/EnumOperationTemplate"
 
 @Entity({ schema: 'portal_consular_dev' })
-export class Scheduling implements ISchedulingActivable {
+export class Scheduling extends  EnumOperationTemplate<SchedulingStatusEnum> implements ISchedulingActivable {
 
 
     @PrimaryGeneratedColumn({ type:"bigint"})
@@ -57,17 +58,18 @@ export class Scheduling implements ISchedulingActivable {
     lastPasswordUpdate: Date
 
     constructor() {
+        super(SchedulingStatusEnum)
         this.setStatusEnum(SchedulingStatusEnum.FOR_ANSWERING);
     }
 
 
     getStatusEnum(): SchedulingStatusEnum {
-        return SchedulingStatusMapper.from(this.status)
+        return this.getEnumKey(this.status.code)
     }
 
     public setStatusEnum(statusEnum: SchedulingStatusEnum | null): void {
 
-        this.status = statusEnum === null ? null : SchedulingStatusMapper.status(statusEnum)
+        this.status = statusEnum === null ? null : new SchedulingStatus(this.getKey(statusEnum))
     }
 
 

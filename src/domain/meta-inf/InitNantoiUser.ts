@@ -2,7 +2,7 @@ import { container } from "tsyringe"
 import logger from "../../infrestructure/config/logger"
 import { PasswordValidator } from "../../infrestructure/validator/managers/PasswordValidator"
 import { User } from "../model/User"
-import { UserStatusEnum, UserStatusMapper } from "../model/enum/UserStatusEnum"
+import { UserStatusEnum } from "../model/enum/UserStatusEnum"
 import { IUserEngineRepository } from "../repository/IUserEngineRepository"
 import { IRoleEngineRepository } from "../repository/IRoleEngineRepository"
 import { Role } from "../model/Role"
@@ -18,6 +18,7 @@ import { stat } from "fs"
 import { InvalidParametersException } from "../../infrestructure/exceptions/InvalidParametersException"
 import { Field } from "../../infrestructure/exceptions/enum/Field"
 import { MiddlewareBusinessMessage } from "../../infrestructure/response/enum/MiddlewareCustomErrorMessage"
+import { EnumOperationTemplate } from "../../infrestructure/template/EnumOperationTemplate"
 
 export async function initNantoiUser() {
 
@@ -101,12 +102,17 @@ async function creteRoleAdmin(permissions: Permission[]) {
 }
 async function createUserStatus(userStatusEngineRepository: IUserStatusEngineRepository): Promise<void> {
 
+ 
+    const enumInfo = new EnumOperationTemplate<UserStatusEnum>(UserStatusEnum);
 
     for (const status in UserStatusEnum) {
         if (Object.prototype.hasOwnProperty.call(UserStatusEnum, status)) {
             const userStatus = new UserStatus(status);
-            userStatus.description = await UserStatusMapper.getUserStatusDescription(status);
+            userStatus.description =  enumInfo.getDescription(status);
             userStatus.listed = true;
+
+             const st:UserStatusEnum= enumInfo.getEnumKey(status);
+             const at= enumInfo.getKey(UserStatusEnum.ACTIVE);
 
             await userStatusEngineRepository.save(userStatus);
         }

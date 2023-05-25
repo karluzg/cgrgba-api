@@ -1,12 +1,13 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany } from "typeorm"
-import { UserStatusEnum, UserStatusMapper } from "./enum/UserStatusEnum"
 import { IUserActivable } from "./interface/IUserActivable"
 import { Role } from "./Role"
 import { IsDate, IsNumber, IsString } from "class-validator"
 import { UserStatus } from "./UserStatus"
+import { EnumOperationTemplate } from "../../infrestructure/template/EnumOperationTemplate"
+import { UserStatusEnum } from "./enum/UserStatusEnum"
 
 @Entity({ schema: 'portal_consular_dev' })
-export class User implements IUserActivable {
+export class User extends EnumOperationTemplate<UserStatusEnum> implements IUserActivable {
 
 
     @IsNumber()
@@ -72,16 +73,17 @@ export class User implements IUserActivable {
 
 
     constructor() {
+        super(UserStatusEnum)
         this.setStatusEnum(UserStatusEnum.NEW);
     }
 
     getStatusEnum(): UserStatusEnum {
-        return UserStatusMapper.from(this.status)
+        return this.getEnumKey(this.status.code)
     }
 
     public setStatusEnum(statusEnum: UserStatusEnum | null): void {
 
-        this.status = statusEnum === null ? null : UserStatusMapper.status(statusEnum)
+        this.status = statusEnum === null ? null :  new UserStatus(this.getKey(statusEnum))
     }
 
     suspend(): void {

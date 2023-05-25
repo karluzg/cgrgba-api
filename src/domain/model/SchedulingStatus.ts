@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, Column } from "typeorm"
+import { Entity, PrimaryColumn, Column, ManyToMany } from "typeorm"
 
 
 @Entity({ schema: 'portal_consular_dev' })
@@ -10,7 +10,8 @@ export class SchedulingStatus {
     @Column({nullable:false})
     description: string
 
-
+    @ManyToMany(() => SchedulingStatus)
+    nextStatus: SchedulingStatus[];
 
     constructor(code: string) {
         this.code = code;

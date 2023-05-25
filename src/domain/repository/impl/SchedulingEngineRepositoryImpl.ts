@@ -4,6 +4,7 @@ import { IPage } from "../../../infrestructure/pageable-manager/IPage";
 import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
 import { DirectionEnum } from "../../../infrestructure/pageable-manager/enum/DirectionEnum";
 import { Scheduling } from "../../model/Scheduling";
+import { SchedulingStatus } from "../../model/SchedulingStatus";
 import { SchedulingStatusEnum } from "../../model/enum/SchedulingStatusEnum";
 import { ISchedulingEngineRepository } from "../ISchedulingEngineRepository";
 
@@ -133,5 +134,6 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
             .andWhere('status.description = :schedulingStatus', { schedulingStatus: SchedulingStatusEnum.FOR_ANSWERING })
             .getMany();
     }
+
 
 }
