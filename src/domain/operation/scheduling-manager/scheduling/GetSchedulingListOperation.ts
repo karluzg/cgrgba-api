@@ -120,8 +120,13 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
                     MiddlewareBusinessMessage.SCHEDULING_BEGIN_CREATION_DATE_INVALID);
             }
 
-            const beginCreationDate = startOfDay(new Date(getBeginCreationDate));
-            const endCreationDate = startOfDay(addDays(new Date(getEndCreationDate), 1));
+            const beginDateWithoutTime = new Date(params.getBeginCreationDate);
+            beginDateWithoutTime.setHours(0, 0, 0, 0); // Set the time components to zero
+
+            console.info("CURRENT DATE: " + beginDateWithoutTime);
+
+            const beginCreationDate = startOfDay(beginDateWithoutTime);
+            const endCreationDate = startOfDay(addDays(beginDateWithoutTime, 1));
 
             if (endCreationDate.getTime() < beginCreationDate.getTime()) {
                 throw new InvalidParametersException(
@@ -133,8 +138,11 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
             this.beginCreationDate = beginCreationDate;
             this.endCreationDate = endCreationDate;
         } else if (isValidBeginCreationDate) {
-            const beginCreationDate = startOfDay(new Date(getBeginCreationDate));
-            const endCreationDate = startOfDay(addDays(beginCreationDate, 1));
+
+
+            const beginDateWithoutTime = new Date(params.getBeginCreationDate.substring(0, 10));
+            const beginCreationDate = startOfDay(beginDateWithoutTime);
+            const endCreationDate = startOfDay(addDays(beginDateWithoutTime, 1));
 
             this.beginCreationDate = beginCreationDate;
             this.endCreationDate = endCreationDate;
