@@ -169,7 +169,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
 
         logger.info("[AddNewSchedulingOperation] Begin constructing Scheduling object to be save in Data Base...")
 
-        newScheduling.creationDate = new Date();
+
         newScheduling.citizen = citizen;
         newScheduling.service = this.serviceEntity;
         newScheduling.date = params.getSchedulingDate.trim();
@@ -181,10 +181,10 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         logger.info("[AddNewSchedulingOperation] Saving user scheduling in Data Base: " + JSON.stringify(newScheduling))
 
 
-        let schedulingSaved;
+        let schedulingSaved: Scheduling;
         try {
 
-            schedulingSaved = await this.schedulingEngineRepository.saveScheduling(newScheduling);
+            schedulingSaved = await this.schedulingEngineRepository.updateScheduling(newScheduling);
         } catch (error) {
             throw new UnsuccessfullOperationException(Field.SYSTEM, "Error while trying to save scheduling:" + error)
         }

@@ -1,8 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, ManyToOne, Column, JoinColumn } from "typeorm"
 import { Citizen } from "./Citizen"
 import { User } from "./User"
 import { SchedulingStatus } from "./SchedulingStatus"
-import { SchedulingCategory } from "./SchedulingCategory"
 import { Service } from "./Service"
 import { ISchedulingActivable } from "./interface/ISchedulingActivable"
 import { IsDate } from "class-validator"
@@ -32,6 +31,7 @@ export class Scheduling implements ISchedulingActivable {
     minute: number
 
     @ManyToOne(() => Service, (service) => service.code, { eager: true })
+    @JoinColumn({ name: 'service_code', referencedColumnName: 'code' })
     service: Service
 
 
@@ -44,6 +44,9 @@ export class Scheduling implements ISchedulingActivable {
 
     @ManyToOne(() => User, (attendBy) => attendBy.id, { eager: true })
     attendBy: User
+
+    @ManyToOne(() => User, (attendBy) => attendBy.id, { eager: true })
+    updateBy: User
 
     @Column({ nullable: true, type: 'timestamp' })
     attendDate: Date
