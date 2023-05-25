@@ -16,6 +16,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { ForbiddenOperationException } from "../../../../infrestructure/exceptions/ForbiddenOperationException";
 import { plataformConfig } from "../../../../infrestructure/config/plataform";
+import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 
 
 export class LoginOperation extends OperationTemplate<UserLoginResult, UserLoginParams>{
@@ -32,13 +33,14 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
 
     protected async doValidateParameters(params: UserLoginParams): Promise<void> {
 
+        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
         this.user = await this.userRepository.findUserByEmail(params.getEmail)
         if (this.user.passwordTry <= 0) {
             throw new ForbiddenOperationException(Field.SYSTEM, MiddlewareBusinessMessage.USER_PASSWORD_LOCKED);
         }
 
         if (!this.user) {
-            throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR);
+            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR);
         }
 
 
