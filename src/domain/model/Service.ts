@@ -11,6 +11,6 @@ export class Service {
   name: string;
 
   @ManyToOne(() => SchedulingCategory, schedulingCategory => schedulingCategory.services)
-  schedulingCategory: SchedulingCategory;
+  category: SchedulingCategory;
 
 }

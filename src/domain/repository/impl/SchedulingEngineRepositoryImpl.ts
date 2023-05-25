@@ -12,6 +12,7 @@ import { ISchedulingEngineRepository } from "../ISchedulingEngineRepository";
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const schedulingEngineRepository = myDataSource.getRepository(Scheduling)
 
+
 export class SchedulingEngineRepositoryImpl implements ISchedulingEngineRepository {
 
     async findBeginDateAndHour(schedulingDate: string, chosenHour: string): Promise<Scheduling[]> {
@@ -24,17 +25,12 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
     }
 
 
-
-    async updateScheduling(scheduling: Scheduling): Promise<void> {
-
-        /*  await schedulingEngineRepository
-          .createQueryBuilder() // No need to specify the alias
-          .update(Scheduling)
-          .set({ available: false })
-          .where('date = :schedulingDate', { schedulingDate }) // Use column name directly
-          .andWhere('chosenHour = :chosenHour', { chosenHour }) // Use column name directly
-          .execute();*/
+    async updateScheduling(scheduling: Scheduling): Promise<Scheduling> {
+        return await schedulingEngineRepository.save(scheduling);
     }
+
+
+
 
 
     async findSchedulingById(schedulingId: number): Promise<Scheduling> {
@@ -51,8 +47,8 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
 
     async findBy(
-        beginSchedulingDate: Date,
-        endSchedulingDate: Date,
+        beginDate: Date,
+        endDate: Date,
         beginSchedulingTime: number,
         endSchedulingTime: number,
         beginSchedulingMinute: number,
@@ -72,12 +68,14 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
         const orderColumn = `scheduling.${defaultorderColumn}`; // to avoid SQL Injection
         const query = schedulingEngineRepository.createQueryBuilder('scheduling');
 
+
         query.orderBy(orderColumn, direction);
 
-        query.where('scheduling.creationDate BETWEEN :beginSchedulingDate AND :endSchedulingDate', {
-            beginSchedulingDate,
-            endSchedulingDate
+        query.where('DATE(scheduling.creationDate) >= DATE(:beginDate) AND DATE(scheduling.creationDate) <= DATE(:endDate)', {
+            beginDate,
+            endDate
         });
+
 
         if (beginSchedulingTime !== undefined) {
             query.andWhere('scheduling.hour >= :beginSchedulingTime', { beginSchedulingTime });
@@ -106,19 +104,10 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
         const totalPages = Math.ceil(totalItems / pageSize);
 
-        //console.log(query.getSql()) 
+        console.log(query.getSql());
 
 
         return new PageImpl<Scheduling>(items, pageNumber, pageSize, totalItems, totalPages);
-
-
-    }
-
-    async saveScheduling(scheduling: Scheduling): Promise<Scheduling> {
-
-
-        return await schedulingEngineRepository.save(scheduling)
-
 
 
     }

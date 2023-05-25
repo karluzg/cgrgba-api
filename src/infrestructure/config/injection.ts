@@ -40,6 +40,8 @@ import { ILovsEngine } from '../../domain/service/ILovsEngine';
 import { LovsEngineImpl } from '../../domain/service/impl/LovsEngineImpl';
 import { IUserStatusEngineRepository } from '../../domain/repository/IUserStatusEngineRepository';
 import { UserStatusEngineRepositoryImpl } from '../../domain/repository/impl/UserStatusEngineRepositoryImpl';
+import { IServiceEngineRepository } from '../../domain/repository/IServiceEngineRepository';
+import { ServiceEngineRepositoryImpl } from '../../domain/repository/impl/ServiceEngineRepositoryImpl';
 
 
 //Register container for services
@@ -66,6 +68,10 @@ container.register<INewsEngineRepository>('INewsEngineRepository', { useClass: N
 container.register<INewsCategoryEngineRepository>('INewsCategoryEngineRepository', { useClass: NewsCategoryEngineRepositoryImpl })
 container.register<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository', { useClass: SchedulingCategoryEngineRepositoryImpl })
 container.register<IUserStatusEngineRepository>('IUserStatusEngineRepository', { useClass: UserStatusEngineRepositoryImpl })
+container.register<IServiceEngineRepository>('IServiceEngineRepository', { useClass: ServiceEngineRepositoryImpl })
+
+
+
 
 
 

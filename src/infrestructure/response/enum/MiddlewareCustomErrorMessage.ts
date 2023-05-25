@@ -91,6 +91,5 @@ export enum MiddlewareBusinessMessage {
   CORE_INVALID_PARAMETERS = "Os parâmetros introduzidos estão inválidos",
   CORE_UNEXPECTED_UNEXECUTED_INITIAL_ACTION = "Deve alterar a sua palavra-passe antes de executar esta operação",
   CORE_INTERNAL_SERVER_ERROR = "Ocorreu um erro interno no servidor. Por favor, contacte a equipa da Nantoi Digital",
-  CORE_TOKEN_NOT_FOUND = "O Token de autorização não foi encontrado!",
   SCHEDULING_HOUR_ALREADY_CHOSEN_BY_ANOTHER_PERSON = "SCHEDULING_HOUR_ALREADY_CHOSEN_BY_ANOTHER_PERSON"
 }
