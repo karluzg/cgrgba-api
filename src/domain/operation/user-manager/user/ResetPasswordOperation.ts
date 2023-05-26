@@ -57,7 +57,7 @@ export class ResetPasswordOperation extends OperationTemplate<ResultTemplate, Re
         const hash = await passwordValidator.generateHash(password, salt)
 
         logger.info("[ResetPasswordOperation] updated password and change the status")
-        const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.NEW, PlataformConfig.passwordTry);
+        const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.NEW, PlataformConfig.security.passwordTry);
 
         this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.USER_PASSWORD_RESET_SUCCESSFULLY));
         result.setStatus = Object.fromEntries(this.message)

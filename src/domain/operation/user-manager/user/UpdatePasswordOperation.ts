@@ -65,7 +65,7 @@ export class UpdatePasswordOperation extends UserAuthOperationTemplate<UserResul
         const hash = await passwordValidator.generateHash(params.getNewPassword, salt)
 
         logger.info("[UpdatePasswordOperation] updated password and change the status")
-        const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.ACTIVE,PlataformConfig.passwordTry);
+        const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.ACTIVE,PlataformConfig.security.passwordTry);
 
         result.setUser = newUser;
 

@@ -73,7 +73,7 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
 
         result.setToken = newTokenSession;
 
-        this.user.passwordTry = PlataformConfig.passwordTry
+        this.user.passwordTry = PlataformConfig.security.passwordTry
         await this.userRepository.saveUser(this.user)
 
 

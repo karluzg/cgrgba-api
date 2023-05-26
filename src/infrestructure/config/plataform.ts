@@ -8,9 +8,11 @@ export const PlataformConfig = {
         backOffice: "http://localhost:3000/api-docs",
         api: ""
     },
-    passwordTry: 3,
-    encryptionKey12: "yGgMtgjA25D7LA",
-    encryptionKey16: "vRZr9rzrTaasPW55",
+    security: {
+        passwordTry: 3,
+        encryptionKey12: "yGgMtgjA25D7LA",
+        encryptionKey16: "vRZr9rzrTaasPW55"
+    },
     email: {
         host: "mail.nantoidigital.com",
         email: "dev@nantoidigital.com",
