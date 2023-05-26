@@ -5,6 +5,7 @@ import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { UserStatusEnum } from "../../model/enum/UserStatusEnum";
+import { EncryptTemplate } from "../../../infrestructure/template/EncryptTemplate";
 
 const myDataSource = require("../../meta-inf/data-source");
 const userRepository = myDataSource.getRepository(User)
@@ -15,7 +16,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
       public async findUserByMobileNumber(userMobileNumber: string): Promise<User> {
             return userRepository.createQueryBuilder('user')
                   .leftJoinAndSelect('user.status', 'status')
-                  .where('user.mobileNumber = :userMobileNumber', { userMobileNumber })
+                  .where('user.mobileNumber = :userMobileNumber', { userMobileNumber: EncryptTemplate.encryptColumn(userMobileNumber) })
                   .getOne();
       }
 
@@ -54,12 +55,15 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
       }
 
       public async findUserByEmail(userEmail: string): Promise<User> {
+
             const user = await userRepository.createQueryBuilder('user')
                   .leftJoinAndSelect('user.status', 'status')
-                  .where('user.email = :email', { email: userEmail })
+                  .where('user.email = :email', { email: EncryptTemplate.encryptColumn(userEmail) })
                   .getOne();
 
             return user;
+
+
       }
 
       public async updateUserPassword(userId: number, passwordHash: string, passwordSalt: string, status: UserStatusEnum, passwordtry: number): Promise<User> {

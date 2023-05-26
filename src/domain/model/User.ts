@@ -1,10 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany, BeforeInsert, BeforeUpdate, AfterLoad } from "typeorm"
 import { IUserActivable } from "./interface/IUserActivable"
 import { Role } from "./Role"
 import { IsDate, IsNumber, IsString } from "class-validator"
 import { UserStatus } from "./UserStatus"
 import { EnumOperationTemplate } from "../../infrestructure/template/EnumOperationTemplate"
 import { UserStatusEnum } from "./enum/UserStatusEnum"
+import * as crypto from 'crypto';
+import { EncryptTemplate } from "../../infrestructure/template/EncryptTemplate"
+import { randomBytes } from "crypto"
 
 @Entity({ schema: 'portal_consular_dev' })
 export class User extends EnumOperationTemplate<UserStatusEnum> implements IUserActivable {
@@ -40,7 +43,7 @@ export class User extends EnumOperationTemplate<UserStatusEnum> implements IUser
 
     @IsString()
     @Column({
-        length: 21, unique: true
+        length: 21, unique: false
     })
     mobileNumber: string
 
@@ -72,6 +75,8 @@ export class User extends EnumOperationTemplate<UserStatusEnum> implements IUser
     roles: Role[]
 
 
+
+
     constructor() {
         super(UserStatusEnum)
         this.setStatusEnum(UserStatusEnum.NEW);
@@ -83,7 +88,7 @@ export class User extends EnumOperationTemplate<UserStatusEnum> implements IUser
 
     public setStatusEnum(statusEnum: UserStatusEnum | null): void {
 
-        this.status = statusEnum === null ? null :  new UserStatus(this.getKey(statusEnum))
+        this.status = statusEnum === null ? null : new UserStatus(this.getKey(statusEnum))
     }
 
     suspend(): void {
@@ -115,5 +120,20 @@ export class User extends EnumOperationTemplate<UserStatusEnum> implements IUser
         return UserStatusEnum.ACTIVE == (this.getStatusEnum());
     }
 
+
+    @BeforeInsert()
+    @BeforeUpdate()
+    private encryptColumn() {
+        this.fullName = EncryptTemplate.encryptColumn(this.fullName);
+         this.email= EncryptTemplate.encryptColumn(this.email);
+        this.mobileNumber= EncryptTemplate.encryptColumn(this.mobileNumber);
+    }
+
+    @AfterLoad()
+    private decryptColumn() {
+        this.fullName = EncryptTemplate.decryptedColumn(this.fullName);
+         this.email= EncryptTemplate.decryptedColumn(this.email);
+        this.mobileNumber= EncryptTemplate.decryptedColumn(this.mobileNumber);
+    }
 
 }

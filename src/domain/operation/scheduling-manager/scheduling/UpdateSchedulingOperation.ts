@@ -24,7 +24,7 @@ import { Citizen } from "../../../model/Citizen";
 import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
 import { Service } from "../../../model/Service";
 import { ISchedulingCategoryEngineRepository } from "../../../repository/ISchedulingCategoryEngineRepository";
-import { SchedulingStatusEnum, SchedulingStatusMapper } from "../../../model/enum/SchedulingStatusEnum";
+import { SchedulingStatusEnum } from "../../../model/enum/SchedulingStatusEnum";
 import { IServiceEngineRepository } from "../../../repository/IServiceEngineRepository";
 
 

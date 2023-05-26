@@ -1,7 +1,8 @@
 import * as nodemailer from 'nodemailer';
+import { PlataformConfig } from './plataform';
 
-const host="mail.nantoidigital.com"
-const email="dev@nantoidigital.com"
+const host=PlataformConfig.email.host
+const email=PlataformConfig.email.email
 
  const transporter = nodemailer.createTransport({
     host: host,
@@ -9,7 +10,7 @@ const email="dev@nantoidigital.com"
     secure: false,
     auth: {
       user: email,
-      pass: 'NANTOIDEV2023',
+      pass: PlataformConfig.email.password,
     },
     tls: {
       rejectUnauthorized: false,

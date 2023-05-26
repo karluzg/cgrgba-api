@@ -14,7 +14,7 @@ import { InvalidParametersException } from "../../../../infrestructure/exception
 import { GeneratePassowordUtil } from "../../util/GeneratePassowordUtil";
 import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { EmailTemplate } from "../../../../infrestructure/template/EmailTemplate";
-import { plataformConfig } from "../../../../infrestructure/config/plataform";
+import { PlataformConfig } from "../../../../infrestructure/config/plataform";
 import { ResultTemplate } from "../../../../infrestructure/template/ResultTemplate";
 import { ResetPasswordParams } from "../../../../application/model/user-manager/ResetPasswordParams";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
@@ -57,13 +57,13 @@ export class ResetPasswordOperation extends OperationTemplate<ResultTemplate, Re
         const hash = await passwordValidator.generateHash(password, salt)
 
         logger.info("[ResetPasswordOperation] updated password and change the status")
-        const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.NEW, plataformConfig.passwordTry);
+        const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.NEW, PlataformConfig.passwordTry);
 
         this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.USER_PASSWORD_RESET_SUCCESSFULLY));
         result.setStatus = Object.fromEntries(this.message)
 
 
-        const emailMessage = EmailUtils.generateResetPasswordBody(newUser.fullName, newUser.email, password, plataformConfig.ulr, plataformConfig.emailContact);
+        const emailMessage = EmailUtils.generateResetPasswordBody(newUser.fullName, newUser.email, password, PlataformConfig.url.backOffice, PlataformConfig.contact.email);
         const emailTemplate = new EmailTemplate();
         const mailOption = await emailTemplate.createMailOption(newUser.email, emailMessage);
 

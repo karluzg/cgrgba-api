@@ -15,7 +15,7 @@ import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { UpdatePasswordParams } from "../../../../application/model/user-manager/UpdatePasswordParams";
 import { ITokenEngineRepository } from "../../../repository/ITokenEngineRepository";
 import { UserStatusEnum } from "../../../model/enum/UserStatusEnum";
-import { plataformConfig } from "../../../../infrestructure/config/plataform";
+import { PlataformConfig } from "../../../../infrestructure/config/plataform";
 
 
 
@@ -65,7 +65,7 @@ export class UpdatePasswordOperation extends UserAuthOperationTemplate<UserResul
         const hash = await passwordValidator.generateHash(params.getNewPassword, salt)
 
         logger.info("[UpdatePasswordOperation] updated password and change the status")
-        const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.ACTIVE,plataformConfig.passwordTry);
+        const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.ACTIVE,PlataformConfig.passwordTry);
 
         result.setUser = newUser;
 

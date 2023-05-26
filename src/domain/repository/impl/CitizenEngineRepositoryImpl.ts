@@ -1,4 +1,5 @@
 
+import { EncryptTemplate } from "../../../infrestructure/template/EncryptTemplate";
 import { Citizen } from "../../model/Citizen";
 import { ICitizenEngineRepository } from "../ICitizenEngineRepository";
 
@@ -11,7 +12,7 @@ export class CitizenEngineRepositoryImpl implements ICitizenEngineRepository {
 
     async countEmailDuplicates(email: string): Promise<number> {
         return citizenEngineRepository.createQueryBuilder('citizen')
-            .where("citizen.email = :email", { email: email })
+            .where("citizen.email = :email", { email: EncryptTemplate.encryptColumn(email) })
             .getCount();
 
 
@@ -20,7 +21,7 @@ export class CitizenEngineRepositoryImpl implements ICitizenEngineRepository {
     async countMobileNumberDuplicates(mobileNumber: string): Promise<number> {
         return await citizenEngineRepository
             .createQueryBuilder('citizen')
-            .where("citizen.mobileNumber = :mobileNumber", { mobileNumber: mobileNumber })
+            .where("citizen.mobileNumber = :mobileNumber", { mobileNumber: EncryptTemplate.encryptColumn(mobileNumber) })
             .getCount();
 
 
@@ -32,10 +33,10 @@ export class CitizenEngineRepositoryImpl implements ICitizenEngineRepository {
         const query = citizenEngineRepository.createQueryBuilder('citizen');
 
         if (citizenEmail?.length !== 0) {
-            query.where('citizen.email = :citizenEmail', { citizenEmail });
+            query.where('citizen.email = :citizenEmail', { citizenEmail: EncryptTemplate.encryptColumn(citizenEmail) });
         }
         if (citizenMobileNumber?.length !== 0) {
-            query.orWhere('citizen.mobileNumber = :citizenMobileNumber', { citizenMobileNumber });
+            query.orWhere('citizen.mobileNumber = :citizenMobileNumber', { citizenMobileNumber: EncryptTemplate.encryptColumn(citizenMobileNumber) });
         }
 
         return await query.getOne();
