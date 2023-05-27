@@ -55,7 +55,7 @@ export class GetAllNewsOperation extends UserAuthOperationTemplate<NewsResultLis
 
 
         logger.info("[GetAllNewsOperation] creating allnews")
-        const newNews:IPage<News> = await this.newsRepository.findAllNews(params.getPage, params.size,this.category);
+        const newNews:IPage<News> = await this.newsRepository.findAllNews(params.getPage, params.size,this.category,params.orderColumn,params.direction);
         //PageableUtils.ofWithoutContent(result, newNews)
 
         Object.assign(result,newNews);

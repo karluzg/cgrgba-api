@@ -10,10 +10,16 @@ import { ResultTemplate } from "../../../infrestructure/template/ResultTemplate"
 import { UpdatePasswordOperation } from "../../operation/user-manager/user/UpdatePasswordOperation";
 import { ResetPasswordParams } from "../../../application/model/user-manager/ResetPasswordParams";
 import { ResetPasswordOperation } from "../../operation/user-manager/user/ResetPasswordOperation";
+import { PageAndSizeParams } from "../../../application/model/PageAndSizeParams";
+import { UserResultList } from "../../../application/model/user-manager/UserResultList";
+import { GetAllUserOperation } from "../../operation/user-manager/user/GetAllUserOperation";
 
 
 @injectable()
 export class UserEngineImpl extends GenericOperationTemplate implements IUserEngine {
+    async getAllUsers(params: PageAndSizeParams): Promise<UserResultList> {
+        return await this.executeOperation(new GetAllUserOperation(), params)
+    }
   
 
     async addUser(params: UserParams): Promise<UserResult> {

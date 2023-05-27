@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany, BeforeInsert, BeforeUpdate, AfterLoad } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany, BeforeInsert, BeforeUpdate, AfterLoad, AfterInsert, AfterUpdate } from "typeorm"
 import { IUserActivable } from "./interface/IUserActivable"
 import { Role } from "./Role"
 import { IsDate, IsNumber, IsString } from "class-validator"
@@ -50,7 +50,7 @@ export class User extends EnumOperationTemplate<UserStatusEnum> implements IUser
     @IsString()
     @Column({
         unique: true,
-        length: 34,
+        length: 100,
         nullable: false
     })
     email: string
@@ -130,6 +130,8 @@ export class User extends EnumOperationTemplate<UserStatusEnum> implements IUser
     }
 
     @AfterLoad()
+    @AfterInsert()
+    @AfterUpdate()
     private decryptColumn() {
         this.fullName = EncryptTemplate.decryptedColumn(this.fullName);
          this.email= EncryptTemplate.decryptedColumn(this.email);

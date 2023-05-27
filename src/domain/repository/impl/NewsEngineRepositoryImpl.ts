@@ -44,18 +44,23 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
     return news;
   }
 
-  async findAllNews(page: number, size: number, category?: NewsCategory): Promise<IPage<News>> {
+  async findAllNews(page: number, size: number, category?: NewsCategory,orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<News>> {
     const skipCount = (page - 1) * size;
 
     let queryBuilder = newsRepository.createQueryBuilder('news')
       .skip(skipCount)
       .take(size);
+
     if (category) {
       const code = category.code
       queryBuilder = queryBuilder.leftJoinAndSelect("news.newsCategory", "category")
         .where('category.code = :code', { code });
     }
 
+    if (orderColumn && direction) {
+      queryBuilder = queryBuilder.orderBy(`news.${orderColumn}`, direction);
+    }
+  
 
     const [newsList, totalRows] = await queryBuilder.getManyAndCount();
     const totalPages = Math.ceil(totalRows / size);

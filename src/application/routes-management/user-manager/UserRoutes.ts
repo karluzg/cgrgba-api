@@ -65,6 +65,17 @@ UserRoutes.post("/users", userRoutesValidator.addUser(), userRoutesValidator.val
  *         description: Estado do utilizador (opcional)
  *         schema:
  *           type: string
+ *       - in: query
+ *         name: orderColumn
+ *         description: Coluna pela qual ordenar os resultados
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: direction
+ *         description: Direção da ordenação (ASC ou DESC)
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
  *     responses:
  *       '200':
  *         description: Lista de utilizadores registados na plataforma

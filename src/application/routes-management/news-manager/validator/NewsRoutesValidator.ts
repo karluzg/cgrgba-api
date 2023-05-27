@@ -9,6 +9,8 @@ export class NewsRoutesValidator extends ParamsValidatorTemplate {
          query('page').isInt({ min: 1 }).optional(),
          query('size').isInt({ min: 1 }).optional(),
          query('category').isLength({ max: 50 }).isString().optional(),
+         query('direction').isIn(['ASC', 'DESC']).optional(),
+         query('orderColumn').isString().optional(),
      ]
    }
   

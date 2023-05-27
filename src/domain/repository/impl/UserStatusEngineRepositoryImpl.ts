@@ -8,7 +8,7 @@ export class UserStatusEngineRepositoryImpl implements IUserStatusEngineReposito
     async findStatusCode(statusCode: string): Promise<UserStatus> {
 
         return userStatusEngineRepository.createQueryBuilder('UserStatus')
-            .where('UserStatus.description = :statusCode', { statusCode })
+            .where('UserStatus.code = :statusCode', { statusCode })
             .getOne()
 
     }

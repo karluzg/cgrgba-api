@@ -18,6 +18,7 @@ export enum MiddlewareBusinessMessage {
   PERMISSION_GOURP_NOT_FOUND = "Grupo de permissões não foi encontrado",
   SESSION_LOGIN_SUCCESSFULLY = "Login realizado com sucesso",
   USER_STATUS_CODE_MANDATORY = "O estado do utilizador é obrigatório",
+  USER_STATUS_NOT_FOUND = "Tipo de estado de utilizador não foi encontrado",
 
 
 

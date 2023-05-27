@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BeforeInsert, AfterLoad, BeforeUpdate } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BeforeInsert, AfterLoad, BeforeUpdate, AfterInsert, AfterUpdate } from "typeorm"
 import { Scheduling } from "./Scheduling"
 import { EncryptTemplate } from "../../infrestructure/template/EncryptTemplate"
 
@@ -47,6 +47,8 @@ export class Citizen {
     }
 
     @AfterLoad()
+    @AfterInsert()
+    @AfterUpdate()
     private decryptColumn() {
         this.fullName = EncryptTemplate.decryptedColumn(this.fullName);
         this.email = EncryptTemplate.decryptedColumn(this.email);

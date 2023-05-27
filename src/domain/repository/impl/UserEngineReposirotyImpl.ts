@@ -6,6 +6,9 @@ import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum
 import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { UserStatusEnum } from "../../model/enum/UserStatusEnum";
 import { EncryptTemplate } from "../../../infrestructure/template/EncryptTemplate";
+import { UserStatus } from "../../model/UserStatus";
+import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
+import { IPage } from "../../../infrestructure/pageable-manager/IPage";
 
 const myDataSource = require("../../meta-inf/data-source");
 const userRepository = myDataSource.getRepository(User)
@@ -21,17 +24,33 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
       }
 
       public async saveUser(user: User): Promise<User> {
-            return userRepository.save(user);
+            return await userRepository.save(user);
       }
 
-      public async findAllUsers(page: number, size: number, status?: string): Promise<User[]> {
+      async findAllNews(page: number, size: number, status?: UserStatus, orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<User>> {
             const skipCount = (page - 1) * size;
 
-            const query = userRepository.createQueryBuilder('user')
+            let queryBuilder = userRepository.createQueryBuilder('user')
                   .skip(skipCount)
                   .take(size);
 
-            return query.getMany();
+            if (status) {
+                  const code = status.code
+                  queryBuilder = queryBuilder.leftJoinAndSelect("user.status", "status")
+                        .where('status.code = :code', { code });
+            }
+
+            if (orderColumn && direction) {
+                  queryBuilder = queryBuilder.orderBy(`user.${orderColumn}`, direction);
+            }
+
+
+            const [userList, totalRows] = await queryBuilder.getManyAndCount();
+            const totalPages = Math.ceil(totalRows / size);
+
+
+
+            return new PageImpl<User>(userList, page, size, totalRows, totalPages)
       }
 
       public async findUserById(userId: number): Promise<User> {
