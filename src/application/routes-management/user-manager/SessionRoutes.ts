@@ -46,7 +46,8 @@ SessionRoutes.post("/sessions/login",sessionRoutesValidator.login(),sessionRoute
  * @swagger
  * /sessions/logout:
  *   post:
- *     summary: Realiza o logout do utilizador
+ *     summary: Realiza o logout do utilizador (EM IMPLEMENTAÇÃO)
+ *     description: Esta funcionalidade está em processo de implementação.
  *     tags: [Sessions]
  *     responses:
  *       '200':
@@ -60,8 +61,9 @@ SessionRoutes.post("/sessions/logout", sessionController.logout);
  * @swagger
  * /sessions/hasPermission/{permissionCode}:
  *   post:
- *     summary: Verifica se o utilizador possui a permissão especificada
+ *     summary: Verifica se o utilizador possui a permissão especificada (EM IMPLEMENTAÇÃO)
  *     tags: [Sessions]
+ *     description: Esta funcionalidade está em processo de implementação.
  *     parameters:
  *       - in: path
  *         name: permissionCode
@@ -80,14 +82,16 @@ SessionRoutes.post("/sessions/logout", sessionController.logout);
  *                 hasPermission:
  *                   type: boolean
  */
+
 SessionRoutes.post('/sessions/hasPermission/:permissionCode', sessionRoutesValidator.hasPermission(), sessionRoutesValidator.validate, sessionController.hasPermission);
 
 /**
  * @swagger
  * /sessions/token/information:
  *   get:
- *     summary: Obtém informações sobre o token atual
+ *     summary: Obtém informações sobre o token atual (EM IMPLEMENTAÇÃO)
  *     tags: [Sessions]
+ *     description: Esta funcionalidade está em processo de implementação.
  *     responses:
  *       '200':
  *         description: Informações do token obtidas com sucesso
@@ -96,7 +100,6 @@ SessionRoutes.post('/sessions/hasPermission/:permissionCode', sessionRoutesValid
  *             schema:
  *               $ref: '#/components/schemas/TokenSession'
  */
-
 SessionRoutes.get('/sessions/token/information', sessionRoutesValidator.getTokenInformation(), sessionRoutesValidator.validate, sessionController.getTokenInformation);
 
 

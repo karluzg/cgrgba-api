@@ -46,7 +46,7 @@ PermissionRoutes.post('/permissions', permissionRoutesValidator.createPermission
  * @swagger
  * /permissions/{id}:
  *   put:
- *     summary: Atualiza uma permissão existente
+ *     summary: Atualiza uma permissão existente (EM IMPLEMENTAÇÃO)
  *     tags: [Permissions]
  *     parameters:
  *       - name: id
@@ -77,7 +77,7 @@ PermissionRoutes.put('/permissions/:id', permissionRoutesValidator.updatePermiss
  * @swagger
  * /permissions/{id}:
  *   delete:
- *     summary: Remove uma permissão existente
+ *     summary: Remove uma permissão existente (EM IMPLEMENTAÇÃO)
  *     tags: [Permissions]
  *     parameters:
  *       - name: id
@@ -132,7 +132,7 @@ PermissionRoutes.get('/permissions', permissionRoutesValidator.getPermissions(),
  * @swagger
  * /permissions/{code}:
  *   get:
- *     summary: Retorna uma permissão pelo código
+ *     summary: Retorna uma permissão pelo código 
  *     tags: [Permissions]
  *     parameters:
  *       - in: path
@@ -218,7 +218,7 @@ PermissionRoutes.get('/permissions/groups', permissionRoutesValidator.getAllPerm
  * @swagger
  * /permissions/groups/{code}:
  *   get:
- *     summary: Obtém um grupo de permissões pelo código
+ *     summary: Obtém um grupo de permissões pelo código (EM IMPLEMENTAÇÃO)
  *     tags: [Permissions]
  *     parameters:
  *       - in: path
@@ -243,7 +243,7 @@ PermissionRoutes.get('/permissions/groups/:code', permissionRoutesValidator.getP
  * @swagger
  * /permissions/groups/{code}:
  *   put:
- *     summary: Atualiza um grupo de permissões pelo código
+ *     summary: Atualiza um grupo de permissões pelo código (EM IMPLEMENTAÇÃO)
  *     tags: [Permissions]
  *     parameters:
  *       - in: path
@@ -275,7 +275,7 @@ PermissionRoutes.put('/permissions/groups/:code', permissionRoutesValidator.upda
  * @swagger
  * /permissions/groups/{code}:
  *   delete:
- *     summary: Exclui um grupo de permissões pelo código
+ *     summary: Exclui um grupo de permissões pelo código (EM IMPLEMENTAÇÃO)
  *     tags: [Permissions]
  *     parameters:
  *       - in: path

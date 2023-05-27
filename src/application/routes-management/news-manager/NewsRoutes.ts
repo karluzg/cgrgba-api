@@ -48,17 +48,6 @@ const uploadImage= new UploadImage();
  *         description: Code da Categoria que quer obter a lista
  *         schema:
  *           type: string
- *       - in: query
- *         name: orderColumn
- *         description: Coluna para ordenar os resultados
- *         schema:
- *           type: string
- *       - in: query
- *         name: direction
- *         description: Direção da ordenação (ASC ou DESC)
- *         schema:
- *           type: string
- *           enum: [ASC, DESC]
  *     responses:
  *       '200':
  *         description: Lista de notícias recuperada com sucesso
@@ -126,7 +115,7 @@ NewsRoutes.post("/news", newsRoutesValidator.createNews(), newsRoutesValidator.v
  * @swagger
  * /news/{id}:
  *   put:
- *     summary: Atualiza uma notícia existente
+ *     summary: Atualiza uma notícia existente (EM IMPLEMENTAÇÃO)
  *     tags: [News]
  *     parameters:
  *       - in: path
@@ -160,7 +149,7 @@ NewsRoutes.put("/news/:id",newsRoutesValidator.updateNews(),newsRoutesValidator.
  * @swagger
  * /news/{id}:
  *   delete:
- *     summary: Exclui uma notícia existente
+ *     summary: Exclui uma notícia existente (EM IMPLEMENTAÇÃO)
  *     tags: [News]
  *     parameters:
  *       - in: path
@@ -181,7 +170,7 @@ NewsRoutes.delete("/news/:id", newsController.deleteNews);
  * @swagger
  * /news/{id}/image:
  *   post:
- *     summary: Faz o upload de uma imagem para um artigo de notícia
+ *     summary: Faz o upload de uma imagem para um artigo de notícia 
  *     tags: [News]
  *     parameters:
  *       - in: path
@@ -212,7 +201,7 @@ NewsRoutes.post("/news/:id/image", multer(uploadImage.getConfig).single("image")
  * @swagger
  * /news/{id}/image:
  *   delete:
- *     summary: Exclui a imagem de um artigo de notícia
+ *     summary: Exclui a imagem de um artigo de notícia (EM IMPLEMENTAÇÃO)
  *     tags: [News]
  *     parameters:
  *       - in: path

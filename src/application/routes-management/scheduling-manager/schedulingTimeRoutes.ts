@@ -12,7 +12,7 @@ const schedulingTimeValidator = new SchedulingTimeRoutesValidator()
 /**
  * @swagger
  * tags:
- *   name: Schedulings
+ *   name: Scheduling Time Slots
  *   description: Endpoints relacionados os intervalos de tempo de agendamento
  */
 

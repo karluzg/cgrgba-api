@@ -79,7 +79,7 @@ RoleRoutes.get('/roles/:id', roleRoutesValidator.getRoleById(), roleRoutesValida
  * @swagger
  * /roles/name/{name}:
  *   get:
- *     summary: Obtém uma role pelo nome
+ *     summary: Obtém uma role pelo nome (EM IMPLEMENTAÇÃO)
  *     tags: [Roles]
  *     parameters:
  *       - name: name
@@ -129,7 +129,7 @@ RoleRoutes.post('/roles', roleRoutesValidator.createRole(), roleRoutesValidator.
  * @swagger
  * /roles/{id}:
  *   put:
- *     summary: Atualiza uma role pelo ID
+ *     summary: Atualiza uma role pelo ID (EM IMPLEMENTAÇÃO)
  *     tags: [Roles]
  *     parameters:
  *       - name: id
@@ -161,7 +161,7 @@ RoleRoutes.put('/roles/:id', roleRoutesValidator.updateRole(), roleRoutesValidat
  * @swagger
  * /roles/{roleId}/permissions/{permissionCode}:
  *   put:
- *     summary: Adiciona uma permissão a uma role através do código da permissão
+ *     summary: Adiciona uma permissão a uma role através do código da permissão (EM IMPLEMENTAÇÃO)
  *     tags: [Roles]
  *     parameters:
  *       - name: roleId
@@ -193,7 +193,7 @@ RoleRoutes.put('/roles/:roleId/permissions/:permissionCode', roleRoutesValidator
  * @swagger
  * /roles/{roleId}/permissions/{permissionCode}:
  *   delete:
- *     summary: Remove uma permissão de uma role através do código da permissão
+ *     summary: Remove uma permissão de uma role através do código da permissão (EM IMPLEMENTAÇÃO)
  *     tags: [Roles]
  *     parameters:
  *       - name: roleId
@@ -225,7 +225,7 @@ RoleRoutes.delete('/roles/:roleId/permissions/:permissionCode', roleRoutesValida
  * @swagger
  * /roles/{id}/permissions:
  *   get:
- *     summary: Retorna a lista de permissões de uma role
+ *     summary: Retorna a lista de permissões de uma role (EM IMPLEMENTAÇÃO)
  *     tags: [Roles]
  *     parameters:
  *       - name: id
