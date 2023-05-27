@@ -17,6 +17,8 @@ import { ParsedQs } from "qs";
 import { UpdatePasswordParams } from "../../model/user-manager/UpdatePasswordParams";
 import { ResetPasswordParams } from "../../model/user-manager/ResetPasswordParams";
 import { PageAndSizeParams } from "../../model/PageAndSizeParams";
+import { GetByIdParams } from "../../model/GetByIdParams";
+import { GetByEmailOrCodeParams } from "../../model/GetByEmailOrCodeParams";
 
 
 export class UserController {
@@ -100,37 +102,52 @@ export class UserController {
     }
   }
   public async getUserById(request: Request, response: Response): Promise<Response> {
-
     try {
-      const { authenticationToken, userFullName, userMobileNumber, userEmail } = request.body;
-
-      const params = new UserParams(authenticationToken, userFullName, userMobileNumber, userEmail)
-
-      logger.info("[UserController] Perform dependency injection for UserController")
-
-      const userEngine = container.resolve<IUserEngine>("IUserEngine")
-      logger.info("[UserController] Perform dependency injection for UserController was successfully")
-
-
-      const result = await userEngine.addUser(params)
-      return response.status(HttpCode.OK).json(result)
+      const { id } = request.params; // Obtém o ID do parâmetro da URL
+  
+      const authenticationToken = AuthValidator.checkAuthorizationToken(request);
+      const params = new GetByIdParams(authenticationToken, parseInt(id, 10));
+  
+      logger.info('[UserController] Performing dependency injection for UserEngine');
+      const userEngine = container.resolve<IUserEngine>('IUserEngine');
+      logger.info('[UserController] Dependency injection for UserEngine was successful');
+  
+      const result = await userEngine.getUserById(params);
+      return response.status(HttpCode.OK).json(result);
     } catch (error) {
-
-      if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
-        throw new NotImplementedException(error.field, error.message)
-
-      } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
-        throw new InvalidParametersException(error.field, error.message)
-
-      } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
-        throw new UnauthorizedOperationException(error.field, error.message)
+      if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
+        throw new NotImplementedException(error.field, error.message);
+      } else if (error.errorClassName === ErrorExceptionClass.INVALID_PARAMETERS) {
+        throw new InvalidParametersException(error.field, error.message);
+      } else if (error.errorClassName === ErrorExceptionClass.UNAUTHORIZED) {
+        throw new UnauthorizedOperationException(error.field, error.message);
       }
     }
   }
-
   public async getUserByEmail(request: Request, response: Response): Promise<Response> {
-    throw new Error("Method not implemented.");
+    try {
+      const { email } = request.params; // Obtém o email do parâmetro da URL
+  
+      const authenticationToken = AuthValidator.checkAuthorizationToken(request);
+      const params = new GetByEmailOrCodeParams(authenticationToken, email);
+  
+      logger.info('[UserController] Performing dependency injection for UserEngine');
+      const userEngine = container.resolve<IUserEngine>('IUserEngine');
+      logger.info('[UserController] Dependency injection for UserEngine was successful');
+  
+      const result = await userEngine.getUserByEmail(params);
+      return response.status(HttpCode.OK).json(result);
+    } catch (error) {
+      if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
+        throw new NotImplementedException(error.field, error.message);
+      } else if (error.errorClassName === ErrorExceptionClass.INVALID_PARAMETERS) {
+        throw new InvalidParametersException(error.field, error.message);
+      } else if (error.errorClassName === ErrorExceptionClass.UNAUTHORIZED) {
+        throw new UnauthorizedOperationException(error.field, error.message);
+      }
+    }
   }
+  
 
   public async updateUser(request: Request, response: Response): Promise<Response> {
     throw new Error("Method not implemented.");

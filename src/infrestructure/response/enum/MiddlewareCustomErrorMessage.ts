@@ -13,6 +13,7 @@ export enum MiddlewareBusinessMessage {
   USER_PASSWORD_RESET_SUCCESSFULLY = "Password redefinida com sucesso",
   USER_PASSWORD_LOCKED = "Passowrd bloqueda, tem de efectuar reset a password",
   USER_ADDED_SUCCESSFULLY = "Utilizador criado com sucesso",
+  USER_GET_SUCCESSFULLY = "Utilizador obtido com sucesso",
   ROLE_NOT_FOUND = "Role não foi encontrado",
   PERMISSION_NOT_FOUND = "Permissão não foi encontrado",
   PERMISSION_GOURP_NOT_FOUND = "Grupo de permissões não foi encontrado",

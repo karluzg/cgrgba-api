@@ -13,19 +13,29 @@ import { ResetPasswordOperation } from "../../operation/user-manager/user/ResetP
 import { PageAndSizeParams } from "../../../application/model/PageAndSizeParams";
 import { UserResultList } from "../../../application/model/user-manager/UserResultList";
 import { GetAllUserOperation } from "../../operation/user-manager/user/GetAllUserOperation";
+import { GetByIdParams } from "../../../application/model/GetByIdParams";
+import { GetUserByIdOperation } from "../../operation/user-manager/user/GetUserByIdOperation";
+import { GetByEmailOrCodeParams } from "../../../application/model/GetByEmailOrCodeParams";
+import { GetUserByEmailOperation } from "../../operation/user-manager/user/GetUserByEmailOperation";
 
 
 @injectable()
 export class UserEngineImpl extends GenericOperationTemplate implements IUserEngine {
+    async getUserByEmail(params: GetByEmailOrCodeParams): Promise<UserResult> {
+        return await this.executeOperation(new GetUserByEmailOperation(), params)
+    }
+   
+    async getUserById(params: GetByIdParams): Promise<UserResult> {
+        return await this.executeOperation(new GetUserByIdOperation(), params)
+    }
+
     async getAllUsers(params: PageAndSizeParams): Promise<UserResultList> {
         return await this.executeOperation(new GetAllUserOperation(), params)
     }
   
-
     async addUser(params: UserParams): Promise<UserResult> {
 
         return await this.executeOperation(new AddUserOperation(), params)
-
     }
 
     async updatePassword(params: UpdatePasswordParams): Promise<UserResult> {

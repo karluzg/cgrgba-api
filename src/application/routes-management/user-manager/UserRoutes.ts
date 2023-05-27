@@ -93,8 +93,7 @@ UserRoutes.get("/users", userRoutesValidator.getUsers(), userRoutesValidator.val
  * @swagger
  * /users/{id}:
  *   get:
- *     summary: Retorna um utilizador pelo ID (EM IMPLEMENTAÇÃO)
- *     description: Esta funcionalidade está em processo de implementação.
+ *     summary: Retorna um utilizador pelo ID
  *     tags: [Users]
  *     parameters:
  *       - in: path
@@ -120,7 +119,7 @@ UserRoutes.get("/users/:id", userRoutesValidator.getUserById(), userRoutesValida
  * @swagger
  * /users/email/{email}:
  *   get:
- *     summary: Obtém um utilizador pelo email do utilizador (EM IMPLEMENTAÇÃO)
+ *     summary: Obtém um utilizador pelo email do utilizador
  *     description: Esta funcionalidade está em processo de implementação.
  *     tags: [Users]
  *     parameters:
