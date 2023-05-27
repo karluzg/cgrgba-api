@@ -6,13 +6,10 @@
       ],
       "target": "es5",
       "module": "commonjs",
-      "esModuleInterop": true,
       "moduleResolution": "node",
       "outDir": "./build",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "sourceMap": true,
-      "forceConsistentCasingInFileNames": true,
-      "resolveJsonModule": true
+      "sourceMap": true
    }
 }
