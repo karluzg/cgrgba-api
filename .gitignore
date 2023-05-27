@@ -4,3 +4,5 @@ node_modules/
 build/
 tmp/
 temp/
+Server.log
+Server.log.orig
