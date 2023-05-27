@@ -119,7 +119,8 @@ UserRoutes.get("/users/:id", userRoutesValidator.getUserById(), userRoutesValida
  * @swagger
  * /users/email/{email}:
  *   get:
- *     summary: Obtém um utilizador pelo  email do utilizador
+ *     summary: Obtém um utilizador pelo email do utilizador
+ *     description: Esta funcionalidade está em processo de implementação.
  *     tags: [Users]
  *     parameters:
  *       - in: path
@@ -138,13 +139,15 @@ UserRoutes.get("/users/:id", userRoutesValidator.getUserById(), userRoutesValida
  *       '404':
  *         description: Utilizador não encontrado
  */
+
 UserRoutes.get("/users/email/:email", userRoutesValidator.getUserByEmail(), userRoutesValidator.validate, userController.getUserByEmail);
 
 /**
  * @swagger
  * /users:
  *   put:
- *     summary: Atualiza um utilizador
+ *     summary: Atualiza um utilizador (EM IMPLEMENTAÇÃO)
+ *     description: Esta funcionalidade está em processo de implementação.
  *     tags: [Users]
  *     requestBody:
  *       required: true
@@ -163,6 +166,7 @@ UserRoutes.get("/users/email/:email", userRoutesValidator.getUserByEmail(), user
  *       '404':
  *         description: Utilizador não encontrado
  */
+
 UserRoutes.put("/users", userRoutesValidator.updateUser(), userRoutesValidator.validate, userController.updateUser);
 
 /**

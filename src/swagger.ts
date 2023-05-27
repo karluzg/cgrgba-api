@@ -40,6 +40,13 @@ const options = {
       },
     ],
     components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
       schemas: {
         User: classToJsonSchema(User),
         UserParams: classToJsonSchema(UserParams),
@@ -54,21 +61,26 @@ const options = {
         TimeSlotParams: classToJsonSchema(TimeSlotParams),
         TimeSlotResult: classToJsonSchema(TimeSlotResult),
         Hour: classToJsonSchema(Hour),
-        UpdatePasswordParams:  classToJsonSchema(UpdatePasswordParams),
+        UpdatePasswordParams: classToJsonSchema(UpdatePasswordParams),
         TokenSession: classToJsonSchema(TokenSession),
         RoleParams: classToJsonSchema(RoleParams),
         RoleResult: classToJsonSchema(RoleResult),
         PermissionParams: classToJsonSchema(PermissionParams),
         PermissionResult: classToJsonSchema(PermissionResult),
         ResetPasswordParams: classToJsonSchema(ResetPasswordParams),
-        NewsParams:  classToJsonSchema(NewsParams),
-        NewsResult:  classToJsonSchema(NewsResult),
+        NewsParams: classToJsonSchema(NewsParams),
+        NewsResult: classToJsonSchema(NewsResult),
         GetSchedulingListResult: classToJsonSchema(GetSchedulingListResult),
         UpdateSchedulingParams: classToJsonSchema(UpdateSchedulingParams),
 
-        
+
       },
     },
+    security: [
+      {
+        BearerAuth: [],
+      },
+    ]
   },
   apis: [
     'src/application/routes-management/shared-routes/*.ts',
@@ -76,6 +88,8 @@ const options = {
     'src/application/routes-management/user-manager/*.ts',
     'src/application/routes-management/news-manager/*.ts',
   ],
+
+
 };
 
 const specs = swaggerJsDoc(options);

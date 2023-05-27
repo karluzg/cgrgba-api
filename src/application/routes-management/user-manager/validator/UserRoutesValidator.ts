@@ -19,8 +19,11 @@ export class UserRoutesValidator extends ParamsValidatorTemplate {
     updateUser(): ValidationChain[] {
         return []
     }
+    
     getUserByEmail(): ValidationChain[] {
-        return []
+        return [
+            param('email').notEmpty().isLength({ max: 34 }).isEmail(),
+        ]
     }
 
     public addUser(): ValidationChain[] {
@@ -46,7 +49,7 @@ export class UserRoutesValidator extends ParamsValidatorTemplate {
 
     public getUserById(): ValidationChain[] {
         return [
-            param('id').notEmpty().isUUID(),
+            param('id').notEmpty().isInt(),
         ]
 
     }
