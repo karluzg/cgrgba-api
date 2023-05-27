@@ -24,16 +24,19 @@ export class NewsController {
 
   public async getAllNews(request: Request, response: Response): Promise<Response> {
     try {
-      const { page = 1, size = 10, cetegory: categoryCode } = request.query;
+      const { page = 1, size = 10, category: categoryCode, direction, orderColumn } = request.query;
 
       const pageNumber = Number(page);
       const pageSize = Number(size);
-      const cetegoryString = categoryCode ? String(categoryCode) : null
+      const categoryString = categoryCode ? String(categoryCode) : null;
 
-      //const authenticationToken =  new AuthorizationOperationTemplate().checkAuthorizationToken(request)
-      //não deixa acesso a classe extendida então usou-se static
+      // Get the order column and direction
+      const column = orderColumn ? String(orderColumn) : null;
+      const directionOrder = direction ? direction as 'ASC' | 'DESC' : null;
+
       const authenticationToken = AuthValidator.checkAuthorizationToken(request);
-      const params = new PageAndSizeParams(authenticationToken, pageNumber, pageSize, cetegoryString)
+      const params = new PageAndSizeParams(authenticationToken, pageNumber, pageSize, categoryString, column, directionOrder);
+
 
       logger.info("[NewsController] Perform dependency injection for UserController")
 

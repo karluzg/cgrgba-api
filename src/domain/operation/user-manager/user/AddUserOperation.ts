@@ -19,17 +19,25 @@ import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { EmailTemplate } from "../../../../infrestructure/template/EmailTemplate";
 import { PlataformConfig } from "../../../../infrestructure/config/plataform";
 import { EmailUtils } from "../../util/EmailUtils";
+import { IRoleEngineRepository } from "../../../repository/IRoleEngineRepository";
+import { forEach } from "lodash";
+import { Role } from "../../../model/Role";
+import { NotFoundError } from "routing-controllers";
+import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 
 
 
 export class AddUserOperation extends UserAuthOperationTemplate<UserResult, UserParams>{
 
     private userRepository: IUserEngineRepository;
+    private rolesRepository: IRoleEngineRepository;
+    private roles: Role[];
 
     constructor() {
         super(OperationNamesEnum.USER_CREATE, OperationValidatorManager.getSingletonInstance())
         this.userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
-
+        this.rolesRepository = container.resolve<IRoleEngineRepository>("IRoleEngineRepository")
+        this.roles = [];
     }
 
     protected async doValidateParameters(params: UserParams): Promise<void> {
@@ -48,6 +56,19 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
             logger.error("[AddUserOperation] user already exist")
             throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.USER_MBILE_NUMBER_ALREADY_EXIST);
         }
+
+        if (params.getRoles) {
+            for (const role of params.getRoles) {
+              const roleEntity = await this.rolesRepository.findRoleByName(role);
+              if (!roleEntity) {
+                logger.error("[AddUserOperation] Role not found");
+                throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND);
+              } else {
+                this.roles.push(roleEntity);
+              }
+            }
+          }
+
     }
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: UserParams, result: UserResult): Promise<void> {
@@ -67,6 +88,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         user.mobileNumber = params.getMobileNumber;
         user.passwordHash = await hash;
         user.passwordSalt = await salt;
+        user.roles = this.roles
 
         console.info("WATCH USER TO ADD:" + JSON.stringify(user))
 
@@ -84,8 +106,8 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
             PlataformConfig.url.backOffice,
             PlataformConfig.contact.email);
 
-        const emailTemplate= new EmailTemplate();
-        const mailOption= await emailTemplate.createMailOption(user.email,emailMessage);
+        const emailTemplate = new EmailTemplate();
+        const mailOption = await emailTemplate.createMailOption(user.email, emailMessage);
 
         await emailTemplate.sendEmail(mailOption);
 

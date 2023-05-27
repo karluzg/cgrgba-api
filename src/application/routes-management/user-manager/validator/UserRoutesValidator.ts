@@ -27,7 +27,8 @@ export class UserRoutesValidator extends ParamsValidatorTemplate {
         return [
             body('fullName').notEmpty().isLength({ max: 50 }).isString(),
             body('mobileNumber').isLength({ min: 9, max: 21 }).isString().optional(),
-            body('email').notEmpty().isLength({ max: 34 }).isEmail()
+            body('email').notEmpty().isLength({ max: 34 }).isEmail(),
+            body('roles').optional().isArray().notEmpty().withMessage('O campo roles deve ser um array não vazio de strings')
         ]
 
     }
@@ -35,7 +36,10 @@ export class UserRoutesValidator extends ParamsValidatorTemplate {
     public getUsers(): ValidationChain[] {
         return [
             query('page').isInt({ min: 1 }).optional(),
-            query('size').isInt({ min: 1 }).optional()
+            query('size').isInt({ min: 1 }).optional(),
+            query('status').isLength({ max: 50 }).isString().optional(),
+            query('direction').isIn(['ASC', 'DESC']).optional(),
+            query('orderColumn').isString().optional(),
         ]
 
     }

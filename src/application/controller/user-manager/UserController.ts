@@ -16,6 +16,7 @@ import { RequestHandler, ParamsDictionary } from "express-serve-static-core";
 import { ParsedQs } from "qs";
 import { UpdatePasswordParams } from "../../model/user-manager/UpdatePasswordParams";
 import { ResetPasswordParams } from "../../model/user-manager/ResetPasswordParams";
+import { PageAndSizeParams } from "../../model/PageAndSizeParams";
 
 
 export class UserController {
@@ -25,13 +26,13 @@ export class UserController {
   public async addUser(request: Request, response: Response): Promise<Response> {
 
     try {
-      const { fullName, mobileNumber, email } = request.body;
+      const { fullName, mobileNumber, email, roles } = request.body;
 
 
       //const authenticationToken =  new AuthorizationOperationTemplate().checkAuthorizationToken(request)
       //não deixa acesso a classe extendida então usou-se static
       const authenticationToken = AuthValidator.checkAuthorizationToken(request);
-      const params = new UserParams(authenticationToken, fullName, mobileNumber, email)
+      const params = new UserParams(authenticationToken, fullName, mobileNumber, email,roles)
 
       logger.info("[UserController] Perform dependency injection for UserController")
 
@@ -63,17 +64,27 @@ export class UserController {
   public async getUsers(request: Request, response: Response): Promise<Response> {
 
     try {
-      const { authenticationToken, userFullName, userMobileNumber, userEmail } = request.body;
+       const { page = 1, size = 10, status: statusCode, direction, orderColumn } = request.query;
 
-      const params = new UserParams(authenticationToken, userFullName, userMobileNumber, userEmail)
+      const pageNumber = Number(page);
+      const pageSize = Number(size);
+      const statusString = statusCode ? String(statusCode) : null;
 
-      logger.info("[UserController] Perform dependency injection for UserController")
+      // Get the order column and direction
+      const column = orderColumn ? String(orderColumn) : null;
+      const directionOrder = direction ? direction as 'ASC' | 'DESC' : null;
+
+      const authenticationToken = AuthValidator.checkAuthorizationToken(request);
+      const params = new PageAndSizeParams(authenticationToken, pageNumber, pageSize, statusString, column, directionOrder);
+
+
+      logger.info("[NewsController] Perform dependency injection for UserController")
 
       const userEngine = container.resolve<IUserEngine>("IUserEngine")
-      logger.info("[UserController] Perform dependency injection for UserController was successfully")
+      logger.info("[NewsController] Perform dependency injection for UserController was successfully")
 
 
-      const result = await userEngine.addUser(params)
+      const result = await userEngine.getAllUsers(params)
       return response.status(HttpCode.OK).json(result)
     } catch (error) {
 
