@@ -1,4 +1,4 @@
-import express from 'express';
+import * as express from "express";
 import { RoleController } from "../../controller/user-manager/RoleController";
 import { RoleRoutesValidator} from "./validator/RoleRoutesValidator";
 
@@ -48,7 +48,7 @@ const RoleRoutes = express.Router();
  *               items:
  *                 $ref: '#/components/schemas/RoleResult'
  */
-RoleRoutes.get('/roles', roleRoutesValidator.getRoles(), roleRoutesValidator.validate, roleController.getRoles);
+RoleRoutes.get('/roles', roleRoutesValidator.getAllRoles(), roleRoutesValidator.validate, roleController.getAllRoles);
 
 
 /**

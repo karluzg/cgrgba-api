@@ -4705,3 +4705,644 @@
 [2023-05-27T11:03:14.201] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
 [2023-05-27T11:03:14.212] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
 [2023-05-27T11:03:14.212] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:18:31.839] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:18:31.841] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:18:31.841] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:18:31.841] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:18:31.889] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:18:31.892] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:18:31.893] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:18:31.894] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:18:31.895] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:18:31.895] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:18:31.895] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:18:31.896] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:18:31.896] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:18:31.899] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:18:31.910] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:18:31.910] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:20:19.184] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:20:19.186] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:20:19.187] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:20:19.187] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:20:19.247] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:20:19.250] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:20:19.251] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:20:19.254] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:20:19.258] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:20:19.259] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:20:19.259] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:20:19.259] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:20:19.259] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:20:19.262] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:20:19.275] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:20:19.276] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:20:42.144] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:20:42.146] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:20:42.146] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:20:42.147] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:20:42.193] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:20:42.197] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:20:42.198] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:20:42.200] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:20:42.201] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:20:42.201] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:20:42.201] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:20:42.202] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:20:42.202] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:20:42.204] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:20:42.217] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:20:42.218] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:21:20.238] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:21:20.240] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:21:20.240] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:21:20.240] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:21:20.283] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:21:20.287] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:21:20.288] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:21:20.290] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:21:20.292] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:21:20.292] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:21:20.292] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:21:20.293] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:21:20.293] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:21:20.296] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:21:20.308] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:21:20.308] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:22:25.530] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:22:25.532] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:22:25.532] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:22:25.533] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:22:25.578] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:22:25.581] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:22:25.582] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:22:25.583] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:22:25.584] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:22:25.584] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:22:25.584] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:22:25.584] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:22:25.584] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:22:25.587] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:22:25.598] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:22:25.598] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:22:45.651] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:22:45.653] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:22:45.653] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:22:45.653] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:22:45.703] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:22:45.705] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:22:45.706] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:22:45.707] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:22:45.708] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:22:45.708] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:22:45.708] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:22:45.709] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:22:45.709] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:22:45.711] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:22:45.721] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:22:45.721] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:23:13.782] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:23:13.784] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:23:13.785] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:23:13.785] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:23:13.826] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:23:13.830] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:23:13.831] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:23:13.833] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:23:13.835] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:23:13.836] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:23:13.836] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:23:13.836] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:23:13.836] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:23:13.838] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:23:13.849] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:23:24.024] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:23:24.026] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:24:00.172] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:24:00.174] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:24:00.174] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:24:00.174] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:24:00.218] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:24:00.222] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:24:00.223] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:24:00.224] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:24:00.225] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:24:00.226] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:24:00.226] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:24:00.226] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:24:00.226] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:24:00.228] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:24:00.239] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:24:00.240] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:24:16.131] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:24:16.133] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:24:16.133] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:24:16.133] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:24:16.176] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:24:16.180] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:24:16.181] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:24:16.183] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:24:16.184] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:24:16.184] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:24:16.184] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:24:16.184] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:24:16.184] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:24:16.187] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:24:16.199] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:24:16.199] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:24:53.349] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:24:53.351] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:24:53.352] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:24:53.352] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:24:53.396] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:24:53.399] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:24:53.399] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:24:53.400] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:24:53.401] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:24:53.402] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:24:53.402] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:24:53.402] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:24:53.402] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:24:53.405] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:24:53.416] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:24:53.416] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:25:17.876] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:25:17.877] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:25:17.878] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:25:17.878] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:25:17.927] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:25:17.931] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:25:17.931] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:25:17.933] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:25:17.934] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:25:17.934] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:25:17.935] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:25:17.935] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:25:17.935] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:25:17.937] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:25:17.950] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:25:17.950] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:25:35.325] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:25:35.326] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:25:35.327] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:25:35.327] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:25:35.377] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:25:35.379] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:25:35.380] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:25:35.381] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:25:35.382] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:25:35.383] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:25:35.383] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:25:35.383] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:25:35.383] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:25:35.386] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:25:35.396] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:25:35.396] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:26:14.735] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:26:14.737] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:26:14.737] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:26:14.737] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:26:14.782] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:26:14.785] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:26:14.786] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:26:14.787] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:26:14.788] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:26:14.789] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:26:14.789] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:26:14.789] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:26:14.789] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:26:14.793] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:26:14.804] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:26:14.805] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:26:55.961] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:26:55.963] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:26:55.963] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:26:55.964] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:26:56.028] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:26:56.032] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:26:56.033] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:26:56.034] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:26:56.036] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:26:56.036] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:26:56.036] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:26:56.036] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:26:56.036] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:26:56.042] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:26:56.054] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:26:56.055] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:27:06.180] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:27:06.182] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:27:06.183] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:27:06.183] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:27:06.227] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:27:06.230] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:27:06.230] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:27:06.232] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:27:06.234] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:27:06.234] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:27:06.234] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:27:06.235] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:27:06.235] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:27:06.239] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:27:06.249] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:27:06.250] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:27:45.721] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:27:45.722] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:27:45.723] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:27:45.723] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:27:45.774] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:27:45.778] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:27:45.779] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:27:45.780] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:27:45.782] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:27:45.782] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:27:45.782] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:27:45.782] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:27:45.782] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:27:45.784] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:27:45.795] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:27:45.795] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:28:00.679] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:28:00.681] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:28:00.681] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:28:00.681] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:28:00.722] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:28:00.726] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:28:00.726] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:28:00.728] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:28:00.729] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:28:00.730] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:28:00.730] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:28:00.730] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:28:00.730] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:28:00.733] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:28:00.744] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:28:00.744] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:28:39.679] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:28:39.681] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:28:39.682] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:28:39.682] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:28:39.729] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:28:39.734] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:28:39.735] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:28:39.737] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:28:39.739] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:28:39.739] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:28:39.739] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:28:39.740] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:28:39.740] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:28:39.744] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:28:39.757] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:28:39.758] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:29:08.676] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:29:08.677] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:29:08.677] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:29:08.677] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:29:08.721] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:29:08.724] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:29:08.725] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:29:08.726] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:29:08.727] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:29:08.727] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:29:08.727] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:29:08.728] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:29:08.728] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:29:08.730] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:29:08.740] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:29:08.740] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:31:46.975] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:31:46.976] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:31:46.977] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:31:46.977] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:31:47.023] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:31:47.029] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:31:47.030] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:31:47.032] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:31:47.034] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:31:47.034] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:31:47.034] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:31:47.035] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:31:47.035] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:31:47.037] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:31:47.048] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:31:47.048] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:35:49.033] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:35:49.035] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:35:49.035] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:35:49.035] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:35:49.086] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:35:49.088] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:35:49.089] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:35:49.090] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:35:49.091] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:35:49.091] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:35:49.091] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:35:49.092] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:35:49.092] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:35:49.094] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:35:49.105] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:35:49.105] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:36:21.423] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:36:21.425] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:36:21.425] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:36:21.426] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:36:21.467] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:36:21.471] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:36:21.471] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:36:21.473] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:36:21.474] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:36:21.475] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:36:21.475] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:36:21.475] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:36:21.475] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:36:21.478] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:36:21.495] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:36:21.495] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:37:07.177] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:37:07.179] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:37:07.180] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:37:07.180] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:37:07.219] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:37:07.223] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:37:07.224] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:37:07.225] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:37:07.226] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:37:07.227] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:37:07.227] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:37:07.227] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:37:07.227] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:37:07.230] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:37:07.240] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:37:07.240] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:37:52.344] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:37:52.345] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:37:52.346] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:37:52.346] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:37:52.389] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:37:52.391] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:37:52.392] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:37:52.393] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:37:52.394] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:37:52.395] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:37:52.395] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:37:52.395] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:37:52.395] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:37:52.398] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:37:52.407] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:37:52.407] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:38:04.562] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:38:04.564] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:38:04.565] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:38:04.565] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:38:04.606] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:38:04.611] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:38:04.611] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:38:04.613] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:38:04.614] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:38:04.615] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:38:04.615] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:38:04.615] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:38:04.615] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:38:04.617] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:38:04.634] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:38:04.634] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:38:21.497] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:38:21.499] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:38:21.500] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:38:21.500] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:38:21.550] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:38:21.553] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:38:21.553] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:38:21.554] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:38:21.556] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:38:21.556] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:38:21.556] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:38:21.556] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:38:21.556] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:38:21.559] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:38:21.568] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:38:21.568] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:41:27.014] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:41:27.016] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:41:27.017] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:41:27.017] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:41:27.056] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:41:27.060] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:41:27.061] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:41:27.063] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:41:27.065] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:41:27.065] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:41:27.065] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:41:27.065] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:41:27.065] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:41:27.068] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:41:27.078] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:41:27.078] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:41:51.530] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:41:51.531] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:41:51.532] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:41:51.532] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:41:51.576] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:41:51.579] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:41:51.580] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:41:51.581] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:41:51.583] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:41:51.583] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:41:51.583] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:41:51.583] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:41:51.583] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:41:51.586] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:41:51.597] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:41:51.598] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:42:21.684] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:42:21.685] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:42:21.686] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:42:21.686] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:42:21.725] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:42:21.728] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:42:21.729] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:42:21.732] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:42:21.733] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:42:21.734] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:42:21.734] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:42:21.734] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:42:21.734] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:42:21.737] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:42:21.747] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:42:21.747] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:44:15.582] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:44:15.584] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:44:15.585] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:44:15.585] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:44:15.629] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:44:15.632] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:44:15.633] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:44:15.634] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:44:15.636] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:44:15.637] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:44:15.637] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:44:15.637] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:44:15.637] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:44:15.641] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:44:15.658] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:44:15.658] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:45:22.139] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:45:22.141] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:45:22.142] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:45:22.142] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:45:22.192] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:45:22.194] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:45:22.195] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:45:22.197] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:45:22.198] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:45:22.199] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:45:22.199] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:45:22.199] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:45:22.199] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:45:22.202] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:45:22.212] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:45:22.212] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:45:37.005] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:45:37.006] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:45:37.007] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:45:37.007] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:45:37.049] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:45:37.051] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:45:37.052] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:45:37.053] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:45:37.055] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:45:37.056] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:45:37.056] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:45:37.056] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:45:37.056] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:45:37.059] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:45:37.070] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:45:37.070] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:45:55.940] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:45:55.942] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:45:55.942] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:45:55.942] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:45:55.991] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:45:55.994] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:45:55.995] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:45:55.998] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:45:55.999] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:45:56.000] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:45:56.000] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:45:56.000] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:45:56.000] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:45:56.003] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:45:56.016] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:45:56.016] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:50:06.156] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:50:06.158] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:50:06.159] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:50:06.159] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:50:06.206] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:50:06.210] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:50:06.210] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:50:06.212] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:50:06.214] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:50:06.215] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:50:06.215] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:50:06.215] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:50:06.215] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:50:06.218] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:50:06.228] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:50:06.229] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:50:30.642] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:50:30.644] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:50:30.644] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:50:30.645] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:50:30.687] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:50:30.689] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:50:30.690] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:50:30.691] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:50:30.694] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:50:30.695] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:50:30.695] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:50:30.695] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:50:30.695] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:50:30.701] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:50:30.714] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:50:30.714] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:50:47.506] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:50:47.508] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:50:47.508] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:50:47.508] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:50:47.552] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:50:47.555] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:50:47.555] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:50:47.562] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:50:47.564] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:50:47.564] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:50:47.564] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:50:47.564] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:50:47.565] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:50:47.568] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:50:47.579] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:50:47.579] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:51:36.306] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:51:36.308] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:51:36.308] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:51:36.309] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:51:36.351] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:51:36.354] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:51:36.354] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:51:36.356] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:51:36.357] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:51:36.357] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:51:36.357] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:51:36.358] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:51:36.358] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:51:36.361] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:51:36.371] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:51:36.371] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:53:20.213] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:53:20.215] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:53:20.216] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:53:20.216] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:53:20.258] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:53:20.261] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:53:20.262] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:53:20.263] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:53:20.264] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:53:20.264] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:53:20.264] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:53:20.264] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:53:20.264] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:53:20.268] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:53:20.279] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:53:20.279] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:53:40.953] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:53:40.954] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:53:40.955] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:53:40.955] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:53:41.003] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:53:41.008] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:53:41.009] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:53:41.010] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:53:41.011] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:53:41.012] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:53:41.012] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:53:41.012] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:53:41.012] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:53:41.014] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:53:41.027] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:53:41.028] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-27T11:56:16.592] [INFO] default - Data Source has been initialized!
+[2023-05-27T11:56:16.594] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-27T11:56:16.594] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-27T11:56:16.595] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-27T11:56:16.640] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:56:16.644] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:56:16.645] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:56:16.646] [INFO] default - [cretePermissions] Find role by name
+[2023-05-27T11:56:16.648] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-27T11:56:16.648] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-27T11:56:16.648] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-27T11:56:16.648] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-27T11:56:16.648] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-27T11:56:16.651] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-27T11:56:16.664] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-27T11:56:16.664] [INFO] default - [createUserNantoi] Find User by email

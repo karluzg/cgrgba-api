@@ -25,8 +25,13 @@ export class RoleRoutesValidator extends ParamsValidatorTemplate {
     getRoleById():ValidationChain[] {
          return []
     }
-    getRoles():ValidationChain[] {
-         return []
+    getAllRoles():ValidationChain[] {
+     return [
+          query('page').isInt({ min: 1 }).optional(),
+          query('size').isInt({ min: 1 }).optional(),
+          query('direction').isIn(['ASC', 'DESC']).optional(),
+          query('orderColumn').isString().optional(),
+      ]
     }
 
 

@@ -1,6 +1,7 @@
 import { IsString, IsArray, ArrayNotEmpty, IsNotEmpty } from 'class-validator';
+import { AuthParamsTemplate } from '../../../infrestructure/template/AuthParamsTemplate';
 
-export class RoleParams {
+export class RoleParams extends AuthParamsTemplate {
   @IsNotEmpty({ message: 'O nome da role é obrigatório.' })
   @IsString({ message: 'O nome da role deve ser uma string.' })
   private name: string;
@@ -11,6 +12,15 @@ export class RoleParams {
 
   @IsString({ message: 'A descrição da role deve ser uma string.' })
   private description: string;
+
+
+  constructor(name: string, permissions: string[], description: string, authenticationToken: string) {
+    super(authenticationToken);
+    this.name = name;
+    this.permissions = permissions;
+    this.description = description;
+  }
+
 
   public get getName(): string {
     return this.name;

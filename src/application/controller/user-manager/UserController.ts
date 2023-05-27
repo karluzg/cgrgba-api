@@ -7,7 +7,7 @@ import { UnauthorizedOperationException } from "../../../infrestructure/exceptio
 import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
 import { IUserEngine } from "../../../domain/service/IUserEngine";
 import { UserParams } from "../../../application/model/user-manager/UserParams";
-import e, { Request, Response } from "express";
+import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import { AuthValidator } from "../validator/AuthValidator";
