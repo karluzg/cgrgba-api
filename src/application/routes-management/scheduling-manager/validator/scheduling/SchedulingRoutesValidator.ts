@@ -17,14 +17,6 @@ export class SchedulingRoutesValidator extends ParamsValidatorTemplate {
         ]
     }
 
-    public getUsers(): ValidationChain[] {
-        return [
-            query('pageNumber').isInt({ min: 1 }).optional(),
-            query('pageSize').isInt({ min: 1 }).optional()
-        ]
-
-    }
-
 
 
 }

@@ -1,15 +1,24 @@
 
+import { IsNumber, IsString } from "class-validator";
 import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthParamsTemplate";
 
 export class TimeSlotParams extends AuthParamsTemplate {
 
+  @IsString()
   private readonly beginSchedulingDate: string;
+  @IsString()
   private readonly endSchedulingDate: string;
+  @IsString()
   private readonly beginWorkTime: string;
+  @IsString()
   private readonly endWorkTime: string;
+  @IsString()
   private readonly beginLunchTime: string;
+  @IsString()
   private readonly endLunchTime: string;
+  @IsNumber()
   private readonly serviceInterval: number;
+  @IsNumber()
   private readonly availableCollaboratorNumber: number;
 
 

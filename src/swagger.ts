@@ -20,6 +20,11 @@ import { RoleResult } from './application/model/user-manager/RoleResult ';
 import { ResetPasswordParams } from './application/model/user-manager/ResetPasswordParams';
 import { NewsParams } from './application/model/news-manager/NewsParams';
 import { NewsResult } from './application/model/news-manager/NewsResult';
+import { GetSchedulingListResult } from './application/model/scheduling-manager/scheduling/GetSchedulingListResult';
+import { UpdateSchedulingParams } from './application/model/scheduling-manager/scheduling/params/UpdateSchedulingParams';
+import { Scheduling } from './domain/model/Scheduling';
+import { SchedulingStatus } from './domain/model/SchedulingStatus';
+import { Hour } from './domain/model/Hour';
 
 
 const options = {
@@ -43,9 +48,12 @@ const options = {
         UserLoginParams: classToJsonSchema(UserLoginParams),
         SchedulingParams: classToJsonSchema(SchedulingParams),
         SchedulingResult: classToJsonSchema(SchedulingResult),
+        Scheduling: classToJsonSchema(Scheduling),
+        SchedulingStatus: classToJsonSchema(SchedulingStatus),
         TimeSlotListParams: classToJsonSchema(TimeSlotListParams),
         TimeSlotParams: classToJsonSchema(TimeSlotParams),
         TimeSlotResult: classToJsonSchema(TimeSlotResult),
+        Hour: classToJsonSchema(Hour),
         UpdatePasswordParams:  classToJsonSchema(UpdatePasswordParams),
         TokenSession: classToJsonSchema(TokenSession),
         RoleParams: classToJsonSchema(RoleParams),
@@ -55,6 +63,10 @@ const options = {
         ResetPasswordParams: classToJsonSchema(ResetPasswordParams),
         NewsParams:  classToJsonSchema(NewsParams),
         NewsResult:  classToJsonSchema(NewsResult),
+        GetSchedulingListResult: classToJsonSchema(GetSchedulingListResult),
+        UpdateSchedulingParams: classToJsonSchema(UpdateSchedulingParams),
+
+        
       },
     },
   },

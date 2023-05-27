@@ -1,12 +1,20 @@
+import { IsString } from "class-validator";
 import { ParamsTemplate } from "../../../../infrestructure/template/ParamsTemplate";
 
 export class SchedulingParams extends ParamsTemplate {
+    @IsString()
     private citizenFullName: string;
+    @IsString()
     private citizenEmail: string;
+    @IsString()
     private citizenMobileNumber: string;
+    @IsString()
     private schedulingDate: string;
+    @IsString()
     private schedulingHour: string;
+    @IsString()
     private categoryCode: string;
+    @IsString()
     private serviceCode: string;
 
     constructor(citizenFullName: string, citizenEmail: string, citizenMobileNumber: string,
