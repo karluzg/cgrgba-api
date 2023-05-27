@@ -1,21 +1,18 @@
-import { Entity, Column,  PrimaryColumn} from "typeorm"
+import { Entity, Column, PrimaryColumn, OneToMany } from "typeorm";
+import { IsBoolean, IsDate, IsString } from "class-validator";
+import { News } from "./News";
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class NewsCategory {
+  @PrimaryColumn()
+  @IsString()
+  code: string;
 
-    @PrimaryColumn()
-    newsCategoryCode:string
-    
-    @Column()
-    newsCategoryDescription: string
+  @Column()
+  @IsString()
+  description: string;
 
-    @Column()
-    email: Date
-
-    @Column()
-    messageContent: string
-
-   @Column()
-   feedbackStatus:boolean
+  @OneToMany(() => News, (news) => news.newsCategory, { cascade: true })
+  news: News[];
 
 }

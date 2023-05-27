@@ -1,17 +1,22 @@
 import * as nodemailer from 'nodemailer';
+import { PlataformConfig } from './plataform';
 
-const host=""
+const host=PlataformConfig.email.host
+const email=PlataformConfig.email.email
 
  const transporter = nodemailer.createTransport({
     host: host,
     port: 587,
     secure: false,
     auth: {
-      user: 'your-username',
-      pass: 'your-password',
+      user: email,
+      pass: PlataformConfig.email.password,
+    },
+    tls: {
+      rejectUnauthorized: false,
     },
   });
 
 
-  export default {host:host, transporter: transporter};
+  export const mailTransporter= {host:host,email:email, transporter: transporter};
 

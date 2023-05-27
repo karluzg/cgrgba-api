@@ -1,23 +1,21 @@
-import { Entity, Column, ManyToOne, PrimaryGeneratedColumn, PrimaryColumn } from "typeorm"
-import { PermissionGroup } from "./PermissionGroup"
+import { Entity, Column, ManyToOne, PrimaryGeneratedColumn, PrimaryColumn } from 'typeorm';
+import { PermissionGroup } from './PermissionGroup';
+import { IsString, IsNotEmpty } from 'class-validator';
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class Permission {
+  @PrimaryGeneratedColumn({ type: 'bigint' })
+  id: number;
 
-    @PrimaryColumn({ type: "bigint" })
-    id: number
+  @Column({ unique: true, nullable: false })
+  @IsString()
+  @IsNotEmpty()
+  code: string;
 
-   @Column({unique:true, nullable:false})
-   code: string
+  @Column({ nullable: false })
+  @IsString()
+  description: string;
 
-    @Column({nullable:false})
-    description: string
-
-
-    @ManyToOne(() => PermissionGroup, (permissionGroup) => permissionGroup.code, { eager: true, nullable: false })
-    permissionGroup:PermissionGroup
-
-
-
-
+  @ManyToOne(() => PermissionGroup, permissionGroup => permissionGroup.permissions, { nullable: false })
+  permissionGroup: PermissionGroup;
 }

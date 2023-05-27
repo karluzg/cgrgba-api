@@ -2,17 +2,15 @@
 import { Entity, Column, ManyToOne, PrimaryColumn} from "typeorm"
 import { UserOperation } from "./UserOperation"
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class Error {
 
     @PrimaryColumn()
-    errorCode : string
+    code : string
     
     @Column()
-    errorMessage:string
+    message:string
     
-
-
-    @ManyToOne(()=> UserOperation,(userOperation)=> userOperation.id ,{eager:true, nullable:false})
-    userOperation:UserOperation
+    @ManyToOne(()=> UserOperation,{eager:true, nullable:false})
+    operation:UserOperation
 }

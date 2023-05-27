@@ -1,12 +1,12 @@
 import { Entity, Column, PrimaryColumn} from "typeorm"
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class MessageType{
 
     @PrimaryColumn()
-    messageType:string // PRAISE, SUGGESTIONS,CLAIMS
+    name:string // PRAISE, SUGGESTIONS,CLAIMS
 
     @Column()
-    descriptionMessage:string
+    description:string
    
 }

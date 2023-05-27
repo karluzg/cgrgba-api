@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"
 import { MessageType } from "./MessageType"
 
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class Feedback {
 
  
@@ -20,8 +20,8 @@ export class Feedback {
 
    
    @Column()
-   feedbackStatus:boolean
+   status:boolean
 
-   @ManyToOne(()=> MessageType,(messageType)=> messageType.messageType,{eager:true, nullable:false})
+   @ManyToOne(()=> MessageType,{eager:true, nullable:false})
    messageType:MessageType
 }

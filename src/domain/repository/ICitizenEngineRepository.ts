@@ -1,6 +1,9 @@
 import { Citizen } from "../model/Citizen";
 
 export interface ICitizenEngineRepository {
-    findCitizenByEmail(citizenEmail: string): Promise<Citizen>;
-    saveCitizen(newCitizen: Citizen): Promise<Citizen>
+    findCitizenByEmailOrMobileNumber(citizenEmail: string, citizenMobileNumber: string): Promise<Citizen>;
+    saveCitizenInfo(newCitizen: Citizen): Promise<Citizen>
+    countEmailDuplicates(email: string): Promise<number>
+    countMobileNumberDuplicates(mobileNumber: string): Promise<number>
+
 }

@@ -3,18 +3,24 @@ import { Hour } from "./Hour"
 
 
 
-@Entity({ schema: "portalConsular" })
+@Entity({ schema: 'portal_consular_dev' })
 
 export class SchedulingTimeConfiguration {
 
     @PrimaryGeneratedColumn({ type: 'bigint' })
     id: number
 
-    @Column({ nullable: false, type: 'timestamp' })
+    @Column({ nullable: false, type: 'timestamp',default: () => "CURRENT_TIMESTAMP"  })
     creationDate: Date
 
-    @Column({ type: 'date', unique: true, nullable: false })
-    schedulingBeginDate: Date
+    @Column({ type: "date", unique: true, nullable: false })
+    beginDate: Date
+
+    @Column({ nullable: false })
+    beginWorkTime: string
+
+    @Column({ nullable: false })
+    endWorkTime: string
 
     @Column()
     beginLunchTime: string

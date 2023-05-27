@@ -1,28 +1,40 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"
-import { NewsCategory } from "./NewsCategory"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { NewsCategory } from "./NewsCategory";
+import { IsBoolean, IsDate, IsNumber, IsString } from "class-validator";
 
-
-
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class News {
+  @PrimaryGeneratedColumn({ type: "bigint" })
+  id: number;
 
-    @PrimaryGeneratedColumn({type:"bigint"})
-    id:number
-    
-    @Column({unique:true, nullable:false})
-    títle: string
+  @Column({ unique: true, nullable: false })
+  @IsString()
+  title: string;
 
-    
-    @Column({type:"text"})
-    newsContent: string // save tge big varchar in postgress
 
-    @Column()
-    messageContent: string
 
-   
-   @Column()
-   imagePath:boolean
+  @Column({nullable: false  })
+  @IsString()
+  message: string;
 
-   @ManyToOne(()=> NewsCategory,(newsCategory)=> newsCategory.newsCategoryCode,{eager:true, nullable:false})
-   newsCategory:NewsCategory
+  @Column({nullable: true  })
+  @IsString()
+  imagePath: string;
+ 
+  imageFileContent: string;
+
+  @IsDate()
+  @Column({ nullable: false, type: 'timestamp', default: () => "CURRENT_TIMESTAMP" })
+  creationDate: Date
+
+  @IsDate()
+  @Column({ nullable: false, type: 'timestamp', default: () => "CURRENT_TIMESTAMP" })
+  date: Date
+
+  @Column()
+  @IsBoolean()
+  status: boolean;
+  
+  @ManyToOne(() => NewsCategory, { eager: true, nullable: false })
+  newsCategory: NewsCategory;
 }

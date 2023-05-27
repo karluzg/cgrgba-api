@@ -1,23 +1,24 @@
-import { AuthParamsTemplate } from "../../../infrestructure/template/AuthParamsTemplate"
-import { ParamsTemplate } from "../../../infrestructure/template/ParamsTemplate"
-
+import { IsString } from 'class-validator';
+import { ParamsTemplate } from '../../../infrestructure/template/ParamsTemplate';
 
 export class UserLoginParams extends ParamsTemplate {
+  @IsString({ message: 'A password deve ser uma string' })
+  private password: string;
 
-    private userPassword: string
-    private userEmail: string
+  @IsString({ message: 'O email deve ser uma string' })
+  private email: string;
 
+  constructor(email: string, password: string) {
+    super();
+    this.password = password;
+    this.email = email;
+  }
 
-    constructor(userEmail: string, userPassword: string) {
-        super()
-        this.userPassword = userPassword
-        this.userEmail = userEmail
-    }
+  public get getPassword(): string {
+    return this.password;
+  }
 
-    get getuserPassword(): string {
-        return this.userPassword
-    }
-    get getUserEmail() {
-        return this.userEmail;
-    }
+  public get getEmail(): string {
+    return this.email;
+  }
 }

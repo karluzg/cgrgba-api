@@ -10,39 +10,31 @@ const schedulingHistoryEngineRepository = myDataSource.getRepository(SchedulingH
 @injectable()
 export class SchedulingHistoryEngineRepositoryImpl implements ISchedulingHistoryEngineRepository {
 
-    updateSchedulingHistory(schedulingHistory: SchedulingHistory): Promise<void> {
-        //TODO - Update this
-        return schedulingHistoryEngineRepository.save(schedulingHistory)
 
+    async findSchedulingById(schedulingId: number): Promise<SchedulingHistory> {
+        const schedulingHistory = await schedulingHistoryEngineRepository
+            .createQueryBuilder('schedulingHistory')
+            .leftJoinAndSelect('schedulingHistory.scheduling', 'scheduling')
+            .where('scheduling.id = :schedulingId', { schedulingId })
+            .getOne();
 
+        return schedulingHistory;
     }
 
 
-    async countNumberOfSchedulingByDateandHour(schedulingDate: string, chosenHour: string): Promise<SchedulingHistory[]> {
-
-        return schedulingHistoryEngineRepository.createQueryBuilder('schedulingHistory')
-            .leftJoinAndSelect("schedulingHistory.scheduling", "scheduling")
-            .where('schedulingHistory.chosenHour = :chosenHour', { chosenHour: chosenHour })
-            .andWhere('schedulingHistory.schedulingDate = :schedulingDate', { schedulingDate: schedulingDate })
-            .andWhere('scheduling.schedulingDate = :schedulingDate', { schedulingDate: schedulingDate })
-            .where('scheduling.chosenHour = :chosenHour', { chosenHour: chosenHour })
-            .getMany();
-
-
-    }
 
     async checkIfSchedulingHistoryExist(schedulingDate: string, chosenHour: string): Promise<boolean> {
 
         return schedulingHistoryEngineRepository
             .createQueryBuilder('schedulingHistory')
-            .where('schedulingHistory.schedulingDate = :schedulingDate', { schedulingDate })
+            .where('schedulingHistory.date = :schedulingDate', { schedulingDate })
             .andWhere('schedulingHistory.chosenHour = :chosenHour', { chosenHour })
-            .andWhere('schedulingHistory.available = :available', { chosenHour })
+            .andWhere('schedulingHistory.available = :available', { available: false })
             .getExists();
 
     }
 
-    async saveSchedulingHistory(schedulingHistory: SchedulingHistory): Promise<void> {
+    async save(schedulingHistory: SchedulingHistory): Promise<void> {
         return schedulingHistoryEngineRepository.save(schedulingHistory)
     }
 

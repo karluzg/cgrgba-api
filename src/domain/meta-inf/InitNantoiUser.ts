@@ -7,27 +7,42 @@ import { IUserEngineRepository } from "../repository/IUserEngineRepository"
 import { IRoleEngineRepository } from "../repository/IRoleEngineRepository"
 import { Role } from "../model/Role"
 import { IPermissionEngineRepository } from "../repository/IPermissionEngineRepository"
-import { OperationNamesEnum } from "../model/enum/OperationNamesEnum"
+import { OperationNamesEnum, getOperationNameDescription } from "../model/enum/OperationNamesEnum"
 import { PermissionGroup } from "../model/PermissionGroup"
 import { IPermissionGroupEngineRepository } from "../repository/IPermissionGroupEngineRepository"
 import { Permission } from "../model/Permission"
+import { UserStatus } from "../model/UserStatus"
+import { IUserStatusEngineRepository } from "../repository/IUserStatusEngineRepository"
+import { generatePermisionGroupDescription } from "../model/enum/PermissionGroupEnum"
+import { stat } from "fs"
+import { InvalidParametersException } from "../../infrestructure/exceptions/InvalidParametersException"
+import { Field } from "../../infrestructure/exceptions/enum/Field"
+import { MiddlewareBusinessMessage } from "../../infrestructure/response/enum/MiddlewareCustomErrorMessage"
+import { EnumOperationTemplate } from "../../infrestructure/template/EnumOperationTemplate"
 
 export async function initNantoiUser() {
 
-   // const permissionGourp = await cretePermissionGroupAdmin()
-    //const permissions = await cretePermissions(permissionGourp)
-   // const role = await creteRoleAdmin(permissions)
-    //await createUserNantoi(role);
+    //const permissionGourp = await cretePermissionGroupAdmin()
+    const permissions = await cretePermissions();
+    const role = await creteRoleAdmin(permissions);
+    await createUserNantoi(role);
 
 }
 
 async function createUserNantoi(role: Role) {
 
+    const userStatusEngineRepository = container.resolve<IUserStatusEngineRepository>("IUserStatusEngineRepository");
     logger.info("[createUserNantoi] Perform dependency injection for IUserEngineRepository")
     const userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
     //add new user
     logger.info("[createUserNantoi] Find User by email")
-    const nantoiUser = await userRepository.findUserByEmail("nantoi@nantoi.com")
+
+    let nantoiUser: User;
+    try {
+        nantoiUser = await userRepository.findUserByEmail("nantoi@nantoi.com")
+    } catch (error) {
+        nantoiUser = null;
+    }
 
     if (!nantoiUser) {
         logger.info("[createUserNantoi] Creatting salt and hash from password")
@@ -35,14 +50,21 @@ async function createUserNantoi(role: Role) {
         const salt = passwordValidator.createSalt()
         const hash = passwordValidator.generateHash("Nantoi2023!", await salt)
 
-        const user = new User();
-        user.userEmail = "nantoi@nantoi.com"
-        user.userFullName = "Admin Nantoi"
-        user.userMobileNumber = "123456789"
-        user.userCreationDate = new Date
+
+        await createUserStatus(userStatusEngineRepository);
+        const statusFounded = await userStatusEngineRepository.findStatusCode(UserStatusEnum.ACTIVE)
+        if (!statusFounded) {
+            throw new InvalidParametersException(Field.USER_STATUS_CODE, MiddlewareBusinessMessage.USER_STATUS_CODE_MANDATORY)
+        }
+
+        const user = new User(); // here, he create user status as new
+        user.email = "nantoi@nantoi.com"
+        user.fullName = "Admin Nantoi"
+        user.mobileNumber = "123456789"
         user.passwordHash = await hash;
         user.passwordSalt = await salt;
-        user.userStatus = UserStatusEnum.ACTIVE;
+        user.status = statusFounded;
+        user.activationDate = new Date();
         user.roles = [role]
 
         logger.info("[createUserNantoi] Creating Nantoi User")
@@ -55,14 +77,19 @@ async function creteRoleAdmin(permissions: Permission[]) {
     const roleRepository = container.resolve<IRoleEngineRepository>("IRoleEngineRepository")
     //add new user
     logger.info("[creteRoleAdmin] Find role by name")
-    const adminRole = await roleRepository.finRoleByName("ADMIN")
-
+    let adminRole: Role;
+    try {
+        adminRole = await roleRepository.findRoleByName("ADMIN")
+        logger.info("[creteRoleAdmin] Role was found:" + adminRole)
+    } catch (error) {
+        adminRole = null
+    }
     if (!adminRole) {
 
         const role = new Role();
         role.isAdmin = true
-        role.roleDescription = "Administrator"
-        role.roleName = "ADMIN"
+        role.description = "Administrator"
+        role.name = "ADMIN"
         role.permissions = permissions
         logger.info("[creteRoleAdmin] Creating Admin")
         return roleRepository.saveRole(role)
@@ -73,38 +100,106 @@ async function creteRoleAdmin(permissions: Permission[]) {
     }
 
 }
+async function createUserStatus(userStatusEngineRepository: IUserStatusEngineRepository): Promise<void> {
 
-async function cretePermissions(permissionGroup: PermissionGroup) {
+ 
+    const enumInfo = new EnumOperationTemplate<UserStatusEnum>(UserStatusEnum);
+
+    for (const status in UserStatusEnum) {
+        if (Object.prototype.hasOwnProperty.call(UserStatusEnum, status)) {
+            const userStatus = new UserStatus(status);
+            userStatus.description =  enumInfo.getDescription(status);
+            userStatus.listed = true;
+
+             const st:UserStatusEnum= enumInfo.getEnumKey(status);
+             const at= enumInfo.getKey(UserStatusEnum.ACTIVE);
+
+            await userStatusEngineRepository.save(userStatus);
+        }
+    }
+
+}
+
+
+async function cretePermissions() {
     logger.info("[cretePermissions] Perform dependency injection for IPermissionEngineRepository")
-    const roleRepository = container.resolve<IPermissionEngineRepository>("IPermissionEngineRepository")
+    const permissionRepository = container.resolve<IPermissionEngineRepository>("IPermissionEngineRepository")
+
+    logger.info("[cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository")
+    const permissionGroupRepository = container.resolve<IPermissionGroupEngineRepository>("IPermissionGroupEngineRepository")
+
     //add new user
     const permissions = []
+    logger.info("[cretePermissions] Start creating all permission automatically..")
     for (const operation in OperationNamesEnum) {
-
         if (isNaN(Number(operation))) {
-            logger.info("[cretePermissions] Find permission by code " + OperationNamesEnum[operation])
-            const dbPermission = await roleRepository.finPermissionByCode(operation)
+
+            let dbPermission: Permission;
+            try {
+
+                dbPermission = await permissionRepository.findPermissionByCode(operation)
+
+            } catch (error) {
+
+                dbPermission = null
+            }
+
 
             if (!dbPermission) {
+
+
+                const group = operation.split("_")[0];
+
+                logger.info("[cretePermissions] Find role by name")
+                let adminPermission: PermissionGroup
+
+                try {
+                    adminPermission = await permissionGroupRepository.findPermissionGroupByCode(group)
+                } catch (error) {
+                    adminPermission = null
+                }
+
+                if (!adminPermission) {
+
+                    const permission = new PermissionGroup();
+                    permission.code = group
+                    permission.description = await generatePermisionGroupDescription(group)
+                    logger.info("[cretePermissions] Creating " + group)
+
+                    if (group != "SESSION") {
+                        adminPermission = await permissionGroupRepository.savePermissionGroup(permission)
+                    }
+
+                }
 
                 const permission = new Permission();
                 permission.code = operation
                 permission.id = parseInt(OperationNamesEnum[operation]);
-                permission.description = operation
-                permission.permissionGroup = permissionGroup
+
+
+                permission.description = await getOperationNameDescription(operation)
+                permission.permissionGroup = adminPermission
 
                 logger.info("[cretePermissions] Creating Admin")
-                const newPermisson = await roleRepository.savePermission(permission)
-                permissions.push(newPermisson)
+
+
+                // loging and and logout are not part of permission or permission group
+                if (operation != "SESSION_LOGIN" && operation != "SESSION_LOGOUT") {
+
+                    const newPermisson = await permissionRepository.savePermission(permission)
+
+                    permissions.push(newPermisson)
+                }
             } else
                 permissions.push(dbPermission)
         }
     }
+    logger.info("[cretePermissions] End creating all permission automatically..")
     return permissions
 
 }
 
-async function cretePermissionGroupAdmin() {
+/*async function cretePermissionGroupAdmin() {
     logger.info("[cretePermissionGroupAdmin] Perform dependency injection for IPermissionGroupEngineRepository")
     const roleRepository = container.resolve<IPermissionGroupEngineRepository>("IPermissionGroupEngineRepository")
     //add new user
@@ -123,4 +218,4 @@ async function cretePermissionGroupAdmin() {
 
     return adminPermission
 
-}
+}*/

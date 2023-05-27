@@ -10,17 +10,21 @@ import e, { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
+import { RequestHandler, ParamsDictionary } from "express-serve-static-core";
+import { ParsedQs } from "qs";
+import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 
 
 export class SessionController {
 
 
+
   public async login(request: Request, response: Response): Promise<Response> {
 
     try {
-      const {  userEmail, userPassword} = request.body;
+      const { email, password } = request.body;
 
-      const params = new UserLoginParams( userEmail,userPassword)
+      const params = new UserLoginParams(email, password)
 
       logger.info("[UserController] Perform dependency injection for UserController")
 
@@ -37,14 +41,31 @@ export class SessionController {
 
       } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
         throw new InvalidParametersException(error.field, error.message)
+        
+      } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
+        throw new NotFoundException(error.field, error.message)
+
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message)
-        
+
       } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message)
       }
       else
-      throw error;
+        throw error;
     }
-  }}
+
+
+  }
+
+  getTokenInformation(request: Request, response: Response): Promise<Response> {
+    throw new Error("Method not implemented.");
+  }
+  hasPermission(request: Request, response: Response): Promise<Response> {
+    throw new Error("Method not implemented.");
+  }
+  logout(arg0: string, logout: any) {
+    throw new Error("Method not implemented.");
+  }
+}

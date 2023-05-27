@@ -2,12 +2,12 @@ import { Entity, Column, PrimaryColumn} from "typeorm"
 
 
 
-@Entity({schema:"portalConsular"})
+@Entity({ schema: 'portal_consular_dev' })
 export class ArchiveType {
 
     @PrimaryColumn()
-    archiveType : String
+    name : String
     
     @Column()
-    archiveTypeDescription : String
+    description : String
 }

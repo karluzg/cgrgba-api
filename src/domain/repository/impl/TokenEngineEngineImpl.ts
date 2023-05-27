@@ -1,5 +1,4 @@
 
-import { error } from "console";
 import { TokenSession } from "../../model/TokenSession"
 //import { myDataSource } from "../web-api/meta-inf/data-source";
 const myDataSource = require('../../../domain/meta-inf/data-source');
@@ -19,8 +18,9 @@ export class TokenEngineRepositoryImpl implements ITokenEngineRepository {
 
             return tokenRepository.createQueryBuilder('tokenSession')
                   .leftJoinAndSelect("tokenSession.user", "user")
+                  .leftJoinAndSelect("user.status", "status")
                   .where('tokenSession.token = :token', { token: token })
                   .getOne()
-           
+
       }
 }

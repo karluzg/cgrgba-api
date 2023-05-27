@@ -1,9 +1,25 @@
+import { IPage } from "../../infrestructure/pageable-manager/IPage"
+import { DirectionEnum } from "../../infrestructure/pageable-manager/enum/DirectionEnum"
 import { Scheduling } from "../model/Scheduling"
 
 export interface ISchedulingEngineRepository {
 
-    valideSchedulingFeature(schedulingDate: string, chosenHour: string, citizenEmail: string, schedulingCategory: string, schedulingService: string): Promise<boolean>
-    saveScheduling(schedulingTime: Scheduling): Promise<Scheduling>
+    findCitizenSchedulingInfo(citizenEmail: string): Promise<Scheduling[]>
+    updateScheduling(scheduling: Scheduling): Promise<Scheduling>
+    findBy(beginSchedulingDate: Date,
+        endSchedulingDate: Date,
+        beginSchedulingTime: number,
+        endSchedulingTime: number,
+        beginSchedulingMinute: number,
+        endSchedulingMinute: number,
+        schedulingStatus: string,
+        orderColumn: string,
+        direction: DirectionEnum,
+        skip: number,
+        pageNumber: number,
+        pageSize: number): Promise<IPage<Scheduling>>
 
+    findSchedulingById(schedulingId: number): Promise<Scheduling>
+    findBeginDateAndHour(schedulingDate: string, chosenHour: string): Promise<Scheduling[]>
 
 }

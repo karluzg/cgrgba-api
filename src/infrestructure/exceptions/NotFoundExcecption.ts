@@ -4,7 +4,7 @@ import { Field } from "./enum/Field";
 import { OperationExecption } from "./OperatonException";
 
 
-export class NotFoundExcecption extends OperationExecption {
+export class NotFoundException extends OperationExecption {
     constructor(field: Field, message: string, details ?:any) {
         super(field, HttpCode.NOT_FOUND, ErrorExceptionClass.NOT_FOUND, message,details)
     }

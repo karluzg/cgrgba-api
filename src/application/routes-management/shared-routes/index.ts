@@ -1,8 +1,10 @@
 import { Router } from "express";
 import UserRoutes from "../user-manager/UserRoutes";
 import SessionRoutes from "../user-manager/SessionRoutes";
+import NewsRoutes from "../news-manager/NewsRoutes";
 import schedulingTimeRoutes from "../scheduling-manager/schedulingTimeRoutes";
 import schedulingRoutes from "../scheduling-manager/SchedulingRoutes";
+import { UserResult } from "../../model/user-manager/UserResult";
 
 const sharedRoutes = Router();
 
@@ -12,9 +14,11 @@ const baseUrl = "/api/v1"
 
 // USER-Manager
 sharedRoutes.use(baseUrl, UserRoutes);
-sharedRoutes.use(baseUrl + "/session", SessionRoutes);
+sharedRoutes.use(baseUrl , SessionRoutes);
 
+// News-Manager
 
+sharedRoutes.use(baseUrl, NewsRoutes);
 /* SCHEDULING-Manager*/
 
 

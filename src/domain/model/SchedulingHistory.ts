@@ -1,12 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany, OneToMany, PrimaryColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
 import { Scheduling } from "./Scheduling"
-import { SchedulingTimeConfiguration } from "./SchedulingTimeConfiguration"
+import { User } from "./User"
 
 /**
  * Save the scheduling history: closed date, available flag. 
  * if numCollaborator is equal number of the booking doned, then: Save closed date as new Date and available=false
  */
-@Entity({ schema: "portalConsular" })
+@Entity({ schema: 'portal_consular_dev' })
 
 export class SchedulingHistory {
 
@@ -14,10 +14,14 @@ export class SchedulingHistory {
     id: number
 
 
-    @Column({ nullable: false, type: 'timestamp' })
+    @Column({ nullable: false, type: 'timestamp', default: () => "CURRENT_TIMESTAMP" })
     creationDate: Date
+
+    @Column({ type: 'date', nullable: true })
+    updatedDate: Date
+
     @Column({ nullable: false })
-    schedulingDate: string
+    date: string
 
     @Column({ nullable: false })
     chosenHour: string
@@ -27,5 +31,9 @@ export class SchedulingHistory {
 
     @ManyToOne(() => Scheduling, (scheduling) => scheduling.id, { eager: true, nullable: false })
     scheduling: Scheduling
+
+
+    @ManyToOne(() => User, (updatedBy) => updatedBy.id, { eager: true })
+    updatedBy: User
 
 }

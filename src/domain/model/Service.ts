@@ -1,16 +1,21 @@
-import { Entity, PrimaryColumn, Column, OneToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Entity, PrimaryColumn, Column, ManyToOne } from "typeorm"
 import { SchedulingCategory } from "./SchedulingCategory";
+import { IsObject,IsString, ValidateNested } from "class-validator";
+import { Type } from "class-transformer";
 
-@Entity({ schema: "portalConsular" })
+@Entity({ schema: 'portal_consular_dev' })
 export class Service {
 
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryColumn()
+  @IsString()
+  code: string;
 
-  @Column()
+  @Column({ nullable: false })
+  @IsString()
   name: string;
 
+
   @ManyToOne(() => SchedulingCategory, schedulingCategory => schedulingCategory.services)
-  schedulingCategory: SchedulingCategory;
+  category: SchedulingCategory;
 
 }
