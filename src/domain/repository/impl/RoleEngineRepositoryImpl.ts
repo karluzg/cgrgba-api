@@ -8,6 +8,8 @@ import { Permission } from '../../model/Permission';
 import { NotFoundException as NotFoundException } from '../../../infrestructure/exceptions/NotFoundExcecption';
 import { Field } from '../../../infrestructure/exceptions/enum/Field';
 import { MiddlewareBusinessMessage } from '../../../infrestructure/response/enum/MiddlewareCustomErrorMessage';
+import { IPage } from '../../../infrestructure/pageable-manager/IPage';
+import { PageImpl } from '../../../infrestructure/pageable-manager/PageImpl';
 
 const roleRepository = myDataSource.getRepository(Role)
 const permissionRepository = myDataSource.getRepository(Permission)
@@ -32,20 +34,30 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
 
-
     return role;
   }
 
-  public async findAllRoles(page: number, size: number): Promise<Role[]> {
+  public async findAllRoles(page: number, size: number, orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<Role>> {
     const skipCount = (page - 1) * size;
 
-    const roles = await roleRepository.createQueryBuilder('role')
-      .skip(skipCount)
-      .take(size)
-      .getMany();
+    let queryBuilder = roleRepository.createQueryBuilder('role')
+          .skip(skipCount)
+          .take(size);
 
-    return roles;
-  }
+   
+
+    if (orderColumn && direction) {
+          queryBuilder = queryBuilder.orderBy(`role.${orderColumn}`, direction);
+    }
+
+
+    const [userList, totalRows] = await queryBuilder.getManyAndCount();
+    const totalPages = Math.ceil(totalRows / size);
+
+
+
+    return new PageImpl<Role>(userList, page, size, totalRows, totalPages)
+}
 
   public async updateRole(roleId: number, updateRoleData: Role): Promise<Role> {
     const role = await roleRepository.createQueryBuilder('role')

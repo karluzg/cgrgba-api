@@ -52,7 +52,8 @@ async function createUserNantoi(role: Role) {
 
 
         await createUserStatus(userStatusEngineRepository);
-        const statusFounded = await userStatusEngineRepository.findStatusCode(UserStatusEnum.ACTIVE)
+        
+        const statusFounded = await userStatusEngineRepository.findStatusCode("ACTIVE")
         if (!statusFounded) {
             throw new InvalidParametersException(Field.USER_STATUS_CODE, MiddlewareBusinessMessage.USER_STATUS_CODE_MANDATORY)
         }

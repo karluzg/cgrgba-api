@@ -42,11 +42,14 @@ import { IUserStatusEngineRepository } from '../../domain/repository/IUserStatus
 import { UserStatusEngineRepositoryImpl } from '../../domain/repository/impl/UserStatusEngineRepositoryImpl';
 import { IServiceEngineRepository } from '../../domain/repository/IServiceEngineRepository';
 import { ServiceEngineRepositoryImpl } from '../../domain/repository/impl/ServiceEngineRepositoryImpl';
+import { IRoleEngine } from '../../domain/service/IRoleEngine';
+import { RoleEngineImpl } from '../../domain/service/impl/RoleEngineImpl';
 
 
 //Register container for services
 container.register<IUserEngine>('IUserEngine', { useClass: UserEngineImpl });
 container.register<ISessionEngine>('ISessionEngine', { useClass: SessionEngineImpl });
+container.register<IRoleEngine>('IRoleEngine', { useClass: RoleEngineImpl });
 container.register<ISchedulingTimeEngine>('ISchedulingTimeEngine', { useClass: SchedulingTimeEngineImpl });
 container.register<ISchedulingEngine>('ISchedulingEngine', { useClass: SchedulingEngineImpl })
 container.register<INewsEngine>('INewsEngine', { useClass: NewsEngineImpl });

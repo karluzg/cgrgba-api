@@ -15,11 +15,15 @@ export enum MiddlewareBusinessMessage {
   USER_ADDED_SUCCESSFULLY = "Utilizador criado com sucesso",
   USER_GET_SUCCESSFULLY = "Utilizador obtido com sucesso",
   ROLE_NOT_FOUND = "Role não foi encontrado",
+  ROLE_ADDED_SUCCESSFULLY  = "Role adiocionado com sucesso",
+  ROLE_ALREADY_EXIST ="A role j+á exite na base de dados",
   PERMISSION_NOT_FOUND = "Permissão não foi encontrado",
   PERMISSION_GOURP_NOT_FOUND = "Grupo de permissões não foi encontrado",
   SESSION_LOGIN_SUCCESSFULLY = "Login realizado com sucesso",
   USER_STATUS_CODE_MANDATORY = "O estado do utilizador é obrigatório",
   USER_STATUS_NOT_FOUND = "Tipo de estado de utilizador não foi encontrado",
+  ROLE_GET_SUCCESSFULLY = "Role obtido com sucesso",
+  ROLE_GET_LIST_SUCCESSFULLY = "Lista de Role obtido com sucesso",
 
 
 

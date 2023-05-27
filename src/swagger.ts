@@ -25,6 +25,7 @@ import { UpdateSchedulingParams } from './application/model/scheduling-manager/s
 import { Scheduling } from './domain/model/Scheduling';
 import { SchedulingStatus } from './domain/model/SchedulingStatus';
 import { Hour } from './domain/model/Hour';
+import { RoleResultList } from './application/model/user-manager/RoleResultList';
 
 
 const options = {
@@ -65,6 +66,7 @@ const options = {
         TokenSession: classToJsonSchema(TokenSession),
         RoleParams: classToJsonSchema(RoleParams),
         RoleResult: classToJsonSchema(RoleResult),
+        RoleResultList: classToJsonSchema(RoleResultList),
         PermissionParams: classToJsonSchema(PermissionParams),
         PermissionResult: classToJsonSchema(PermissionResult),
         ResetPasswordParams: classToJsonSchema(ResetPasswordParams),
@@ -72,8 +74,6 @@ const options = {
         NewsResult: classToJsonSchema(NewsResult),
         GetSchedulingListResult: classToJsonSchema(GetSchedulingListResult),
         UpdateSchedulingParams: classToJsonSchema(UpdateSchedulingParams),
-
-
       },
     },
     security: [
