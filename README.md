@@ -13,7 +13,7 @@ yarn add @types/express -D
 # Instalar typeScript
 npm install ts-node --save-dev
 
-# Gerar Arquivo de configuração Typescript (typeorm)
+# Gerar Arquivo de configuração Typescript (typeorm) NOTA: USAR SOMENTE NA CRIAÇÃO DO PROJECTO
 
 typeorm init
 
