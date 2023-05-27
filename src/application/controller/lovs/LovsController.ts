@@ -1,5 +1,17 @@
 import { Request, Response } from "express";
 import logger from "../../../infrestructure/config/logger";
+import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
+import { container } from "tsyringe";
+import { ILovsEngine } from "../../../domain/service/ILovsEngine";
+import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
+import { ForbiddenOperationException } from "../../../infrestructure/exceptions/ForbiddenOperationException";
+import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
+import { NotImplementedException } from "../../../infrestructure/exceptions/NotImplementedException";
+import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
+import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { CategoryParams } from "../../model/lovs/CategoryParams";
+
 export class Lovs {
 
 
@@ -17,7 +29,7 @@ export class Lovs {
 
             logger.info("[SchedulingTimeController] Perform dependency injection for ISchedulingTimeEngine")
             const schedulingTimeEngine = container.resolve<ILovsEngine>("ILovsEngine")
-            const result = await schedulingTimeEngine.get_time_slot_list(params)
+            const result = await schedulingTimeEngine.get_service_by_categry(params)
 
             return response.status(HttpCode.OK).json(result)
 
