@@ -38,6 +38,17 @@ const RoleRoutes = express.Router();
  *           type: integer
  *           minimum: 1
  *           default: 20
+ *       - in: query
+ *         name: column
+ *         description: Coluna para ordenar os resultados
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: order
+ *         description: Direção da ordenação (ASC ou DESC)
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
  *     responses:
  *       '200':
  *         description: Lista de roles obtida com sucesso
@@ -46,9 +57,10 @@ const RoleRoutes = express.Router();
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/RoleResult'
+ *                 $ref: '#/components/schemas/RoleResultList'
  */
-RoleRoutes.get('/roles', roleRoutesValidator.getRoles(), roleRoutesValidator.validate, roleController.getRoles);
+
+RoleRoutes.get('/roles', roleRoutesValidator.getAllRoles(), roleRoutesValidator.validate, roleController.getAllRoles);
 
 
 /**
@@ -79,7 +91,7 @@ RoleRoutes.get('/roles/:id', roleRoutesValidator.getRoleById(), roleRoutesValida
  * @swagger
  * /roles/name/{name}:
  *   get:
- *     summary: Obtém uma role pelo nome (EM IMPLEMENTAÇÃO)
+ *     summary: Obtém uma role pelo nome 
  *     tags: [Roles]
  *     parameters:
  *       - name: name
@@ -98,7 +110,7 @@ RoleRoutes.get('/roles/:id', roleRoutesValidator.getRoleById(), roleRoutesValida
  *       '404':
  *         description: Role não encontrada
  */
-RoleRoutes.get('/roles/name/{name}', roleRoutesValidator.getRoleByName(), roleRoutesValidator.validate, roleController.getRoleByName);
+RoleRoutes.get('/roles/name/:name', roleRoutesValidator.getRoleByName(), roleRoutesValidator.validate, roleController.getRoleByName);
 
 
 /**

@@ -7,8 +7,8 @@ export enum OperationNamesEnum {
     USER_GET_LIST = 2,
     USER_GET_DETAIL = 3,
     USER_UPDATE = 4,
-    USER_UPDATE_PASSWORD=5,
-    USER_RESET_PASSWORD=6,
+    USER_UPDATE_PASSWORD = 5,
+    USER_RESET_PASSWORD = 6,
 
 
     //SCEHDULING TIME -  101 to 201
@@ -30,8 +30,11 @@ export enum OperationNamesEnum {
 
 
     //ROLES -  505 to 605 
-    ROLES_ADD = 505,
-    ROLES_UPDATE = 506,
+    ROLE_ADD = 505,
+    ROLE_UPDATE = 506,
+    ROLE_GET_BY_NAME=507,
+    ROLE_GET_BY_ID=508,
+    ROLE_GET_ALL_ROLE=509,
 
     //DOUMENTS -  606 to 706
     DOCUMENT_UPLOAD = 607,
@@ -39,8 +42,8 @@ export enum OperationNamesEnum {
 
     //AUTH -  707 to 807 // Não é preciso guardar essa operação na BD, logo, dá-mos o nome para efeito de log
     SESSION_LOGIN = 707,
-    SESSION_LOGOUT = 708
-
+    SESSION_LOGOUT = 708,
+    
 }
 
 

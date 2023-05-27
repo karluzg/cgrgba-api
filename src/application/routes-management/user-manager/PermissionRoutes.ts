@@ -22,7 +22,7 @@ const PermissionRoutes = express.Router();
  * @swagger
  * /permissions:
  *   post:
- *     summary: Cria uma nova permissão
+ *     summary: Cria uma nova permissão(EM IMPLEMENTAÇÃO)
  *     tags: [Permissions]
  *     requestBody:
  *       required: true
@@ -97,7 +97,7 @@ PermissionRoutes.delete('/permissions/:id', permissionRoutesValidator.deletePerm
  * @swagger
  * /permissions:
  *   get:
- *     summary: Retorna a lista de permissões
+ *     summary: Retorna a lista de permissões(EM IMPLEMENTAÇÃO)
  *     tags: [Permissions]
  *     parameters:
  *       - in: query
@@ -132,7 +132,7 @@ PermissionRoutes.get('/permissions', permissionRoutesValidator.getPermissions(),
  * @swagger
  * /permissions/{code}:
  *   get:
- *     summary: Retorna uma permissão pelo código 
+ *     summary: Retorna uma permissão pelo código (EM IMPLEMENTAÇÃO)
  *     tags: [Permissions]
  *     parameters:
  *       - in: path
@@ -158,7 +158,7 @@ PermissionRoutes.get('/permissions/:code', permissionRoutesValidator.getPermissi
  * @swagger
  * /permissions/groups:
  *   post:
- *     summary: Cria um novo grupo de permissões
+ *     summary: Cria um novo grupo de permissões(EM IMPLEMENTAÇÃO)
  *     tags: [Permissions]
  *     requestBody:
  *       required: true
@@ -183,7 +183,7 @@ PermissionRoutes.post('/permissions/groups', permissionRoutesValidator.createPer
  * @swagger
  * /permissions/groups:
  *   get:
- *     summary: Obtém todos os grupos de permissões
+ *     summary: Obtém todos os grupos de permissões(EM IMPLEMENTAÇÃO)
  *     tags: [Permissions]
  *     parameters:
  *       - in: query
