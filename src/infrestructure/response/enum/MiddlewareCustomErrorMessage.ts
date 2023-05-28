@@ -2,7 +2,7 @@ export enum MiddlewareBusinessMessage {
 
   // BUSINESS MESSAGE - USER MANAGER 
   USER_INVALID_CREDENTIALS = "Credenciais inválidas",
-  USER_INVALID_EMAIL = "Email inválido ou já existe um utilizador registado com o mesmo email",
+  USER_EMAIL_ALREADY_EXIST = "Email inválido ou já existe um utilizador registado com o mesmo email",
   USER_MBILE_NUMBER_ALREADY_EXIST = "já existe um utilizador registado com o mesmo número de telemóvel",
   USER_NOT_FOUND = "Utilizador não foi encontrado",
   USER_PASSWORD_NOT_MATCH = "Erro no password de confirmação",

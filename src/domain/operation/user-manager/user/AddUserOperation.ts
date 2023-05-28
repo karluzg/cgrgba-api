@@ -46,7 +46,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
         if (user) {
             logger.error("[AddUserOperation] user already exist")
-            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_INVALID_EMAIL);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_EMAIL_ALREADY_EXIST);
         }
 
 
