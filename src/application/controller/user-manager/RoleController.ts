@@ -4,7 +4,7 @@ import { NotImplementedException } from "../../../infrestructure/exceptions/NotI
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
 
-import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
+import { HttpCodes } from "../../../infrestructure/response/enum/HttpCode";
 import { IUserEngine } from "../../../domain/service/IUserEngine";
 import { UserParams } from "../../model/user-manager/UserParams";
 import { Request, Response } from "express";

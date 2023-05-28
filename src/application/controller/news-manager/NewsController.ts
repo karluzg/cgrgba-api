@@ -3,7 +3,7 @@ import logger from "../../../infrestructure/config/logger";
 import { NotImplementedException } from "../../../infrestructure/exceptions/NotImplementedException";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
-import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
+import { HttpCodes } from "../../../infrestructure/response/enum/HttpCode";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
@@ -45,7 +45,7 @@ export class NewsController {
 
 
       const result = await newsEngine.getAllNews(params)
-      return response.status(HttpCode.OK).json(result)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
 
       if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
@@ -88,7 +88,7 @@ export class NewsController {
 
 
       const result = await newsEngine.addNewsFile(params)
-      return response.status(HttpCode.OK).json(result)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
       console.error(error);
 
@@ -123,7 +123,7 @@ export class NewsController {
 
 
       const result = await newsEngine.addNews(params)
-      return response.status(HttpCode.OK).json(result)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
 
       if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {

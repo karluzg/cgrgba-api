@@ -101,7 +101,7 @@ export class PermissionController {
       logger.info("[PermissionController] Perform dependency injection for UserController was successfully")
 
 
-      const result = await permissionEngine.addPermission(params)
+      const result = await userEngine.addUser(params)
       return response.status(HttpCode.OK).json(result)
     } catch (error) {
 

@@ -1,5 +1,5 @@
 import { IsObject } from "class-validator";
-import { HttpCode } from "../response/enum/HttpCode";
+import { HttpCodes } from "../response/enum/HttpCode";
 
 export class ResultTemplate {
 
