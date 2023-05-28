@@ -1,6 +1,8 @@
 
 import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
+import { IPage } from "../../../infrestructure/pageable-manager/IPage";
+import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { Permission } from "../../model/Permission";
 import { Role } from "../../model/Role";
@@ -48,15 +50,26 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
       return isAllowed;
     }
     
-    public async findAllPermissions(page: number, size: number): Promise<Permission[]> {
+    public async findAllPermissions(page: number, size: number, orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<Permission>> {
       const skipCount = (page - 1) * size;
-    
-      const permissions = await permissionRepository.createQueryBuilder('permission')
-        .skip(skipCount)
-        .take(size)
-        .getMany();
-    
-      return permissions;
+  
+      let queryBuilder = permissionRepository.createQueryBuilder('permission')
+            .skip(skipCount)
+            .take(size);
+  
+     
+  
+      if (orderColumn && direction) {
+            queryBuilder = queryBuilder.orderBy(`permission.${orderColumn}`, direction);
+      }
+  
+  
+      const [userList, totalRows] = await queryBuilder.getManyAndCount();
+      const totalPages = Math.ceil(totalRows / size);
+  
+  
+  
+      return new PageImpl<Permission>(userList, page, size, totalRows, totalPages)
     }
     
     public async deletePermission(id: number): Promise<void> {

@@ -11,16 +11,14 @@ export class News {
   @IsString()
   title: string;
 
-
-
-  @Column({nullable: false  })
+  @Column({ nullable: false,type: "text" })
   @IsString()
   message: string;
 
-  @Column({nullable: true  })
+  @Column({ nullable: true })
   @IsString()
   imagePath: string;
- 
+
   imageFileContent: string;
 
   @IsDate()
@@ -34,7 +32,7 @@ export class News {
   @Column()
   @IsBoolean()
   status: boolean;
-  
+
   @ManyToOne(() => NewsCategory, { eager: true, nullable: false })
   newsCategory: NewsCategory;
 }

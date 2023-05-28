@@ -38,7 +38,7 @@ export class AddNewsOperation extends UserAuthOperationTemplate<NewsResult, News
 
         if (!this.category) {
             logger.error("[AddNewsOperation] categoria invalida")
-            throw new NotFoundException(Field.NEWS, MiddlewareBusinessMessage.NEWS_INVALID_CATEGORY);
+            throw new NotFoundException(Field.NEWS, MiddlewareBusinessMessage.NEWS_CATEGORY_NOT_FOUND);
         }
 
         const news = await this.newsRepository.findNewsByTitle(params.title);

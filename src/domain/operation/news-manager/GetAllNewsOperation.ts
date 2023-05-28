@@ -44,8 +44,8 @@ export class GetAllNewsOperation extends UserAuthOperationTemplate<NewsResultLis
             this.category = await this.newsCategoryRepository.findNewsCategoryByCode(params.getQueryParam);
 
             if (!this.category) {
-                logger.error("[AddNewsOperation] categoria invalida")
-                throw new NotFoundException(Field.NEWS, MiddlewareBusinessMessage.NEWS_INVALID_CATEGORY);
+                logger.error("[GetAllNewsOperation] categoria invalida")
+                throw new NotFoundException(Field.NEWS, MiddlewareBusinessMessage.NEWS_CATEGORY_NOT_FOUND);
             }
         }
 

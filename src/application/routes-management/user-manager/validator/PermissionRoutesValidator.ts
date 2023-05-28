@@ -5,7 +5,11 @@ import { ParamsValidatorTemplate } from '../../../../infrestructure/template/Par
 
 export class PermissionRoutesValidator extends ParamsValidatorTemplate {
     getAllPermissionGroups(): ValidationChain[] {
-        return []
+        return [
+            query('page').isInt({ min: 1 }).optional(),
+            query('size').isInt({ min: 1 }).optional(),
+            query('direction').isIn(['ASC', 'DESC']).optional(),
+            query('orderColumn').isString().optional(),]
     }
     deletePermissionGroup(): ValidationChain[] {
         return []
@@ -14,38 +18,41 @@ export class PermissionRoutesValidator extends ParamsValidatorTemplate {
         return []
     }
     getPermissionGroupByCode(): ValidationChain[] {
-        return []
+        return [
+            param('code').notEmpty().isLength({ max: 50 }).isString()]
     }
     createPermissionGroup(): ValidationChain[] {
-        return []
+        return [
+            body('code').notEmpty().isLength({ max: 50 }).isString(),
+            body('description').notEmpty().isLength({ max: 150 }).isString(),]
     }
     deletePermission(): ValidationChain[] {
         return []
     }
     getPermissionByCode(): ValidationChain[] {
-        return []
+        return [
+            param('code').notEmpty().isLength({ max: 50 }).isString()
+        ]
     }
-    getPermissions(): ValidationChain[] {
-        return []
+    getAllPermissions(): ValidationChain[] {
+        return [
+            query('page').isInt({ min: 1 }).optional(),
+            query('size').isInt({ min: 1 }).optional(),
+            query('direction').isIn(['ASC', 'DESC']).optional(),
+            query('orderColumn').isString().optional(),
+            query('group').isLength({ max: 50 }).isString().optional(),
+        ]
     }
     updatePermission(): ValidationChain[] {
         return []
     }
     createPermission(): ValidationChain[] {
-        return []
-    }
-
-
-    public addUser(): ValidationChain[] {
         return [
-            body('fullName').notEmpty().isLength({ max: 50 }).isString(),
-            body('mobileNumber').isLength({ min: 9, max: 21 }).isString().optional(),
-            body('email').notEmpty().isLength({ max: 34 }).isEmail()
+            body('code').notEmpty().isLength({ max: 50 }).isString(),
+            body('group').notEmpty().isLength({ max: 50 }).isString(),
+            body('description').notEmpty().isLength({ max: 150 }).isString(),
         ]
-
     }
-
-
 
 
 }

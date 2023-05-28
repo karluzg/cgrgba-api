@@ -51,9 +51,10 @@ export class SessionController {
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message)
-      }
-      else
-        throw error;
+      }else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
+        throw new NotFoundException(error.field, error.message)
+      } else
+        throw new UnsuccessfullOperationException(error.field, error.message)
     }
 
 

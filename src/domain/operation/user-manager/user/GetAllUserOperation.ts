@@ -59,7 +59,7 @@ export class GetAllUserOperation extends UserAuthOperationTemplate<UserResultLis
 
         Object.assign(result,newNews);
 
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.NEWS_GET_ALL_SUCCESSFULLY));
+        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.USER_GET_ALL_SUCCESSFULLY));
         result.setStatus = Object.fromEntries(this.message)
 
     }

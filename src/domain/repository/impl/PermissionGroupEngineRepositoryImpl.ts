@@ -6,6 +6,8 @@ import { PermissionGroup } from "../../model/PermissionGroup";
 import { NotFoundException as NotFoundException } from '../../../infrestructure/exceptions/NotFoundExcecption';
 import { Field } from '../../../infrestructure/exceptions/enum/Field';
 import { MiddlewareBusinessMessage } from '../../../infrestructure/response/enum/MiddlewareCustomErrorMessage';
+import { PageImpl } from '../../../infrestructure/pageable-manager/PageImpl';
+import { IPage } from '../../../infrestructure/pageable-manager/IPage';
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const permissionGroupRepository = myDataSource.getRepository(PermissionGroup)
@@ -36,7 +38,7 @@ export class PermissionGroupEngineRepositoryImpl implements IPermissionGroupEngi
         .getOne();
     
       if (!existingPermissionGroup) {
-        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND);
+        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_FOUND);
       }
     
       const updatedPermissionGroup = Object.assign(existingPermissionGroup, updatedData);
@@ -50,22 +52,33 @@ export class PermissionGroupEngineRepositoryImpl implements IPermissionGroupEngi
         .getOne();
     
       if (!permissionGroup) {
-        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GOURP_NOT_FOUND);
+        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_FOUND);
       }
     
       await permissionGroupRepository.remove(permissionGroup);
     }
     
-    public async findAllPermissionGroups(page: number, size: number): Promise<PermissionGroup[]> {
+    public async findAllPermissionGroups(page: number, size: number, orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<PermissionGroup>> {
       const skipCount = (page - 1) * size;
-      const permissionGroups = await permissionGroupRepository.createQueryBuilder('permissionGroup')
-        .skip(skipCount)
-        .take(size)
-        .getMany();
-    
-      return permissionGroups;
+  
+      let queryBuilder = permissionGroupRepository.createQueryBuilder('permissionGroup')
+            .skip(skipCount)
+            .take(size);
+  
+     
+  
+      if (orderColumn && direction) {
+            queryBuilder = queryBuilder.orderBy(`permissionGroup.${orderColumn}`, direction);
+      }
+  
+  
+      const [userList, totalRows] = await queryBuilder.getManyAndCount();
+      const totalPages = Math.ceil(totalRows / size);
+  
+  
+  
+      return new PageImpl<PermissionGroup>(userList, page, size, totalRows, totalPages)
     }
-    
 
 }
 

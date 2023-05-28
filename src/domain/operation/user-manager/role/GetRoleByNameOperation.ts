@@ -31,14 +31,14 @@ export class GetRoleByNameOperation extends UserAuthOperationTemplate<RoleResult
 
         this.role = await this.roleRepository.findRoleByName(params.getValue);
         if (!this.role) {
-            logger.error("[GetRoleByNameOperation] user not exist")
+            logger.error("[GetRoleByNameOperation] role not exist")
             throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
         }
     }
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetByEmailOrCodeParams, result: RoleResult): Promise<void> {
 
-        logger.info("[GetRoleByNameOperation] get users")
+        logger.info("[GetRoleByNameOperation] get role")
         this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.ROLE_GET_SUCCESSFULLY));
         result.setStatus = Object.fromEntries(this.message)
 

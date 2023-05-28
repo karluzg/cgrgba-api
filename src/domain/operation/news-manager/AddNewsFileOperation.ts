@@ -39,18 +39,18 @@ export class AddNewsFileOperation extends UserAuthOperationTemplate<NewsResult, 
         const news = await this.newsRepository.findNewsById(params.id);
 
         if (!news) {
-            logger.error("[AddNewsOperation] notifcia não existe % existe", params.id)
-            throw new InvalidParametersException(Field.NEWS, MiddlewareBusinessMessage.NEWS_INVALID_TITLE);
+            logger.error("[AddNewsFileOperation] notifcia não existe % existe", params.id)
+            throw new NotFoundException(Field.NEWS, MiddlewareBusinessMessage.NEWS_INVALID_TITLE);
         }
     }
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: NewsFileParams, result: NewsResult): Promise<void> {
 
-        logger.info("[AddUserOperation] Update Nues file Path ")
+        logger.info("[AddNewsFileOperation] Update Nues file Path ")
         const newNews = await this.newsRepository.uploadImageNews(params.id,params.filepath);
         result.setNews = newNews;
 
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.NEWS_ADD_SUCCESSFULLY));
+        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.NEWS_FILE_ADD_SUCCESSFULLY));
         result.setStatus = Object.fromEntries(this.message)
 
     }

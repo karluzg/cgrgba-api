@@ -5,7 +5,9 @@ import { ParamsValidatorTemplate } from '../../../../infrestructure/template/Par
 
 export class RoleRoutesValidator extends ParamsValidatorTemplate {
     getRoleByName(): ValidationChain[] {
-        return []
+        return [
+          param('name').notEmpty().isLength({ max: 50 }).isString()
+        ]
    }
     getPermissions():ValidationChain[] {
          return []
@@ -20,10 +22,17 @@ export class RoleRoutesValidator extends ParamsValidatorTemplate {
          return []
     }
     createRole():ValidationChain[] {
-         return []
+     return [
+          body('name').notEmpty().isLength({ max: 50 }).isString(),
+          body('description').notEmpty().isLength({ max: 150 }).isString(),
+          body('isAdmin').notEmpty().isBoolean(),
+          body('permissions').optional().isArray().notEmpty().withMessage('O campo permissions deve ser um array não vazio de strings')
+      ]
     }
     getRoleById():ValidationChain[] {
-         return []
+     return [
+          param('id').notEmpty().isInt(),
+      ]
     }
     getAllRoles():ValidationChain[] {
      return [
@@ -33,17 +42,6 @@ export class RoleRoutesValidator extends ParamsValidatorTemplate {
           query('orderColumn').isString().optional(),
       ]
     }
-
-
-    public addUser():ValidationChain[] {
-        return [
-            body('fullName').notEmpty().isLength({ max:50}).isString(),
-            body('mobileNumber').isLength({ min: 9, max:21}).isString().optional(),
-            body('email').notEmpty().isLength({ max: 34 }).isEmail()
-        ]
-
-    }
-
 
 
     

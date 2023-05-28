@@ -48,6 +48,17 @@ const uploadImage= new UploadImage();
  *         description: Code da Categoria que quer obter a lista
  *         schema:
  *           type: string
+ *       - in: query
+ *         name: order
+ *         description: Ordenação das notícias (opcional, ASC ou DESC)
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
+ *       - in: query
+ *         name: column
+ *         description: Coluna para ordenação das notícias (opcional)
+ *         schema:
+ *           type: string
  *     responses:
  *       '200':
  *         description: Lista de notícias recuperada com sucesso
@@ -56,6 +67,7 @@ const uploadImage= new UploadImage();
  *             schema:
  *               $ref: '#/components/schemas/NewsResult'
  */
+
 NewsRoutes.get("/news", newsRoutesValidator.getAllNews(), newsRoutesValidator.validate, newsController.getAllNews);
 
 

@@ -50,7 +50,7 @@ export class AddRoleOperation extends UserAuthOperationTemplate<RoleResult, Role
         let role = await this.rolesRepository.findRoleByName(params.getName)
 
         if (role) {
-            logger.error("[AddUserOperation] role already exist")
+            logger.error("[AddRoleOperation] role already exist")
             throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.ROLE_ALREADY_EXIST);
         }
 
@@ -58,7 +58,7 @@ export class AddRoleOperation extends UserAuthOperationTemplate<RoleResult, Role
             for (const permission of params.getPermissions) {
               const permissionEntity = await this.permissionRepository.findPermissionByCode(permission);
               if (!permissionEntity) {
-                logger.error("[AddUserOperation] Permission not found");
+                logger.error("[AddRoleOperation] Permission not found");
                 throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
               } else {
                 this.permissions.push(permissionEntity);
@@ -82,7 +82,7 @@ export class AddRoleOperation extends UserAuthOperationTemplate<RoleResult, Role
 
         console.info("WATCH Role TO ADD:" + JSON.stringify(role))
 
-        logger.info("[AddUserOperation] creating role in db %", JSON.stringify(role))
+        logger.info("[AddRoleOperation] creating role in db %", JSON.stringify(role))
         try {
             const newRole: Role = await this.rolesRepository.saveRole(role)
             result.setRole = newRole;
