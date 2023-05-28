@@ -14,6 +14,6 @@ export class ParamsValidatorTemplate {
             return next();
         }
 
-        return next(new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INVALID_PARAMETERS, errors.array()))
+        return next(new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.CORE_INVALID_PARAMETERS, errors.array()))
     }
 }

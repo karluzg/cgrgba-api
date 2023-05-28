@@ -36,14 +36,14 @@ export class AddPermissionOperation extends UserAuthOperationTemplate<Permission
 
         if (permission) {
             logger.error("[AddPermissionOperation] permission already exist")
-            throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.PERMISSION_ALREADY_EXIST);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.PERMISSION_ALREADY_EXIST);
         }
 
         if (params.getGroup) {
             const permissionEntity = await this.permissionGroupRepository.findPermissionGroupByCode(params.getGroup);
             if (!permissionEntity) {
                 logger.error("[AddPermissionOperation] permissionGroup not found");
-                throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_FOUND);
+                throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_FOUND);
             } else
                 this.permissionGroup = permissionEntity
         }

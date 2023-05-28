@@ -39,12 +39,12 @@ export class ResetPasswordOperation extends OperationTemplate<ResultTemplate, Re
 
         if (!this.user) {
             logger.error("[ResetPasswordOperation] user not exist")
-            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
+            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_NOT_FOUND);
         }
 
         if (this.user.mobileNumber != params.getMobileNumber) {
             logger.error("[ResetPasswordOperation] mobile number not match")
-            throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.USER_INVALID_CREDENTIALS);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_INVALID_CREDENTIALS);
         }
     }
 

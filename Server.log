@@ -9128,3 +9128,775 @@
 [2023-05-28T11:56:02.157] [INFO] default - [GetAllNewsOperation] creating allnews
 [2023-05-28T11:56:02.161] [INFO] default - [OperationTemplate] End executing operation 1
 [2023-05-28T11:56:02.161] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"newsRepository":{},"newsCategoryRepository":{},"category":{"code":"t","description":"t"}}
+[2023-05-28T12:56:38.378] [INFO] default - Data Source has been initialized!
+[2023-05-28T12:56:38.380] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T12:56:38.380] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T12:56:38.380] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T12:56:38.426] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T12:56:38.429] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T12:56:38.430] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T12:56:38.431] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T12:56:38.433] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T12:56:38.433] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T12:56:38.433] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T12:56:38.433] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T12:56:38.433] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T12:56:38.436] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T12:56:38.448] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T12:56:38.448] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T12:59:16.933] [INFO] default - Data Source has been initialized!
+[2023-05-28T12:59:16.935] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T12:59:16.935] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T12:59:16.935] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T12:59:16.980] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T12:59:16.982] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T12:59:16.983] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T12:59:16.984] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T12:59:16.985] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T12:59:16.985] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T12:59:16.985] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T12:59:16.986] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T12:59:16.986] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T12:59:16.989] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T12:59:16.999] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T12:59:16.999] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:16:18.876] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:16:18.877] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:16:18.877] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:16:18.878] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:16:18.887] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T13:16:18.887] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T13:16:18.888] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T13:16:18.892] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T13:16:18.892] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T13:16:18.892] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T13:16:18.893] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:16:18.893] [INFO] default - Searching permission in data base
+[2023-05-28T13:16:18.896] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T13:16:18.900] [INFO] default - [AddUserOperation] Creatting salt and hash from password 0DT7h03D
+[2023-05-28T13:16:18.901] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-28T13:16:18.903] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-28T13:16:18.965] [INFO] default - [AddUserOperation] creating user in db % {"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"NEW"},"email":"user${randomNumber}@nantoi.com","fullName":"user${randomNumber}@nantoi.com","mobileNumber":"426211908","passwordHash":"$2b$10$PADGJSuz9hA00Ib2qKiTpurOVlz2WjISxAbpvbPgoHAwoptsrudlW","passwordSalt":"$2b$10$PADGJSuz9hA00Ib2qKiTpu","roles":[]}
+[2023-05-28T13:16:18.993] [ERROR] default - [OperationTemplate] Error while executing operationQueryFailedError: ER_DATA_TOO_LONG: Data too long for column 'fullName' at row 1
+[2023-05-28T13:16:18.994] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:16:18.994] [ERROR] default - [GenericOperationTemplate] - Error while executing operationError: Ocorreu um erro interno no servidor. Por favor, contacte a equipa da Nantoi Digital
+[2023-05-28T13:16:18.994] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:17:42.389] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:17:42.391] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:17:42.391] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:17:42.391] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:17:42.452] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:17:42.455] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:17:42.456] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:17:42.464] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:17:42.468] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:17:42.468] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:17:42.468] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:17:42.469] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:17:42.469] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:17:42.474] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:17:42.500] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:17:42.500] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:19:19.790] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:19:19.790] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:19:19.790] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:19:19.791] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:19:19.799] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T13:19:19.800] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T13:19:19.800] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T13:19:19.805] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T13:19:19.806] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T13:19:19.806] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T13:19:19.806] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:19:19.806] [INFO] default - Searching permission in data base
+[2023-05-28T13:19:19.809] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T13:19:19.815] [INFO] default - [AddUserOperation] Creatting salt and hash from password J4D6Sq23
+[2023-05-28T13:19:19.815] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-28T13:19:19.816] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-28T13:19:19.873] [INFO] default - [AddUserOperation] creating user in db % {"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"NEW"},"email":"user524@nantoi.com","fullName":"user524","mobileNumber":"900453070","passwordHash":"$2b$10$0u2exmNIEDd4eQtiX4SvZ.tQNVAIExav/Gl6ln8fzo0VV8pBNW.VW","passwordSalt":"$2b$10$0u2exmNIEDd4eQtiX4SvZ.","roles":[]}
+[2023-05-28T13:19:19.891] [INFO] default - [EmailTemplate] Try to send emai
+[2023-05-28T13:19:20.312] [INFO] default - [EmailTemplate] Email sent: 250 OK id=1q3FMo-002KRd-0k
+[2023-05-28T13:19:20.313] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:19:20.313] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:20:19.949] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:20:19.949] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:20:19.950] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:20:19.950] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:20:19.958] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T13:20:19.958] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T13:20:19.958] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T13:20:19.964] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T13:20:19.964] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T13:20:19.964] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T13:20:19.964] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:20:19.964] [INFO] default - Searching permission in data base
+[2023-05-28T13:20:19.969] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T13:20:19.972] [INFO] default - [AddUserOperation] Creatting salt and hash from password dzsHF7pE
+[2023-05-28T13:20:19.972] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-28T13:20:19.973] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-28T13:20:20.031] [INFO] default - [AddUserOperation] creating user in db % {"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"NEW"},"email":"user837@nantoi.com","fullName":"user837","mobileNumber":"852468113","passwordHash":"$2b$10$8/JJeRjti0l9HTaK7tuy1.8SyxegMs/.k8SEfHBblUSNvMagntj0K","passwordSalt":"$2b$10$8/JJeRjti0l9HTaK7tuy1.","roles":[]}
+[2023-05-28T13:20:20.042] [INFO] default - [EmailTemplate] Try to send emai
+[2023-05-28T13:20:20.248] [INFO] default - [EmailTemplate] Email sent: 250 OK id=1q3FNm-002KZq-0Y
+[2023-05-28T13:20:20.248] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:20:20.249] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:21:45.403] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:21:45.403] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:21:45.403] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:21:45.403] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:21:45.408] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T13:21:45.408] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:21:45.408] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:23:03.016] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:23:03.016] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:23:03.016] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:23:03.016] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:23:03.021] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T13:23:03.021] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:23:03.021] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:23:11.420] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:23:11.420] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:23:11.420] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:23:11.420] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:23:11.424] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T13:23:11.425] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:23:11.425] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:29:36.424] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:29:44.233] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:29:44.233] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:29:44.233] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:29:44.233] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:29:44.237] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T13:29:44.237] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:29:44.237] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:30:03.475] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:30:03.475] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:30:03.475] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:30:03.475] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:30:03.482] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T13:30:03.483] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:30:03.483] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:33:56.909] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:33:56.911] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:33:56.911] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:33:56.911] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:33:56.963] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:33:56.966] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:33:56.966] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:33:56.968] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:33:56.970] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:33:56.970] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:33:56.970] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:33:56.971] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:33:56.971] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:33:56.976] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:33:56.987] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:33:56.988] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:39:26.072] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:39:26.073] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:39:26.074] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:39:26.074] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:39:26.126] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:39:26.129] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:39:26.129] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:39:26.131] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:39:26.132] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:39:26.133] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:39:26.133] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:39:26.133] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:39:26.133] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:39:26.135] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:39:26.147] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:39:26.147] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:40:17.644] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:40:17.646] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:40:17.647] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:40:17.647] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:40:17.702] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:40:17.705] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:40:17.705] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:40:17.706] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:40:17.708] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:40:17.708] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:40:17.708] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:40:17.708] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:40:17.708] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:40:17.713] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:40:17.724] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:40:17.724] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:41:44.003] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:41:44.004] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:41:44.005] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:41:44.005] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:41:44.056] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:41:44.059] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:41:44.059] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:41:44.061] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:41:44.063] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:41:44.063] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:41:44.063] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:41:44.063] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:41:44.063] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:41:44.067] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:41:44.078] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:41:44.078] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:43:02.405] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:43:02.407] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:43:02.407] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:43:02.407] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:43:02.457] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:43:02.460] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:43:02.461] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:43:02.462] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:43:02.463] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:43:02.463] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:43:02.464] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:43:02.464] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:43:02.464] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:43:02.466] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:43:02.478] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:43:02.479] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:43:21.090] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:43:21.091] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:43:21.092] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:43:21.092] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:43:21.151] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:43:21.154] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:43:21.155] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:43:21.156] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:43:21.157] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:43:21.157] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:43:21.157] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:43:21.158] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:43:21.158] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:43:21.162] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:43:21.175] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:43:21.175] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:43:38.273] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:43:38.275] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:43:38.275] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:43:38.276] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:43:38.334] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:43:38.337] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:43:38.338] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:43:38.339] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:43:38.341] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:43:38.341] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:43:38.341] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:43:38.341] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:43:38.341] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:43:38.344] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:43:38.356] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:43:38.356] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:44:09.505] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:44:09.507] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:44:09.507] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:44:09.508] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:44:09.563] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:44:09.566] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:44:09.567] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:44:09.569] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:44:09.570] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:44:09.570] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:44:09.570] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:44:09.570] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:44:09.570] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:44:09.573] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:44:09.583] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:44:09.583] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:44:43.845] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:44:43.847] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:44:43.847] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:44:43.848] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:44:43.907] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:44:43.910] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:44:43.911] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:44:43.914] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:44:43.917] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:44:43.917] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:44:43.918] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:44:43.918] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:44:43.918] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:44:43.922] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:44:43.940] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:44:43.940] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:45:48.986] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:45:48.989] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:45:48.990] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:45:48.990] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:45:49.053] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:45:49.055] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:45:49.056] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:45:49.057] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:45:49.058] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:45:49.059] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:45:49.059] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:45:49.059] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:45:49.059] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:45:49.063] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:45:49.074] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:45:49.074] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:46:15.873] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:46:15.875] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:46:15.875] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:46:15.875] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:46:15.923] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:46:15.925] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:46:15.926] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:46:15.927] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:46:15.929] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:46:15.929] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:46:15.929] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:46:15.930] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:46:15.930] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:46:15.933] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:46:15.944] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:46:15.944] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:46:56.393] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:46:56.396] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:46:56.396] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:46:56.396] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:46:56.449] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:46:56.451] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:46:56.452] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:46:56.453] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:46:56.454] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:46:56.454] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:46:56.454] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:46:56.455] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:46:56.455] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:46:56.458] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:46:56.469] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:46:56.469] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:47:22.090] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:47:22.091] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:47:22.091] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:47:22.092] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:47:22.112] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T13:47:22.113] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:47:22.113] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:49:54.575] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:49:54.575] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:49:54.575] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:49:54.575] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:49:54.584] [ERROR] default - [AddUserOperation] Role not found
+[2023-05-28T13:49:54.584] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:49:54.584] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:50:29.674] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:50:29.674] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:50:29.674] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:50:29.674] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:50:29.681] [ERROR] default - [AddUserOperation] Role not found
+[2023-05-28T13:50:29.682] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:50:29.682] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:50:36.426] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:50:36.426] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:50:36.426] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:50:36.426] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:50:36.432] [ERROR] default - [AddUserOperation] Role not found
+[2023-05-28T13:50:36.432] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:50:36.432] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:50:48.861] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:50:48.861] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:50:48.861] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:50:48.861] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:50:48.869] [ERROR] default - [AddUserOperation] Role not found
+[2023-05-28T13:50:48.870] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:50:48.870] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:51:02.376] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:51:02.376] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:51:02.376] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:51:02.376] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:51:02.383] [ERROR] default - [AddUserOperation] Role not found
+[2023-05-28T13:51:02.383] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:51:02.383] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:52:45.475] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:52:45.476] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:52:45.477] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:52:45.477] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:52:45.527] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:52:45.529] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:52:45.530] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:52:45.532] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:52:45.534] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:52:45.534] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:52:45.534] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:52:45.535] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:52:45.535] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:52:45.538] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:52:45.548] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:52:45.548] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:53:26.950] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:53:26.952] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:53:26.952] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:53:26.953] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:53:27.007] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:53:27.010] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:53:27.011] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:53:27.013] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:53:27.021] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:53:27.021] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:53:27.021] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:53:27.021] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:53:27.021] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:53:27.024] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:53:27.037] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:53:27.037] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:54:28.537] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:54:28.539] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:54:28.540] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:54:28.540] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:54:28.587] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:54:28.591] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:54:28.592] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:54:28.594] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:54:28.598] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:54:28.598] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:54:28.598] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:54:28.598] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:54:28.598] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:54:28.601] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:54:28.617] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:54:28.617] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:55:31.041] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:55:31.042] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:55:31.043] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:55:31.043] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:55:31.113] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:55:31.116] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:55:31.117] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:55:31.118] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:55:31.120] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:55:31.120] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:55:31.120] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:55:31.120] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:55:31.120] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:55:31.125] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:55:31.140] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:55:31.140] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:55:51.142] [INFO] default - Data Source has been initialized!
+[2023-05-28T13:55:51.143] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:55:51.144] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T13:55:51.144] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T13:55:51.191] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:55:51.193] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:55:51.194] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:55:51.196] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T13:55:51.198] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T13:55:51.199] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T13:55:51.199] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T13:55:51.199] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T13:55:51.199] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T13:55:51.204] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T13:55:51.215] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T13:55:51.215] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T13:57:31.598] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:57:31.599] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:57:31.599] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:57:31.599] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:57:31.611] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T13:57:31.612] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T13:57:31.612] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T13:57:31.617] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T13:57:31.617] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T13:57:31.617] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T13:57:31.618] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T13:57:31.618] [INFO] default - Searching permission in data base
+[2023-05-28T13:57:31.620] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T13:57:31.626] [INFO] default - [AddUserOperation] Creatting salt and hash from password 0sicc73j
+[2023-05-28T13:57:31.627] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-28T13:57:31.629] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-28T13:57:31.685] [INFO] default - [AddUserOperation] creating user in db % {"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"NEW"},"email":"user965@nantoi.com","fullName":"user965","mobileNumber":"914000686","passwordHash":"$2b$10$hcNgwIMEDW7WVJVnD2nszurhMegyQcGuxmL6EbjWjIe62Ta.msmFO","passwordSalt":"$2b$10$hcNgwIMEDW7WVJVnD2nszu","roles":[]}
+[2023-05-28T13:57:31.715] [INFO] default - [EmailTemplate] Try to send emai
+[2023-05-28T13:57:32.053] [INFO] default - [EmailTemplate] Email sent: 250 OK id=1q3Fxm-002S1y-0D
+[2023-05-28T13:57:32.054] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:57:32.054] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:57:41.170] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:57:41.170] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:57:41.170] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:57:41.171] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:57:41.175] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T13:57:41.175] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:57:41.175] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:58:11.329] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T13:58:11.329] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T13:58:11.329] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T13:58:11.329] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T13:58:11.338] [ERROR] default - [AddUserOperation] Role not found
+[2023-05-28T13:58:11.338] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T13:58:11.338] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:11:26.978] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:11:26.978] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:11:26.978] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:11:26.979] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:11:26.985] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T14:11:26.985] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T14:11:26.985] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T14:11:26.988] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T14:11:26.988] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T14:11:26.988] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T14:11:26.988] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T14:11:26.988] [INFO] default - Searching permission in data base
+[2023-05-28T14:11:26.990] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T14:11:26.992] [INFO] default - [AddUserOperation] Creatting salt and hash from password csDCnmrQ
+[2023-05-28T14:11:26.992] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-28T14:11:26.993] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-28T14:11:27.049] [INFO] default - [AddUserOperation] creating user in db % {"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"NEW"},"email":"user916@nantoi.com","fullName":"user916","mobileNumber":"357377978","passwordHash":"$2b$10$osQMpTlWOTWYr3pHv4cBUODcU7gxhuQ.Y5x1H1MHfmE/FmsKFiFi.","passwordSalt":"$2b$10$osQMpTlWOTWYr3pHv4cBUO","roles":[]}
+[2023-05-28T14:11:27.065] [INFO] default - [EmailTemplate] Try to send emai
+[2023-05-28T14:11:27.361] [INFO] default - [EmailTemplate] Email sent: 250 OK id=1q3GBF-002TPJ-1K
+[2023-05-28T14:11:27.361] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:11:27.361] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:12:30.352] [INFO] default - Data Source has been initialized!
+[2023-05-28T14:12:30.354] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T14:12:30.355] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T14:12:30.355] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T14:12:30.406] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T14:12:30.409] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T14:12:30.410] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T14:12:30.412] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T14:12:30.414] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T14:12:30.414] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T14:12:30.414] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T14:12:30.414] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T14:12:30.414] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T14:12:30.417] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T14:12:30.428] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T14:12:30.428] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T14:13:11.017] [INFO] default - Data Source has been initialized!
+[2023-05-28T14:13:11.019] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T14:13:11.019] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T14:13:11.019] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T14:13:11.070] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T14:13:11.075] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T14:13:11.075] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T14:13:11.077] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T14:13:11.078] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T14:13:11.079] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T14:13:11.079] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T14:13:11.079] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T14:13:11.079] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T14:13:11.082] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T14:13:11.093] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T14:13:11.093] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T14:14:37.906] [INFO] default - Data Source has been initialized!
+[2023-05-28T14:14:37.908] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T14:14:37.909] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-28T14:14:37.909] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-28T14:14:37.954] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T14:14:37.956] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T14:14:37.956] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T14:14:37.958] [INFO] default - [cretePermissions] Find role by name
+[2023-05-28T14:14:37.960] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-28T14:14:37.961] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-28T14:14:37.961] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-28T14:14:37.961] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-28T14:14:37.961] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-28T14:14:37.965] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-28T14:14:37.975] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-28T14:14:37.975] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-28T14:16:20.581] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:16:20.581] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:16:20.581] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:16:20.582] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:20.589] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T14:16:20.590] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T14:16:20.590] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T14:16:20.593] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T14:16:20.593] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T14:16:20.594] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T14:16:20.594] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T14:16:20.594] [INFO] default - Searching permission in data base
+[2023-05-28T14:16:20.596] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T14:16:20.599] [INFO] default - [AddUserOperation] Creatting salt and hash from password hZGYcO1P
+[2023-05-28T14:16:20.600] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-28T14:16:20.602] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-28T14:16:20.657] [INFO] default - [AddUserOperation] creating user in db % {"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"NEW"},"email":"user961@nantoi.com","fullName":"user961","mobileNumber":"575065693","passwordHash":"$2b$10$mbVHcFMyTwb0HG2XvbuDdexTnI/j5g3hYn3hzQnHH21.xUgoZ0R0W","passwordSalt":"$2b$10$mbVHcFMyTwb0HG2XvbuDde","roles":[]}
+[2023-05-28T14:16:20.675] [INFO] default - [EmailTemplate] Try to send emai
+[2023-05-28T14:16:21.034] [INFO] default - [EmailTemplate] Email sent: 250 OK id=1q3GFz-002TsO-0J
+[2023-05-28T14:16:21.034] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:16:21.034] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:21.143] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:16:21.143] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:16:21.144] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:16:21.144] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:21.147] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T14:16:21.147] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:16:21.147] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:21.222] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:16:21.222] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:16:21.222] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:16:21.222] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:21.227] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T14:16:21.227] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:16:21.227] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:21.318] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:16:21.318] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:16:21.318] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:16:21.318] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:21.325] [ERROR] default - [AddUserOperation] Role not found
+[2023-05-28T14:16:21.325] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:16:21.325] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:34.817] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:16:34.817] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:16:34.817] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:16:34.817] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:34.823] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T14:16:34.823] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T14:16:34.823] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T14:16:34.825] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T14:16:34.825] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T14:16:34.825] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T14:16:34.825] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T14:16:34.826] [INFO] default - Searching permission in data base
+[2023-05-28T14:16:34.828] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T14:16:34.830] [INFO] default - [AddUserOperation] Creatting salt and hash from password FEUjZg1Q
+[2023-05-28T14:16:34.831] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-28T14:16:34.832] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-28T14:16:34.887] [INFO] default - [AddUserOperation] creating user in db % {"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"NEW"},"email":"user557@nantoi.com","fullName":"user557","mobileNumber":"162943694","passwordHash":"$2b$10$.NJbwk80GjbvdhWEDHu8g.bgBoPZHj2LiDlc/jdOYX5Nn.KMdRJzS","passwordSalt":"$2b$10$.NJbwk80GjbvdhWEDHu8g.","roles":[]}
+[2023-05-28T14:16:34.895] [INFO] default - [EmailTemplate] Try to send emai
+[2023-05-28T14:16:35.035] [INFO] default - [EmailTemplate] Email sent: 250 OK id=1q3GGD-002TtM-0J
+[2023-05-28T14:16:35.036] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:16:35.036] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:35.125] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:16:35.125] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:16:35.125] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:16:35.125] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:35.131] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T14:16:35.132] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:16:35.132] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:35.201] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:16:35.201] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:16:35.201] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:16:35.201] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:35.206] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T14:16:35.207] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:16:35.207] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:35.280] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:16:35.280] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:16:35.281] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:16:35.281] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:16:35.291] [ERROR] default - [AddUserOperation] Role not found
+[2023-05-28T14:16:35.291] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:16:35.291] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:17:14.376] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:17:14.376] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:17:14.376] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:17:14.376] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:17:14.382] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T14:17:14.382] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T14:17:14.382] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T14:17:14.384] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T14:17:14.384] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T14:17:14.384] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T14:17:14.384] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T14:17:14.384] [INFO] default - Searching permission in data base
+[2023-05-28T14:17:14.386] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T14:17:14.395] [INFO] default - [AddUserOperation] Creatting salt and hash from password pcm2RB11
+[2023-05-28T14:17:14.395] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-28T14:17:14.396] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-28T14:17:14.451] [INFO] default - [AddUserOperation] creating user in db % {"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"NEW"},"email":"user561@nantoi.com","fullName":"user561","mobileNumber":"491556521","passwordHash":"$2b$10$HL8b/rD/p5C2/8RuzqJt9u/jWJUSYZXlBUyXuvpCPBG4theDc99Ey","passwordSalt":"$2b$10$HL8b/rD/p5C2/8RuzqJt9u","roles":[]}
+[2023-05-28T14:17:14.462] [INFO] default - [EmailTemplate] Try to send emai
+[2023-05-28T14:17:14.610] [INFO] default - [EmailTemplate] Email sent: 250 OK id=1q3GGq-002TwR-2A
+[2023-05-28T14:17:14.610] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:17:14.610] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:18:32.560] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:18:32.561] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:18:32.561] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:18:32.561] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:18:32.568] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T14:18:32.568] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T14:18:32.568] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T14:18:32.571] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T14:18:32.571] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T14:18:32.571] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T14:18:32.571] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T14:18:32.572] [INFO] default - Searching permission in data base
+[2023-05-28T14:18:32.573] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T14:18:32.575] [INFO] default - [AddUserOperation] Creatting salt and hash from password xkezfXgH
+[2023-05-28T14:18:32.575] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-28T14:18:32.576] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-28T14:18:32.638] [INFO] default - [AddUserOperation] creating user in db % {"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"NEW"},"email":"user929@nantoi.com","fullName":"user929","mobileNumber":"349959586","passwordHash":"$2b$10$/ovadaNvDt1XDl672ZkirOxvqxJFEv17vXi4ZTNn6weE5FwczX36q","passwordSalt":"$2b$10$/ovadaNvDt1XDl672ZkirO","roles":[]}
+[2023-05-28T14:18:32.647] [INFO] default - [EmailTemplate] Try to send emai
+[2023-05-28T14:18:32.906] [INFO] default - [EmailTemplate] Email sent: 250 OK id=1q3GI6-002U3R-38
+[2023-05-28T14:18:32.907] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:18:32.907] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:18:41.921] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:18:41.921] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:18:41.921] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:18:41.921] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:18:41.927] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T14:18:41.927] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T14:18:41.927] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T14:18:41.929] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T14:18:41.929] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T14:18:41.929] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T14:18:41.929] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T14:18:41.929] [INFO] default - Searching permission in data base
+[2023-05-28T14:18:41.932] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T14:18:41.934] [INFO] default - [AddUserOperation] Creatting salt and hash from password 4bmkELQ5
+[2023-05-28T14:18:41.934] [INFO] default - [PasswordValidator] craeting round salt
+[2023-05-28T14:18:41.935] [INFO] default - [PasswordValidator] genereate hash with password and salt
+[2023-05-28T14:18:41.991] [INFO] default - [AddUserOperation] creating user in db % {"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"NEW"},"email":"user869@nantoi.com","fullName":"user869","mobileNumber":"311172855","passwordHash":"$2b$10$mEJXzZvR2E49Y2Th/XK2JeJBWBRmshPKbYkmQ4ZnrHhokegqFShey","passwordSalt":"$2b$10$mEJXzZvR2E49Y2Th/XK2Je","roles":[]}
+[2023-05-28T14:18:42.006] [INFO] default - [EmailTemplate] Try to send emai
+[2023-05-28T14:18:42.155] [INFO] default - [EmailTemplate] Email sent: 250 OK id=1q3GIG-002U4S-0i
+[2023-05-28T14:18:42.155] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:18:42.155] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:18:42.256] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:18:42.256] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:18:42.256] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:18:42.256] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:18:42.259] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T14:18:42.260] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:18:42.260] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:18:42.334] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:18:42.334] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:18:42.334] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:18:42.334] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:18:42.340] [ERROR] default - [AddUserOperation] user already exist
+[2023-05-28T14:18:42.340] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:18:42.340] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:18:42.396] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:18:42.396] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-28T14:18:42.396] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:18:42.396] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:18:42.402] [ERROR] default - [AddUserOperation] Role not found
+[2023-05-28T14:18:42.402] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:18:42.403] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"rolesRepository":{},"roles":[]}
+[2023-05-28T14:21:10.664] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:21:10.665] [INFO] default - [NewsController] Perform dependency injection for UserController
+[2023-05-28T14:21:10.665] [INFO] default - [NewsController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:21:10.665] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"userStatusRepository":{}}
+[2023-05-28T14:21:10.670] [ERROR] default - [GetAllUserOperation] Status not found
+[2023-05-28T14:21:10.670] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:21:10.671] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"userStatusRepository":{},"status":null}
+[2023-05-28T14:21:16.627] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:21:16.628] [INFO] default - [NewsController] Perform dependency injection for UserController
+[2023-05-28T14:21:16.628] [INFO] default - [NewsController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:21:16.628] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"userStatusRepository":{}}
+[2023-05-28T14:21:16.628] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T14:21:16.628] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T14:21:16.628] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T14:21:16.632] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T14:21:16.633] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T14:21:16.633] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T14:21:16.633] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T14:21:16.633] [INFO] default - Searching permission in data base
+[2023-05-28T14:21:16.636] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T14:21:16.637] [INFO] default - [GetAllUserOperation] creating all users
+[2023-05-28T14:21:16.644] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:21:16.644] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"userStatusRepository":{}}
+[2023-05-28T14:21:34.977] [INFO] default - [AuthValidator] checking authorization token
+[2023-05-28T14:21:34.977] [INFO] default - [NewsController] Perform dependency injection for UserController
+[2023-05-28T14:21:34.977] [INFO] default - [NewsController] Perform dependency injection for UserController was successfully
+[2023-05-28T14:21:34.977] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"userStatusRepository":{}}
+[2023-05-28T14:21:34.977] [INFO] default - [OperationTemplate] Begin executing operation:1
+[2023-05-28T14:21:34.977] [INFO] default - [AuthenticationOperationTemplate] Perform dependency injection for ITokenEngineRepository
+[2023-05-28T14:21:34.977] [INFO] default - [AuthenticationOperationTemplate] - Begin searching for valid token
+[2023-05-28T14:21:34.983] [INFO] default - [AuthenticationOperationTemplate] - Valid token was founded for user nantoi@nantoi.com
+[2023-05-28T14:21:34.983] [INFO] default - [AuthenticationOperationTemplate] - Check if user has initial actions
+[2023-05-28T14:21:34.983] [INFO] default - Validate if user has permission to execute the operation
+[2023-05-28T14:21:34.983] [INFO] default - [OperationValidatorManager] Perform dependency injection for IPermissionEngineRepository
+[2023-05-28T14:21:34.983] [INFO] default - Searching permission in data base
+[2023-05-28T14:21:34.986] [INFO] default - permission was founded. validate if operation is valid for user
+[2023-05-28T14:21:34.988] [INFO] default - [GetAllUserOperation] creating all users
+[2023-05-28T14:21:34.992] [INFO] default - [OperationTemplate] End executing operation 1
+[2023-05-28T14:21:34.992] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":1,"operationValidatorManager":{},"userRepository":{},"userStatusRepository":{}}

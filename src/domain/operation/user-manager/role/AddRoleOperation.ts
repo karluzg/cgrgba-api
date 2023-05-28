@@ -51,7 +51,7 @@ export class AddRoleOperation extends UserAuthOperationTemplate<RoleResult, Role
 
         if (role) {
             logger.error("[AddRoleOperation] role already exist")
-            throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.ROLE_ALREADY_EXIST);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.ROLE_ALREADY_EXIST);
         }
 
         if (params.getPermissions) {
@@ -59,7 +59,7 @@ export class AddRoleOperation extends UserAuthOperationTemplate<RoleResult, Role
               const permissionEntity = await this.permissionRepository.findPermissionByCode(permission);
               if (!permissionEntity) {
                 logger.error("[AddRoleOperation] Permission not found");
-                throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+                throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
               } else {
                 this.permissions.push(permissionEntity);
               }

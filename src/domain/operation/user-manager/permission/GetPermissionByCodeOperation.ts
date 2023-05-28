@@ -32,7 +32,7 @@ export class GetPermissionByCodeOperation extends UserAuthOperationTemplate<Perm
         this.permission = await this.permissionRepository.findPermissionByCode(params.getValue);
         if (!this.permission) {
             logger.error("[GetPermissionByCodeOperation] permission not exist")
-            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
         }
     }
 

@@ -40,19 +40,19 @@ export class UpdatePasswordOperation extends UserAuthOperationTemplate<UserResul
 
         if (params.getNewPassword != params.getConfirmPassword) {
             logger.error("[UpdatePasswordOperation] passoword de confimação não é igual ao novo password")
-            throw new InvalidParametersException(Field.PASSWORD, MiddlewareBusinessMessage.USER_PASSWORD_NOT_MATCH);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_PASSWORD_NOT_MATCH);
         }
 
         if (params.getNewPassword == params.getOldPassword) {
             logger.error("[UpdatePasswordOperation] nova passoword igual a antiga")
-            throw new InvalidParametersException(Field.PASSWORD, MiddlewareBusinessMessage.USER_PASSWORD_MATCH);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_PASSWORD_MATCH);
         }
 
 
         logger.info("[UpdatePasswordOperation] check password for user %s", this.user)
         const passwordValidator = new PasswordValidator();
         if (!await passwordValidator.checkPassword(params.getOldPassword, this.user.passwordHash)) {
-            throw new InvalidParametersException(Field.PASSWORD, MiddlewareBusinessMessage.USER_INVALID_CREDENTIALS)
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_INVALID_CREDENTIALS)
         }
 
     }

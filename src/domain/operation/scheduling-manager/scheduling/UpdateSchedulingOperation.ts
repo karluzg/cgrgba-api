@@ -80,7 +80,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
 
         if (this.citizenEntitySource) {
-            throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.CITIZEN_INVALID_EMAIL)
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.CITIZEN_INVALID_EMAIL)
         }
 
 
@@ -88,7 +88,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
         if (!(this.citizenEntitySource.email === params.getCitizenEmail) && countEmail != 0) {
 
-            throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.CITIZEN_INVALID_EMAIL)
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.CITIZEN_INVALID_EMAIL)
 
         }
 

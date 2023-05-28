@@ -36,11 +36,11 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
         this.user = await this.userRepository.findUserByEmail(params.getEmail)
      
         if (!this.user) {
-            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
+            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_NOT_FOUND);
         }
 
         if (this.user.passwordTry <= 0) {
-            throw new ForbiddenOperationException(Field.SYSTEM, MiddlewareBusinessMessage.USER_PASSWORD_LOCKED);
+            throw new ForbiddenOperationException(Field.USER, MiddlewareBusinessMessage.USER_PASSWORD_LOCKED);
         }
 
         logger.info("[LoginOperation] check password for user %s", this.user)
@@ -49,7 +49,7 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
             this.user.passwordTry = this.user.passwordTry - 1
             await this.userRepository.saveUser(this.user)
 
-            throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.USER_INVALID_CREDENTIALS)
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_INVALID_CREDENTIALS)
         }
 
     }
