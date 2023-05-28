@@ -6,6 +6,7 @@ import schedulingTimeRoutes from "../scheduling-manager/schedulingTimeRoutes";
 import schedulingRoutes from "../scheduling-manager/SchedulingRoutes";
 import { UserResult } from "../../model/user-manager/UserResult";
 import RoleRoutes from "../user-manager/RoleRoutes";
+import PermissionRoutes from "../user-manager/PermissionRoutes";
 
 const sharedRoutes = Router();
 
@@ -17,6 +18,7 @@ const baseUrl = "/api/v1"
 sharedRoutes.use(baseUrl, UserRoutes);
 sharedRoutes.use(baseUrl , SessionRoutes);
 sharedRoutes.use(baseUrl , RoleRoutes);
+sharedRoutes.use(baseUrl , PermissionRoutes);
 
 // News-Manager
 

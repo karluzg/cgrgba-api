@@ -14,16 +14,26 @@ export enum MiddlewareBusinessMessage {
   USER_PASSWORD_LOCKED = "Passowrd bloqueda, tem de efectuar reset a password",
   USER_ADDED_SUCCESSFULLY = "Utilizador criado com sucesso",
   USER_GET_SUCCESSFULLY = "Utilizador obtido com sucesso",
+  USER_GET_ALL_SUCCESSFULLY = "Lista de utilizadores obtida com sucesso",
   ROLE_NOT_FOUND = "Role não foi encontrado",
   ROLE_ADDED_SUCCESSFULLY  = "Role adiocionado com sucesso",
-  ROLE_ALREADY_EXIST ="A role j+á exite na base de dados",
+  ROLE_ALREADY_EXIST ="A role já exite na base de dados",
+  ROLE_GET_SUCCESSFULLY = "Role obtido com sucesso",
+  ROLE_GET_LIST_SUCCESSFULLY = "Lista de Role obtido com sucesso",
+  PERMISSION_ADDED_SUCCESSFULLY="Permissão adicioando com sucesso",
   PERMISSION_NOT_FOUND = "Permissão não foi encontrado",
-  PERMISSION_GOURP_NOT_FOUND = "Grupo de permissões não foi encontrado",
+  PERMISSION_ALREADY_EXIST = "Permissão já existe na base de dados",
+  PERMISSION_GET_SUCCESSFULLY = "Permissão obtido com sucesso",
+  PERMISSION_GET_LIST_SUCCESSFULLY = "Lista de Permissão obtido com sucesso",
+  PERMISSION_GROUP_ADDED_SUCCESSFULLY="Grupo de mpermissões adicionado com sucesso",
+  PERMISSION_GROUP_NOT_FOUND = "Grupo de permissões não foi encontrado",
+  PERMISSION_GROUP_ALREADY_EXIST="Grupo de Permissões já existe",
+  PERMISSION_GROUP_GET_SUCCESSFULLY = "Grupo de Permissões obtido com sucesso",
+  PERMISSION_GROUP_LIST_SUCCESSFULLY = "Lista de Grupo de Permissões obtido com sucesso",
   SESSION_LOGIN_SUCCESSFULLY = "Login realizado com sucesso",
   USER_STATUS_CODE_MANDATORY = "O estado do utilizador é obrigatório",
   USER_STATUS_NOT_FOUND = "Tipo de estado de utilizador não foi encontrado",
-  ROLE_GET_SUCCESSFULLY = "Role obtido com sucesso",
-  ROLE_GET_LIST_SUCCESSFULLY = "Lista de Role obtido com sucesso",
+ 
 
 
 
@@ -84,9 +94,12 @@ export enum MiddlewareBusinessMessage {
   //  BUSINESS MESSAGE - DCOUMENT 
   //  BUSINESS MESSAGE - NEWS
   NEWS_INVALID_CATEGORY = "Erro de validação dos dados da notícia",
+  NEWS_CATEGORY_NOT_FOUND = "Categoria de notícia não existe na base de dados",
   NEWS_ADD_SUCCESSFULLY = " Notícia criada com sucesso",
+  NEWS_FILE_ADD_SUCCESSFULLY = " Imagem da notícia adicionada com sucesso",
   NEWS_GET_ALL_SUCCESSFULLY = "Lista de notícias recuperada com sucesso",
-  NEWS_INVALID_TITLE = "Existe uma noticia com mesmo titlo, mude o titlo e tente novamente",
+  NEW_NOT_FOUND="Notícia não existe na base de dados",
+  NEWS_INVALID_TITLE = "Existe uma noticia com mesmo titulo, mude o titulo e tente novamente",
   NEWS_INVALID_FILE_UPLOAD = "Ficheiro ou o formato do ficheiro carregado é invalido",
 
   // CORE MESSAGE

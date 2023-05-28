@@ -30,7 +30,7 @@ export class UserEngineImpl extends GenericOperationTemplate implements IUserEng
     }
 
     async getAllUsers(params: PageAndSizeParams): Promise<UserResultList> {
-        return await this.executeOperation(new GetAllUserOperation(), params)
+        return  await this.executeOperation(new GetAllUserOperation(), params)
     }
   
     async addUser(params: UserParams): Promise<UserResult> {

@@ -19,6 +19,7 @@ import { ResetPasswordParams } from "../../model/user-manager/ResetPasswordParam
 import { PageAndSizeParams } from "../../model/PageAndSizeParams";
 import { GetByIdParams } from "../../model/GetByIdParams";
 import { GetByEmailOrCodeParams } from "../../model/GetByEmailOrCodeParams";
+import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 
 
 export class UserController {
@@ -34,7 +35,7 @@ export class UserController {
       //const authenticationToken =  new AuthorizationOperationTemplate().checkAuthorizationToken(request)
       //não deixa acesso a classe extendida então usou-se static
       const authenticationToken = AuthValidator.checkAuthorizationToken(request);
-      const params = new UserParams(authenticationToken, fullName, mobileNumber, email,roles)
+      const params = new UserParams(authenticationToken, fullName, mobileNumber, email, roles)
 
       logger.info("[UserController] Perform dependency injection for UserController")
 
@@ -66,7 +67,7 @@ export class UserController {
   public async getUsers(request: Request, response: Response): Promise<Response> {
 
     try {
-       const { page = 1, size = 10, status: statusCode, direction, orderColumn } = request.query;
+      const { page = 1, size = 10, status: statusCode, direction, orderColumn } = request.query;
 
       const pageNumber = Number(page);
       const pageSize = Number(size);
@@ -98,43 +99,52 @@ export class UserController {
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message)
-      }
+      } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
+        throw new NotFoundException(error.field, error.message)
+      } else
+        throw new UnsuccessfullOperationException(error.field, error.message)
     }
   }
   public async getUserById(request: Request, response: Response): Promise<Response> {
     try {
       const { id } = request.params; // Obtém o ID do parâmetro da URL
-  
+
       const authenticationToken = AuthValidator.checkAuthorizationToken(request);
       const params = new GetByIdParams(authenticationToken, parseInt(id, 10));
-  
+
       logger.info('[UserController] Performing dependency injection for UserEngine');
       const userEngine = container.resolve<IUserEngine>('IUserEngine');
       logger.info('[UserController] Dependency injection for UserEngine was successful');
-  
+
       const result = await userEngine.getUserById(params);
       return response.status(HttpCode.OK).json(result);
     } catch (error) {
+      console.log(error)
       if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
         throw new NotImplementedException(error.field, error.message);
       } else if (error.errorClassName === ErrorExceptionClass.INVALID_PARAMETERS) {
         throw new InvalidParametersException(error.field, error.message);
+      } else if (error.errorClassName === ErrorExceptionClass.NOT_FOUND) {
+        throw new NotFoundException(error.field, error.message);
       } else if (error.errorClassName === ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message);
-      }
+      } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
+        throw new NotFoundException(error.field, error.message)
+      } else
+        throw new UnsuccessfullOperationException(error.field, error.message) 
     }
   }
   public async getUserByEmail(request: Request, response: Response): Promise<Response> {
     try {
       const { email } = request.params; // Obtém o email do parâmetro da URL
-  
+
       const authenticationToken = AuthValidator.checkAuthorizationToken(request);
       const params = new GetByEmailOrCodeParams(authenticationToken, email);
-  
+
       logger.info('[UserController] Performing dependency injection for UserEngine');
       const userEngine = container.resolve<IUserEngine>('IUserEngine');
       logger.info('[UserController] Dependency injection for UserEngine was successful');
-  
+
       const result = await userEngine.getUserByEmail(params);
       return response.status(HttpCode.OK).json(result);
     } catch (error) {
@@ -144,10 +154,13 @@ export class UserController {
         throw new InvalidParametersException(error.field, error.message);
       } else if (error.errorClassName === ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message);
-      }
+      }else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
+        throw new NotFoundException(error.field, error.message)
+      } else
+        throw new UnsuccessfullOperationException(error.field, error.message)
     }
   }
-  
+
 
   public async updateUser(request: Request, response: Response): Promise<Response> {
     throw new Error("Method not implemented.");
@@ -185,9 +198,10 @@ export class UserController {
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message)
-      }
-      else
-        throw error;
+      }else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
+        throw new NotFoundException(error.field, error.message)
+      } else
+        throw new UnsuccessfullOperationException(error.field, error.message)
     }
   }
   public async resetPassword(request: Request, response: Response): Promise<Response> {
@@ -198,7 +212,7 @@ export class UserController {
 
       //const authenticationToken =  new AuthorizationOperationTemplate().checkAuthorizationToken(request)
       //não deixa acesso a classe extendida então usou-se static
-      const params = new ResetPasswordParams( mobileNumber, email)
+      const params = new ResetPasswordParams(mobileNumber, email)
 
       logger.info("[resetPassword] Perform dependency injection for UserController")
 
@@ -221,9 +235,10 @@ export class UserController {
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message)
-      }
-      else
-        throw error;
+      }else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
+        throw new NotFoundException(error.field, error.message)
+      } else
+        throw new UnsuccessfullOperationException(error.field, error.message)
     }
 
   }

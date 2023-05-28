@@ -15,7 +15,6 @@ import { TimeSlotResult } from './application/model/scheduling-manager/schedulin
 import { TokenSession } from './domain/model/TokenSession';
 import { RoleParams } from './application/model/user-manager/RoleParams';
 import { PermissionParams } from './application/model/user-manager/PermissionParams ';
-import { PermissionResult } from './application/model/user-manager/PermissionResult';
 import { RoleResult } from './application/model/user-manager/RoleResult ';
 import { ResetPasswordParams } from './application/model/user-manager/ResetPasswordParams';
 import { NewsParams } from './application/model/news-manager/NewsParams';
@@ -26,6 +25,14 @@ import { Scheduling } from './domain/model/Scheduling';
 import { SchedulingStatus } from './domain/model/SchedulingStatus';
 import { Hour } from './domain/model/Hour';
 import { RoleResultList } from './application/model/user-manager/RoleResultList';
+import { PermissionResult } from './application/model/user-manager/PermissionResult';
+import { UserResultList } from './application/model/user-manager/UserResultList';
+import { NewsResultList } from './application/model/news-manager/NewsResultList';
+import { PermissionGroup } from './domain/model/PermissionGroup';
+import { PermissionGroupParams } from './application/model/user-manager/PermissionGroupParams';
+import { PermissionGroupResult } from './application/model/user-manager/PermissionGroupResult';
+import { PermissionGroupResultList } from './application/model/user-manager/PermissionGroupResultList';
+import { PermissionResultList } from './application/model/user-manager/PermissionResultList';
 
 
 const options = {
@@ -52,6 +59,7 @@ const options = {
         User: classToJsonSchema(User),
         UserParams: classToJsonSchema(UserParams),
         UserResult: classToJsonSchema(UserResult),
+        UserResultList: classToJsonSchema(UserResultList),
         UserLoginResult: classToJsonSchema(UserLoginResult),
         UserLoginParams: classToJsonSchema(UserLoginParams),
         SchedulingParams: classToJsonSchema(SchedulingParams),
@@ -69,9 +77,14 @@ const options = {
         RoleResultList: classToJsonSchema(RoleResultList),
         PermissionParams: classToJsonSchema(PermissionParams),
         PermissionResult: classToJsonSchema(PermissionResult),
+        PermissionResultList: classToJsonSchema(PermissionResultList),
+        PermissionGroupParams: classToJsonSchema(PermissionGroupParams),
+        PermissionGroupResult: classToJsonSchema(PermissionGroupResult),
+        PermissionGroupResultList: classToJsonSchema(PermissionGroupResultList),
         ResetPasswordParams: classToJsonSchema(ResetPasswordParams),
         NewsParams: classToJsonSchema(NewsParams),
         NewsResult: classToJsonSchema(NewsResult),
+        NewsResultList: classToJsonSchema(NewsResultList),
         GetSchedulingListResult: classToJsonSchema(GetSchedulingListResult),
         UpdateSchedulingParams: classToJsonSchema(UpdateSchedulingParams),
       },

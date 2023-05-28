@@ -34,14 +34,14 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
     protected async doValidateParameters(params: UserLoginParams): Promise<void> {
 
         this.user = await this.userRepository.findUserByEmail(params.getEmail)
+     
+        if (!this.user) {
+            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
+        }
+
         if (this.user.passwordTry <= 0) {
             throw new ForbiddenOperationException(Field.SYSTEM, MiddlewareBusinessMessage.USER_PASSWORD_LOCKED);
         }
-
-        if (!this.user) {
-            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR);
-        }
-
 
         logger.info("[LoginOperation] check password for user %s", this.user)
         const passwordValidator = new PasswordValidator();

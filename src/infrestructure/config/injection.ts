@@ -44,12 +44,15 @@ import { IServiceEngineRepository } from '../../domain/repository/IServiceEngine
 import { ServiceEngineRepositoryImpl } from '../../domain/repository/impl/ServiceEngineRepositoryImpl';
 import { IRoleEngine } from '../../domain/service/IRoleEngine';
 import { RoleEngineImpl } from '../../domain/service/impl/RoleEngineImpl';
+import { IPermissionEngine } from '../../domain/service/IPermissionEngine';
+import { PermissionEngineImpl } from '../../domain/service/impl/PermissionEngineImpl';
 
 
 //Register container for services
 container.register<IUserEngine>('IUserEngine', { useClass: UserEngineImpl });
 container.register<ISessionEngine>('ISessionEngine', { useClass: SessionEngineImpl });
 container.register<IRoleEngine>('IRoleEngine', { useClass: RoleEngineImpl });
+container.register<IPermissionEngine>('IPermissionEngine', { useClass: PermissionEngineImpl });
 container.register<ISchedulingTimeEngine>('ISchedulingTimeEngine', { useClass: SchedulingTimeEngineImpl });
 container.register<ISchedulingEngine>('ISchedulingEngine', { useClass: SchedulingEngineImpl })
 container.register<INewsEngine>('INewsEngine', { useClass: NewsEngineImpl });

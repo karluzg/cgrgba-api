@@ -24,43 +24,46 @@ const newsRepository = myDataSource.getRepository(News)
 export class NewsEngineRepositoryImpl implements INewsEngineRepository {
   async findNewsByTitle(title: string): Promise<News> {
     const news = await newsRepository.createQueryBuilder('news')
+      .leftJoinAndSelect("news.newsCategory", "category")
       .where('news.title = :title', { title })
       .getOne();
 
 
-    if (news.imagePath)
+    if (news && news.imagePath)
       news.imageFileContent = ImageConverter.convertToBase64(news.imagePath);
 
     return news;
   }
   async findNewsById(id: string): Promise<News> {
     const news = await newsRepository.createQueryBuilder('news')
+     .leftJoinAndSelect("news.newsCategory", "category")
       .where('news.id = :id', { id })
       .getOne();
 
-    if (news.imagePath)
+      if (news && news.imagePath)
       news.imageFileContent = ImageConverter.convertToBase64(news.imagePath);
 
     return news;
   }
 
-  async findAllNews(page: number, size: number, category?: NewsCategory,orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<News>> {
+  async findAllNews(page: number, size: number, category?: NewsCategory, orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<News>> {
     const skipCount = (page - 1) * size;
 
     let queryBuilder = newsRepository.createQueryBuilder('news')
+       .leftJoinAndSelect("news.newsCategory", "category")
       .skip(skipCount)
       .take(size);
 
     if (category) {
       const code = category.code
-      queryBuilder = queryBuilder.leftJoinAndSelect("news.newsCategory", "category")
+      queryBuilder = queryBuilder
         .where('category.code = :code', { code });
     }
 
     if (orderColumn && direction) {
       queryBuilder = queryBuilder.orderBy(`news.${orderColumn}`, direction);
     }
-  
+
 
     const [newsList, totalRows] = await queryBuilder.getManyAndCount();
     const totalPages = Math.ceil(totalRows / size);
