@@ -3,7 +3,7 @@ import { NotImplementedException } from "../../../infrestructure/exceptions/NotI
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
 
-import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
+import { HttpCodes } from "../../../infrestructure/response/enum/HttpCode";
 import { ISessionEngine } from "../../../domain/service/ISessionEngine";
 import { UserLoginParams } from "../../../application/model/user-manager/UserLoginParams";
 import e, { Request, Response } from "express";
@@ -33,7 +33,7 @@ export class SessionController {
 
 
       const result = await sesionEngine.login(params)
-      return response.status(HttpCode.OK).json(result)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
 
       if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {

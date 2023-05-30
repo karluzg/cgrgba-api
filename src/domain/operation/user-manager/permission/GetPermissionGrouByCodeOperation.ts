@@ -32,7 +32,7 @@ export class GetPermissionGrouByCodeOperation extends UserAuthOperationTemplate<
         this.permissonGroup = await this.permissionGroupRepository.findPermissionGroupByCode(params.getValue);
         if (!this.permissonGroup) {
             logger.error("[GetPermissionGrouByCodeOperation] permissonGroup not exist")
-            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_FOUND);
+            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_FOUND);
         }
     }
 

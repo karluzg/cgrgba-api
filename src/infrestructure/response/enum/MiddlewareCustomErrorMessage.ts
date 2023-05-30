@@ -1,10 +1,8 @@
 export enum MiddlewareBusinessMessage {
 
   // BUSINESS MESSAGE - USER MANAGER 
-  USER_ADDED = "Utilizador Registado com sucesso",
-  USER_MANAGER_INVALID_USER_NAME = "O nome do utilizador é inválido",
   USER_INVALID_CREDENTIALS = "Credenciais inválidas",
-  USER_INVALID_EMAIL = "Email inválido ou já existe um utilizador registado com o mesmo email",
+  USER_EMAIL_ALREADY_EXIST = "Email inválido ou já existe um utilizador registado com o mesmo email",
   USER_MBILE_NUMBER_ALREADY_EXIST = "já existe um utilizador registado com o mesmo número de telemóvel",
   USER_NOT_FOUND = "Utilizador não foi encontrado",
   USER_PASSWORD_NOT_MATCH = "Erro no password de confirmação",
@@ -15,25 +13,29 @@ export enum MiddlewareBusinessMessage {
   USER_ADDED_SUCCESSFULLY = "Utilizador criado com sucesso",
   USER_GET_SUCCESSFULLY = "Utilizador obtido com sucesso",
   USER_GET_ALL_SUCCESSFULLY = "Lista de utilizadores obtida com sucesso",
+  USER_PARAM_FULL_NAME = "Campo Full Name é não vazio, String, tamanho maáximo 50",
+  USER_PARAM_MOBILE_NUMBER = "Campo Mobile Number é não vazio, String, tamanho minímo 9 e maáximo 21",
+  USER_PARAM_EMAIL = "Campo Email é não vazio, String,no formato email, tamanho maáximo 34",
+  USER_PARAM_ROLES = "O campo roles deve ser um array não vazio de string",
   ROLE_NOT_FOUND = "Role não foi encontrado",
-  ROLE_ADDED_SUCCESSFULLY  = "Role adiocionado com sucesso",
-  ROLE_ALREADY_EXIST ="A role já exite na base de dados",
+  ROLE_ADDED_SUCCESSFULLY = "Role adiocionado com sucesso",
+  ROLE_ALREADY_EXIST = "A role já exite na base de dados",
   ROLE_GET_SUCCESSFULLY = "Role obtido com sucesso",
   ROLE_GET_LIST_SUCCESSFULLY = "Lista de Role obtido com sucesso",
-  PERMISSION_ADDED_SUCCESSFULLY="Permissão adicioando com sucesso",
+  PERMISSION_ADDED_SUCCESSFULLY = "Permissão adicioando com sucesso",
   PERMISSION_NOT_FOUND = "Permissão não foi encontrado",
   PERMISSION_ALREADY_EXIST = "Permissão já existe na base de dados",
   PERMISSION_GET_SUCCESSFULLY = "Permissão obtido com sucesso",
   PERMISSION_GET_LIST_SUCCESSFULLY = "Lista de Permissão obtido com sucesso",
-  PERMISSION_GROUP_ADDED_SUCCESSFULLY="Grupo de mpermissões adicionado com sucesso",
+  PERMISSION_GROUP_ADDED_SUCCESSFULLY = "Grupo de mpermissões adicionado com sucesso",
   PERMISSION_GROUP_NOT_FOUND = "Grupo de permissões não foi encontrado",
-  PERMISSION_GROUP_ALREADY_EXIST="Grupo de Permissões já existe",
+  PERMISSION_GROUP_ALREADY_EXIST = "Grupo de Permissões já existe",
   PERMISSION_GROUP_GET_SUCCESSFULLY = "Grupo de Permissões obtido com sucesso",
   PERMISSION_GROUP_LIST_SUCCESSFULLY = "Lista de Grupo de Permissões obtido com sucesso",
   SESSION_LOGIN_SUCCESSFULLY = "Login realizado com sucesso",
   USER_STATUS_CODE_MANDATORY = "O estado do utilizador é obrigatório",
   USER_STATUS_NOT_FOUND = "Tipo de estado de utilizador não foi encontrado",
- 
+
 
 
 
@@ -98,7 +100,7 @@ export enum MiddlewareBusinessMessage {
   NEWS_ADD_SUCCESSFULLY = " Notícia criada com sucesso",
   NEWS_FILE_ADD_SUCCESSFULLY = " Imagem da notícia adicionada com sucesso",
   NEWS_GET_ALL_SUCCESSFULLY = "Lista de notícias recuperada com sucesso",
-  NEW_NOT_FOUND="Notícia não existe na base de dados",
+  NEW_NOT_FOUND = "Notícia não existe na base de dados",
   NEWS_INVALID_TITLE = "Existe uma noticia com mesmo titulo, mude o titulo e tente novamente",
   NEWS_INVALID_FILE_UPLOAD = "Ficheiro ou o formato do ficheiro carregado é invalido",
 

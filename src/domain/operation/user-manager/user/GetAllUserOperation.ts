@@ -44,7 +44,7 @@ export class GetAllUserOperation extends UserAuthOperationTemplate<UserResultLis
 
             if (!this.status) {
                 logger.error("[GetAllUserOperation] Status not found")
-                throw new NotFoundException(Field.USER_STATUS_CODE, MiddlewareBusinessMessage.USER_STATUS_NOT_FOUND);
+                throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_STATUS_NOT_FOUND);
             }
         }
 

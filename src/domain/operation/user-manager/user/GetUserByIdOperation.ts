@@ -30,7 +30,7 @@ export class GetUserByIdOperation extends UserAuthOperationTemplate<UserResult, 
         this.user = await this.userRepository.findUserById(params.getId);
         if (!this.user) {
             logger.error("[GetUserByIdIOperation] user not exist")
-            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
+            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_NOT_FOUND);
         }
     }
 

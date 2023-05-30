@@ -43,7 +43,7 @@ export class GetUserByEmailOperation extends UserAuthOperationTemplate<UserResul
         this.user = await this.userRepository.findUserByEmail(params.getValue);
         if (!this.user) {
             logger.error("[GetUserByEmailOperation] user not exist")
-            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
+            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_NOT_FOUND);
         }
     }
 

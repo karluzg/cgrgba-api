@@ -6,10 +6,10 @@ import sharedRoutes from "./application/routes-management/shared-routes";
 import logger from "./infrestructure/config/logger";
 import { MiddllewareError } from './infrestructure/exceptions/ErrorHandling';
 import { initNantoiUser } from './domain/meta-inf/InitNantoiUser';
+import { PlataformConfig } from './infrestructure/config/plataform';
 
 
 const swagger = require('./swagger');
-
 const myDataSource = require('./domain/meta-inf/data-source');
 
 // Configuração do Swagger
@@ -26,11 +26,11 @@ myDataSource.initialize().then(() => {
 
     app.use(MiddllewareError)
 
-    app.use('/uploads', express.static('uploads'));
+    app.use('/'+PlataformConfig.server.uploadFolder, express.static(PlataformConfig.server.uploadFolder));
 
     swagger(app);
 
-    app.listen(3000)
+    app.listen(PlataformConfig.server.port)
 
     console.info("Data Source has been initialized!")
     logger.info("Data Source has been initialized!")

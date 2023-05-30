@@ -4,7 +4,7 @@ import { NotImplementedException } from "../../../infrestructure/exceptions/NotI
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
 
-import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
+import { HttpCodes } from "../../../infrestructure/response/enum/HttpCode";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
@@ -32,7 +32,7 @@ export class PermissionController {
       logger.info('[PermissionController] Dependency injection for PermissionEngine was successful');
   
       const result = await permissionEngine.getPermissionByCode(params);
-      return response.status(HttpCode.OK).json(result);
+      return response.status(HttpCodes.OK).json(result);
     } catch (error) {
       if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
         throw new NotImplementedException(error.field, error.message);
@@ -69,7 +69,7 @@ export class PermissionController {
       logger.info('[PermissionController] Dependency injection for PermissionEngine was successful');
   
       const result = await permissionEngine.getAllPermission(params);
-      return response.status(HttpCode.OK).json(result);
+      return response.status(HttpCodes.OK).json(result);
     } catch (error) {
       if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
         throw new NotImplementedException(error.field, error.message);
@@ -102,7 +102,7 @@ export class PermissionController {
 
 
       const result = await permissionEngine.addPermission(params)
-      return response.status(HttpCode.OK).json(result)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
 
       if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
@@ -143,7 +143,7 @@ export class PermissionController {
       logger.info('[PermissionController] Dependency injection for PermissionGroupEngine was successful');
   
       const result = await permissionGroupEngine.addPermissionGroup(params);
-      return response.status(HttpCode.OK).json(result);
+      return response.status(HttpCodes.OK).json(result);
     } catch (error) {
       if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
         throw new NotImplementedException(error.field, error.message);
@@ -171,7 +171,7 @@ export class PermissionController {
       logger.info('[PermissionController] Dependency injection for PermissionGroupEngine was successful');
   
       const result = await permissionGroupEngine.getPermissionGroupByCode(params);
-      return response.status(HttpCode.OK).json(result);
+      return response.status(HttpCodes.OK).json(result);
     } catch (error) {
       if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
         throw new NotImplementedException(error.field, error.message);
@@ -213,7 +213,7 @@ export class PermissionController {
       logger.info('[PermissionController] Dependency injection for PermissionEngine was successful');
   
       const result = await permissionEngine.getAllPermissionGroup(params);
-      return response.status(HttpCode.OK).json(result);
+      return response.status(HttpCodes.OK).json(result);
     } catch (error) {
       if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
         throw new NotImplementedException(error.field, error.message);

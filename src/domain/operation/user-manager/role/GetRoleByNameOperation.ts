@@ -32,7 +32,7 @@ export class GetRoleByNameOperation extends UserAuthOperationTemplate<RoleResult
         this.role = await this.roleRepository.findRoleByName(params.getValue);
         if (!this.role) {
             logger.error("[GetRoleByNameOperation] role not exist")
-            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
+            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_NOT_FOUND);
         }
     }
 

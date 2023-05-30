@@ -9,7 +9,7 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import logger from "../../../infrestructure/config/logger";
-import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
+import { HttpCodes } from "../../../infrestructure/response/enum/HttpCode";
 import { SchedulingParams } from "../../model/scheduling-manager/scheduling/SchedulingParams";
 import { ISchedulingEngine } from "../../../domain/service/ISchedulingEngine";
 import { AuthValidator } from "../validator/AuthValidator";
@@ -43,7 +43,7 @@ export class SchedulingController {
             const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")
             const result = await schedulingEngine.add_new_scheduling(params)
 
-            return response.status(HttpCode.OK).json(result)
+            return response.status(HttpCodes.OK).json(result)
 
         } catch (error) {
 
@@ -101,7 +101,7 @@ export class SchedulingController {
             const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")
             const result = await schedulingEngine.get_scheduling_list(params)
 
-            return response.status(HttpCode.OK).json(result)
+            return response.status(HttpCodes.OK).json(result)
 
         } catch (error) {
 
@@ -144,7 +144,7 @@ export class SchedulingController {
             const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")
             const result = await schedulingEngine.get_scheduling_detail(params)
 
-            return response.status(HttpCode.OK).json(result)
+            return response.status(HttpCodes.OK).json(result)
 
         } catch (error) {
 
@@ -205,7 +205,7 @@ export class SchedulingController {
             const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")
             const result = await schedulingEngine.update_scheduling(params)
 
-            return response.status(HttpCode.OK).json(result)
+            return response.status(HttpCodes.OK).json(result)
 
         } catch (error) {
 

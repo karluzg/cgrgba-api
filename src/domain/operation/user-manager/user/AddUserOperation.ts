@@ -46,7 +46,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
         if (user) {
             logger.error("[AddUserOperation] user already exist")
-            throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.USER_INVALID_EMAIL);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_EMAIL_ALREADY_EXIST);
         }
 
 
@@ -54,7 +54,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
         if (user) {
             logger.error("[AddUserOperation] user already exist")
-            throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.USER_MBILE_NUMBER_ALREADY_EXIST);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_MBILE_NUMBER_ALREADY_EXIST);
         }
 
         if (params.getRoles) {
@@ -62,7 +62,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
               const roleEntity = await this.rolesRepository.findRoleByName(role);
               if (!roleEntity) {
                 logger.error("[AddUserOperation] Role not found");
-                throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND);
+                throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.ROLE_NOT_FOUND);
               } else {
                 this.roles.push(roleEntity);
               }

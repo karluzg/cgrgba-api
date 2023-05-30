@@ -33,6 +33,7 @@ import { PermissionGroupParams } from './application/model/user-manager/Permissi
 import { PermissionGroupResult } from './application/model/user-manager/PermissionGroupResult';
 import { PermissionGroupResultList } from './application/model/user-manager/PermissionGroupResultList';
 import { PermissionResultList } from './application/model/user-manager/PermissionResultList';
+import { PlataformConfig } from './infrestructure/config/plataform';
 
 
 const options = {
@@ -44,7 +45,7 @@ const options = {
     },
     servers: [
       {
-        url: '/api/v1',
+        url: PlataformConfig.url.baseUrl,
       },
     ],
     components: {
@@ -108,5 +109,5 @@ const options = {
 const specs = swaggerJsDoc(options);
 
 module.exports = (app) => {
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+  app.use(PlataformConfig.url.api, swaggerUi.serve, swaggerUi.setup(specs));
 };

@@ -30,7 +30,7 @@ export class AddPermissionGroupOperation extends UserAuthOperationTemplate<Permi
 
         if (permissionGroup) {
             logger.error("[AddPermissionGroupOperation] permissionGroup already exist")
-            throw new InvalidParametersException(Field.EMAIL, MiddlewareBusinessMessage.PERMISSION_GROUP_ALREADY_EXIST);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.PERMISSION_GROUP_ALREADY_EXIST);
         }
     }
 

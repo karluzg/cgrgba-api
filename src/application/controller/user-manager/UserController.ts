@@ -4,7 +4,7 @@ import { NotImplementedException } from "../../../infrestructure/exceptions/NotI
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
 
-import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
+import { HttpCodes } from "../../../infrestructure/response/enum/HttpCode";
 import { IUserEngine } from "../../../domain/service/IUserEngine";
 import { UserParams } from "../../../application/model/user-manager/UserParams";
 import e, { Request, Response } from "express";
@@ -44,7 +44,7 @@ export class UserController {
 
 
       const result = await userEngine.addUser(params)
-      return response.status(HttpCode.OK).json(result)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
 
       if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
@@ -88,7 +88,7 @@ export class UserController {
 
 
       const result = await userEngine.getAllUsers(params)
-      return response.status(HttpCode.OK).json(result)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
 
       if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
@@ -114,10 +114,11 @@ export class UserController {
 
       logger.info('[UserController] Performing dependency injection for UserEngine');
       const userEngine = container.resolve<IUserEngine>('IUserEngine');
-      logger.info('[UserController] Dependency injection for UserEngine was successful');
+      logger.info("[UserController] Perform dependency injection for UserController was successfully")
 
-      const result = await userEngine.getUserById(params);
-      return response.status(HttpCode.OK).json(result);
+
+      const result = await userEngine.getUserById(params)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
       console.log(error)
       if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
@@ -146,7 +147,7 @@ export class UserController {
       logger.info('[UserController] Dependency injection for UserEngine was successful');
 
       const result = await userEngine.getUserByEmail(params);
-      return response.status(HttpCode.OK).json(result);
+      return response.status(HttpCodes.OK).json(result);
     } catch (error) {
       if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
         throw new NotImplementedException(error.field, error.message);
@@ -184,7 +185,7 @@ export class UserController {
 
 
       const result = await userEngine.updatePassword(params)
-      return response.status(HttpCode.OK).json(result)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
 
       if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
@@ -221,7 +222,7 @@ export class UserController {
 
 
       const result = await userEngine.resetPassword(params)
-      return response.status(HttpCode.OK).json(result)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
 
       if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {

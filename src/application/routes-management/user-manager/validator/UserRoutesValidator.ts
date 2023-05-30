@@ -1,5 +1,6 @@
 import { body, param, query, ValidationChain } from 'express-validator';
 import { ParamsValidatorTemplate } from '../../../../infrestructure/template/ParamsValidatorTemplate';
+import { MiddlewareBusinessMessage } from '../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage';
 
 
 
@@ -12,7 +13,7 @@ export class UserRoutesValidator extends ParamsValidatorTemplate {
     }
     resetPassword(): ValidationChain[] {
         return [
-            body('mobileNumber').isLength({ min: 9, max: 21 }).isString().optional(),
+            body('mobileNumber').isLength({ min: 9, max: 21 }).isString().notEmpty(),
             body('email').notEmpty().isLength({ max: 34 }).isEmail()
         ]
     }
@@ -28,12 +29,11 @@ export class UserRoutesValidator extends ParamsValidatorTemplate {
 
     public addUser(): ValidationChain[] {
         return [
-            body('fullName').notEmpty().isLength({ max: 50 }).isString(),
-            body('mobileNumber').isLength({ min: 9, max: 21 }).isString().optional(),
-            body('email').notEmpty().isLength({ max: 34 }).isEmail(),
-            body('roles').optional().isArray().notEmpty().withMessage('O campo roles deve ser um array não vazio de strings')
+            body('fullName').isLength({ max: 50 }).isString().notEmpty().withMessage(MiddlewareBusinessMessage.USER_PARAM_FULL_NAME),
+            body('mobileNumber').isLength({ min: 9, max: 21 }).isString().notEmpty().withMessage(MiddlewareBusinessMessage.USER_PARAM_MOBILE_NUMBER),
+            body('email').notEmpty().isLength({ max: 34 }).isEmail().withMessage(MiddlewareBusinessMessage.USER_PARAM_EMAIL),
+            body('roles').optional().isArray().notEmpty().withMessage(MiddlewareBusinessMessage.USER_PARAM_ROLES)
         ]
-
     }
 
     public getUsers(): ValidationChain[] {

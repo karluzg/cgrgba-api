@@ -19,6 +19,7 @@ import { InvalidParametersException } from "../../infrestructure/exceptions/Inva
 import { Field } from "../../infrestructure/exceptions/enum/Field"
 import { MiddlewareBusinessMessage } from "../../infrestructure/response/enum/MiddlewareCustomErrorMessage"
 import { EnumOperationTemplate } from "../../infrestructure/template/EnumOperationTemplate"
+import { PlataformConfig } from "../../infrestructure/config/plataform"
 
 export async function initNantoiUser() {
 
@@ -39,7 +40,7 @@ async function createUserNantoi(role: Role) {
 
     let nantoiUser: User;
     try {
-        nantoiUser = await userRepository.findUserByEmail("nantoi@nantoi.com")
+        nantoiUser = await userRepository.findUserByEmail(PlataformConfig.nantoi.email)
     } catch (error) {
         nantoiUser = null;
     }
@@ -48,7 +49,7 @@ async function createUserNantoi(role: Role) {
         logger.info("[createUserNantoi] Creatting salt and hash from password")
         const passwordValidator = new PasswordValidator();
         const salt = passwordValidator.createSalt()
-        const hash = passwordValidator.generateHash("Nantoi2023!", await salt)
+        const hash = passwordValidator.generateHash(PlataformConfig.nantoi.password, await salt)
 
 
         await createUserStatus(userStatusEngineRepository);
@@ -59,9 +60,9 @@ async function createUserNantoi(role: Role) {
         }
 
         const user = new User(); // here, he create user status as new
-        user.email = "nantoi@nantoi.com"
-        user.fullName = "Admin Nantoi"
-        user.mobileNumber = "123456789"
+        user.email = PlataformConfig.nantoi.email
+        user.fullName = PlataformConfig.nantoi.fullName
+        user.mobileNumber = PlataformConfig.nantoi.mobileNumaber
         user.passwordHash = await hash;
         user.passwordSalt = await salt;
         user.status = statusFounded;

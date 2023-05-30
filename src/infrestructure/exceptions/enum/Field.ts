@@ -3,7 +3,7 @@ export enum Field {
     SYSTEM = "SYSTEM",
     INFO = "INFO",
     SCHEDULING_ID = "SCHEDULING_ID",
-    EMAIL = "EMAIL",
+    USER = "USER",
     MOBILE_NUMBER = "MOBILE_NUMBER",
     PASSWORD = "PASSWORD",
     USER_STATUS_CODE = "CODE",

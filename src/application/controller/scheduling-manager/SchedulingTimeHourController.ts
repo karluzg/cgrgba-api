@@ -12,7 +12,7 @@ import { ISchedulingTimeEngine } from "../../../domain/service/ISchedulingTimeEn
 import { TimeSlotParams } from "../../model/scheduling-manager/schedulingTime/params/TimeSlotParams";
 import logger from "../../../infrestructure/config/logger";
 import { AuthValidator } from "../validator/AuthValidator";
-import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
+import { HttpCodes } from "../../../infrestructure/response/enum/HttpCode";
 import { TimeSlotListParams } from "../../model/scheduling-manager/schedulingTime/params/TimeSlotListParams";
 
 
@@ -38,7 +38,7 @@ export class SchedulingTimeController {
 
             const result = await schedulingTimeEngine.add_new_time_slot(params)
 
-            return response.status(HttpCode.OK).json(result)
+            return response.status(HttpCodes.OK).json(result)
 
         } catch (error) {
 
@@ -78,7 +78,7 @@ export class SchedulingTimeController {
             const schedulingTimeEngine = container.resolve<ISchedulingTimeEngine>("ISchedulingTimeEngine")
             const result = await schedulingTimeEngine.get_time_slot_list(params)
 
-            return response.status(HttpCode.OK).json(result)
+            return response.status(HttpCodes.OK).json(result)
 
         } catch (error) {
 
