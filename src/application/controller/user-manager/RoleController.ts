@@ -54,7 +54,7 @@ export class RoleController {
 
 
       const result = await userEngine.addRole(params)
-      return response.status(HttpCode.OK).json(result)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
 
       if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
@@ -87,7 +87,7 @@ export class RoleController {
       logger.info('[UserController] Dependency injection for UserEngine was successful');
 
       const result = await roleEngine.getRoleById(params);
-      return response.status(HttpCode.OK).json(result);
+      return response.status(HttpCodes.OK).json(result);
     } catch (error) {
       if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
         throw new NotImplementedException(error.field, error.message);
@@ -114,7 +114,7 @@ export class RoleController {
       logger.info('[UserController] Dependency injection for UserEngine was successful');
 
       const result = await roleEngine.getRoleByName(params);
-      return response.status(HttpCode.OK).json(result);
+      return response.status(HttpCodes.OK).json(result);
     } catch (error) {
       if (error.errorClassName === ErrorExceptionClass.NOT_IMPLEMENTED) {
         throw new NotImplementedException(error.field, error.message);
@@ -150,7 +150,7 @@ export class RoleController {
 
 
       const result = await roleEngine.getAllRoles(params)
-      return response.status(HttpCode.OK).json(result)
+      return response.status(HttpCodes.OK).json(result)
     } catch (error) {
 
       if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {

@@ -6,10 +6,11 @@ import path from "path";
 import fs from "fs";
 import * as mime from 'mime-types';
 import { Request } from "express";
+import { PlataformConfig } from "./plataform";
 
 export class UploadImage {
   //Pasta para onde será feito o Upload
-  private URL: string = path.basename('uploads'); 
+  private URL: string = path.basename(PlataformConfig.server.uploadFolder); 
 
   constructor() {}
 
