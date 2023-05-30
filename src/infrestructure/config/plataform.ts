@@ -18,7 +18,8 @@ export const PlataformConfig = {
     url: {
         frontOffice: process.env.URL_FRONTOFFICE,
         backOffice: process.env.URL_BACKOFFICE,
-        api: process.env.URL_API
+        api: process.env.URL_API,
+        baseUrl:process.env.URL_BASE
     },
     security: {
         passwordTry: parseInt(process.env.SECURITY_PASSWORD_TRY),
@@ -28,11 +29,12 @@ export const PlataformConfig = {
     email: {
         host: process.env.EMAIL_HOTS,
         email: process.env.EMAIL_EMAIL,
-        password: process.env.EMAIL_PASSWORD
+        password: process.env.EMAIL_PASSWORD,
+        port:  parseInt(process.env.EMAIL_PORT)
     },
     server: {
         port: parseInt(process.env.SERVER_PORT),
-        uploadFolder: process.env.SERVER_UPLOAD_FOLDER
+        uploadFolder: process.env.SERVER_UPLOAD_FOLDER,
     },
     database: {
         host: process.env.DATABASE_HOST,
@@ -48,6 +50,11 @@ export const PlataformConfig = {
         fullName: process.env.NANTOI_USER_FULL_NAME,
         mobileNumaber: process.env.NANTOI_USER_MOBILE_NUMBER,
         password: process.env.NANTOI_USER_PASSWORD
+    }
+    ,
+    log:{
+        file:process.env.LOG_FILE,
+        level:process.env.LOG_LEVEL
     }
 
 }

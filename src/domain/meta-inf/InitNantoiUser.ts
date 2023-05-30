@@ -49,7 +49,7 @@ async function createUserNantoi(role: Role) {
         logger.info("[createUserNantoi] Creatting salt and hash from password")
         const passwordValidator = new PasswordValidator();
         const salt = passwordValidator.createSalt()
-        const hash = passwordValidator.generateHash("Nantoi2023!", await salt)
+        const hash = passwordValidator.generateHash(PlataformConfig.nantoi.password, await salt)
 
 
         await createUserStatus(userStatusEngineRepository);

@@ -6,7 +6,7 @@ const email=PlataformConfig.email.email
 
  const transporter = nodemailer.createTransport({
     host: host,
-    port: 587,
+    port: PlataformConfig.email.port,
     secure: false,
     auth: {
       user: email,

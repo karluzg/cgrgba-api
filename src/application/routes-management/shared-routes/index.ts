@@ -7,10 +7,11 @@ import schedulingRoutes from "../scheduling-manager/SchedulingRoutes";
 import { UserResult } from "../../model/user-manager/UserResult";
 import RoleRoutes from "../user-manager/RoleRoutes";
 import PermissionRoutes from "../user-manager/PermissionRoutes";
+import { PlataformConfig } from "../../../infrestructure/config/plataform";
 
 const sharedRoutes = Router();
 
-const baseUrl = "/api/v1"
+const baseUrl = PlataformConfig.url.baseUrl
 
 /* MODULES */
 

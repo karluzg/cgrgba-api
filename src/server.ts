@@ -10,7 +10,6 @@ import { PlataformConfig } from './infrestructure/config/plataform';
 
 
 const swagger = require('./swagger');
-
 const myDataSource = require('./domain/meta-inf/data-source');
 
 // Configuração do Swagger
