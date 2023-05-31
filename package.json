@@ -63,10 +63,12 @@
         "zlib": "^1.0.5"
     },
     "scripts": {
-        "start": "cross-env NODE_ENV=test nodemon --watch src/**/* --exec ts-node src/server.ts",
+        "start": "nodemon  --exec ts-node src/server.ts",
+        "test": "cross-env NODE_ENV=test nodemon  --exec ts-node src/server.ts",
+        "dev": "cross-env NODE_ENV=dev nodemon --watch src/**/* --exec ts-node src/server.ts",
         "typeorm": "typeorm-ts-node-commonjs",
         "migration:generate": "typeorm-ts-node-commonjs -d ./src/domain/meta-inf/data-source.ts migration:generate ./src/migration/table_updated",
         "migration:run": "typeorm-ts-node-commonjs -d ./src/domain/meta-inf/data-source.ts migration:run",
-        "test": "jest --watchAll"
+        "tdd": "jest --watchAll"
     }
 }
