@@ -30,3 +30,692 @@
 [2023-05-31T13:08:41.274] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
 [2023-05-31T13:08:41.284] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
 [2023-05-31T13:08:41.284] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T15:26:23.045] [ERROR] default - Error during Data Source initialization: Error: connect ECONNREFUSED 127.0.0.1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1161:16)
+    --------------------
+    at Protocol._enqueue (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1248:18
+    at new Promise (<anonymous>)
+    at MysqlDriver.createPool (C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1245:16)
+    at MysqlDriver.connect (C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:393:36)
+    at DataSource.initialize (C:\DevOps\Git\cgrgba\cgrgba-api\src\data-source\DataSource.ts:249:27)
+    at Object.<anonymous> (C:\DevOps\Git\cgrgba\cgrgba-api\src\server.ts:18:14) {
+  errno: -4078,
+  code: 'ECONNREFUSED',
+  syscall: 'connect',
+  address: '127.0.0.1',
+  port: 3306,
+  fatal: true
+}
+[2023-05-31T15:30:44.815] [ERROR] default - Error during Data Source initialization: Error: connect ECONNREFUSED 127.0.0.1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1161:16)
+    --------------------
+    at Protocol._enqueue (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1248:18
+    at new Promise (<anonymous>)
+    at MysqlDriver.createPool (C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1245:16)
+    at MysqlDriver.connect (C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:393:36)
+    at DataSource.initialize (C:\DevOps\Git\cgrgba\cgrgba-api\src\data-source\DataSource.ts:249:27)
+    at Object.<anonymous> (C:\DevOps\Git\cgrgba\cgrgba-api\src\server.ts:18:14) {
+  errno: -4078,
+  code: 'ECONNREFUSED',
+  syscall: 'connect',
+  address: '127.0.0.1',
+  port: 3306,
+  fatal: true
+}
+[2023-05-31T15:32:01.878] [ERROR] default - Error during Data Source initialization: Error: connect ECONNREFUSED 127.0.0.1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1161:16)
+    --------------------
+    at Protocol._enqueue (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1248:18
+    at new Promise (<anonymous>)
+    at MysqlDriver.createPool (C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1245:16)
+    at MysqlDriver.connect (C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:393:36)
+    at DataSource.initialize (C:\DevOps\Git\cgrgba\cgrgba-api\src\data-source\DataSource.ts:249:27)
+    at Object.<anonymous> (C:\DevOps\Git\cgrgba\cgrgba-api\src\server.ts:18:14) {
+  errno: -4078,
+  code: 'ECONNREFUSED',
+  syscall: 'connect',
+  address: '127.0.0.1',
+  port: 3306,
+  fatal: true
+}
+[2023-05-31T15:35:35.598] [ERROR] default - Error during Data Source initialization: Error: ER_HOST_NOT_PRIVILEGED: Host '82-132-234-88.dab.02.net' is not allowed to connect to this MySQL server
+    at Handshake.Sequence._packetToError (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Handshake.ErrorPacket (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\sequences\Handshake.js:123:18)
+    at Protocol._parsePacket (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:390:28)
+    at Socket.emit (node:domain:475:12)
+    --------------------
+    at Protocol._enqueue (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\DevOps\Git\cgrgba\cgrgba-api\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1248:18
+    at new Promise (<anonymous>)
+    at MysqlDriver.createPool (C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:1245:16)
+    at MysqlDriver.connect (C:\DevOps\Git\cgrgba\cgrgba-api\src\driver\mysql\MysqlDriver.ts:393:36)
+    at DataSource.initialize (C:\DevOps\Git\cgrgba\cgrgba-api\src\data-source\DataSource.ts:249:27)
+    at Object.<anonymous> (C:\DevOps\Git\cgrgba\cgrgba-api\src\server.ts:18:14) {
+  code: 'ER_HOST_NOT_PRIVILEGED',
+  errno: 1130,
+  sqlMessage: "Host '82-132-234-88.dab.02.net' is not allowed to connect to this MySQL server",
+  sqlState: undefined,
+  fatal: true
+}
+[2023-05-31T17:05:16.420] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:05:16.422] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:05:16.422] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:05:16.422] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:05:20.548] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:05:20.622] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:05:20.623] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:05:20.694] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:05:20.766] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:05:20.767] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:05:20.767] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:05:20.767] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:05:20.768] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:05:20.839] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:05:20.959] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:05:20.959] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:09:46.754] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:09:46.756] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:09:46.757] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:09:46.757] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:09:49.159] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:09:49.231] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:09:49.232] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:09:49.307] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:09:49.378] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:09:49.379] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:09:49.379] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:09:49.379] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:09:49.379] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:09:49.451] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:09:49.575] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:09:49.575] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:10:57.614] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:10:57.618] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:10:57.620] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:10:57.620] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:11:18.075] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:11:18.148] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:11:18.149] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:11:18.220] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:11:18.293] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:11:18.294] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:11:18.294] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:11:18.294] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:11:18.294] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:11:18.364] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:11:18.488] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:11:18.488] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:12:30.259] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:12:30.261] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:12:30.263] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:12:30.263] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:12:31.923] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:12:31.997] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:12:31.998] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:12:32.066] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:12:32.141] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:12:32.141] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:12:32.141] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:12:32.142] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:12:32.142] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:12:32.216] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:12:33.012] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:12:33.012] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:14:53.039] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:14:53.041] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:14:53.041] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:14:53.041] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:14:54.698] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:14:54.770] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:14:54.771] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:14:54.839] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:14:54.908] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:14:54.909] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:14:54.909] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:14:54.909] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:14:54.909] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:14:54.981] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:14:55.102] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:14:55.103] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:20:21.660] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:20:21.663] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:20:21.665] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:20:21.665] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:20:23.501] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:20:23.575] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:20:23.577] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:20:23.646] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:20:23.717] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:20:23.718] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:20:23.718] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:20:23.718] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:20:23.718] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:20:23.789] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:20:23.914] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:20:23.914] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:23:38.702] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:23:38.704] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:23:38.705] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:23:38.705] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:23:40.617] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:23:40.695] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:23:40.696] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:23:40.769] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:23:40.839] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:23:40.840] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:23:40.840] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:23:40.840] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:23:40.840] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:23:40.918] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:23:41.038] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:23:41.038] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:25:10.509] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:25:10.513] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:25:10.515] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:25:10.515] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:25:12.781] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:25:12.865] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:25:12.866] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:25:12.936] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:25:13.010] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:25:13.010] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:25:13.010] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:25:13.011] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:25:13.011] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:25:13.080] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:25:13.210] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:25:13.210] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:26:56.222] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:26:56.262] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:26:56.266] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:26:56.267] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:26:58.024] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:26:58.099] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:26:58.100] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:26:58.169] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:26:58.246] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:26:58.246] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:26:58.246] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:26:58.247] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:26:58.247] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:26:58.322] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:26:58.449] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:26:58.450] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:38:35.712] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:38:35.714] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:38:35.715] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:38:35.715] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:38:37.385] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:38:37.460] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:38:37.461] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:38:37.533] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:38:37.603] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:38:37.604] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:38:37.604] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:38:37.604] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:38:37.604] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:38:37.676] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:38:37.803] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:38:37.803] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:39:12.158] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T17:39:12.158] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T17:39:12.160] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T17:39:12.232] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 4
+}
+[2023-05-31T17:39:12.234] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T17:39:12.331] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T17:39:12.332] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T17:39:12.750] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T17:39:12.751] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T17:41:03.001] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:41:03.004] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:41:03.005] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:41:03.005] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:41:16.622] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:41:16.697] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:41:16.698] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:41:16.767] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:41:16.836] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:41:16.837] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:41:16.837] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:41:16.837] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:41:16.838] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:41:16.908] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:41:17.032] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:41:17.033] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:46:57.372] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:46:57.375] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:46:57.376] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:46:57.376] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:46:59.026] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:46:59.097] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:46:59.099] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:46:59.167] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:46:59.238] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:46:59.239] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:46:59.239] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:46:59.239] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:46:59.239] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:46:59.313] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:46:59.434] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:46:59.435] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:47:32.959] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:47:32.962] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:47:32.962] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:47:32.963] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:47:34.824] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:47:34.900] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:47:34.901] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:47:34.971] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:47:35.049] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:47:35.050] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:47:35.050] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:47:35.051] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:47:35.051] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:47:35.124] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:47:35.244] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:47:35.244] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:51:50.324] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:51:50.328] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:51:50.330] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:51:50.330] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:51:52.241] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:51:52.796] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:51:52.797] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:51:53.410] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:51:53.671] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:51:53.672] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:51:53.672] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:51:53.672] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:51:53.673] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:51:54.316] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:51:55.051] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:51:55.051] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T17:52:19.216] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T17:52:19.217] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T17:52:19.218] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T17:52:19.234] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T17:52:19.234] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T17:52:19.234] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T17:52:19.928] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T17:52:19.930] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T17:52:20.029] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T17:52:20.030] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T17:52:21.343] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T17:52:21.344] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T17:52:21.445] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T17:52:21.445] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T17:52:21.453] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T17:52:21.453] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T17:52:23.839] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T17:52:23.839] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T17:54:26.112] [INFO] default - Data Source has been initialized!
+[2023-05-31T17:54:26.115] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T17:54:26.116] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T17:54:26.117] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T17:54:42.596] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:54:42.673] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:54:42.675] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:54:42.748] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T17:54:42.820] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T17:54:42.821] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T17:54:42.821] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T17:54:42.822] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T17:54:42.822] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T17:54:42.897] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T17:54:43.025] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T17:54:43.025] [INFO] default - [createUserNantoi] Find User by email
+[2023-05-31T18:04:52.224] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:04:52.224] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:04:52.227] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:04:52.264] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:04:52.264] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:04:52.264] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:04:52.304] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:04:52.306] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:04:52.363] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:04:52.363] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:04:52.473] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:04:52.473] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:04:52.531] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:04:52.531] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:04:52.648] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:04:52.648] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:04:52.809] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:04:52.809] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:05:49.636] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:05:49.637] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:05:49.637] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:05:49.713] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:05:49.713] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:05:49.783] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:05:49.783] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:05:50.076] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:05:50.076] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:05:52.020] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:05:52.020] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:05:52.021] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:05:52.098] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:05:52.099] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:05:52.161] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:05:52.161] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:05:52.449] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:05:52.449] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:05:54.613] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:05:54.613] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:05:54.614] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:05:54.688] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:05:54.688] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:05:54.751] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:05:54.751] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:05:55.030] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:05:55.031] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:05:57.026] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:05:57.026] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:05:57.026] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:05:57.098] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:05:57.098] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:05:57.156] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:05:57.157] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:05:57.432] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:05:57.432] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:05:58.937] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:05:58.937] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:05:58.937] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:05:59.007] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:05:59.008] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:05:59.065] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:05:59.065] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:05:59.349] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:05:59.349] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:06:14.706] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:06:14.707] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:06:14.707] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:06:14.781] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:06:14.782] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:06:14.846] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:06:14.846] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:06:15.156] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:06:15.156] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:06:41.315] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:06:41.316] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:06:41.316] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:06:41.320] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:06:41.320] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:06:41.320] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:06:41.489] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:06:41.491] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:06:41.549] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:06:41.549] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:06:41.745] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:06:41.746] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:06:41.804] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:06:41.804] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:06:41.842] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:06:41.842] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:06:42.089] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:06:42.089] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:08:21.159] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:08:21.159] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:08:21.159] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:08:21.162] [INFO] default - [UserController] Perform dependency injection for UserController
+[2023-05-31T18:08:21.162] [INFO] default - [UserController] Perform dependency injection for UserController was successfully
+[2023-05-31T18:08:21.162] [INFO] default - [GenericOperationTemplate] Begin executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{}}
+[2023-05-31T18:08:21.329] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:08:21.329] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:08:21.362] [INFO] default - [LoginOperation] check password for user User {
+  enumValues: [Object],
+  status: [UserStatus],
+  id: '1',
+  creationDate: 2023-05-27T15:03:42.000Z,
+  activationDate: 2023-05-27T15:03:47.000Z,
+  revokingDate: null,
+  lastPasswordUpdate: null,
+  fullName: 'Admin Nantoi',
+  mobileNumber: '123456789',
+  email: 'nantoi@nantoi.com',
+  passwordHash: '$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a',
+  passwordSalt: '$2b$10$JdEoq1WlQdQxawdw1TipYu',
+  passwordTry: 3
+}
+[2023-05-31T18:08:21.362] [INFO] default - [PasswordValidator] check if input passawrd is igual to saved passowrd
+[2023-05-31T18:08:21.388] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:08:21.388] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:08:21.420] [INFO] default - [OperationTemplate] Begin executing operation:707
+[2023-05-31T18:08:21.420] [INFO] default - [LoginOperation]  token expire in 24 hours "nantoi@nantoi.com"
+[2023-05-31T18:08:21.664] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:08:21.665] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:08:21.693] [INFO] default - [OperationTemplate] End executing operation 707
+[2023-05-31T18:08:21.693] [INFO] default - [GenericOperationTemplate] End executing Operation {"message":{},"operationId":707,"userRepository":{},"tokenRepository":{},"user":{"enumValues":{"NEW":"Novo","ACTIVE":"Ativo","REMOVED":"Removido","SUSPENDED":"Suspenso"},"status":{"code":"ACTIVE","description":"Ativo","listed":true},"id":"1","creationDate":"2023-05-27T15:03:42.000Z","activationDate":"2023-05-27T15:03:47.000Z","revokingDate":null,"lastPasswordUpdate":null,"fullName":"Admin Nantoi","mobileNumber":"123456789","email":"nantoi@nantoi.com","passwordHash":"$2b$10$JdEoq1WlQdQxawdw1TipYuLmjaeQ2rv2sl8hCKYjtxAYmtEud8g5a","passwordSalt":"$2b$10$JdEoq1WlQdQxawdw1TipYu","passwordTry":3}}
+[2023-05-31T18:46:15.807] [INFO] default - Data Source has been initialized!
+[2023-05-31T18:46:15.808] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-05-31T18:46:15.809] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-05-31T18:46:15.809] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-05-31T18:46:17.443] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T18:46:17.516] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T18:46:17.517] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T18:46:17.590] [INFO] default - [cretePermissions] Find role by name
+[2023-05-31T18:46:17.662] [INFO] default - [cretePermissions] Creating SESSION
+[2023-05-31T18:46:17.663] [INFO] default - [cretePermissions] Creating Admin
+[2023-05-31T18:46:17.663] [INFO] default - [cretePermissions] End creating all permission automatically..
+[2023-05-31T18:46:17.663] [INFO] default - [creteRoleAdmin] Perform dependency injection for IRoleEngineRepository
+[2023-05-31T18:46:17.663] [INFO] default - [creteRoleAdmin] Find role by name
+[2023-05-31T18:46:17.736] [INFO] default - [creteRoleAdmin] Role was found:[object Object]
+[2023-05-31T18:46:17.848] [INFO] default - [createUserNantoi] Perform dependency injection for IUserEngineRepository
+[2023-05-31T18:46:17.848] [INFO] default - [createUserNantoi] Find User by email
