@@ -17,7 +17,6 @@ export const myDataSource = new DataSource({
     migrations: ["src/domain/meta-inf/migration/*.{ts,js}"]
 
 })
-console.log(myDataSource)
 
 module.exports = myDataSource;
 
