@@ -1,0 +1,42 @@
+[2023-06-03T13:48:41.439] [INFO] default - Data Source has been initialized!
+[2023-06-03T13:48:41.441] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-06-03T13:48:41.441] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-06-03T13:48:41.441] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-06-03T13:48:41.464] [INFO] default - [cretePermissions] Find role by name
+[2023-06-03T13:48:41.467] [INFO] default - [cretePermissions] Creating USER
+[2023-06-03T13:57:20.837] [INFO] default - Data Source has been initialized!
+[2023-06-03T13:57:20.838] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-06-03T13:57:20.839] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-06-03T13:57:20.839] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-06-03T13:57:57.877] [INFO] default - [cretePermissions] Find role by name
+[2023-06-03T13:57:57.891] [INFO] default - [cretePermissions] Creating USER
+[2023-06-03T13:58:30.138] [INFO] default - Data Source has been initialized!
+[2023-06-03T13:58:30.140] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-06-03T13:58:30.140] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-06-03T13:58:30.141] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-06-03T13:58:33.267] [INFO] default - [cretePermissions] Find role by name
+[2023-06-03T13:58:35.561] [INFO] default - [cretePermissions] Creating USER
+[2023-06-03T13:59:14.533] [INFO] default - Data Source has been initialized!
+[2023-06-03T13:59:14.534] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-06-03T13:59:14.534] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-06-03T13:59:14.534] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-06-03T13:59:30.333] [INFO] default - [cretePermissions] Find role by name
+[2023-06-03T14:00:13.277] [INFO] default - [cretePermissions] Creating USER
+[2023-06-03T14:00:52.143] [INFO] default - Data Source has been initialized!
+[2023-06-03T14:00:52.145] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-06-03T14:00:52.146] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-06-03T14:00:52.146] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-06-03T14:00:54.638] [INFO] default - [cretePermissions] Find role by name
+[2023-06-03T14:01:36.691] [INFO] default - [cretePermissions] Creating USER
+[2023-06-03T14:03:06.661] [INFO] default - Data Source has been initialized!
+[2023-06-03T14:03:06.663] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-06-03T14:03:06.665] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-06-03T14:03:06.665] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-06-03T14:03:06.693] [INFO] default - [cretePermissions] Find role by name
+[2023-06-03T14:03:06.697] [INFO] default - [cretePermissions] Creating USER
+[2023-06-03T14:03:09.855] [INFO] default - Data Source has been initialized!
+[2023-06-03T14:03:09.857] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionEngineRepository
+[2023-06-03T14:03:09.858] [INFO] default - [cretePermissions] Perform dependency injection for IPermissionGroupEngineRepository
+[2023-06-03T14:03:09.858] [INFO] default - [cretePermissions] Start creating all permission automatically..
+[2023-06-03T14:03:09.881] [INFO] default - [cretePermissions] Find role by name
+[2023-06-03T14:03:17.209] [INFO] default - [cretePermissions] Creating USER

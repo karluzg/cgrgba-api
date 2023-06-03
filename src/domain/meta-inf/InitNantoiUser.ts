@@ -163,13 +163,14 @@ async function cretePermissions() {
 
                 if (!adminPermission) {
 
-                    const permission = new PermissionGroup();
-                    permission.code = group
-                    permission.description = await generatePermisionGroupDescription(group)
+                    const permissionGroup = new PermissionGroup();
+                    permissionGroup.code = group
+                    permissionGroup.description = await generatePermisionGroupDescription(group)
                     logger.info("[cretePermissions] Creating " + group)
+                    console.log(permissionGroup)
 
                     if (group != "SESSION") {
-                        adminPermission = await permissionGroupRepository.savePermissionGroup(permission)
+                        adminPermission = await permissionGroupRepository.savePermissionGroup(permissionGroup)
                     }
 
                 }
