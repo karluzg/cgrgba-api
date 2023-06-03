@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import logger from "../../../infrestructure/config/logger";
-import { HttpCode } from "../../../infrestructure/response/enum/HttpCode";
+import { HttpCodes } from "../../../infrestructure/response/enum/HttpCode";
 import { container } from "tsyringe";
 import { ILovsEngine } from "../../../domain/service/ILovsEngine";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
@@ -31,7 +31,7 @@ export class Lovs {
             const schedulingTimeEngine = container.resolve<ILovsEngine>("ILovsEngine")
             const result = await schedulingTimeEngine.get_service_by_categry(params)
 
-            return response.status(HttpCode.OK).json(result)
+            return response.status(HttpCodes.OK).json(result)
 
         } catch (error) {
 

@@ -1,14 +1,7 @@
 const dotenv = require('dotenv');
 
-// Carrega as configurações com base no ambiente
-if (process.env.NODE_ENV === 'test') {
-    dotenv.config({ path: '.env.test' });
-} else if (process.env.NODE_ENV === 'dev') {
-    dotenv.config({ path: '.env.dev' });
-} else {
-    dotenv.config(); // Carrega o arquivo .env por padrão
-}
 
+dotenv.config(); // Carrega o arquivo .env por padrão
 
 export const PlataformConfig = {
     contact: {
@@ -19,7 +12,7 @@ export const PlataformConfig = {
         frontOffice: process.env.URL_FRONTOFFICE,
         backOffice: process.env.URL_BACKOFFICE,
         api: process.env.URL_API,
-        baseUrl:process.env.URL_BASE
+        baseUrl: process.env.URL_BASE
     },
     security: {
         passwordTry: parseInt(process.env.SECURITY_PASSWORD_TRY),
@@ -30,7 +23,7 @@ export const PlataformConfig = {
         host: process.env.EMAIL_HOTS,
         email: process.env.EMAIL_EMAIL,
         password: process.env.EMAIL_PASSWORD,
-        port:  parseInt(process.env.EMAIL_PORT)
+        port: parseInt(process.env.EMAIL_PORT)
     },
     server: {
         port: parseInt(process.env.SERVER_PORT),
@@ -52,9 +45,9 @@ export const PlataformConfig = {
         password: process.env.NANTOI_USER_PASSWORD
     }
     ,
-    log:{
-        file:process.env.LOG_FILE,
-        level:process.env.LOG_LEVEL
+    log: {
+        file: process.env.LOG_FILE,
+        level: process.env.LOG_LEVEL
     }
 
 }
