@@ -6,3 +6,4 @@ tmp/
 temp/
 Server.log
 Server.log.orig
+logs/
