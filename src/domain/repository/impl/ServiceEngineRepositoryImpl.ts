@@ -8,7 +8,9 @@ const serviceEngineRepository = myDataSource.getRepository(Service)
 @injectable()
 export class ServiceEngineRepositoryImpl implements IServiceEngineRepository {
     async findservice(serviceCode: string): Promise<Service> {
-        return await serviceEngineRepository.findOneOrFail(serviceCode);
-    }
+      return await serviceEngineRepository.createQueryBuilder('service')
+        .where('service.code = :serviceCode', { serviceCode })
+        .getOne();
+      }
 
 }

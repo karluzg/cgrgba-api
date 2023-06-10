@@ -3,7 +3,6 @@ import { IPage } from "./IPage";
 
 export class PageImpl<T> implements IPage<T> {
 
-
     constructor(
         public content: T[],
         public pageNumber: number,

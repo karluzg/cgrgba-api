@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn, Column, ManyToOne } from "typeorm"
 import { SchedulingCategory } from "./SchedulingCategory";
-import { IsObject,IsString, ValidateNested } from "class-validator";
-import { Type } from "class-transformer";
+import {IsString } from "class-validator";
+
 
 @Entity({ schema: 'portal_consular_dev' })
 export class Service {

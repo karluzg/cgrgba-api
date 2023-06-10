@@ -15,6 +15,7 @@ import { UpdatePasswordParams } from "../../../../application/model/user-manager
 import { ITokenEngineRepository } from "../../../repository/ITokenEngineRepository";
 import { UserStatusEnum } from "../../../model/enum/UserStatusEnum";
 import { PlataformConfig } from "../../../../infrestructure/config/plataform";
+import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
 
 
 export class UpdatePasswordOperation extends UserAuthOperationTemplate<UserResult, UpdatePasswordParams>{
@@ -64,8 +65,8 @@ export class UpdatePasswordOperation extends UserAuthOperationTemplate<UserResul
 
         logger.info("[UpdatePasswordOperation] updated password and change the status")
         const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.ACTIVE,PlataformConfig.security.passwordTry);
-
-        result.setUser = newUser;
+        const newUserResponse = await UserResponseBuilder.buildUserResponse(newUser);
+        result.setUser = newUserResponse;
     }
 
     protected initResult(): UserResult {

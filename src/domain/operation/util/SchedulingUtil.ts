@@ -22,6 +22,7 @@ import { EncryptTemplate } from "../../../infrestructure/template/EncryptTemplat
 
 
 
+
 export class SchedulingUtil {
 
     public static async validateCitizenSchedulingFeature(schedulingDate: string,

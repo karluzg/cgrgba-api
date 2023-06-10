@@ -35,12 +35,12 @@ export class ResetPasswordOperation extends OperationTemplate<ResultTemplate, Re
         this.user = await this.userRepository.findUserByEmail(params.getEmail)
 
         if (!this.user) {
-            logger.error("[ResetPasswordOperation] user not exist")
+            logger.error("[ResetPasswordOperation] User not exist")
             throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_NOT_FOUND);
         }
 
         if (this.user.mobileNumber != params.getMobileNumber) {
-            logger.error("[ResetPasswordOperation] mobile number not match")
+            logger.error("[ResetPasswordOperation] Mobile number not match")
             throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_INVALID_CREDENTIALS);
         }
     }

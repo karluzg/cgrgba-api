@@ -7,7 +7,7 @@ import { AuthenticationOperationTemplate } from "./AuthenticationOperationTempla
 import logger from "../../infrestructure/config/logger";
 import { Field } from "../exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomMessage";
-import { ResultInfo } from "../response/ResultInfo";
+
 
 
 export abstract class UserAuthOperationTemplate<R extends ResultTemplate, P extends IAuthParams> extends AuthenticationOperationTemplate<R, P>{
@@ -15,8 +15,7 @@ export abstract class UserAuthOperationTemplate<R extends ResultTemplate, P exte
 
     private operationValidatorManager: OperationValidatorManager
     protected abstract doUserAuthExecuted(tokenSession: TokenSession, params: P, result: R): Promise<void>;
-    protected message: Map<string, ResultInfo> = new Map();
-
+ 
 
     constructor(operationId: number, operationValidatorManager: OperationValidatorManager) {
         super(operationId)

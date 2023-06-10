@@ -1,23 +1,23 @@
 
 import { ResultTemplate } from "../../../../infrestructure/template/ResultTemplate";
 import { SchedulingPossibleStatus } from "../../../../domain/model/SchedulingPossibleStatus";
-import { SchedulingResponse } from "../../../../domain/operation/response-builder/scheduling-manager/SchedulingResponse";
+import { Scheduling } from "../../../../domain/model/Scheduling";
 
 export class SchedulingResult extends ResultTemplate {
 
-    private scheduling: SchedulingResponse;
+    private scheduling: Scheduling;
+    private nextPossibleStatus: SchedulingPossibleStatus[]
+
 
     constructor() {
         super();
         this.getSuccessfullyMessage();
     }
 
-    private nextPossibleStatus: SchedulingPossibleStatus[]
-
-    public get getScheduling(): SchedulingResponse {
+    public get getScheduling(): Scheduling {
         return this.scheduling;
     }
-    public set setScheduling(scheduling: SchedulingResponse) {
+    public set setScheduling(scheduling: Scheduling) {
         this.scheduling = scheduling;
     }
 
@@ -27,5 +27,4 @@ export class SchedulingResult extends ResultTemplate {
     public set setPossibleStatus(possibleStatus: SchedulingPossibleStatus[]) {
         this.nextPossibleStatus = possibleStatus;
     }
-
 }

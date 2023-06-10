@@ -14,7 +14,9 @@ import { IUserEngineRepository } from "../../../repository/IUserEngineRepository
 import { IUserStatusEngineRepository } from "../../../repository/IUserStatusEngineRepository";
 import { UserStatus } from "../../../model/UserStatus";
 import { User } from "../../../model/User";
-import { UserResponse } from "../../response-builder/user-manager/UserResponse";
+import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
+import { PageableUtils } from "../../../../infrestructure/pageable-manager/PageableUtils";
+
 
 
 
@@ -46,21 +48,21 @@ export class GetAllUserOperation extends UserAuthOperationTemplate<UserResultLis
     }
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: PageAndSizeParams, result: UserResultList): Promise<void> {
+       
+        logger.info("[GetAllUserOperation] creating all users");
+        
+        const userPages: IPage<User> = await this.userRepository.findAllUsers(params.getPage, params.size, this.status, params.orderColumn, params.direction);
+      
 
-
-        logger.info("[GetAllUserOperation] creating all users")
-        const users: IPage<User> = await this.userRepository.findAllUsers(params.getPage, params.size, this.status, params.orderColumn, params.direction);
-        const userResponses: UserResponse[] = users.content.map(user => new UserResponse(user));
-        console.info("USER RESPONSE", JSON.stringify(userResponses))
-
-        const responseObj = {
-            users: userResponses
-        };
-        Object.assign(result, responseObj);
-
-
-    }
-
+        const userResponses: User[] = await Promise.all(userPages.content
+            .map(user => UserResponseBuilder.buildUserResponse(user)));
+      
+        
+        console.info("New User Response", JSON.stringify(userResponses));
+      
+        PageableUtils.ofWithContent(result, userPages, userResponses);
+      }
+      
     protected initResult(): UserResultList {
         return new UserResultList()
     }

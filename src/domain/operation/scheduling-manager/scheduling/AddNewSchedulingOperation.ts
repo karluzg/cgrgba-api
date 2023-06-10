@@ -21,7 +21,7 @@ import { ErrorExceptionClass } from "../../../../infrestructure/exceptions/Error
 import { Service } from "../../../model/Service";
 import { ISchedulingCategoryEngineRepository } from "../../../repository/ISchedulingCategoryEngineRepository";
 import { UnsuccessfullOperationException } from "../../../../infrestructure/exceptions/UnsuccessfullOperationException";
-import { SchedulingBuilder } from "../../response-builder/scheduling-manager/SchedulingBuilder";
+import { SchedulingResponseBuilder } from "../../response-builder/scheduling-manager/SchedulingResponseBuilder";
 
 export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResult, SchedulingParams>{
 
@@ -77,8 +77,6 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
             this.schedulingTimeEngineRepository,
             this.schedulingEngineRepository)
 
-
-
         logger.info("[AddNewSchedulingOperation] End of strict validation scheduling time parameteres...")
     }
 
@@ -104,16 +102,16 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
                     MiddlewareBusinessMessage.SCHEDULING_HOUR_ALREADY_CHOSED_BY_ANTOTHER_PERSON)
             }
 
-            let newScheduling: Scheduling = await this.performScheduling(params);
+            const newScheduling: Scheduling = await this.performScheduling(params);
 
             await SchedulingUtil.isTobeBlockDateAndHour(newScheduling,
                 this.totalAvailableCollaborators,
                 this.schedulingEngineRepository,
                 this.schedulingHistoryEnginerepository)
 
-            const schedulingResponse = await SchedulingBuilder.buildSchedulingResponse(newScheduling);
-            console.info("NEW SCHEDULING WITHOU ENUM", JSON.stringify(schedulingResponse))
-            result.setScheduling = schedulingResponse;
+            const newSchedulingResponse = await SchedulingResponseBuilder.buildSchedulingResponse(newScheduling)
+
+            result.setScheduling = newSchedulingResponse;
 
 
         } catch (error) {
@@ -170,7 +168,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         let schedulingSaved: Scheduling;
         try {
 
-            schedulingSaved = await this.schedulingEngineRepository.updateScheduling(newScheduling);
+            schedulingSaved = await this.schedulingEngineRepository.saveScheduling(newScheduling);
         } catch (error) {
             throw new UnsuccessfullOperationException(Field.SYSTEM, "Error while trying to save scheduling:" + error)
         }

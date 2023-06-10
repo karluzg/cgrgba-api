@@ -13,6 +13,7 @@ import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngineRepository";
 import { ISchedulingPossibleStatusEngineRepository } from "../../../repository/ISchedulingPossibleStatusEngineRepository";
 
+
 export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<SchedulingResult, GetSchedulingDetailParams> {
 
     private readonly schedulingEngineRepository: ISchedulingEngineRepository;
@@ -43,11 +44,19 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetSchedulingDetailParams, result: SchedulingResult): Promise<void> {
 
-        result.setScheduling = this.schedulingEntity
 
-        const possibleStatus: SchedulingPossibleStatus[] = await this.schedulingStatusEngineRepository.findSchedulingNextStatus(this.schedulingEntity.status.code);
 
-        result.setPossibleStatus = possibleStatus
+
+        delete this.schedulingEntity.enumOperationTemplate
+       
+  
+        console.info("ENUMERATE DELETED FROM RESPONSE", JSON.stringify(this.schedulingEntity))
+        result.setScheduling = this.schedulingEntity;
+
+        const possibleStatus: SchedulingPossibleStatus[] = await this.schedulingStatusEngineRepository
+            .findSchedulingNextStatus(this.schedulingEntity.status.code);
+
+        result.setPossibleStatus = possibleStatus;
 
     }
     protected initResult(): SchedulingResult {

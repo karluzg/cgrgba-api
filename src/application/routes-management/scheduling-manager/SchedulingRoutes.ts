@@ -36,7 +36,7 @@ const schedulingValidator = new SchedulingRoutesValidator()
  *             schema:
  *               $ref: '#/components/schemas/SchedulingResult'
  */
-schedulingRoutes.post("/schedulings", schedulingValidator.addNewScheduling(), schedulingValidator.validate, schedulingController.add_new_scheduling)
+schedulingRoutes.post("/schedulings", schedulingValidator.addNewSchedulingvalidador(), schedulingValidator.validate, schedulingController.add_new_scheduling)
 
 /**
  * @swagger
@@ -104,7 +104,7 @@ schedulingRoutes.post("/schedulings", schedulingValidator.addNewScheduling(), sc
  *             schema:
  *               $ref: '#/components/schemas/GetSchedulingListResult'
  */
-schedulingRoutes.get("/schedulings", schedulingController.get_scheduling_list)
+schedulingRoutes.get("/schedulings",   schedulingController.get_scheduling_list)
 
 /**
  * @swagger
@@ -129,7 +129,7 @@ schedulingRoutes.get("/schedulings", schedulingController.get_scheduling_list)
  *       '404':
  *         description: Agendamento não encontrado
  */
-schedulingRoutes.get("/schedulings/:id", schedulingController.get_scheduling_detail);
+schedulingRoutes.get("/schedulings/:id", schedulingValidator.getSchedulingListValidator(), schedulingValidator.validate, schedulingController.get_scheduling_detail);
 
 /**
  * @swagger
@@ -161,7 +161,7 @@ schedulingRoutes.get("/schedulings/:id", schedulingController.get_scheduling_det
  *       '404':
  *         description: Agendamento não encontrado
  */
-schedulingRoutes.put("/schedulings/:id", schedulingController.update_scheduling)
+schedulingRoutes.put("/schedulings/:id", schedulingValidator.updateSchedulingValidator(), schedulingValidator.validate, schedulingController.update_scheduling)
 
 export default schedulingRoutes
 

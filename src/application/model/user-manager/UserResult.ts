@@ -1,14 +1,11 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsObject, ValidateNested } from 'class-validator';
-import { Type } from 'class-transformer';
+
 import { User } from '../../../domain/model/User';
 import { ResultTemplate } from '../../../infrestructure/template/ResultTemplate';
-import { UserResponse } from '../../../domain/operation/response-builder/user-manager/UserResponse';
 import { UserPossibleStatus } from '../../../domain/model/UserPossibleStatus';
 
 
 export class UserResult extends ResultTemplate {
-  private user: UserResponse
+  private user: User
   private nextPossibleStatus: UserPossibleStatus[]
 
 
@@ -17,10 +14,10 @@ export class UserResult extends ResultTemplate {
     this.getSuccessfullyMessage();
   }
 
-  public get getUser(): UserResponse {
+  public get getUser(): User {
     return this.user;
   }
-  public set setUser(user: UserResponse) {
+  public set setUser(user: User) {
     this.user = user;
   }
 

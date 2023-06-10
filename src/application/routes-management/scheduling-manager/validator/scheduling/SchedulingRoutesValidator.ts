@@ -1,11 +1,11 @@
-import { ValidationChain, query, body } from "express-validator"
+import { ValidationChain, body, query } from "express-validator"
 import { ParamsValidatorTemplate } from "../../../../../infrestructure/template/ParamsValidatorTemplate"
 
 
 
 export class SchedulingRoutesValidator extends ParamsValidatorTemplate {
 
-    public addNewScheduling(): ValidationChain[] {
+    public addNewSchedulingvalidador(): ValidationChain[] {
         return [
             body('citizenFullName').notEmpty().isLength({ max: 50 }).isString(),
             body('citizenEmail').notEmpty().isLength({ max: 34 }).isEmail(),
@@ -17,7 +17,25 @@ export class SchedulingRoutesValidator extends ParamsValidatorTemplate {
         ]
     }
 
+    public getSchedulingListValidator(): ValidationChain[] {
+        return [
+            query('beginCreationgDate').isLength({ min: 10, max: 10 }).optional(),
+            query('endCreationDate').isLength({min:10, max:10}).optional(),
+            query('page').isInt({ min: 1 }).optional(),
+            query('size').isInt({ min: 1 }).optional(),
+            query('direction').isIn(['ASC', 'DESC']).optional(),
+            query('orderColumn').isString().optional()
+        ]
+    }
 
+    public updateSchedulingValidator(): ValidationChain[] {
+        return [
+            body('schedulingDate').notEmpty().isLength({ min: 10, max: 10 }).isString(),
+            body('schedulingHour').notEmpty().isLength({ min: 5, max: 5 }).isString(),
+            body('categoryCode').notEmpty().isString(),
+            body('serviceCode').notEmpty().isString()
+        ]
+    }
 
 }
 

@@ -1,3 +1,6 @@
+import { CategoryEnum } from "../../../../../domain/model/enum/CategoryEnum";
+import { SchedulingStatusEnum } from "../../../../../domain/model/enum/SchedulingStatusEnum";
+import { ServiceEnum } from "../../../../../domain/model/enum/ServiceEnum";
 import { DirectionEnum } from "../../../../../infrestructure/pageable-manager/enum/DirectionEnum";
 import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthParamsTemplate";
 
@@ -5,9 +8,9 @@ export class GetSchedulingListParams extends AuthParamsTemplate {
 
     private readonly beginCreationDate: string;
     private readonly endCreationDate: string;
-    private readonly beginSchedulingTime: string;
-    private readonly endSchedulingTime: string;
-    private readonly beginSchedulingStatus: string;
+    private readonly categoryCode: CategoryEnum;
+    private readonly serviceCode: ServiceEnum;
+    private readonly schedulingStatus: SchedulingStatusEnum;
     private readonly orderColumn: string;
     private readonly direction: DirectionEnum;
     private readonly pageNumber: number;
@@ -16,9 +19,9 @@ export class GetSchedulingListParams extends AuthParamsTemplate {
     constructor(authentication: string,
         beginCreationDate: string,
         endCreationDate: string,
-        beginSchedulingTime: string,
-        endSchedulingTime: string,
-        schedulingStatus: string,
+        categoryCode: CategoryEnum,
+        serviceCode: ServiceEnum,
+        schedulingStatus: SchedulingStatusEnum,
         orderColumn: string,
         direction: DirectionEnum,
         pageNumber: number,
@@ -26,9 +29,9 @@ export class GetSchedulingListParams extends AuthParamsTemplate {
         super(authentication);
         this.beginCreationDate = beginCreationDate;
         this.endCreationDate = endCreationDate;
-        this.beginSchedulingTime = beginSchedulingTime;
-        this.endSchedulingTime = endSchedulingTime;
-        this.beginSchedulingStatus = schedulingStatus;
+        this.categoryCode = categoryCode;
+        this.serviceCode = serviceCode;
+        this.schedulingStatus = schedulingStatus;
         this.orderColumn = orderColumn;
         this.direction = direction
         this.pageNumber = pageNumber;
@@ -43,17 +46,17 @@ export class GetSchedulingListParams extends AuthParamsTemplate {
         return this.endCreationDate
     }
 
-    get getBeginSchedulingTime(): string {
-        return this.beginSchedulingTime
+    get getCategory(): CategoryEnum {
+        return this.categoryCode
     }
 
-    get getEndSchedulingTime(): string {
-        return this.endSchedulingTime
+    get getServiceCode(): ServiceEnum {
+        return this.serviceCode
     }
 
 
-    get getBeginSchedulingStatus(): string {
-        return this.beginSchedulingStatus
+    get getSchedulingStatus(): SchedulingStatusEnum {
+        return this.schedulingStatus
     }
 
     get getOrderColumn(): string {

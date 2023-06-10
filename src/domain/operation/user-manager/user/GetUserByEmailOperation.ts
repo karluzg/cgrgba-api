@@ -11,6 +11,7 @@ import { IUserEngineRepository } from "../../../repository/IUserEngineRepository
 import { User } from "../../../model/User";
 import { UserResult } from "../../../../application/model/user-manager/UserResult";
 import { GetByEmailOrCodeParams } from "../../../../application/model/GetByEmailOrCodeParams";
+import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
 
 
 
@@ -37,8 +38,8 @@ export class GetUserByEmailOperation extends UserAuthOperationTemplate<UserResul
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetByEmailOrCodeParams, result: UserResult): Promise<void> {
 
         logger.info("[GetUserByEmailOperation] get users")
-    
-        result.setUser = this.user;
+        const userRespponse = await UserResponseBuilder.buildUserResponse(this.user)
+        result.setUser = userRespponse;
 
     }
 

@@ -16,6 +16,7 @@ import { InvalidParametersException } from "../../../../infrestructure/exception
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { PageUtil } from "../../util/PageUtil";
+import { SchedulingResponseBuilder } from "../../response-builder/scheduling-manager/SchedulingResponseBuilder";
 
 
 
@@ -23,6 +24,7 @@ import { PageUtil } from "../../util/PageUtil";
 export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSchedulingListResult, GetSchedulingListParams>{
 
     private readonly schedulingEngineRepository: ISchedulingEngineRepository;
+
     private beginCreationDate: Date
     private endCreationDate: Date
 
@@ -37,58 +39,9 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
         logger.info("[GetSchedulingListOperation] Begin of strict validation scheduling parameteres...")
 
-        const { getBeginSchedulingTime, getEndSchedulingTime, getBeginCreationDate, getEndCreationDate } = params;
+        console.info("Input query params:", JSON.stringify(params))
 
-        if (getEndSchedulingTime) {
-            if (getEndSchedulingTime.length !== 5) {
-                throw new InvalidParametersException(
-                    Field.SCHEDULING_END_SCHEDULING_TIME,
-                    MiddlewareBusinessMessage.SCHEDULING_END_SCHEDULING_TIME_INAVLID);
-            }
-
-            if (!getBeginSchedulingTime) {
-                throw new InvalidParametersException(
-                    Field.SCHEDULING_END_SCHEDULING_TIME,
-                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_MANDATORY
-                );
-            }
-
-            if (getBeginSchedulingTime === '') {
-                throw new InvalidParametersException(
-                    Field.SCHEDULING_BEGIN_SCHEDULING_TIME,
-                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_MANDATORY
-                );
-            }
-
-            if (getBeginSchedulingTime.length !== 5) {
-                throw new InvalidParametersException(
-                    Field.SCHEDULING_BEGIN_SCHEDULING_TIME,
-                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID
-                );
-            }
-
-            const beginSchedulingTime = await SchedulingTimeUtil.getTimePart(getBeginSchedulingTime);
-            const endSchedulingTime = await SchedulingTimeUtil.getTimePart(getEndSchedulingTime);
-            const beginSchedulingMinute = await SchedulingTimeUtil.getMinutePart(getBeginSchedulingTime);
-            const endSchedulingMinute = await SchedulingTimeUtil.getMinutePart(getEndSchedulingTime);
-
-            if (
-                endSchedulingTime < beginSchedulingTime ||
-                (beginSchedulingTime === endSchedulingTime && endSchedulingMinute < beginSchedulingMinute)
-            ) {
-                throw new InvalidParametersException(
-                    Field.SCHEDULING_TIME_END_SCHEDUULING_TIME,
-                    MiddlewareBusinessMessage.SCHEDULING_TIME_END_SCHEDULING_TIME_GREATER_THAN_BEGIN_SCHEDULING_TIME
-                );
-            }
-        } else if (getBeginSchedulingTime) {
-            if (getBeginSchedulingTime.length !== 5) {
-                throw new InvalidParametersException(
-                    Field.SCHEDULING_BEGIN_SCHEDULING_TIME,
-                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_SCHEDULING_TIME_INAVLID
-                );
-            }
-        }
+        const { getBeginCreationDate, getEndCreationDate } = params;
 
         if (getBeginCreationDate) {
             console.info("[GetSchedulingListOperation] BeginCreationDate is filled. Validate if it is a valid date.");
@@ -112,7 +65,6 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
             }
         }
 
-        logger.info("Validate if end scheduling date is filled");
 
         const isValidBeginCreationDate = !isNaN(new Date(getBeginCreationDate).getTime());
         const isValidEndCreationDate = !isNaN(new Date(getEndCreationDate).getTime());
@@ -127,9 +79,18 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
             const beginDateWithoutTime = new Date(params.getBeginCreationDate);
             beginDateWithoutTime.setHours(0, 0, 0, 0); // Set the time components to zero
 
-            console.info("CURRENT DATE: " + beginDateWithoutTime);
+            const newBeginCreationDate = new Date(beginDateWithoutTime.getFullYear(), beginDateWithoutTime.getMonth(), beginDateWithoutTime.getDate());
+            // newBeginCreationDate.setHours(0, 0, 0, 0); // Set the time components to zero
 
-            const beginCreationDate = startOfDay(beginDateWithoutTime);
+            
+
+            console.info("CURRENT DATE: " + newBeginCreationDate);
+
+
+            const beginCreationDate = startOfDay(newBeginCreationDate);
+
+            console.info("START OF DAY  " + newBeginCreationDate);
+
             const endCreationDate = startOfDay(addDays(beginDateWithoutTime, 1));
 
             if (endCreationDate.getTime() < beginCreationDate.getTime()) {
@@ -139,31 +100,32 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
                 );
             }
 
-            this.beginCreationDate = beginCreationDate;
-            this.endCreationDate = endCreationDate;
+            this.beginCreationDate = beginCreationDate; // to be use in query
+            this.endCreationDate = endCreationDate; //to be use in query
         } else if (isValidBeginCreationDate) {
 
-
             const beginDateWithoutTime = new Date(params.getBeginCreationDate.substring(0, 10));
+            beginDateWithoutTime.setHours(0, 0, 0, 0); // Set the time components to zero
+
             const beginCreationDate = startOfDay(beginDateWithoutTime);
             const endCreationDate = startOfDay(addDays(beginDateWithoutTime, 1));
 
-            this.beginCreationDate = beginCreationDate;
-            this.endCreationDate = endCreationDate;
+            this.beginCreationDate = beginCreationDate; // to be use in query
+            this.endCreationDate = endCreationDate; //to be use in query
 
             logger.info("Begin default Date:", beginCreationDate);
             logger.info("End default Date:", endCreationDate);
 
 
         } else {
+            logger.info("begin and end date are null or empty. Set default filter date")
             const beginCreationDateDefault = await SchedulingTimeUtil.getDefaultCreationDateWithouTime();
             logger.info("begin default Date:", beginCreationDateDefault);
 
             this.beginCreationDate = startOfDay(new Date(beginCreationDateDefault));
+            this.beginCreationDate.setHours(0, 0, 0, 0);
             this.endCreationDate = startOfDay(addDays(this.beginCreationDate, 1));
         }
-
-
 
         logger.info("[GetSchedulingListOperation] validate if end scheduling time input is filled")
 
@@ -174,30 +136,21 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetSchedulingListParams, result: GetSchedulingListResult): Promise<void> {
 
 
-        //this.beginCreationDate = startOfDay(this.beginCreationDate);
-        //this.endCreationDate = addDays(this.endCreationDate, 1);
-
-        const defaultOrderColumn = await PageUtil.getDefaultOrderColumn(params.getOrderColumn);
-        const skiptPage = await PageUtil.skipPage(params.getPageNumber, params.getPageSize);
-        const defaultStatus = await PageUtil.getDefaultStatus(params.getBeginSchedulingStatus);
-        const defaultDirection = await PageUtil.getDefaultDirection(params.getDirection);
-
 
 
         logger.info("Set default parameters to execute query...")
 
-        const beginSchedulingTime = await SchedulingTimeUtil.getTimePart(params.getBeginSchedulingTime);
-        const endchedulingTime = await SchedulingTimeUtil.getTimePart(params.getEndSchedulingTime);
+        const defaultOrderColumn = await PageUtil.getDefaultOrderColumn(params.getOrderColumn);
+        const skiptPage = await PageUtil.skipPage(params.getPageNumber, params.getPageSize);
+        const defaultStatus = await PageUtil.getDefaultStatus(params.getSchedulingStatus);
+        const defaultDirection = await PageUtil.getDefaultDirection(params.getDirection);
 
-        const beginSchedulingMinute = await SchedulingTimeUtil.getMinutePart(params.getEndSchedulingTime);
-        const endSchedulingMinute = await SchedulingTimeUtil.getMinutePart(params.getEndSchedulingTime);
 
-        const page: IPage<Scheduling> = await this.schedulingEngineRepository.findBy(this.beginCreationDate,
+
+
+
+        const schedulingPages: IPage<Scheduling> = await this.schedulingEngineRepository.findBy(this.beginCreationDate,
             this.endCreationDate,
-            beginSchedulingTime,
-            endchedulingTime,
-            beginSchedulingMinute,
-            endSchedulingMinute,
             defaultStatus,
             defaultOrderColumn,
             defaultDirection,
@@ -205,11 +158,18 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
             params.getPageNumber,
             params.getPageSize);
 
-        PageableUtils.ofWithoutContent(result, page)
 
-    }
+
+        const schedulingList: Scheduling[] = await Promise.all(schedulingPages.content
+            .map(user => SchedulingResponseBuilder.buildSchedulingResponse(user)));
+
+        PageableUtils.ofWithContent(result, schedulingPages, schedulingList)
+        }
+    
+
     protected initResult(): GetSchedulingListResult {
         return new GetSchedulingListResult();
     }
 
 }
+

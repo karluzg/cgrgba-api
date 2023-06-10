@@ -4,7 +4,6 @@ import { IPage } from "../../../infrestructure/pageable-manager/IPage";
 import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
 import { DirectionEnum } from "../../../infrestructure/pageable-manager/enum/DirectionEnum";
 import { Scheduling } from "../../model/Scheduling";
-import { SchedulingStatus } from "../../model/SchedulingStatus";
 import { SchedulingStatusEnum } from "../../model/enum/SchedulingStatusEnum";
 import { ISchedulingEngineRepository } from "../ISchedulingEngineRepository";
 
@@ -25,35 +24,29 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
     }
 
 
-    async updateScheduling(scheduling: Scheduling): Promise<Scheduling> {
+    async saveScheduling(scheduling: Scheduling): Promise<Scheduling> {
         return await schedulingEngineRepository.save(scheduling);
     }
 
 
 
 
-
     async findSchedulingById(schedulingId: number): Promise<Scheduling> {
-
-        return schedulingEngineRepository.createQueryBuilder('scheduling')
+        return schedulingEngineRepository
+            .createQueryBuilder('scheduling')
             .leftJoinAndSelect('scheduling.citizen', 'citizen')
             .leftJoinAndSelect('scheduling.service', 'service')
             .leftJoinAndSelect('service.category', 'category')
             .leftJoinAndSelect('scheduling.status', 'status')
-            .where('scheduling.id = :schedulingId', { schedulingId })
+            .andWhere('scheduling.id = :schedulingId', { schedulingId: schedulingId })
             .getOne();
     }
-
 
 
     async findBy(
         beginDate: Date,
         endDate: Date,
-        beginSchedulingTime: number,
-        endSchedulingTime: number,
-        beginSchedulingMinute: number,
-        endSchedulingMinute: number,
-        schedulingStatus: string,
+        schedulingStatus: SchedulingStatusEnum,
         defaultorderColumn: string,
         direction: DirectionEnum,
         skip: number,
@@ -63,6 +56,8 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
 
 
+        console.info("BEGIN DATE TO BE USE IN QUERY", beginDate)
+        console.info("END DATE TO BE USE IN QUERY", endDate)
 
 
         const orderColumn = `scheduling.${defaultorderColumn}`; // to avoid SQL Injection
@@ -71,27 +66,10 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
         query.orderBy(orderColumn, direction);
 
-        query.where('DATE(scheduling.creationDate) >= DATE(:beginDate) AND DATE(scheduling.creationDate) <= DATE(:endDate)', {
+        query.where('scheduling.searchDate >= :beginDate AND scheduling.searchDate <= :endDate', {
             beginDate,
             endDate
         });
-
-
-        if (beginSchedulingTime !== undefined) {
-            query.andWhere('scheduling.hour >= :beginSchedulingTime', { beginSchedulingTime });
-        }
-
-        if (endSchedulingTime !== undefined) {
-            query.andWhere('scheduling.hour <= :endSchedulingTime', { endSchedulingTime });
-        }
-
-        if (beginSchedulingMinute !== undefined) {
-            query.andWhere('scheduling.minute >= :beginSchedulingMinute', { beginSchedulingMinute });
-        }
-
-        if (endSchedulingMinute !== undefined) {
-            query.andWhere('scheduling.minute <= :endSchedulingMinute', { endSchedulingMinute });
-        }
 
         if (schedulingStatus !== SchedulingStatusEnum.REMOVED) {
             query.andWhere('scheduling.status LIKE :schedulingStatus', { schedulingStatus: `%${schedulingStatus}%` });
@@ -105,7 +83,6 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
         const totalPages = Math.ceil(totalItems / pageSize);
 
         console.log(query.getSql());
-
 
         return new PageImpl<Scheduling>(items, pageNumber, pageSize, totalItems, totalPages);
 

@@ -14,7 +14,7 @@ import { GetByIdParams } from "../../../../application/model/GetByIdParams";
 import { UserResult } from "../../../../application/model/user-manager/UserResult";
 import { IUserPossibleStatusEngneRepository } from "../../../repository/IUserPossibleStatusEngineRepository";
 import { UserPossibleStatus } from "../../../model/UserPossibleStatus";
-import { UserBuilder } from "../../response-builder/user-manager/UserBuilder";
+import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
 
 
 export class GetUserByIdOperation extends UserAuthOperationTemplate<UserResult, GetByIdParams>{
@@ -42,10 +42,9 @@ export class GetUserByIdOperation extends UserAuthOperationTemplate<UserResult, 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetByIdParams, result: UserResult): Promise<void> {
 
         logger.info("[GetUserByIdIOperation] get users")
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SUCCESS_MESSAGE));
 
         const possibleStatus: UserPossibleStatus[] = await this.userPossiblestatusEngineRepository.findUserNextStatus(this.user.status.code);
-        const newUserResponse = await UserBuilder.buildUserResponse(this.user);
+        const newUserResponse = await UserResponseBuilder.buildUserResponse(this.user);
         result.setUser = newUserResponse;
         result.setPossibleStatus = possibleStatus;
 

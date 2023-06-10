@@ -28,6 +28,8 @@ import { SchedulingStatusEnum } from "../../../model/enum/SchedulingStatusEnum";
 import { IServiceEngineRepository } from "../../../repository/IServiceEngineRepository";
 import { ISchedulingPossibleStatusEngineRepository } from "../../../repository/ISchedulingPossibleStatusEngineRepository";
 import { SchedulingPossibleStatus } from "../../../model/SchedulingPossibleStatus";
+import { SchedulingResponseBuilder } from "../../response-builder/scheduling-manager/SchedulingResponseBuilder";
+
 
 
 export class UpdateSchedulingOperation extends UserAuthOperationTemplate<SchedulingResult, UpdateSchedulingParams>{
@@ -36,17 +38,17 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
     private readonly schedulingTimeEngineRepository: ISchedulingTimeEngineRepository;
     private readonly hollydayEngineRepository: IHollydayEngineRepository;
     private readonly schedulingHistoryEnginerepository: ISchedulingHistoryEngineRepository;
-    private readonly citizenEngineRepository: ICitizenEngineRepository
     private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository
     private serviceEngineReository: IServiceEngineRepository
     private readonly schedulingStatusEngineRepository: ISchedulingPossibleStatusEngineRepository;
 
 
-    private schedulingEntitySource: Scheduling;
+    private schedulingEntitySource: Scheduling
     private citizenEntitySource: Citizen
     private serviceEntity: Service;
     private totalAvailableCollaborators: number = 0;
     private semaphore: Semaphore;
+
 
 
     constructor() {
@@ -55,7 +57,6 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
         this.schedulingTimeEngineRepository = container.resolve<ISchedulingTimeEngineRepository>("ISchedulingTimeEngineRepository");
         this.hollydayEngineRepository = container.resolve<IHollydayEngineRepository>("IHollydayEngineRepository");
         this.schedulingHistoryEnginerepository = container.resolve<ISchedulingHistoryEngineRepository>('ISchedulingHistoryEngineRepository')
-        this.citizenEngineRepository = container.resolve<ICitizenEngineRepository>('ICitizenEngineRepository')
         this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
         this.serviceEngineReository = container.resolve<IServiceEngineRepository>('IServiceEngineRepository')
         this.schedulingStatusEngineRepository = container.resolve<ISchedulingPossibleStatusEngineRepository>('ISchedulingPossibleStatusEngineRepository')
@@ -64,49 +65,37 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
     protected async doValidateParameters(params: UpdateSchedulingParams): Promise<void> {
 
 
-        logger.info("[UpdateSchedulingOperation] Begin of high level validation scheduling parameteres...")
+        logger.info("[UpdateSchedulingOperation] Begin high-level validation of scheduling parameters...");
 
-        this.schedulingEntitySource = await this.schedulingEngineRepository.findSchedulingById(params.getSchedulingId)
+
+        this.schedulingEntitySource = await this.schedulingEngineRepository.findSchedulingById(params.getSchedulingId);
+
+        logger.info("Scheduling entity", JSON.stringify(this.schedulingEntitySource));
 
         if (!this.schedulingEntitySource) {
-            throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID)
+            throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID);
         }
 
-
-        if (this.schedulingEntitySource.status.code !== SchedulingStatusEnum.FOR_ANSWERING) {
-            throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID)
+        if (this.schedulingEntitySource.status.description !== SchedulingStatusEnum.FOR_ANSWERING) {
+            throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_HAS_INVALID_STATE_TO_UPDATE);
         }
 
+        this.serviceEntity = await this.serviceEngineReository.findservice(this.schedulingEntitySource.service.code);
 
-        this.citizenEntitySource = await this.citizenEngineRepository.findCitizenByEmailOrMobileNumber(params.getCitizenEmail,
-            params.getCitizenMobileNumber);
+        console.info("Service entity", JSON.stringify(this.serviceEntity));
 
-
-        if (this.citizenEntitySource) {
-            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.CITIZEN_INVALID_EMAIL)
+        if (!this.serviceEntity) {
+            console.info("Service entity is null ", JSON.stringify(this.serviceEntity));
+            throw new InvalidParametersException(Field.SCHEDULING_SERVICE, MiddlewareBusinessMessage.SCHEDULING_SERVICE_INVALID);
         }
 
+        this.serviceEntity = await SchedulingUtil.validateServiceMatchCategory(
+            params.getCategory,
+            params.getServiceCode,
+            this.schedulingCategoryEngineRepository
+        );
 
-        const countEmail: number = await this.citizenEngineRepository.countEmailDuplicates(params.getCitizenEmail);
-
-        if (!(this.citizenEntitySource.email === params.getCitizenEmail) && countEmail != 0) {
-
-            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.CITIZEN_INVALID_EMAIL)
-
-        }
-
-        const countMobileNumebr: number = await this.citizenEngineRepository.countMobileNumberDuplicates(params.getCitizenMobileNumber);
-
-
-        if (!(this.citizenEntitySource.mobileNumber === params.getCitizenMobileNumber) && countMobileNumebr != 0) {
-            throw new InvalidParametersException(Field.MOBILE_NUMBER, MiddlewareBusinessMessage.CITIZEN_MOBILE_NUMBER_ALREADY_EXIST)
-
-        }
-
-        this.serviceEntity = await SchedulingUtil.validateServiceMatchCategory(params.getCategory, params.getServiceCode,
-            this.schedulingCategoryEngineRepository);
-
-
+        console.info("Service entity found", JSON.stringify(this.serviceEntity));
 
         this.totalAvailableCollaborators = await SchedulingUtil.strictSchedulingValidate(
             params.getSchedulingDate,
@@ -115,10 +104,10 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
             this.citizenEntitySource,
             this.hollydayEngineRepository,
             this.schedulingTimeEngineRepository,
-            this.schedulingEngineRepository)
-
-
+            this.schedulingEngineRepository
+        );
     }
+
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: UpdateSchedulingParams, result: SchedulingResult): Promise<void> {
 
@@ -149,22 +138,20 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
                 this.schedulingEngineRepository,
                 this.schedulingHistoryEnginerepository)
 
-            this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_ADDED));
 
+            console.info("New scheduling", JSON.stringify(newScheduling))
 
-            console.info("NEW SCHEDULING STATUS CODE", JSON.stringify(newScheduling))
+            const nextPossibleStatus: SchedulingPossibleStatus[] = await this.schedulingStatusEngineRepository
+                .findSchedulingNextStatus(newScheduling.status.code);
 
-            const possibleStatus: SchedulingPossibleStatus[] = await this.schedulingStatusEngineRepository.findSchedulingNextStatus(newScheduling.status.code);
+            console.info("Next possiblie status", JSON.stringify(nextPossibleStatus))
 
-            console.info("POSSIBLE STATUS", JSON.stringify(possibleStatus))
+            const schedulingResponse = await SchedulingResponseBuilder.buildSchedulingResponse(newScheduling);
 
-            this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_ADDED));
+            console.info("SCHEDULING RESPONSE", JSON.stringify(schedulingResponse))
 
-          
-
-
-            result.setScheduling = newScheduling;
-            result.setPossibleStatus = possibleStatus;
+            result.setScheduling = schedulingResponse;
+            result.setPossibleStatus = nextPossibleStatus;
 
 
         } catch (error) {
@@ -183,7 +170,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
     private async performScheduling(paramsTarget: UpdateSchedulingParams, tokenSession: TokenSession): Promise<Scheduling> {
 
 
-        const updatedScheduling = await this.updateSheduling(paramsTarget)
+        const updatedScheduling = await this.updateSheduling(paramsTarget, tokenSession)
 
         logger.info("[AddNewSchedulingOperation] Start Sending Email...")
 
@@ -196,20 +183,20 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
     }
 
-    private async updateSheduling(paramsTarget: UpdateSchedulingParams): Promise<Scheduling> {
+    private async updateSheduling(paramsTarget: UpdateSchedulingParams, tokenSession: TokenSession): Promise<Scheduling> {
 
         logger.info("[AddNewSchedulingOperation] Begin constructing Scheduling object to be save in Data Base...")
-        const serviceDB: Service = await this.serviceEngineReository.findservice(this.schedulingEntitySource.service.code);
-        this.schedulingEntitySource.creationDate = new Date();
+
+        this.schedulingEntitySource.updateBy = tokenSession.user;
+        this.schedulingEntitySource.lastPasswordUpdate = new Date();
         this.schedulingEntitySource.citizen = this.citizenEntitySource;
-        this.schedulingEntitySource.service = serviceDB;
+        this.schedulingEntitySource.service = this.serviceEntity;
         this.schedulingEntitySource.date = paramsTarget.getSchedulingDate.trim();
         this.schedulingEntitySource.chosenHour = paramsTarget.getSchedulingHour.trim();
         this.schedulingEntitySource.hour = await SchedulingTimeUtil.getTimePart(paramsTarget.getSchedulingHour)
         this.schedulingEntitySource.minute = await SchedulingTimeUtil.getMinutePart(paramsTarget.getSchedulingHour)
 
-
-        return await this.schedulingEngineRepository.updateScheduling(this.schedulingEntitySource);
+        return await this.schedulingEngineRepository.saveScheduling(this.schedulingEntitySource);
 
     }
 

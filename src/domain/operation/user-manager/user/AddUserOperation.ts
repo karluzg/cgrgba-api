@@ -21,6 +21,8 @@ import { EmailUtils } from "../../util/EmailUtils";
 import { IRoleEngineRepository } from "../../../repository/IRoleEngineRepository";
 import { Role } from "../../../model/Role";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
+import { SchedulingUtil } from "../../util/SchedulingUtil";
+import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
 
 
 
@@ -90,10 +92,10 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
         logger.info("[AddUserOperation] creating user in db %", JSON.stringify(user))
         const newUser: User = await this.userRepository.saveUser(user)
-        result.setUser = newUser;
 
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.USER_ADDED_SUCCESSFULLY));
-      
+        const userRespponse = await UserResponseBuilder.buildUserResponse(newUser)
+
+        result.setUser = userRespponse;
 
         const emailMessage = EmailUtils.generateNewUserBody(user.fullName,
             user.email,
@@ -107,6 +109,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         await emailTemplate.sendEmail(mailOption);
 
     }
+
 
     protected initResult(): UserResult {
         return new UserResult()

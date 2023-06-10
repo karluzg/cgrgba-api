@@ -17,6 +17,9 @@ import { DirectionEnum } from "../../../infrestructure/pageable-manager/enum/Dir
 import { GetSchedulingDetailParams } from "../../model/scheduling-manager/scheduling/params/GetSchedulingDetailParams";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { UpdateSchedulingParams } from "../../model/scheduling-manager/scheduling/params/UpdateSchedulingParams";
+import { ServiceEnum } from "../../../domain/model/enum/ServiceEnum";
+import { CategoryEnum } from "../../../domain/model/enum/CategoryEnum";
+import { SchedulingStatusEnum } from "../../../domain/model/enum/SchedulingStatusEnum";
 
 
 
@@ -72,8 +75,8 @@ export class SchedulingController {
 
             const { beginCreationgDate,
                 endCreationDate,
-                beginSchedulingTime,
-                endSchedulingTime,
+                categoryCode,
+                serviceCode,
                 schedulingStatus,
                 orderColumn,
                 direction,
@@ -86,9 +89,9 @@ export class SchedulingController {
                 authenticationToken,
                 beginCreationgDate as string,
                 endCreationDate as string,
-                beginSchedulingTime as string,
-                endSchedulingTime as string,
-                schedulingStatus as string,
+                categoryCode as CategoryEnum,
+                serviceCode as ServiceEnum,
+                schedulingStatus as SchedulingStatusEnum,
                 orderColumn as string,
                 direction as DirectionEnum,
                 parseInt(pageNumber as string, 10) || 1,
@@ -180,25 +183,18 @@ export class SchedulingController {
             }
 
 
-            const { citizenFullName,
-                citizenEmail,
-                citizenMobileNumber,
-                schedulingDate,
+            const {schedulingDate,
                 schedulingHour,
-                schedulingCategory,
-                schedulingService } = request.body;
+                categoryCode,
+                serviceCode } = request.body;
 
             const authenticationToken = AuthValidator.checkAuthorizationToken(request);
 
-
             const params = new UpdateSchedulingParams(authenticationToken, shcedulingId,
-                citizenFullName,
-                citizenEmail,
-                citizenMobileNumber,
                 schedulingDate,
                 schedulingHour,
-                schedulingCategory,
-                schedulingService);
+                categoryCode as CategoryEnum,
+                serviceCode  as ServiceEnum );
 
             logger.info("[SchedulingController] Perform dependency injection for ISchedulingEngine")
             const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")

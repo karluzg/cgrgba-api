@@ -1,3 +1,5 @@
-export enum CategoryEum {
-    PASSPORT = "Passaporte"
+export enum CategoryEnum {
+    PASSPORT = "Passaporte",
+
 }
+

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, Column, JoinColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, ManyToOne, Column, JoinColumn, CreateDateColumn } from "typeorm"
 import { Citizen } from "./Citizen"
 import { User } from "./User"
 import { SchedulingStatus } from "./SchedulingStatus"
@@ -10,7 +10,7 @@ import { EnumOperationTemplate } from "../../infrestructure/template/EnumOperati
 import { Type } from "class-transformer"
 
 @Entity({ schema: 'portal_consular_dev' })
-export class Scheduling extends  EnumOperationTemplate<SchedulingStatusEnum> implements ISchedulingActivable {
+export class Scheduling implements ISchedulingActivable {
 
 
     @PrimaryGeneratedColumn({ type:"bigint"})
@@ -72,7 +72,6 @@ export class Scheduling extends  EnumOperationTemplate<SchedulingStatusEnum> imp
     @Column({ nullable: true, type: 'timestamp' })
     attendDate: Date
 
-    @IsDate()
     @Column({ nullable: true, type: 'timestamp' })
     revokingDate: Date
 
@@ -80,19 +79,21 @@ export class Scheduling extends  EnumOperationTemplate<SchedulingStatusEnum> imp
     @Column({ nullable: true, type: 'timestamp' })
     lastPasswordUpdate: Date
 
+    enumOperationTemplate: EnumOperationTemplate<SchedulingStatusEnum>; 
+
     constructor() {
-        super(SchedulingStatusEnum)
+        this.enumOperationTemplate = new EnumOperationTemplate<SchedulingStatusEnum>(SchedulingStatusEnum);
         this.setStatusEnum(SchedulingStatusEnum.FOR_ANSWERING);
     }
 
 
     getStatusEnum(): SchedulingStatusEnum {
-        return this.getEnumKey(this.status.code)
+        return this.enumOperationTemplate.getEnumKey(this.status.code)
     }
 
     public setStatusEnum(statusEnum: SchedulingStatusEnum | null): void {
 
-        this.status = statusEnum === null ? null : new SchedulingStatus(this.getKey(statusEnum))
+        this.status = statusEnum === null ? null : new SchedulingStatus( this.enumOperationTemplate.getKey(statusEnum))
     }
 
 

@@ -5,13 +5,9 @@ import { Scheduling } from "../model/Scheduling"
 export interface ISchedulingEngineRepository {
 
     findCitizenSchedulingInfo(citizenEmail: string): Promise<Scheduling[]>
-    updateScheduling(scheduling: Scheduling): Promise<Scheduling>
+    saveScheduling(scheduling: Scheduling): Promise<Scheduling>
     findBy(beginSchedulingDate: Date,
         endSchedulingDate: Date,
-        beginSchedulingTime: number,
-        endSchedulingTime: number,
-        beginSchedulingMinute: number,
-        endSchedulingMinute: number,
         schedulingStatus: string,
         orderColumn: string,
         direction: DirectionEnum,

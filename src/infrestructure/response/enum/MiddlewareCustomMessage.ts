@@ -88,6 +88,7 @@ export enum MiddlewareBusinessMessage {
   SCHEDULING_END_CREATION_DATE_INVALID = "A data de fim de criação de agendamento é inváldo",
   SCHEDULING_AVAILABLE = "Não existe disponibilidade",
   SCHEDULING_ID_INVALID = "Agendamento inválido",
+  SCHEDULING_HAS_INVALID_STATE_TO_UPDATE = "Só é possível alterar um agendamento que está Por Atender",
   SCHEDULING_CATEGORY_INVALD = "A categoria de agendamento é inválida",
   SCHEDULING_SERVICE_INVALID = "O servico do agendamento é inválido",
 

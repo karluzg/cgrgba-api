@@ -24,7 +24,6 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
   protected doValidateParameters(params: P): void { }
 
   protected operationId: number
-  protected message: Map<string, ResultInfo> = new Map();
 
   constructor(operationId: number) {
     this.operationId = operationId

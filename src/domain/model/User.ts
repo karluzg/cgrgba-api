@@ -5,12 +5,11 @@ import { IsDate, IsNumber, IsString } from "class-validator"
 import { UserStatus } from "./UserStatus"
 import { EnumOperationTemplate } from "../../infrestructure/template/EnumOperationTemplate"
 import { UserStatusEnum } from "./enum/UserStatusEnum"
-import * as crypto from 'crypto';
 import { EncryptTemplate } from "../../infrestructure/template/EncryptTemplate"
-import { randomBytes } from "crypto"
+
 
 @Entity({ schema: 'portal_consular_dev' })
-export class User extends EnumOperationTemplate<UserStatusEnum> implements IUserActivable {
+export class User  implements IUserActivable {
 
 
     @IsNumber()
@@ -73,21 +72,22 @@ export class User extends EnumOperationTemplate<UserStatusEnum> implements IUser
     @JoinTable()
     roles: Role[]
 
-
+    enumOperationTemplate: EnumOperationTemplate<UserStatusEnum>; 
 
 
     constructor() {
-        super(UserStatusEnum)
+        this.enumOperationTemplate = new EnumOperationTemplate<UserStatusEnum>(UserStatusEnum);
+
         this.setStatusEnum(UserStatusEnum.NEW);
     }
 
     getStatusEnum(): UserStatusEnum {
-        return this.getEnumKey(this.status.code)
+        return     this.enumOperationTemplate.getEnumKey(this.status.code)
     }
 
     public setStatusEnum(statusEnum: UserStatusEnum | null): void {
 
-        this.status = statusEnum === null ? null : new UserStatus(this.getKey(statusEnum))
+        this.status = statusEnum === null ? null : new UserStatus(this.enumOperationTemplate.getKey(statusEnum))
     }
 
     suspend(): void {
