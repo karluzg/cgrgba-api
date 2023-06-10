@@ -1,7 +1,5 @@
-import { IsString, IsObject, ValidateNested } from "class-validator";
-import { Entity, PrimaryColumn, Column, ManyToMany } from "typeorm"
-import { Type } from 'class-transformer';
-
+import { IsString } from "class-validator";
+import { Entity, PrimaryColumn, Column } from "typeorm"
 
 
 @Entity({ schema: 'portal_consular_dev' })
@@ -14,9 +12,6 @@ export class SchedulingStatus {
     @Column({ nullable: false })
     @IsString()
     description: string
-
-    @ManyToMany(() => SchedulingStatus)
-    nextStatus: SchedulingStatus[];
 
     constructor(code: string) {
         this.code = code;

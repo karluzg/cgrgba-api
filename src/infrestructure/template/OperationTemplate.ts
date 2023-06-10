@@ -10,7 +10,7 @@ import { UnsuccessfullOperationException } from "../exceptions/UnsuccessfullOper
 import { ForbiddenOperationException } from "../exceptions/ForbiddenOperationException";
 import { throws } from "assert";
 import { Field } from "../exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomMessage";
 import { ResultInfo } from "../response/ResultInfo";
 import { NotFoundException } from "../exceptions/NotFoundExcecption";
 

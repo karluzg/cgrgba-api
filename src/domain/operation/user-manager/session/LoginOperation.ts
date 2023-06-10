@@ -3,7 +3,7 @@ import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import logger from "../../../../infrestructure/config/logger";
 import { TokenSession } from "../../../model/TokenSession";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { User } from "../../../model/User";
 import { IUserEngineRepository } from "../../../repository/IUserEngineRepository";
 import { ITokenEngineRepository } from "../../../repository/ITokenEngineRepository";
@@ -13,7 +13,6 @@ import { UserLoginResult } from "../../../../application/model/user-manager/User
 import { PasswordValidator } from "../../../../infrestructure/validator/managers/PasswordValidator";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { v4 as uuidv4 } from 'uuid';
-import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { ForbiddenOperationException } from "../../../../infrestructure/exceptions/ForbiddenOperationException";
 import { PlataformConfig } from "../../../../infrestructure/config/plataform";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
@@ -76,9 +75,6 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
         this.user.passwordTry = PlataformConfig.security.passwordTry
         await this.userRepository.saveUser(this.user)
 
-
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SESSION_LOGIN_SUCCESSFULLY));
-        result.setStatus = Object.fromEntries(this.message)
     }
 
     protected initResult(): UserLoginResult {

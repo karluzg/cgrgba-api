@@ -6,8 +6,7 @@ import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import logger from "../../../../infrestructure/config/logger";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
-import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { GetByEmailOrCodeParams } from "../../../../application/model/GetByEmailOrCodeParams";
 import { PermissionGroupResult } from "../../../../application/model/user-manager/PermissionGroupResult";
 import { IPermissionGroupEngineRepository } from "../../../repository/IPermissionGroupEngineRepository";
@@ -39,8 +38,8 @@ export class GetPermissionGrouByCodeOperation extends UserAuthOperationTemplate<
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetByEmailOrCodeParams, result: PermissionGroupResult): Promise<void> {
 
         logger.info("[GetPermissionGrouByCodeOperation] get users")
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.PERMISSION_GROUP_GET_SUCCESSFULLY));
-        result.setStatus = Object.fromEntries(this.message)
+      //   this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.PERMISSION_GROUP_GET_SUCCESSFULLY));
+       //  result.setStatus = Object.fromEntries(this.message)
 
         result.setPermission = this.permissonGroup;
 

@@ -3,16 +3,10 @@ import { UserAuthOperationTemplate } from "../../../../infrestructure/template/U
 import { OperationValidatorManager } from "../../../../infrestructure/validator/managers/OperationValidatorManager";
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
-import { INewsEngineRepository } from "../../../repository/INewsEngineRepository";
-import { NewsCategory } from "../../../model/NewsCategory";
-import { INewsCategoryEngineRepository } from "../../../repository/INewsCategoryEngineRepository";
 import logger from "../../../../infrestructure/config/logger";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
-import { News } from "../../../model/News";
-import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
-import { NewsResultList } from "../../../../application/model/news-manager/NewsResultList";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { PageAndSizeParams } from "../../../../application/model/PageAndSizeParams";
 import { IPage } from "../../../../infrestructure/pageable-manager/IPage";
 import { UserResultList } from "../../../../application/model/user-manager/UserResultList";
@@ -20,6 +14,7 @@ import { IUserEngineRepository } from "../../../repository/IUserEngineRepository
 import { IUserStatusEngineRepository } from "../../../repository/IUserStatusEngineRepository";
 import { UserStatus } from "../../../model/UserStatus";
 import { User } from "../../../model/User";
+import { UserResponse } from "../../response-builder/user-manager/UserResponse";
 
 
 
@@ -54,13 +49,15 @@ export class GetAllUserOperation extends UserAuthOperationTemplate<UserResultLis
 
 
         logger.info("[GetAllUserOperation] creating all users")
-        const newNews:IPage<User> = await this.userRepository.findAllNews(params.getPage, params.size,this.status,params.orderColumn,params.direction);
-        //PageableUtils.ofWithoutContent(result, newNews)
+        const users: IPage<User> = await this.userRepository.findAllUsers(params.getPage, params.size, this.status, params.orderColumn, params.direction);
+        const userResponses: UserResponse[] = users.content.map(user => new UserResponse(user));
+        console.info("USER RESPONSE", JSON.stringify(userResponses))
 
-        Object.assign(result,newNews);
+        const responseObj = {
+            users: userResponses
+        };
+        Object.assign(result, responseObj);
 
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.USER_GET_ALL_SUCCESSFULLY));
-        result.setStatus = Object.fromEntries(this.message)
 
     }
 

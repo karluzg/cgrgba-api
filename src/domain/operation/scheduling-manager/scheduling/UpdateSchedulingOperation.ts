@@ -3,7 +3,7 @@ import { SchedulingResult } from "../../../../application/model/scheduling-manag
 import { UpdateSchedulingParams } from "../../../../application/model/scheduling-manager/scheduling/params/UpdateSchedulingParams";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { UserAuthOperationTemplate } from "../../../../infrestructure/template/UserAuthOperationTemplate";
 import { OperationValidatorManager } from "../../../../infrestructure/validator/managers/OperationValidatorManager";
 import { Scheduling } from "../../../model/Scheduling";
@@ -26,6 +26,8 @@ import { Service } from "../../../model/Service";
 import { ISchedulingCategoryEngineRepository } from "../../../repository/ISchedulingCategoryEngineRepository";
 import { SchedulingStatusEnum } from "../../../model/enum/SchedulingStatusEnum";
 import { IServiceEngineRepository } from "../../../repository/IServiceEngineRepository";
+import { ISchedulingPossibleStatusEngineRepository } from "../../../repository/ISchedulingPossibleStatusEngineRepository";
+import { SchedulingPossibleStatus } from "../../../model/SchedulingPossibleStatus";
 
 
 export class UpdateSchedulingOperation extends UserAuthOperationTemplate<SchedulingResult, UpdateSchedulingParams>{
@@ -37,7 +39,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
     private readonly citizenEngineRepository: ICitizenEngineRepository
     private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository
     private serviceEngineReository: IServiceEngineRepository
-
+    private readonly schedulingStatusEngineRepository: ISchedulingPossibleStatusEngineRepository;
 
 
     private schedulingEntitySource: Scheduling;
@@ -56,6 +58,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
         this.citizenEngineRepository = container.resolve<ICitizenEngineRepository>('ICitizenEngineRepository')
         this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
         this.serviceEngineReository = container.resolve<IServiceEngineRepository>('IServiceEngineRepository')
+        this.schedulingStatusEngineRepository = container.resolve<ISchedulingPossibleStatusEngineRepository>('ISchedulingPossibleStatusEngineRepository')
     }
 
     protected async doValidateParameters(params: UpdateSchedulingParams): Promise<void> {
@@ -100,7 +103,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
         }
 
-        this.serviceEntity = await SchedulingUtil.VailidateServiceMatchCategory(params.getCategory, params.getServiceCode,
+        this.serviceEntity = await SchedulingUtil.validateServiceMatchCategory(params.getCategory, params.getServiceCode,
             this.schedulingCategoryEngineRepository);
 
 
@@ -146,11 +149,22 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
                 this.schedulingEngineRepository,
                 this.schedulingHistoryEnginerepository)
 
+            this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_ADDED));
+
+
+            console.info("NEW SCHEDULING STATUS CODE", JSON.stringify(newScheduling))
+
+            const possibleStatus: SchedulingPossibleStatus[] = await this.schedulingStatusEngineRepository.findSchedulingNextStatus(newScheduling.status.code);
+
+            console.info("POSSIBLE STATUS", JSON.stringify(possibleStatus))
 
             this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_ADDED));
 
-            result.setStatus = Object.fromEntries(this.message)
-           // result.setScheduling = newScheduling;
+          
+
+
+            result.setScheduling = newScheduling;
+            result.setPossibleStatus = possibleStatus;
 
 
         } catch (error) {
@@ -170,8 +184,6 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
 
         const updatedScheduling = await this.updateSheduling(paramsTarget)
-
-       // await this.updateSchedulingHistory(updatedScheduling, tokenSession)
 
         logger.info("[AddNewSchedulingOperation] Start Sending Email...")
 
@@ -200,7 +212,6 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
         return await this.schedulingEngineRepository.updateScheduling(this.schedulingEntitySource);
 
     }
-
 
     protected initResult(): SchedulingResult {
         return new SchedulingResult()

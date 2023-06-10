@@ -14,8 +14,12 @@ import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
 import logger from "../../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { PageUtil } from "../../util/PageUtil";
+
+
+
+
 export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSchedulingListResult, GetSchedulingListParams>{
 
     private readonly schedulingEngineRepository: ISchedulingEngineRepository;
@@ -187,9 +191,6 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
         const beginSchedulingMinute = await SchedulingTimeUtil.getMinutePart(params.getEndSchedulingTime);
         const endSchedulingMinute = await SchedulingTimeUtil.getMinutePart(params.getEndSchedulingTime);
-
-
-
 
         const page: IPage<Scheduling> = await this.schedulingEngineRepository.findBy(this.beginCreationDate,
             this.endCreationDate,

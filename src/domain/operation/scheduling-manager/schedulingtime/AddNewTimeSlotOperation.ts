@@ -10,11 +10,10 @@ import { SchedulingTimeConfiguration } from "../../../model/SchedulingTimeConfig
 import logger from "../../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
 import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
-import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { IHollydayEngineRepository as IHollydayEngineRepository } from "../../../repository/IHollydayEngineRepository";
 import { Hour } from "../../../model/Hour";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 
 
 
@@ -172,20 +171,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         logger.info("[AddNewTimeSlotOperation] Begin generate hour list for each date...")
 
-        await this.generateHourListBySchedulingDate(params, this.hollydayEngineRepository)
-
-
-        if (!this.hourListAdded) {
-            this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_TIME_NOT_ADDED));
-            result.setStatus = Object.fromEntries(this.message)
-        }
-        else {
-
-            this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_TIME_ADDED));
-
-            result.setStatus = Object.fromEntries(this.message)
-
-        }
+        await this.generateHourListBySchedulingDate(params, this.hollydayEngineRepository);
     }
 
     async generateHourListBySchedulingDate(params: TimeSlotParams, hollydayRepository: IHollydayEngineRepository): Promise<void> {
@@ -239,7 +225,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         while (beginSchedulingDateConverted <= endSchedulingDateConverted) {
             this.dateList.push(new Date(beginSchedulingDateConverted))
-            beginSchedulingDateConverted.setDate(beginSchedulingDateConverted.getDate() + 1); // update beginSchedulingDateConverted adding +1 day
+            beginSchedulingDateConverted.setDate(beginSchedulingDateConverted.getDate() + 1); // update beginSchedulingDateConverted adding 1+ day
         }
 
     }
@@ -262,7 +248,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         await this.createNewSchedulingConfiguration(inputDate, params, hourList)
 
 
-        if (hourList.length != 0) {
+        if (hourList.length !== 0) {
             this.hourListAdded = true;
         }
 
@@ -295,11 +281,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         newSchedulingTime.hours = hours;
 
-        console.log("INPUT DATE TO SAVE:" + inputDate)
-        console.log("HOURS:" + JSON.stringify(hours))
-        console.log("DATA SAVED:" + JSON.stringify(newSchedulingTime))
-
-
+ 
             await this.saveSchedulingTime(newSchedulingTime)
 
 

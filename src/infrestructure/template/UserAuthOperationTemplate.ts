@@ -6,7 +6,7 @@ import { TokenSession } from "../../domain/model/TokenSession";
 import { AuthenticationOperationTemplate } from "./AuthenticationOperationTemplate";
 import logger from "../../infrestructure/config/logger";
 import { Field } from "../exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomMessage";
 import { ResultInfo } from "../response/ResultInfo";
 
 

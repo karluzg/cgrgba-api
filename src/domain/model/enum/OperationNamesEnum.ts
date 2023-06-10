@@ -9,6 +9,9 @@ export enum OperationNamesEnum {
     USER_UPDATE = 4,
     USER_UPDATE_PASSWORD = 5,
     USER_RESET_PASSWORD = 6,
+    USER_GET_BY_EMAIL = 7,
+    USER_GET_BY_ID = 8,
+
 
 
     //SCEHDULING TIME -  101 to 201

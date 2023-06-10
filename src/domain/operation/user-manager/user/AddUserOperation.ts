@@ -7,12 +7,11 @@ import { UserAuthOperationTemplate } from "../../../../infrestructure/template/U
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationValidatorManager } from "../../../../infrestructure/validator/managers/OperationValidatorManager";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { User } from "../../../model/User";
 import { IUserEngineRepository } from "../../../repository/IUserEngineRepository";
 import { container } from 'tsyringe'
 import { PasswordValidator } from "../../../../infrestructure/validator/managers/PasswordValidator";
-import { UserStatusEnum } from "../../../model/enum/UserStatusEnum";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { GeneratePassowordUtil } from "../../util/GeneratePassowordUtil";
 import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
@@ -20,9 +19,7 @@ import { EmailTemplate } from "../../../../infrestructure/template/EmailTemplate
 import { PlataformConfig } from "../../../../infrestructure/config/plataform";
 import { EmailUtils } from "../../util/EmailUtils";
 import { IRoleEngineRepository } from "../../../repository/IRoleEngineRepository";
-import { forEach } from "lodash";
 import { Role } from "../../../model/Role";
-import { NotFoundError } from "routing-controllers";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 
 
@@ -90,15 +87,13 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         user.passwordSalt = await salt;
         user.roles = this.roles
 
-        console.info("WATCH USER TO ADD:" + JSON.stringify(user))
 
         logger.info("[AddUserOperation] creating user in db %", JSON.stringify(user))
         const newUser: User = await this.userRepository.saveUser(user)
         result.setUser = newUser;
 
         this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.USER_ADDED_SUCCESSFULLY));
-        result.setStatus = Object.fromEntries(this.message)
-
+      
 
         const emailMessage = EmailUtils.generateNewUserBody(user.fullName,
             user.email,

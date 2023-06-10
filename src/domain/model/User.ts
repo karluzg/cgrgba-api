@@ -36,21 +36,20 @@ export class User extends EnumOperationTemplate<UserStatusEnum> implements IUser
 
     @IsString()
     @Column({
-        length: 50,
+
         nullable: false
     })
     fullName: string
 
     @IsString()
     @Column({
-        length: 21, unique: false
+        unique: false
     })
     mobileNumber: string
 
     @IsString()
     @Column({
         unique: true,
-        length: 100,
         nullable: false
     })
     email: string

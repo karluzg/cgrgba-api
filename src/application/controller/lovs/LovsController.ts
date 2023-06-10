@@ -9,7 +9,7 @@ import { InvalidParametersException } from "../../../infrestructure/exceptions/I
 import { NotImplementedException } from "../../../infrestructure/exceptions/NotImplementedException";
 import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { CategoryParams } from "../../model/lovs/CategoryParams";
 
 export class Lovs {

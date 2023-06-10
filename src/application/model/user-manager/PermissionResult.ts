@@ -12,6 +12,11 @@ export class PermissionResult extends ResultTemplate {
   @Type(() => Permission)
   public permission: Permission;
 
+  constructor() {
+    super();
+    this.getSuccessfullyMessage();
+  }
+
   public get getPermission(): Permission {
     return this.permission;
   }

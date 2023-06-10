@@ -6,8 +6,7 @@ import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import logger from "../../../../infrestructure/config/logger";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
-import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { GetByEmailOrCodeParams } from "../../../../application/model/GetByEmailOrCodeParams";
 import { RoleResult } from "../../../../application/model/user-manager/RoleResult ";
 import { IRoleEngineRepository } from "../../../repository/IRoleEngineRepository";
@@ -39,8 +38,6 @@ export class GetRoleByNameOperation extends UserAuthOperationTemplate<RoleResult
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetByEmailOrCodeParams, result: RoleResult): Promise<void> {
 
         logger.info("[GetRoleByNameOperation] get role")
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.ROLE_GET_SUCCESSFULLY));
-        result.setStatus = Object.fromEntries(this.message)
 
         result.setRole = this.role;
 

@@ -10,13 +10,13 @@ export class UserLoginResult extends ResultTemplate {
   @IsObject()
   @ValidateNested()
   @Type(() => TokenSession)
-  private token: TokenSession;
+  private session: TokenSession;
 
   public get getToken(): TokenSession {
-    return this.token;
+    return this.session;
   }
 
   public set setToken(value: TokenSession) {
-    this.token = value;
+    this.session = value;
   }
 }

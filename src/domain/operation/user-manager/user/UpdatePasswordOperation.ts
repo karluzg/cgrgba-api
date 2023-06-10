@@ -5,18 +5,16 @@ import { UserAuthOperationTemplate } from "../../../../infrestructure/template/U
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationValidatorManager } from "../../../../infrestructure/validator/managers/OperationValidatorManager";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { User } from "../../../model/User";
 import { IUserEngineRepository } from "../../../repository/IUserEngineRepository";
 import { container } from 'tsyringe'
 import { PasswordValidator } from "../../../../infrestructure/validator/managers/PasswordValidator";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
-import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { UpdatePasswordParams } from "../../../../application/model/user-manager/UpdatePasswordParams";
 import { ITokenEngineRepository } from "../../../repository/ITokenEngineRepository";
 import { UserStatusEnum } from "../../../model/enum/UserStatusEnum";
 import { PlataformConfig } from "../../../../infrestructure/config/plataform";
-
 
 
 export class UpdatePasswordOperation extends UserAuthOperationTemplate<UserResult, UpdatePasswordParams>{
@@ -68,10 +66,6 @@ export class UpdatePasswordOperation extends UserAuthOperationTemplate<UserResul
         const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.ACTIVE,PlataformConfig.security.passwordTry);
 
         result.setUser = newUser;
-
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.USER_PASSWORD_UPDATED_SUCCESSFULLY));
-        result.setStatus = Object.fromEntries(this.message)
-
     }
 
     protected initResult(): UserResult {

@@ -105,6 +105,7 @@ export enum MiddlewareBusinessMessage {
   NEWS_INVALID_FILE_UPLOAD = "Ficheiro ou o formato do ficheiro carregado é invalido",
 
   // CORE MESSAGE
+  SUCCESS_MESSAGE = "Operação realizada com sucesso",
   CORE_METHOD_NOT_IMPLEMENTED = "Método não implementado",
   CORE_OPERTATION_NOT_ALLOWED = "Não tem permissão para executar esta operação",
   CORE_OPERATION_WAS_NOT_FOUND = "Operação não econtrada",

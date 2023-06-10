@@ -17,7 +17,7 @@ import { generatePermisionGroupDescription } from "../model/enum/PermissionGroup
 import { stat } from "fs"
 import { InvalidParametersException } from "../../infrestructure/exceptions/InvalidParametersException"
 import { Field } from "../../infrestructure/exceptions/enum/Field"
-import { MiddlewareBusinessMessage } from "../../infrestructure/response/enum/MiddlewareCustomErrorMessage"
+import { MiddlewareBusinessMessage } from "../../infrestructure/response/enum/MiddlewareCustomMessage"
 import { EnumOperationTemplate } from "../../infrestructure/template/EnumOperationTemplate"
 import { PlataformConfig } from "../../infrestructure/config/plataform"
 

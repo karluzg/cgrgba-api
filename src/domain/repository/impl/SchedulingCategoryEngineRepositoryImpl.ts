@@ -1,3 +1,4 @@
+import { injectable } from "tsyringe";
 import { SchedulingCategory } from "../../model/SchedulingCategory";
 import { ISchedulingCategoryEngineRepository } from "../ISchedulingCategoryEngineRepository";
 
@@ -5,7 +6,7 @@ import { ISchedulingCategoryEngineRepository } from "../ISchedulingCategoryEngin
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const schedulingCategoryEngineRepository = myDataSource.getRepository(SchedulingCategory)
 
-
+@injectable()
 export class SchedulingCategoryEngineRepositoryImpl implements ISchedulingCategoryEngineRepository {
     async findServiceByCategory(categoryCode: string): Promise<SchedulingCategory[]> {
 

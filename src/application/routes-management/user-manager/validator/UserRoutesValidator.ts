@@ -1,6 +1,6 @@
 import { body, param, query, ValidationChain } from 'express-validator';
 import { ParamsValidatorTemplate } from '../../../../infrestructure/template/ParamsValidatorTemplate';
-import { MiddlewareBusinessMessage } from '../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage';
+import { MiddlewareBusinessMessage } from '../../../../infrestructure/response/enum/MiddlewareCustomMessage';
 
 
 

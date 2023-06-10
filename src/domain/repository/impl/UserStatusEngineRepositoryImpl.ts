@@ -1,9 +1,11 @@
+import { injectable } from "tsyringe";
 import { UserStatus } from "../../model/UserStatus";
 import { IUserStatusEngineRepository } from "../IUserStatusEngineRepository";
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const userStatusEngineRepository = myDataSource.getRepository(UserStatus)
 
+@injectable()
 export class UserStatusEngineRepositoryImpl implements IUserStatusEngineRepository {
     async findStatusCode(statusCode: string): Promise<UserStatus> {
 

@@ -6,7 +6,7 @@ import logger from "../config/logger";
 import { UnauthorizedOperationException } from "../exceptions/UnauthorizedOperationException";
 import { container } from 'tsyringe'
 import { TokenSession } from "../../domain/model/TokenSession";
-import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomMessage";
 import { Field } from "../exceptions/enum/Field";
 import { UserStatusEnum } from "../../domain/model/enum/UserStatusEnum";
 import { ForbiddenOperationException } from "../exceptions/ForbiddenOperationException";

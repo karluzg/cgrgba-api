@@ -7,7 +7,7 @@ import { IPermissionEngineRepository } from "../../../domain/repository/IPermiss
 import { UnauthorizedOperationException } from "../../exceptions/UnauthorizedOperationException";
 import logger from "../../config/logger";
 import { TokenSession } from "../../../domain/model/TokenSession";
-import { MiddlewareBusinessMessage } from "../../response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../response/enum/MiddlewareCustomMessage";
 import { Field } from "../../exceptions/enum/Field";
 
 

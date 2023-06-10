@@ -9,7 +9,7 @@ import { ResultTemplate } from "../template/ResultTemplate";
 import { IOperation } from "../interface/IOperation";
 import { ParamsTemplate } from "./../template/ParamsTemplate";
 import { UnsuccessfullOperationException } from "../exceptions/UnsuccessfullOperationException";
-import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomMessage";
 import { Field } from "../exceptions/enum/Field";
 import { NotFoundException } from "../exceptions/NotFoundExcecption";
 

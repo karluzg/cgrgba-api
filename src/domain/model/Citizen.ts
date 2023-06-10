@@ -12,21 +12,18 @@ export class Citizen {
 
 
     @Column({
-        length: 50,
         nullable: false
     })
     fullName: string
 
     @Column({
         unique: true,
-        length: 34,
         nullable: false
     })
     email: string
 
 
     @Column({
-        length: 21,
         nullable: false
     })
     mobileNumber: string

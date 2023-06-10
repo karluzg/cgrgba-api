@@ -8,6 +8,12 @@ export class PageableResult<T> extends ResultTemplate {
   private totalPages: number;
   private currentPage: number;
 
+  constructor() {
+    super();
+    this.getSuccessfullyMessage();
+  }
+
+
   parameterizedType(): any {
     return (this.constructor as any).prototype.constructor.arguments[0];
   }

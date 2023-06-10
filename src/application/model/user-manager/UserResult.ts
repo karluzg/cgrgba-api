@@ -3,21 +3,33 @@ import { IsObject, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import { User } from '../../../domain/model/User';
 import { ResultTemplate } from '../../../infrestructure/template/ResultTemplate';
+import { UserResponse } from '../../../domain/operation/response-builder/user-manager/UserResponse';
+import { UserPossibleStatus } from '../../../domain/model/UserPossibleStatus';
 
 
 export class UserResult extends ResultTemplate {
-  @ApiProperty({ description: 'The user object', type: () => User })
-  @IsObject()
-  @ValidateNested()
-  @Type(() => User)
-  private user: User;
+  private user: UserResponse
+  private nextPossibleStatus: UserPossibleStatus[]
 
-  public get getUser(): User {
+
+  constructor() {
+    super();
+    this.getSuccessfullyMessage();
+  }
+
+  public get getUser(): UserResponse {
     return this.user;
   }
-
-  public set setUser(user: User) {
+  public set setUser(user: UserResponse) {
     this.user = user;
   }
+
+  public get getPossibleStatus(): UserPossibleStatus[] {
+    return this.nextPossibleStatus;
+  }
+  public set setPossibleStatus(possibleStatus: UserPossibleStatus[]) {
+    this.nextPossibleStatus = possibleStatus;
+  }
+
 }
 

@@ -1,11 +1,12 @@
 
+import { injectable } from "tsyringe";
 import { EncryptTemplate } from "../../../infrestructure/template/EncryptTemplate";
 import { Citizen } from "../../model/Citizen";
 import { ICitizenEngineRepository } from "../ICitizenEngineRepository";
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const citizenEngineRepository = myDataSource.getRepository(Citizen)
-
+@injectable()
 export class CitizenEngineRepositoryImpl implements ICitizenEngineRepository {
 
 

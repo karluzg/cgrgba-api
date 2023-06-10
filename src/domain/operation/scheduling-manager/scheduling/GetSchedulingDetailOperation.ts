@@ -3,17 +3,20 @@ import { GetSchedulingDetailParams } from "../../../../application/model/schedul
 import container from "../../../../infrestructure/config/injection";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { UserAuthOperationTemplate } from "../../../../infrestructure/template/UserAuthOperationTemplate";
 import { OperationValidatorManager } from "../../../../infrestructure/validator/managers/OperationValidatorManager";
 import { Scheduling } from "../../../model/Scheduling";
+import { SchedulingPossibleStatus } from "../../../model/SchedulingPossibleStatus";
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngineRepository";
+import { ISchedulingPossibleStatusEngineRepository } from "../../../repository/ISchedulingPossibleStatusEngineRepository";
 
 export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<SchedulingResult, GetSchedulingDetailParams> {
 
     private readonly schedulingEngineRepository: ISchedulingEngineRepository;
+    private readonly schedulingStatusEngineRepository: ISchedulingPossibleStatusEngineRepository;
 
     private schedulingEntity: Scheduling;
 
@@ -21,6 +24,7 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
     constructor() {
         super(OperationNamesEnum.SCHEDULING_DETAIL, OperationValidatorManager.getSingletonInstance())
         this.schedulingEngineRepository = container.resolve<ISchedulingEngineRepository>('ISchedulingEngineRepository')
+        this.schedulingStatusEngineRepository = container.resolve<ISchedulingPossibleStatusEngineRepository>('ISchedulingPossibleStatusEngineRepository')
 
     }
 
@@ -41,8 +45,9 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
 
         result.setScheduling = this.schedulingEntity
 
-        const schedulingPossibleStatus =this.schedulingEntity.status.nextStatus
-        result.setPossibleStatus = schedulingPossibleStatus
+        const possibleStatus: SchedulingPossibleStatus[] = await this.schedulingStatusEngineRepository.findSchedulingNextStatus(this.schedulingEntity.status.code);
+
+        result.setPossibleStatus = possibleStatus
 
     }
     protected initResult(): SchedulingResult {

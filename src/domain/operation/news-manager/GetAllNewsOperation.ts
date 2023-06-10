@@ -13,7 +13,7 @@ import logger from "../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { News } from "../../model/News";
 import { ResultInfo } from "../../../infrestructure/response/ResultInfo";
 import { NewsResultList } from "../../../application/model/news-manager/NewsResultList";
@@ -60,8 +60,8 @@ export class GetAllNewsOperation extends UserAuthOperationTemplate<NewsResultLis
 
         Object.assign(result,newNews);
 
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.NEWS_GET_ALL_SUCCESSFULLY));
-        result.setStatus = Object.fromEntries(this.message)
+        //this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.NEWS_GET_ALL_SUCCESSFULLY));
+       // result.setStatus = Object.fromEntries(this.message)
 
     }
 

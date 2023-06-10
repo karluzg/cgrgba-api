@@ -1,34 +1,20 @@
 
-import { UserParams } from "../../../../application/model/user-manager/UserParams";
-import { UserResult } from "../../../../application/model/user-manager/UserResult";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import logger from "../../../../infrestructure/config/logger";
 import { UserAuthOperationTemplate } from "../../../../infrestructure/template/UserAuthOperationTemplate";
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationValidatorManager } from "../../../../infrestructure/validator/managers/OperationValidatorManager";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
-import { User } from "../../../model/User";
-import { IUserEngineRepository } from "../../../repository/IUserEngineRepository";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { container } from 'tsyringe'
-import { PasswordValidator } from "../../../../infrestructure/validator/managers/PasswordValidator";
-import { UserStatusEnum } from "../../../model/enum/UserStatusEnum";
-import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
-import { GeneratePassowordUtil } from "../../util/GeneratePassowordUtil";
-import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
-import { EmailTemplate } from "../../../../infrestructure/template/EmailTemplate";
-import { PlataformConfig } from "../../../../infrestructure/config/plataform";
-import { EmailUtils } from "../../util/EmailUtils";
+import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";;
 import { IRoleEngineRepository } from "../../../repository/IRoleEngineRepository";
-import { forEach } from "lodash";
 import { Role } from "../../../model/Role";
-import { NotFoundError } from "routing-controllers";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { RoleResult } from "../../../../application/model/user-manager/RoleResult ";
 import { RoleParams } from "../../../../application/model/user-manager/RoleParams";
 import { IPermissionEngineRepository } from "../../../repository/IPermissionEngineRepository";
 import { Permission } from "../../../model/Permission";
-import e from "express";
 
 
 
@@ -90,11 +76,6 @@ export class AddRoleOperation extends UserAuthOperationTemplate<RoleResult, Role
             console.log(error)
         }
      
-    
-
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.ROLE_ADDED_SUCCESSFULLY));
-        result.setStatus = Object.fromEntries(this.message)
-
     }
 
     protected initResult(): RoleResult {

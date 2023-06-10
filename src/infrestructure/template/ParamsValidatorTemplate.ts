@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { validationResult } from 'express-validator';
 import { InvalidParametersException } from "../exceptions/InvalidParametersException";
 import { Field } from "../exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomMessage";
 
 export class ParamsValidatorTemplate {
 

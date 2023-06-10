@@ -3,7 +3,7 @@ import logger from "../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 
 
 export class AuthValidator{

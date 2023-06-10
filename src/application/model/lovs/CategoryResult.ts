@@ -5,6 +5,11 @@ export class CategoryResult extends ResultTemplate {
 
     private services: Service[]
 
+    constructor() {
+        super();
+        this.getSuccessfullyMessage();
+    }
+
 
     public get getServices(): Service[] {
         return this.services;

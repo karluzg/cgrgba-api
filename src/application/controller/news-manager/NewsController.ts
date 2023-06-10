@@ -12,7 +12,7 @@ import { UnsuccessfullOperationException } from "../../../infrestructure/excepti
 import { NewsParams } from "../../model/news-manager/NewsParams";
 import { INewsEngine } from "../../../domain/service/INewsEngine";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { NewsFileParams } from "../../model/news-manager/NewsFileParams";
 import { PageAndSizeParams } from "../../model/PageAndSizeParams";
 

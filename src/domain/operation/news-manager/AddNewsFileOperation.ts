@@ -13,7 +13,7 @@ import logger from "../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { News } from "../../model/News";
 import { ResultInfo } from "../../../infrestructure/response/ResultInfo";
 import { NewsFileParams } from "../../../application/model/news-manager/NewsFileParams";
@@ -50,8 +50,8 @@ export class AddNewsFileOperation extends UserAuthOperationTemplate<NewsResult, 
         const newNews = await this.newsRepository.uploadImageNews(params.id,params.filepath);
         result.setNews = newNews;
 
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.NEWS_FILE_ADD_SUCCESSFULLY));
-        result.setStatus = Object.fromEntries(this.message)
+        //this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.NEWS_FILE_ADD_SUCCESSFULLY));
+       // result.setStatus = Object.fromEntries(this.message)
 
     }
 

@@ -11,6 +11,12 @@ export class NewsResult extends ResultTemplate {
     @Type(() => News)
     private news: News;
   
+  constructor() {
+    super();
+    this.getSuccessfullyMessage();
+  }
+
+
     public get getNews(): News {
       return this.news;
     }

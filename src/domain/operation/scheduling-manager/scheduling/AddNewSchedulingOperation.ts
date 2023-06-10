@@ -4,7 +4,7 @@ import { SchedulingResult } from "../../../../application/model/scheduling-manag
 import logger from "../../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { OperationTemplate } from "../../../../infrestructure/template/OperationTemplate";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import { IHollydayEngineRepository as IHollydayEngineRepository } from "../../../repository/IHollydayEngineRepository";
@@ -16,16 +16,12 @@ import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngi
 import Semaphore from "semaphore-async-await";
 import { Citizen } from "../../../model/Citizen";
 import { ICitizenEngineRepository } from "../../../repository/ICitizenEngineRepository";
-import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
-import { SchedulingHistory } from "../../../model/SchedulingHistory";
 import { SchedulingUtil } from "../../util/SchedulingUtil";
 import { ErrorExceptionClass } from "../../../../infrestructure/exceptions/ErrorExceptionClass";
 import { Service } from "../../../model/Service";
 import { ISchedulingCategoryEngineRepository } from "../../../repository/ISchedulingCategoryEngineRepository";
-import { SchedulingStatus } from "../../../model/SchedulingStatus";
-import { tr } from "date-fns/locale";
 import { UnsuccessfullOperationException } from "../../../../infrestructure/exceptions/UnsuccessfullOperationException";
-import { throws } from "assert";
+import { SchedulingBuilder } from "../../response-builder/scheduling-manager/SchedulingBuilder";
 
 export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResult, SchedulingParams>{
 
@@ -35,7 +31,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
     private readonly hollydayEngineRepository: IHollydayEngineRepository;
     private readonly schedulingHistoryEnginerepository: ISchedulingHistoryEngineRepository;
     private readonly citizenEngineRepository: ICitizenEngineRepository;
-    private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository
+    private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository;
 
 
     private semaphore: Semaphore;
@@ -54,6 +50,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         this.citizenEngineRepository = container.resolve<ICitizenEngineRepository>('ICitizenEngineRepository')
         this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
 
+
     }
 
 
@@ -62,7 +59,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
 
         logger.info("[AddNewSchedulingOperation] Begin of strict validation scheduling parameteres...")
 
-        this.serviceEntity = await SchedulingUtil.VailidateServiceMatchCategory(params.getCategoryCode, params.getserviceCode,
+        this.serviceEntity = await SchedulingUtil.validateServiceMatchCategory(params.getCategoryCode, params.getserviceCode,
             this.schedulingCategoryEngineRepository);
 
 
@@ -107,23 +104,16 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
                     MiddlewareBusinessMessage.SCHEDULING_HOUR_ALREADY_CHOSED_BY_ANTOTHER_PERSON)
             }
 
-            const newScheduling: Scheduling = await this.performScheduling(params);
+            let newScheduling: Scheduling = await this.performScheduling(params);
 
             await SchedulingUtil.isTobeBlockDateAndHour(newScheduling,
                 this.totalAvailableCollaborators,
                 this.schedulingEngineRepository,
                 this.schedulingHistoryEnginerepository)
 
-            const possibleStatus: SchedulingStatus[] = newScheduling.status.nextStatus;
-
-            this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SCHEDULING_ADDED));
-
-            result.setStatus = Object.fromEntries(this.message)
-
-
-            result.setScheduling = newScheduling;
-            result.setPossibleStatus = possibleStatus;
-
+            const schedulingResponse = await SchedulingBuilder.buildSchedulingResponse(newScheduling);
+            console.info("NEW SCHEDULING WITHOU ENUM", JSON.stringify(schedulingResponse))
+            result.setScheduling = schedulingResponse;
 
 
         } catch (error) {
@@ -147,7 +137,6 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         const citizen = await this.createAdhocCitizenInfo(params.getCitizenFullName, params.getCitizenEmail, params.getCitizenMobileNumber)
 
         const newScheduling = await this.createScheduling(params, citizen)
-
 
 
         logger.info("[AddNewSchedulingOperation] Start Sending Email...")
@@ -202,7 +191,6 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         }
 
         logger.info("[AddNewSchedulingOperation] Begin create and add new citizen in Data Base...")
-
 
 
         const newCitizen = new Citizen();

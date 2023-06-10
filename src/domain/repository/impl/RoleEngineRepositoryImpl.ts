@@ -7,7 +7,7 @@ import { Role } from "../../model/Role";
 import { Permission } from '../../model/Permission';
 import { NotFoundException as NotFoundException } from '../../../infrestructure/exceptions/NotFoundExcecption';
 import { Field } from '../../../infrestructure/exceptions/enum/Field';
-import { MiddlewareBusinessMessage } from '../../../infrestructure/response/enum/MiddlewareCustomErrorMessage';
+import { MiddlewareBusinessMessage } from '../../../infrestructure/response/enum/MiddlewareCustomMessage';
 import { IPage } from '../../../infrestructure/pageable-manager/IPage';
 import { PageImpl } from '../../../infrestructure/pageable-manager/PageImpl';
 

@@ -3,7 +3,7 @@ import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundEx
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { IPage } from "../../../infrestructure/pageable-manager/IPage";
 import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { Permission } from "../../model/Permission";
 import { Role } from "../../model/Role";
 import { User } from "../../model/User";

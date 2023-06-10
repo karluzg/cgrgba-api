@@ -4,10 +4,9 @@ import { UserAuthOperationTemplate } from "../../../../infrestructure/template/U
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationValidatorManager } from "../../../../infrestructure/validator/managers/OperationValidatorManager";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { container } from 'tsyringe'
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
-import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { IPermissionEngineRepository } from "../../../repository/IPermissionEngineRepository";
 import { Permission } from "../../../model/Permission";
@@ -67,12 +66,6 @@ export class AddPermissionOperation extends UserAuthOperationTemplate<Permission
 
         const newPermisson: Permission = await this.permissionRepository.savePermission(permission)
         result.setPermission = newPermisson;
-
-
-
-
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.PERMISSION_ADDED_SUCCESSFULLY));
-        result.setStatus = Object.fromEntries(this.message)
 
     }
 

@@ -5,7 +5,7 @@ import { SchedulingStatusEnum } from "../../model/enum/SchedulingStatusEnum";
 import logger from "../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { SchedulingTimeUtil } from "./SchedulingTimeUtil";
 import { IHollydayEngineRepository } from "../../repository/IHollydayEngineRepository";
 import { ISchedulingTimeEngineRepository } from "../../repository/ISchedulingTimeEngineRepository";
@@ -18,6 +18,7 @@ import { EmailTemplate } from "../../../infrestructure/template/EmailTemplate";
 import { ISchedulingCategoryEngineRepository } from "../../repository/ISchedulingCategoryEngineRepository";
 import { SchedulingCategory } from "../../model/SchedulingCategory";
 import { Service } from "../../model/Service";
+import { EncryptTemplate } from "../../../infrestructure/template/EncryptTemplate";
 
 
 
@@ -29,12 +30,15 @@ export class SchedulingUtil {
         citizenEmail: string,
         schedulingEngineRepository: ISchedulingEngineRepository): Promise<boolean> {
 
+
         logger.info("[AddNewSchedulingOperation] Searching citizen scheduling in the database...");
 
-        const schedulings: Scheduling[] = await schedulingEngineRepository.findCitizenSchedulingInfo(citizenEmail);
+        const email = EncryptTemplate.encryptColumn(citizenEmail)
+
+        const schedulings: Scheduling[] = await schedulingEngineRepository.findCitizenSchedulingInfo(email);
 
         logger.info("[SchedulingUtil] Found scheduling list: ", schedulings);
-
+        console.info("[SchedulingUtil] Found scheduling list: ", schedulings);
 
 
         if (schedulings.length === 0) {
@@ -108,8 +112,6 @@ export class SchedulingUtil {
         return schedulingDB.service.name != serviceParams
             && schedulingDB.date == schedulingDateParams
             && schedulingDB.chosenHour == chosenHourParams;
-
-
     }
 
 
@@ -133,7 +135,7 @@ export class SchedulingUtil {
 
     }
 
-    public static async isTobeBlockDateAndHour(scheduling: Scheduling, 
+    public static async isTobeBlockDateAndHour(scheduling: Scheduling,
         availableCollaboratorNumber: number,
         schedulingHistoryEngineRepository: ISchedulingEngineRepository,
         schedulingHistoryEngineRespository: ISchedulingHistoryEngineRepository): Promise<void> {
@@ -187,7 +189,7 @@ export class SchedulingUtil {
         await emailTemplate.sendEmail(mailOption);
     }
 
-    public static async VailidateServiceMatchCategory(categoryInput: string, serviceCodeInput: string,
+    public static async validateServiceMatchCategory(categoryInput: string, serviceCodeInput: string,
 
 
         schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository): Promise<Service> {
@@ -291,12 +293,10 @@ export class SchedulingUtil {
 
         logger.info("[AddNewSchedulingOperation] Citizen was found:", citizen);
 
-        if (citizen) {
-            logger.info("[AddNewSchedulingOperation] Begin validating scheduling features for citizen...");
 
-            console.info("SCHEDULING DATE: " + schedulingDate);
-            console.info("Hour: " + schedulingHour);
-            console.info("Service: " + serviceCodeInput);
+        if (citizen) {
+
+            logger.info("[AddNewSchedulingOperation] Begin validating scheduling features for citizen...");
 
             const isNotValidSchedulingFeature = await SchedulingUtil.validateCitizenSchedulingFeature(
                 schedulingDate,

@@ -7,12 +7,13 @@ import { ISchedulingTimeEngineRepository } from "../../../repository/IScheduling
 import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { IHollydayEngineRepository } from "../../../repository/IHollydayEngineRepository";
 import { ISchedulingHistoryEngineRepository } from "../../../repository/ISchedulingHistoryEngineRespository";
 import logger from "../../../../infrestructure/config/logger";
 import { Hour } from "../../../model/Hour";
 import { OperationTemplate } from "../../../../infrestructure/template/OperationTemplate";
+
 
 
 export class GetTimeSlotListOperation extends OperationTemplate<TimeSlotResult, TimeSlotListParams>{
@@ -85,6 +86,7 @@ export class GetTimeSlotListOperation extends OperationTemplate<TimeSlotResult, 
 
         logger.info("[AddNewTimeSlotOperation][doUserAuthExecuted] Begin building available hour list");
 
+
         const hourlist = await this.buildAvailableHourList(params.getBeginSchedulingDate)
         result.setTimeList = hourlist;
 
@@ -93,30 +95,29 @@ export class GetTimeSlotListOperation extends OperationTemplate<TimeSlotResult, 
     }
 
     private async buildAvailableHourList(schedulingDate: string): Promise<Hour[]> {
-
-
-        const hourListoutPut: Hour[] = [];
-
+        const hourListOutput: Hour[] = [];
+      
+      
         for (const schedulingTime of this.schedulingTimeEntity) {
-            const hours = schedulingTime.hours;
-
-            for (const hour of hours) {
-
-                const value: string = hour.value;
-
-                const isDateAndHourAvailable = await this.schedulingHistoryEngineRepository
-                    .checkIfSchedulingHistoryExist(schedulingDate, value);
-
+          const hours = schedulingTime.hours;
+      
+          for (const hour of hours) {
+            const value: string = hour.value;
+      
+            const isDateAndHourAvailable = await this.schedulingHistoryEngineRepository.checkIfSchedulingHistoryExist(
+              schedulingDate,
+              value
+            );
+      
             if (!isDateAndHourAvailable) {
-                hourListoutPut.push(hour);
+              hourListOutput.push(hour);
             }
-            }
+          }
         }
-
-        return hourListoutPut;
-
-
-    }
+      
+        return hourListOutput;
+      }
+      
 
     protected initResult(): TimeSlotResult {
         return new TimeSlotResult();

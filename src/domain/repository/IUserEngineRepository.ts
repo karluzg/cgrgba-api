@@ -11,5 +11,7 @@ export interface IUserEngineRepository{
     updateUser(id: number, updateUserData: User): Promise<User>
     findUserByEmail(userEmail: string): Promise<User>
     updateUserPassword(userId: number,passwordHash: string, passwordSalt: string, status:UserStatusEnum, passwordtry:number): Promise<User>
-    findAllNews(page: number, size: number, status?: UserStatus, orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<User>>
+    findAllUsers(page: number, size: number, status?: UserStatus, orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<User>>
+
+
 }

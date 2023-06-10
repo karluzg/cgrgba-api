@@ -15,6 +15,11 @@ export class TimeSlotResult extends ResultTemplate {
    @Type(() => Hour)
    private timeList: Hour[];
 
+   constructor() {
+      super();
+      this.getSuccessfullyMessage();
+   }
+
    public get getTimeList(): Hour[] {
       return this.timeList;
    }

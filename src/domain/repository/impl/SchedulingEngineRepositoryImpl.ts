@@ -38,7 +38,7 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
         return schedulingEngineRepository.createQueryBuilder('scheduling')
             .leftJoinAndSelect('scheduling.citizen', 'citizen')
             .leftJoinAndSelect('scheduling.service', 'service')
-            .leftJoinAndSelect('scheduling.category', 'category')
+            .leftJoinAndSelect('service.category', 'category')
             .leftJoinAndSelect('scheduling.status', 'status')
             .where('scheduling.id = :schedulingId', { schedulingId })
             .getOne();

@@ -6,22 +6,27 @@ import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import logger from "../../../../infrestructure/config/logger";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { IUserEngineRepository } from "../../../repository/IUserEngineRepository";
 import { User } from "../../../model/User";
 import { GetByIdParams } from "../../../../application/model/GetByIdParams";
 import { UserResult } from "../../../../application/model/user-manager/UserResult";
+import { IUserPossibleStatusEngneRepository } from "../../../repository/IUserPossibleStatusEngineRepository";
+import { UserPossibleStatus } from "../../../model/UserPossibleStatus";
+import { UserBuilder } from "../../response-builder/user-manager/UserBuilder";
 
 
 export class GetUserByIdOperation extends UserAuthOperationTemplate<UserResult, GetByIdParams>{
 
-    private userRepository: IUserEngineRepository;
+    private readonly userRepository: IUserEngineRepository;
+    private readonly userPossiblestatusEngineRepository: IUserPossibleStatusEngneRepository;
     private user: User;
 
     constructor() {
         super(OperationNamesEnum.USER_CREATE, OperationValidatorManager.getSingletonInstance())
         this.userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
+        this.userPossiblestatusEngineRepository = container.resolve<IUserPossibleStatusEngneRepository>("IUserPossibleStatusEngneRepository")
 
     }
 
@@ -37,10 +42,12 @@ export class GetUserByIdOperation extends UserAuthOperationTemplate<UserResult, 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetByIdParams, result: UserResult): Promise<void> {
 
         logger.info("[GetUserByIdIOperation] get users")
-        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.USER_GET_SUCCESSFULLY));
-        result.setStatus = Object.fromEntries(this.message)
+        this.message.set(Field.INFO, new ResultInfo(MiddlewareBusinessMessage.SUCCESS_MESSAGE));
 
-        result.setUser = this.user;
+        const possibleStatus: UserPossibleStatus[] = await this.userPossiblestatusEngineRepository.findUserNextStatus(this.user.status.code);
+        const newUserResponse = await UserBuilder.buildUserResponse(this.user);
+        result.setUser = newUserResponse;
+        result.setPossibleStatus = possibleStatus;
 
     }
 

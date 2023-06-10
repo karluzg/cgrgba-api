@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { OperationExecption } from './OperatonException'
 import { HttpCodes } from '../response/enum/HttpCode'
-import { MiddlewareBusinessMessage } from '../response/enum/MiddlewareCustomErrorMessage'
+import { MiddlewareBusinessMessage } from '../response/enum/MiddlewareCustomMessage'
 import { ResultInfo } from '../response/ResultInfo'
 
 export const MiddllewareError = (error: Error & Partial<OperationExecption>,
@@ -11,13 +11,13 @@ export const MiddllewareError = (error: Error & Partial<OperationExecption>,
 
     const statusCode = error.statusCode ?? HttpCodes.INTERNAL_SERVER_ERROR
 
-    const errorMessagem = error.statusCode ? error.message : MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR;
+    const errorMessage = error.statusCode ? error.message : MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR;
 
     const details= error.details;
 
     const statusMap: Map<string, ResultInfo> = new Map();
 
-    statusMap.set(error.field, new ResultInfo(errorMessagem, details));
+    statusMap.set(error.field, new ResultInfo(errorMessage, details));
 
     let errorMessages = Object.fromEntries(statusMap)
 

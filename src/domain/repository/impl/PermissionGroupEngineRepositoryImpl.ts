@@ -5,7 +5,7 @@ import { IPermissionGroupEngineRepository } from "../IPermissionGroupEngineRepos
 import { PermissionGroup } from "../../model/PermissionGroup";
 import { NotFoundException as NotFoundException } from '../../../infrestructure/exceptions/NotFoundExcecption';
 import { Field } from '../../../infrestructure/exceptions/enum/Field';
-import { MiddlewareBusinessMessage } from '../../../infrestructure/response/enum/MiddlewareCustomErrorMessage';
+import { MiddlewareBusinessMessage } from '../../../infrestructure/response/enum/MiddlewareCustomMessage';
 import { PageImpl } from '../../../infrestructure/pageable-manager/PageImpl';
 import { IPage } from '../../../infrestructure/pageable-manager/IPage';
 

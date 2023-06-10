@@ -1,6 +1,6 @@
 import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { NewsCategory } from "../../model/NewsCategory";
 import { injectable } from 'tsyringe'
 import { INewsCategoryEngineRepository } from "../INewsCategoryEngineRepository";

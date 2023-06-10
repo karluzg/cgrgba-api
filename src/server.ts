@@ -54,8 +54,8 @@ myDataSource.initialize().then(() => {
 
     app.listen(PlataformConfig.server.port);
 
-    console.info("Data Source has been initialized!")
-    logger.info("Data Source has been initialized!");
+    console.info("Server started on port", PlataformConfig.server.port)
+    logger.info("Server started on port", PlataformConfig.server.port);
 
 }).catch((error) => {
     logger.error("Error during Data Source initialization:" + "", error)

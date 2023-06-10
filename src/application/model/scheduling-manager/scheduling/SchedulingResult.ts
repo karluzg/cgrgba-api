@@ -1,33 +1,31 @@
-import { Type } from "class-transformer";
-import { IsObject, ValidateNested } from "class-validator";
-import { Scheduling } from "../../../../domain/model/Scheduling";
-import { SchedulingStatus } from "../../../../domain/model/SchedulingStatus";
-import { User } from "../../../../domain/model/User";
+
 import { ResultTemplate } from "../../../../infrestructure/template/ResultTemplate";
+import { SchedulingPossibleStatus } from "../../../../domain/model/SchedulingPossibleStatus";
+import { SchedulingResponse } from "../../../../domain/operation/response-builder/scheduling-manager/SchedulingResponse";
 
 export class SchedulingResult extends ResultTemplate {
-    @IsObject()
-    @ValidateNested()
-    @Type(() => Scheduling)
-    private scheduling: Scheduling;
-    @IsObject()
-    @ValidateNested()
-    @Type(() => SchedulingStatus)
-    private possibleStatus: SchedulingStatus[]
 
-    public get getScheduling(): Scheduling {
+    private scheduling: SchedulingResponse;
+
+    constructor() {
+        super();
+        this.getSuccessfullyMessage();
+    }
+
+    private nextPossibleStatus: SchedulingPossibleStatus[]
+
+    public get getScheduling(): SchedulingResponse {
         return this.scheduling;
     }
-    public set setScheduling(scheduling: Scheduling) {
+    public set setScheduling(scheduling: SchedulingResponse) {
         this.scheduling = scheduling;
     }
 
-    public get getPossibleStatus(): SchedulingStatus[] {
-        return this.possibleStatus;
+    public get getPossibleStatus(): SchedulingPossibleStatus[] {
+        return this.nextPossibleStatus;
     }
-    public set setPossibleStatus(possibleStatus: SchedulingStatus[]) {
-        this.possibleStatus = possibleStatus;
+    public set setPossibleStatus(possibleStatus: SchedulingPossibleStatus[]) {
+        this.nextPossibleStatus = possibleStatus;
     }
-
 
 }

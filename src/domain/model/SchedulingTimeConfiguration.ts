@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
 import { Hour } from "./Hour"
+import { Exclude } from "class-transformer"
 
 
 
@@ -34,7 +35,7 @@ export class SchedulingTimeConfiguration {
     @Column({ type: 'integer', nullable: false })
     availableCollaboratorNumber: number
 
-
+    @Exclude()
     @OneToMany(() => Hour, hour => hour.schedulingTimeConfiguration, { cascade: true })
      hours: Hour[];
 

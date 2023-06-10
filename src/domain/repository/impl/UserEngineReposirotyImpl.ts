@@ -2,7 +2,7 @@ import { IUserEngineRepository } from "../IUserEngineRepository";
 import { injectable } from 'tsyringe'
 import { User } from "../../model/User";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { UserStatusEnum } from "../../model/enum/UserStatusEnum";
 import { EncryptTemplate } from "../../../infrestructure/template/EncryptTemplate";
@@ -27,7 +27,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
             return await userRepository.save(user);
       }
 
-      async findAllNews(page: number, size: number, status?: UserStatus, orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<User>> {
+      async findAllUsers(page: number, size: number, status?: UserStatus, orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<User>> {
             const skipCount = (page - 1) * size;
 
             let queryBuilder = userRepository.createQueryBuilder('user')
@@ -36,8 +36,11 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
 
             if (status) {
                   const code = status.code
-                  queryBuilder = queryBuilder.leftJoinAndSelect("user.status", "status")
+
+                  if (status.description !== UserStatusEnum.REMOVED) {
+                        queryBuilder = queryBuilder.leftJoinAndSelect("user.status", "status")
                         .where('status.code = :code', { code });
+                  }      
             }
 
             if (orderColumn && direction) {
@@ -101,7 +104,6 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
 
             throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
       }
-
 
 
 }

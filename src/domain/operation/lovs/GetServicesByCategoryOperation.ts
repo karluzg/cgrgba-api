@@ -9,7 +9,7 @@ import { OperationNamesEnum } from "../../model/enum/OperationNamesEnum";
 import { SchedulingCategory } from "../../model/SchedulingCategory";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomErrorMessage";
+import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 
 export class GetServicesByCategoryOperation extends OperationTemplate<CategoryResult, CategoryParams> {
 

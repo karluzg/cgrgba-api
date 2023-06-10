@@ -1,4 +1,4 @@
-import { CipherCCMTypes, createCipher, createCipheriv, createDecipher, createDecipheriv, randomBytes } from 'crypto';
+import { createCipheriv, createDecipheriv } from 'crypto';
 import { PlataformConfig } from '../config/plataform';
 
 
