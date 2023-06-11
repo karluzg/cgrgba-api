@@ -16,18 +16,25 @@ import { v4 as uuidv4 } from 'uuid';
 import { ForbiddenOperationException } from "../../../../infrestructure/exceptions/ForbiddenOperationException";
 import { PlataformConfig } from "../../../../infrestructure/config/plataform";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
+import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
+import { TokenResponseBuilder } from "../../response-builder/user-manager/TokenResponseBuilder";
+import { IUserPossibleStatusEngneRepository } from "../../../repository/IUserPossibleStatusEngineRepository";
+import { UserStatus } from "../../../model/UserStatus";
+import { UserPossibleStatus } from "../../../model/UserPossibleStatus";
 
 
 export class LoginOperation extends OperationTemplate<UserLoginResult, UserLoginParams>{
 
     private userRepository: IUserEngineRepository;
     private tokenRepository: ITokenEngineRepository;
+    private userPossiblestatusRepository: IUserPossibleStatusEngneRepository;
     private user: User;
 
     constructor() {
         super(OperationNamesEnum.SESSION_LOGIN)
         this.userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
         this.tokenRepository = container.resolve<ITokenEngineRepository>("ITokenEngineRepository")
+        this.userPossiblestatusRepository = container.resolve<IUserPossibleStatusEngneRepository>("IUserPossibleStatusEngneRepository")
     }
 
     protected async doValidateParameters(params: UserLoginParams): Promise<void> {
@@ -56,25 +63,44 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
     protected async doExecute(params: UserLoginParams, result: UserLoginResult) {
 
 
-        const token = new TokenSession()
-        token.token = uuidv4().toString()
-        token.user = this.user;
+        let newTokenSession = await this.buildTokenSession()
+
+        const newTokenResponse = await TokenResponseBuilder.buildTokenResponse(newTokenSession)
+
+        const nextPossibleStatus: UserPossibleStatus[] = await this.userPossiblestatusRepository
+            .findUserNextStatus(newTokenSession.user.status.code);
+
+        result.setToken = newTokenResponse;
+        result.setnextPossibleStatus = nextPossibleStatus
+
+        this.user.passwordTry = PlataformConfig.security.passwordTry
+        await this.userRepository.saveUser(this.user)
+
+    }
+
+    private async buildTokenSession(): Promise<TokenSession> {
+        const newTokenSession = new TokenSession()
+        newTokenSession.token = uuidv4().toString()
+        newTokenSession.user = this.user;
 
         const creationDate = new Date();
         const expireDate = new Date();
 
         expireDate.setHours(creationDate.getHours() + 24);
-        token.expireDate = expireDate;
+        newTokenSession.expireDate = expireDate;
+        newTokenSession.expireDateInMilliseconds = expireDate.getTime();
 
+        console.info("TOKEN IN MILLISECONDS", newTokenSession.expireDateInMilliseconds)
 
-        logger.info("[LoginOperation]  token expire in 24 hours %s", JSON.stringify(token.user.email))
-        const newTokenSession = await this.tokenRepository.saveTokenSession(token)
+        await this.saveTokenSession(newTokenSession);
 
-        result.setToken = newTokenSession;
+        return newTokenSession
+    }
 
-        this.user.passwordTry = PlataformConfig.security.passwordTry
-        await this.userRepository.saveUser(this.user)
+    private async saveTokenSession(newTokenSession: TokenSession): Promise<void> {
 
+        logger.info("[LoginOperation]  Saving token session...")
+        await this.tokenRepository.saveTokenSession(newTokenSession)
     }
 
     protected initResult(): UserLoginResult {

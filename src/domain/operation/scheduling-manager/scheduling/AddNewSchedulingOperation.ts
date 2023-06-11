@@ -158,8 +158,9 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         newScheduling.service = this.serviceEntity;
         newScheduling.date = params.getSchedulingDate.trim();
         newScheduling.chosenHour = params.getSchedulingHour.trim();
-        newScheduling.hour = await SchedulingTimeUtil.getTimePart(params.getSchedulingHour)
-        newScheduling.minute = await SchedulingTimeUtil.getMinutePart(params.getSchedulingHour)
+        newScheduling.year = new Date(newScheduling.date).getFullYear();
+        newScheduling.month = new Date(newScheduling.date).getMonth()+1;
+        newScheduling.day = new Date(newScheduling.date).getDate();
 
 
         logger.info("[AddNewSchedulingOperation] Saving user scheduling in Data Base: " + JSON.stringify(newScheduling))

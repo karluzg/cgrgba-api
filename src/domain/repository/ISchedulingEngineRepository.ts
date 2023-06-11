@@ -1,6 +1,8 @@
 import { IPage } from "../../infrestructure/pageable-manager/IPage"
 import { DirectionEnum } from "../../infrestructure/pageable-manager/enum/DirectionEnum"
 import { Scheduling } from "../model/Scheduling"
+import { CategoryEnum } from "../model/enum/CategoryEnum"
+import { ServiceEnum } from "../model/enum/ServiceEnum"
 
 export interface ISchedulingEngineRepository {
 
@@ -8,6 +10,8 @@ export interface ISchedulingEngineRepository {
     saveScheduling(scheduling: Scheduling): Promise<Scheduling>
     findBy(beginSchedulingDate: Date,
         endSchedulingDate: Date,
+        categoryCode: CategoryEnum,
+        serviceCode: ServiceEnum,
         schedulingStatus: string,
         orderColumn: string,
         direction: DirectionEnum,
@@ -17,5 +21,6 @@ export interface ISchedulingEngineRepository {
 
     findSchedulingById(schedulingId: number): Promise<Scheduling>
     findBeginDateAndHour(schedulingDate: string, chosenHour: string): Promise<Scheduling[]>
+    findSchedulingCurrentDate(schedulingCurrentDate:string):Promise<Scheduling[]>
 
 }

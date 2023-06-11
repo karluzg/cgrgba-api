@@ -1,7 +1,6 @@
 
 import { DirectionEnum } from "../../../infrestructure/pageable-manager/enum/DirectionEnum";
 import { convertToDirectionEnum } from "../../../infrestructure/pageable-manager/enum/DirectionEnum";
-import { SchedulingStatusEnum } from "../../model/enum/SchedulingStatusEnum";
 
 export class PageUtil {
 
@@ -25,7 +24,7 @@ export class PageUtil {
             return schedulingStatus;
 
         }
-        return SchedulingStatusEnum.FOR_ANSWERING
+        return "FOR_ANSWERING" 
     }
 
     public static async getDefaultDirection(direction: DirectionEnum): Promise<DirectionEnum> {

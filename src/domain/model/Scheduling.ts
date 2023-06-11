@@ -31,13 +31,17 @@ export class Scheduling implements ISchedulingActivable {
     @ManyToOne(() => Citizen, (citizen) => citizen.schedulings, { eager: true, nullable: false })
     citizen: Citizen
 
-    @IsString()
+    @IsNumber()
     @Column({ nullable: false })
-    hour: number
+    year: number
 
-    @IsString()
+    @IsNumber()
     @Column({ nullable: false })
-    minute: number
+    month: number
+
+    @IsNumber()
+    @Column({ nullable: false })
+    day: number
 
     @IsObject()
     @ValidateNested()

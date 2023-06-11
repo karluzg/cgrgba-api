@@ -46,7 +46,7 @@ export class GetSchedulingListParams extends AuthParamsTemplate {
         return this.endCreationDate
     }
 
-    get getCategory(): CategoryEnum {
+    get getCategoryCode(): CategoryEnum {
         return this.categoryCode
     }
 

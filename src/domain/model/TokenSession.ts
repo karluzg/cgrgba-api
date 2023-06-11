@@ -2,7 +2,7 @@ import { Entity, Column, ManyToOne, PrimaryColumn } from "typeorm"
 import { User } from "./User"
 import { ApiProperty } from "@nestjs/swagger"
 import { Type } from "class-transformer"
-import { IsDate, IsObject, IsString, ValidateNested } from "class-validator"
+import { IsDate, IsNumber, IsObject, IsString, ValidateNested } from "class-validator"
 
 
 @Entity({ schema: 'portal_consular_dev' })
@@ -18,6 +18,11 @@ export class TokenSession {
     @IsDate()
     @Column()
     expireDate: Date
+
+    @IsNumber()
+    @Column({ nullable: false, type: 'bigint' })
+    expireDateInMilliseconds: number
+
 
     @ApiProperty({ description: 'The user object', type: () => User })
     @IsObject()

@@ -193,8 +193,9 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
         this.schedulingEntitySource.service = this.serviceEntity;
         this.schedulingEntitySource.date = paramsTarget.getSchedulingDate.trim();
         this.schedulingEntitySource.chosenHour = paramsTarget.getSchedulingHour.trim();
-        this.schedulingEntitySource.hour = await SchedulingTimeUtil.getTimePart(paramsTarget.getSchedulingHour)
-        this.schedulingEntitySource.minute = await SchedulingTimeUtil.getMinutePart(paramsTarget.getSchedulingHour)
+        this.schedulingEntitySource.year = new Date(this.schedulingEntitySource.date).getFullYear();
+        this.schedulingEntitySource.month = new Date(this.schedulingEntitySource.date).getMonth()+1;
+        this.schedulingEntitySource.day = new Date(this.schedulingEntitySource.date).getDate();
 
         return await this.schedulingEngineRepository.saveScheduling(this.schedulingEntitySource);
 
