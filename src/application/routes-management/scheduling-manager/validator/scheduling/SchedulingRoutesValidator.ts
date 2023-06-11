@@ -19,8 +19,8 @@ export class SchedulingRoutesValidator extends ParamsValidatorTemplate {
 
     public getSchedulingListValidator(): ValidationChain[] {
         return [
-            query('beginCreationgDate').isLength({ min: 10, max: 10 }).optional(),
-            query('endCreationDate').isLength({min:10, max:10}).optional(),
+            query('beginSchedulingDate').isLength({ min: 10, max: 10 }).optional(),
+            query('endSchedulingDate').isLength({min:10, max:10}).optional(),
             query('page').isInt({ min: 1 }).optional(),
             query('size').isInt({ min: 1 }).optional(),
             query('direction').isIn(['ASC', 'DESC']).optional(),

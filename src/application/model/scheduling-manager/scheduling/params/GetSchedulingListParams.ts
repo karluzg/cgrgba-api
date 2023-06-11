@@ -6,8 +6,8 @@ import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthP
 
 export class GetSchedulingListParams extends AuthParamsTemplate {
 
-    private readonly beginCreationDate: string;
-    private readonly endCreationDate: string;
+    private readonly beginSchedulingDate: string;
+    private readonly endSchedulingDate: string;
     private readonly categoryCode: CategoryEnum;
     private readonly serviceCode: ServiceEnum;
     private readonly schedulingStatus: SchedulingStatusEnum;
@@ -27,8 +27,8 @@ export class GetSchedulingListParams extends AuthParamsTemplate {
         pageNumber: number,
         pageSize: number) {
         super(authentication);
-        this.beginCreationDate = beginCreationDate;
-        this.endCreationDate = endCreationDate;
+        this.beginSchedulingDate = beginCreationDate;
+        this.endSchedulingDate = endCreationDate;
         this.categoryCode = categoryCode;
         this.serviceCode = serviceCode;
         this.schedulingStatus = schedulingStatus;
@@ -38,12 +38,12 @@ export class GetSchedulingListParams extends AuthParamsTemplate {
         this.pageSize = pageSize;
     }
 
-    get getBeginCreationDate(): string {
-        return this.beginCreationDate
+    get getBeginSchedulingDate(): string {
+        return this.beginSchedulingDate
     }
 
-    get getEndCreationDate(): string {
-        return this.endCreationDate
+    get getEndSchedulingDate(): string {
+        return this.endSchedulingDate
     }
 
     get getCategoryCode(): CategoryEnum {

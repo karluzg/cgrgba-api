@@ -10,6 +10,7 @@ export interface ISchedulingEngineRepository {
     saveScheduling(scheduling: Scheduling): Promise<Scheduling>
     findBy(beginSchedulingDate: Date,
         endSchedulingDate: Date,
+        isbeignDateDayEqualEndDateDay:boolean,
         categoryCode: CategoryEnum,
         serviceCode: ServiceEnum,
         schedulingStatus: string,

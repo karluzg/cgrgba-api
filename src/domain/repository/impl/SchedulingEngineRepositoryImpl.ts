@@ -22,13 +22,13 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
   async findCitizenSchedulingInfo(citizenEmail: string): Promise<Scheduling[]> {
     return schedulingEngineRepository.createQueryBuilder('scheduling')
-            .leftJoinAndSelect('scheduling.citizen', 'citizen')
+      .leftJoinAndSelect('scheduling.citizen', 'citizen')
       .leftJoinAndSelect('scheduling.service', 'service')
-            .leftJoinAndSelect('scheduling.status', 'status')
+      .leftJoinAndSelect('scheduling.status', 'status')
       .where('citizen.email = :citizenEmail', { citizenEmail })
       .andWhere('status.description = :schedulingStatus', { schedulingStatus: SchedulingStatusEnum.FOR_ANSWERING })
       .getMany();
-    }
+  }
 
 
 
@@ -39,6 +39,7 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
   async findBy(
     beginDate: Date,
     endDate: Date,
+    isbeignDateDayEqualEndDateDay:boolean,
     categoryCode: CategoryEnum,
     serviceCode: ServiceEnum,
     schedulingStatus: SchedulingStatusEnum,
@@ -48,8 +49,7 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
     pageNumber: number,
     pageSize: number
   ): Promise<IPage<Scheduling>> {
-    console.info("Begin Date", beginDate);
-    console.info("End Date", endDate);
+ 
   
     const orderColumn = `scheduling.${defaultOrderColumn}`; // to avoid SQL Injection
   
@@ -57,9 +57,15 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
       .leftJoinAndSelect("scheduling.status", "status")
       .leftJoinAndSelect("scheduling.service", "service")
       .leftJoinAndSelect("service.category", "category")
-      .orderBy(orderColumn, direction);
-  
-    if ((beginDate && endDate) || ((beginDate && !endDate))) {
+
+
+    if (!beginDate && !endDate && !serviceCode && !categoryCode && !schedulingStatus) {
+      // No filters applied, return an empty page of results
+      return new PageImpl<Scheduling>([], pageNumber, pageSize, 0, 0);
+    }
+
+
+    if (beginDate) {
       console.info("ENTROU Begin Date", beginDate);
       query.where('scheduling.year >= :beginDateYear', {
         beginDateYear: beginDate.getFullYear()
@@ -77,12 +83,13 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
           endDateMonth: endDate.getMonth() + 1
         })
         .andWhere('scheduling.day <= :endDateDay', {
-          endDateDay: endDate.getDate()
+          endDateDay: isbeignDateDayEqualEndDateDay ?  beginDate.getDate() : endDate.getDate()
         });
     }
   
+  
     if (serviceCode && categoryCode) {
-      console.info("ENTROU SERVICE CODE", beginDate);
+    
       query.andWhere('(service.code LIKE :serviceCode OR category.code LIKE :categoryCode)', {
         serviceCode: `%${serviceCode}%`,
         categoryCode: `%${categoryCode}%`
@@ -93,7 +100,10 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
       console.info("SCHEDULING STATUS");
       query.andWhere('status.code LIKE :schedulingStatus', { schedulingStatus: `%${schedulingStatus}%` });
     }
-  
+
+
+
+query.orderBy(orderColumn, direction);
     const [items, totalItems] = await query
       .skip(skip)
       .take(pageSize)

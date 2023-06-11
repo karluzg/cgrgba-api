@@ -24,6 +24,7 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
     private beginSchedulingDateDefault: Date
     private endSchedulingDateDefault: Date
+    private isbeignDateDayEqualEndDateDay: boolean = false;
 
 
     constructor() {
@@ -32,101 +33,102 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
     }
 
     protected async doValidateParameters(params: GetSchedulingListParams): Promise<void> {
+        logger.info("[GetSchedulingListOperation] Begin of strict validation scheduling parameters...");
 
+        const { getBeginSchedulingDate, getEndSchedulingDate, getCategoryCode, getServiceCode } = params;
 
-        logger.info("[GetSchedulingListOperation] Begin of strict validation scheduling parameteres...")
+        if (getCategoryCode && !getServiceCode) {
+            throw new InvalidParametersException(Field.SCHEDULING_SERVICE, MiddlewareBusinessMessage.SCHEDULING_SERVICE_INVALID);
+        }
 
-        console.info("Input query params:", JSON.stringify(params))
+        if (getServiceCode && !getCategoryCode) {
+            throw new InvalidParametersException(Field.SCHEDULING_CATEGORY, MiddlewareBusinessMessage.SCHEDULING_CATEGORY_INVALD);
+        }
 
-        const { getBeginCreationDate, getEndCreationDate } = params;
-
-        if (getBeginCreationDate) {
-            console.info("[GetSchedulingListOperation] BeginCreationDate is filled. Validate if it is a valid date.");
-            const isValidBeginCreationDate = await SchedulingTimeUtil.isValidDate(getBeginCreationDate);
+        if (getBeginSchedulingDate) {
+            console.info("[GetSchedulingListOperation] BeginSchedulingDate is filled. Validate if it is a valid date.");
+            const isValidBeginCreationDate = await SchedulingTimeUtil.isValidDate(getBeginSchedulingDate);
             if (!isValidBeginCreationDate) {
-                throw new InvalidParametersException(
-                    Field.SCHEDULING_BEGIN_DATE,
-                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_DATE_INVALID
-                );
+                throw new InvalidParametersException(Field.SCHEDULING_BEGIN_DATE, MiddlewareBusinessMessage.SCHEDULING_BEGIN_DATE_INVALID);
             }
         }
 
-        if (getEndCreationDate) {
-            console.info("EndCreationDate is filled. Validate if it is a valid date.");
-            const isValidEndCreationDate = await SchedulingTimeUtil.isValidDate(getEndCreationDate);
+        if (getEndSchedulingDate) {
+            console.info("EndSchedulingDate is filled. Validate if it is a valid date.");
+            const isValidEndCreationDate = await SchedulingTimeUtil.isValidDate(getEndSchedulingDate);
             if (!isValidEndCreationDate) {
+                throw new InvalidParametersException(Field.SCHEDULING_END_DATE, MiddlewareBusinessMessage.SCHEDULING_END_DATE_INVALID);
+            }
+
+            if (!getBeginSchedulingDate) {
+                throw new InvalidParametersException(Field.SCHEDULING_BEGIN_DATE, MiddlewareBusinessMessage.SCHEDULING_BEGIN_DATE_INVALID);
+            }
+        }
+
+        if (getBeginSchedulingDate && getEndSchedulingDate) {
+            const newBeginDate = new Date(getBeginSchedulingDate);
+            const newEndDate = new Date(getEndSchedulingDate);
+
+            if (newEndDate.getTime() < newBeginDate.getTime()) {
                 throw new InvalidParametersException(
                     Field.SCHEDULING_END_DATE,
-                    MiddlewareBusinessMessage.SCHEDULING_END_DATE_INVALID
+                    MiddlewareBusinessMessage.SCHEDULING_END_CREATION_DATE_LESS_THAN_BEGIN_CREATION_DATE
                 );
             }
-            if (!getBeginCreationDate) {
+
+            const beginSchedulingDateDay = new Date(getBeginSchedulingDate).getDate();
+            const endSchedulingDateDay = new Date(getEndSchedulingDate).getDate();
+
+            this.isbeignDateDayEqualEndDateDay = beginSchedulingDateDay === endSchedulingDateDay;
+
+            const beginSchedulingDate = new Date(getBeginSchedulingDate);
+            const endSchedulingDate = new Date(getEndSchedulingDate);
+
+            if (endSchedulingDate.getTime() < beginSchedulingDate.getTime()) {
                 throw new InvalidParametersException(
-                    Field.SCHEDULING_BEGIN_DATE,
-                    MiddlewareBusinessMessage.SCHEDULING_BEGIN_DATE_INVALID
+                    Field.SCHEDULING_END_DATE,
+                    MiddlewareBusinessMessage.SCHEDULING_END_CREATION_DATE_LESS_THAN_BEGIN_CREATION_DATE
                 );
             }
         }
 
-
-        const newBeginDate = new Date(getBeginCreationDate);
-        const newEndDate = new Date(getEndCreationDate);
-
-        if (newEndDate.getTime() < newBeginDate.getTime()) {
-            throw new InvalidParametersException(
-                Field.SCHEDULING_END_DATE,
-                MiddlewareBusinessMessage.SCHEDULING_END_CREATION_DATE_LESS_THAN_BEGIN_CREATION_DATE
-            );
-        }
-      
-
-      
-        const beginCreationDate = startOfDay(new Date(getBeginCreationDate));
-
-        const endCreationDate = startOfDay(addDays(new Date(getEndCreationDate), 1));
-
-        if (endCreationDate.getTime() < beginCreationDate.getTime()) {
-            throw new InvalidParametersException(
-                Field.SCHEDULING_END_DATE,
-                MiddlewareBusinessMessage.SCHEDULING_END_CREATION_DATE_LESS_THAN_BEGIN_CREATION_DATE
-            );
-        }
-
-       logger.info("Check if the default begin date is existing scheduling date in date base")
-        const beginCreationDateDefault = await SchedulingTimeUtil.getDefaultCreationDateWithouTime();
-        const date = await SchedulingTimeUtil.getDateWithoutTime(new Date(beginCreationDateDefault))
-    
-        const currentSchedulingsDate: Scheduling[] = await this.schedulingEngineRepository.findSchedulingCurrentDate(date)
-        
-        logger.info("CURRENT SCHEDULINGS DATE", JSON.stringify(currentSchedulingsDate))
-
-        if (currentSchedulingsDate.length !== 0) {
-
-            this.beginSchedulingDateDefault = startOfDay(new Date(beginCreationDateDefault));
-            this.endSchedulingDateDefault = startOfDay(addDays(this.beginSchedulingDateDefault, 1));
-        }
-
-        logger.info("[GetSchedulingListOperation] validate if end scheduling time input is filled")
-
-
+        logger.info("[GetSchedulingListOperation] validate if end scheduling time input is filled");
     }
 
 
+
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetSchedulingListParams, result: GetSchedulingListResult): Promise<void> {
+        logger.info("Set default parameters to execute query...");
 
+        let beginSchedulingDate: Date;
+        let endSchedulingDate: Date;
 
-        logger.info("Set default parameters to execute query...")
+        console.info("Begin scheduling date is equal end date day", this.isbeignDateDayEqualEndDateDay);
+
+        if (params.getBeginSchedulingDate) {
+            logger.info("Filter by given scheduling date");
+            beginSchedulingDate = startOfDay(new Date(params.getBeginSchedulingDate));
+            endSchedulingDate = startOfDay(addDays(beginSchedulingDate, 1));
+        } else {
+            logger.info("Filter by default current scheduling date");
+            const beginCreationDateDefault = await SchedulingTimeUtil.getDefaultCreationDateWithouTime();
+            const currentSchedulingsDate: Scheduling[] = await this.schedulingEngineRepository.findSchedulingCurrentDate(beginCreationDateDefault);
+
+            if (currentSchedulingsDate.length !== 0) {
+                beginSchedulingDate = startOfDay(new Date(beginCreationDateDefault));
+                endSchedulingDate = startOfDay(addDays(beginSchedulingDate, 1));
+                this.isbeignDateDayEqualEndDateDay = true;
+            }
+        }
 
         const defaultOrderColumn = await PageUtil.getDefaultOrderColumn(params.getOrderColumn);
         const skiptPage = await PageUtil.skipPage(params.getPageNumber, params.getPageSize);
         const defaultDirection = await PageUtil.getDefaultDirection(params.getDirection);
 
-
-
-
-
-        const schedulingPages: IPage<Scheduling> = await this.schedulingEngineRepository.findBy(this.beginSchedulingDateDefault,
-            this.endSchedulingDateDefault,
+        const schedulingPages: IPage<Scheduling> = await this.schedulingEngineRepository.findBy(
+            beginSchedulingDate,
+            endSchedulingDate,
+            this.isbeignDateDayEqualEndDateDay,
             params.getCategoryCode,
             params.getServiceCode,
             params.getSchedulingStatus,
@@ -134,16 +136,16 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
             defaultDirection,
             skiptPage,
             params.getPageNumber,
-            params.getPageSize);
+            params.getPageSize
+        );
 
+        const schedulingList: Scheduling[] = await Promise.all(
+            schedulingPages.content.map(user => SchedulingResponseBuilder.buildSchedulingResponse(user))
+        );
 
+        PageableUtils.ofWithContent(result, schedulingPages, schedulingList);
+    }
 
-        const schedulingList: Scheduling[] = await Promise.all(schedulingPages.content
-            .map(user => SchedulingResponseBuilder.buildSchedulingResponse(user)));
-
-        PageableUtils.ofWithContent(result, schedulingPages, schedulingList)
-        }
-    
 
     protected initResult(): GetSchedulingListResult {
         return new GetSchedulingListResult();

@@ -82,11 +82,11 @@ UC-13 - LISTAR AGENDAMENTOS
    5. Número da página =1
    6. Tamanho da página=5
    [Envios de filtros parciais]
-   1. Se a data de fim de criação de agendamento for preenchido, a data de início de  criação é obrigatório
-   2.  Se a data de fim de criação de agendamento e a data de início de criação de agendamento forem preenchidos, a data de fim e criação de agendamento
-   deve ser iagual OU superior a data de inicio de criação e agendamento
-   3. se a data de início de criação de agendamento for preenchido e a data de fim de criação de agendamento não for preenchido, a data defim de criação de agendamento
-   deve ser IGUAL a data de início de criação de agendamento
+   1. Se a data de fim de agendamento for preenchido, a data de início de agendamento é obrigatório
+   2.  Se a data de fim de agendamento e a data de início de agendamento forem preenchidos, a data de fim de agendamento
+   deve ser iagual OU superior a data de inicio de agendamento
+   3. se a data de início de agendamento for preenchido e a data de fim de agendamento não for preenchido, a data de fim de agendamento
+   deve ser IGUAL a data de início de agendamento
    
    
 

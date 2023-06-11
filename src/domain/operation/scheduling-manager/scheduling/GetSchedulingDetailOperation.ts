@@ -45,11 +45,8 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetSchedulingDetailParams, result: SchedulingResult): Promise<void> {
 
 
-
-
         delete this.schedulingEntity.enumOperationTemplate
-       
-  
+         
         console.info("ENUMERATE DELETED FROM RESPONSE", JSON.stringify(this.schedulingEntity))
         result.setScheduling = this.schedulingEntity;
 
@@ -63,3 +60,4 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
         return new SchedulingResult();
     }
 }
+

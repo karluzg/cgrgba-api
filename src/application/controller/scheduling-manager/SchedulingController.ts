@@ -73,8 +73,8 @@ export class SchedulingController {
 
         try {
 
-            const { beginCreationgDate,
-                endCreationDate,
+            const { beginSchedulingDate,
+                endSchedulingDate,
                 categoryCode,
                 serviceCode,
                 schedulingStatus,
@@ -87,8 +87,8 @@ export class SchedulingController {
 
             const params = new GetSchedulingListParams(
                 authenticationToken,
-                beginCreationgDate as string,
-                endCreationDate as string,
+                beginSchedulingDate as string,
+                endSchedulingDate as string,
                 categoryCode as CategoryEnum,
                 serviceCode as ServiceEnum,
                 schedulingStatus as SchedulingStatusEnum,
