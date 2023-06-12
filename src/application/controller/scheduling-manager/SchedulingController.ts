@@ -20,6 +20,7 @@ import { UpdateSchedulingParams } from "../../model/scheduling-manager/schedulin
 import { ServiceEnum } from "../../../domain/model/enum/ServiceEnum";
 import { CategoryEnum } from "../../../domain/model/enum/CategoryEnum";
 import { SchedulingStatusEnum } from "../../../domain/model/enum/SchedulingStatusEnum";
+import { ChangeSchedulingStatusParams } from "../../model/scheduling-manager/scheduling/params/ChangeSchedulingStatusParams";
 
 
 
@@ -145,6 +146,50 @@ export class SchedulingController {
             logger.info("[SchedulingController] Perform dependency injection for ISchedulingEngine")
             const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")
             const result = await schedulingEngine.get_scheduling_detail(params)
+
+            return response.status(HttpCodes.OK).json(result)
+
+        } catch (error) {
+
+            if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
+                throw new NotImplementedException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.FORBIDDEN) {
+                throw new ForbiddenOperationException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
+                throw new UnsuccessfullOperationException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
+                throw new InvalidParametersException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
+                throw new UnauthorizedOperationException(error.field, error.message)
+            } else {
+                logger.error("[SchedulingController] Error while getting schedilng detail", error)
+                throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
+            }
+        }
+    }
+
+    public async change_scheduling_status(request: Request, response: Response): Promise<Response> {
+
+        try {
+
+            const id = parseInt(request.params.id);
+
+            if (isNaN(id)) {
+                throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID)
+            }
+
+            const {schedulingStatusCode } = request.body;
+
+            const authenticationToken = AuthValidator.checkAuthorizationToken(request);
+            const params = new ChangeSchedulingStatusParams(authenticationToken, id, schedulingStatusCode as SchedulingStatusEnum);
+
+            logger.info("[SchedulingController] Perform dependency injection for ISchedulingEngine")
+            const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")
+            const result = await schedulingEngine.change_scheduling_status(params)
 
             return response.status(HttpCodes.OK).json(result)
 

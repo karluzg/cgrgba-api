@@ -65,7 +65,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
     protected async doValidateParameters(params: UpdateSchedulingParams): Promise<void> {
 
 
-        logger.info("[UpdateSchedulingOperation] Begin high-level validation of scheduling parameters...");
+        logger.info("[UpdateSchedulingOperation] Begin high-level validation of update scheduling data parameters...");
 
 
         this.schedulingEntitySource = await this.schedulingEngineRepository.findSchedulingById(params.getSchedulingId);
@@ -106,6 +106,10 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
             this.schedulingTimeEngineRepository,
             this.schedulingEngineRepository
         );
+
+        
+
+        logger.info("[UpdateSchedulingOperation] End high-level validation of update scheduling data parameters...");
     }
 
 

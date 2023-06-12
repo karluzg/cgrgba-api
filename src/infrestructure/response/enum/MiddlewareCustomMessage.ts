@@ -91,6 +91,7 @@ export enum MiddlewareBusinessMessage {
   SCHEDULING_HAS_INVALID_STATE_TO_UPDATE = "Só é possível alterar um agendamento que está Por Atender",
   SCHEDULING_CATEGORY_INVALD = "A categoria de agendamento é inválida",
   SCHEDULING_SERVICE_INVALID = "O servico do agendamento é inválido",
+  SCHEDULING_STATUS_CODE_INVALID="Estado do agendamento é inválido",
 
 
 

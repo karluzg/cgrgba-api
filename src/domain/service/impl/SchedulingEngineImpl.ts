@@ -11,10 +11,13 @@ import { GetSchedulingDetailParams } from "../../../application/model/scheduling
 import { GetSchedulingDetailOperation } from "../../operation/scheduling-manager/scheduling/GetSchedulingDetailOperation";
 import { UpdateSchedulingParams } from "../../../application/model/scheduling-manager/scheduling/params/UpdateSchedulingParams";
 import { UpdateSchedulingOperation } from "../../operation/scheduling-manager/scheduling/UpdateSchedulingOperation";
+import { ChangeSchedulingStatusOperation as ChangeSchedulingStatusOperation } from "../../operation/scheduling-manager/scheduling/ChangeSchedulingStatusOperation";
+import { ChangeSchedulingStatusParams } from "../../../application/model/scheduling-manager/scheduling/params/ChangeSchedulingStatusParams";
 
 
 @injectable()
 export class SchedulingEngineImpl extends GenericOperationTemplate implements ISchedulingEngine {
+
     update_scheduling(params: UpdateSchedulingParams): Promise<SchedulingResult> {
         return this.executeOperation(new UpdateSchedulingOperation(), params)
     }
@@ -29,5 +32,8 @@ export class SchedulingEngineImpl extends GenericOperationTemplate implements IS
 
     get_scheduling_list(params: GetSchedulingListParams): Promise<GetSchedulingListResult> {
         return this.executeOperation(new GetSchedulingListOperation(), params)
+    }
+    change_scheduling_status(params: ChangeSchedulingStatusParams): Promise<SchedulingResult> {
+        return this.executeOperation(new ChangeSchedulingStatusOperation(), params)
     }
 }

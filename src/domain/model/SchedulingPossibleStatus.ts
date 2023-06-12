@@ -13,4 +13,8 @@ export class SchedulingPossibleStatus {
 
     @ManyToOne(() => SchedulingStatus, (nextStatus) => nextStatus.code)
     nextStatus: SchedulingStatus
+
+    get code(): string {
+        return this.currentStatus.code;
+      }
 }

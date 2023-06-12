@@ -33,7 +33,7 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
     }
 
     protected async doValidateParameters(params: GetSchedulingListParams): Promise<void> {
-        logger.info("[GetSchedulingListOperation] Begin of strict validation scheduling parameters...");
+        logger.info("[GetSchedulingListOperation] Begin of strict validation get scheduling list parameters...");
 
         const { getBeginSchedulingDate, getEndSchedulingDate, getCategoryCode, getServiceCode } = params;
 
@@ -46,7 +46,7 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
         }
 
         if (getBeginSchedulingDate) {
-            console.info("[GetSchedulingListOperation] BeginSchedulingDate is filled. Validate if it is a valid date.");
+            logger.info("[GetSchedulingListOperation] BeginSchedulingDate is filled. Validate if it is a valid date.");
             const isValidBeginCreationDate = await SchedulingTimeUtil.isValidDate(getBeginSchedulingDate);
             if (!isValidBeginCreationDate) {
                 throw new InvalidParametersException(Field.SCHEDULING_BEGIN_DATE, MiddlewareBusinessMessage.SCHEDULING_BEGIN_DATE_INVALID);
@@ -54,7 +54,7 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
         }
 
         if (getEndSchedulingDate) {
-            console.info("EndSchedulingDate is filled. Validate if it is a valid date.");
+            logger.info("EndSchedulingDate is filled. Validate if it is a valid date.");
             const isValidEndCreationDate = await SchedulingTimeUtil.isValidDate(getEndSchedulingDate);
             if (!isValidEndCreationDate) {
                 throw new InvalidParametersException(Field.SCHEDULING_END_DATE, MiddlewareBusinessMessage.SCHEDULING_END_DATE_INVALID);
@@ -92,7 +92,7 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
             }
         }
 
-        logger.info("[GetSchedulingListOperation] validate if end scheduling time input is filled");
+        logger.info("[GetSchedulingListOperation] End of strict validation get scheduling list parameters...");
     }
 
 

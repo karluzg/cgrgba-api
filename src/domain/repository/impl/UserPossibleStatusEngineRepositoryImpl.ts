@@ -19,7 +19,7 @@ export class UserPossibleStatusEngineRepositoryImpl implements IUserPossibleStat
 
         const possibeStatus = await queryBuilder.getMany();
 
-        return possibeStatus.map(result => result.nextStatus);
+        return possibeStatus;
 
     }
 }

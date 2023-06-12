@@ -1,6 +1,7 @@
 import { SchedulingResult } from "../../../../application/model/scheduling-manager/scheduling/SchedulingResult";
 import { GetSchedulingDetailParams } from "../../../../application/model/scheduling-manager/scheduling/params/GetSchedulingDetailParams";
 import container from "../../../../infrestructure/config/injection";
+import logger from "../../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
@@ -31,14 +32,18 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
 
     protected async doValidateParameters(params: GetSchedulingDetailParams): Promise<void> {
 
+    
+        logger.info("[GetSchedulingDetailOperation] Begin high-level validation of get scheduling detail parameters...");
+
         this.schedulingEntity = await this.schedulingEngineRepository.findSchedulingById(params.getSchedulingId)
 
-
-        console.info("WATCH SCHEDULINGG CATEGORY ENTITY:" + this.schedulingEntity)
 
         if (!this.schedulingEntity) {
             throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID)
         }
+
+        
+        logger.info("[GetSchedulingDetailOperation] End high-level validation of get scheduling detail parameters...");
     }
 
 
@@ -47,7 +52,6 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
 
         delete this.schedulingEntity.enumOperationTemplate
          
-        console.info("ENUMERATE DELETED FROM RESPONSE", JSON.stringify(this.schedulingEntity))
         result.setScheduling = this.schedulingEntity;
 
         const possibleStatus: SchedulingPossibleStatus[] = await this.schedulingStatusEngineRepository

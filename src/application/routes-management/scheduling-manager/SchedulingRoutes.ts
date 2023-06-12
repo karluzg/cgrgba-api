@@ -133,6 +133,40 @@ schedulingRoutes.get("/schedulings/:id", schedulingController.get_scheduling_det
 
 /**
  * @swagger
+ * /scheduling/{id}:
+ *   put:
+ *     summary: Change the status of a scheduling
+ *     tags: [Scheduling]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: ID of the scheduling
+ *         required: true
+ *         schema:
+ *           type: string
+ *       - in: body
+ *         name: schedulingStatus
+ *         description: Scheduling status to update
+ *         required: true
+ *         schema:
+ *           $ref: '#/components/schemas/SchedulingStatus'
+ *     responses:
+ *       '200':
+ *         description: Scheduling status changed successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Scheduling'
+ *       '404':
+ *         description: Scheduling not found
+ *       '400':
+ *         description: Invalid request parameters
+ */
+
+schedulingRoutes.put("/scheduling/:id", schedulingController.change_scheduling_status)
+
+/**
+ * @swagger
  * /schedulings/{id}:
  *   put:
  *     summary: Atualiza um agendamento

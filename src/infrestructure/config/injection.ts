@@ -50,6 +50,8 @@ import { ISchedulingPossibleStatusEngineRepository } from '../../domain/reposito
 import { SchedulingPossibleStatusEngineRepositoryImpl } from '../../domain/repository/impl/SchedulingPossibleStatusEngineRepositoryImpl';
 import { IUserPossibleStatusEngneRepository } from '../../domain/repository/IUserPossibleStatusEngineRepository';
 import { UserPossibleStatusEngineRepositoryImpl } from '../../domain/repository/impl/UserPossibleStatusEngineRepositoryImpl';
+import { ISchedulinStatusEngineRepository } from '../../domain/repository/ISchedulinStatusEngineRepository';
+import { SchedulinStatusEngineRepositoryImpl } from '../../domain/repository/impl/SchedulinStatusEngineRepositoryImpl';
 
 
 //Register container for services
@@ -81,7 +83,7 @@ container.register<IUserStatusEngineRepository>('IUserStatusEngineRepository', {
 container.register<IServiceEngineRepository>('IServiceEngineRepository', { useClass: ServiceEngineRepositoryImpl })
 container.register<ISchedulingPossibleStatusEngineRepository>('ISchedulingPossibleStatusEngineRepository', { useClass: SchedulingPossibleStatusEngineRepositoryImpl })
 container.register<IUserPossibleStatusEngneRepository>('IUserPossibleStatusEngneRepository', { useClass: UserPossibleStatusEngineRepositoryImpl })
-
+container.register<ISchedulinStatusEngineRepository>('ISchedulinStatusEngineRepository', { useClass: SchedulinStatusEngineRepositoryImpl })
 
 
 
