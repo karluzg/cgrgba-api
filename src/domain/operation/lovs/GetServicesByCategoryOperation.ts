@@ -22,8 +22,7 @@ export class GetServicesByCategoryOperation extends OperationTemplate<CategoryRe
 
     constructor() {
         super(OperationNamesEnum.SCHEDULING_SERVICE_GET)
-
-        this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('schedulingCategoryEngineRepository')
+        this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
     }
 
     protected async doValidateParameters(params: CategoryParams): Promise<void> {

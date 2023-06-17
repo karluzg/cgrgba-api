@@ -8,6 +8,7 @@ import { UserResult } from "../../model/user-manager/UserResult";
 import RoleRoutes from "../user-manager/RoleRoutes";
 import PermissionRoutes from "../user-manager/PermissionRoutes";
 import { PlataformConfig } from "../../../infrestructure/config/plataform";
+import lovesRoutes from "../lovs/LovsRoutes";
 
 const sharedRoutes = Router();
 
@@ -24,12 +25,14 @@ sharedRoutes.use(baseUrl , PermissionRoutes);
 // News-Manager
 
 sharedRoutes.use(baseUrl, NewsRoutes);
+
+
 /* SCHEDULING-Manager*/
-
-
 sharedRoutes.use(baseUrl, schedulingTimeRoutes);
 
 sharedRoutes.use(baseUrl, schedulingRoutes)
 
+/* LOVS */
+sharedRoutes.use(baseUrl,lovesRoutes)
 
 export default sharedRoutes

@@ -1,8 +1,10 @@
 
 import { GetSchedulingListResult } from "../../application/model/scheduling-manager/scheduling/GetSchedulingListResult";
+import { GetSchedulingStatictiscsResult } from "../../application/model/scheduling-manager/scheduling/GetSchedulingStatictiscsResult";
 import { ChangeSchedulingStatusParams } from "../../application/model/scheduling-manager/scheduling/params/ChangeSchedulingStatusParams";
 import { GetSchedulingDetailParams } from "../../application/model/scheduling-manager/scheduling/params/GetSchedulingDetailParams";
 import { GetSchedulingListParams } from "../../application/model/scheduling-manager/scheduling/params/GetSchedulingListParams";
+import { GetSchedulingStatictiscsParams } from "../../application/model/scheduling-manager/scheduling/params/GetSchedulingStatictiscsParams";
 import { UpdateSchedulingParams } from "../../application/model/scheduling-manager/scheduling/params/UpdateSchedulingParams";
 import { SchedulingParams } from "../../application/model/scheduling-manager/scheduling/SchedulingParams";
 import { SchedulingResult } from "../../application/model/scheduling-manager/scheduling/SchedulingResult";
@@ -14,5 +16,6 @@ export interface ISchedulingEngine{
     get_scheduling_detail(params: GetSchedulingDetailParams): Promise<SchedulingResult>
     update_scheduling(params: UpdateSchedulingParams): Promise<SchedulingResult>
     change_scheduling_status(params: ChangeSchedulingStatusParams): Promise<SchedulingResult>
+    get_scheduling_statistics(params: GetSchedulingStatictiscsParams): Promise<GetSchedulingStatictiscsResult>
 
 }

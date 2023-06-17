@@ -18,7 +18,7 @@ export class GetAllPermissionOperation extends UserAuthOperationTemplate<Permiss
     private permissionRepository: IPermissionEngineRepository;
 
     constructor() {
-        super(OperationNamesEnum.ROLE_GET_ALL_ROLE, OperationValidatorManager.getSingletonInstance())
+        super(OperationNamesEnum.ROLE_GET_ALL_ROLE_BY_FILER, OperationValidatorManager.getSingletonInstance())
         this.permissionRepository = container.resolve<IPermissionEngineRepository>("IPermissionEngineRepository")
 
     }

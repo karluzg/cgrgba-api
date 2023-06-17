@@ -18,7 +18,7 @@ export class GetAllRoleOperation extends UserAuthOperationTemplate<RoleResultLis
     private roleRepository: IRoleEngineRepository;
 
     constructor() {
-        super(OperationNamesEnum.ROLE_GET_ALL_ROLE, OperationValidatorManager.getSingletonInstance())
+        super(OperationNamesEnum.ROLE_GET_ALL_ROLE_BY_FILER, OperationValidatorManager.getSingletonInstance())
         this.roleRepository = container.resolve<IRoleEngineRepository>("IRoleEngineRepository")
 
     }
@@ -32,7 +32,7 @@ export class GetAllRoleOperation extends UserAuthOperationTemplate<RoleResultLis
 
 
         logger.info("[GetAllUserOperation] creating all users")
-        const roles:IPage<Role> = await this.roleRepository.findAllRoles(params.getPage, params.size,params.orderColumn,params.direction);
+        const roles: IPage<Role> = await this.roleRepository.findRolesBy(params.getPage, params.size, params.orderColumn, params.direction);
     
         Object.assign(result,roles);
     }

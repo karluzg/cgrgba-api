@@ -24,7 +24,7 @@ export class SchedulingTimeUtil {
 
     static async isweekend(inputDate: Date): Promise<boolean> {
 
-        console.log("[AddNewTimeSlotOperation] Check if input date is weekend  %s", inputDate)
+        console.log("[SchedulingTimeUtil] Check if input date is weekend  %s", inputDate)
         const dayWeek = inputDate.getDay();
         return dayWeek === 0 || dayWeek === 6; // 0 = Sunday and 6 = saturday
     }

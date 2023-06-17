@@ -22,8 +22,7 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
     private readonly schedulingEngineRepository: ISchedulingEngineRepository;
 
-    private beginSchedulingDateDefault: Date
-    private endSchedulingDateDefault: Date
+
     private isbeignDateDayEqualEndDateDay: boolean = false;
 
 

@@ -21,6 +21,7 @@ import { ServiceEnum } from "../../../domain/model/enum/ServiceEnum";
 import { CategoryEnum } from "../../../domain/model/enum/CategoryEnum";
 import { SchedulingStatusEnum } from "../../../domain/model/enum/SchedulingStatusEnum";
 import { ChangeSchedulingStatusParams } from "../../model/scheduling-manager/scheduling/params/ChangeSchedulingStatusParams";
+import { GetSchedulingStatictiscsParams as GetSchedulingStatistiscsParams } from "../../model/scheduling-manager/scheduling/params/GetSchedulingStatictiscsParams";
 
 
 
@@ -265,6 +266,42 @@ export class SchedulingController {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
                 logger.error("[SchedulingController] Error while updating scheduling", error)
+                throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
+            }
+        }
+    }
+    public async get_scheduling_statistics(request: Request, response: Response): Promise<Response> {
+
+        try {
+
+   
+            const authenticationToken = AuthValidator.checkAuthorizationToken(request);
+            const params = new GetSchedulingStatistiscsParams(authenticationToken);
+
+            logger.info("[SchedulingController] Perform dependency injection for ISchedulingEngine")
+            const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")
+            const result = await schedulingEngine.get_scheduling_statistics(params)
+
+            return response.status(HttpCodes.OK).json(result)
+
+        } catch (error) {
+
+            if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
+                throw new NotImplementedException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.FORBIDDEN) {
+                throw new ForbiddenOperationException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
+                throw new UnsuccessfullOperationException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
+                throw new InvalidParametersException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
+                throw new UnauthorizedOperationException(error.field, error.message)
+            } else {
+                logger.error("[SchedulingController] Error while getting schedilng detail", error)
                 throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
             }
         }

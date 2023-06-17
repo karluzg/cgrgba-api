@@ -3,24 +3,18 @@ import { UserAuthOperationTemplate } from "../../../infrestructure/template/User
 import { OperationValidatorManager } from "../../../infrestructure/validator/managers/OperationValidatorManager";
 import { TokenSession } from "../../model/TokenSession";
 import { OperationNamesEnum } from "../../model/enum/OperationNamesEnum";
-import { IUserEngineRepository } from "../../repository/IUserEngineRepository";
-import { NewsResult } from "../../../application/model/news-manager/NewsResult";
-import { NewsParams } from "../../../application/model/news-manager/NewsParams";
 import { INewsEngineRepository } from "../../repository/INewsEngineRepository";
 import { NewsCategory } from "../../model/NewsCategory";
 import { INewsCategoryEngineRepository } from "../../repository/INewsCategoryEngineRepository";
 import logger from "../../../infrestructure/config/logger";
-import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { News } from "../../model/News";
-import { ResultInfo } from "../../../infrestructure/response/ResultInfo";
 import { NewsResultList } from "../../../application/model/news-manager/NewsResultList";
 import { PageAndSizeParams } from "../../../application/model/PageAndSizeParams";
 import { IPage } from "../../../infrestructure/pageable-manager/IPage";
-import { PageUtil } from "../util/PageUtil";
-import { PageableUtils } from "../../../infrestructure/pageable-manager/PageableUtils";
+
 
 
 
@@ -32,7 +26,7 @@ export class GetAllNewsOperation extends UserAuthOperationTemplate<NewsResultLis
     private category: NewsCategory;
 
     constructor() {
-        super(OperationNamesEnum.USER_CREATE, OperationValidatorManager.getSingletonInstance())
+        super(OperationNamesEnum.PORTAL_LIST_NEWS, OperationValidatorManager.getSingletonInstance())
         this.newsRepository = container.resolve<INewsEngineRepository>("INewsEngineRepository")
         this.newsCategoryRepository = container.resolve<INewsCategoryEngineRepository>("INewsCategoryEngineRepository")
 

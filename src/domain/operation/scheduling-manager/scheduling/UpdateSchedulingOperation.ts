@@ -12,16 +12,13 @@ import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngineRepository";
 import { SchedulingEngineRepositoryImpl } from "../../../repository/impl/SchedulingEngineRepositoryImpl";
 import { SchedulingUtil } from "../../util/SchedulingUtil";
-import { ICitizenEngineRepository } from "../../../repository/ICitizenEngineRepository";
 import { IHollydayEngineRepository } from "../../../repository/IHollydayEngineRepository";
 import { ISchedulingHistoryEngineRepository } from "../../../repository/ISchedulingHistoryEngineRespository";
 import { ISchedulingTimeEngineRepository } from "../../../repository/ISchedulingTimeEngineRepository";
 import Semaphore from "semaphore-async-await";
 import logger from "../../../../infrestructure/config/logger";
-import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { ErrorExceptionClass } from "../../../../infrestructure/exceptions/ErrorExceptionClass";
 import { Citizen } from "../../../model/Citizen";
-import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
 import { Service } from "../../../model/Service";
 import { ISchedulingCategoryEngineRepository } from "../../../repository/ISchedulingCategoryEngineRepository";
 import { SchedulingStatusEnum } from "../../../model/enum/SchedulingStatusEnum";
@@ -120,7 +117,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
         this.semaphore = new Semaphore(this.totalAvailableCollaborators);
 
-        logger.info("[AddNewSchedulingOperation] Begin make scheduling with concurrency..")
+        logger.info("[UpdateSchedulingOperation] Begin make scheduling with concurrency..")
 
         try {
 
@@ -164,7 +161,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
                 throw new InvalidParametersException(Field.SCHEDULING_HOUR,
                     MiddlewareBusinessMessage.SCHEDULING_HOUR_ALREADY_CHOSED_BY_ANTOTHER_PERSON)
             }
-            logger.error("[AddNewSchedulingOperation] Errorr while acquire semaphore:" + error)
+            logger.error("[UpdateSchedulingOperation] Errorr while acquire semaphore:" + error)
 
         } finally {
             this.semaphore.release();
@@ -176,11 +173,11 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
         const updatedScheduling = await this.updateSheduling(paramsTarget, tokenSession)
 
-        logger.info("[AddNewSchedulingOperation] Start Sending Email...")
+        logger.info("[UpdateSchedulingOperation] Start Sending Email...")
 
         await SchedulingUtil.sendSchedulingByEmail(updatedScheduling)
 
-        logger.info("[AddNewSchedulingOperation] Email sent")
+        logger.info("[UpdateSchedulingOperation] Email sent")
 
         return updatedScheduling;
 
@@ -189,7 +186,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
     private async updateSheduling(paramsTarget: UpdateSchedulingParams, tokenSession: TokenSession): Promise<Scheduling> {
 
-        logger.info("[AddNewSchedulingOperation] Begin constructing Scheduling object to be save in Data Base...")
+        logger.info("[UpdateSchedulingOperation] Begin constructing Scheduling object to be save in Data Base...")
 
         this.schedulingEntitySource.updateBy = tokenSession.user;
         this.schedulingEntitySource.lastPasswordUpdate = new Date();

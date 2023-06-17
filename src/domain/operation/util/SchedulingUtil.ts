@@ -32,7 +32,7 @@ export class SchedulingUtil {
         schedulingEngineRepository: ISchedulingEngineRepository): Promise<boolean> {
 
 
-        logger.info("[AddNewSchedulingOperation] Searching citizen scheduling in the database...");
+        logger.info("[SchedulingUtil] Searching citizen scheduling in the database...");
 
         const email = EncryptTemplate.encryptColumn(citizenEmail)
 
@@ -129,7 +129,7 @@ export class SchedulingUtil {
         schedulingHistoryEngineResitory: ISchedulingHistoryEngineRepository): Promise<boolean> {
 
 
-        logger.info("[AddNewSchedulingOperation] Verify available date and hour to schedule...")
+        logger.info("[SchedulingUtil] Verify available date and hour to schedule...")
 
         return await schedulingHistoryEngineResitory
             .checkIfSchedulingHistoryExist(schedulingDate, chosenHour);
@@ -141,17 +141,17 @@ export class SchedulingUtil {
         schedulingHistoryEngineRepository: ISchedulingEngineRepository,
         schedulingHistoryEngineRespository: ISchedulingHistoryEngineRepository): Promise<void> {
 
-        logger.info("[AddNewSchedulingOperation] Begin validate is to be block date and hour... ")
+        logger.info("[SchedulingUtil] Begin validate is to be block date and hour... ")
 
         const schedulings: Scheduling[] = await schedulingHistoryEngineRepository
             .findBeginDateAndHour(scheduling.date, scheduling.chosenHour);
 
-        logger.info("[AddNewSchedulingOperation] Schedulings returned by date and hour %s", schedulings)
+        logger.info("[SchedulingUtil] Schedulings returned by date and hour %s", schedulings)
 
         const totalnumberOfScehduling = schedulings.length;
 
-        logger.info("[AddNewSchedulingOperation] Total Number of scehduling returned %s", totalnumberOfScehduling)
-        logger.info("[AddNewSchedulingOperation] Total available collaborator number %s", availableCollaboratorNumber)
+        logger.info("[SchedulingUtil] Total Number of scehduling returned %s", totalnumberOfScehduling)
+        logger.info("[SchedulingUtil] Total available collaborator number %s", availableCollaboratorNumber)
 
 
         if (totalnumberOfScehduling == availableCollaboratorNumber) {
@@ -159,12 +159,12 @@ export class SchedulingUtil {
             await this.lockingDateAndHour(scheduling, schedulingHistoryEngineRespository)
 
         }
-        logger.info("[AddNewSchedulingOperation] End validate is to be block date and hour... ")
+        logger.info("[SchedulingUtil] End validate is to be block date and hour... ")
     }
 
     private static async lockingDateAndHour(scheduling: Scheduling, schedulingHistoryEngineRespository: ISchedulingHistoryEngineRepository) {
 
-        logger.info("[AddNewSchedulingOperation] Begin adding scheduling history in Data Base...")
+        logger.info("[SchedulingUtil] Begin adding scheduling history in Data Base...")
 
         const newSchedulingHistory = new SchedulingHistory();
         newSchedulingHistory.creationDate = new Date();
@@ -195,7 +195,7 @@ export class SchedulingUtil {
 
         schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository): Promise<Service> {
 
-        logger.info("[AddNewSchedulingOperation] Verify if if the service match the category...")
+        logger.info("[SchedulingUtil] Verify if if the service match the category...")
 
 
         const categoryEntity: SchedulingCategory[] = await schedulingCategoryEngineRepository.findServiceByCategory(categoryInput);
@@ -246,20 +246,20 @@ export class SchedulingUtil {
     ): Promise<number> {
 
 
-        console.info("[AddNewSchedulingOperation] Citizen was found:", citizen);
-        logger.info("[AddNewSchedulingOperation] Verifying if scheduling date is a weekend or holiday: " + schedulingDate);
+        console.info("[SchedulingUtil] Citizen was found:", citizen);
+        logger.info("[SchedulingUtil] Verifying if scheduling date is a weekend or holiday: " + schedulingDate);
 
 
 
         const schedulingDateInput = new Date(schedulingDate);
         const isWeekend = await SchedulingTimeUtil.isweekend(schedulingDateInput);
-        const isHoliday = await SchedulingTimeUtil.isHollyDay(schedulingDateInput, hollydayEngineRepository, "[AddNewSchedulingOperation]");
+        const isHoliday = await SchedulingTimeUtil.isHollyDay(schedulingDateInput, hollydayEngineRepository, "[SchedulingUtil]");
 
         if (isWeekend || isHoliday) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);
         }
 
-        logger.info("[AddNewSchedulingOperation] Validating if time configuration for the input date exists: " + schedulingDateInput);
+        logger.info("[SchedulingUtil] Validating if time configuration for the input date exists: " + schedulingDateInput);
 
         const schedulingTimeEntity: SchedulingTimeConfiguration[] = await schedulingTimeEngineRepository.findBySchedulingDate(schedulingDateInput);
 
@@ -269,9 +269,9 @@ export class SchedulingUtil {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);
         }
 
-        logger.info("[AddNewSchedulingOperation] Scheduling entity was found");
+        logger.info("[SchedulingUtil] Scheduling entity was found");
 
-        logger.info("[AddNewTimeSlotOperation] Validating valid Pair -> SchedulingDate and hour");
+        logger.info("[SchedulingUtil] Validating valid Pair -> SchedulingDate and hour");
         const matchHours: string[] = schedulingTimeEntity
             .flatMap(schedulingTime => schedulingTime.hours)
             .map(hour => hour.value)
@@ -281,7 +281,7 @@ export class SchedulingUtil {
             throw new InvalidParametersException(Field.SCHEDULING_HOUR, MiddlewareBusinessMessage.SCHEDULING_AVAILABLE);
         }
 
-        logger.info("[AddNewSchedulingOperation] Verifying if begin date is earlier than the current date...");
+        logger.info("[SchedulingUtil] Verifying if begin date is earlier than the current date...");
 
         const beginDate = new Date(schedulingDate);
         const currentDate = new Date();
@@ -290,14 +290,14 @@ export class SchedulingUtil {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE, MiddlewareBusinessMessage.SCHEDULING_AVAILABLE);
         }
 
-        logger.info("[AddNewSchedulingOperation] Begin searching Citizen by email to start validation of scheduling features...");
+        logger.info("[SchedulingUtil] Begin searching Citizen by email to start validation of scheduling features...");
 
-        logger.info("[AddNewSchedulingOperation] Citizen was found:", citizen);
+        logger.info("[SchedulingUtil] Citizen was found:", citizen);
 
 
         if (citizen) {
 
-            logger.info("[AddNewSchedulingOperation] Begin validating scheduling features for citizen...");
+            logger.info("[SchedulingUtil] Begin validating scheduling features for citizen...");
 
             const isNotValidSchedulingFeature = await SchedulingUtil.validateCitizenSchedulingFeature(
                 schedulingDate,
@@ -307,7 +307,7 @@ export class SchedulingUtil {
                 schedulingEngineRepository
             );
 
-            logger.info("[AddNewSchedulingOperation] Watch the validation scheduling feature output:", isNotValidSchedulingFeature);
+            logger.info("[SchedulingUtil] Watch the validation scheduling feature output:", isNotValidSchedulingFeature);
 
             if (isNotValidSchedulingFeature) {
                 throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.SCHEDULING_ALREADY_EXIST);

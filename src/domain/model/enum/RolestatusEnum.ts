@@ -1,5 +1,5 @@
 export enum RoleStatusEnum {
     ACTIVE = "Ativo",
-    SUSPENDED = "Suspended",
+    SUSPENDED = "Suspendido",
     REMOVED = "Removido"
 }

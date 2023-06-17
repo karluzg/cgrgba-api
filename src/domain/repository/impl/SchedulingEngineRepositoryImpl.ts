@@ -1,6 +1,6 @@
 
 
-import e, { query } from "express";
+import { startOfDay, addDays } from 'date-fns';
 import { IPage } from "../../../infrestructure/pageable-manager/IPage";
 import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
 import { DirectionEnum } from "../../../infrestructure/pageable-manager/enum/DirectionEnum";
@@ -9,6 +9,7 @@ import { CategoryEnum } from "../../model/enum/CategoryEnum";
 import { SchedulingStatusEnum } from "../../model/enum/SchedulingStatusEnum";
 import { ServiceEnum } from "../../model/enum/ServiceEnum";
 import { ISchedulingEngineRepository } from "../ISchedulingEngineRepository";
+import { GetSchedulingListOperation } from "../../operation/scheduling-manager/scheduling/GetSchedulingListOperation";
 
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
@@ -16,7 +17,6 @@ const schedulingEngineRepository = myDataSource.getRepository(Scheduling)
 
 
 export class SchedulingEngineRepositoryImpl implements ISchedulingEngineRepository {
-
 
 
 
@@ -39,7 +39,7 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
   async findBy(
     beginDate: Date,
     endDate: Date,
-    isbeignDateDayEqualEndDateDay:boolean,
+    isbeignDateDayEqualEndDateDay: boolean,
     categoryCode: CategoryEnum,
     serviceCode: ServiceEnum,
     schedulingStatus: SchedulingStatusEnum,
@@ -83,7 +83,7 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
           endDateMonth: endDate.getMonth() + 1
         })
         .andWhere('scheduling.day <= :endDateDay', {
-          endDateDay: isbeignDateDayEqualEndDateDay ?  beginDate.getDate() : endDate.getDate()
+          endDateDay: isbeignDateDayEqualEndDateDay ? beginDate.getDate() : endDate.getDate()
         });
     }
   
@@ -103,7 +103,7 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
 
 
-query.orderBy(orderColumn, direction);
+    query.orderBy(orderColumn, direction);
     const [items, totalItems] = await query
       .skip(skip)
       .take(pageSize)
@@ -145,9 +145,48 @@ query.orderBy(orderColumn, direction);
       .createQueryBuilder('scheduling')
       .where('scheduling.date = :schedulingCurrentDate', { schedulingCurrentDate })
       .getMany();
-    }
+  }
 
 
+  async getSchedulingStatistics(): Promise<{
+    totalSchedulingDay: number; totalAttendScheduling: number; totalSchedulingCanceled: number; totalSchedulingForAnswering: number;
+  }> {
+
+    const beginDate = startOfDay(new Date());
+    const endDate = startOfDay(addDays(beginDate, 1));
+
+
+    const query = schedulingEngineRepository.createQueryBuilder("scheduling")
+  .leftJoin("scheduling.status", "status")
+  .select("COUNT(scheduling.id)", "totalSchedulingDay")
+  .addSelect("SUM(CASE WHEN status.description = :attendedStatus THEN 1 ELSE 0 END)", "totalAttendScheduling")
+  .addSelect("SUM(CASE WHEN status.description = :canceledStatus THEN 1 ELSE 0 END)", "totalSchedulingCanceled")
+  .addSelect("SUM(CASE WHEN status.description = :awaitingStatus THEN 1 ELSE 0 END)", "totalSchedulingForAnswering")
+  .where("scheduling.year >= :beginDateYear", { beginDateYear: beginDate.getFullYear() })
+  .andWhere("scheduling.month >= :beginDateMonth", { beginDateMonth: beginDate.getMonth() + 1 })
+  .andWhere("scheduling.day >= :beginDateDay", { beginDateDay: beginDate.getDate() })
+  .andWhere("scheduling.year <= :endDateYear", { endDateYear: endDate.getFullYear() })
+  .andWhere("scheduling.month <= :endDateMonth", { endDateMonth: endDate.getMonth() + 1 })
+  .andWhere("scheduling.day <= :endDateDay", { endDateDay: beginDate.getDate() })
+  .setParameter("attendedStatus", SchedulingStatusEnum.ANSWERED)
+  .setParameter("canceledStatus", SchedulingStatusEnum.CANCELED)
+  .setParameter("awaitingStatus", SchedulingStatusEnum.FOR_ANSWERING);
+
+const result = await query.getRawOne();
+
+const schedulingStatistics = {
+  totalSchedulingDay: parseInt(result.totalSchedulingDay, 10) || 0,
+  totalAttendScheduling: parseInt(result.totalAttendScheduling, 10) || 0,
+  totalSchedulingCanceled: parseInt(result.totalSchedulingCanceled, 10) || 0,
+  totalSchedulingForAnswering: parseInt(result.totalSchedulingForAnswering, 10) || 0,
+};
+
+
+return schedulingStatistics;
+
+  }
 
 
 }
+
+

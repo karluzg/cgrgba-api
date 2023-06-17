@@ -54,9 +54,8 @@ export class ChangeSchedulingStatusOperation extends UserAuthOperationTemplate<S
         console.info("Next Possible status", JSON.stringify(this.nextPossibleSchedulingStatus))
         console.info("Next Possible status INPUT:", params.getSchedulingStatusCode)
  
-        const targetCode = "ANSWERED";
         this.matchingNextStatus = this.nextPossibleSchedulingStatus.find(
-            (nextStatus: SchedulingPossibleStatus) => nextStatus.nextStatus.code === targetCode
+            (nextStatus: SchedulingPossibleStatus) => nextStatus.nextStatus.code === params.getSchedulingStatusCode
         );
         
         console.info("Matched next status",JSON.stringify(this.matchingNextStatus))

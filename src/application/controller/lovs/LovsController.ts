@@ -11,8 +11,10 @@ import { UnauthorizedOperationException } from "../../../infrestructure/exceptio
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { CategoryParams } from "../../model/lovs/CategoryParams";
+import { GetRolesParams } from "../../model/lovs/params/GetRolesParams";
+import { AuthValidator } from "../validator/AuthValidator";
 
-export class Lovs {
+export class LovsController {
 
 
 
@@ -24,10 +26,10 @@ export class Lovs {
             const { categoryCode } = request.body;
 
 
-            console.info("[get_time_slot_list] INPUT DATE PARAMS RECEIVED %s" + categoryCode)
+            console.info("[LovsController] INPUT DATE PARAMS RECEIVED %s" + categoryCode)
             const params = new CategoryParams(categoryCode);
 
-            logger.info("[SchedulingTimeController] Perform dependency injection for ISchedulingTimeEngine")
+            logger.info("[LovsController] Perform dependency injection for ISchedulingTimeEngine")
             const schedulingTimeEngine = container.resolve<ILovsEngine>("ILovsEngine")
             const result = await schedulingTimeEngine.get_service_by_categry(params)
 
@@ -50,7 +52,45 @@ export class Lovs {
             } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
-                logger.error("[SchedulingTimeHourController] Error while getting time slot list", error)
+                logger.error("[LovsController] Error while getting time slot list", error)
+                throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
+            }
+        }
+    }
+
+    public async get_roles(request: Request, response: Response): Promise<Response> {
+
+        try {
+
+
+            const authenticationToken = AuthValidator.checkAuthorizationToken(request);
+        
+            const params = new GetRolesParams(authenticationToken);
+
+            logger.info("[LovsController] Perform dependency injection for ISchedulingTimeEngine")
+            const schedulingTimeEngine = container.resolve<ILovsEngine>("ILovsEngine")
+            const result = await schedulingTimeEngine.get_roles(params)
+
+            return response.status(HttpCodes.OK).json(result)
+
+        } catch (error) {
+
+            if (error.errorClasseName === ErrorExceptionClass.NOT_IMPLEMENTED) {
+                throw new NotImplementedException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.FORBIDDEN) {
+                throw new ForbiddenOperationException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
+                throw new UnsuccessfullOperationException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
+                throw new InvalidParametersException(error.field, error.message)
+
+            } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
+                throw new UnauthorizedOperationException(error.field, error.message)
+            } else {
+                logger.error("[LovsController] Error while getting time slot list", error)
                 throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
             }
         }

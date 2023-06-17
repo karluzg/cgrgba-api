@@ -197,5 +197,24 @@ schedulingRoutes.put("/scheduling/:id", schedulingController.change_scheduling_s
  */
 schedulingRoutes.put("/schedulings/:id", schedulingValidator.updateSchedulingValidator(), schedulingValidator.validate, schedulingController.update_scheduling)
 
+
+
+/**
+ * @swagger
+ * /scheduling/statistics:
+ *   get:
+ *     summary: Get scheduling statistics
+ *     tags: [Schedulings]
+ *     responses:
+ *       '200':
+ *         description: Successful response with scheduling statistics
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/SchedulingStatisticsResult'
+ */
+schedulingRoutes.get("/scheduling/statistics", schedulingController.get_scheduling_statistics)
+
+
 export default schedulingRoutes
 

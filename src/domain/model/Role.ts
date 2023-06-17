@@ -28,7 +28,7 @@ export class Role {
   @ManyToOne(() => User, { eager: true })
   createdBy: User;
 
-  @ManyToOne(() => RoleStatus)
+  @ManyToOne(() => RoleStatus,{nullable:false})
   roleStatus: RoleStatus;
 
   @Column()

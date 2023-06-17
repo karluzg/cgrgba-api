@@ -26,7 +26,7 @@ export class AddNewsOperation extends UserAuthOperationTemplate<NewsResult, News
     private category: NewsCategory;
 
     constructor() {
-        super(OperationNamesEnum.USER_CREATE, OperationValidatorManager.getSingletonInstance())
+        super(OperationNamesEnum.PORTAL_ADD_NEWS, OperationValidatorManager.getSingletonInstance())
         this.newsRepository = container.resolve<INewsEngineRepository>("INewsEngineRepository")
         this.newsCategoryRepository = container.resolve<INewsCategoryEngineRepository>("INewsCategoryEngineRepository")
 

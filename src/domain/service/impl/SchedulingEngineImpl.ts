@@ -13,10 +13,14 @@ import { UpdateSchedulingParams } from "../../../application/model/scheduling-ma
 import { UpdateSchedulingOperation } from "../../operation/scheduling-manager/scheduling/UpdateSchedulingOperation";
 import { ChangeSchedulingStatusOperation as ChangeSchedulingStatusOperation } from "../../operation/scheduling-manager/scheduling/ChangeSchedulingStatusOperation";
 import { ChangeSchedulingStatusParams } from "../../../application/model/scheduling-manager/scheduling/params/ChangeSchedulingStatusParams";
+import { GetSchedulingStatictiscsResult } from "../../../application/model/scheduling-manager/scheduling/GetSchedulingStatictiscsResult";
+import { GetSchedulingStatictiscsParams } from "../../../application/model/scheduling-manager/scheduling/params/GetSchedulingStatictiscsParams";
+import { GetSchedulingStatisticsOperatin } from "../../operation/scheduling-manager/scheduling/GetSchedulingStatictiscsOperatin";
 
 
 @injectable()
 export class SchedulingEngineImpl extends GenericOperationTemplate implements ISchedulingEngine {
+
 
     update_scheduling(params: UpdateSchedulingParams): Promise<SchedulingResult> {
         return this.executeOperation(new UpdateSchedulingOperation(), params)
@@ -35,5 +39,8 @@ export class SchedulingEngineImpl extends GenericOperationTemplate implements IS
     }
     change_scheduling_status(params: ChangeSchedulingStatusParams): Promise<SchedulingResult> {
         return this.executeOperation(new ChangeSchedulingStatusOperation(), params)
+    }
+    get_scheduling_statistics(params: GetSchedulingStatictiscsParams): Promise<GetSchedulingStatictiscsResult> {
+        return this.executeOperation(new GetSchedulingStatisticsOperatin(), params)
     }
 }

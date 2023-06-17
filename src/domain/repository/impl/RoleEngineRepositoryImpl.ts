@@ -37,7 +37,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
     return role;
   }
 
-  public async findAllRoles(page: number, size: number, orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<Role>> {
+  public async findRolesBy(page: number, size: number, orderColumn?: string, direction?: 'ASC' | 'DESC'): Promise<IPage<Role>> {
     const skipCount = (page - 1) * size;
 
     let queryBuilder = roleRepository.createQueryBuilder('role')
@@ -136,6 +136,10 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
 
     const permissions = role.permissions;
     return permissions;
+  }
+
+ async getAllRoles(): Promise<Role[]> {
+   return await roleRepository.createQueryBuilder('role').getMany();
   }
 
 }

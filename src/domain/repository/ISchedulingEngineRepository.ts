@@ -22,6 +22,12 @@ export interface ISchedulingEngineRepository {
 
     findSchedulingById(schedulingId: number): Promise<Scheduling>
     findBeginDateAndHour(schedulingDate: string, chosenHour: string): Promise<Scheduling[]>
-    findSchedulingCurrentDate(schedulingCurrentDate:string):Promise<Scheduling[]>
+    findSchedulingCurrentDate(schedulingCurrentDate: string): Promise<Scheduling[]>
+     getSchedulingStatistics(): Promise<{
+        totalSchedulingDay: number;
+        totalAttendScheduling: number;
+        totalSchedulingCanceled: number;
+        totalSchedulingForAnswering: number;
+      }>
 
 }
