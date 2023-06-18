@@ -98,7 +98,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!permission) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     role.permissions.push(permission);
@@ -120,7 +120,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!permission) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     role.permissions = role.permissions.filter(p => p.id !== permission.id);

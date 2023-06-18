@@ -34,9 +34,10 @@ export class AddRoleOperation extends UserAuthOperationTemplate<RoleResult, Role
     protected async doValidateParameters(params: RoleParams): Promise<void> {
 
         let role = await this.rolesRepository.findRoleByName(params.getName)
+        logger.info("[AddRoleOperation] Role founded,", JSON.stringify(role))
 
         if (role) {
-            logger.error("[AddRoleOperation] role already exist")
+
             throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.ROLE_ALREADY_EXIST);
         }
 
@@ -44,8 +45,7 @@ export class AddRoleOperation extends UserAuthOperationTemplate<RoleResult, Role
             for (const permission of params.getPermissions) {
               const permissionEntity = await this.permissionRepository.findPermissionByCode(permission);
               if (!permissionEntity) {
-                logger.error("[AddRoleOperation] Permission not found");
-                throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+                  throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
               } else {
                 this.permissions.push(permissionEntity);
               }
@@ -57,16 +57,11 @@ export class AddRoleOperation extends UserAuthOperationTemplate<RoleResult, Role
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: RoleParams, result: RoleResult): Promise<void> {
 
 
-
-
         const role = new Role(); // status is created automatically in user constructor
         role.name= params.getName;
         role.description= params.getDescription;
         role.permissions= this.permissions
         role.isAdmin= params.getIsAdmin
-
-
-        console.info("WATCH Role TO ADD:" + JSON.stringify(role))
 
         logger.info("[AddRoleOperation] creating role in db %", JSON.stringify(role))
         try {

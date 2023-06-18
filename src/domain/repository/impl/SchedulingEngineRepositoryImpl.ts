@@ -149,7 +149,10 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
 
   async getSchedulingStatistics(): Promise<{
-    totalSchedulingDay: number; totalAttendScheduling: number; totalSchedulingCanceled: number; totalSchedulingForAnswering: number;
+    totalSchedulingDay: number;
+    totalAttendScheduling: number;
+    totalSchedulingCanceled: number;
+    totalSchedulingForAnswering: number;
   }> {
 
     const beginDate = startOfDay(new Date());

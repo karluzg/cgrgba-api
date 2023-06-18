@@ -44,7 +44,7 @@ export class NewsCategoryEngineRepositoryImpl implements INewsCategoryEngineRepo
       .getOne();
 
     if (!newsCategory) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     const updatedNewsCategory = Object.assign(newsCategory, updateNewsCategoryData);
@@ -58,7 +58,7 @@ export class NewsCategoryEngineRepositoryImpl implements INewsCategoryEngineRepo
       .getOne();
 
     if (!newsCategory) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     await newsCategoryRepository.remove(newsCategory);

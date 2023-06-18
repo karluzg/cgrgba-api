@@ -14,7 +14,6 @@ import { EmailTemplate } from "../../../../infrestructure/template/EmailTemplate
 import { PlataformConfig } from "../../../../infrestructure/config/plataform";
 import { ResultTemplate } from "../../../../infrestructure/template/ResultTemplate";
 import { ResetPasswordParams } from "../../../../application/model/user-manager/ResetPasswordParams";
-import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { EmailUtils } from "../../util/EmailUtils";
 
 
@@ -25,7 +24,7 @@ export class ResetPasswordOperation extends OperationTemplate<ResultTemplate, Re
     private user: User
 
     constructor() {
-        super(OperationNamesEnum.USER_CREATE)
+        super(OperationNamesEnum.USER_RESET_PASSWORD)
         this.userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
 
     }
@@ -36,7 +35,7 @@ export class ResetPasswordOperation extends OperationTemplate<ResultTemplate, Re
 
         if (!this.user) {
             logger.error("[ResetPasswordOperation] User not exist")
-            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_NOT_FOUND);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_NOT_EXIST);
         }
 
         if (this.user.mobileNumber != params.getMobileNumber) {

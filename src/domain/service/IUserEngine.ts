@@ -1,6 +1,6 @@
 import { GetByEmailOrCodeParams } from "../../application/model/GetByEmailOrCodeParams";
 import { GetByIdParams } from "../../application/model/GetByIdParams";
-import { PageAndSizeParams } from "../../application/model/PageAndSizeParams";
+import { GetAllUsersParams } from "../../application/model/GetAllUserSParams";
 import { ResetPasswordParams } from "../../application/model/user-manager/ResetPasswordParams";
 import { UpdatePasswordParams } from "../../application/model/user-manager/UpdatePasswordParams";
 import { UserParams } from "../../application/model/user-manager/UserParams";
@@ -14,6 +14,6 @@ export interface IUserEngine {
     addUser(params: UserParams): Promise<UserResult>;
     updatePassword(params: UpdatePasswordParams): Promise<UserResult>;
     resetPassword(params:ResetPasswordParams):Promise<ResultTemplate>
-    getAllUsers(params:PageAndSizeParams):Promise<UserResultList>;
+    getAllUsers(params: GetAllUsersParams): Promise<UserResultList>;
 }
 

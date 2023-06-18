@@ -79,8 +79,6 @@ export class GetTimeSlotListOperation extends OperationTemplate<TimeSlotResult, 
         logger.info("[GetTimeSlotListOperation] End of strict validation scheduling time parameteres...")
     }
 
-
-
     protected async doExecute(params: TimeSlotListParams, result: TimeSlotResult): Promise<void> {
 
 

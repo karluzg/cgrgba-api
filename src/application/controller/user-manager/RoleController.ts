@@ -5,15 +5,12 @@ import { InvalidParametersException } from "../../../infrestructure/exceptions/I
 import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
 
 import { HttpCodes } from "../../../infrestructure/response/enum/HttpCode";
-import { IUserEngine } from "../../../domain/service/IUserEngine";
-import { UserParams } from "../../model/user-manager/UserParams";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import { AuthValidator } from "../validator/AuthValidator";
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
-import { RequestHandler, ParamsDictionary } from "express-serve-static-core";
-import { ParsedQs } from "qs";
+
 import { GetByIdParams } from "../../model/GetByIdParams";
 import { GetByEmailOrCodeParams } from "../../model/GetByEmailOrCodeParams";
 import { PageAndSizeParams } from "../../model/PageAndSizeParams";

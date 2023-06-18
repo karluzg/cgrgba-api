@@ -14,7 +14,6 @@ import { Permission } from "../model/Permission"
 import { UserStatus } from "../model/UserStatus"
 import { IUserStatusEngineRepository } from "../repository/IUserStatusEngineRepository"
 import { generatePermisionGroupDescription } from "../model/enum/PermissionGroupEnum"
-import { stat } from "fs"
 import { InvalidParametersException } from "../../infrestructure/exceptions/InvalidParametersException"
 import { Field } from "../../infrestructure/exceptions/enum/Field"
 import { MiddlewareBusinessMessage } from "../../infrestructure/response/enum/MiddlewareCustomMessage"
@@ -22,6 +21,7 @@ import { EnumOperationTemplate } from "../../infrestructure/template/EnumOperati
 import { PlataformConfig } from "../../infrestructure/config/plataform"
 import { RoleStatus } from "../model/RoleStatus"
 import { RoleStatusEnum } from "../model/enum/RolestatusEnum"
+import { IRoleStatusEngineRepository } from "../repository/IRoleStatusEngineRepository"
 
 export async function initNantoiUser() {
 
@@ -35,6 +35,7 @@ export async function initNantoiUser() {
 async function createUserNantoi(role: Role) {
 
     const userStatusEngineRepository = container.resolve<IUserStatusEngineRepository>("IUserStatusEngineRepository");
+
     logger.info("[createUserNantoi] Perform dependency injection for IUserEngineRepository")
     const userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
     //add new user
@@ -79,6 +80,8 @@ async function createUserNantoi(role: Role) {
 async function creteRoleAdmin(permissions: Permission[]) {
     logger.info("[creteRoleAdmin] Perform dependency injection for IRoleEngineRepository")
     const roleRepository = container.resolve<IRoleEngineRepository>("IRoleEngineRepository")
+    const roleStatusRepository = container.resolve<IRoleStatusEngineRepository>("IRoleStatusEngineRepository")
+    
     //add new user
     logger.info("[creteRoleAdmin] Find role by name")
     let adminRole: Role;
@@ -92,16 +95,18 @@ async function creteRoleAdmin(permissions: Permission[]) {
 
         const role = new Role();
 
-        const roleStatus = new RoleStatus();
-        roleStatus.code = "ACTIVE"
-        roleStatus.description = RoleStatusEnum.ACTIVE
-        roleStatus.listed = true
-        
+        await createRoleStatus(roleStatusRepository)
+
+        const statusFounded = await roleStatusRepository.findRoleStatusCode("ACTIVE")
+        if (!statusFounded) {
+            throw new InvalidParametersException(Field.ROLE_STATUS_CODE, MiddlewareBusinessMessage.ROLE_NOT_EXIST)
+        }
+
         role.isAdmin = true
         role.description = "Administrator"
         role.name = "ADMIN"
         role.permissions = permissions
-        role.roleStatus=roleStatus
+        role.roleStatus=statusFounded
         logger.info("[creteRoleAdmin] Creating Admin")
         return roleRepository.saveRole(role)
     }
@@ -110,6 +115,24 @@ async function creteRoleAdmin(permissions: Permission[]) {
         return roleRepository.saveRole(adminRole)
     }
 
+}
+
+async function createRoleStatus(roleStatusRepository:IRoleStatusEngineRepository) {
+
+    const enumInfo = new EnumOperationTemplate<RoleStatusEnum>(RoleStatusEnum);
+
+    for (const status in RoleStatusEnum) {
+        if (Object.prototype.hasOwnProperty.call(RoleStatusEnum, status)) {
+            const roleStatus = new RoleStatus(status);
+            roleStatus.description =  enumInfo.getDescription(status);
+            roleStatus.listed = true
+
+             const st:RoleStatusEnum= enumInfo.getEnumKey(status);
+             const at= enumInfo.getKey(RoleStatusEnum.ACTIVE);
+
+            await roleStatusRepository.save(roleStatus);
+        }
+    }
 }
 async function createUserStatus(userStatusEngineRepository: IUserStatusEngineRepository): Promise<void> {
 

@@ -51,6 +51,16 @@ export enum OperationNamesEnum {
     //AUTH -  707 to 807 // Não é preciso guardar essa operação na BD, logo, dá-mos o nome para efeito de log
     SESSION_LOGIN = 707,
     SESSION_LOGOUT = 708,
+
+    // PERMISSION - 808 - 908
+    PERMISSION_GET_LIST = 808,
+    PERMISSION_GET_BY_CODE=809,
+    
+    //PERMISSION_GROUP 909 - 1009
+    PERMISSION_GROUP_ADD = 909,
+    PERMISSION_GROUP_GET_LIST = 910,
+    PERMISSION_GROUP_GET_BY_CODE = 911,
+    
     
 }
 
@@ -80,6 +90,7 @@ export async function getOperationNameDescription(operationCode: string): Promis
             return "Get Scheduling List";
         case "SCHEDULING_DETAIL.toString":
             return "Consulatar detalhe de agendamento";
+        
         case "SCHEDULING_UPDATE":
             return "Alterar agendamento";
         case "SCHEDULING_SERVICE_GET":

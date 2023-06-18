@@ -33,17 +33,11 @@ export class GetSchedulingDetailOperation extends UserAuthOperationTemplate<Sche
     protected async doValidateParameters(params: GetSchedulingDetailParams): Promise<void> {
 
     
-        logger.info("[GetSchedulingDetailOperation] Begin high-level validation of get scheduling detail parameters...");
-
         this.schedulingEntity = await this.schedulingEngineRepository.findSchedulingById(params.getSchedulingId)
-
 
         if (!this.schedulingEntity) {
             throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID)
         }
-
-        
-        logger.info("[GetSchedulingDetailOperation] End high-level validation of get scheduling detail parameters...");
     }
 
 

@@ -24,7 +24,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
     private schedulingTimeEntity: SchedulingTimeConfiguration[] = [];
     private dateList: Date[] = [];
-    private hourListAdded: boolean = false;
+
 
     constructor() {
         super(OperationNamesEnum.TIMESLOT_CREATE, OperationValidatorManager.getSingletonInstance())
@@ -46,7 +46,6 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
 
         if (this.schedulingTimeEntity.length > 0) {
-            logger.error("[AddNewTimeSlotOperation] Scheduling time configuration already exist")
             throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_ALREADY_EXIST);
         }
 
@@ -73,8 +72,11 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
                 MiddlewareBusinessMessage.SCHEDULING_TIME_WEEKEND_END_DATE)
         }
 
-        const isHollydaybeginDate = await SchedulingTimeUtil.isHollyDay(new Date(params.getBeginSchedulingDate), this.hollydayEngineRepository, "[AddNewTimeSlotOperation]")
-        const isHollydayEndDate = await SchedulingTimeUtil.isHollyDay(new Date(params.getEndSchedulingDate), this.hollydayEngineRepository, "[AddNewTimeSlotOperation]")
+        const isHollydaybeginDate = await SchedulingTimeUtil.isHollyDay(new Date(params.getBeginSchedulingDate),
+            this.hollydayEngineRepository, "[AddNewTimeSlotOperation]")
+        
+        const isHollydayEndDate = await SchedulingTimeUtil.isHollyDay(new Date(params.getEndSchedulingDate),
+            this.hollydayEngineRepository, "[AddNewTimeSlotOperation]")
 
         if (isHollydaybeginDate) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE,
@@ -177,7 +179,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
     async generateHourListBySchedulingDate(params: TimeSlotParams, hollydayRepository: IHollydayEngineRepository): Promise<void> {
 
 
-        logger.info("[AddNewTimeSlotOperation] [Generate List by scheduling date] Rreceived params:" + params)
+        logger.info("[AddNewTimeSlotOperation] Generate List by scheduling date received params:" + params)
 
         await this.createSchedulingDateList(params.getBeginSchedulingDate, params.getEndSchedulingDate)
 
@@ -201,8 +203,6 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
                 let endBegingWorkDateTime = new Date(`${dateWithoutHour}  ${params.getBeginWorkTime} `);
 
                 if (params.getEndSchedulingDate.length == 0) {
-
-
                     endBegingWorkDateTime = new Date(`${dateWithoutHour} ${params.getBeginWorkTime} `);
 
                 } else {
@@ -246,11 +246,6 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         logger.info("[AddNewTimeSlotOperation] InputDate to be Added %s and hour list %s", inputDate, hourList)
 
         await this.createNewSchedulingConfiguration(inputDate, params, hourList)
-
-
-        if (hourList.length !== 0) {
-            this.hourListAdded = true;
-        }
 
     }
 

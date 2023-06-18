@@ -21,7 +21,7 @@ export class GetPermissionByCodeOperation extends UserAuthOperationTemplate<Perm
     private permission: Permission;
 
     constructor() {
-        super(OperationNamesEnum.ROLE_GET_BY_NAME, OperationValidatorManager.getSingletonInstance())
+        super(OperationNamesEnum.PERMISSION_GET_BY_CODE, OperationValidatorManager.getSingletonInstance())
         this.permissionRepository = container.resolve<IPermissionEngineRepository>("IPermissionEngineRepository")
 
     }
@@ -31,7 +31,7 @@ export class GetPermissionByCodeOperation extends UserAuthOperationTemplate<Perm
         this.permission = await this.permissionRepository.findPermissionByCode(params.getValue);
         if (!this.permission) {
             logger.error("[GetPermissionByCodeOperation] permission not exist")
-            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
         }
     }
 

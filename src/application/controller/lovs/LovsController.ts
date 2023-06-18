@@ -16,9 +16,6 @@ import { AuthValidator } from "../validator/AuthValidator";
 
 export class LovsController {
 
-
-
-
     public async get_service_by_category(request: Request, response: Response): Promise<Response> {
 
         try {

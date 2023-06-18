@@ -21,7 +21,7 @@ export class GetPermissionGrouByCodeOperation extends UserAuthOperationTemplate<
     private permissonGroup: PermissionGroup;
 
     constructor() {
-        super(OperationNamesEnum.ROLE_GET_BY_NAME, OperationValidatorManager.getSingletonInstance())
+        super(OperationNamesEnum.PERMISSION_GROUP_GET_BY_CODE, OperationValidatorManager.getSingletonInstance())
         this.permissionGroupRepository = container.resolve<IPermissionGroupEngineRepository>("IPermissionGroupEngineRepository")
 
     }
@@ -29,8 +29,9 @@ export class GetPermissionGrouByCodeOperation extends UserAuthOperationTemplate<
     protected async doValidateParameters(params: GetByEmailOrCodeParams): Promise<void> {
 
         this.permissonGroup = await this.permissionGroupRepository.findPermissionGroupByCode(params.getValue);
+        logger.info("[GetPermissionGrouByCodeOperation] PermissonGroup founded", JSON.stringify(this.permissonGroup ))
         if (!this.permissonGroup) {
-            logger.error("[GetPermissionGrouByCodeOperation] permissonGroup not exist")
+    
             throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_FOUND);
         }
     }

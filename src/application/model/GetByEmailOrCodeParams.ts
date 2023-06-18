@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsNumber} from 'class-validator';
 import { AuthParamsTemplate } from '../../infrestructure/template/AuthParamsTemplate';
 export class GetByEmailOrCodeParams extends AuthParamsTemplate {
 

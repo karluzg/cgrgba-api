@@ -16,10 +16,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { ForbiddenOperationException } from "../../../../infrestructure/exceptions/ForbiddenOperationException";
 import { PlataformConfig } from "../../../../infrestructure/config/plataform";
 import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
-import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
 import { TokenResponseBuilder } from "../../response-builder/user-manager/TokenResponseBuilder";
 import { IUserPossibleStatusEngneRepository } from "../../../repository/IUserPossibleStatusEngineRepository";
-import { UserStatus } from "../../../model/UserStatus";
 import { UserPossibleStatus } from "../../../model/UserPossibleStatus";
 
 
@@ -42,14 +40,14 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
         this.user = await this.userRepository.findUserByEmail(params.getEmail)
      
         if (!this.user) {
-            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_NOT_FOUND);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_INVALID_CREDENTIALS);
         }
 
         if (this.user.passwordTry <= 0) {
             throw new ForbiddenOperationException(Field.USER, MiddlewareBusinessMessage.USER_PASSWORD_LOCKED);
         }
 
-        logger.info("[LoginOperation] check password for user %s", this.user)
+        logger.info("[LoginOperation] Check password for user", JSON.stringify(this.user))
         const passwordValidator = new PasswordValidator();
         if (!await passwordValidator.checkPassword(params.getPassword, this.user.passwordHash)) {
             this.user.passwordTry = this.user.passwordTry - 1
@@ -89,8 +87,6 @@ export class LoginOperation extends OperationTemplate<UserLoginResult, UserLogin
         expireDate.setHours(creationDate.getHours() + 24);
         newTokenSession.expireDate = expireDate;
         newTokenSession.expireDateInMilliseconds = expireDate.getTime();
-
-        console.info("TOKEN IN MILLISECONDS", newTokenSession.expireDateInMilliseconds)
 
         await this.saveTokenSession(newTokenSession);
 

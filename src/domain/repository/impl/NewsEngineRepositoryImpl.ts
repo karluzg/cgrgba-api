@@ -89,7 +89,7 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
       .getOne();
 
     if (!permission) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     const updateNews = Object.assign(permission, updateNewsData);
@@ -107,7 +107,7 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
       .getOne();
 
     if (!news) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     await newsRepository.remove(news);
@@ -127,7 +127,7 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
     }
 
 
-    throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
+    throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
   }
 
 
@@ -141,7 +141,7 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
       return newsRepository.save(news);
     }
 
-    throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
+    throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
   }
 
 

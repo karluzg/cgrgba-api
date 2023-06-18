@@ -1,4 +1,4 @@
-import { PageAndSizeParams } from "../../application/model/PageAndSizeParams";
+import { GetAllUsersParams } from "../../application/model/GetAllUserSParams";
 import { NewsFileParams } from "../../application/model/news-manager/NewsFileParams";
 import { NewsParams } from "../../application/model/news-manager/NewsParams";
 import { NewsResult } from "../../application/model/news-manager/NewsResult";
@@ -13,6 +13,6 @@ import { ResultTemplate } from "../../infrestructure/template/ResultTemplate";
 export interface INewsEngine {
     addNews(params: NewsParams): Promise<NewsResult>;
     addNewsFile(params: NewsFileParams): Promise<NewsResult>;
-    getAllNews(params:PageAndSizeParams):Promise<NewsResultList>;
+    getAllNews(params: GetAllUsersParams): Promise<NewsResultList>;
   
 }

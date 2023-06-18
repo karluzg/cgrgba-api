@@ -69,7 +69,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
                   .getOne();
 
             if (!user) {
-                  throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
+                  throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
             }
 
             const updatedUser = Object.assign(user, updateUserData);
@@ -102,7 +102,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
                   return userRepository.save(user);
             }
 
-            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_FOUND);
+            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
       }
 
 

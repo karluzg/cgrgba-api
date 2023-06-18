@@ -32,6 +32,7 @@ export class GetSchedulingStatisticsOperatin extends UserAuthOperationTemplate<G
          
         result.setTotalSchedulingCanceled = schedulingStatistics.totalSchedulingCanceled;
     }
+    
     protected initResult(): GetSchedulingStatisticsResult {
       return new GetSchedulingStatisticsResult()
     }

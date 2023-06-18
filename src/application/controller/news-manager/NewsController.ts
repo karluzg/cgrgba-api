@@ -19,9 +19,6 @@ import { PageAndSizeParams } from "../../model/PageAndSizeParams";
 export class NewsController {
 
 
-
-
-
   public async getAllNews(request: Request, response: Response): Promise<Response> {
     try {
       const { page = 1, size = 10, category: categoryCode, direction, orderColumn } = request.query;

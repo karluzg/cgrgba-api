@@ -19,16 +19,17 @@ export class AddPermissionGroupOperation extends UserAuthOperationTemplate<Permi
     private permissionRepository: IPermissionGroupEngineRepository;
 
     constructor() {
-        super(OperationNamesEnum.ROLE_ADD, OperationValidatorManager.getSingletonInstance())
+        super(OperationNamesEnum.PERMISSION_GROUP_ADD, OperationValidatorManager.getSingletonInstance())
         this.permissionRepository = container.resolve<IPermissionGroupEngineRepository>("IPermissionGroupEngineRepository")
     }
 
     protected async doValidateParameters(params: PermissionGroupParams): Promise<void> {
 
         let permissionGroup = await this.permissionRepository.findPermissionGroupByCode(params.getCode)
+        logger.info("[AddPermissionGroupOperation] PermissionGroup founded", JSON.stringify(permissionGroup))
 
         if (permissionGroup) {
-            logger.error("[AddPermissionGroupOperation] permissionGroup already exist")
+          
             throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.PERMISSION_GROUP_ALREADY_EXIST);
         }
     }
@@ -36,16 +37,12 @@ export class AddPermissionGroupOperation extends UserAuthOperationTemplate<Permi
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: PermissionGroupParams, result: PermissionGroupResult): Promise<void> {
 
 
-
-
         const permissionGroup = new PermissionGroup(); // status is created automatically in user constructor
         permissionGroup.code= params.getCode;
         permissionGroup.description= params.getDescription;
 
 
-        console.info("WATCH permissionGroup TO ADD:" + JSON.stringify(permissionGroup))
-
-        logger.info("[AddPermissionGroupOperation] creating permissionGroup in db %", JSON.stringify(permissionGroup))
+        logger.info("[AddPermissionGroupOperation] creating permissionGroup in Data Base", JSON.stringify(permissionGroup))
         try {
             const newPermissionGroup: PermissionGroup = await this.permissionRepository.savePermissionGroup(permissionGroup)
             result.setPermission = newPermissionGroup;

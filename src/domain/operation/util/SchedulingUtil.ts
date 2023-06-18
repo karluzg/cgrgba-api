@@ -246,7 +246,7 @@ export class SchedulingUtil {
     ): Promise<number> {
 
 
-        console.info("[SchedulingUtil] Citizen was found:", citizen);
+    
         logger.info("[SchedulingUtil] Verifying if scheduling date is a weekend or holiday: " + schedulingDate);
 
 
@@ -268,8 +268,6 @@ export class SchedulingUtil {
         if (schedulingTimeEntity.length === 0) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);
         }
-
-        logger.info("[SchedulingUtil] Scheduling entity was found");
 
         logger.info("[SchedulingUtil] Validating valid Pair -> SchedulingDate and hour");
         const matchHours: string[] = schedulingTimeEntity

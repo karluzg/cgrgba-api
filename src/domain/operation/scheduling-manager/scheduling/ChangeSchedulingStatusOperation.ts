@@ -1,6 +1,5 @@
 import { container } from "tsyringe";
 import { SchedulingResult } from "../../../../application/model/scheduling-manager/scheduling/SchedulingResult";
-import { GetSchedulingDetailParams } from "../../../../application/model/scheduling-manager/scheduling/params/GetSchedulingDetailParams";
 import { UserAuthOperationTemplate } from "../../../../infrestructure/template/UserAuthOperationTemplate";
 import { OperationValidatorManager } from "../../../../infrestructure/validator/managers/OperationValidatorManager";
 import { TokenSession } from "../../../model/TokenSession";
@@ -51,14 +50,14 @@ export class ChangeSchedulingStatusOperation extends UserAuthOperationTemplate<S
   
         this.nextPossibleSchedulingStatus = await this.schedulingPossibleStatusEngineRepository.findSchedulingNextStatus(this.schedulingEntitySource.status.code);
 
-        console.info("Next Possible status", JSON.stringify(this.nextPossibleSchedulingStatus))
-        console.info("Next Possible status INPUT:", params.getSchedulingStatusCode)
+        logger.info("Next Possible status", JSON.stringify(this.nextPossibleSchedulingStatus))
+        logger.info("Next Possible status INPUT:", params.getSchedulingStatusCode)
  
         this.matchingNextStatus = this.nextPossibleSchedulingStatus.find(
             (nextStatus: SchedulingPossibleStatus) => nextStatus.nextStatus.code === params.getSchedulingStatusCode
         );
         
-        console.info("Matched next status",JSON.stringify(this.matchingNextStatus))
+        logger.info("Matched next status",JSON.stringify(this.matchingNextStatus))
 
         if (!this.matchingNextStatus) {
             throw new InvalidParametersException(Field.SCHEDULING_STATUS_CODE, MiddlewareBusinessMessage.SCHEDULING_STATUS_CODE_INVALID);

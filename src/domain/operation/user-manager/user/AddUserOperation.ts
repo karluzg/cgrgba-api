@@ -39,7 +39,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
     protected async doValidateParameters(params: UserParams): Promise<void> {
 
         let user = await this.userRepository.findUserByEmail(params.getEmail)
-        logger.error("[AddUserOperation] User founded by email", JSON.stringify(user))
+        logger.info("[AddUserOperation] User founded by email", JSON.stringify(user))
 
         if (user) {
             throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_EMAIL_ALREADY_EXIST);
@@ -47,23 +47,25 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
         user = await this.userRepository.findUserByMobileNumber(params.getMobileNumber);
 
-        logger.error("[AddUserOperation] User founded by mobile number", JSON.stringify(user))
+        logger.info("[AddUserOperation] User founded by mobile number", JSON.stringify(user))
         if (user) {
 
             throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_MBILE_NUMBER_ALREADY_EXIST);
         }
 
-        logger.error("[AddUserOperation] Start searching match Role in Data Base...");
-        if (params.getRoleName) {
-              const roleEntity = await this.rolesRepository.findRoleByName(params.getRoleName);
+        logger.info("[AddUserOperation] Start searching match Role in Data Base...");
+        if (params.getRoles) {
+            for (const role of params.getRoles) {
+              const roleEntity = await this.rolesRepository.findRoleByName(role);
               if (!roleEntity) {
 
                   throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
               } else {
                 this.roles.push(roleEntity);
               }
+            }
         }
-        logger.error("[AddUserOperation] Finish of searching match Role in Data Base...");
+        logger.info("[AddUserOperation] Finish of searching match Role in Data Base...");
 
     }
 
@@ -72,7 +74,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
         const password = GeneratePassowordUtil.generateRandomString(8);
 
-        logger.info("[AddUserOperation] Creatting salt and hash from password", password)
+        logger.info("[AddUserOperation] Creatting salt and hash from password generated", password)
         const passwordValidator = new PasswordValidator();
         const salt = passwordValidator.createSalt()
         const hash = passwordValidator.generateHash(password, await salt)
@@ -86,7 +88,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         user.passwordSalt = await salt;
         user.roles = this.roles
 
-        logger.info("[AddUserOperation] creating user in db", JSON.stringify(user))
+        logger.info("[AddUserOperation] Creating user in db", JSON.stringify(user))
         const newUser: User = await this.userRepository.saveUser(user)
 
         const userRespponse = await UserResponseBuilder.buildUserResponse(newUser)

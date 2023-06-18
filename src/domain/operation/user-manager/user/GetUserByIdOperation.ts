@@ -4,10 +4,8 @@ import { OperationValidatorManager } from "../../../../infrestructure/validator/
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import logger from "../../../../infrestructure/config/logger";
-import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
-import { ResultInfo } from "../../../../infrestructure/response/ResultInfo";
 import { IUserEngineRepository } from "../../../repository/IUserEngineRepository";
 import { User } from "../../../model/User";
 import { GetByIdParams } from "../../../../application/model/GetByIdParams";
@@ -15,6 +13,7 @@ import { UserResult } from "../../../../application/model/user-manager/UserResul
 import { IUserPossibleStatusEngneRepository } from "../../../repository/IUserPossibleStatusEngineRepository";
 import { UserPossibleStatus } from "../../../model/UserPossibleStatus";
 import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
+import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 
 
 export class GetUserByIdOperation extends UserAuthOperationTemplate<UserResult, GetByIdParams>{
@@ -24,7 +23,7 @@ export class GetUserByIdOperation extends UserAuthOperationTemplate<UserResult, 
     private user: User;
 
     constructor() {
-        super(OperationNamesEnum.USER_CREATE, OperationValidatorManager.getSingletonInstance())
+        super(OperationNamesEnum.USER_GET_BY_ID, OperationValidatorManager.getSingletonInstance())
         this.userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
         this.userPossiblestatusEngineRepository = container.resolve<IUserPossibleStatusEngneRepository>("IUserPossibleStatusEngneRepository")
 
@@ -35,7 +34,7 @@ export class GetUserByIdOperation extends UserAuthOperationTemplate<UserResult, 
         this.user = await this.userRepository.findUserById(params.getId);
         if (!this.user) {
             logger.error("[GetUserByIdIOperation] user not exist")
-            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_NOT_FOUND);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_NOT_EXIST);
         }
     }
 

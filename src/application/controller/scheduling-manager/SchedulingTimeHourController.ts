@@ -18,8 +18,6 @@ import { TimeSlotListParams } from "../../model/scheduling-manager/schedulingTim
 
 export class SchedulingTimeController {
 
-
-
     public async add_new_time_slot(request: Request, response: Response): Promise<Response> {
 
         try {

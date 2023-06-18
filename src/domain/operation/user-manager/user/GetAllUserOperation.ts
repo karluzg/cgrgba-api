@@ -4,7 +4,6 @@ import { OperationValidatorManager } from "../../../../infrestructure/validator/
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import logger from "../../../../infrestructure/config/logger";
-import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { PageAndSizeParams } from "../../../../application/model/PageAndSizeParams";
@@ -16,9 +15,7 @@ import { UserStatus } from "../../../model/UserStatus";
 import { User } from "../../../model/User";
 import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
 import { PageableUtils } from "../../../../infrestructure/pageable-manager/PageableUtils";
-
-
-
+import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 
 
 export class GetAllUserOperation extends UserAuthOperationTemplate<UserResultList, PageAndSizeParams>{
@@ -28,7 +25,7 @@ export class GetAllUserOperation extends UserAuthOperationTemplate<UserResultLis
     private status: UserStatus;
 
     constructor() {
-        super(OperationNamesEnum.USER_CREATE, OperationValidatorManager.getSingletonInstance())
+        super(OperationNamesEnum.USER_GET_LIST, OperationValidatorManager.getSingletonInstance())
         this.userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
         this.userStatusRepository = container.resolve<IUserStatusEngineRepository>("IUserStatusEngineRepository")
 
@@ -41,7 +38,7 @@ export class GetAllUserOperation extends UserAuthOperationTemplate<UserResultLis
 
             if (!this.status) {
                 logger.error("[GetAllUserOperation] Status not exist")
-                throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_STATUS_NOT_FOUND);
+                throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_STATUS_NOT_EXIST);
             }
         }
 
@@ -49,16 +46,16 @@ export class GetAllUserOperation extends UserAuthOperationTemplate<UserResultLis
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: PageAndSizeParams, result: UserResultList): Promise<void> {
        
-        logger.info("[GetAllUserOperation] Getting all users");
-        
-        const userPages: IPage<User> = await this.userRepository.findAllUsers(params.getPage, params.size, this.status, params.orderColumn, params.direction);
-      
 
+        
+        const userPages: IPage<User> = await this.userRepository.findAllUsers(params.getPage,
+            params.size,
+            this.status,
+            params.orderColumn,
+            params.direction);
+      
         const userResponses: User[] = await Promise.all(userPages.content
             .map(user => UserResponseBuilder.buildUserResponse(user)));
-      
-        
-        console.info("New User Response", JSON.stringify(userResponses));
       
         PageableUtils.ofWithContent(result, userPages, userResponses);
       }

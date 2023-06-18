@@ -10,7 +10,6 @@ import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import { IHollydayEngineRepository as IHollydayEngineRepository } from "../../../repository/IHollydayEngineRepository";
 import { ISchedulingHistoryEngineRepository } from "../../../repository/ISchedulingHistoryEngineRespository";
 import { ISchedulingTimeEngineRepository } from "../../../repository/ISchedulingTimeEngineRepository";
-import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
 import { Scheduling } from "../../../model/Scheduling";
 import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngineRepository";
 import Semaphore from "semaphore-async-await";
@@ -66,7 +65,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         this.citizen = await this.citizenEngineRepository.findCitizenByEmailOrMobileNumber(params.getCitizenEmail,
             params.getCitizenMobileNumber);
 
-        logger.info("[AddNewSchedulingOperation] Return founded citizen:" + this.citizen)
+        logger.info("[AddNewSchedulingOperation] Citizen founded:", JSON.stringify(this.citizen))
 
         this.totalAvailableCollaborators = await SchedulingUtil.strictSchedulingValidate(
             params.getSchedulingDate,

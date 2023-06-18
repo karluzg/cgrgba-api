@@ -18,15 +18,11 @@ export class GetAllPermissionGroupOperation extends UserAuthOperationTemplate<Pe
     private permissionRepository: IPermissionGroupEngineRepository;
 
     constructor() {
-        super(OperationNamesEnum.ROLE_GET_ALL_ROLE_BY_FILER, OperationValidatorManager.getSingletonInstance())
+        super(OperationNamesEnum.PERMISSION_GROUP_GET_LIST, OperationValidatorManager.getSingletonInstance())
         this.permissionRepository = container.resolve<IPermissionGroupEngineRepository>("IPermissionGroupEngineRepository")
 
     }
 
-    protected async doValidateParameters(params: PageAndSizeParams): Promise<void> {
-
-
-    }
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: PageAndSizeParams, result: PermissionGroupResultList): Promise<void> {
 

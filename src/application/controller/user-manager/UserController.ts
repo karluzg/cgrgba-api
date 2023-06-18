@@ -21,15 +21,13 @@ import { Request, Response } from "express";
 
 export class UserController {
 
-
-
   public async addUser(request: Request, response: Response): Promise<Response> {
 
     try {
-      const { fullName, mobileNumber, email, roleName } = request.body;
+      const { fullName, mobileNumber, email, roles } = request.body;
 
       const authenticationToken = AuthValidator.checkAuthorizationToken(request);
-      const params = new UserParams(authenticationToken, fullName, mobileNumber, email, roleName)
+      const params = new UserParams(authenticationToken, fullName, mobileNumber, email, roles)
 
       logger.info("[UserController] Perform dependency injection for UserController")
 

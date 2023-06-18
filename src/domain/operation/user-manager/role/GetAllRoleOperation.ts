@@ -4,13 +4,11 @@ import { OperationValidatorManager } from "../../../../infrestructure/validator/
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import logger from "../../../../infrestructure/config/logger";
-import { PageAndSizeParams } from "../../../../application/model/PageAndSizeParams";
 import { IPage } from "../../../../infrestructure/pageable-manager/IPage";
 import { RoleResultList } from "../../../../application/model/user-manager/RoleResultList";
 import { IRoleEngineRepository } from "../../../repository/IRoleEngineRepository";
 import { Role } from "../../../model/Role";
-
-
+import { PageAndSizeParams } from "../../../../application/model/PageAndSizeParams";
 
 
 export class GetAllRoleOperation extends UserAuthOperationTemplate<RoleResultList, PageAndSizeParams>{
@@ -23,16 +21,15 @@ export class GetAllRoleOperation extends UserAuthOperationTemplate<RoleResultLis
 
     }
 
-    protected async doValidateParameters(params: PageAndSizeParams): Promise<void> {
-
-
-    }
-
+  
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: PageAndSizeParams, result: RoleResultList): Promise<void> {
 
 
         logger.info("[GetAllUserOperation] creating all users")
-        const roles: IPage<Role> = await this.roleRepository.findRolesBy(params.getPage, params.size, params.orderColumn, params.direction);
+        const roles: IPage<Role> = await this.roleRepository.findRolesBy(params.getPage,
+            params.size,
+            params.orderColumn,
+            params.direction);
     
         Object.assign(result,roles);
     }

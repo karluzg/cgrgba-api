@@ -4,7 +4,7 @@ import { injectable } from "tsyringe";
 import { PageAndSizeParams } from "../../../application/model/PageAndSizeParams";
 import { GetByIdParams } from "../../../application/model/GetByIdParams";
 import { GetByEmailOrCodeParams } from "../../../application/model/GetByEmailOrCodeParams";
-import { GetUserByEmailOperation } from "../../operation/user-manager/user/GetUserByEmailOperation";
+
 import { IRoleEngine } from "../IRoleEngine";
 import { RoleParams } from "../../../application/model/user-manager/RoleParams";
 import { RoleResult } from "../../../application/model/user-manager/RoleResult ";

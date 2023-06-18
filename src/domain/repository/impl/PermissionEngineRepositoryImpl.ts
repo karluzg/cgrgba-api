@@ -78,7 +78,7 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
         .getOne();
     
       if (!permission) {
-        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
       }
     
       await permissionRepository.remove(permission);
@@ -90,7 +90,7 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
         .getOne();
     
       if (!permission) {
-        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_FOUND);
+        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
       }
     
       const updatedPermission = Object.assign(permission, updatePermissionData);

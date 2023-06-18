@@ -1,9 +1,6 @@
 import { GenericOperationTemplate } from "../../../infrestructure/template/GenericOperationTemplate";
 import { injectable } from "tsyringe";
 
-import { ResultTemplate } from "../../../infrestructure/template/ResultTemplate";
-import { ResetPasswordParams } from "../../../application/model/user-manager/ResetPasswordParams";
-import { ResetPasswordOperation } from "../../operation/user-manager/user/ResetPasswordOperation";
 import { IPermissionEngine } from "../IPermissionEngine";
 import { GetByEmailOrCodeParams } from "../../../application/model/GetByEmailOrCodeParams";
 import { PageAndSizeParams } from "../../../application/model/PageAndSizeParams";
