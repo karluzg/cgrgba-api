@@ -9,7 +9,7 @@ import  { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
-import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
+
 
 
 export class SessionController {
@@ -39,17 +39,12 @@ export class SessionController {
       } else if (error.errorClasseName === ErrorExceptionClass.INVALID_PARAMETERS) {
         throw new InvalidParametersException(error.field, error.message)
         
-      } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
-
-
       } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message)
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message)
-      }else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
+
       } else
         throw new UnsuccessfullOperationException(error.field, error.message)
     }

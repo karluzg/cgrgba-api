@@ -4,13 +4,13 @@ import { OperationValidatorManager } from "../../../../infrestructure/validator/
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import logger from "../../../../infrestructure/config/logger";
-import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { GetByEmailOrCodeParams } from "../../../../application/model/GetByEmailOrCodeParams";
 import { PermissionResult } from "../../../../application/model/user-manager/PermissionResult";
 import { IPermissionEngineRepository } from "../../../repository/IPermissionEngineRepository";
 import { Permission } from "../../../model/Permission";
+import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 
 
 
@@ -31,7 +31,7 @@ export class GetPermissionByCodeOperation extends UserAuthOperationTemplate<Perm
         this.permission = await this.permissionRepository.findPermissionByCode(params.getValue);
         if (!this.permission) {
             logger.error("[GetPermissionByCodeOperation] permission not exist")
-            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
         }
     }
 

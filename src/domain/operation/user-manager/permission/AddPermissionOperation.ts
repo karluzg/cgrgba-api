@@ -7,7 +7,6 @@ import { Field } from "../../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { container } from 'tsyringe'
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
-import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { IPermissionEngineRepository } from "../../../repository/IPermissionEngineRepository";
 import { Permission } from "../../../model/Permission";
 import { PermissionParams } from "../../../../application/model/user-manager/PermissionParams ";
@@ -42,7 +41,7 @@ export class AddPermissionOperation extends UserAuthOperationTemplate<Permission
             const permissionEntity = await this.permissionGroupRepository.findPermissionGroupByCode(params.getGroup);
             if (!permissionEntity) {
                 logger.error("[AddPermissionOperation] permissionGroup not found");
-                throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_FOUND);
+                throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_EXIST);
             } else
                 this.permissionGroup = permissionEntity
         }

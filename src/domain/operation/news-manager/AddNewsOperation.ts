@@ -10,12 +10,9 @@ import { NewsCategory } from "../../model/NewsCategory";
 import { INewsCategoryEngineRepository } from "../../repository/INewsCategoryEngineRepository";
 import logger from "../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
-import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { News } from "../../model/News";
-import { ResultInfo } from "../../../infrestructure/response/ResultInfo";
-
 
 
 
@@ -38,7 +35,7 @@ export class AddNewsOperation extends UserAuthOperationTemplate<NewsResult, News
 
         if (!this.category) {
             logger.error("[AddNewsOperation] categoria invalida")
-            throw new NotFoundException(Field.NEWS, MiddlewareBusinessMessage.NEWS_CATEGORY_NOT_EXIST);
+            throw new InvalidParametersException(Field.NEWS, MiddlewareBusinessMessage.NEWS_CATEGORY_NOT_EXIST);
         }
 
         const news = await this.newsRepository.findNewsByTitle(params.title);

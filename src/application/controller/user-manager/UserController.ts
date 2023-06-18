@@ -15,7 +15,6 @@ import { ResetPasswordParams } from "../../model/user-manager/ResetPasswordParam
 import { PageAndSizeParams } from "../../model/PageAndSizeParams";
 import { GetByIdParams } from "../../model/GetByIdParams";
 import { GetByEmailOrCodeParams } from "../../model/GetByEmailOrCodeParams";
-import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { Request, Response } from "express";
 
 
@@ -91,8 +90,7 @@ export class UserController {
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message)
-      } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
+
       } else
         throw new UnsuccessfullOperationException(error.field, error.message)
     }
@@ -117,12 +115,8 @@ export class UserController {
         throw new NotImplementedException(error.field, error.message);
       } else if (error.errorClassName === ErrorExceptionClass.INVALID_PARAMETERS) {
         throw new InvalidParametersException(error.field, error.message);
-      } else if (error.errorClassName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message);
       } else if (error.errorClassName === ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message);
-      } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
       } else
         throw new UnsuccessfullOperationException(error.field, error.message) 
     }
@@ -147,8 +141,6 @@ export class UserController {
         throw new InvalidParametersException(error.field, error.message);
       } else if (error.errorClassName === ErrorExceptionClass.UNAUTHORIZED) {
         throw new UnauthorizedOperationException(error.field, error.message);
-      }else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
       } else
         throw new UnsuccessfullOperationException(error.field, error.message)
     }
@@ -191,8 +183,6 @@ export class UserController {
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message)
-      }else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
       } else
         throw new UnsuccessfullOperationException(error.field, error.message)
     }
@@ -228,8 +218,6 @@ export class UserController {
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message)
-      }else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
       } else
         throw new UnsuccessfullOperationException(error.field, error.message)
     }

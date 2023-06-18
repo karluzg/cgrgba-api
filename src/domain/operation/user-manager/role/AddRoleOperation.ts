@@ -10,7 +10,6 @@ import { container } from 'tsyringe'
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";;
 import { IRoleEngineRepository } from "../../../repository/IRoleEngineRepository";
 import { Role } from "../../../model/Role";
-import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { RoleResult } from "../../../../application/model/user-manager/RoleResult ";
 import { RoleParams } from "../../../../application/model/user-manager/RoleParams";
 import { IPermissionEngineRepository } from "../../../repository/IPermissionEngineRepository";

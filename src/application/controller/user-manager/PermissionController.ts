@@ -14,7 +14,7 @@ import { IPermissionEngine } from "../../../domain/service/IPermissionEngine";
 import { PermissionGroupParams } from "../../model/user-manager/PermissionGroupParams";
 import { GetByEmailOrCodeParams } from "../../model/GetByEmailOrCodeParams";
 import { PageAndSizeParams } from "../../model/PageAndSizeParams";
-import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
+
 
 
 export class PermissionController {
@@ -41,8 +41,6 @@ export class PermissionController {
         throw new UnauthorizedOperationException(error.field, error.message);
       } else if (error.errorClassName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message);
-      } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
       } else
         throw new UnsuccessfullOperationException(error.field, error.message)
     }
@@ -78,8 +76,6 @@ export class PermissionController {
         throw new UnauthorizedOperationException(error.field, error.message);
       } else if (error.errorClassName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message);
-      } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
       } else
         throw new UnsuccessfullOperationException(error.field, error.message)
     }
@@ -115,8 +111,6 @@ export class PermissionController {
 
       } else if (error.errorClasseName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message)
-      }else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
       } else
         throw new UnsuccessfullOperationException(error.field, error.message)
     }
@@ -152,8 +146,6 @@ export class PermissionController {
         throw new UnauthorizedOperationException(error.field, error.message);
       } else if (error.errorClassName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message);
-      }else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
       } else
         throw new UnsuccessfullOperationException(error.field, error.message)
     }
@@ -180,8 +172,6 @@ export class PermissionController {
         throw new UnauthorizedOperationException(error.field, error.message);
       } else if (error.errorClassName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message);
-      }else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
       } else
         throw new UnsuccessfullOperationException(error.field, error.message)
     }
@@ -222,8 +212,6 @@ export class PermissionController {
         throw new UnauthorizedOperationException(error.field, error.message);
       } else if (error.errorClassName === ErrorExceptionClass.UNSUCCESSFULLY) {
         throw new UnsuccessfullOperationException(error.field, error.message);
-      } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
       } else
         throw new UnsuccessfullOperationException(error.field, error.message)
     }

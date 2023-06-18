@@ -8,7 +8,6 @@ import { INewsEngineRepository } from "../../repository/INewsEngineRepository";
 import { NewsCategory } from "../../model/NewsCategory";
 import { INewsCategoryEngineRepository } from "../../repository/INewsCategoryEngineRepository";
 import logger from "../../../infrestructure/config/logger";
-import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { NewsFileParams } from "../../../application/model/news-manager/NewsFileParams";

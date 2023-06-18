@@ -8,11 +8,10 @@ import { NotImplementedException } from "../exceptions/NotImplementedException";
 import { ErrorExceptionClass } from "../exceptions/ErrorExceptionClass";
 import { UnsuccessfullOperationException } from "../exceptions/UnsuccessfullOperationException";
 import { ForbiddenOperationException } from "../exceptions/ForbiddenOperationException";
-import { throws } from "assert";
 import { Field } from "../exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomMessage";
-import { ResultInfo } from "../response/ResultInfo";
-import { NotFoundException } from "../exceptions/NotFoundExcecption";
+
+
 
 
 
@@ -62,9 +61,6 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
 
       } else if (error.errorClasseName == ErrorExceptionClass.NOT_IMPLEMENTED) {
         throw new NotImplementedException(error.field, error.message);
-
-      } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-        throw new NotFoundException(error.field, error.message)
 
       } else {
 

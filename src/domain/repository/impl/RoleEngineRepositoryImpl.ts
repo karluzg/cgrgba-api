@@ -5,11 +5,11 @@ import { injectable } from 'tsyringe'
 import { IRoleEngineRepository } from "../IRoleEngineRepository";
 import { Role } from "../../model/Role";
 import { Permission } from '../../model/Permission';
-import { NotFoundException as NotFoundException } from '../../../infrestructure/exceptions/NotFoundExcecption';
 import { Field } from '../../../infrestructure/exceptions/enum/Field';
 import { MiddlewareBusinessMessage } from '../../../infrestructure/response/enum/MiddlewareCustomMessage';
 import { IPage } from '../../../infrestructure/pageable-manager/IPage';
 import { PageImpl } from '../../../infrestructure/pageable-manager/PageImpl';
+import { InvalidParametersException } from '../../../infrestructure/exceptions/InvalidParametersException';
 
 const roleRepository = myDataSource.getRepository(Role)
 const permissionRepository = myDataSource.getRepository(Permission)
@@ -65,7 +65,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!role) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
+      throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
     }
 
     const updatedRole = Object.assign(role, updateRoleData);
@@ -78,7 +78,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!role) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
+      throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
     }
 
     await roleRepository.remove(role);
@@ -90,7 +90,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!role) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
+      throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
     }
 
     const permission = await permissionRepository.createQueryBuilder('permission')
@@ -98,7 +98,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!permission) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
+      throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     role.permissions.push(permission);
@@ -112,7 +112,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!role) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
+      throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
     }
 
     const permission = await permissionRepository.createQueryBuilder('permission')
@@ -120,7 +120,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!permission) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
+      throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     role.permissions = role.permissions.filter(p => p.id !== permission.id);

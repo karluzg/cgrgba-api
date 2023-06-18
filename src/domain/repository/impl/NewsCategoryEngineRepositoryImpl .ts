@@ -1,9 +1,10 @@
-import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
+
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { NewsCategory } from "../../model/NewsCategory";
 import { injectable } from 'tsyringe'
 import { INewsCategoryEngineRepository } from "../INewsCategoryEngineRepository";
+import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const newsCategoryRepository = myDataSource.getRepository(NewsCategory);
@@ -44,7 +45,7 @@ export class NewsCategoryEngineRepositoryImpl implements INewsCategoryEngineRepo
       .getOne();
 
     if (!newsCategory) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
+      throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     const updatedNewsCategory = Object.assign(newsCategory, updateNewsCategoryData);
@@ -58,7 +59,7 @@ export class NewsCategoryEngineRepositoryImpl implements INewsCategoryEngineRepo
       .getOne();
 
     if (!newsCategory) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
+      throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     await newsCategoryRepository.remove(newsCategory);

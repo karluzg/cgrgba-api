@@ -28,7 +28,7 @@ export enum MiddlewareBusinessMessage {
   PERMISSION_GET_SUCCESSFULLY = "Permissão obtido com sucesso",
   PERMISSION_GET_LIST_SUCCESSFULLY = "Lista de Permissão obtido com sucesso",
   PERMISSION_GROUP_ADDED_SUCCESSFULLY = "Grupo de mpermissões adicionado com sucesso",
-  PERMISSION_GROUP_NOT_FOUND = "Grupo de permissões não foi encontrado",
+  PERMISSION_GROUP_NOT_EXIST = "Grupo de permissões não foi encontrado",
   PERMISSION_GROUP_ALREADY_EXIST = "Grupo de Permissões já existe",
   PERMISSION_GROUP_GET_SUCCESSFULLY = "Grupo de Permissões obtido com sucesso",
   PERMISSION_GROUP_LIST_SUCCESSFULLY = "Lista de Grupo de Permissões obtido com sucesso",

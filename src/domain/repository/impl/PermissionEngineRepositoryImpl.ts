@@ -1,5 +1,5 @@
 
-import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
+import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { IPage } from "../../../infrestructure/pageable-manager/IPage";
 import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
@@ -78,7 +78,7 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
         .getOne();
     
       if (!permission) {
-        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
+        throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
       }
     
       await permissionRepository.remove(permission);
@@ -90,7 +90,7 @@ export class PermissionEngineRepositoryImpl implements IPermissionEngineReposito
         .getOne();
     
       if (!permission) {
-        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
+        throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
       }
     
       const updatedPermission = Object.assign(permission, updatePermissionData);

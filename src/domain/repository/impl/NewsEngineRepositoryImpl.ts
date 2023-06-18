@@ -1,18 +1,14 @@
 
-import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
+
+import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { IPage } from "../../../infrestructure/pageable-manager/IPage";
 import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { News } from "../../model/News";
 import { NewsCategory } from "../../model/NewsCategory";
-import { Permission } from "../../model/Permission";
-import { Role } from "../../model/Role";
-import { User } from "../../model/User";
 import { ImageConverter } from "../../operation/util/ImageConverter";
 import { INewsEngineRepository } from "../INewsEngineRepository";
-//import { myDataSource } from "../web-api/meta-inf/data-source";
-import { IPermissionEngineRepository } from "../IPermissionEngineRepository";
 import { injectable } from 'tsyringe'
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
@@ -89,7 +85,7 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
       .getOne();
 
     if (!permission) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
+      throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     const updateNews = Object.assign(permission, updateNewsData);
@@ -107,7 +103,7 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
       .getOne();
 
     if (!news) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
+      throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_NOT_EXIST);
     }
 
     await newsRepository.remove(news);
@@ -127,7 +123,7 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
     }
 
 
-    throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
+    throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
   }
 
 
@@ -141,7 +137,7 @@ export class NewsEngineRepositoryImpl implements INewsEngineRepository {
       return newsRepository.save(news);
     }
 
-    throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
+    throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
   }
 
 

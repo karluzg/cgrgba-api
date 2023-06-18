@@ -11,7 +11,6 @@ import { ParamsTemplate } from "./../template/ParamsTemplate";
 import { UnsuccessfullOperationException } from "../exceptions/UnsuccessfullOperationException";
 import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomMessage";
 import { Field } from "../exceptions/enum/Field";
-import { NotFoundException } from "../exceptions/NotFoundExcecption";
 
 
 
@@ -39,9 +38,6 @@ export abstract class GenericOperationTemplate {
             }
             else if (error.errorClasseName === ErrorExceptionClass.FORBIDDEN) {
                 throw new ForbiddenOperationException(error.field, error.message)
-
-            } else if (error.errorClasseName === ErrorExceptionClass.NOT_FOUND) {
-                throw new NotFoundException(error.field, error.message)
 
             }
              else {

@@ -1,13 +1,12 @@
 
-
 import { injectable } from 'tsyringe'
 import { IPermissionGroupEngineRepository } from "../IPermissionGroupEngineRepository";
 import { PermissionGroup } from "../../model/PermissionGroup";
-import { NotFoundException as NotFoundException } from '../../../infrestructure/exceptions/NotFoundExcecption';
 import { Field } from '../../../infrestructure/exceptions/enum/Field';
 import { MiddlewareBusinessMessage } from '../../../infrestructure/response/enum/MiddlewareCustomMessage';
 import { PageImpl } from '../../../infrestructure/pageable-manager/PageImpl';
 import { IPage } from '../../../infrestructure/pageable-manager/IPage';
+import { InvalidParametersException } from '../../../infrestructure/exceptions/InvalidParametersException';
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const permissionGroupRepository = myDataSource.getRepository(PermissionGroup)
@@ -38,7 +37,7 @@ export class PermissionGroupEngineRepositoryImpl implements IPermissionGroupEngi
         .getOne();
     
       if (!existingPermissionGroup) {
-        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_FOUND);
+        throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_EXIST);
       }
     
       const updatedPermissionGroup = Object.assign(existingPermissionGroup, updatedData);
@@ -52,7 +51,7 @@ export class PermissionGroupEngineRepositoryImpl implements IPermissionGroupEngi
         .getOne();
     
       if (!permissionGroup) {
-        throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_FOUND);
+        throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.PERMISSION_GROUP_NOT_EXIST);
       }
     
       await permissionGroupRepository.remove(permissionGroup);

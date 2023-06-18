@@ -229,7 +229,7 @@ async function cretePermissions() {
                 permissions.push(dbPermission)
         }
     }
-    logger.info("[cretePermissions] End creating all permission automatically..")
+    logger.info("[cretePermissions] End creating all permission automatically...")
     return permissions
 
 }

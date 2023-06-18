@@ -15,7 +15,6 @@ import { InvalidParametersException } from "../../../../infrestructure/exception
 import { v4 as uuidv4 } from 'uuid';
 import { ForbiddenOperationException } from "../../../../infrestructure/exceptions/ForbiddenOperationException";
 import { PlataformConfig } from "../../../../infrestructure/config/plataform";
-import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { TokenResponseBuilder } from "../../response-builder/user-manager/TokenResponseBuilder";
 import { IUserPossibleStatusEngneRepository } from "../../../repository/IUserPossibleStatusEngineRepository";
 import { UserPossibleStatus } from "../../../model/UserPossibleStatus";

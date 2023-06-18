@@ -4,13 +4,13 @@ import { OperationValidatorManager } from "../../../../infrestructure/validator/
 import { TokenSession } from "../../../model/TokenSession";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import logger from "../../../../infrestructure/config/logger";
-import { NotFoundException } from "../../../../infrestructure/exceptions/NotFoundExcecption";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { GetByEmailOrCodeParams } from "../../../../application/model/GetByEmailOrCodeParams";
 import { RoleResult } from "../../../../application/model/user-manager/RoleResult ";
 import { IRoleEngineRepository } from "../../../repository/IRoleEngineRepository";
 import { Role } from "../../../model/Role";
+import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 
 
 
@@ -31,7 +31,7 @@ export class GetRoleByNameOperation extends UserAuthOperationTemplate<RoleResult
         this.role = await this.roleRepository.findRoleByName(params.getValue);
         if (!this.role) {
             logger.error("[GetRoleByNameOperation] role not exist")
-            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_NOT_EXIST);
+            throw new InvalidParametersException(Field.USER, MiddlewareBusinessMessage.USER_NOT_EXIST);
         }
     }
 

@@ -3,12 +3,12 @@ import { injectable } from 'tsyringe'
 import { User } from "../../model/User";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
-import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
 import { UserStatusEnum } from "../../model/enum/UserStatusEnum";
 import { EncryptTemplate } from "../../../infrestructure/template/EncryptTemplate";
 import { UserStatus } from "../../model/UserStatus";
 import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
 import { IPage } from "../../../infrestructure/pageable-manager/IPage";
+import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 
 const myDataSource = require("../../meta-inf/data-source");
 const userRepository = myDataSource.getRepository(User)
@@ -69,7 +69,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
                   .getOne();
 
             if (!user) {
-                  throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
+                  throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
             }
 
             const updatedUser = Object.assign(user, updateUserData);
@@ -102,7 +102,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
                   return userRepository.save(user);
             }
 
-            throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
+            throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.USER_NOT_EXIST);
       }
 
 
