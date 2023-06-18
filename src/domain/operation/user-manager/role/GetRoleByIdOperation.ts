@@ -31,7 +31,7 @@ export class GetRoleByIdOperation extends UserAuthOperationTemplate<RoleResult, 
         this.role = await this.roleRepository.findRoleById(params.getId);
         if (!this.role) {
             logger.error("[GetRoleByIdOperation] role not exist")
-            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.ROLE_NOT_FOUND);
+            throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
         }
     }
 

@@ -1,7 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsArray, IsString } from 'class-validator';
 import { AuthParamsTemplate } from '../../../infrestructure/template/AuthParamsTemplate';
-import { ro } from 'date-fns/locale';
 
 export class UserParams extends AuthParamsTemplate {
   @ApiProperty({ description: 'O nome completo do utilizador' })
@@ -16,15 +15,15 @@ export class UserParams extends AuthParamsTemplate {
   @IsString()
   private email: string;
 
-  @IsArray()
-  private roles?: string[]
+  @IsString()
+  private roleName: string
 
-  constructor(authenticationToken: string, userFullName: string, userMobileNumber: string, userEmail: string, roles?:string []) {
+  constructor(authenticationToken: string, userFullName: string, userMobileNumber: string, userEmail: string, roleName: string) {
     super(authenticationToken);
     this.fullName = userFullName;
     this.mobileNumber = userMobileNumber;
     this.email = userEmail;
-    this.roles=roles;
+    this.roleName = roleName;
   }
 
   public get getFullName(): string {
@@ -39,7 +38,7 @@ export class UserParams extends AuthParamsTemplate {
     return this.email;
   }
 
-  public get getRoles(): string[] {
-    return this.roles;
+  public get getRoleName(): string {
+    return this.roleName;
   }
 }

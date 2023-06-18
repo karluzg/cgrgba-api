@@ -65,7 +65,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!role) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND);
+      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
     }
 
     const updatedRole = Object.assign(role, updateRoleData);
@@ -78,7 +78,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!role) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND);
+      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
     }
 
     await roleRepository.remove(role);
@@ -90,7 +90,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!role) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND);
+      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
     }
 
     const permission = await permissionRepository.createQueryBuilder('permission')
@@ -112,7 +112,7 @@ export class RoleEngineRepositoryImpl implements IRoleEngineRepository {
       .getOne();
 
     if (!role) {
-      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_FOUND);
+      throw new NotFoundException(Field.SYSTEM, MiddlewareBusinessMessage.ROLE_NOT_EXIST);
     }
 
     const permission = await permissionRepository.createQueryBuilder('permission')

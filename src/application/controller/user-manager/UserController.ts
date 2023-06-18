@@ -3,23 +3,20 @@ import logger from "../../../infrestructure/config/logger";
 import { NotImplementedException } from "../../../infrestructure/exceptions/NotImplementedException";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { UnauthorizedOperationException } from "../../../infrestructure/exceptions/UnauthorizedOperationException";
-
 import { HttpCodes } from "../../../infrestructure/response/enum/HttpCode";
 import { IUserEngine } from "../../../domain/service/IUserEngine";
 import { UserParams } from "../../../application/model/user-manager/UserParams";
-import e, { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ErrorExceptionClass } from "../../../infrestructure/exceptions/ErrorExceptionClass";
 import { AuthValidator } from "../validator/AuthValidator";
 import { UnsuccessfullOperationException } from "../../../infrestructure/exceptions/UnsuccessfullOperationException";
-import { RequestHandler, ParamsDictionary } from "express-serve-static-core";
-import { ParsedQs } from "qs";
 import { UpdatePasswordParams } from "../../model/user-manager/UpdatePasswordParams";
 import { ResetPasswordParams } from "../../model/user-manager/ResetPasswordParams";
 import { PageAndSizeParams } from "../../model/PageAndSizeParams";
 import { GetByIdParams } from "../../model/GetByIdParams";
 import { GetByEmailOrCodeParams } from "../../model/GetByEmailOrCodeParams";
 import { NotFoundException } from "../../../infrestructure/exceptions/NotFoundExcecption";
+import { Request, Response } from "express";
 
 
 export class UserController {
@@ -29,13 +26,10 @@ export class UserController {
   public async addUser(request: Request, response: Response): Promise<Response> {
 
     try {
-      const { fullName, mobileNumber, email, roles } = request.body;
+      const { fullName, mobileNumber, email, roleName } = request.body;
 
-
-      //const authenticationToken =  new AuthorizationOperationTemplate().checkAuthorizationToken(request)
-      //não deixa acesso a classe extendida então usou-se static
       const authenticationToken = AuthValidator.checkAuthorizationToken(request);
-      const params = new UserParams(authenticationToken, fullName, mobileNumber, email, roles)
+      const params = new UserParams(authenticationToken, fullName, mobileNumber, email, roleName)
 
       logger.info("[UserController] Perform dependency injection for UserController")
 

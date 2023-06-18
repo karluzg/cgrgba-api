@@ -17,14 +17,14 @@ export enum MiddlewareBusinessMessage {
   USER_PARAM_MOBILE_NUMBER = "Campo Mobile Number é não vazio, String, tamanho minímo 9 e maáximo 21",
   USER_PARAM_EMAIL = "Campo Email é não vazio, String,no formato email, tamanho maáximo 34",
   USER_PARAM_ROLES = "O campo roles deve ser um array não vazio de string",
-  ROLE_NOT_FOUND = "Role não foi encontrado",
+  ROLE_NOT_EXIST = "Role não existe",
   ROLE_ADDED_SUCCESSFULLY = "Role adiocionado com sucesso",
-  ROLE_ALREADY_EXIST = "A role já exite na base de dados",
+  ROLE_ALREADY_EXIST = "A role já exite",
   ROLE_GET_SUCCESSFULLY = "Role obtido com sucesso",
   ROLE_GET_LIST_SUCCESSFULLY = "Lista de Role obtido com sucesso",
   PERMISSION_ADDED_SUCCESSFULLY = "Permissão adicioando com sucesso",
   PERMISSION_NOT_FOUND = "Permissão não foi encontrado",
-  PERMISSION_ALREADY_EXIST = "Permissão já existe na base de dados",
+  PERMISSION_ALREADY_EXIST = "Permissão já existe",
   PERMISSION_GET_SUCCESSFULLY = "Permissão obtido com sucesso",
   PERMISSION_GET_LIST_SUCCESSFULLY = "Lista de Permissão obtido com sucesso",
   PERMISSION_GROUP_ADDED_SUCCESSFULLY = "Grupo de mpermissões adicionado com sucesso",
@@ -98,11 +98,11 @@ export enum MiddlewareBusinessMessage {
   //  BUSINESS MESSAGE - DCOUMENT 
   //  BUSINESS MESSAGE - NEWS
   NEWS_INVALID_CATEGORY = "Erro de validação dos dados da notícia",
-  NEWS_CATEGORY_NOT_FOUND = "Categoria de notícia não existe na base de dados",
+  NEWS_CATEGORY_NOT_FOUND = "Categoria de notícia não existe",
   NEWS_ADD_SUCCESSFULLY = " Notícia criada com sucesso",
   NEWS_FILE_ADD_SUCCESSFULLY = " Imagem da notícia adicionada com sucesso",
   NEWS_GET_ALL_SUCCESSFULLY = "Lista de notícias recuperada com sucesso",
-  NEW_NOT_FOUND = "Notícia não existe na base de dados",
+  NEW_NOT_FOUND = "Notícia não existe",
   NEWS_INVALID_TITLE = "Existe uma noticia com mesmo titulo, mude o titulo e tente novamente",
   NEWS_INVALID_FILE_UPLOAD = "Ficheiro ou o formato do ficheiro carregado é invalido",
 
@@ -115,5 +115,5 @@ export enum MiddlewareBusinessMessage {
   CORE_INVALID_PARAMETERS = "Os parâmetros introduzidos estão inválidos",
   CORE_UNEXPECTED_UNEXECUTED_INITIAL_ACTION = "Deve alterar a sua palavra-passe antes de executar esta operação",
   CORE_INTERNAL_SERVER_ERROR = "Ocorreu um erro interno no servidor. Por favor, contacte a equipa da Nantoi Digital",
-  SCHEDULING_HOUR_ALREADY_CHOSEN_BY_ANOTHER_PERSON = "SCHEDULING_HOUR_ALREADY_CHOSEN_BY_ANOTHER_PERSON"
+
 }

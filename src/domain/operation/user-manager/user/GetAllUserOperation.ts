@@ -40,7 +40,7 @@ export class GetAllUserOperation extends UserAuthOperationTemplate<UserResultLis
             this.status = await this.userStatusRepository.findStatusCode(params.getQueryParam);
 
             if (!this.status) {
-                logger.error("[GetAllUserOperation] Status not found")
+                logger.error("[GetAllUserOperation] Status not exist")
                 throw new NotFoundException(Field.USER, MiddlewareBusinessMessage.USER_STATUS_NOT_FOUND);
             }
         }
@@ -49,7 +49,7 @@ export class GetAllUserOperation extends UserAuthOperationTemplate<UserResultLis
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: PageAndSizeParams, result: UserResultList): Promise<void> {
        
-        logger.info("[GetAllUserOperation] creating all users");
+        logger.info("[GetAllUserOperation] Getting all users");
         
         const userPages: IPage<User> = await this.userRepository.findAllUsers(params.getPage, params.size, this.status, params.orderColumn, params.direction);
       
