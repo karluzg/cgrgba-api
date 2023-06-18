@@ -20,6 +20,8 @@ import { Field } from "../../infrestructure/exceptions/enum/Field"
 import { MiddlewareBusinessMessage } from "../../infrestructure/response/enum/MiddlewareCustomMessage"
 import { EnumOperationTemplate } from "../../infrestructure/template/EnumOperationTemplate"
 import { PlataformConfig } from "../../infrestructure/config/plataform"
+import { RoleStatus } from "../model/RoleStatus"
+import { RoleStatusEnum } from "../model/enum/RolestatusEnum"
 
 export async function initNantoiUser() {
 
@@ -89,10 +91,17 @@ async function creteRoleAdmin(permissions: Permission[]) {
     if (!adminRole) {
 
         const role = new Role();
+
+        const roleStatus = new RoleStatus();
+        roleStatus.code = "ACTIVE"
+        roleStatus.description = RoleStatusEnum.ACTIVE
+        roleStatus.listed = true
+        
         role.isAdmin = true
         role.description = "Administrator"
         role.name = "ADMIN"
         role.permissions = permissions
+        role.roleStatus=roleStatus
         logger.info("[creteRoleAdmin] Creating Admin")
         return roleRepository.saveRole(role)
     }

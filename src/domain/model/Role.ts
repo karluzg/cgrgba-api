@@ -22,11 +22,6 @@ export class Role {
   @JoinTable()
   permissions: Permission[];
 
-  @ManyToOne(() => User, { eager: true })
-  lastUpdateBy: User;
-
-  @ManyToOne(() => User, { eager: true })
-  createdBy: User;
 
   @ManyToOne(() => RoleStatus,{nullable:false})
   roleStatus: RoleStatus;

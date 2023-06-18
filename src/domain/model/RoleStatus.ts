@@ -1,6 +1,4 @@
 import { Entity, PrimaryColumn, Column } from "typeorm"
-import { RoleStatusEnum } from "./enum/RolestatusEnum"
-
 
 @Entity({ schema: 'portal_consular_dev' })
 export class RoleStatus {
