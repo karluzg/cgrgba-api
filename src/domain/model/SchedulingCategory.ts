@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm"
 import { Service } from "./Service";
-import { IsObject, IsString, ValidateNested } from "class-validator";
-import { Type } from "class-transformer";
+import { IsString } from "class-validator";
+
 
 
 @Entity({ schema: 'portal_consular_dev' })

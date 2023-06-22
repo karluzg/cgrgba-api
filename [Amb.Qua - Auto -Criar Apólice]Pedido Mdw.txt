@@ -1,0 +1,670 @@
+{
+    "apoliceValue": {
+        "sistemaCanal": "SRV",
+        "sistema": "EGISMED",
+        "sistema400": "GIST",
+        "codigoProdutor": 10076,
+        "codigoCobrador": 0,
+        "codigoCobrador1Recibo": 100049,
+        "modalidade": 1,
+                    "fraccionamento": "A",
+                    "tipoCobranca1Recibo": "2",
+                    "tipoCobranca": "2",
+                    "nib": "004000007370472510187",
+                    "tarifa": "1",
+            "dataInicio": 20230630,
+                    "diaVencimento": "30",
+                    "mesVencimento": "06",
+"origem": "S",
+"referenciaExterna": 2023061909545900000,
+"referenciaInterna": 2023061909545900000,
+"ramo": 90,
+"tipoSeguro": "13",
+"areaProducao": "99999",
+"horaInicio": "0",
+
+"horaApl": "0",
+"dataCriacao": "20230630",
+"utilizador": "E0030006",
+    "numPessoasSeguras": "005",
+
+            "capital": "1.3376E7",
+            "tipoProdutorUtilizador": null,
+            "lstTiposAlteracoeseGISData": "",
+            "canalAlteracaoPendente": "G",
+            "descricaoProduto": "Nossa Auto",
+            "consumirRecDev": "S",
+            "descricaoBanco": "",
+            "valorPacoteDescodificado": "",
+            "lstTipoAlteracaoeGISCmdFluxo": "",
+            "premioMinimo": "",
+            "condEspeciais": "050051",
+            "descricaoObjectoPrincipal": "Desc",
+            "codigoExternoObjectoPrincipal": "AB-23-29-BB",
+            "cobrarAlteracaoCapo": "",
+            "descricaoBonusAgravamento": "BONUS 30% - S/ SINIST >=2 ANUI",
+            "nomeProdutor": "DIRECTO AGÊNCIA DIPANDA",
+            "dataInicioValidadeSimulacao": "",
+            "adc": "",
+            "permiteAlteracaoNormal": "S",
+            "tipoObjectoQuestionario": "",
+            "criaRecDev": "N",
+            "controloDecretoLei": "S",
+            "tipoIndexacao": "00",
+            "guid": "",
+            "trataBonusAgravamento": "",
+            "bonusAgravamento": "B",
+            "tipoComissaoCosseguro": "",
+            "documentacaoDiferida": "",
+            "capitalTotal": "1.3376E7",
+            "tipoAlteracaoeGIS": "",
+            "lstTiposAlteracoeseGISDataBloqueada": "",
+            "numeroContaCreditar": "",
+            "apoliceTransferida": "N",
+            "tipoImpressaoAviso": "",
+            "descricaoInfPacote": "",
+            "codigoExternoProdutor": "",
+            "descricaoFranquia": "FRANQUIA AUTOMÁTICA",
+            "lstConceitosImpressao": null,
+            "tabelaComissoes": "",
+            "capitalNumeroOrdem": "1.3376E7",
+            "dataFimValidadeSimulacao": "",
+            "imprimirProposta": "S",
+            "instalacao": "",
+            "prmminfr": "",
+            "lstTiposAlteracoeseGIS": "",
+            "dataReferencia": "",
+            "moeda": "AKZ",
+            "descricaoRamo": "AUTOMOVEL",
+            "descricaoCodigoFuncionario": "",
+            "riscoComum": "",
+            "descricaoLocalRisco": "",
+            "valorPacote": "",
+        "retarifar": true,
+        "permiteAlterarFraccionamento": false,
+        "acertoEmDias": 0.0,
+        "imp17": 0.0,
+        "imp18": 0.0,
+        "imp15": 0.0,
+        "imp16": 4096.4,
+        "apoliceNova": true,
+        "imp19": 0.0,
+        "valorSimuladoMensal": 0.0,
+        "valorPrimeiroRecibo": 0.0,
+        "imp14": 1170.4,
+        "valorDivida": 0.0,
+        "gravidade": 0.0,
+        "premioTotal": 23408.0,
+        "pendenteCobrancaCompanhia": false,
+        "pendenteCobranca": false,
+        "enp8": 0.0,
+        "enp7": 1170.4,
+        "taxaIndexacao": 0.0,
+        "localRisco": 0.0,
+        "codProdutorUtilizadorOriginal": 0.0,
+        "banco": 0.0,
+        "valorRecContSimAnual": 34526.8,
+        "numeroCheque": 0.0,
+        "valorJuros": 0.0,
+        "valorPremioSimuladoMensal": 0.0,
+        "numApolicesMulti": 0.0,
+        "valorSimuladoTrimestral": 0.0,
+        "valorActualizacao": 0.0,
+        "permiteImportarDadosTitular": true,
+        "valorPremioSimuladoSemestral": 0.0,
+        "alteracaoDataInicio": false,
+        "numeroSubMulti": 0.0,
+        "flag": 0.0,
+        "premio": 23408.0,
+        "escalaoBonusAgravamento": 6.0,
+        "percentagemBonusAgravamento": 0.3,
+        "codigoCobradorAcerto": 0.0,
+        "valorPremioSimuladoAnual": 23408.0,
+        "racio": 0.0,
+        "valorPendenteTotal": 0.0,
+        "premioComercialAnual": 23408.0,
+        "consultaLight": false,
+        "reloadApoliceOneGIS": false,
+        "premioNumeroOrdem": 0.0,
+        "selo": 0.0,
+        "valorRecContSimMensal": 0.0,
+        "valorPND": 0.0,
+        "permiteVoltarProtocolo": false,
+        "codigoMoradaLocalRisco": 0.0,
+        "estadoSeguintePendente": 0.0,
+        "dataInicioAnuidade": 2.023063E7,
+        "valorPremioFraccao": 0.0,
+        "valorPremioSimuladoTrimestral": 0.0,
+        "codigoFuncionario": 0.0,
+        "simulacaoAlteracao": false,
+        "imprimir": 0.0,
+        "apoliceOrigemMulti": false,
+        "jurf": 0.0,
+        "ccrs": 0.0,
+        "codigoFranquia": 1.0,
+        "apoliceAlteradaInMulti": false,
+        "numeroFraccao": 1.0,
+        "premioAcerto": 0.0,
+        "acertoEmDiasAnual": 0.0,
+        "codigoInformacaoPacote": 0.0,
+        "correccao": false,
+        "valorPendenteSimples": 0.0,
+        "valorReciboSimulado": 34526.8,
+        "permiteAlterarVencimento": false,
+        "actaVencimento": false,
+        "faut": 0.0,
+        "valorRecContSimTrimestral": 0.0,
+        "alteracaoSimulacao": false,
+        "valorSimuladoAnual": 0.0,
+        "dataUltimaAlteracaoSimulacao": 2.0230619E7,
+        "dataEfeitoActaPosteriorDataAteUltimoReciboAllowed": false,
+        "premioSimples": 23408.0,
+        "codigoProdutorUtilizador": 0.0,
+        "inem": 0.0,
+        "ccrc": 0.0,
+        "valorRecContSimSemestral": 0.0,
+        "numeroAcordo": 0.0,
+        "env4": 0.0,
+        "sequenciaObjectoQuestionario": 0.0,
+        "alteracaoPendente": false,
+        "acertoEmDiasSemestral": 0.0,
+        "premioAcertoComRecibo": 0.0,
+        "despesasEmissao": 0.0,
+        "acertoEmDiasMensal": 0.0,
+        "acertoEmDiasTrimestral": 0.0,
+        "snbo": 0.0,
+        "codigoMoradaAviso": 0.0,
+        "encg": 4681.6,
+        "codigoMoradaCobranca": 0.0,
+        "premioTotalAnual": 34526.8,
+        "valorSimuladoSemestral": 0.0,
+        "imp20": 0.0,
+        "anuidadeCurta": false,
+        "capo": 0.0,
+        "dataEfeitoActaPosteriorDataAteUltimoRecibo": false,
+        "fund": 0.0,
+        "permiteVerValores": 0.0,
+        "dataCriacaoSimulacao": 2.0230619E7,
+        "anularActaVencimento": false,
+        "codigoTomadorSeguro": 0,
+    "dataEfeito":"0",
+    "tipoNumeracao": "I",
+    "sequenciaNumeracao": 1,
+    "resseguro": 1,
+    "criar1Recibo": "S",
+    "criarCartaVerde": "S", 
+    "emissao1ORecibo": "I",
+    "emissaoCartaVerde": "I",
+    "imprimeApolice": "I",
+
+        "tipoObjectoPrincipal": "M",
+        "cargas": {"cargaValue":[{"carga":1.0},{"carga":3.0},{"carga":5.0},{"carga":6.0},{"carga":11.0},{"carga":14.0},{"carga":16.0},{"carga":17.0}]},
+        "condicoesEspeciais": {"condicaoEspecialValue":[{"codigo":"117","descricao":"BONUS 30% - AUSENCIA SINISTRALIDADE \u003e\u003d 2 ANUIDADES","nivel":"B"},{"codigo":"1","descricao":"PACOTE 1","nivel":"2"},{"codigo":"105","descricao":"FRANQUIA EM DANOS PROPRIOS - OBRIGATÓRIA","nivel":"2"},{"codigo":"50","descricao":"O VEICULO NAO FAZ SERVIÇO DE REBOQUE","nivel":"V"},{"codigo":"51","descricao":"NAO FAZ TRANSPORTE DE MATERIAS PERIGOSAS","nivel":"V"}]},
+        "riscosApolice": {"riscoApoliceValue":[{"descricaoRisco":"RESPONSABILIDADE CIVIL","codigo":"1","capital":"1.3376E7","premio":23408.0,"premioComImpostos":0.0,"mostraPremioComImpostos":false,"taxa":0.0,"tipoTaxa":"","taxaIndexacao":0.0,"camposFranquia":"","codigoFranquia":1.0,"diasFranquia":0.0,"franquiaMaxima":0.0,"franquiaMinima":0.0,"indemnizacaoMaxima":0.0,"indemnizacaoMinima":0.0,"nivel":"1","percentagemComparticipacao1":0.0,"percentagemComparticipacao2":0.0,"percentagemFranquia":0.0,"percentagemIndemnizacao":0.0,"periodoCarencia":0.0,"tipoCriacao":"O","unidadePeriodoCarencia":"","valoresPorOPS":"S","valorFranquia":0.0,"factorCalculoPremio":0.0,"moedaEstrangeira":"","taxaEstrangeiro":0.0,"capitalTotalContraValor":"0.0","capitalContraValor":"0.0","valorLivre":0.0,"hasCapitalPorPessoa":false,"impostosRecibo":{"impostoRecibo":[{"numero":6.0,"valor":"4681.6"},{"numero":11.0,"valor":"1170.4"},{"numero":14.0,"valor":"1170.4"},{"numero":16.0,"valor":"4096.4"}]},"impostosAnuidade":{"impostoAnuidade":[{"numero":6.0,"valor":"4681.6"},{"numero":11.0,"valor":"1170.4"},{"numero":14.0,"valor":"1170.4"},{"numero":16.0,"valor":"4096.4"}]}},{"descricaoRisco":"RESPONSABILIDADE CIVIL-DANOS MATERIAIS","codigo":"101","capital":"1.3376E7","premio":0.0,"premioComImpostos":0.0,"mostraPremioComImpostos":false,"taxa":0.0,"tipoTaxa":"","taxaIndexacao":0.0,"camposFranquia":"","codigoFranquia":1.0,"diasFranquia":0.0,"franquiaMaxima":0.0,"franquiaMinima":0.0,"indemnizacaoMaxima":0.0,"indemnizacaoMinima":0.0,"nivel":"0","percentagemComparticipacao1":0.0,"percentagemComparticipacao2":0.0,"percentagemFranquia":0.0,"percentagemIndemnizacao":0.0,"periodoCarencia":0.0,"tipoCriacao":"","unidadePeriodoCarencia":"","valoresPorOPS":"S","valorFranquia":0.0,"factorCalculoPremio":0.0,"moedaEstrangeira":"","taxaEstrangeiro":0.0,"capitalTotalContraValor":"0.0","capitalContraValor":"0.0","valorLivre":0.0,"hasCapitalPorPessoa":false},{"descricaoRisco":"RESPONSABILIDADE CIVIL-DANOS CORPORAIS","codigo":"102","capital":"1.3376E7","premio":0.0,"premioComImpostos":0.0,"mostraPremioComImpostos":false,"taxa":0.0,"tipoTaxa":"","taxaIndexacao":0.0,"camposFranquia":"","codigoFranquia":1.0,"diasFranquia":0.0,"franquiaMaxima":0.0,"franquiaMinima":0.0,"indemnizacaoMaxima":0.0,"indemnizacaoMinima":0.0,"nivel":"0","percentagemComparticipacao1":0.0,"percentagemComparticipacao2":0.0,"percentagemFranquia":0.0,"percentagemIndemnizacao":0.0,"periodoCarencia":0.0,"tipoCriacao":"","unidadePeriodoCarencia":"","valoresPorOPS":"S","valorFranquia":0.0,"factorCalculoPremio":0.0,"moedaEstrangeira":"","taxaEstrangeiro":0.0,"capitalTotalContraValor":"0.0","capitalContraValor":"0.0","valorLivre":0.0,"hasCapitalPorPessoa":false}]},
+
+    "objectos": {"objectoValue":[{"sistema":"EGISMED","numeroOrdem":0.0,"numeroSequencia":1.0,"descricao":"COUTINHO ARMANDO CABRAL BUTOTO","tipoValidacao":"7","tipoObjecto":"N","descricaoTipoObjecto":"CONDUTOR HABITUAL","valor":"0.0","percentagemValor":0.0,"atributo1":"","atributo2":"","codigoEntidade":0.0,"codigoExterno":"0","codigoObjecto":0.0,"nib":"","iban":"","dataEntrada":2.023063E7,"dataSaida":0.0,"activo":true,"codigoPessoaSegura":0.0,"codigoMorada":0.0,"pessoaIgualTomador":false,"pessoaImportadaOPS":false,"refExternaObjecto":"","informacoesObjecto":[{"informacaoObjectoValue":[{"codigo":"IOA08_1","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"19880605","valorDescodificado":""},{"codigo":"IOA08_2","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"20150605","valorDescodificado":""}]}],"riscosObjecto":[],"referenciasExternasPendente":[]},{"sistema":"EGISMED","numeroOrdem":0.0,"numeroSequencia":1.0,"descricao":"Desc","tipoValidacao":"4","tipoObjecto":"M","descricaoTipoObjecto":"Veiculo","valor":"0.0","percentagemValor":0.0,"atributo1":"","atributo2":"","codigoEntidade":0.0,"codigoExterno":"AB-23-29-BB","codigoObjecto":0.0,"nib":"","iban":"","dataEntrada":2.023063E7,"dataSaida":0.0,"activo":true,"codigoPessoaSegura":0.0,"codigoMorada":0.0,"pessoaIgualTomador":false,"pessoaImportadaOPS":false,"refExternaObjecto":"","informacoesObjecto":[{"informacaoObjectoValue":[{"codigo":"IOA08_4","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"20210510","valorDescodificado":""},{"codigo":"IOA08_13","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"00000002","valorDescodificado":""},{"codigo":"IOA08_14","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"00000026","valorDescodificado":""},{"codigo":"IOA08_1","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"01","valorDescodificado":""},{"codigo":"IOA08_2","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"D","valorDescodificado":""},{"codigo":"IOA08_5","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"005","valorDescodificado":""},{"codigo":"IOA30_1","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"N/A","valorDescodificado":""},{"codigo":"IOAVM_1","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"","valorDescodificado":""},{"codigo":"IOAVM_3","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"0","valorDescodificado":""},{"codigo":"IOA08_11","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"1","valorDescodificado":""},{"codigo":"IOA08_12","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"00","valorDescodificado":""},{"codigo":"IOA08_8","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"N","valorDescodificado":""},{"codigo":"IOA08_3","descricao":"","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"0","valorDescodificado":""},{"codigo":"IOA08_7","descricao":"CATEGORIA DETALHE","numero":0.0,"codigoObjectoDependente":0.0,"objectoRel":"","periodoDe":"","periodoAte":"","sequencia":0.0,"tabela":0.0,"tipoValidacao":"","valor":"01D0","valorDescodificado":"LIGEIRO PARTICULAR ATÉ 1600CC"}]}],"riscosObjecto":[{"riscoObjectoValue":[{"codigo":"1","capital":"1.3376E7","premio":23408.0,"taxa":0.0,"tipoTaxa":"","camposFranquia":"","codigoFranquia":1.0,"diasFranquia":0.0,"franquiaMaxima":0.0,"franquiaMinima":0.0,"indemnizacaoMaxima":0.0,"indemnizacaoMinima":0.0,"periodoCarencia":0.0,"unidadePeriodoCarencia":"","valorFranquia":0.0,"hasCapitalPorPessoa":false,"parcelasBonusAgravamentoValue":{"parcelaBonusAgravamentoValue":[{"codigo":"10","string":"V","valor":"33440.0","taxa":0.0},{"codigo":"70","string":"B","valor":"-10032.0","taxa":0.0},{"codigo":"9","string":"V","valor":"380.0","taxa":0.0}]}},{"codigo":"101","capital":"1.3376E7","premio":0.0,"taxa":0.0,"tipoTaxa":"","camposFranquia":"","codigoFranquia":1.0,"diasFranquia":0.0,"franquiaMaxima":0.0,"franquiaMinima":0.0,"indemnizacaoMaxima":0.0,"indemnizacaoMinima":0.0,"periodoCarencia":0.0,"unidadePeriodoCarencia":"","valorFranquia":0.0,"hasCapitalPorPessoa":false},{"codigo":"102","capital":"1.3376E7","premio":0.0,"taxa":0.0,"tipoTaxa":"","camposFranquia":"","codigoFranquia":1.0,"diasFranquia":0.0,"franquiaMaxima":0.0,"franquiaMinima":0.0,"indemnizacaoMaxima":0.0,"indemnizacaoMinima":0.0,"periodoCarencia":0.0,"unidadePeriodoCarencia":"","valorFranquia":0.0,"hasCapitalPorPessoa":false}]}],"referenciasExternasPendente":[]}]},
+
+"informacoesApolice": {
+"informacaoApoliceValue": [
+        {
+        "tipoInformacao": "08",
+        "valor": "E",
+        "codigo": "I08_22"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "",
+        "codigo": "I08_22"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "19880605",
+        "codigo": "I08_1"
+        },
+        {
+        "tipoInformacao": "30",
+        "valor": "123",
+        "codigo": "I30_2"
+        },
+    {
+    "tipoInformacao": "08",
+    "valor": "N",
+    "codigo": "I08_17"
+    },
+        {
+        "tipoInformacao": "08",
+        "valor": "01",
+        "codigo": "I08_6"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "I",
+        "codigo": "I08_3"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "00",
+        "codigo": "I08_25"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "00",
+        "codigo": "I08_27"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "N",
+        "codigo": "I08_42"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "N",
+        "codigo": "I08_47"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "N",
+        "codigo": "I08_48"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "N",
+        "codigo": "I08_49"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "N",
+        "codigo": "I08_45"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "N",
+        "codigo": "I08_44"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "N",
+        "codigo": "I08_50"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "N",
+        "codigo": "I08_51"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "S",
+        "codigo": "I08_41"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "S",
+        "codigo": "I08_43"
+        },
+        {
+        "tipoInformacao": "08",
+        "valor": "00",
+        "codigo": "I08_26"
+        },
+    {
+    "tipoInformacao": "08",
+    "valor": "0",
+    "codigo": "I08_53"
+    },
+    {
+    "tipoInformacao": "30",
+    "valor": "TERENCIO EL DANIEL BITTENCOURT",
+    "codigo": "I30_8"
+    },
+    {
+    "tipoInformacao": "30",
+    "valor": "5410000510",
+    "codigo": "I30_9"
+    },
+    {
+    "tipoInformacao": "30",
+    "valor": "897957543",
+    "codigo": "I30_6"
+    },
+    {
+    "descricao": "Nr. de Lugares",
+    "tipoInformacao": "08",
+    "valor": "005",
+    "codigo": "I08_7"
+    }
+]
+}
+    ,"objectosPredefinidos": {
+    "objectoPredefinidoValue": [
+            {
+            "tipoObjecto": "M",
+            "codigoObjecto": "1",
+            "codigoExterno": "AB-23-29-BB",
+            "dataSituacao": "20230630",
+            "utilizador": "",
+            "descricao": "Desc",
+            "dataCriacao": "20230630",
+            "tipoValidacaoObjecto": "",
+            "informacoesObjecto": {
+            "informacaoObjectoPredefinidoValue": [
+                {
+                "codigo": "IOP08_11",
+                "valor": "20210510"
+                },
+                {
+                "codigo": "IOP08_2",
+                "valor": "00000002"
+                },
+                {
+                "codigo": "IOP08_3",
+                "valor": "00000026"
+                },
+                {
+                "codigo": "IOP08_5",
+                "valor": "1200"
+                },
+                {
+                "codigo": "IOP08_7",
+                "valor": "1000"
+                },
+                {
+                "codigo": "IOP08_12",
+                "valor": "005"
+                },
+                {
+                "codigo": "IOP08_8",
+                "valor": "2021"
+                },
+                {
+                "codigo": "IOP08_16",
+                "valor": "4"
+                },
+                {
+                "codigo": "IOP08_17",
+                "valor": "G"
+                },
+                {
+                "codigo": "IOP08_9",
+                "valor": "B"
+                }
+            ]
+            },
+            "tipoValidacaoCodigoExterno": "A"
+            }
+    ]
+    }
+    ,
+    "pessoasSeguras": {
+    "pessoasegura": [
+            {
+            "informacoes": {
+            "inf": [
+            {
+            "valor": "A",
+            "keytype": "I",
+            "key": "107"
+            },
+                {
+                "valor": "I",
+                "keytype": "I",
+                "key": "104"
+                },
+                {
+                "valor": "COUTINHO ARMANDO CABRAL BUTOTO",
+                "keytype": "I",
+                "key": "103"
+                },
+                {
+                "valor": "19880605",
+                "keytype": "I",
+                "key": "105"
+                },
+                {
+                "valor": "S",
+                "keytype": "E",
+                "key": "902"
+                },
+                {
+                "valor": "000240494LA036",
+                "keytype": "E",
+                "key": "905"
+                },
+                {
+                "valor": "9C9C4246",
+                "keytype": "E",
+                "key": "903"
+                },
+                {
+                "valor": "244212122112",
+                "keytype": "E",
+                "key": "919"
+                },
+                {
+                "valor": "244212122112",
+                "keytype": "E",
+                "key": "922"
+                },
+                {
+                "valor": "",
+                "keytype": "E",
+                "key": "926"
+                },
+                {
+                "valor": "baitokens@inm.pt",
+                "keytype": "E",
+                "key": "001"
+                },
+                {
+                "valor": "M",
+                "keytype": "E",
+                "key": "901"
+                }
+            ]
+            },
+            "morada": {
+            "informacoes": {
+            "inf": [
+            {
+            "key": "143",
+            "keytype": "I",
+            "valor": "MOR"
+            },
+                {
+                "valor": "RUA CANGOMBE TENENTE VIANA ",
+                "keytype": "E",
+                "key": "900"
+                },
+                {
+                "valor": "",
+                "keytype": "E",
+                "key": "910"
+                },
+                {
+                "valor": "2",
+                "keytype": "E",
+                "key": "901"
+                },
+                {
+                "valor": "92",
+                "keytype": "I",
+                "key": "118"
+                },
+                {
+                "valor": "ANG",
+                "keytype": "I",
+                "key": "114"
+                }
+            ]
+            }
+            },
+            "codigo": "new",
+            "tipoObjecto": "N",
+            "numSeq": "1",
+            "referenciaExterna": ""
+            }
+    ]
+    }
+}
+        ,
+        "titular": {
+        "versaopessoa": "",
+        "codigopessoa": "0",
+        "informacoes": {
+        "inf": [
+        {
+        "valor": "A",
+        "keytype": "I",
+        "key": "107"
+        },
+        {
+        "valor": "N",
+        "keytype": "E",
+        "key": "004"
+        },
+            {
+            "valor": "E",
+            "keytype": "I",
+            "key": "104"
+            },
+            {
+            "valor": "TERENCIO EL DANIEL BITTENCOURT",
+            "keytype": "I",
+            "key": "103"
+            },
+            {
+            "valor": "5410000510",
+            "keytype": "E",
+            "key": "905"
+            },
+            {
+            "valor": "897957543",
+            "keytype": "E",
+            "key": "919"
+            },
+            {
+            "valor": "897957543",
+            "keytype": "E",
+            "key": "922"
+            },
+            {
+            "valor": "",
+            "keytype": "E",
+            "key": "926"
+            },
+            {
+            "valor": "",
+            "keytype": "E",
+            "key": "002"
+            },
+            {
+            "valor": "baitokens@inm.pt",
+            "keytype": "E",
+            "key": "001"
+            },
+            {
+            "valor": "",
+            "keytype": "E",
+            "key": "931"
+            },
+            {
+            "valor": "",
+            "keytype": "E",
+            "key": "932"
+            },
+            {
+            "valor": "",
+            "keytype": "E",
+            "key": "998"
+            },
+            {
+            "valor": "",
+            "keytype": "E",
+            "key": "956"
+            },
+            {
+            "valor": "",
+            "keytype": "E",
+            "key": "958"
+            },
+            {
+            "valor": "0",
+            "keytype": "E",
+            "key": "013"
+            },
+            {
+            "valor": "00000",
+            "keytype": "E",
+            "key": "907"
+            },
+            {
+            "valor": "S",
+            "keytype": "E",
+            "key": "003"
+            },
+            {
+            "valor": "0",
+            "keytype": "E",
+            "key": "009"
+            },
+            {
+            "valor": "00",
+            "keytype": "E",
+            "key": "012"
+            },
+            {
+            "valor": "00",
+            "keytype": "E",
+            "key": "018"
+            },
+            {
+            "valor": "00",
+            "keytype": "E",
+            "key": "020"
+            },
+            {
+            "valor": "00",
+            "keytype": "E",
+            "key": "019"
+            }
+        ]
+        },
+        "morada": {
+        "informacoes": {
+        "inf": [
+        {
+        "key": "143",
+        "keytype": "I",
+        "valor": "MOR"
+        },
+            {
+            "valor": "AV. EURIPEDES NETO MATOSO ",
+            "keytype": "E",
+            "key": "900"
+            },
+            {
+            "valor": "",
+            "keytype": "E",
+            "key": "910"
+            },
+            {
+            "valor": "2",
+            "keytype": "E",
+            "key": "901"
+            },
+            {
+            "valor": "94",
+            "keytype": "I",
+            "key": "118"
+            },
+            {
+            "valor": "ANG",
+            "keytype": "I",
+            "key": "114"
+            }
+        ]
+        }
+        },
+        "codigo": "new"
+        }
+}
+
