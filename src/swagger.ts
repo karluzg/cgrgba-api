@@ -34,6 +34,7 @@ import { PermissionGroupResult } from './application/model/user-manager/Permissi
 import { PermissionGroupResultList } from './application/model/user-manager/PermissionGroupResultList';
 import { PermissionResultList } from './application/model/user-manager/PermissionResultList';
 import { PlataformConfig } from './infrestructure/config/plataform';
+import { UserLogoutResult } from './application/model/user-manager/UserLogoutResult';
 
 
 const options = {
@@ -88,6 +89,7 @@ const options = {
         NewsResultList: classToJsonSchema(NewsResultList),
         GetSchedulingListResult: classToJsonSchema(GetSchedulingListResult),
         UpdateSchedulingParams: classToJsonSchema(UpdateSchedulingParams),
+        UserLogoutResult: classToJsonSchema(UserLogoutResult),
       },
     },
     security: [
