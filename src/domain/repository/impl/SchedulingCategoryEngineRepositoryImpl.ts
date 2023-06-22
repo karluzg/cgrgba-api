@@ -8,6 +8,8 @@ const schedulingCategoryEngineRepository = myDataSource.getRepository(Scheduling
 
 @injectable()
 export class SchedulingCategoryEngineRepositoryImpl implements ISchedulingCategoryEngineRepository {
+
+
     async findServiceByCategory(categoryCode: string): Promise<SchedulingCategory[]> {
 
         return await schedulingCategoryEngineRepository.createQueryBuilder('schedulingCategory')
@@ -17,4 +19,9 @@ export class SchedulingCategoryEngineRepositoryImpl implements ISchedulingCatego
 
     }
 
+    async findAllCategory(): Promise<SchedulingCategory[]> {
+
+        return await schedulingCategoryEngineRepository.createQueryBuilder('schedulingCategory').getMany();
+   }
 }
+

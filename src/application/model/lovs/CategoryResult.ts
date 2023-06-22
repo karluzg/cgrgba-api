@@ -1,9 +1,9 @@
-import { Service } from "../../../domain/model/Service";
+import { SchedulingCategory } from "../../../domain/model/SchedulingCategory";
 import { ResultTemplate } from "../../../infrestructure/template/ResultTemplate";
 
 export class CategoryResult extends ResultTemplate {
-
-    private services: Service[]
+    
+    private categories: SchedulingCategory[]
 
     constructor() {
         super();
@@ -11,10 +11,11 @@ export class CategoryResult extends ResultTemplate {
     }
 
 
-    public get getServices(): Service[] {
-        return this.services;
+    public get getCategories(): SchedulingCategory[] {
+        return this.categories;
     }
-    public set setServices(services: Service[]) {
-        this.services = services;
+    public set setCategories(categories: SchedulingCategory[]) {
+        this.categories = categories;
     }
+
 }

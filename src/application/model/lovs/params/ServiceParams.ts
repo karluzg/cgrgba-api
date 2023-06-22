@@ -1,7 +1,7 @@
-import { CategoryEnum } from "../../../domain/model/enum/CategoryEnum";
-import { ParamsTemplate } from "../../../infrestructure/template/ParamsTemplate";
+import { CategoryEnum } from "../../../../domain/model/enum/CategoryEnum";
+import { ParamsTemplate } from "../../../../infrestructure/template/ParamsTemplate";
 
-export class CategoryParams extends ParamsTemplate {
+export class ServiceParams extends ParamsTemplate {
 
     private readonly categoryCode: CategoryEnum
     constructor(categoryCode: CategoryEnum) {

@@ -1,7 +1,6 @@
 
 import { container } from "tsyringe";
-import { CategoryParams } from "../../../application/model/lovs/CategoryParams";
-import { CategoryResult } from "../../../application/model/lovs/CategoryResult";
+import { ServiceResult } from "../../../application/model/lovs/ServiceResult";
 import { OperationTemplate } from "../../../infrestructure/template/OperationTemplate";
 import { ISchedulingCategoryEngineRepository } from "../../repository/ISchedulingCategoryEngineRepository";
 import { Service } from "../../model/Service";
@@ -10,8 +9,9 @@ import { SchedulingCategory } from "../../model/SchedulingCategory";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
+import { ServiceParams } from "../../../application/model/lovs/params/ServiceParams";
 
-export class GetServicesByCategoryOperation extends OperationTemplate<CategoryResult, CategoryParams> {
+export class GetServicesByCategoryOperation extends OperationTemplate<ServiceResult, ServiceParams> {
 
 
     private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository;
@@ -25,7 +25,7 @@ export class GetServicesByCategoryOperation extends OperationTemplate<CategoryRe
         this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
     }
 
-    protected async doValidateParameters(params: CategoryParams): Promise<void> {
+    protected async doValidateParameters(params: ServiceParams): Promise<void> {
 
         this.categoryEntity = await this.schedulingCategoryEngineRepository.findServiceByCategory(params.getCategoryCode);
 
@@ -36,12 +36,12 @@ export class GetServicesByCategoryOperation extends OperationTemplate<CategoryRe
 
 
     }
-    protected async doExecute(params: CategoryParams, result: CategoryResult): Promise<void> {
+    protected async doExecute(params: ServiceParams, result: ServiceResult): Promise<void> {
         this.services = this.categoryEntity[0].services
         result.setServices = this.services;
     }
-    protected initResult(): CategoryResult {
-        return new CategoryResult();
+    protected initResult(): ServiceResult {
+        return new ServiceResult();
     }
 
 

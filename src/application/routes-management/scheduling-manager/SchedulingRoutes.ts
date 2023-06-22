@@ -213,7 +213,7 @@ schedulingRoutes.put("/schedulings/:id", schedulingValidator.updateSchedulingVal
  *             schema:
  *               $ref: '#/components/schemas/SchedulingStatisticsResult'
  */
-schedulingRoutes.get("/scheduling/statistics", schedulingController.get_scheduling_statistics)
+schedulingRoutes.get("/schedulings/all/statistics", schedulingController.get_scheduling_statistics)
 
 
 export default schedulingRoutes
