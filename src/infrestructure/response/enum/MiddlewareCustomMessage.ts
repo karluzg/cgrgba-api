@@ -106,6 +106,8 @@ export enum MiddlewareBusinessMessage {
   NEW_NOT_FOUND = "Notícia não existe",
   NEWS_INVALID_TITLE = "Existe uma noticia com mesmo titulo, mude o titulo e tente novamente",
   NEWS_INVALID_FILE_UPLOAD = "Ficheiro ou o formato do ficheiro carregado é invalido",
+  NEWS_CATEGORY_ALREADY_EXIST="Categoria de noticia já existe",
+  
 
   // CORE MESSAGE
   SUCCESS_MESSAGE = "Operação realizada com sucesso",
