@@ -6,10 +6,18 @@ import { LoginOperation } from "../../operation/user-manager/session/LoginOperat
 import { injectable } from "tsyringe";
 import { UserLoginParams } from "../../../application/model/user-manager/UserLoginParams";
 import { UserLoginResult } from "../../../application/model/user-manager/UserLoginResult";
+import { UserLogoutParams } from "../../../application/model/user-manager/UserLogoutParams";
+import { UserLogoutResult } from "../../../application/model/user-manager/UserLogoutResult";
+import { LogoutOperation } from "../../operation/user-manager/session/LogoutOperation";
 
 
 @injectable()
 export class SessionEngineImpl extends GenericOperationTemplate implements ISessionEngine {
+    
+    
+    async logout(params: UserLogoutParams): Promise<UserLogoutResult> {
+        return await this.executeOperation(new LogoutOperation(), params)
+    }
     
     
     async login(params: UserLoginParams): Promise<UserLoginResult> {

@@ -46,12 +46,15 @@ SessionRoutes.post("/sessions/login",sessionRoutesValidator.login(),sessionRoute
  * @swagger
  * /sessions/logout:
  *   post:
- *     summary: Realiza o logout do utilizador (EM IMPLEMENTAÇÃO)
- *     description: Esta funcionalidade está em processo de implementação.
+ *     summary: Realiza o logout do utilizador
  *     tags: [Sessions]
  *     responses:
  *       '200':
  *         description: Logout realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserLogoutResult'
  *       '401':
  *         description: Não autorizado, token inválido ou expirado
  */

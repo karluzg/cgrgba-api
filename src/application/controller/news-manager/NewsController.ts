@@ -15,6 +15,8 @@ import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { NewsFileParams } from "../../model/news-manager/NewsFileParams";
 import { PageAndSizeParams } from "../../model/PageAndSizeParams";
+import { RequestHandler, ParamsDictionary } from "express-serve-static-core";
+import { ParsedQs } from "qs";
 
 export class NewsController {
 
@@ -141,6 +143,15 @@ export class NewsController {
     }
   }
 
+  public async createNewsCategory(request: Request, response: Response): Promise<Response> {
+    throw new Error("Method not implemented.");
+  }
+  public async getNewsCategoryByCode(request: Request, response: Response): Promise<Response> {
+    throw new Error("Method not implemented.");
+  }
+  public async getAllNewsCategory(request: Request, response: Response): Promise<Response> {
+    throw new Error("Method not implemented.");
+  }
 
 
 }

@@ -4,6 +4,22 @@ import { ParamsValidatorTemplate } from '../../../../infrestructure/template/Par
 
 
 export class NewsRoutesValidator extends ParamsValidatorTemplate {
+   createNewsCategory(): ValidationChain[]  {
+      return [
+         body('code').notEmpty().isLength({ max: 50 }).isString(),
+         body('description').notEmpty().isLength({ max: 150 }).isString(),]
+   }
+   getNewsCategoryByCode(): ValidationChain[] {
+      return [
+         param('code').notEmpty().isLength({ max: 50 }).isString()]
+   }
+   getAllNewsCategory(): ValidationChain[]  {
+      return [
+         query('page').isInt({ min: 1 }).optional(),
+         query('size').isInt({ min: 1 }).optional(),
+         query('direction').isIn(['ASC', 'DESC']).optional(),
+         query('orderColumn').isString().optional(),]
+   }
    getAllNews(): ValidationChain[] {
       return [
          query('page').isInt({ min: 1 }).optional(),

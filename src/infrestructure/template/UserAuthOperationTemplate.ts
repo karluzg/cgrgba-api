@@ -15,7 +15,7 @@ export abstract class UserAuthOperationTemplate<R extends ResultTemplate, P exte
 
     private operationValidatorManager: OperationValidatorManager
     protected abstract doUserAuthExecuted(tokenSession: TokenSession, params: P, result: R): Promise<void>;
- 
+
 
     constructor(operationId: number, operationValidatorManager: OperationValidatorManager) {
         super(operationId)
@@ -27,18 +27,27 @@ export abstract class UserAuthOperationTemplate<R extends ResultTemplate, P exte
 
 
         logger.info("Validate if user has permission to execute the operation")
-        const isOperationAllowed =await this.operationValidatorManager.isOperationAllowed(tokenSession, this);
+        const isOperationAllowed = await this.operationValidatorManager.isOperationAllowed(tokenSession, this);
 
         if (!isOperationAllowed) {
             logger.error("[UserAuthOperationTemplate] user does not have permission to execute this operation")
             throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_OPERTATION_NOT_ALLOWED)
         }
 
+        logger.info("Validate token date")
+        const now = new Date();
+        if(now>tokenSession.expireDate){
+            logger.error("[UserAuthOperationTemplate] token is expirated")
+            throw new UnauthorizedOperationException(Field.SYSTEM, MiddlewareBusinessMessage.CORE_INVALID_TOKEN)
+        }
+        
+
+
         await this.doUserAuthExecuted(tokenSession, params, result)
 
     }
 
- 
+
 
 
 }

@@ -35,7 +35,8 @@ export enum MiddlewareBusinessMessage {
   SESSION_LOGIN_SUCCESSFULLY = "Login realizado com sucesso",
   USER_STATUS_CODE_MANDATORY = "O estado do utilizador é obrigatório",
   USER_STATUS_NOT_EXIST = "Tipo de estado de utilizador não existe",
-
+  SESSION_LOGOUT_ERROR="O sistema nao consegiu efetuar logout do utilizador", 
+  SESSION_NOT_EXIST="Sessão do utilizador não existe", 
 
 
 
