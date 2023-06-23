@@ -17,7 +17,7 @@ export class GetServicesByCategoryOperation extends OperationTemplate<ServiceRes
     private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository;
 
 
-    private services: Service[];
+    private services: Service[]=[];
     private categoryEntity: SchedulingCategory[] = [];
 
     constructor() {
