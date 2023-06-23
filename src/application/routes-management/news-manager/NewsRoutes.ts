@@ -20,7 +20,96 @@ const uploadImage= new UploadImage();
  */
 
 
+/**
+ * @swagger
+ * /news/category:
+ *   get:
+ *     summary: Obtém todas as categorias de notícias
+ *     tags: [News]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         description: Número da página para a paginação
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *       - in: query
+ *         name: size
+ *         description: Tamanho da página para a paginação
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 20
+ *       - in: query
+ *         name: order
+ *         description: Ordenação dos grupos de permissões (opcional, ASC ou DESC)
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
+ *       - in: query
+ *         name: column
+ *         description: Coluna para ordenação das categorias (opcional)
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Lista de categorias de notícias recuperada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/NewsCategoryResult'
+ */
+NewsRoutes.get("/news/category",newsRoutesValidator.getAllNewsCategory(), newsRoutesValidator.validate, newsController.getAllNewsCategory);
 
+/**
+* @swagger
+* /news/category/code/{code}:
+*   get:
+*     summary: Obtém uma categoria de notícia pelo código (EM IMPLEMENTAÇÃO)
+*     tags: [News]
+*     parameters:
+*       - in: path
+*         name: code
+*         required: true
+*         description: Código da categoria a ser recuperada
+*         schema:
+*           type: string
+*     responses:
+*       '200':
+*         description: Categoria de notícia recuperada com sucesso
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/NewsCategoryResult'
+*       '404':
+*         description: Categoria de notícia não encontrada
+*/
+NewsRoutes.get("/news/category/code/:code", newsRoutesValidator.getNewsCategoryByCode(), newsRoutesValidator.validate,newsController.getNewsCategoryByCode);
+
+/**
+ * @swagger
+ * /news/category:
+ *   post:
+ *     summary: Cria uma nova categoria de notícia (EM IMPLEMENTAÇÃO)
+ *     tags: [News]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/NewsCategoryParams'
+ *     responses:
+ *       '200':
+ *         description: Categoria de notícia criada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/NewsCategoryResult'
+ *       '400':
+ *         description: Erro de validação dos dados da categoria
+ */
+NewsRoutes.post("/news/category", newsRoutesValidator.createNewsCategory(), newsRoutesValidator.validate, newsController.createNewsCategory);
 
 /**
  * @swagger
@@ -230,95 +319,6 @@ NewsRoutes.post("/news/:id/image", multer(uploadImage.getConfig).single("image")
  */
 NewsRoutes.delete("/news/:id/image", newsController.deleteNews);
 
-/**
- * @swagger
- * /news/category:
- *   get:
- *     summary: Obtém todas as categorias de notícias
- *     tags: [News]
- *     parameters:
- *       - in: query
- *         name: page
- *         description: Número da página para a paginação
- *         schema:
- *           type: integer
- *           minimum: 1
- *           default: 1
- *       - in: query
- *         name: size
- *         description: Tamanho da página para a paginação
- *         schema:
- *           type: integer
- *           minimum: 1
- *           default: 20
- *       - in: query
- *         name: order
- *         description: Ordenação dos grupos de permissões (opcional, ASC ou DESC)
- *         schema:
- *           type: string
- *           enum: [ASC, DESC]
- *       - in: query
- *         name: column
- *         description: Coluna para ordenação das categorias (opcional)
- *         schema:
- *           type: string
- *     responses:
- *       '200':
- *         description: Lista de categorias de notícias recuperada com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/NewsCategoryResult'
- */
-NewsRoutes.get("/news/category",newsRoutesValidator.getAllNewsCategory(), newsRoutesValidator.validate, newsController.getAllNewsCategory);
 
-/**
-* @swagger
-* /news/category/{code}:
-*   get:
-*     summary: Obtém uma categoria de notícia pelo código (EM IMPLEMENTAÇÃO)
-*     tags: [News]
-*     parameters:
-*       - in: path
-*         name: code
-*         required: true
-*         description: Código da categoria a ser recuperada
-*         schema:
-*           type: string
-*     responses:
-*       '200':
-*         description: Categoria de notícia recuperada com sucesso
-*         content:
-*           application/json:
-*             schema:
-*               $ref: '#/components/schemas/NewsCategoryResult'
-*       '404':
-*         description: Categoria de notícia não encontrada
-*/
-NewsRoutes.get("/news/category/:code", newsRoutesValidator.getNewsCategoryByCode(), newsRoutesValidator.validate,newsController.getNewsCategoryByCode);
-
-/**
- * @swagger
- * /news/category:
- *   post:
- *     summary: Cria uma nova categoria de notícia (EM IMPLEMENTAÇÃO)
- *     tags: [News]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/NewsCategoryParams'
- *     responses:
- *       '200':
- *         description: Categoria de notícia criada com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/NewsCategoryResult'
- *       '400':
- *         description: Erro de validação dos dados da categoria
- */
-NewsRoutes.post("/news/category", newsRoutesValidator.createNewsCategory(), newsRoutesValidator.validate, newsController.createNewsCategory);
 
 export default NewsRoutes
