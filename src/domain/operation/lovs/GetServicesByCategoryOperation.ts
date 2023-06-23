@@ -25,20 +25,16 @@ export class GetServicesByCategoryOperation extends OperationTemplate<ServiceRes
         this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
     }
 
-    protected async doValidateParameters(params: ServiceParams): Promise<void> {
 
+    protected async doExecute(params: ServiceParams, result: ServiceResult): Promise<void> {
         this.categoryEntity = await this.schedulingCategoryEngineRepository.findServiceByCategory(params.getCategoryCode);
 
         if (this.categoryEntity.length == 0) {
-            throw new InvalidParametersException(Field.SCHEDULING_SERVICE,
-                MiddlewareBusinessMessage.SCHEDULING_SERVICE_INVALID);
+            result.setServices = this.services;
+        } else {
+            this.services = this.categoryEntity[0].services
+            result.setServices = this.services;
         }
-
-
-    }
-    protected async doExecute(params: ServiceParams, result: ServiceResult): Promise<void> {
-        this.services = this.categoryEntity[0].services
-        result.setServices = this.services;
     }
     protected initResult(): ServiceResult {
         return new ServiceResult();

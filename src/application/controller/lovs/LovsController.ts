@@ -14,6 +14,8 @@ import { ServiceParams } from "../../model/lovs/params/ServiceParams";
 import { GetRolesParams } from "../../model/lovs/params/GetRolesParams";
 import { AuthValidator } from "../validator/AuthValidator";
 import { CategoryParams } from "../../model/lovs/params/CategoryParams";
+import { SchedulingStatusEnum } from "../../../domain/model/enum/SchedulingStatusEnum";
+import { CategoryEnum } from "../../../domain/model/enum/CategoryEnum";
 
 export class LovsController {
 
@@ -21,11 +23,11 @@ export class LovsController {
 
         try {
 
-            const { categoryCode } = request.body;
+            const { categoryCode } = request.query;
 
 
             console.info("[LovsController] INPUT DATE PARAMS RECEIVED %s" + categoryCode)
-            const params = new ServiceParams(categoryCode);
+            const params = new ServiceParams(categoryCode as CategoryEnum);
 
             logger.info("[LovsController] Perform dependency injection for ISchedulingTimeEngine")
             const schedulingTimeEngine = container.resolve<ILovsEngine>("ILovsEngine")
