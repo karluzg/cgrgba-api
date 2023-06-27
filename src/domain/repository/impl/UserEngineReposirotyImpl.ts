@@ -19,6 +19,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
       public async findUserByMobileNumber(userMobileNumber: string): Promise<User> {
             return userRepository.createQueryBuilder('user')
                   .leftJoinAndSelect('user.status', 'status')
+                  .leftJoinAndSelect('user.roles', 'role')
                   .where('user.mobileNumber = :userMobileNumber', { userMobileNumber: EncryptTemplate.encryptColumn(userMobileNumber) })
                   .getOne();
       }
@@ -31,6 +32,8 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
             const skipCount = (page - 1) * size;
 
             let queryBuilder = userRepository.createQueryBuilder('user')
+                  .leftJoinAndSelect('user.status', 'status')
+                  .leftJoinAndSelect('user.roles', 'role')
                   .skip(skipCount)
                   .take(size);
 
@@ -38,7 +41,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
                   const code = status.code
 
                   if (status.description !== UserStatusEnum.REMOVED) {
-                        queryBuilder = queryBuilder.leftJoinAndSelect("user.status", "status")
+                        queryBuilder = queryBuilder
                         .where('status.code = :code', { code });
                   }      
             }
@@ -59,6 +62,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
       public async findUserById(userId: number): Promise<User> {
             return userRepository.createQueryBuilder('user')
                   .leftJoinAndSelect('user.status', 'status')
+                  .leftJoinAndSelect('user.roles', 'role')
                   .where('user.id = :userId', { userId })
                   .getOne();
       }
@@ -80,6 +84,7 @@ export class UserEngineRepositoryImpl implements IUserEngineRepository {
 
             const user = await userRepository.createQueryBuilder('user')
                   .leftJoinAndSelect('user.status', 'status')
+                  .leftJoinAndSelect('user.roles', 'role')
                   .where('user.email = :email', { email: EncryptTemplate.encryptColumn(userEmail) })
                   .getOne();
 
