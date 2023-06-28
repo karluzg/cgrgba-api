@@ -66,11 +66,11 @@ export class SchedulingTimeController {
 
         try {
 
-            const { beginSchedulingDate } = request.body;
+            const { beginSchedulingDate } = request.query;
 
 
             console.info("[get_time_slot_list] INPUT DATE PARAMS RECEIVED %s" + beginSchedulingDate)
-            const params = new TimeSlotListParams(beginSchedulingDate);
+            const params = new TimeSlotListParams(beginSchedulingDate as string);
 
             logger.info("[SchedulingTimeController] Perform dependency injection for ISchedulingTimeEngine")
             const schedulingTimeEngine = container.resolve<ISchedulingTimeEngine>("ISchedulingTimeEngine")

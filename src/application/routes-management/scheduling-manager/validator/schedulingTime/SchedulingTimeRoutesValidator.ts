@@ -1,5 +1,5 @@
-import { query } from "express"
-import { ValidationChain, body, param } from "express-validator"
+
+import { ValidationChain, body, query } from "express-validator"
 import { ParamsValidatorTemplate } from "../../../../../infrestructure/template/ParamsValidatorTemplate"
 
 
@@ -18,7 +18,9 @@ export class SchedulingTimeRoutesValidator extends ParamsValidatorTemplate {
 
     }
 
-    public getTimeSlotList(): ValidationChain {
-        return body('beginSchedulingDate').notEmpty().isLength({ min: 10, max: 10 }).isString()
+    public getTimeSlotList(): ValidationChain[] {
+        return [
+            query('beginSchedulingDate').notEmpty().isLength({ min: 10, max: 10 }).isString()
+        ] 
     }
 }
