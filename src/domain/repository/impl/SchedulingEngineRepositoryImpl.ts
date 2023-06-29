@@ -97,7 +97,7 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
     }
   
     if (schedulingStatus && schedulingStatus !== SchedulingStatusEnum.REMOVED) {
-      console.info("SCHEDULING STATUS");
+    
       query.andWhere('status.code LIKE :schedulingStatus', { schedulingStatus: `%${schedulingStatus}%` });
     }
 
@@ -108,11 +108,9 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
       .skip(skip)
       .take(pageSize)
       .getManyAndCount();
-    console.info("TOTAL ITEMS", totalItems);
+
   
     const totalPages = Math.ceil(totalItems / pageSize);
-  
-    console.log(query.getSql());
   
     return new PageImpl<Scheduling>(items, pageNumber, pageSize, totalItems, totalPages);
   }

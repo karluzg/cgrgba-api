@@ -7,7 +7,7 @@ export class PageUtil {
     public static async getDefaultOrderColumn(orderColumn: string): Promise<string> {
         if (typeof orderColumn !== 'undefined' && orderColumn !== '') {
 
-            orderColumn;
+             return orderColumn;
         }
 
         return "id";

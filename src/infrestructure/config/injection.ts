@@ -11,7 +11,7 @@ import { PermissionEngineRepositoryImpl } from '../../domain/repository/impl/Per
 import { ISessionEngine } from '../../domain/service/ISessionEngine';
 import { SessionEngineImpl } from '../../domain/service/impl/SessionEngineImpl';
 import { IUserEngineRepository } from '../../domain/repository/IUserEngineRepository';
-import { UserEngineRepositoryImpl } from '../../domain/repository/impl/UserEngineReposirotyImpl';
+import { UserEngineRepositoryImpl } from '../../domain/repository/impl/UserEngineRepositoryImpl';
 import { IRoleEngineRepository } from '../../domain/repository/IRoleEngineRepository';
 import { RoleEngineRepositoryImpl } from '../../domain/repository/impl/RoleEngineRepositoryImpl';
 import { IPermissionGroupEngineRepository } from '../../domain/repository/IPermissionGroupEngineRepository';

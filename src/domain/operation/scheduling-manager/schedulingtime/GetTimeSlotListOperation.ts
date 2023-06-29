@@ -23,7 +23,9 @@ export class GetTimeSlotListOperation extends OperationTemplate<TimeSlotResult, 
     private readonly schedulingTimeRepository: ISchedulingTimeEngineRepository;
     private readonly hollydayRepository: IHollydayEngineRepository;
     private readonly schedulingHistoryEngineRepository: ISchedulingHistoryEngineRepository;
-    private schedulingTimeEntity: SchedulingTimeConfiguration[] = [];
+  private schedulingTimeEntity: SchedulingTimeConfiguration[];
+  private schedulingNotExist: boolean = false;
+  private hourlist: Hour[] = [];
 
     private schedulingDateInput: Date
 
@@ -45,8 +47,7 @@ export class GetTimeSlotListOperation extends OperationTemplate<TimeSlotResult, 
         const currentDate = new Date();
 
         if (beginDate < currentDate) {
-            throw new InvalidParametersException(Field.SCHEDULING_TIME_BEGIN_SCHEDULING_DATE,
-                MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST)
+          this.schedulingNotExist = true;
         }
 
 
@@ -62,8 +63,7 @@ export class GetTimeSlotListOperation extends OperationTemplate<TimeSlotResult, 
 
 
         if (isWeekend || isHollyday) {
-            throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE,
-                MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);
+          this.schedulingNotExist = true;
         }
 
         this.schedulingTimeEntity = await this.schedulingTimeRepository.findBySchedulingDate(this.schedulingDateInput)
@@ -72,8 +72,7 @@ export class GetTimeSlotListOperation extends OperationTemplate<TimeSlotResult, 
 
 
         if (this.schedulingTimeEntity.length == 0) {
-            throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE,
-                MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);
+          this.schedulingNotExist = true;
         }
 
         logger.info("[GetTimeSlotListOperation] End of strict validation scheduling time parameteres...")
@@ -84,11 +83,15 @@ export class GetTimeSlotListOperation extends OperationTemplate<TimeSlotResult, 
 
         logger.info("[AddNewTimeSlotOperation][doUserAuthExecuted] Begin building available hour list");
 
+      if (this.schedulingNotExist) {
+        result.setTimeList = this.hourlist;
+      } else {
 
-        const hourlist = await this.buildAvailableHourList(params.getBeginSchedulingDate)
-        result.setTimeList = hourlist;
+        this.hourlist = await this.buildAvailableHourList(params.getBeginSchedulingDate)
+        result.setTimeList = this.hourlist;
+      }
 
-        logger.info("[AddNewTimeSlotOperation][doUserAuthExecuted] End building available hour list %", hourlist.length);
+        logger.info("[AddNewTimeSlotOperation][doUserAuthExecuted] End building available hour list %", this.hourlist.length);
 
     }
 

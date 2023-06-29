@@ -47,17 +47,16 @@ export class GetAllUserOperation extends UserAuthOperationTemplate<UserResultLis
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: PageAndSizeParams, result: UserResultList): Promise<void> {
        
 
-        
         const userPages: IPage<User> = await this.userRepository.findAllUsers(params.getPage,
             params.size,
             this.status,
             params.orderColumn,
             params.direction);
       
-        const userResponses: User[] = await Promise.all(userPages.content
+        const userResponseList: User[] = await Promise.all(userPages.content
             .map(user => UserResponseBuilder.buildUserResponse(user)));
       
-        PageableUtils.ofWithContent(result, userPages, userResponses);
+        PageableUtils.ofWithContent(result, userPages, userResponseList);
       }
       
     protected initResult(): UserResultList {
