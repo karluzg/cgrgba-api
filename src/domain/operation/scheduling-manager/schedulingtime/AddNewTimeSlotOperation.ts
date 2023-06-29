@@ -201,7 +201,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
                 const beginWorkDateTime = new Date(`${dateWithoutHour} ${params.getBeginWorkTime} `);
 
                 let endBegingWorkDateTime = new Date(`${dateWithoutHour}  ${params.getBeginWorkTime} `);
-
+               
                 if (params.getEndSchedulingDate.length == 0) {
                     endBegingWorkDateTime = new Date(`${dateWithoutHour} ${params.getBeginWorkTime} `);
 
@@ -231,23 +231,34 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
     }
 
     async createSchedulingTimeBySchedulingDate(inputDate: Date, beginWorkDateTime: Date, endWorkDateTime: Date, params: TimeSlotParams): Promise<void> {
-
         const hourList: string[] = [];
-
-        logger.info("[AddNewTimeSlotOperation] beginWorkDateTime received:", beginWorkDateTime)
-        logger.info("[AddNewTimeSlotOperation] endWorkDateTime received:", endWorkDateTime)
-
+    
+        logger.info("[AddNewTimeSlotOperation] beginWorkDateTime received:", beginWorkDateTime);
+        logger.info("[AddNewTimeSlotOperation] endWorkDateTime received:", endWorkDateTime);
+    
         while (beginWorkDateTime <= endWorkDateTime && beginWorkDateTime.toDateString() === inputDate.toDateString()) {
             const hour = beginWorkDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            hourList.push(hour)
+            hourList.push(hour);
+    
             beginWorkDateTime.setMinutes(beginWorkDateTime.getMinutes() + params.getServiceInterval); // update beginWorkDateTime adding service interval
+    
+            // Check if the next hour exceeds the endWorkDateTime
+            const nextHour = new Date(beginWorkDateTime.getTime() + (params.getServiceInterval * 60000));
+            if (nextHour >endWorkDateTime) {
+                const adjustedEndHour = new Date(endWorkDateTime.getTime() - (90 * 60000)); //It is only possible to schedule at 1.30 pm
+                const adjustedEndHourString = adjustedEndHour.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                hourList.push(adjustedEndHourString);
+                break;
+            }
         }
-
-        logger.info("[AddNewTimeSlotOperation] InputDate to be Added %s and hour list %s", inputDate, hourList)
-
-        await this.createNewSchedulingConfiguration(inputDate, params, hourList)
-
+    
+        logger.info("[AddNewTimeSlotOperation] InputDate to be Added %s and hour list %s", inputDate, hourList);
+    
+        await this.createNewSchedulingConfiguration(inputDate, params, hourList);
     }
+    
+    
+    
 
     async createNewSchedulingConfiguration(inputDate: Date, params: TimeSlotParams, hourlistInput: string[]): Promise<void> {
 
