@@ -14,7 +14,7 @@ import { EmailTemplate } from "../../../../infrestructure/template/EmailTemplate
 import { PlataformConfig } from "../../../../infrestructure/config/plataform";
 import { ResultTemplate } from "../../../../infrestructure/template/ResultTemplate";
 import { ResetPasswordParams } from "../../../../application/model/user-manager/ResetPasswordParams";
-import { EmailUtils } from "../../util/EmailUtils";
+import { EmailNotification } from "../../util/EmailNotification";
 
 
 
@@ -56,7 +56,7 @@ export class ResetPasswordOperation extends OperationTemplate<ResultTemplate, Re
         const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.NEW, PlataformConfig.security.passwordTry);
 
 
-        const emailMessage = EmailUtils.generateResetPasswordBody(newUser.fullName, newUser.email, password, PlataformConfig.url.backOffice, PlataformConfig.contact.email);
+        const emailMessage = EmailNotification.generateResetPasswordBody(newUser.fullName, newUser.email, password, PlataformConfig.url.backOffice, PlataformConfig.contact.email);
         const emailTemplate = new EmailTemplate();
         const mailOption = await emailTemplate.createMailOption(newUser.email, emailMessage);
 

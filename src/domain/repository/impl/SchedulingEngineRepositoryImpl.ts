@@ -9,13 +9,13 @@ import { CategoryEnum } from "../../model/enum/CategoryEnum";
 import { SchedulingStatusEnum } from "../../model/enum/SchedulingStatusEnum";
 import { ServiceEnum } from "../../model/enum/ServiceEnum";
 import { ISchedulingEngineRepository } from "../ISchedulingEngineRepository";
-import { GetSchedulingListOperation } from "../../operation/scheduling-manager/scheduling/GetSchedulingListOperation";
+import { injectable } from 'tsyringe';
 
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const schedulingEngineRepository = myDataSource.getRepository(Scheduling)
 
-
+@injectable()
 export class SchedulingEngineRepositoryImpl implements ISchedulingEngineRepository {
 
 

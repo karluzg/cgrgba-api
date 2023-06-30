@@ -26,6 +26,7 @@ import { IServiceEngineRepository } from "../../../repository/IServiceEngineRepo
 import { ISchedulingPossibleStatusEngineRepository } from "../../../repository/ISchedulingPossibleStatusEngineRepository";
 import { SchedulingPossibleStatus } from "../../../model/SchedulingPossibleStatus";
 import { SchedulingResponseBuilder } from "../../response-builder/scheduling-manager/SchedulingResponseBuilder";
+import { IMessageContentsEngineRepository } from "../../../repository/IMessageContentsEngineRepository";
 
 
 
@@ -38,6 +39,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
     private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository
     private serviceEngineReository: IServiceEngineRepository
     private readonly schedulingStatusEngineRepository: ISchedulingPossibleStatusEngineRepository;
+    private readonly messageContsEngineRepository: IMessageContentsEngineRepository
 
 
     private schedulingEntitySource: Scheduling
@@ -57,6 +59,8 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
         this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
         this.serviceEngineReository = container.resolve<IServiceEngineRepository>('IServiceEngineRepository')
         this.schedulingStatusEngineRepository = container.resolve<ISchedulingPossibleStatusEngineRepository>('ISchedulingPossibleStatusEngineRepository')
+        this.messageContsEngineRepository = container.resolve<IMessageContentsEngineRepository>("IMessageContentsEngineRepository")
+
     }
 
     protected async doValidateParameters(params: UpdateSchedulingParams): Promise<void> {
@@ -175,7 +179,7 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
 
         logger.info("[UpdateSchedulingOperation] Start Sending Email...")
 
-        await SchedulingUtil.sendSchedulingByEmail(updatedScheduling)
+        await SchedulingUtil.sendSchedulingByEmail(updatedScheduling, this.messageContsEngineRepository)
 
         logger.info("[UpdateSchedulingOperation] Email sent")
 

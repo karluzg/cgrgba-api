@@ -21,6 +21,7 @@ import { Service } from "../../../model/Service";
 import { ISchedulingCategoryEngineRepository } from "../../../repository/ISchedulingCategoryEngineRepository";
 import { UnsuccessfullOperationException } from "../../../../infrestructure/exceptions/UnsuccessfullOperationException";
 import { SchedulingResponseBuilder } from "../../response-builder/scheduling-manager/SchedulingResponseBuilder";
+import { IMessageContentsEngineRepository } from "../../../repository/IMessageContentsEngineRepository";
 
 export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResult, SchedulingParams>{
 
@@ -31,6 +32,11 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
     private readonly schedulingHistoryEnginerepository: ISchedulingHistoryEngineRepository;
     private readonly citizenEngineRepository: ICitizenEngineRepository;
     private readonly schedulingCategoryEngineRepository: ISchedulingCategoryEngineRepository;
+    private readonly messageContsEngineRepository: IMessageContentsEngineRepository
+
+
+
+
 
 
     private semaphore: Semaphore;
@@ -48,6 +54,8 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         this.schedulingHistoryEnginerepository = container.resolve<ISchedulingHistoryEngineRepository>('ISchedulingHistoryEngineRepository')
         this.citizenEngineRepository = container.resolve<ICitizenEngineRepository>('ICitizenEngineRepository')
         this.schedulingCategoryEngineRepository = container.resolve<ISchedulingCategoryEngineRepository>('ISchedulingCategoryEngineRepository')
+        this.messageContsEngineRepository = container.resolve<IMessageContentsEngineRepository>("IMessageContentsEngineRepository")
+
 
 
     }
@@ -138,7 +146,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
 
         logger.info("[AddNewSchedulingOperation] Start Sending Email...")
 
-        await SchedulingUtil.sendSchedulingByEmail(newScheduling)
+        await SchedulingUtil.sendSchedulingByEmail(newScheduling, this.messageContsEngineRepository)
 
         logger.info("[AddNewSchedulingOperation] Email sent")
 

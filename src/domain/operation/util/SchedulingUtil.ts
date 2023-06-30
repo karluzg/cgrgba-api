@@ -13,12 +13,14 @@ import { SchedulingTimeConfiguration } from "../../model/SchedulingTimeConfigura
 import { Citizen } from "../../model/Citizen";
 import { ISchedulingHistoryEngineRepository } from "../../repository/ISchedulingHistoryEngineRespository";
 import { SchedulingHistory } from "../../model/SchedulingHistory";
-import { EmailUtils } from "./EmailUtils";
+import { EmailNotification } from "./EmailNotification";
 import { EmailTemplate } from "../../../infrestructure/template/EmailTemplate";
 import { ISchedulingCategoryEngineRepository } from "../../repository/ISchedulingCategoryEngineRepository";
 import { SchedulingCategory } from "../../model/SchedulingCategory";
 import { Service } from "../../model/Service";
 import { EncryptTemplate } from "../../../infrestructure/template/EncryptTemplate";
+import { MessageTemplateFixedId } from "../../model/enum/MessageTemplateFixedId";
+import { IMessageContentsEngineRepository } from "../../repository/IMessageContentsEngineRepository";
 
 
 
@@ -178,10 +180,12 @@ export class SchedulingUtil {
 
 
 
-    public static async sendSchedulingByEmail(scheduling: Scheduling): Promise<void> {
+    public static async sendSchedulingByEmail(scheduling: Scheduling, messageContsEngineRepository: IMessageContentsEngineRepository): Promise<void> {
 
-        const emailMessage = await EmailUtils.generateSchedulingEmailBody(scheduling.citizen.fullName,
-            scheduling.date, scheduling.chosenHour, scheduling.service.name)
+        const emailMessage = await EmailNotification.sendSchedulingConfirmationEmail(scheduling.citizen.fullName,
+            scheduling.date, scheduling.chosenHour, scheduling.service.name, "http://www.google.com", messageContsEngineRepository,
+            MessageTemplateFixedId.NEW_SCHEDULING_SUBJECT,
+            MessageTemplateFixedId.NEW_SCHEDULING_BODY, "pt-PT")
 
 
         const emailTemplate = new EmailTemplate();

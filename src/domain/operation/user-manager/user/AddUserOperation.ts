@@ -16,7 +16,7 @@ import { InvalidParametersException } from "../../../../infrestructure/exception
 import { GeneratePassowordUtil } from "../../util/GeneratePassowordUtil";
 import { EmailTemplate } from "../../../../infrestructure/template/EmailTemplate";
 import { PlataformConfig } from "../../../../infrestructure/config/plataform";
-import { EmailUtils } from "../../util/EmailUtils";
+import { EmailNotification } from "../../util/EmailNotification";
 import { IRoleEngineRepository } from "../../../repository/IRoleEngineRepository";
 import { Role } from "../../../model/Role";
 import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
@@ -95,7 +95,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
         result.setUser = userRespponse;
 
-        const emailMessage = EmailUtils.generateNewUserBody(user.fullName,
+        const emailMessage = EmailNotification.generateNewUserBody(user.fullName,
             user.email,
             password,
             PlataformConfig.url.backOffice,

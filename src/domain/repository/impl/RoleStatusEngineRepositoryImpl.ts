@@ -1,10 +1,11 @@
+import { injectable } from "tsyringe";
 import { RoleStatus } from "../../model/RoleStatus";
 import { IRoleStatusEngineRepository } from "../IRoleStatusEngineRepository";
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const roleStatusEngineRepository = myDataSource.getRepository(RoleStatus)
 
-
+@injectable()
 export class RoleStatusEngineRepositoryImpl implements IRoleStatusEngineRepository{
 
    async save(roleStatus: RoleStatus): Promise<void> {

@@ -1,3 +1,4 @@
+import { injectable } from "tsyringe";
 import { SchedulingStatusEnum } from "../../model/enum/SchedulingStatusEnum";
 import { SchedulingStatus } from "../../model/SchedulingStatus";
 import { ISchedulinStatusEngineRepository } from "../ISchedulinStatusEngineRepository";
@@ -6,7 +7,7 @@ import { ISchedulinStatusEngineRepository } from "../ISchedulinStatusEngineRepos
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const schedulingStatusEngineRepository = myDataSource.getRepository(SchedulingStatus)
 
-
+@injectable()
 export class SchedulinStatusEngineRepositoryImpl implements ISchedulinStatusEngineRepository {
 
     async findSchedulingStatus(schedulingStatusCode: SchedulingStatusEnum): Promise<SchedulingStatus> {
