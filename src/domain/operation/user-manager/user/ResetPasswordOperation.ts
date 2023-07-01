@@ -15,17 +15,21 @@ import { PlataformConfig } from "../../../../infrestructure/config/plataform";
 import { ResultTemplate } from "../../../../infrestructure/template/ResultTemplate";
 import { ResetPasswordParams } from "../../../../application/model/user-manager/ResetPasswordParams";
 import { EmailNotification } from "../../util/EmailNotification";
+import { MessageTemplateFixedId } from "../../../model/enum/MessageTemplateFixedId";
+import { IMessageContentsEngineRepository } from "../../../repository/IMessageContentsEngineRepository";
 
 
 
 export class ResetPasswordOperation extends OperationTemplate<ResultTemplate, ResetPasswordParams>{
 
     private userRepository: IUserEngineRepository;
+    private readonly messageContsEngineRepository: IMessageContentsEngineRepository
     private user: User
 
     constructor() {
         super(OperationNamesEnum.USER_RESET_PASSWORD)
         this.userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
+        this.messageContsEngineRepository = container.resolve<IMessageContentsEngineRepository>("IMessageContentsEngineRepository")
 
     }
 
@@ -56,7 +60,14 @@ export class ResetPasswordOperation extends OperationTemplate<ResultTemplate, Re
         const newUser = await this.userRepository.updateUserPassword(this.user.id, hash, salt, UserStatusEnum.NEW, PlataformConfig.security.passwordTry);
 
 
-        const emailMessage = EmailNotification.generateResetPasswordBody(newUser.fullName, newUser.email, password, PlataformConfig.url.backOffice, PlataformConfig.contact.email);
+        const emailMessage = await EmailNotification.sendUserNotification(newUser.fullName,
+            newUser.email,
+            password,
+            PlataformConfig.url.backOffice,
+            PlataformConfig.contact.email,
+            this.messageContsEngineRepository,
+            MessageTemplateFixedId.RESET_PASSWORD_SUBJECT,
+            MessageTemplateFixedId.RESET_PASSWORD_BODY, "pt-PT");
         const emailTemplate = new EmailTemplate();
         const mailOption = await emailTemplate.createMailOption(newUser.email, emailMessage);
 

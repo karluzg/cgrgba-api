@@ -21,6 +21,7 @@ import { Service } from "../../model/Service";
 import { EncryptTemplate } from "../../../infrestructure/template/EncryptTemplate";
 import { MessageTemplateFixedId } from "../../model/enum/MessageTemplateFixedId";
 import { IMessageContentsEngineRepository } from "../../repository/IMessageContentsEngineRepository";
+import { PlataformConfig } from "../../../infrestructure/config/plataform";
 
 
 
@@ -182,8 +183,8 @@ export class SchedulingUtil {
 
     public static async sendSchedulingByEmail(scheduling: Scheduling, messageContsEngineRepository: IMessageContentsEngineRepository): Promise<void> {
 
-        const emailMessage = await EmailNotification.sendSchedulingConfirmationEmail(scheduling.citizen.fullName,
-            scheduling.date, scheduling.chosenHour, scheduling.service.name, "http://www.google.com", messageContsEngineRepository,
+        const emailMessage = await EmailNotification.sendSchedulingNotification(scheduling.citizen.fullName,
+            scheduling.date, scheduling.chosenHour, scheduling.service.name,  PlataformConfig.url.frontOffice, messageContsEngineRepository,
             MessageTemplateFixedId.NEW_SCHEDULING_SUBJECT,
             MessageTemplateFixedId.NEW_SCHEDULING_BODY, "pt-PT")
 

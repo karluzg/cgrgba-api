@@ -20,6 +20,8 @@ import { EmailNotification } from "../../util/EmailNotification";
 import { IRoleEngineRepository } from "../../../repository/IRoleEngineRepository";
 import { Role } from "../../../model/Role";
 import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
+import { IMessageContentsEngineRepository } from "../../../repository/IMessageContentsEngineRepository";
+import { MessageTemplateFixedId } from "../../../model/enum/MessageTemplateFixedId";
 
 
 
@@ -27,12 +29,14 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
     private userRepository: IUserEngineRepository;
     private rolesRepository: IRoleEngineRepository;
+    private readonly messageContsEngineRepository: IMessageContentsEngineRepository
     private roles: Role[];
 
     constructor() {
         super(OperationNamesEnum.USER_CREATE, OperationValidatorManager.getSingletonInstance())
         this.userRepository = container.resolve<IUserEngineRepository>("IUserEngineRepository")
         this.rolesRepository = container.resolve<IRoleEngineRepository>("IRoleEngineRepository")
+        this.messageContsEngineRepository = container.resolve<IMessageContentsEngineRepository>("IMessageContentsEngineRepository")
         this.roles = [];
     }
 
@@ -95,11 +99,14 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
 
         result.setUser = userRespponse;
 
-        const emailMessage = EmailNotification.generateNewUserBody(user.fullName,
+        const emailMessage = await EmailNotification.sendUserNotification(user.fullName,
             user.email,
             password,
             PlataformConfig.url.backOffice,
-            PlataformConfig.contact.email);
+            PlataformConfig.contact.email,
+            this.messageContsEngineRepository,
+            MessageTemplateFixedId.CREATE_NEW_USER_SUBJECT,
+            MessageTemplateFixedId.CREATE_NEW_USER_BODY, "pt-PT");
 
         const emailTemplate = new EmailTemplate();
         const mailOption = await emailTemplate.createMailOption(user.email, emailMessage);

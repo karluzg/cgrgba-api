@@ -1,6 +1,5 @@
 
-import { OperationTemplate } from "./OperationTemplate";
-import * as nodemailer from 'nodemailer';
+
 import logger from "../config/logger";
 import { MailOptionsTemplate } from "./MailOptionsTemplate";
 import { EmailResultTemplate } from "./EmailResultTemplate";
@@ -25,7 +24,7 @@ export class EmailTemplate{
               };
 
             const info = await mailTransporter.transporter.sendMail(mailOptions);
-            logger.info('[EmailTemplate] Email sent:', info.response); 6
+            logger.info('[EmailTemplate] Email sent:', info.response); 
             const result= new EmailResultTemplate()
             result.setSetResult = info;
 
