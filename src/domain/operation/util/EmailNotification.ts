@@ -25,8 +25,8 @@ export class EmailNotification {
     fields.set('EMAIL_CONTACT', emailContact);
     fields.set('BASE_ENDPOINT', baseEndpoint);
 
-    const geeting: string = await SchedulingTimeUtil.getGreet()
-    fields.set('GREETING', geeting);
+    const greeting: string = await SchedulingTimeUtil.getGreet()
+    fields.set('GREETING', greeting);
 
     const body: string = await TemplateUtils.getTemplateText(messageContsEngineRepository, fields, bodyId, languageCode)
 
@@ -55,8 +55,8 @@ export class EmailNotification {
         fields.set('SCHEDULING_SERVICE', service);
         fields.set('BASE_ENDPOINT', baseEndpoint);
 
-        const geeting: string = await SchedulingTimeUtil.getGreet()
-        fields.set('GREETING', geeting);
+        const greeting: string = await SchedulingTimeUtil.getGreet()
+        fields.set('GREETING', greeting);
 
         const body: string = await TemplateUtils.getTemplateText(messageContsEngineRepository, fields, bodyId, languageCode)
 
