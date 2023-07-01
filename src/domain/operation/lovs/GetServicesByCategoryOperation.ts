@@ -6,9 +6,6 @@ import { ISchedulingCategoryEngineRepository } from "../../repository/ISchedulin
 import { Service } from "../../model/Service";
 import { OperationNamesEnum } from "../../model/enum/OperationNamesEnum";
 import { SchedulingCategory } from "../../model/SchedulingCategory";
-import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
-import { Field } from "../../../infrestructure/exceptions/enum/Field";
-import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import { ServiceParams } from "../../../application/model/lovs/params/ServiceParams";
 
 export class GetServicesByCategoryOperation extends OperationTemplate<ServiceResult, ServiceParams> {

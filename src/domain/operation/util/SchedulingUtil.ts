@@ -6,7 +6,7 @@ import logger from "../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
-import { SchedulingTimeUtil } from "./SchedulingTimeUtil";
+import { TimeUtil } from "./SchedulingTimeUtil";
 import { IHollydayEngineRepository } from "../../repository/IHollydayEngineRepository";
 import { ISchedulingTimeEngineRepository } from "../../repository/ISchedulingTimeEngineRepository";
 import { SchedulingTimeConfiguration } from "../../model/SchedulingTimeConfiguration";
@@ -19,7 +19,7 @@ import { ISchedulingCategoryEngineRepository } from "../../repository/ISchedulin
 import { SchedulingCategory } from "../../model/SchedulingCategory";
 import { Service } from "../../model/Service";
 import { EncryptTemplate } from "../../../infrestructure/template/EncryptTemplate";
-import { MessageTemplateFixedId } from "../../model/enum/MessageTemplateFixedId";
+import { MessageTemplateFixedIdEnum } from "../../model/enum/MessageTemplateFixedIdEnum";
 import { IMessageContentsEngineRepository } from "../../repository/IMessageContentsEngineRepository";
 import { PlataformConfig } from "../../../infrestructure/config/plataform";
 
@@ -185,8 +185,8 @@ export class SchedulingUtil {
 
         const emailMessage = await EmailNotification.sendSchedulingNotification(scheduling.citizen.fullName,
             scheduling.date, scheduling.chosenHour, scheduling.service.name,  PlataformConfig.url.frontOffice, messageContsEngineRepository,
-            MessageTemplateFixedId.NEW_SCHEDULING_SUBJECT,
-            MessageTemplateFixedId.NEW_SCHEDULING_BODY, "pt-PT")
+            MessageTemplateFixedIdEnum.NEW_SCHEDULING_SUBJECT,
+            MessageTemplateFixedIdEnum.NEW_SCHEDULING_BODY, "pt-PT")
 
 
         const emailTemplate = new EmailTemplate();
@@ -257,8 +257,8 @@ export class SchedulingUtil {
 
 
         const schedulingDateInput = new Date(schedulingDate);
-        const isWeekend = await SchedulingTimeUtil.isweekend(schedulingDateInput);
-        const isHoliday = await SchedulingTimeUtil.isHollyDay(schedulingDateInput, hollydayEngineRepository, "[SchedulingUtil]");
+        const isWeekend = await TimeUtil.isweekend(schedulingDateInput);
+        const isHoliday = await TimeUtil.isHollyDay(schedulingDateInput, hollydayEngineRepository, "[SchedulingUtil]");
 
         if (isWeekend || isHoliday) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);

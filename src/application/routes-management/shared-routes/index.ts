@@ -9,6 +9,7 @@ import RoleRoutes from "../user-manager/RoleRoutes";
 import PermissionRoutes from "../user-manager/PermissionRoutes";
 import { PlataformConfig } from "../../../infrestructure/config/plataform";
 import lovesRoutes from "../lovs/LovsRoutes";
+import feedbackRoutes from "../feedback/FeedbackRoutes";
 
 const sharedRoutes = Router();
 
@@ -33,6 +34,9 @@ sharedRoutes.use(baseUrl, schedulingTimeRoutes);
 sharedRoutes.use(baseUrl, schedulingRoutes)
 
 /* LOVS */
-sharedRoutes.use(baseUrl,lovesRoutes)
+sharedRoutes.use(baseUrl, lovesRoutes)
+
+/* FEEDBACK */
+sharedRoutes.use(baseUrl,feedbackRoutes)
 
 export default sharedRoutes

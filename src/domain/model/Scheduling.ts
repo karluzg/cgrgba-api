@@ -69,7 +69,7 @@ export class Scheduling implements ISchedulingActivable {
     @IsObject()
     @ValidateNested()
     @Type(() => User)
-    @ManyToOne(() => User, (attendBy) => attendBy.id, { eager: true })
+    @ManyToOne(() => User, (updateBy) => updateBy.id, { eager: true })
     updateBy: User
 
     @IsDate()

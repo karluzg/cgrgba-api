@@ -95,8 +95,19 @@ export enum MiddlewareBusinessMessage {
   SCHEDULING_STATUS_CODE_INVALID="Estado do agendamento é inválido",
 
 
+  // BUSINESS MESSAGE - FEEDBACK
+  FEEDBACK_MESSAGE_TYPE_CODE_INVALD = "O tipo de mensagem de feedback é inválido",
+  FEEDBACK_ID_INVALID = "Mensagem de feedback não existe",
+  FEEDBACK_BEGIN_DATE_INVALID = "A data de início de feedback é inváldo",
+  FEEDBACK_END_DATE_INVALID = "A data de fim de feedback é inváldo",
+  FEEDBACK_END_CREATION_DATE_LESS_THAN_BEGIN_CREATION_DATE = "A data de fim de feedback deve ser IGUAL OU superior a data de início de feedback",
+  FEEDBACK_STATUS = "O estado de feedback é inválido",
 
-  //  BUSINESS MESSAGE - DCOUMENT 
+
+
+  //  BUSINESS MESSAGE - DCOUMENT
+
+
   //  BUSINESS MESSAGE - NEWS
   NEWS_INVALID_CATEGORY = "Erro de validação dos dados da notícia",
   NEWS_CATEGORY_NOT_EXIST = "Categoria de notícia não existe",

@@ -1,5 +1,5 @@
 import { injectable } from "tsyringe";
-import { MessageTemplateFixedId } from "../../model/enum/MessageTemplateFixedId";
+import { MessageTemplateFixedIdEnum } from "../../model/enum/MessageTemplateFixedIdEnum";
 import { IMessageContentsEngineRepository } from "../IMessageContentsEngineRepository";
 import { MessageTemplateContents } from "../../model/MessageTemplateContents";
 
@@ -10,7 +10,7 @@ const messageContentsEngineRepository = myDataSource.getRepository(MessageTempla
 @injectable()
 export class MessageContentsEngineRepositoryImpl implements IMessageContentsEngineRepository {
   async getMessageTemplateByFixedId(
-    messageTemplateFixedId: MessageTemplateFixedId,
+    messageTemplateFixedId: MessageTemplateFixedIdEnum,
     languageCode: string
   ): Promise<MessageTemplateContents> {
       

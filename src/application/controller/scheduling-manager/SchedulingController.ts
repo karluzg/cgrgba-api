@@ -211,7 +211,7 @@ export class SchedulingController {
             } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
-                logger.error("[SchedulingController] Error while getting schedilng detail", error)
+                logger.error("[SchedulingController] Error while changing scheduling status", error)
                 throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
             }
         }
@@ -301,7 +301,7 @@ export class SchedulingController {
             } else if (error.errorClasseName === ErrorExceptionClass.UNAUTHORIZED) {
                 throw new UnauthorizedOperationException(error.field, error.message)
             } else {
-                logger.error("[SchedulingController] Error while getting schedilng detail", error)
+                logger.error("[SchedulingController] Error while gettingscheduling statistics", error)
                 throw new UnsuccessfullOperationException(error.field, MiddlewareBusinessMessage.CORE_INTERNAL_SERVER_ERROR + error)
             }
         }

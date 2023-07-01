@@ -15,7 +15,7 @@ import { PlataformConfig } from "../../../../infrestructure/config/plataform";
 import { ResultTemplate } from "../../../../infrestructure/template/ResultTemplate";
 import { ResetPasswordParams } from "../../../../application/model/user-manager/ResetPasswordParams";
 import { EmailNotification } from "../../util/EmailNotification";
-import { MessageTemplateFixedId } from "../../../model/enum/MessageTemplateFixedId";
+import { MessageTemplateFixedIdEnum } from "../../../model/enum/MessageTemplateFixedIdEnum";
 import { IMessageContentsEngineRepository } from "../../../repository/IMessageContentsEngineRepository";
 
 
@@ -66,8 +66,8 @@ export class ResetPasswordOperation extends OperationTemplate<ResultTemplate, Re
             PlataformConfig.url.backOffice,
             PlataformConfig.contact.email,
             this.messageContsEngineRepository,
-            MessageTemplateFixedId.RESET_PASSWORD_SUBJECT,
-            MessageTemplateFixedId.RESET_PASSWORD_BODY, "pt-PT");
+            MessageTemplateFixedIdEnum.RESET_PASSWORD_SUBJECT,
+            MessageTemplateFixedIdEnum.RESET_PASSWORD_BODY, "pt-PT");
         const emailTemplate = new EmailTemplate();
         const mailOption = await emailTemplate.createMailOption(newUser.email, emailMessage);
 

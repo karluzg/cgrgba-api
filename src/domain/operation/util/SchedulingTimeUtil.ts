@@ -3,7 +3,7 @@ import logger from "../../../infrestructure/config/logger";
 import { IHollydayEngineRepository } from "../../repository/IHollydayEngineRepository";
 import { isValid, parseISO } from "date-fns";
 
-export class SchedulingTimeUtil {
+export class TimeUtil {
 
     static async getTimePart(hour: string): Promise<number> {
         if (typeof hour !== 'undefined' && hour !== '') {

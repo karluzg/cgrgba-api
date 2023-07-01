@@ -21,7 +21,7 @@ import { IRoleEngineRepository } from "../../../repository/IRoleEngineRepository
 import { Role } from "../../../model/Role";
 import { UserResponseBuilder } from "../../response-builder/user-manager/UserResponseBuilder";
 import { IMessageContentsEngineRepository } from "../../../repository/IMessageContentsEngineRepository";
-import { MessageTemplateFixedId } from "../../../model/enum/MessageTemplateFixedId";
+import { MessageTemplateFixedIdEnum } from "../../../model/enum/MessageTemplateFixedIdEnum";
 
 
 
@@ -105,8 +105,8 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
             PlataformConfig.url.backOffice,
             PlataformConfig.contact.email,
             this.messageContsEngineRepository,
-            MessageTemplateFixedId.CREATE_NEW_USER_SUBJECT,
-            MessageTemplateFixedId.CREATE_NEW_USER_BODY, "pt-PT");
+            MessageTemplateFixedIdEnum.CREATE_NEW_USER_SUBJECT,
+            MessageTemplateFixedIdEnum.CREATE_NEW_USER_BODY, "pt-PT");
 
         const emailTemplate = new EmailTemplate();
         const mailOption = await emailTemplate.createMailOption(user.email, emailMessage);

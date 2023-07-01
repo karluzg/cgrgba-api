@@ -12,9 +12,6 @@ import { Field } from "../exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../response/enum/MiddlewareCustomMessage";
 
 
-
-
-
 export abstract class OperationTemplate<R extends ResultTemplate, P extends ParamsTemplate> implements IOperation<R, P>{
 
 
@@ -36,8 +33,6 @@ export abstract class OperationTemplate<R extends ResultTemplate, P extends Para
   async execute(params: P): Promise<R> {
 
     let result: R = this.initResult();
-
-
 
     try {
 

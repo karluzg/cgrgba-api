@@ -8,8 +8,10 @@ import { GetServicesByCategoryOperation } from "../../operation/lovs/GetServices
 import { ILovsEngine } from "../ILovsEngine";
 import { CategoryResult } from "../../../application/model/lovs/CategoryResult";
 import { CategoryParams } from "../../../application/model/lovs/params/CategoryParams";
-import { param } from "express-validator";
 import { GetSchedulingCategoryOperation } from "../../operation/lovs/GetSchedulingCategoryOperation";
+import { FeedbackMessageTypeResult } from "../../../application/model/lovs/FeedbackMessageTypeResult";
+import { FeedbackMessageTypeParams } from "../../../application/model/lovs/params/FeedbackMessageTypeParams";
+import { FeedbackMessageTypeOperation } from "../../operation/lovs/FeedbackMessageTypeOperation";
 
 export class LovsEngineImpl extends GenericOperationTemplate implements ILovsEngine {
   
@@ -26,5 +28,9 @@ export class LovsEngineImpl extends GenericOperationTemplate implements ILovsEng
         return this.executeOperation(new GetSchedulingCategoryOperation(),params)
     }
     
+    get_feedback_message_type(params: FeedbackMessageTypeParams): Promise<FeedbackMessageTypeResult> {
+        return this.executeOperation(new FeedbackMessageTypeOperation(),params)
+    }
+  
 
 }

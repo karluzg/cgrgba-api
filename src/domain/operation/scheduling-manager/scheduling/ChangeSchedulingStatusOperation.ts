@@ -23,9 +23,9 @@ export class ChangeSchedulingStatusOperation extends UserAuthOperationTemplate<S
     private readonly schedulingStatusRepository: ISchedulinStatusEngineRepository;
     private readonly schedulingPossibleStatusEngineRepository: ISchedulingPossibleStatusEngineRepository;
     private schedulingEntitySource: Scheduling;
-    private schedulingStatusSource: SchedulingStatus;
+   
     private nextPossibleSchedulingStatus: SchedulingPossibleStatus[];
-    private matchingNextStatus;
+    private matchingNextStatus:SchedulingPossibleStatus;
   
     constructor() {
         super(OperationNamesEnum.SCHEDULING_CHANGE_STATUS, OperationValidatorManager.getSingletonInstance());
@@ -42,13 +42,13 @@ export class ChangeSchedulingStatusOperation extends UserAuthOperationTemplate<S
             throw new InvalidParametersException(Field.SCHEDULING_ID, MiddlewareBusinessMessage.SCHEDULING_ID_INVALID);
         }
   
-        this.schedulingStatusSource = await this.schedulingStatusRepository.findSchedulingStatus(params.getSchedulingStatusCode);
+        const schedulingStatusSource:SchedulingStatus = await this.schedulingStatusRepository.findSchedulingStatus(params.getSchedulingStatusCode);
 
-        if (!this.schedulingStatusSource) {
+        if (!schedulingStatusSource) {
             throw new InvalidParametersException(Field.SCHEDULING_STATUS_CODE, MiddlewareBusinessMessage.SCHEDULING_STATUS_CODE_INVALID);
         }
   
-        this.nextPossibleSchedulingStatus = await this.schedulingPossibleStatusEngineRepository.findSchedulingNextStatus(this.schedulingEntitySource.status.code);
+        this.nextPossibleSchedulingStatus = await this.schedulingPossibleStatusEngineRepository.findSchedulingNextStatus(schedulingStatusSource.code);
 
         logger.info("Next Possible status", JSON.stringify(this.nextPossibleSchedulingStatus))
         logger.info("Next Possible status INPUT:", params.getSchedulingStatusCode)

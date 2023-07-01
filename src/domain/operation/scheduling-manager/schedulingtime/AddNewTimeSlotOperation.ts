@@ -10,7 +10,7 @@ import { SchedulingTimeConfiguration } from "../../../model/SchedulingTimeConfig
 import logger from "../../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
+import { TimeUtil } from "../../util/SchedulingTimeUtil";
 import { IHollydayEngineRepository as IHollydayEngineRepository } from "../../../repository/IHollydayEngineRepository";
 import { Hour } from "../../../model/Hour";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
@@ -57,8 +57,8 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         }
 
 
-        const isWeekendBeginDate = await SchedulingTimeUtil.isweekend(new Date(params.getBeginSchedulingDate));
-        const isWeekendEndate = await SchedulingTimeUtil.isweekend(new Date(params.getEndSchedulingDate));
+        const isWeekendBeginDate = await TimeUtil.isweekend(new Date(params.getBeginSchedulingDate));
+        const isWeekendEndate = await TimeUtil.isweekend(new Date(params.getEndSchedulingDate));
 
         if (isWeekendBeginDate) {
 
@@ -72,10 +72,10 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
                 MiddlewareBusinessMessage.SCHEDULING_TIME_WEEKEND_END_DATE)
         }
 
-        const isHollydaybeginDate = await SchedulingTimeUtil.isHollyDay(new Date(params.getBeginSchedulingDate),
+        const isHollydaybeginDate = await TimeUtil.isHollyDay(new Date(params.getBeginSchedulingDate),
             this.hollydayEngineRepository, "[AddNewTimeSlotOperation]")
         
-        const isHollydayEndDate = await SchedulingTimeUtil.isHollyDay(new Date(params.getEndSchedulingDate),
+        const isHollydayEndDate = await TimeUtil.isHollyDay(new Date(params.getEndSchedulingDate),
             this.hollydayEngineRepository, "[AddNewTimeSlotOperation]")
 
         if (isHollydaybeginDate) {
@@ -111,12 +111,12 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
 
         // Begin and End Work Time
-        const beginWorkTime = await SchedulingTimeUtil.getTimePart(params.getBeginWorkTime)
-        const endWorkTime = await SchedulingTimeUtil.getTimePart(params.getEndWorkTime)
+        const beginWorkTime = await TimeUtil.getTimePart(params.getBeginWorkTime)
+        const endWorkTime = await TimeUtil.getTimePart(params.getEndWorkTime)
 
 
-        const beginWorkMinute = await SchedulingTimeUtil.getMinutePart(params.getBeginWorkTime);
-        const endWorkMinute = await SchedulingTimeUtil.getMinutePart(params.getEndWorkTime);
+        const beginWorkMinute = await TimeUtil.getMinutePart(params.getBeginWorkTime);
+        const endWorkMinute = await TimeUtil.getMinutePart(params.getEndWorkTime);
 
 
 
@@ -127,11 +127,11 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
 
         // Begin and End lunch Time
-        const beginLunchTime = await SchedulingTimeUtil.getTimePart(params.getBeginLunchTime)
-        const endLunchTime = await SchedulingTimeUtil.getTimePart(params.getEndLunchTime)
+        const beginLunchTime = await TimeUtil.getTimePart(params.getBeginLunchTime)
+        const endLunchTime = await TimeUtil.getTimePart(params.getEndLunchTime)
 
-        const beginLunchkMinute = await SchedulingTimeUtil.getMinutePart(params.getBeginLunchTime);
-        const endLunchMinute = await SchedulingTimeUtil.getMinutePart(params.getEndLunchTime);
+        const beginLunchkMinute = await TimeUtil.getMinutePart(params.getBeginLunchTime);
+        const endLunchMinute = await TimeUtil.getMinutePart(params.getEndLunchTime);
 
 
         if ((endLunchTime <= beginLunchTime) || (beginLunchTime == endLunchTime && endLunchMinute < beginLunchkMinute)) {
@@ -187,16 +187,16 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         for (const inputDate of this.dateList) {
 
-            const isWeekend = await SchedulingTimeUtil.isweekend(inputDate);
+            const isWeekend = await TimeUtil.isweekend(inputDate);
 
-            const isHollyday = await SchedulingTimeUtil.isHollyDay(inputDate, hollydayRepository, "[AddNewTimeSlotOperation]")
+            const isHollyday = await TimeUtil.isHollyDay(inputDate, hollydayRepository, "[AddNewTimeSlotOperation]")
 
             console.log("is weekend?", isWeekend)
             console.log("is hollyday?", isHollyday)
 
             if (!isWeekend && !isHollyday) {
 
-                const dateWithoutHour = await SchedulingTimeUtil.getDateWithoutTime(inputDate)
+                const dateWithoutHour = await TimeUtil.getDateWithoutTime(inputDate)
 
                 const beginWorkDateTime = new Date(`${dateWithoutHour} ${params.getBeginWorkTime} `);
 

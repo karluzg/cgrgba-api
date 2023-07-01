@@ -1,7 +1,7 @@
 import { MessageTemplateContents } from "../model/MessageTemplateContents";
-import { MessageTemplateFixedId } from "../model/enum/MessageTemplateFixedId";
+import { MessageTemplateFixedIdEnum } from "../model/enum/MessageTemplateFixedIdEnum";
 
 export interface IMessageContentsEngineRepository {
-    getMessageTemplateByFixedId(messageTemplateFixedId: MessageTemplateFixedId, languageCode: string):Promise<MessageTemplateContents>
+    getMessageTemplateByFixedId(messageTemplateFixedId: MessageTemplateFixedIdEnum, languageCode: string): Promise<MessageTemplateContents>
 
 }

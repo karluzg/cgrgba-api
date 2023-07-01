@@ -1,6 +1,6 @@
 import logger from "../../../infrestructure/config/logger";
 import { MessageTemplateContents } from "../../model/MessageTemplateContents";
-import { MessageTemplateFixedId } from "../../model/enum/MessageTemplateFixedId";
+import { MessageTemplateFixedIdEnum } from "../../model/enum/MessageTemplateFixedIdEnum";
 import { IMessageContentsEngineRepository } from "../../repository/IMessageContentsEngineRepository";
 
 export class TemplateUtils {
@@ -9,7 +9,7 @@ export class TemplateUtils {
     static async getTemplateText(
         messageEngineRepository: IMessageContentsEngineRepository,
         fields: Map<string, string>,
-        messagemTemplateFixedId: MessageTemplateFixedId,
+      messagemTemplateFixedId: MessageTemplateFixedIdEnum,
         languageCode: string
       ): Promise<string> {
         logger.log(

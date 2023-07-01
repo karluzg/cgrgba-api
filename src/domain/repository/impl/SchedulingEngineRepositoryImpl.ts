@@ -66,7 +66,7 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
 
 
     if (beginDate) {
-      console.info("ENTROU Begin Date", beginDate);
+  
       query.where('scheduling.year >= :beginDateYear', {
         beginDateYear: beginDate.getFullYear()
       })

@@ -37,6 +37,14 @@ export enum OperationNamesEnum {
 
     //FEEDBACK -  404 - 504
     FEEDBACK_ADD = 404,
+    FEEDBACK_LIST = 405,
+    FEEDBACK_GET_DETAIL = 406,
+    FEEDBACK_LIST_MESSAGE_TYPE = 407,
+    FEEDBACK_PUBLISH = 408,
+    FEEDBACK_UPDATE_STATUS = 409,
+
+
+
 
 
     //ROLES -  505 to 605 

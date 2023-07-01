@@ -1,9 +1,9 @@
 
 import { EmailMessageTemplate } from "../../../infrestructure/template/EmailMessageTemplate";
-import { MessageTemplateFixedId } from "../../model/enum/MessageTemplateFixedId";
+import { MessageTemplateFixedIdEnum } from "../../model/enum/MessageTemplateFixedIdEnum";
 import { IMessageContentsEngineRepository } from "../../repository/IMessageContentsEngineRepository";
 import { TemplateUtils } from "./TemplateUtils";
-import { SchedulingTimeUtil } from "./SchedulingTimeUtil";
+import { TimeUtil } from "./SchedulingTimeUtil";
 
 
 export class EmailNotification {
@@ -11,8 +11,8 @@ export class EmailNotification {
   public static async sendUserNotification(userFullName: string, email: string, password: string, baseEndpoint: string,
     emailContact: string,
     messageContsEngineRepository: IMessageContentsEngineRepository,
-    subjectId: MessageTemplateFixedId,
-    bodyId: MessageTemplateFixedId,
+    subjectId: MessageTemplateFixedIdEnum,
+    bodyId: MessageTemplateFixedIdEnum,
     languageCode: string): Promise<EmailMessageTemplate> {
 
     const fields: Map<string, string> = new Map();
@@ -25,7 +25,7 @@ export class EmailNotification {
     fields.set('EMAIL_CONTACT', emailContact);
     fields.set('BASE_ENDPOINT', baseEndpoint);
 
-    const greeting: string = await SchedulingTimeUtil.getGreet()
+    const greeting: string = await TimeUtil.getGreet()
     fields.set('GREETING', greeting);
 
     const body: string = await TemplateUtils.getTemplateText(messageContsEngineRepository, fields, bodyId, languageCode)
@@ -40,8 +40,8 @@ export class EmailNotification {
         service: string,
         baseEndpoint: string,
         messageContsEngineRepository: IMessageContentsEngineRepository,
-        subjectId: MessageTemplateFixedId,
-        bodyId: MessageTemplateFixedId,
+    subjectId: MessageTemplateFixedIdEnum,
+    bodyId: MessageTemplateFixedIdEnum,
         languageCode: string): Promise<EmailMessageTemplate> {
 
 
@@ -55,7 +55,7 @@ export class EmailNotification {
         fields.set('SCHEDULING_SERVICE', service);
         fields.set('BASE_ENDPOINT', baseEndpoint);
 
-        const greeting: string = await SchedulingTimeUtil.getGreet()
+    const greeting: string = await TimeUtil.getGreet()
         fields.set('GREETING', greeting);
 
         const body: string = await TemplateUtils.getTemplateText(messageContsEngineRepository, fields, bodyId, languageCode)

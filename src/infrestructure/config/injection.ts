@@ -56,6 +56,16 @@ import { RoleStatusEngineRepositoryImpl } from '../../domain/repository/impl/Rol
 import { IRoleStatusEngineRepository } from '../../domain/repository/IRoleStatusEngineRepository';
 import { IMessageContentsEngineRepository } from '../../domain/repository/IMessageContentsEngineRepository';
 import { MessageContentsEngineRepositoryImpl } from '../../domain/repository/impl/MessageContentsEngineRepositoryImpl';
+import { FeedbackEngineRepositoryImpl } from '../../domain/repository/impl/FeedbackEngineRepositoryImpl';
+import { IFeedbackEngineRepository } from '../../domain/repository/IFeedbackEngineRepository';
+import { IFeedbackPossibleStatusEngineRepository } from '../../domain/repository/IFeedbackPossibleStatusEngineRepository';
+import { FeedbackPossibleStatusEngineRepositoryImpl } from '../../domain/repository/impl/FeedbackPossibleStatusEngineRepositoryImpl';
+import { IFeedbackEngine } from '../../domain/service/IFeedbackEngine';
+import { FeedbackEngineImpl } from '../../domain/service/impl/FeedbackEngineImpl';
+import { IFeedbackMessageTypeEngineRepository } from '../../domain/repository/IFeedbackMessageTypeEngineRepository';
+import { FeedbackMessageTypeEngineRepositoryImpl } from '../../domain/repository/impl/FeedbackMessageTypeEngineRepositoryImpl';
+import { FeedbackStatusEngineRepositoryImpl } from '../../domain/repository/impl/FeedbackStatusEngineRepositoryImpl';
+import { IFeedbackStatusEngineRepository } from '../../domain/repository/IFeedbackStatusEngineRepository';
 
 
 //Register container for services
@@ -67,6 +77,9 @@ container.register<ISchedulingTimeEngine>('ISchedulingTimeEngine', { useClass: S
 container.register<ISchedulingEngine>('ISchedulingEngine', { useClass: SchedulingEngineImpl })
 container.register<INewsEngine>('INewsEngine', { useClass: NewsEngineImpl });
 container.register<ILovsEngine>('ILovsEngine', { useClass: LovsEngineImpl });
+container.register<IFeedbackEngine>('IFeedbackEngine', { useClass: FeedbackEngineImpl });
+
+
 
 
 //Register container for repository
@@ -90,9 +103,10 @@ container.register<IUserPossibleStatusEngneRepository>('IUserPossibleStatusEngne
 container.register<ISchedulinStatusEngineRepository>('ISchedulinStatusEngineRepository', { useClass: SchedulinStatusEngineRepositoryImpl })
 container.register<IRoleStatusEngineRepository>('IRoleStatusEngineRepository', { useClass: RoleStatusEngineRepositoryImpl })
 container.register<IMessageContentsEngineRepository>('IMessageContentsEngineRepository', { useClass: MessageContentsEngineRepositoryImpl })
-
-
-
+container.register<IFeedbackEngineRepository>('IFeedbackEngineRepository', { useClass: FeedbackEngineRepositoryImpl })
+container.register<IFeedbackPossibleStatusEngineRepository>('IFeedbackPossibleStatusEngineRepository', { useClass: FeedbackPossibleStatusEngineRepositoryImpl })
+container.register<IFeedbackMessageTypeEngineRepository>('IFeedbackMessageTypeEngineRepository', { useClass: FeedbackMessageTypeEngineRepositoryImpl })
+container.register<IFeedbackStatusEngineRepository>('IFeedbackStatusEngineRepository', { useClass: FeedbackStatusEngineRepositoryImpl })
 
 
 export default container;

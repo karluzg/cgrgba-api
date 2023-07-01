@@ -4,7 +4,7 @@ import { TimeSlotListParams } from "../../../../application/model/scheduling-man
 import { SchedulingTimeConfiguration } from "../../../model/SchedulingTimeConfiguration";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import { ISchedulingTimeEngineRepository } from "../../../repository/ISchedulingTimeEngineRepository";
-import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
+import { TimeUtil } from "../../util/SchedulingTimeUtil";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";
@@ -56,9 +56,9 @@ export class GetTimeSlotListOperation extends OperationTemplate<TimeSlotResult, 
         logger.info("[GetTimeSlotListOperation] Input scheduling begin date converted %s", this.schedulingDateInput)
 
 
-        const isWeekend = await SchedulingTimeUtil.isweekend(this.schedulingDateInput);
+      const isWeekend = await TimeUtil.isweekend(this.schedulingDateInput);
 
-        const isHollyday = await SchedulingTimeUtil.isHollyDay(this.schedulingDateInput, this.hollydayRepository,
+      const isHollyday = await TimeUtil.isHollyDay(this.schedulingDateInput, this.hollydayRepository,
             "[GetTimeSlotListOperation]")
 
 

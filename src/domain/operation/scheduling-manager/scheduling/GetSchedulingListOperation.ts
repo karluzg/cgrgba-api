@@ -10,7 +10,7 @@ import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngi
 import { Scheduling } from "../../../model/Scheduling";
 import { IPage } from "../../../../infrestructure/pageable-manager/IPage";
 import { PageableUtils } from "../../../../infrestructure/pageable-manager/PageableUtils";
-import { SchedulingTimeUtil } from "../../util/SchedulingTimeUtil";
+import { TimeUtil } from "../../util/SchedulingTimeUtil";
 import logger from "../../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
@@ -21,8 +21,6 @@ import { SchedulingResponseBuilder } from "../../response-builder/scheduling-man
 export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSchedulingListResult, GetSchedulingListParams>{
 
     private readonly schedulingEngineRepository: ISchedulingEngineRepository;
-
-
     private isbeignDateDayEqualEndDateDay: boolean = false;
 
 
@@ -46,7 +44,7 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
         if (getBeginSchedulingDate) {
             logger.info("[GetSchedulingListOperation] BeginSchedulingDate is filled. Validate if it is a valid date.");
-            const isValidBeginCreationDate = await SchedulingTimeUtil.isValidDate(getBeginSchedulingDate);
+            const isValidBeginCreationDate = await TimeUtil.isValidDate(getBeginSchedulingDate);
             if (!isValidBeginCreationDate) {
                 throw new InvalidParametersException(Field.SCHEDULING_BEGIN_DATE, MiddlewareBusinessMessage.SCHEDULING_BEGIN_DATE_INVALID);
             }
@@ -54,7 +52,7 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
 
         if (getEndSchedulingDate) {
             logger.info("EndSchedulingDate is filled. Validate if it is a valid date.");
-            const isValidEndCreationDate = await SchedulingTimeUtil.isValidDate(getEndSchedulingDate);
+            const isValidEndCreationDate = await TimeUtil.isValidDate(getEndSchedulingDate);
             if (!isValidEndCreationDate) {
                 throw new InvalidParametersException(Field.SCHEDULING_END_DATE, MiddlewareBusinessMessage.SCHEDULING_END_DATE_INVALID);
             }
@@ -110,7 +108,7 @@ export class GetSchedulingListOperation extends UserAuthOperationTemplate<GetSch
             endSchedulingDate = startOfDay(addDays(beginSchedulingDate, 1));
         } else {
             logger.info("Filter by default current scheduling date");
-            const beginCreationDateDefault = await SchedulingTimeUtil.getDefaultCreationDateWithouTime();
+            const beginCreationDateDefault = await TimeUtil.getDefaultCreationDateWithouTime();
             const currentSchedulingsDate: Scheduling[] = await this.schedulingEngineRepository.findSchedulingCurrentDate(beginCreationDateDefault);
 
             if (currentSchedulingsDate.length !== 0) {

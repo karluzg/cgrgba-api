@@ -2,7 +2,7 @@ import { injectable } from "tsyringe";
 import { SchedulingPossibleStatus } from "../../model/SchedulingPossibleStatus";
 
 import { ISchedulingPossibleStatusEngineRepository } from "../ISchedulingPossibleStatusEngineRepository";
-import { result } from "lodash";
+
 
 const myDataSource = require('../../../domain/meta-inf/data-source');
 const schedulingstatusRepository = myDataSource.getRepository(SchedulingPossibleStatus)

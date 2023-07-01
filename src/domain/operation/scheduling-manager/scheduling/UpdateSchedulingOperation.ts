@@ -144,16 +144,10 @@ export class UpdateSchedulingOperation extends UserAuthOperationTemplate<Schedul
                 this.schedulingHistoryEnginerepository)
 
 
-            console.info("New scheduling", JSON.stringify(newScheduling))
-
             const nextPossibleStatus: SchedulingPossibleStatus[] = await this.schedulingStatusEngineRepository
                 .findSchedulingNextStatus(newScheduling.status.code);
 
-            console.info("Next possiblie status", JSON.stringify(nextPossibleStatus))
-
             const schedulingResponse = await SchedulingResponseBuilder.buildSchedulingResponse(newScheduling);
-
-            console.info("SCHEDULING RESPONSE", JSON.stringify(schedulingResponse))
 
             result.setScheduling = schedulingResponse;
             result.setPossibleStatus = nextPossibleStatus;
