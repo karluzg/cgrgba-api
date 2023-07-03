@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BeforeInsert, AfterLoad, BeforeUpdate, AfterInsert, AfterUpdate } from "typeorm"
 import { Scheduling } from "./Scheduling"
 import { EncryptTemplate } from "../../infrestructure/template/EncryptTemplate"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BeforeInsert, AfterLoad, BeforeUpdate, AfterInsert, AfterUpdate } from "typeorm"
+
 
 
 @Entity({ schema: 'portal_consular_dev' })

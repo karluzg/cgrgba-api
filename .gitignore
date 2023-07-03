@@ -7,5 +7,6 @@ temp/
 Server.log
 Server.log.orig
 logs/
-
+dist/
 *.log
+log/

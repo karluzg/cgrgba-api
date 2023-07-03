@@ -7,7 +7,7 @@ const logFilename = PlataformConfig.log.file; // Certifique-se de que PlataformC
 
 configure({
   appenders: {
-    app: { type: 'dateFile', filename: "Server_temp", pattern: 'yyyy-MM-dd.log', alwaysIncludePattern: true }
+    app: { type: 'dateFile', filename: PlataformConfig.log.file, pattern: 'yyyy-MM-dd.log', alwaysIncludePattern: true }
   },
   categories: {
     default: {
