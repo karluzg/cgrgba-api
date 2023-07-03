@@ -37,12 +37,6 @@ export class FeedbackEngineRepositoryImpl implements IFeedbackEngineRepository{
               .leftJoinAndSelect("feedback.type", "type")
       
         
-            if (!beginDate && !endDate && !messageType && !status) {
-              // No filters applied, return an empty page of results
-              return new PageImpl<Feedback>([], pageNumber, pageSize, 0, 0);
-            }
-        
-        
             if (beginDate) {
 
               query.where('feedback.year >= :beginDateYear', {
@@ -92,12 +86,12 @@ export class FeedbackEngineRepositoryImpl implements IFeedbackEngineRepository{
    
   
    async findFeedbackById(feedbackId: number): Promise<Feedback> {
-        return feedbackEngineRepository
-        .createQueryBuilder('feedback')
-        .leftJoinAndSelect('feedback.type', 'type')
-        .leftJoinAndSelect('feedback.status', 'status')
-        .andWhere('feedback.id = :feedbackId', { feedbackId: feedbackId })
-        .getOne();
-    }
+    return feedbackEngineRepository
+      .createQueryBuilder('feedback')
+      .leftJoinAndSelect('feedback.type', 'type')
+      .leftJoinAndSelect('feedback.status', 'status')
+      .andWhere('feedback.id = :feedbackId', { feedbackId: feedbackId })
+      .getOne();
+  }
   
 }

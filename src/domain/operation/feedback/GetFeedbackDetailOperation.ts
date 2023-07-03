@@ -11,15 +11,22 @@ import { InvalidParametersException } from "../../../infrestructure/exceptions/I
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";
 import logger from "../../../infrestructure/config/logger";
+import { FeedbackBuilder } from "../response-builder/feedback/FeedbackBuilder";
+import { IFeedbackPossibleStatusEngineRepository } from "../../repository/IFeedbackPossibleStatusEngineRepository";
+import { FeedbackPossibleStatus } from "../../model/FeedbackPossibleStatus";
 
 export class GetFeedbackDetailOperation extends UserAuthOperationTemplate<FeedbackResult, GetFeedbackDetailParams>{
 
     private readonly feedbackEngineRepository: IFeedbackEngineRepository;
+    private readonly feedbackPossibleStatusRepository: IFeedbackPossibleStatusEngineRepository;
+    private feedbackNextPossibleStatus: FeedbackPossibleStatus[] = []
     private feedback: Feedback
 
     constructor() {
         super(OperationNamesEnum.FEEDBACK_GET_DETAIL, OperationValidatorManager.getSingletonInstance())
-        this.feedbackEngineRepository = container.resolve<IFeedbackEngineRepository>('IFeedbackEngineRepository')
+        this.feedbackEngineRepository = container.resolve<IFeedbackEngineRepository>('IFeedbackEngineRepository');
+        this.feedbackPossibleStatusRepository = container.resolve<IFeedbackPossibleStatusEngineRepository>('IFeedbackPossibleStatusEngineRepository');
+        
 
     }
 
@@ -34,7 +41,12 @@ export class GetFeedbackDetailOperation extends UserAuthOperationTemplate<Feedba
     }
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: GetFeedbackDetailParams, result: FeedbackResult): Promise<void> {
-        result.setFeedback = this.feedback;
+        const newFeedbackResponse = await FeedbackBuilder.buildFeedbackResponse(this.feedback);
+        
+        this.feedbackNextPossibleStatus = await this.feedbackPossibleStatusRepository.findFeedbackNextStatus(newFeedbackResponse.status.code);
+
+        result.setFeedback = newFeedbackResponse;
+        result.setPossibleStatus = this.feedbackNextPossibleStatus;
     }
     protected initResult(): FeedbackResult {
         return new FeedbackResult();

@@ -27,6 +27,10 @@ export class GetSchedulingCategoryOperation extends OperationTemplate<CategoryRe
  
     protected async doExecute(params: CategoryParams, result: CategoryResult): Promise<void> {
         this.categoryEntity = await this.schedulingCategoryEngineRepository.findAllCategory();
+
+        if (this.categoryEntity) {
+            this.categoryEntity.sort((a, b) => a.code.localeCompare(b.code));
+        }
       
         result.setCategories = this.categoryEntity;
     }

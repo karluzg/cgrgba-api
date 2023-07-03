@@ -30,6 +30,9 @@ export class GetServicesByCategoryOperation extends OperationTemplate<ServiceRes
             result.setServices = this.services;
         } else {
             this.services = this.categoryEntity[0].services
+        
+            this.services.sort((a, b) => a.code.localeCompare(b.code));
+            
             result.setServices = this.services;
         }
     }

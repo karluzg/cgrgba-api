@@ -17,8 +17,7 @@ import { DirectionEnum } from "../../../infrestructure/pageable-manager/enum/Dir
 import { GetSchedulingDetailParams } from "../../model/scheduling-manager/scheduling/params/GetSchedulingDetailParams";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { UpdateSchedulingParams } from "../../model/scheduling-manager/scheduling/params/UpdateSchedulingParams";
-import { ServiceEnum } from "../../../domain/model/enum/ServiceEnum";
-import { CategoryEnum } from "../../../domain/model/enum/CategoryEnum";
+
 import { SchedulingStatusEnum } from "../../../domain/model/enum/SchedulingStatusEnum";
 import { ChangeSchedulingStatusParams } from "../../model/scheduling-manager/scheduling/params/ChangeSchedulingStatusParams";
 import { GetSchedulingStatictiscsParams as GetSchedulingStatistiscsParams } from "../../model/scheduling-manager/scheduling/params/GetSchedulingStatictiscsParams";
@@ -91,8 +90,8 @@ export class SchedulingController {
                 authenticationToken,
                 beginSchedulingDate as string,
                 endSchedulingDate as string,
-                categoryCode as CategoryEnum,
-                serviceCode as ServiceEnum,
+                categoryCode as string,
+                serviceCode as string,
                 schedulingStatus as SchedulingStatusEnum,
                 orderColumn as string,
                 direction as DirectionEnum,
@@ -239,8 +238,8 @@ export class SchedulingController {
             const params = new UpdateSchedulingParams(authenticationToken, shcedulingId,
                 schedulingDate,
                 schedulingHour,
-                categoryCode as CategoryEnum,
-                serviceCode  as ServiceEnum );
+                categoryCode as string,
+                serviceCode  as string );
 
             logger.info("[SchedulingController] Perform dependency injection for ISchedulingEngine")
             const schedulingEngine = container.resolve<ISchedulingEngine>("ISchedulingEngine")

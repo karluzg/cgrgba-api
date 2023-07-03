@@ -6,12 +6,12 @@ export class FeedbackPossibleStatus{
     @PrimaryGeneratedColumn({ type: "bigint" })
     id: number
 
-    @ManyToOne(() => FeedbackStatus, (currentStatus) => currentStatus.code)
-    currentStatus: FeedbackStatus
-
-
-    @ManyToOne(() => FeedbackStatus, (nextStatus) => nextStatus.code)
-    nextStatus: FeedbackStatus
+    @ManyToOne(() => FeedbackStatus, feedbackStatus => feedbackStatus.code)
+    currentStatus: FeedbackStatus;
+    
+    @ManyToOne(() => FeedbackStatus, feedbackStatus => feedbackStatus.code)
+    nextStatus: FeedbackStatus;
+    
 
     get code(): string {
         return this.currentStatus.code;

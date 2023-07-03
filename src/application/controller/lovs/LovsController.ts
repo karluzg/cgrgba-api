@@ -14,7 +14,6 @@ import { ServiceParams } from "../../model/lovs/params/ServiceParams";
 import { GetRolesParams } from "../../model/lovs/params/GetRolesParams";
 import { AuthValidator } from "../validator/AuthValidator";
 import { CategoryParams } from "../../model/lovs/params/CategoryParams";
-import { CategoryEnum } from "../../../domain/model/enum/CategoryEnum";
 import { FeedbackMessageTypeParams } from "../../model/lovs/params/FeedbackMessageTypeParams";
 
 export class LovsController {
@@ -25,7 +24,7 @@ export class LovsController {
 
             const { categoryCode } = request.query;
 
-            const params = new ServiceParams(categoryCode as CategoryEnum);
+            const params = new ServiceParams(categoryCode as string);
 
             logger.info("[LovsController] Perform dependency injection for ILovsEngine")
             const loveEngine = container.resolve<ILovsEngine>("ILovsEngine")

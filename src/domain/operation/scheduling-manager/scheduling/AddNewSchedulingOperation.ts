@@ -35,10 +35,6 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
     private readonly messageContsEngineRepository: IMessageContentsEngineRepository
 
 
-
-
-
-
     private semaphore: Semaphore;
     private citizen: Citizen
     private serviceEntity: Service;
@@ -73,7 +69,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         this.citizen = await this.citizenEngineRepository.findCitizenByEmailOrMobileNumber(params.getCitizenEmail,
             params.getCitizenMobileNumber);
 
-        logger.info("[AddNewSchedulingOperation] Citizen founded:", JSON.stringify(this.citizen))
+        logger.info("[AddNewSchedulingOperation] Citizen founded %s:", this.citizen)
 
         this.totalAvailableCollaborators = await SchedulingUtil.strictSchedulingValidate(
             params.getSchedulingDate,
@@ -127,7 +123,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
                 throw new InvalidParametersException(Field.SCHEDULING_HOUR,
                     MiddlewareBusinessMessage.SCHEDULING_HOUR_ALREADY_CHOSED_BY_ANTOTHER_PERSON)
             } else {
-                logger.error("[AddNewSchedulingOperation] Errorr while acquire semaphore:" + error)
+                logger.error("[AddNewSchedulingOperation] Errorr while acquire semaphore %s" + error)
                 throw new InvalidParametersException(Field.SYSTEM,
                     error)
             }
@@ -170,7 +166,7 @@ export class AddNewSchedulingOperation extends OperationTemplate<SchedulingResul
         newScheduling.day = new Date(newScheduling.date).getDate();
 
 
-        logger.info("[AddNewSchedulingOperation] Saving user scheduling in Data Base: " + JSON.stringify(newScheduling))
+        logger.info("[AddNewSchedulingOperation] Saving user scheduling in Data Base %s " + newScheduling)
 
 
         let schedulingSaved: Scheduling;
