@@ -1,8 +1,7 @@
 import { IPage } from "../../infrestructure/pageable-manager/IPage"
 import { DirectionEnum } from "../../infrestructure/pageable-manager/enum/DirectionEnum"
 import { Scheduling } from "../model/Scheduling"
-import { CategoryEnum } from "../model/enum/CategoryEnum"
-import { ServiceEnum } from "../model/enum/ServiceEnum"
+
 
 export interface ISchedulingEngineRepository {
 
@@ -11,8 +10,8 @@ export interface ISchedulingEngineRepository {
     findBy(beginSchedulingDate: Date,
         endSchedulingDate: Date,
         isbeignDateDayEqualEndDateDay:boolean,
-        categoryCode: CategoryEnum,
-        serviceCode: ServiceEnum,
+        categoryCode: string,
+        serviceCode: string,
         schedulingStatus: string,
         orderColumn: string,
         direction: DirectionEnum,

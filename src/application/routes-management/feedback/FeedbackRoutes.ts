@@ -1,11 +1,12 @@
-import express from "express"
+import * as express from "express";
 import { FeedbackController } from "../../controller/feedback/FeedbackController"
 import { FeedbackRoutesValidator } from "./validator/FeedbackRoutesValidator"
 
 const feedbackRoutes = express.Router()
 
-const feedbackRoutesValidator = new FeedbackRoutesValidator()
+
 const feedbackControler = new FeedbackController()
+const feedbackRoutesValidator = new FeedbackRoutesValidator()
 
 /**
  * @swagger
@@ -21,7 +22,7 @@ const feedbackControler = new FeedbackController()
  *             schema:
  *               $ref: '#/components/schemas/FeedbackMessage'
  */
-feedbackRoutes.post("/feedbacks", feedbackRoutesValidator.addNewFeedbackvalidador, feedbackRoutesValidator.validate, feedbackControler.add_new_feedback)
+feedbackRoutes.post("/feedbacks",feedbackRoutesValidator.addNewFeedbackvalidador(), feedbackRoutesValidator.validate, feedbackControler.add_new_feedback)
 
 /**
  * @swagger
@@ -61,7 +62,7 @@ feedbackRoutes.get("/feedbacks/:id", feedbackControler.get_feedback_detail)
  *               $ref: '#/components/schemas/FeedbackMessageList'
  */
 
-feedbackRoutes.get("/feedbacks", feedbackRoutesValidator.getFeedbackListValidator, feedbackRoutesValidator.validate, feedbackControler.get_feedback_list)
+feedbackRoutes.get("/feedbacks", feedbackRoutesValidator.getFeedbackListValidator(), feedbackRoutesValidator.validate, feedbackControler.get_feedback_list)
 /**
  * @swagger
  * /feedbacks/{id}:
@@ -81,7 +82,7 @@ feedbackRoutes.get("/feedbacks", feedbackRoutesValidator.getFeedbackListValidato
  *       '404':
  *         description: Feedback message not found
  */
-feedbackRoutes.put("/feedbacks/:id", feedbackRoutesValidator.updateSchedulingValidator, feedbackRoutesValidator.validate, feedbackControler.update_feedback_status)
+feedbackRoutes.put("/feedbacks/:id", feedbackRoutesValidator.updateSchedulingValidator(), feedbackRoutesValidator.validate, feedbackControler.update_feedback_status)
 
 
 export default feedbackRoutes

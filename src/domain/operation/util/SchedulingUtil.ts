@@ -252,7 +252,7 @@ export class SchedulingUtil {
 
 
     
-        logger.info("[SchedulingUtil] Verifying if scheduling date is a weekend or holiday: " + schedulingDate);
+        logger.info("[SchedulingUtil] Verifying if scheduling date is a weekend or holiday %s " + schedulingDate);
 
 
 
@@ -264,7 +264,7 @@ export class SchedulingUtil {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_DATE, MiddlewareBusinessMessage.SCHEDULING_TIME_DATE_CONFIG_NOT_EXIST);
         }
 
-        logger.info("[SchedulingUtil] Validating if time configuration for the input date exists: " + schedulingDateInput);
+        logger.info("[SchedulingUtil] Validating if time configuration for the input date exists % ", schedulingDateInput);
 
         const schedulingTimeEntity: SchedulingTimeConfiguration[] = await schedulingTimeEngineRepository.findBySchedulingDate(schedulingDateInput);
 
@@ -295,7 +295,7 @@ export class SchedulingUtil {
 
         logger.info("[SchedulingUtil] Begin searching Citizen by email to start validation of scheduling features...");
 
-        logger.info("[SchedulingUtil] Citizen was found:", citizen);
+        logger.info("[SchedulingUtil] Citizen was found %", citizen);
 
 
         if (citizen) {
@@ -310,7 +310,7 @@ export class SchedulingUtil {
                 schedulingEngineRepository
             );
 
-            logger.info("[SchedulingUtil] Watch the validation scheduling feature output:", isNotValidSchedulingFeature);
+            logger.info("[SchedulingUtil] Watch the validation scheduling feature output %", isNotValidSchedulingFeature);
 
             if (isNotValidSchedulingFeature) {
                 throw new InvalidParametersException(Field.SYSTEM, MiddlewareBusinessMessage.SCHEDULING_ALREADY_EXIST);

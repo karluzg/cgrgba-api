@@ -1,16 +1,16 @@
-import { CategoryEnum } from "../../../../domain/model/enum/CategoryEnum";
+
 import { ParamsTemplate } from "../../../../infrestructure/template/ParamsTemplate";
 
 export class ServiceParams extends ParamsTemplate {
 
-    private readonly categoryCode: CategoryEnum
-    constructor(categoryCode: CategoryEnum) {
+    private readonly categoryCode: string
+    constructor(categoryCode: string) {
         super()
         this.categoryCode = categoryCode
 
     }
 
-    get getCategoryCode(): CategoryEnum {
+    get getCategoryCode(): string {
         return this.categoryCode;
     }
 }

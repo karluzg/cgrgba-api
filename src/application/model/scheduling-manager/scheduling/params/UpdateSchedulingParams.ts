@@ -1,6 +1,4 @@
 import { IsEnum, IsNumber, IsObject, IsString, ValidateNested } from "class-validator";
-import { CategoryEnum } from "../../../../../domain/model/enum/CategoryEnum";
-import { ServiceEnum } from "../../../../../domain/model/enum/ServiceEnum";
 import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthParamsTemplate";
 
 
@@ -13,16 +11,16 @@ export class UpdateSchedulingParams extends AuthParamsTemplate {
  
     private schedulingHour: string;
 
-    private categoryCode: CategoryEnum;
+    private categoryCode: string;
 
-    private serviceCode: ServiceEnum;
+    private serviceCode: string;
 
 
     constructor(authentication: string, schedulingId: number,
         schedulingDate: string,
         schedulingHour: string,
-        categoryCode: CategoryEnum,
-        serviceCode: ServiceEnum) {
+        categoryCode: string,
+        serviceCode: string) {
 
         super(authentication);
         this.schedulingId = schedulingId;
@@ -45,11 +43,11 @@ export class UpdateSchedulingParams extends AuthParamsTemplate {
         return this.schedulingHour;
     }
 
-    get getCategory(): CategoryEnum {
+    get getCategory(): string {
         return this.categoryCode;
     }
 
-    get getServiceCode(): ServiceEnum {
+    get getServiceCode(): string {
         return this.serviceCode;
     }
 

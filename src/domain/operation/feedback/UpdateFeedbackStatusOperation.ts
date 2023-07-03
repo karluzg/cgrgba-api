@@ -32,7 +32,8 @@ export class UpdateFeedbackStatusOperation extends UserAuthOperationTemplate<Fee
     constructor() {
         super(OperationNamesEnum.FEEDBACK_UPDATE_STATUS, OperationValidatorManager.getSingletonInstance())
         this.feedbackEngineRepository = container.resolve<IFeedbackEngineRepository>('IFeedbackEngineRepository');
-        this.feedbackStatusEngineRepository = container.resolve<IFeedbackStatusEngineRepository>('IFeedbackStatusEngineRepository')
+        this.feedbackStatusEngineRepository = container.resolve<IFeedbackStatusEngineRepository>('IFeedbackStatusEngineRepository');
+        this.feedbackPossibleStatusRepository = container.resolve<IFeedbackPossibleStatusEngineRepository>('IFeedbackPossibleStatusEngineRepository');
 
     }
 
@@ -42,7 +43,8 @@ export class UpdateFeedbackStatusOperation extends UserAuthOperationTemplate<Fee
 
         this.feedback = await this.feedbackEngineRepository.findFeedbackById(params.getFeedbackId);
 
-        logger.info("[UpdateFeedbackMessageStatus] Feedback entity founded", JSON.stringify(this.feedback));
+
+        logger.info("[UpdateFeedbackMessageStatus] Feedback entity founded %s", this.feedback);
 
         if (!this.feedback) {
             throw new InvalidParametersException(Field.FEEDBACK_ID, MiddlewareBusinessMessage.FEEDBACK_ID_INVALID);
@@ -50,23 +52,26 @@ export class UpdateFeedbackStatusOperation extends UserAuthOperationTemplate<Fee
 
         const feedbackStatus: FeedbackStatus = await this.feedbackStatusEngineRepository.findFeedbackStatus(params.getFeedbackStatus);
 
+
+        logger.info("[UpdateFeedbackMessageStatus] Feedback entity founded %s", feedbackStatus);
+
         if (!feedbackStatus) {
-            throw new InvalidParametersException(Field.FEEDBACK_STATUS, MiddlewareBusinessMessage.FEEDBACK_STATUS);
+            throw new InvalidParametersException(Field.FEEDBACK_STATUS, MiddlewareBusinessMessage.FEEDBACK_STATUS_INVALID);
         }
 
-        this.feedbackNextPossibleStatus = await this.feedbackPossibleStatusRepository.findFeedbackNextStatus(feedbackStatus.code);
+        this.feedbackNextPossibleStatus = await this.feedbackPossibleStatusRepository.findFeedbackNextStatus(this.feedback.status.code);
 
-        logger.info("Next Possible status %s", this.feedbackNextPossibleStatus)
+
         logger.info("Next Possible status INPUT %s:", params.getFeedbackStatus)
 
         this.matchingNextStatus = this.feedbackNextPossibleStatus.find(
-            (nextStatus: FeedbackPossibleStatus) => nextStatus.nextStatus.code === params.getFeedbackStatus
-        );
+            (nextStatus: FeedbackPossibleStatus) => nextStatus.nextStatus.code === params.getFeedbackStatus);
 
-        logger.info("Matched next status", JSON.stringify(this.matchingNextStatus))
+
+        logger.info("Matched next status %s", this.matchingNextStatus)
 
         if (!this.matchingNextStatus) {
-            throw new InvalidParametersException(Field.FEEDBACK_STATUS, MiddlewareBusinessMessage.FEEDBACK_STATUS);
+            throw new InvalidParametersException(Field.FEEDBACK_STATUS, MiddlewareBusinessMessage.FEEDBACK_STATUS_INVALID);
         }
 
         logger.info("[UpdateFeedbackMessageStatus] End of strict validation of change feedback status parameters...");
@@ -75,7 +80,7 @@ export class UpdateFeedbackStatusOperation extends UserAuthOperationTemplate<Fee
 
     protected async doUserAuthExecuted(tokenSession: TokenSession, params: UpdateFeedbackParams, result: FeedbackResult): Promise<void> {
 
-        const newFeedback = await this.updateFeedback(tokenSession)
+        const newFeedback = await this.updateFeedback(tokenSession, params.getFeedbackStatus)
 
         const newFeedbackResponse = await FeedbackBuilder.buildFeedbackResponse(newFeedback);
 
@@ -83,17 +88,18 @@ export class UpdateFeedbackStatusOperation extends UserAuthOperationTemplate<Fee
 
         this.feedbackNextPossibleStatus = await this.feedbackPossibleStatusRepository.findFeedbackNextStatus(newFeedback.status.code);
 
+     
         result.setPossibleStatus = this.feedbackNextPossibleStatus;
 
 
     }
 
-    private async updateFeedback(tokenSession: TokenSession): Promise<Feedback> {
+    private async updateFeedback(tokenSession: TokenSession, feedbackStatus:string): Promise<Feedback> {
 
         logger.info("[AddNewSchedulingOperation] Changing feedback status...")
         this.feedback.status = this.matchingNextStatus.nextStatus
 
-        if (this.matchingNextStatus.code === FeedbackStatusEnum.PUBLISHED) {
+        if (feedbackStatus === FeedbackStatusEnum.PUBLISHED) {
             this.feedback.publishedBy = tokenSession.user;
             this.feedback.publsihedDate = new Date();
 

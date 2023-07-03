@@ -96,12 +96,17 @@ export enum MiddlewareBusinessMessage {
 
 
   // BUSINESS MESSAGE - FEEDBACK
+  FEEDBACK_MESSAGE_TYPE_CODE_MANDATORY = "O campo tipo de mensagem de feedback é obrigatório",
+  FEEDBACK_NAME_MANDATORY = "O campo nome é obrigatório",
+  FEEDBACK_EMAIL_MANDATORY = "O campo email é obrigatório",
+  FEEDBACK_MESSAGE_MANDATORY = "O conteúdo da mensagem é obrigatório",
+
   FEEDBACK_MESSAGE_TYPE_CODE_INVALD = "O tipo de mensagem de feedback é inválido",
   FEEDBACK_ID_INVALID = "Mensagem de feedback não existe",
   FEEDBACK_BEGIN_DATE_INVALID = "A data de início de feedback é inváldo",
   FEEDBACK_END_DATE_INVALID = "A data de fim de feedback é inváldo",
   FEEDBACK_END_CREATION_DATE_LESS_THAN_BEGIN_CREATION_DATE = "A data de fim de feedback deve ser IGUAL OU superior a data de início de feedback",
-  FEEDBACK_STATUS = "O estado de feedback é inválido",
+  FEEDBACK_STATUS_INVALID = "O estado de feedback é inválido",
 
 
 

@@ -5,9 +5,7 @@ import { IPage } from "../../../infrestructure/pageable-manager/IPage";
 import { PageImpl } from "../../../infrestructure/pageable-manager/PageImpl";
 import { DirectionEnum } from "../../../infrestructure/pageable-manager/enum/DirectionEnum";
 import { Scheduling } from "../../model/Scheduling";
-import { CategoryEnum } from "../../model/enum/CategoryEnum";
 import { SchedulingStatusEnum } from "../../model/enum/SchedulingStatusEnum";
-import { ServiceEnum } from "../../model/enum/ServiceEnum";
 import { ISchedulingEngineRepository } from "../ISchedulingEngineRepository";
 import { injectable } from 'tsyringe';
 
@@ -40,8 +38,8 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
     beginDate: Date,
     endDate: Date,
     isbeignDateDayEqualEndDateDay: boolean,
-    categoryCode: CategoryEnum,
-    serviceCode: ServiceEnum,
+    categoryCode: string,
+    serviceCode: string,
     schedulingStatus: SchedulingStatusEnum,
     defaultOrderColumn: string,
     direction: DirectionEnum,

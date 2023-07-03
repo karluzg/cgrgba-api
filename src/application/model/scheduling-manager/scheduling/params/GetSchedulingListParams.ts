@@ -1,6 +1,5 @@
-import { CategoryEnum } from "../../../../../domain/model/enum/CategoryEnum";
+
 import { SchedulingStatusEnum } from "../../../../../domain/model/enum/SchedulingStatusEnum";
-import { ServiceEnum } from "../../../../../domain/model/enum/ServiceEnum";
 import { DirectionEnum } from "../../../../../infrestructure/pageable-manager/enum/DirectionEnum";
 import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthParamsTemplate";
 
@@ -8,8 +7,8 @@ export class GetSchedulingListParams extends AuthParamsTemplate {
 
     private readonly beginSchedulingDate: string;
     private readonly endSchedulingDate: string;
-    private readonly categoryCode: CategoryEnum;
-    private readonly serviceCode: ServiceEnum;
+    private readonly categoryCode: string;
+    private readonly serviceCode: string;
     private readonly schedulingStatus: SchedulingStatusEnum;
     private readonly orderColumn: string;
     private readonly direction: DirectionEnum;
@@ -19,8 +18,8 @@ export class GetSchedulingListParams extends AuthParamsTemplate {
     constructor(authentication: string,
         beginCreationDate: string,
         endCreationDate: string,
-        categoryCode: CategoryEnum,
-        serviceCode: ServiceEnum,
+        categoryCode: string,
+        serviceCode: string,
         schedulingStatus: SchedulingStatusEnum,
         orderColumn: string,
         direction: DirectionEnum,
@@ -46,11 +45,11 @@ export class GetSchedulingListParams extends AuthParamsTemplate {
         return this.endSchedulingDate
     }
 
-    get getCategoryCode(): CategoryEnum {
+    get getCategoryCode(): string {
         return this.categoryCode
     }
 
-    get getServiceCode(): ServiceEnum {
+    get getServiceCode(): string {
         return this.serviceCode
     }
 

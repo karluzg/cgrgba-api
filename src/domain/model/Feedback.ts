@@ -24,7 +24,10 @@ export class Feedback {
     @Column()
     messageContent: string
 
-    @ManyToOne(() => FeedbackMessageType, { eager: true, nullable: false })
+    @IsObject()
+    @ValidateNested()
+    @Type(() => FeedbackMessageType)
+    @ManyToOne(() => FeedbackMessageType,(type) => type.code, { eager: true, nullable: false })
     type: FeedbackMessageType
 
     @IsObject()
@@ -61,11 +64,14 @@ export class Feedback {
     @ManyToOne(() => User, (updateBy) => updateBy.id, { eager: true })
     updateBy: User
   
-    @IsDate()
-    @Column({ nullable: true, type: 'timestamp' })
-    publsihedDate: Date
 
-    @Column({ nullable: true, type: 'timestamp' })
+    @IsDate()
+    @Column({ default: null, nullable: true })
+    publsihedDate: Date;
+
+ 
+    @IsDate()
+    @Column({ default: null, nullable: true })
     revokingDate: Date
 
     enumOperationTemplate: EnumOperationTemplate<FeedbackStatusEnum>;
