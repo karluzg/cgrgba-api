@@ -53,7 +53,7 @@ export enum MiddlewareBusinessMessage {
 
 
 
-  SCHEDULING_TIME_ALREADY_EXIST = "Já existe uma configuração horária para data indicada. Por favor, utilize o serviço de editar configuração da horária",
+  SCHEDULING_TIME_ALREADY_EXIST = "Já existe uma configuração horária para data indicada. Por favor, utilize o serviço de editar configuração da faixa horária ou cria uma nova",
   SCHEDULING_TIME_AVAILABLE_COLLABORATOR_NUMBER_MANDATORY = "A configuração de agendamento deve ter pelo menos um funcionário",
   SCHEDULING_TIME_END_SCHEDULING_DATE_GREATHER_THAN_EQUAL_BEGIN_SCHEDULING_DATE = "A data de fim de agendamento deve ser igual ou superior a data de início de agendamento",
   SCHEDULING_TIME_BEGIN_SCHEDULING_DATE_GREATHER_THAN_CURRENT_DATE = "A data de início de agendamento deve ser igual ou superior a data atual",
