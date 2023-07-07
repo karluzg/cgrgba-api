@@ -16,7 +16,7 @@ import { HttpCodes } from "../../../infrestructure/response/enum/HttpCode";
 import { TimeSlotListParams } from "../../model/scheduling-manager/schedulingTime/params/TimeSlotListParams";
 
 
-export class SchedulingTimeController {
+export class TimeSlotController {
 
     public async add_new_time_slot(request: Request, response: Response): Promise<Response> {
 
@@ -101,7 +101,7 @@ export class SchedulingTimeController {
         }
     }
 }
-export default { SchedulingTimeController: SchedulingTimeController }
+export default { SchedulingTimeController: TimeSlotController }
 
 
 

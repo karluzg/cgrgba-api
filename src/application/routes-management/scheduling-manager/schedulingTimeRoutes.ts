@@ -1,11 +1,11 @@
 import * as express from "express";
-import { SchedulingTimeController } from "../../controller/scheduling-manager/SchedulingTimeHourController";
+import { TimeSlotController } from "../../controller/scheduling-manager/TimeSlotController";
 import { SchedulingTimeRoutesValidator } from "./validator/schedulingTime/SchedulingTimeRoutesValidator";
 
 const schedulingTimeRoutes = express.Router()
 
 
-const schedulingTimeController = new SchedulingTimeController()
+const schedulingTimeController = new TimeSlotController()
 const schedulingTimeValidator = new SchedulingTimeRoutesValidator()
 
 

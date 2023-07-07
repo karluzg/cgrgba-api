@@ -1,5 +1,4 @@
-import { log } from "console";
-import logger from "../../../infrestructure/config/logger";
+
 import { IHollydayEngineRepository } from "../../repository/IHollydayEngineRepository";
 import { isValid, parseISO } from "date-fns";
 
@@ -24,18 +23,14 @@ export class TimeUtil {
 
     static async isweekend(inputDate: Date): Promise<boolean> {
 
-        console.log("[SchedulingTimeUtil] Check if input date is weekend  %s", inputDate)
         const dayWeek = inputDate.getDay();
         return dayWeek === 0 || dayWeek === 6; // 0 = Sunday and 6 = saturday
     }
 
     static async isHollyDay(inputDate: Date, hollydayRepository: IHollydayEngineRepository, entityOperationName: string): Promise<boolean> {
 
-        logger.log(entityOperationName + " " + "Check if input date is hollyday %s", inputDate)
-
+    
         const hollyDateEntity = await hollydayRepository.findByHollydayDate(inputDate)
-
-        logger.log(entityOperationName + " " + "hollyDateEntity %s", hollyDateEntity)
 
         if (hollyDateEntity) {
 

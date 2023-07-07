@@ -24,6 +24,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
     private schedulingTimeEntity: SchedulingTimeConfiguration[] = [];
     private dateList: Date[] = [];
+    private endSchedulingDate: string;
 
 
     constructor() {
@@ -50,6 +51,18 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         }
 
 
+        const isBeginDateIsnullOrEmpty: boolean = typeof params.getEndSchedulingDate !== 'undefined' && params.getEndSchedulingDate !== ''
+
+        if (isBeginDateIsnullOrEmpty) {
+
+            this.endSchedulingDate = params.getEndSchedulingDate;
+
+        } else {
+            this.endSchedulingDate = params.getBeginSchedulingDate;
+
+        }
+
+
         logger.info("[AddNewTimeSlotOperation] Validate available collaborator number")
         if (params.getAvailableCollaboratorNumber == 0) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_AVAILABLE_COLLABORATOR_NUMBER,
@@ -58,7 +71,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
 
         const isWeekendBeginDate = await TimeUtil.isweekend(new Date(params.getBeginSchedulingDate));
-        const isWeekendEndate = await TimeUtil.isweekend(new Date(params.getEndSchedulingDate));
+        const isWeekendEndate = await TimeUtil.isweekend(new Date(this.endSchedulingDate));
 
         if (isWeekendBeginDate) {
 
@@ -75,7 +88,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         const isHollydaybeginDate = await TimeUtil.isHollyDay(new Date(params.getBeginSchedulingDate),
             this.hollydayEngineRepository, "[AddNewTimeSlotOperation]")
         
-        const isHollydayEndDate = await TimeUtil.isHollyDay(new Date(params.getEndSchedulingDate),
+        const isHollydayEndDate = await TimeUtil.isHollyDay(new Date(this.endSchedulingDate),
             this.hollydayEngineRepository, "[AddNewTimeSlotOperation]")
 
         if (isHollydaybeginDate) {
@@ -93,7 +106,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         const beginDate = new Date(params.getBeginSchedulingDate)
         const currentDate = new Date()
-        const endDate = new Date(params.getEndSchedulingDate)
+        const endDate = new Date(this.endSchedulingDate)
 
         logger.info("[AddNewTimeSlotOperation] Scheduling Begin Date %s", beginDate)
         logger.info("[AddNewTimeSlotOperation] Scheduling End Date %s", endDate)
@@ -101,7 +114,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         if (endDate < beginDate) {
             throw new InvalidParametersException(Field.SCHEDULING_TIME_END_SCHEDULING_DATE,
-                MiddlewareBusinessMessage.SCHEDULING_TIME_END_SCHEDULING_DATE_GREATHER_THAN_END_SCHEDULING_DATE)
+                MiddlewareBusinessMessage.SCHEDULING_TIME_END_SCHEDULING_DATE_GREATHER_THAN_EQUAL_BEGIN_SCHEDULING_DATE)
         }
 
         if (beginDate <= currentDate) {
@@ -174,6 +187,8 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
         logger.info("[AddNewTimeSlotOperation] Begin generate hour list for each date...")
 
         await this.generateHourListBySchedulingDate(params, this.hollydayEngineRepository);
+
+
     }
 
     async generateHourListBySchedulingDate(params: TimeSlotParams, hollydayRepository: IHollydayEngineRepository): Promise<void> {
@@ -181,7 +196,7 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
         logger.info("[AddNewTimeSlotOperation] Generate List by scheduling date received params:" + params)
 
-        await this.createSchedulingDateList(params.getBeginSchedulingDate, params.getEndSchedulingDate)
+        await this.createSchedulingDateList(params.getBeginSchedulingDate, this.endSchedulingDate)
 
         logger.info("[AddNewTimeSlotOperation] Date list returned:" + this.dateList)
 
@@ -191,8 +206,6 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
             const isHollyday = await TimeUtil.isHollyDay(inputDate, hollydayRepository, "[AddNewTimeSlotOperation]")
 
-            console.log("is weekend?", isWeekend)
-            console.log("is hollyday?", isHollyday)
 
             if (!isWeekend && !isHollyday) {
 
@@ -200,15 +213,15 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
                 const beginWorkDateTime = new Date(`${dateWithoutHour} ${params.getBeginWorkTime} `);
 
-                let endBegingWorkDateTime = new Date(`${dateWithoutHour}  ${params.getBeginWorkTime} `);
+                let endBegingWorkDateTime = new Date(`${dateWithoutHour}  ${params.getEndWorkTime} `);
                
-                if (params.getEndSchedulingDate.length == 0) {
+                /*if (params.getEndSchedulingDate.length == 0) {
                     endBegingWorkDateTime = new Date(`${dateWithoutHour} ${params.getBeginWorkTime} `);
 
                 } else {
 
                     endBegingWorkDateTime = new Date(`${dateWithoutHour} ${params.getEndWorkTime} `);
-                }
+                }*/
 
                 await this.createSchedulingTimeBySchedulingDate(inputDate, beginWorkDateTime, endBegingWorkDateTime, params);
 
@@ -232,66 +245,60 @@ export class AddNewTimeSlotOperation extends UserAuthOperationTemplate<TimeSlotR
 
     async createSchedulingTimeBySchedulingDate(inputDate: Date, beginWorkDateTime: Date, endWorkDateTime: Date, params: TimeSlotParams): Promise<void> {
         const hourList: string[] = [];
+        
+        logger.info("[AddNewTimeSlotOperation] beginWorkDateTime received %s", beginWorkDateTime);
+        logger.info("[AddNewTimeSlotOperation] endWorkDateTime received %s", endWorkDateTime);
     
-        logger.info("[AddNewTimeSlotOperation] beginWorkDateTime received:", beginWorkDateTime);
-        logger.info("[AddNewTimeSlotOperation] endWorkDateTime received:", endWorkDateTime);
+        const maxTimeBeforeEnd = new Date(endWorkDateTime.getTime() - (90 * 60000)); // Subtract 90 minutes from endWorkDateTime
     
-        while (beginWorkDateTime <= endWorkDateTime && beginWorkDateTime.toDateString() === inputDate.toDateString()) {
+        while (beginWorkDateTime <= maxTimeBeforeEnd && beginWorkDateTime.toDateString() === inputDate.toDateString()) {
             const hour = beginWorkDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             hourList.push(hour);
     
-            beginWorkDateTime.setMinutes(beginWorkDateTime.getMinutes() + params.getServiceInterval); // update beginWorkDateTime adding service interval
+            beginWorkDateTime.setMinutes(beginWorkDateTime.getMinutes() + params.getServiceInterval); // Update beginWorkDateTime by adding the service interval
     
-            // Check if the next hour exceeds the endWorkDateTime
+            // Check if the next hour exceeds the maxTimeBeforeEnd
             const nextHour = new Date(beginWorkDateTime.getTime() + (params.getServiceInterval * 60000));
-            if (nextHour >endWorkDateTime) {
-                const adjustedEndHour = new Date(endWorkDateTime.getTime() - (90 * 60000)); //It is only possible to schedule at 1.30 pm
-                const adjustedEndHourString = adjustedEndHour.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                hourList.push(adjustedEndHourString);
+    
+            if (nextHour > maxTimeBeforeEnd) {
+                // Add the maxTimeBeforeEnd hour
+                const maxTimeBeforeEndHour = maxTimeBeforeEnd.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                hourList.push(maxTimeBeforeEndHour);
                 break;
             }
         }
     
         logger.info("[AddNewTimeSlotOperation] InputDate to be Added %s and hour list %s", inputDate, hourList);
-    
         await this.createNewSchedulingConfiguration(inputDate, params, hourList);
     }
     
     
-    
 
     async createNewSchedulingConfiguration(inputDate: Date, params: TimeSlotParams, hourlistInput: string[]): Promise<void> {
-
-
         const newSchedulingTime = new SchedulingTimeConfiguration();
 
         newSchedulingTime.creationDate = new Date();
         newSchedulingTime.beginDate = inputDate;
         newSchedulingTime.beginWorkTime = params.getBeginWorkTime;
         newSchedulingTime.endWorkTime = params.getEndWorkTime;
-
         newSchedulingTime.beginLunchTime = params.getBeginLunchTime;
-
         newSchedulingTime.endLunchTime = params.getEndLunchTime;
-
         newSchedulingTime.serviceInterval = params.getServiceInterval;
-
-
         newSchedulingTime.availableCollaboratorNumber = params.getAvailableCollaboratorNumber;
 
         const hours: Hour[] = hourlistInput.map(value => {
             const hour = new Hour();
             hour.value = value;
             return hour;
-          });
+        });
 
         newSchedulingTime.hours = hours;
 
- 
-            await this.saveSchedulingTime(newSchedulingTime)
+        newSchedulingTime.hours.slice(0, -2)
 
-
+        await this.saveSchedulingTime(newSchedulingTime);
     }
+
 
 
     async saveSchedulingTime(newScehdulingTime: SchedulingTimeConfiguration): Promise<SchedulingTimeConfiguration> {
