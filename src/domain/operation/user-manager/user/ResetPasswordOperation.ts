@@ -63,7 +63,7 @@ export class ResetPasswordOperation extends OperationTemplate<ResultTemplate, Re
         const emailMessage = await EmailNotification.sendUserNotification(newUser.fullName,
             newUser.email,
             password,
-            PlataformConfig.url.backOffice,
+            PlataformConfig.url.appBackOfficeUrl,
             PlataformConfig.contact.email,
             this.messageContsEngineRepository,
             MessageTemplateFixedIdEnum.RESET_PASSWORD_SUBJECT,

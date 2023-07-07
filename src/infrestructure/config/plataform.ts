@@ -12,7 +12,9 @@ export const PlataformConfig = {
         frontOffice: process.env.URL_FRONTOFFICE,
         backOffice: process.env.URL_BACKOFFICE,
         api: process.env.URL_API,
-        baseUrl: process.env.URL_BASE
+        baseUrl: process.env.URL_BASE,
+        appFrontendUrl: process.env.URL_PORTAL_FRONTOFFICE,
+        appBackOfficeUrl: process.env.URL_PORTAL_BACKOFFICE
     },
     security: {
         passwordTry: parseInt(process.env.SECURITY_PASSWORD_TRY),

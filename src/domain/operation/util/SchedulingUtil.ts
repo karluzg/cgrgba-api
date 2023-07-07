@@ -184,7 +184,7 @@ export class SchedulingUtil {
     public static async sendSchedulingByEmail(scheduling: Scheduling, messageContsEngineRepository: IMessageContentsEngineRepository): Promise<void> {
 
         const emailMessage = await EmailNotification.sendSchedulingNotification(scheduling.citizen.fullName,
-            scheduling.date, scheduling.chosenHour, scheduling.service.name,  PlataformConfig.url.frontOffice, messageContsEngineRepository,
+            scheduling.date, scheduling.chosenHour, scheduling.service.name,  PlataformConfig.url.appFrontendUrl, messageContsEngineRepository,
             MessageTemplateFixedIdEnum.NEW_SCHEDULING_SUBJECT,
             MessageTemplateFixedIdEnum.NEW_SCHEDULING_BODY, "pt-PT")
 

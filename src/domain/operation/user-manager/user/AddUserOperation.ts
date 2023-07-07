@@ -102,7 +102,7 @@ export class AddUserOperation extends UserAuthOperationTemplate<UserResult, User
         const emailMessage = await EmailNotification.sendUserNotification(user.fullName,
             user.email,
             password,
-            PlataformConfig.url.backOffice,
+            PlataformConfig.url.appBackOfficeUrl,
             PlataformConfig.contact.email,
             this.messageContsEngineRepository,
             MessageTemplateFixedIdEnum.CREATE_NEW_USER_SUBJECT,
