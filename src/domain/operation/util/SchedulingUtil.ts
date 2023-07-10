@@ -39,17 +39,17 @@ export class SchedulingUtil {
 
         const email = EncryptTemplate.encryptColumn(citizenEmail)
 
-        const schedulings: Scheduling[] = await schedulingEngineRepository.findCitizenSchedulingInfo(email);
+        const schedulingsDB: Scheduling[] = await schedulingEngineRepository.findCitizenSchedulingInfo(email);
 
-        logger.info("[SchedulingUtil] Found scheduling list: ", schedulings);
-        console.info("[SchedulingUtil] Found scheduling list: ", schedulings);
+        logger.info("[SchedulingUtil] Found scheduling list: ", schedulingsDB);
+        console.info("[SchedulingUtil] Found scheduling list: ", schedulingsDB);
 
 
-        if (schedulings.length === 0) {
+        if (schedulingsDB.length === 0) {
             return false;
         }
 
-        for (const scheduling of schedulings) {
+        for (const scheduling of schedulingsDB) {
             const verifyIfSameDateAndHour = await this.verifyIfSameDateAndHour(
                 scheduling,
                 schedulingDate,
@@ -65,14 +65,15 @@ export class SchedulingUtil {
 
             const verifyIfAnotherServiceAndSameDateAndHour = await this.verifyIfAnotherServiceAndSameDateAndHour(
                 scheduling,
-                scheduling.service.code,
-                scheduling.date,
-                scheduling.chosenHour
+                serviceCodeInput,
+                schedulingDate,
+                schedulingHour
             );
 
             const verifyIfSameServiceAndWaitingToAnswering = await this.verifyIfSameServiceAndWaitingToAnswering(
                 scheduling,
                 serviceCodeInput);
+            
 
             if (
                 verifyIfSameDateAndHour ||
@@ -251,6 +252,7 @@ export class SchedulingUtil {
     ): Promise<number> {
 
 
+        console.info("Citizen info %s", citizen)
     
         logger.info("[SchedulingUtil] Verifying if scheduling date is a weekend or holiday %s " + schedulingDate);
 
