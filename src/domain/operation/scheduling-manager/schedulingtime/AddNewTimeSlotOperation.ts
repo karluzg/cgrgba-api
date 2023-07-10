@@ -10,7 +10,7 @@ import { SchedulingTimeConfiguration } from "../../../model/SchedulingTimeConfig
 import logger from "../../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
-import { TimeUtil } from "../../util/SchedulingTimeUtil";
+import { TimeUtil } from "../../util/TimeUtil";
 import { IHollydayEngineRepository as IHollydayEngineRepository } from "../../../repository/IHollydayEngineRepository";
 import { Hour } from "../../../model/Hour";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";

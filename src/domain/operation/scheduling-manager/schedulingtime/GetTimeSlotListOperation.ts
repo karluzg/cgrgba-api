@@ -4,7 +4,7 @@ import { TimeSlotListParams } from "../../../../application/model/scheduling-man
 import { SchedulingTimeConfiguration } from "../../../model/SchedulingTimeConfiguration";
 import { OperationNamesEnum } from "../../../model/enum/OperationNamesEnum";
 import { ISchedulingTimeEngineRepository } from "../../../repository/ISchedulingTimeEngineRepository";
-import { TimeUtil } from "../../util/SchedulingTimeUtil";
+import { TimeUtil } from "../../util/TimeUtil";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../../infrestructure/response/enum/MiddlewareCustomMessage";

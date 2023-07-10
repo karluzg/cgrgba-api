@@ -10,7 +10,7 @@ import { ISchedulingEngineRepository } from "../../../repository/ISchedulingEngi
 import { Scheduling } from "../../../model/Scheduling";
 import { IPage } from "../../../../infrestructure/pageable-manager/IPage";
 import { PageableUtils } from "../../../../infrestructure/pageable-manager/PageableUtils";
-import { TimeUtil } from "../../util/SchedulingTimeUtil";
+import { TimeUtil } from "../../util/TimeUtil";
 import logger from "../../../../infrestructure/config/logger";
 import { InvalidParametersException } from "../../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../../infrestructure/exceptions/enum/Field";

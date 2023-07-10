@@ -12,7 +12,7 @@ export class TemplateUtils {
       messagemTemplateFixedId: MessageTemplateFixedIdEnum,
         languageCode: string
       ): Promise<string> {
-        logger.log(
+        logger.info(
           "[TemplateUtils] Fetching template using template ID: %s and languageCode: %s",
           messagemTemplateFixedId,
           languageCode
@@ -24,14 +24,14 @@ export class TemplateUtils {
         );
       
         if (!messageTemplateContents) {
-          logger.log(
+          logger.error(
             "[TemplateUtils] Unable to get contents for template ID: %s and languageCode: %s",
             messagemTemplateFixedId,
             languageCode
           );
         }
-      
-        logger.log("[TemplateUtils] Message template found: %s", messageTemplateContents.content);
+       
+        logger.info("[TemplateUtils] Message template found: %s", messageTemplateContents.content); 
       
         const replacedTemplate: string = this.replaceTemplateVariables(messageTemplateContents.content, fields);
       

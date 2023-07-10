@@ -3,7 +3,7 @@ import { EmailMessageTemplate } from "../../../infrestructure/template/EmailMess
 import { MessageTemplateFixedIdEnum } from "../../model/enum/MessageTemplateFixedIdEnum";
 import { IMessageContentsEngineRepository } from "../../repository/IMessageContentsEngineRepository";
 import { TemplateUtils } from "./TemplateUtils";
-import { TimeUtil } from "./SchedulingTimeUtil";
+import { TimeUtil } from "./TimeUtil";
 
 
 export class EmailNotification {
@@ -47,10 +47,12 @@ export class EmailNotification {
 
         const fields: Map<string, string> = new Map();
 
-        const subject: string = await TemplateUtils.getTemplateText(messageContsEngineRepository, fields, subjectId, languageCode)
+    const subject: string = await TemplateUtils.getTemplateText(messageContsEngineRepository, fields, subjectId, languageCode)
+
+    const newOutputDate:string=await TimeUtil.formatDate(schedulingDate);
 
         fields.set('CITIZEN_NAME', citizenName);
-        fields.set('SCHEDULING_DATE', schedulingDate);
+        fields.set('SCHEDULING_DATE', newOutputDate);
         fields.set('SCHEDULING_HOUR', schedulingHour);
         fields.set('SCHEDULING_SERVICE', service);
         fields.set('BASE_ENDPOINT', baseEndpoint);

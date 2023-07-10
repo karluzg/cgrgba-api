@@ -7,7 +7,7 @@ import { TokenSession } from "../../model/TokenSession";
 import { OperationNamesEnum } from "../../model/enum/OperationNamesEnum";
 import { IFeedbackEngineRepository } from "../../repository/IFeedbackEngineRepository";
 import logger from "../../../infrestructure/config/logger";
-import { TimeUtil } from "../util/SchedulingTimeUtil";
+import { TimeUtil } from "../util/TimeUtil";
 import { InvalidParametersException } from "../../../infrestructure/exceptions/InvalidParametersException";
 import { Field } from "../../../infrestructure/exceptions/enum/Field";
 import { MiddlewareBusinessMessage } from "../../../infrestructure/response/enum/MiddlewareCustomMessage";

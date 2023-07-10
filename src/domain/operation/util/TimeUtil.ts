@@ -83,6 +83,33 @@ export class TimeUtil {
         return isValid(parsedDate)
     }
 
+    public static async formatDate(date: string): Promise<string> {
+        
+        const mesesPorExtenso = [
+            "", // Index 0 is not used to facilitate direct access to months
+            "janeiro",
+            "fevereiro",
+            "março",
+            "abril",
+            "maio",
+            "junho",
+            "julho",
+            "agosto",
+            "setembro",
+            "outubro",
+            "novembro",
+            "dezembro"
+          ];
+        
+          const partes = date.split("-");
+          const dia = partes[2];
+          const mesNumero = Number(partes[1]);
+          const mes = mesesPorExtenso[mesNumero];
+          const ano = partes[0];
+        
+          const dataFormatada = `Dia ${dia} de ${mes} de ${ano}`;
+          return dataFormatada;
+        }
 
 
 }
