@@ -53,6 +53,7 @@ export class SchedulingEngineRepositoryImpl implements ISchedulingEngineReposito
   
     const query = schedulingEngineRepository.createQueryBuilder('scheduling')
       .leftJoinAndSelect("scheduling.status", "status")
+      .leftJoinAndSelect("scheduling.citizen","citizen")
       .leftJoinAndSelect("scheduling.service", "service")
       .leftJoinAndSelect("service.category", "category")
 
