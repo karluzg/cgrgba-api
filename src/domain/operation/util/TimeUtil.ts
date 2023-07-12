@@ -101,14 +101,14 @@ export class TimeUtil {
             "dezembro"
           ];
         
-          const partes = date.split("-");
-          const dia = partes[2];
-          const mesNumero = Number(partes[1]);
-          const mes = monthsInFull[mesNumero];
-          const ano = partes[0];
+          const parts = date.split("-");
+          const day = parts[2];
+          const numberOfMonths = Number(parts[1]);
+          const month = monthsInFull[numberOfMonths];
+          const yer = parts[0];
         
-          const dataFormatada = `Dia ${dia} de ${mes} de ${ano}`;
-          return dataFormatada;
+          const dateFormat = `Dia ${day} de ${month} de ${yer}`;
+          return dateFormat;
         }
 
 
