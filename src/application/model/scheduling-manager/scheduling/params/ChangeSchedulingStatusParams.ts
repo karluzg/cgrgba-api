@@ -1,9 +1,11 @@
+import { IsString } from "class-validator";
 import { SchedulingStatusEnum } from "../../../../../domain/model/enum/SchedulingStatusEnum";
 import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthParamsTemplate";
 
 export class ChangeSchedulingStatusParams extends AuthParamsTemplate {
 
     private readonly schedulingId: number
+    @IsString()
     private readonly schedulingStatusCode: SchedulingStatusEnum
     constructor(authentication: string, schedulingId: number,
         schedulingStatusCode: SchedulingStatusEnum) {

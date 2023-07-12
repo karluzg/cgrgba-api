@@ -1,18 +1,19 @@
-import { IsEnum, IsNumber, IsObject, IsString, ValidateNested } from "class-validator";
+import {  IsString } from "class-validator";
 import { AuthParamsTemplate } from "../../../../../infrestructure/template/AuthParamsTemplate";
 
 
 export class UpdateSchedulingParams extends AuthParamsTemplate {
 
- 
-    private readonly schedulingId: number;
 
+    private readonly schedulingId: number;
+    @IsString()
     private schedulingDate: string;
+    @IsString()
  
     private schedulingHour: string;
-
+    @IsString()
     private categoryCode: string;
-
+    @IsString()
     private serviceCode: string;
 
 
