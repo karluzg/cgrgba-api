@@ -46,32 +46,32 @@ schedulingRoutes.post("/schedulings", schedulingValidator.addNewSchedulingvalida
  *     tags: [Schedulings]
  *     parameters:
  *       - in: query
- *         name: beginCreationgDate
+ *         name: beginSchedulingDate
  *         description: Data de início da criação do agendamento (opcional)
  *         schema:
  *           type: string
  *           format: date
  *       - in: query
- *         name: endCreationDate
+ *         name: endSchedulingDate
  *         description: Data de término da criação do agendamento (opcional)
  *         schema:
  *           type: string
  *           format: date
  *       - in: query
- *         name: beginSchedulingTime
- *         description: Hora de início do agendamento (opcional)
+ *         name: categoryCode
+ *         description: Categoria do agendamento (opcional)
  *         schema:
  *           type: string
- *           format: time
+ *           format: string
  *       - in: query
- *         name: endSchedulingTime
- *         description: Hora de término do agendamento (opcional)
+ *         name: serviceCode
+ *         description: Serviço do agendamento (opcional)
  *         schema:
  *           type: string
- *           format: time
+ *           format: string
  *       - in: query
  *         name: schedulingStatus
- *         description: Status do agendamento (opcional)
+ *         description: Estado do agendamento (opcional)
  *         schema:
  *           type: string
  *       - in: query
