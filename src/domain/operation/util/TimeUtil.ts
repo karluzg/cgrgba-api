@@ -67,11 +67,11 @@ export class TimeUtil {
         let greeting;
 
         if (currentHour >= 5 && currentHour < 12) {
-            greeting = 'Bom dia,';
+            greeting = 'Bom dia, Senhor(a)';
         } else if (currentHour >= 12 && currentHour < 18) {
-            greeting = 'Boa tarde,';
+            greeting = 'Boa tarde, Senhor(a)';
         } else {
-            greeting = 'Boa noite,';
+            greeting = 'Boa noite, Senhor(a)';
         }
 
         return greeting;
@@ -85,7 +85,7 @@ export class TimeUtil {
 
     public static async formatDate(date: string): Promise<string> {
         
-        const mesesPorExtenso = [
+        const monthsInFull = [
             "", // Index 0 is not used to facilitate direct access to months
             "janeiro",
             "fevereiro",
@@ -104,7 +104,7 @@ export class TimeUtil {
           const partes = date.split("-");
           const dia = partes[2];
           const mesNumero = Number(partes[1]);
-          const mes = mesesPorExtenso[mesNumero];
+          const mes = monthsInFull[mesNumero];
           const ano = partes[0];
         
           const dataFormatada = `Dia ${dia} de ${mes} de ${ano}`;
